@@ -7,7 +7,8 @@ Thank you for checking out Webdesk.me give it a try, check out our documantation
 
 Our goal is to alow everyone to make there aplications there own. 
 
-## Welcome to GitHub Pages
+
+## GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/Webdeskme/Webdesk-me/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
