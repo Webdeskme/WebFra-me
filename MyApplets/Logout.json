@@ -1,1 +1,0 @@
-{"tooltip":"Logout","icon":"glyphicon glyphicon-off","code":"&lt;a href=&quot;logout.php&quot;&gt;&lt;button class=&quot;btn btn-danger&quot;&gt;&lt;span class=&quot;glyphicon glyphicon-off&quot;&gt;&lt;\/span&gt; Logout&lt;\/button&gt;&lt;\/a&gt; &lt;button type=&quot;button&quot; class=&quot;btn btn-default&quot; data-dismiss=&quot;modal&quot;&gt;Cancel&lt;\/button&gt;"}

@@ -1,7 +1,7 @@
-<?php 
+<?php
 $wd_path ="";
-    if(file_exists("path.txt")){
-        $wd_path = file_get_contents("path.txt");
+    if(file_exists("path.php")){
+        $wd_path = file_get_contents("path.php");
     }
     if($wd_path != ""){
 		header('Location: index.php');

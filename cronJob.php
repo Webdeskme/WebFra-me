@@ -85,12 +85,12 @@ $wd_root = file_get_contents($wd_path . 'path.php');
 //$wd_root = realpath(".") . '/www/webdesk/'; //Change to your Webdesk root
 $wd_admin = $wd_root . '/Admin/';
 $wd_appr = $wd_root . '/App/';
-require $wd_path . 'Plugins/PHPMailer-master/PHPMailerAutoload.php';
+include $wd_path . 'Plugins/PHPMailer-master/PHPMailerAutoload.php';
 
 //Work
 $dir = $wd_path . 'Apps/';
 $scan = scandir($dir);
-foreach($scan1 as $entry){
+foreach($scan as $entry){
   if(file_exists($dir . $entry . '/cron.php')){
     include $dir . $entry . '/cron.php';
   }
