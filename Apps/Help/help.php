@@ -1,0 +1,1 @@
+<p>This is a help section for all of Webdesk and its aplications.</p>
