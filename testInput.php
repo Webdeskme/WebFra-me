@@ -79,7 +79,7 @@ function up_enc($data) {
 if(isset($_GET['adminView']) && isset($_SESSION['wd_adminView'])){
   unset($_SESSION['wd_adminView']);
 }
-
+if(file_exists("path.php")){
 $wd_root = test_input(file_get_contents('path.php'));
 $pcolor = "#FFFFFF";
 if(isset($_SESSION["user"])){
@@ -206,21 +206,21 @@ if(isset($_GET['wd_fullS'])){
 }
 }
 
-function wd_copy($src,$dst) { 
-    $dir = opendir($src); 
-    mkdir($dst); 
-    while(false !== ( $file = readdir($dir)) ) { 
-        if (( $file != '.' ) && ( $file != '..' )) { 
-            if ( is_dir($src . '/' . $file) ) { 
-                wd_copy($src . '/' . $file,$dst . '/' . $file); 
-            } 
-            else { 
-                copy($src . '/' . $file,$dst . '/' . $file); 
-            } 
-        } 
-    } 
-    closedir($dir); 
-} 
+function wd_copy($src,$dst) {
+    $dir = opendir($src);
+    mkdir($dst);
+    while(false !== ( $file = readdir($dir)) ) {
+        if (( $file != '.' ) && ( $file != '..' )) {
+            if ( is_dir($src . '/' . $file) ) {
+                wd_copy($src . '/' . $file,$dst . '/' . $file);
+            }
+            else {
+                copy($src . '/' . $file,$dst . '/' . $file);
+            }
+        }
+    }
+    closedir($dir);
+}
 function wd_image($image){
     //Read image path, convert to base64 encoding
     $imageData = base64_encode(file_get_contents($image));
@@ -244,8 +244,8 @@ function wd_zip($source, $destination)
 	}
 
     //$source = str_replace('\\', '/', realpath($source));
-    
-//    echo 'Source: ' . $source . '<br>Destination: ' . $destination . '<br>'; 
+
+//    echo 'Source: ' . $source . '<br>Destination: ' . $destination . '<br>';
 //echo 'running ....<br>';
     if (is_dir($source) === true)
     {
@@ -359,7 +359,7 @@ function wd_owner_div($page1, $page2){
     header('Location: ' . $page2);
   }
 }
-if(isset($_GET['link'])){ 
+if(isset($_GET['link'])){
   $link = test_input($_GET['link']);
   $link = explode("-", $link);
   $link = $link[0];
@@ -394,13 +394,13 @@ if(isset($_SESSION['wd_adminView'])){
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span>
       </button>
-      <?php 
+      <?php
     if($name != ""){
     ?>
       <a class="navbar-brand" href="index.php?page=index.php"><?php echo $name; ?></a>
-      <?php 
+      <?php
     }
     ?>
     </div>
@@ -423,15 +423,15 @@ if(isset($_SESSION['wd_adminView'])){
     }else{
           if($x == 2){
       echo  ' class="dropdown"';
-    } 
+    }
           if($page == $opage->page){echo ' class="active"';}}}
           else{
           if($x == 2){
       echo  ' class="dropdown"';
-    } 
+    }
           if($page == $opage->page){echo ' class="active"';}} ?>><a<?php if($x == 2){ echo ' class="dropdown-toggle" data-toggle="dropdown"';} ?> href="<?php if($x == 2){
       echo '#';
-    } 
+    }
           else{ echo 'index.php?page=' . $opage->page;} ?>"><?php echo $opage->title; if($x == 2){ echo '<span class="caret"></span>';} ?></a>
 <?php
           if($x == 2){
@@ -483,4 +483,8 @@ if(isset($_SESSION['wd_adminView'])){
 <?php
     }
   }
+
+
+
+}
 ?>
