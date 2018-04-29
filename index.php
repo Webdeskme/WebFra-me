@@ -1,5 +1,6 @@
 <?php
 session_start();
+if(file_exists("path.php")){
 include "testInput.php";
 $theme = test_input(file_get_contents("www/dtheme.txt"));
 if(isset($_GET['page'])){
@@ -29,6 +30,10 @@ elseif(file_exists("www/Pages/index.php") && $page != "login.php"){
 }
 else{
   include "www/Themes/" . $theme . "/login.php";
+}
+}
+else{
+  header('Location: install.php');
 }
 exit();
 ?>
