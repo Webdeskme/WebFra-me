@@ -1,5 +1,5 @@
 <?php
-  include "testInput.php";
+  //include "testInput.php";
   include "www/functions.php";
 ?>
 <!DOCTYPE html>
@@ -18,20 +18,20 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-    
-    
-    While using this site, you agree to have read and accepted our terms 
-    of use, cookie and privacy policy. Copyright 2017 Adam W. Telford. 
+
+
+    While using this site, you agree to have read and accepted our terms
+    of use, cookie and privacy policy. Copyright 2017 Adam W. Telford.
     All Rights Reserved.
-    
+
     A link to the terms of use, cookie and privacy policy, and licences
-    can be found at the bottom right corner of the menu bar by clicking 
+    can be found at the bottom right corner of the menu bar by clicking
     the exlmation point once loged in, and in the menu of the login page.-->
 <html>
 <head>
     <meta charset="utf-8">
    <meta http-equiv="content-language" content="ll-cc">
-    <meta name="language" content="English"> 
+    <meta name="language" content="English">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="keywords" content="WebDesk, Web app, webtop, web desktop">
@@ -106,19 +106,19 @@ for(var i=0;i<a.length;i++) {
     if(!a[i].onclick && a[i].getAttribute("target") != "_blank") {
         a[i].onclick=function() {
                 window.location=this.getAttribute("href");
-                return false; 
+                return false;
         }
     }
 }
 </script>
 <script>
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip(); 
+    $('[data-toggle="tooltip"]').tooltip();
 });
 </script>
   <script>
 $(document).ready(function(){
-    $('[data-toggle="popover"]').popover(); 
+    $('[data-toggle="popover"]').popover();
 });
 </script>
 <script src="Plugins/context.js"></script>
