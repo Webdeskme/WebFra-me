@@ -9,7 +9,7 @@ Our vision is to create software that protects users privacy and data while allo
 
 ## License:
 WebDesk-me/Webdesk-me is licensed under the GNU General Public License v3.0
-Webdesk-me/LICENSE 
+[Webdesk-me/LICENSE](https://github.com/WebDesk-me/Webdesk-me/blob/master/LICENSE)
 
 ## Prerequisets:
 * WebDesk requires a web server running PHP. (If you need help try one of these: )
