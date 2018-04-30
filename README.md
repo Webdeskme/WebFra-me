@@ -22,7 +22,7 @@ Webdesk-me/LICENSE
 
 
 ## Contributing:
-Please read  Webdesk-me/CONTRIBUTING.md  to learn our guidlines for contributing.
+Please read  [Webdesk-me/CONTRIBUTING.md]( Webdesk-me/CONTRIBUTING.md )  to learn our guidlines for contributing.
 
 ## Known Bugs:
 
