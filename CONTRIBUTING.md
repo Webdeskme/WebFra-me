@@ -3,7 +3,7 @@
 The following is a set of guidelines for contributing to WebDesk, which are hosted in the WebDesk-me Organization on GitHub. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document in a pull request.
 
 ## Code of Conduct
-This project and everyone participating in it is governed by the WebDesk Code of Conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to info@webdesk.me.
+This project and everyone participating in it is governed by the [WebDesk Code of Conduct](https://github.com/WebDesk-me/Webdesk-me/blob/master/code-of-conduct.md). By participating, you are expected to uphold this code. Please report unacceptable behavior to info@webdesk.me.
 
 ## Overview
 There are many ways you can contribute to WebDesk's core project. Here are some of the primary ways people contribute.
