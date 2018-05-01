@@ -15,7 +15,7 @@ Before creating bug reports, please check the [issues board](https://github.com/
     Note: If you find a Closed issue that seems like it is the same thing that you're experiencing, open a new issue and include a link to the original issue in the body of your new one.
 ### How Do I Submit A (Good) Bug Report?
 
-Bugs are tracked as GitHub issues. After you've determined which repository your bug is related to, create an issue on that repository and provide the following information by filling in the [template]().
+Bugs are tracked as GitHub issues. After you've determined which repository your bug is related to, create an issue on that repository and provide the following information by filling in the [template](https://github.com/WebDesk-me/Webdesk-me/blob/master/ISSUE_TEMPLATE.md).
 
 Explain the problem and include additional details to help maintainers reproduce the problem:
 
@@ -43,7 +43,7 @@ Include details about your configuration and environment:
 
 
 ## For featues:
-Before creating enhancement suggestions, please check the [issues board](https://github.com/WebDesk-me/Webdesk-me/issues) as you might find out that you don't need to create one. When you are creating an enhancement suggestion, please include as many details as possible. Fill in the [template](), including the steps that you imagine you would take if the feature you're requesting existed.
+Before creating enhancement suggestions, please check the [issues board](https://github.com/WebDesk-me/Webdesk-me/issues) as you might find out that you don't need to create one. When you are creating an enhancement suggestion, please include as many details as possible. Fill in the [template](https://github.com/WebDesk-me/Webdesk-me/blob/master/ISSUE_TEMPLATE.md), including the steps that you imagine you would take if the feature you're requesting existed.
 ### How Do I Submit A (Good) Enhancement Suggestion?
 
 Enhancement suggestions are tracked as GitHub issues. After you've determined which repository your enhancement suggestion is related to, create an issue on that repository and provide the following information:
