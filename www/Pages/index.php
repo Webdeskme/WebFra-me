@@ -1,1 +1,1 @@
-<h1>WebDesk is Installed!</h1>
+<!--<h1>WebDesk is Installed!</h1>-->
