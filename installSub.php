@@ -25,10 +25,12 @@ $pass = test_input($_POST["password"]);
 $verify = test_input($_POST["confirm"]);
 $path = test_input($_POST["path"]);
 $user = f_enc(test_input($_POST['Username']));
+$title = test_input($_POST['title']);
 if ($pass == $verify){
                       	mkdir($path);
                         mkdir($path . '/Admin/');
                         file_put_contents($path . '/Admin/appWeb.txt', $arand);
+	                file_put_contents($path . '/Admin/title.txt', $title);
                       	mkdir($path . '/User/');
                         mkdir($path . '/App/');
                         mkdir($path . '/User/' . $user . '/');
