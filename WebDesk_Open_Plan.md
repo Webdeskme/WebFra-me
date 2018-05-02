@@ -1,4 +1,8 @@
 # WebDesk Open Business Plan v1
+## Overview 
+* Our mission is to allow everyone to control, create and use their data easily and safely
+* Our vision is to create software that protects users privacy and data while allowing them to use and create applications that can be used anywhere from the device of their choosing.
+
 ## 1. Value Propositions
 * Being able to create applications easily
 * Being able to search for applications others have created easily
