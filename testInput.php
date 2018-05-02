@@ -93,6 +93,7 @@ $wd_tier = test_input(file_get_contents($wd_adminFile . 'tier.txt'));
 }
 $wd_admin = $wd_root . '/Admin/';
 $wd_appr = $wd_root . '/App/';
+$wd_Title = $wd_admin . 'title.txt';
 if(isset($_GET['type'])){
 	$wd_type = test_input($_GET['type']);
 }
