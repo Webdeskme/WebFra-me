@@ -1,4 +1,4 @@
-# WebDesk Open Business Model v1
+# WebDesk Open Business Plan v1
 ## 1. Value Propositions
 * Being able to create applications easily
 * Being able to search for applications others have created easily
