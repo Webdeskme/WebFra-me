@@ -19,6 +19,9 @@ $wd_path ="";
     <body>
         <h1>WebDesk Install</h1>
         <form method="POST" action="installSub.php">
+		<label>Website Title:</label><br>
+            <input type="text" name="title" placeholder="Website Title">
+            <br><hr><br>
 			<label>Username:</label><br>
             <input type="text" name="Username" placeholder="Username">
             <br><hr><br>
