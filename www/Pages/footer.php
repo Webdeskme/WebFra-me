@@ -9,7 +9,7 @@
     </div>
     <div class="collapse navbar-collapse" id="footNavbar">
     <ul class="nav navbar-nav">
-      <li><a href="#"><i class="fa fa-copyright" aria-hidden="true"></i><?php echo date("Y"); ?>, All Rights Reserved
+      <li><a href="#"><i class="fa fa-copyright" aria-hidden="true"></i><?php echo date("Y") . ' ' . $wd_Title; ?>, All Rights Reserved
 </a></li>
       <li><a href="www/Pages/Terms.html">Terms Of Use</a></li>
       <li><a href="www/Pages/Privacy.html">Privacy Policey</a></li>
