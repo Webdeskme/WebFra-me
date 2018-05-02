@@ -1,0 +1,8 @@
+<div class="jumbotron" style="margin: 0px; background-color: #9966ff;">
+  <div class="container">
+    <h1 style="color: #000000;"><?php echo $wd_Title; ?></h1> 
+  </div>
+</div>
+<?php
+wd_nav($page, "light", $wd_Title, "yes", "fixed", "simple", "");
+?>
