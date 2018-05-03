@@ -11,11 +11,11 @@
     <ul class="nav navbar-nav">
       <li><a href="#"><i class="fa fa-copyright" aria-hidden="true"></i><?php echo date("Y") . ' ' . $wd_Title; ?>, All Rights Reserved
 </a></li>
-      <li><a href="www/Pages/Terms.html">Terms Of Use</a></li>
-      <li><a href="www/Pages/Privacy.html">Privacy Policey</a></li>
+      <li><a href="www/Pages/Terms.html" target="_blank">Terms Of Use</a></li>
+      <li><a href="www/Pages/Privacy.html" target="_blank">Privacy Policey</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li>Proudly powerd by <a href="webdesk.me">WebDesk</a></li>
+      <li><a href="http://webdesk.me" target="_blank">Proudly powerd by WebDesk</a></li>
     </ul>
     </div>
   </div>
