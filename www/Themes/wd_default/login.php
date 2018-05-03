@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<!-- Copyright 2015 WebDesk.me -->
+<!-- Copyright 2014 WebDesk.me -->
 <html lang="en">
 <head>
-    <title>WebDesk</title>
+    <title><?php echo $wd_Title; ?></title>
     <meta http-equiv="content-language" content="ll-cc">
     <meta name="language" content="English"> 
     <meta name="mobile-web-app-capable" content="yes">
@@ -93,7 +93,7 @@ function bacloop() {
  <nav class="navbar navbar-inverse" id="nav">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="index.php" title="Homepage">WebDesk</a> 
+      <a class="navbar-brand" href="index.php" title="Homepage"><?php echo $wd_Title; ?></a> 
     </div>
   </div>
 </nav>
@@ -111,7 +111,7 @@ function bacloop() {
             <input type="password" id="pass"  class="form-control" name="pass" required placeholder="Please add your Password here." title="Please add your Password here." autofocus><br><br>
            </div>
            <div class="form-group">
-			<p>By clicking on either the Desktop or Mobile button, you are agreeing to Webdesk.me's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>.</p>
+			<p>By clicking on either the Desktop or Mobile button, you are agreeing to Webdesk.me's <a href="/www/Pages/Terms.html" target="_blank">Terms of Use</a> and <a href="/www/Pages/Privacy.html" target="_blank">Privacy Policy</a>.</p>
             <input type="submit" name="type" value="Desktop" class="btn btn-primary" title="Sign In"> <b>or</b> <input type="submit" name="type" value="Mobile" class="btn btn-primary" title="Sign In">
            </div>
           </form>
