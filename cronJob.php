@@ -79,18 +79,14 @@ function up_enc($data) {
 
 $wd_path = __DIR__ . '/';
 $wd_root = file_get_contents($wd_path . 'path.php');
-//$test = __DIR__ . "../../webdesk/";
-//$test = "";
-//$wd_path = realpath(".") . '/www/html/WebDesk/'; //Change to your WebDesk
-//$wd_root = realpath(".") . '/www/webdesk/'; //Change to your Webdesk root
 $wd_admin = $wd_root . '/Admin/';
 $wd_appr = $wd_root . '/App/';
-include $wd_path . 'Plugins/PHPMailer-master/PHPMailerAutoload.php';
+require $wd_path . 'Plugins/PHPMailer-master/PHPMailerAutoload.php';
 
 //Work
 $dir = $wd_path . 'Apps/';
 $scan = scandir($dir);
-foreach($scan as $entry){
+foreach($scan1 as $entry){
   if(file_exists($dir . $entry . '/cron.php')){
     include $dir . $entry . '/cron.php';
   }
