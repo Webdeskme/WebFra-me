@@ -34,7 +34,7 @@ $wd_path ="";
             <label>Offline File Path</label><br>
             <input type="text" name="path" placeholder="File Path" value="/home/bob/webdesk">
             <br><br>
-            <p>By clicking install you are agreeing to the terms of use and the privacey policey for WebDesk.</p>
+            <p>By clicking install you are agreeing <a href="License.html" target="_blank">WebDesk's Licence</a>. This install also comes with a generic pricey policy and terms of use for your install. You will be held accountable to that terns of use and privacy policy until the time you edit it.</p>
             <input type="submit" value="install">
         </form>
     </body>
