@@ -1,39 +1,31 @@
 <meta charset="utf-8">
-<title>Desktop</title>
+<title><?php echo $wd_Title; ?></title>
    <meta http-equiv="content-language" content="ll-cc">
-    <meta name="language" content="English"> 
+    <meta name="language" content="English">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="keywords" content="WebDesk, Web app, webtop, web desktop">
-    <meta name="author" content="WebDesk">
-    <meta name="description" content="Welcome to WebDesk.">
+    <meta name="author" content="<?php echo $wd_Title; ?>">
+    <meta name="description" content="Welcome to <?php echo $wd_Title; ?>.">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" width="device-width">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="copyright" content="&copy; 2014 WebDesk.me">
-    <!--<link rel="icon" type="image/png" href="image/CA.ico">
-    <link rel="apple-touch-icon" href="/custom_icon.png">
-    <link rel="apple-touch-startup-image" href="/custom_icon.png">-->
+    <meta name="copyright" content="&copy; <?php echo date("Y") . ' ' . $wd_Title; ?>">
     <link rel="apple-touch-icon" href="favicon.ico">
     <link rel="apple-touch-startup-image" href="favicon.ico">
-<link href="Plugins/literallycanvas-0.4.14/css/literallycanvas.css" rel="stylesheet">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="Plugins/wd-bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="Plugins/jquery-ui/jquery-ui.min.css">
 <link rel="stylesheet" type="text/css" href="Plugins/context.standalone.css">
-<link href="Plugins/fullcalendar-3.3.0/fullcalendar.min.css" rel="stylesheet"/>
-<link href="Plugins/fullcalendar-3.3.0/fullcalendar.print.min.css" rel="stylesheet" media="print" />
-<link rel="stylesheet" href="Plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+<link href="Plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet"/>
+<link href="Plugins/fullcalendar/fullcalendar.print.min.css" rel="stylesheet" media="print" />
+<link rel="stylesheet" href="Plugins/fontawesome-free/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="Theme/default.php">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="Plugins/jquery.min.js"></script>
+<script src="Plugins/wd-bootstrap/js/bootstrap.min.js"></script>
+<script src="Plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="Plugins/tinymce/js/tinymce/tinymce.min.js"></script>
-<script src="Plugins/React/react.min.js"></script>
-<script src="Plugins/React/react-dom.min.js"></script>
-<script src="Plugins/literallycanvas-0.4.14/js/literallycanvas.js"></script>
-<script src="Plugins/fullcalendar-3.3.0/lib/moment.min.js"></script>
-<script src="Plugins/fullcalendar-3.3.0/fullcalendar.min.js"></script>
+<script src="Plugins/fullcalendar/lib/moment.min.js"></script>
+<script src="Plugins/fullcalendar/fullcalendar.min.js"></script>
 <?php
 include 'wd_ch.php';
 if(isset($_GET["app"])){
@@ -74,7 +66,7 @@ collapsible: true
 //active: false
 });
 $( ".tab" ).resizable();
-<?php if(!isset($_SESSION["wd_fullscreen"]) || $_SESSION["wd_fullscreen"] != 'on'){  ?> 
+<?php if(!isset($_SESSION["wd_fullscreen"]) || $_SESSION["wd_fullscreen"] != 'on'){  ?>
 $( ".tab" ).draggable();
 <?php } ?>
 });
