@@ -7,6 +7,12 @@ $wd_path ="";
 		header('Location: index.php');
 	}
 	else{
+    $characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+    $string = '';
+ $max = strlen($characters) - 1;
+ for ($i = 0; $i < $random_string_length; $i++) {
+      $string .= $characters[mt_rand(0, $max)];
+ }
 ?>
 <!doctype html>
 
@@ -32,7 +38,7 @@ $wd_path ="";
             <input type="password" name="confirm" placeholder="Confirm Password">
             <br><hr><br>
             <label>Offline File Path</label><br>
-            <input type="text" name="path" placeholder="File Path" value="/home/bob/webdesk">
+            <input type="text" name="path" placeholder="File Path" value="<?php echo __DIR__ . '/' . $string; ?>">
             <br><br>
             <p>By clicking install you are agreeing <a href="License.html" target="_blank">WebDesk's Licence</a>. This install also comes with a generic pricey policy and terms of use for your install. You will be held accountable to that terns of use and privacy policy until the time you edit it.</p>
             <input type="submit" value="install">
