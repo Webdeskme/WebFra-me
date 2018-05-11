@@ -18,7 +18,6 @@
 <link rel="stylesheet" type="text/css" href="Plugins/context.standalone.css">
 <link href="Plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet"/>
 <link href="Plugins/fullcalendar/fullcalendar.print.min.css" rel="stylesheet" media="print" />
-<link rel="stylesheet" href="Plugins/fontawesome-free/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="Theme/default.php">
 <script src="Plugins/jquery.min.js"></script>
 <script src="Plugins/wd-bootstrap/js/bootstrap.min.js"></script>
@@ -26,6 +25,7 @@
 <script src="Plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 <script src="Plugins/fullcalendar/lib/moment.min.js"></script>
 <script src="Plugins/fullcalendar/fullcalendar.min.js"></script>
+<script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>
 <?php
 include 'wd_ch.php';
 if(isset($_GET["app"])){
