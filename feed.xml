@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+  <title>localhost</title>
+  <link>http://localhost</link>
+  <description>Blog</description><item>
+    <title>New Site!</title>
+    <link>http://localhost</link>
+    <description><![CDATA[<p>We have a new website and we can't wait for you to check it out!</p>]]></description>
+  </item></channel>
+</rss>
