@@ -13,6 +13,7 @@
 </a></li>
       <li><a href="www/Pages/Terms.html" target="_blank">Terms Of Use</a></li>
       <li><a href="www/Pages/Privacy.html" target="_blank">Privacy Policy</a></li>
+      <li><a href="www/Pages/community-covenant.html" target="_blank">Community Covenant</a></li>
       <li><a href="index.php?page=blog.php">Blog</a></li>
       <li><a href="feed.xml" target="_blank">RSS Feed <i class="fas fa-rss"></i></a></li>
     </ul>
