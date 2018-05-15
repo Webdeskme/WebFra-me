@@ -23,8 +23,8 @@ WebDesk-me/Webdesk-me is licensed under the GNU General Public License v3.0
 
 ## Simple Installation on a Debian system without an existing web server.
 In your terminal type:
-  wget "https://github.com/WebDesk-me/Webdesk-me/archive/master.zip"
-  sh wd_deb.sh
+  * wget "https://github.com/WebDesk-me/Webdesk-me/archive/master.zip"
+  * sh wd_deb.sh
 
 ## Usage:
 To learn more please visit WebDesk's [wiki](https://github.com/WebDesk-me/Webdesk-me/wiki).
