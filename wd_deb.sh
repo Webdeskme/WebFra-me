@@ -10,9 +10,11 @@ sudo unzip /var/www/html/master.zip -d /var/www/html/
 sudo cp -a /var/www/html/Webdesk-me-master/. /var/www/html/
 sudo rm -f /var/www/html/master.zip
 sudo rm -rf /var/www/html/Webdesk-me-master/
+sudo rm -f /var/www/html/index.html
 sudo chgrp -R www-data /var/www/
 sudo chmod -R g+w /var/www/
 sudo find /var/www -type d -exec chmod 2775 {} \;
 sudo find /var/www -type f -exec chmod ug+rw {} \;
 sudo apachectl -k restart
+echo "This is your ip address. Please enter it in the url field of your web browser and click enter."
 hostname -I
