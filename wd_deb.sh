@@ -18,3 +18,4 @@ sudo find /var/www -type f -exec chmod ug+rw {} \;
 sudo apachectl -k restart
 echo "This is your ip address. Please enter it in the url field of your web browser and click enter."
 hostname -I
+echo "To remove this file please type in your terminal: sudo rm -f wd_deb.sh"
