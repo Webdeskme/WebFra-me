@@ -33,7 +33,7 @@ To learn more please visit WebDesk's [wiki](https://github.com/WebDesk-me/Webdes
 Please read  [Webdesk-me/CONTRIBUTING.md]( https://github.com/WebDesk-me/Webdesk-me/blob/master/CONTRIBUTING.md )  to learn our guidlines for contributing.
 
 ## Community Covenant
-Please read  [Webdesk-me/code_of_conduct.md]( https://github.com/WebDesk-me/Webdesk-me/blob/master/code_of_conduct.md ).
+Please read  [Webdesk-me/community-covenant.md]( https://github.com/WebDesk-me/Webdesk-me/blob/master/code_of_conduct.md ).
 
 ## Known Bugs:
 There are no known bugs at this time warenting attention here. For a list off all issues past and present please visit our [issues](https://github.com/WebDesk-me/Webdesk-me/issues) page.
