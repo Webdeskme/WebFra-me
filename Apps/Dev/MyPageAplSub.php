@@ -8,5 +8,5 @@ $myObj->icon = $icon;
 $myObj->code = $con;
 $myJSON = json_encode($myObj);
 file_put_contents('MyApplets/' . $nameA, $myJSON);
-header('Location: desktop.html?type=Apps&app=Dev&sec=MyPageApl.php&MyApp=' . $nameA);
+wd_head($wd_type, $wd_app, 'MyPageApl.php', '&MyApp=' . $nameA);
 ?>

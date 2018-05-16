@@ -10,11 +10,13 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="desktop.html">Back</a></li>
+        <li><a href="desktop.php">Back</a></li>
         <li><a href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>">Apps</a></li>
         <li class="active"><a href="<?php wd_url($wd_type, $wd_app, 'startApl.php', ''); ?>">Applets</a></li>
         <li><a href="<?php wd_url($wd_type, $wd_app, 'startTheme.php', ''); ?>">Themes</a></li>
         <li><a href="<?php wd_url($wd_type, $wd_app, 'startGame.php', ''); ?>">Game</a></li>
+        <li><a href="<?php wd_url($wd_type, $wd_app, 'startHud.php', ''); ?>">HUD</a></li>
+        <li><a href="<?php wd_url($wd_type, $wd_app, 'startMhud.php', ''); ?>">MHUD</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
 		<li><a href="#" data-toggle="collapse" data-target="#NewA">Create Applet</a></li>  

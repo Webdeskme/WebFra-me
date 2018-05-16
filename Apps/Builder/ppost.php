@@ -6,6 +6,56 @@ else{
   $page = "";
 }
 */
+$t = "";
+$c = "";
+if(isset($_POST['ed']) && file_exists("www/Pages/feed.json")){
+  $ed = test_input($_POST['ed']);
+  $objFeed = file_get_contents("www/Pages/feed.json");
+  $objFeed = json_decode($objFeed, true);
+  if(isset($_POST['ide'])){
+    $ide = $_POST['ide'];
+  if($ed == 'Delete'){
+	unset($objFeed[$ide]);
+    $nObjF = json_encode($objFeed);
+     file_put_contents("www/Pages/feed.json", $nObjF);
+    if (isset($_SERVER['HTTPS']) &&
+    ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
+    isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
+    $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+    $protocol = 'https://';
+  }
+else {
+  $protocol = 'http://';
+}
+$feed = '<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+  <title>' . $_SERVER["SERVER_NAME"] . '</title>
+  <link>' . $protocol . $_SERVER["SERVER_NAME"] . '</link>
+  <description>' . $_SERVER["SERVER_NAME"] . ' site feed</description>';
+if(file_exists("www/Pages/feed.json")){
+  $obj = file_get_contents("www/Pages/feed.json");
+  $obj = json_decode($obj, TRUE);
+  foreach($obj as $post){
+    $title = $post["title"];
+    $con = htmlspecialchars_decode ($post["con"]);
+  $feed = $feed . '<item>
+    <title>' . (string)$title . '</title>
+    <link>' . $protocol . $_SERVER["SERVER_NAME"] . '</link>
+    <description><![CDATA[' . (string)$con . ']]></description>
+  </item>';
+  }
+}
+ $feed = $feed . '</channel>
+</rss>';
+file_put_contents("feed.xml", $feed);
+  }
+  else{
+    $t = $objFeed[$ide]['title'];
+    $c = $objFeed[$ide]['con'];
+  }
+  }
+}
 if(isset($_POST['con']) && isset($_POST['title'])){
   $title = test_input($_POST['title']);
   $con = test_input($_POST["con"], ENT_QUOTES);
@@ -19,6 +69,9 @@ if(isset($_POST['con']) && isset($_POST['title'])){
   if(isset($_GET['id']) && $_GET['id'] != ""){
   $id = test_input($_GET['id']);
 }
+  elseif(isset($_POST['id']) && $_POST['id'] != ""){
+    $id = test_input($_POST['id']);
+  }
 else{
   $id = date("YmdHis");
 }
@@ -113,24 +166,53 @@ tinymce.init({
         <li><a href="<?php wd_url($wd_type, $wd_app, 'pthemes.php', ''); ?>">Themes</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="<?php wd_url($wd_type, $wd_app, 'page.php', '&page=' . $page); ?>"><span class="glyphicon glyphicon-pencil"></span> Code Editor</a></li>
-        <li><a href="index.php?page=<?php echo $page; ?>" target="_blank"><span class="glyphicon glyphicon-sunglasses"></span> View Page</a></li>
-        <li><?php wd_confirm($wd_type, $wd_app, 'pageSubDelete.php', '&page=' . $page, '1', '<i class="glyphicon glyphicon-trash"> Delete</i>'); ?></li>
+        
       </ul>
     </div>
   </div>
 </nav>
 <form method="post" action="<?php wd_url($wd_type, $wd_app, 'ppost.php', ''); ?>" style="width: 90%; height: 70%;">
     <label for="title">Post Title: </label><br>
-    <input id="title" name="title" title="The Title" placeholder="The Title" value="">
+    <input id="title" name="title" title="The Title" placeholder="The Title" value="<?php echo $t; ?>">
   <br>
     <label for="con">Post Content: </label><br>
     <textarea name="con" id="con" for="con" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:100%;"  autofocus><?php 
-/*if(isset($_GET['page']) && file_exists("www/Pages/" . $page)){
-    echo htmlspecialchars(file_get_contents("www/Pages/" . $page));
-} */
+echo $c;
 ?></textarea>
+  <?php
+  if(isset($ide)){
+  ?>
+  <input type="hidden" name="id" value="<?php echo $ide; ?>">
+  <?php
+  }
+  ?>
     <br>
     <input type="submit" class="btn btn-success" value="Save">
 </form>
+<hr>
+<?php
+if(file_exists("www/Pages/feed.json")){
+?>
+<form method="post" action="<?php wd_url($wd_type, $wd_app, 'ppost.php', ''); ?>" style="width: 90%; height: 70%;">
+   <div class="form-group">
+  <label for="ide">Select post to edit or delete:</label>
+  <select class="form-control" id="ide" name="ide">
+    <?php
+    if(file_exists("www/Pages/feed.json")){
+  $obj = file_get_contents("www/Pages/feed.json");
+  $obj = json_decode($obj, TRUE);
+    }
+    foreach($obj as $key => $post){
+    ?>
+    <option value="<?php echo $key; ?>"><?php echo $post["title"]; ?></option>
+    <?php
+    }
+    ?>
+  </select>
+</div> 
+  <input type="submit" class="btn btn-success" name="ed" value="Edit"> <input type="submit" class="btn btn-danger" name="ed" value="Delete">
+</form>
+<?php
+}
+?>
 <br>

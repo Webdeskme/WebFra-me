@@ -89,5 +89,11 @@ if(isset($_GET['page']) && file_exists("www/Pages/" . $page)){
 </div>
 <br>
 <div>
+  <?php
+  if(file_exists("index.php?page=" . $page)){
+  ?>
   <iframe src="index.php?page=<?php echo $page; ?>" width="90%;" height="600px;"></iframe>
+  <?php
+  }
+    ?>
 </div>

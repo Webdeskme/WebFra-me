@@ -19,8 +19,8 @@ $MyPage = test_input($_GET["MyPage"]);
         <li><a href="<?php wd_url($wd_type, $wd_app, 'startApl.php', ''); ?>">Applets</a></li>
         <li><a href="<?php wd_url($wd_type, $wd_app, 'startTheme.php', ''); ?>">Themes</a></li>
         <li><a href="<?php wd_url($wd_type, $wd_app, 'startGame.php', ''); ?>">Games</a></li>
-        <li><a href="<?php wd_url($wd_type, $wd_app, 'startHUD.php', ''); ?>">HUD</a></li>
-        <li><a href="<?php wd_url($wd_type, $wd_app, 'startMHUD.php', ''); ?>">Mobile HUD</a></li>
+        <li><a href="<?php wd_url($wd_type, $wd_app, 'startHud.php', ''); ?>">HUD</a></li>
+        <li><a href="<?php wd_url($wd_type, $wd_app, 'startMhud.php', ''); ?>">Mobile HUD</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-usd"></span> WD Functions</a></li>
@@ -41,7 +41,7 @@ if(file_exists("MyApps/" . $MyApp . "/" . $MyPage)){
     <br>
     <input type="submit" class="btn btn-success" value="Save">
 </form>
-<br>
+<br><br><br>
 <?php
 include("FunctionHelp.php");
 ?>
