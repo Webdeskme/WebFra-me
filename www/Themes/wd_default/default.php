@@ -115,5 +115,6 @@ $(document).ready(function(){
 });
 </script>
 <script src="Plugins/context.js"></script>
+	<script type="text/javascript" src="fstat-js.php?page=<?php echo $page;?>"></script>
 </body>
 </html>
