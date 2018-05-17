@@ -192,13 +192,13 @@ $page = test_input($_GET['page']);
 
 $.post("fstat.php",
     {
-        data: 'OS: ' + jscd.os +' '+ jscd.osVersion + '<br>' +
+        data: 'OS: ' + jscd.os +' '+ jscd.osVersion + ' --- ' +
     'Browser: ' + jscd.browser +' '+ jscd.browserMajorVersion +
-      ' (' + jscd.browserVersion + ')<br>' + 
-'Mobile: ' + jscd.mobile + '</br>' +
-    'Cookies: ' + jscd.cookies + '<br>' +
-    'Screen Size: ' + jscd.screen + '<br>' +
-    'Page: <?php echo $page; ?>' + '<br><br>',
+      ' (' + jscd.browserVersion + ') --- ' + 
+'Mobile: ' + jscd.mobile + ' --- ' +
+    'Cookies: ' + jscd.cookies + ' --- ' +
+    'Screen Size: ' + jscd.screen + ' --- ' +
+    'Page: <?php echo $page; ?>',
     	os: jscd.os,
     	mobile: jscd.mobile,
         cookies: jscd.cookies,
