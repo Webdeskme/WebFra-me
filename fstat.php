@@ -31,7 +31,8 @@ else{
 }
 $d = date("F");
 if($month == $d){
-    file_put_contents($wd_admin . 'fstat.txt', $data, FILE_APPEND | LOCK_EX);
+  $log = file_get_contents($wd_admin . 'fstat.txt');
+    file_put_contents($wd_admin . 'fstat.txt', $data . $log, LOCK_EX);
 }
 else{
     file_put_contents($wd_root . '/Admin/month.txt', $d);
