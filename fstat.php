@@ -6,7 +6,7 @@ $stamp = date_timestamp_get($date);
 $data = test_input($_POST["data"]);
 $data = "IP: " . $_SERVER['REMOTE_ADDR'] . "<br>" . "Time: " . date("h:i:sa") . " " . date("Y-m-d") . "<br>" . $data . "<br><br>";
 if(file_exists($wd_admin . 'fstat.json')){
-  $obj = file_get_contents($wd_admin);
+  $obj = file_get_contents($wd_admin . 'fstat.json');
   $obj = json_decode($obj, true);
 }
 $obj[$stamp]['ip'] = $_SERVER['REMOTE_ADDR'];
