@@ -11,6 +11,7 @@ if(file_exists($wd_admin . 'fstat.json')){
 }
 $obj[$stamp]['ip'] = $_SERVER['REMOTE_ADDR'];
 $obj[$stamp]['os'] = test_input($_POST['os']);
+$obj[$stamp]['browser'] = test_input($_POST['browser']);
 $obj[$stamp]['mobile'] = test_input($_POST['mobile']);
 $obj[$stamp]['cookies'] = test_input($_POST['cookies']);
 $obj[$stamp]['screen'] = test_input($_POST['screen']);
