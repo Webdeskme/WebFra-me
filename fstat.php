@@ -22,7 +22,7 @@ $obj[$stamp]['hour'] = date("g");
 $obj[$stamp]['min'] = date("i");
 $obj[$stamp]['seconds'] = date("s");
 $json = json_encode($obj);
-file_put_contents($wd_admin . 'fstat.json', $json, FILE_APPEND | LOCK_EX);
+file_put_contents($wd_admin . 'fstat.json', $json, LOCK_EX);
 if(file_exists($wd_root . '/Admin/month.txt')){
     $month = file_get_contents($wd_root . '/Admin/month.txt');
 }
