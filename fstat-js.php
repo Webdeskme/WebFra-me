@@ -200,6 +200,7 @@ $.post("fstat.php",
     'Screen Size: ' + jscd.screen + ' --- ' +
     'Page: <?php echo $page; ?>',
     	os: jscd.os,
+        browser: jscd.browser,
     	mobile: jscd.mobile,
         cookies: jscd.cookies,
         screen: jscd.screen,
