@@ -27,6 +27,12 @@ sudo chmod -R g+w /var/www/
 sudo find /var/www -type d -exec chmod 2775 {} \;
 sudo find /var/www -type f -exec chmod ug+rw {} \;
 sudo apachectl -k restart
+echo "Crontab setup"
+crontab << EOS
+* * * * * php /var/www/html/cronjob.php
+EOS
+echo " "
+echo " "
 echo "Everything should be installed!"
 echo " "
 echo "This is state of your servers storage."
