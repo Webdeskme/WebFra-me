@@ -1,5 +1,6 @@
 <?php
 session_start();
+$wd_protect = "yes";
 if(file_exists("path.php")){
 include "testInput.php";
 $theme = test_input(file_get_contents("www/dtheme.txt"));
