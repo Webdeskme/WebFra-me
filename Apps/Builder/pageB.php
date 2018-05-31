@@ -6,7 +6,7 @@ else{
   $page = "";
 }
 if(isset($_POST['con'])){
-  $con = htmlspecialchars_decode($_POST["con"], ENT_QUOTES);
+  $con = htmlspecialchars_decode($wd_POST["con"], ENT_QUOTES);
   file_put_contents("www/Pages/" . $page, $con);
 }
 ?>
