@@ -1,5 +1,5 @@
 <!-- wd_clock -->
-  <div class="webdesk_modal webdesk_fade" id="wd_clock" role="dialog">
+  <div class="webdesk_modal" id="wd_clock" role="dialog">
     <div class="webdesk_modal-dialog webdesk_modal-lg">
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
@@ -106,7 +106,7 @@ function drawHand(ctx, pos, length, width) {
 <!-- End wd_clock -->
   
 <!-- wd_cal -->
-  <div class="webdesk_modal webdesk_fade" id="wd_cal" role="dialog">
+  <div class="webdesk_modal" id="wd_cal" role="dialog">
     <div class="webdesk_modal-dialog webdesk_modal-lg">
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
@@ -491,7 +491,7 @@ $(document).ready(function(){
     })
   });
 </script>
-  <div id="wd_ext" class="webdesk_modal webdesk_fade" role="dialog">
+  <div id="wd_ext" class="webdesk_modal" role="dialog">
   <div class="webdesk_modal-dialog">
 
     <!-- Modal content-->
@@ -533,7 +533,7 @@ $(document).ready(function(){
   }
     ?>
   
-  <div id="wd_chatting" class="chat"><div class="container"><h3><button id="wd_hChat" class="btn btn-info"><span class="glyphicon glyphicon-chevron-down"></span></button> <button id="wd_fChat" class="btn btn-info"><span class="glyphicon glyphicon-resize-full"></span></button> <button id="wd_mChat" class="btn btn-info"><span class="glyphicon glyphicon-resize-small"></span></button> Chat</h3><div class="col-xs-4"><input type="text" id="wd_tChat" class="form-control" placeholder="Type you message here..."></div><button id="wd_bChat" class="btn btn-success">Send</button><br><div class="scroll"><div id="wd_chat"></div><div id="wd_sto_chat"></div></div></div></div>
+  <div id="wd_chatting" class="chat webdesk_card webdesk_bg-light"><div class="webdesk_card-body"><div class="container"><h3><button id="wd_hChat" class="btn btn-info"><span class="fa fa-caret-down"></span></button> <button id="wd_fChat" class="btn btn-info"><span class="fa fa-expand"></span></button> <button id="wd_mChat" class="btn btn-info"><span class="fa fa-expand"></span></button> Chat</h3><div class="col-xs-4"><input type="text" id="wd_tChat" class="form-control" placeholder="Type you message here..."></div><button id="wd_bChat" class="btn btn-success">Send</button><br><div class="scroll"><div id="wd_chat"></div><div id="wd_sto_chat"></div></div></div></div></div>
   
 <script>
   var oldD = "";

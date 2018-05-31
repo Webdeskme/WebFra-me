@@ -69,11 +69,11 @@ $(function() {
   collapsible: true
   //active: false
   });
-  $( ".tab" ).resizable();
+  $( ".webdesk_tab" ).resizable();
   
   
   <?php if(!isset($_SESSION["wd_fullscreen"]) || $_SESSION["wd_fullscreen"] != 'on'){  ?>
-  $( ".tab" ).draggable();
+  $( ".webdesk_tab" ).draggable();
   <?php } ?>
 });
 </script>
