@@ -5,8 +5,8 @@ if(isset($_GET['page'])){
 else{
   $page = "";
 }
-if(isset($_POST['con']) && isset($_POST['par']) && isset($_POST['pr']) && isset($_POST['title'])){
-  $con = htmlspecialchars_decode($_POST["con"], ENT_QUOTES);
+if(isset($wd_POST['con']) && isset($_POST['par']) && isset($_POST['pr']) && isset($_POST['title'])){
+  $con = htmlspecialchars_decode($wd_POST["con"], ENT_QUOTES);
   $par = test_input($_POST['par']);
   $pr = test_input($_POST['pr']);
   $title = test_input($_POST['title']);
