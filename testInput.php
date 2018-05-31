@@ -9,6 +9,27 @@ function test_input($data) {
    return $data;
     }
 }
+require_once 'Plugins/htmlpurifier-4.10.0/library/HTMLPurifier.auto.php';
+$config = HTMLPurifier_Config::createDefault();
+$purifier = new HTMLPurifier($config);
+if(isset($_POST)){
+  foreach($_POST as $key => $value){
+    POST[$key] = $purifier->purify($value);
+    $wd_POST[$key] = $value;
+  }
+}
+if(isset($_GET)){
+  foreach($_GET as $key => $value){
+    $_GET[$key] = $purifier->purify($value);
+    $wd_GET[$key] = $value;
+  }
+}
+if(isset($_REQUEST)){
+  foreach($_REQUEST as $key => $value){
+    $_REQUEST[$key] = $purifier->purify($value);
+    $wd_REQUEST[$key] = $value;
+  }
+}
 function f_enc($data) {
     if (!empty($data)) {
         $data = trim($data);
