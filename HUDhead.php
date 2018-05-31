@@ -13,14 +13,14 @@
     <meta name="copyright" content="&copy; <?php echo date("Y") . ' ' . $wd_Title; ?>">
     <link rel="apple-touch-icon" href="favicon.ico">
     <link rel="apple-touch-startup-image" href="favicon.ico">
-<link rel="stylesheet" href="Plugins/wd-bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="Plugins/wd-bootstrap/css/webdesk_bootstrap.min.css">
 <link rel="stylesheet" href="Plugins/jquery-ui/jquery-ui.min.css">
 <link rel="stylesheet" type="text/css" href="Plugins/context.standalone.css">
 <link href="Plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet"/>
 <link href="Plugins/fullcalendar/fullcalendar.print.min.css" rel="stylesheet" media="print" />
 <link rel="stylesheet" type="text/css" href="Theme/default.php">
 <script src="Plugins/jquery.min.js"></script>
-<script src="Plugins/wd-bootstrap/js/bootstrap.min.js"></script>
+<script src="Plugins/wd-bootstrap/js/bootstrap.bundle.js"></script>
 <script src="Plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="Plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 <script src="Plugins/fullcalendar/lib/moment.min.js"></script>
@@ -59,15 +59,21 @@ if(isset($_GET["app"])){
   } );
   </script>
 <script>
- $(function() {
-$( "#tabs" ).tabs({
-
-collapsible: true
-//active: false
-});
-$( ".tab" ).resizable();
-<?php if(!isset($_SESSION["wd_fullscreen"]) || $_SESSION["wd_fullscreen"] != 'on'){  ?>
-$( ".tab" ).draggable();
-<?php } ?>
+$(function() {
+  $("[data-target='modal'],.webdesk_modal").modal({
+    backdrop: false,
+    show: false
+  });
+  $( "#tabs" ).tabs({
+  
+  collapsible: true
+  //active: false
+  });
+  $( ".tab" ).resizable();
+  
+  
+  <?php if(!isset($_SESSION["wd_fullscreen"]) || $_SESSION["wd_fullscreen"] != 'on'){  ?>
+  $( ".tab" ).draggable();
+  <?php } ?>
 });
 </script>

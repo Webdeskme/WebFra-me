@@ -17,7 +17,7 @@
                 $host = $host[1];
                 }
                 else{
-                $host = $host[0];
+                    $host = $host[0];
                 }
                 //$host = preg_replace('/^www\./', '', $arr["host"]);
                 //$host = basename($host, ".com");
