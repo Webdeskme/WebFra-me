@@ -43,7 +43,7 @@
       <meta name="copyright" content="&copy; <?php echo date("Y") . ' ' . $wd_Title; ?>">
       <link rel="apple-touch-icon" href="favicon.ico">
       <link rel="apple-touch-startup-image" href="favicon.ico">
-      <link rel="stylesheet" href="Plugins/wd-bootstrap/css/bootstrap.min.css">
+      <link rel="stylesheet" href="Plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
       <link rel="stylesheet" href="Plugins/jquery-ui/jquery-ui.min.css">
       <link rel="stylesheet" type="text/css" href="Plugins/context.standalone.css">
       <link href="Plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet"/>
@@ -62,7 +62,7 @@ if(isset($_GET['page']) && file_exists("www/Pages/header_" . $page)){
 }
 ?>
 <script src="Plugins/jquery.min.js"></script>
-<script src="Plugins/wd-bootstrap/js/bootstrap.min.js"></script>
+<script src="Plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <script src="Plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="Plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 <script src="Plugins/fullcalendar/lib/moment.min.js"></script>
