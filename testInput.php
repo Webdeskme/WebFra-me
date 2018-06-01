@@ -28,7 +28,7 @@ $config = HTMLPurifier_Config::createDefault();
 $purifier = new HTMLPurifier($config);
 if(isset($_POST)){
   foreach($_POST as $key => $value){
-    POST[$key] = $purifier->purify($value);
+    $_POST[$key] = $purifier->purify($value);
     $wd_POST[$key] = $value;
   }
 }
