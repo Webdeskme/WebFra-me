@@ -133,7 +133,7 @@
         <span style="text-align: right;" class="fa fa-info-circle" data-toggle="modal" data-target="#wd_info" title="info"></span></span>
     </ul>
         <div style="height: 95%; padding: 0px; margin: 0px; background-color: <?php echo $color; ?>; background-image: url(<?php echo $back; ?>); background-repeat: no-repeat; background-position: center; background-size: cover; -moz-background-size: cover; -webkit-background-size: cover; -o-background-size: cover;">
-    <div id="tabs-6" class="webdesk_card" style="background-color: <?php
+    <div id="tabs-6" class="webdesk_tab" style="background-color: <?php
     if(file_exists($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){
         $pcolor = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt');
         echo $pcolor;
