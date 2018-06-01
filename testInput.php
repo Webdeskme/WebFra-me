@@ -1,9 +1,10 @@
 <?php
+$wd_protect = "yes";
 $_SESSION['wd_home'] = 'desktop.php';
 function get_number_of_user_alerts(){
-  
+
   global $wd_root;
-  
+
   $wd = 0;
   if ($handle = opendir($wd_root . '/User/' . $_SESSION["user"] . '/Sec/')) {
     while (false !== ($entry = readdir($handle))) {
@@ -241,7 +242,7 @@ if(file_exists("path.php")){
   	}
   }
   }
-  
+
   function wd_copy($src,$dst) {
       $dir = opendir($src);
       mkdir($dst);
@@ -278,23 +279,23 @@ if(file_exists("path.php")){
       else{
   		$zip->open($destination, ZIPARCHIVE::CREATE);
   	}
-  
+
       //$source = str_replace('\\', '/', realpath($source));
-  
+
   //    echo 'Source: ' . $source . '<br>Destination: ' . $destination . '<br>';
   //echo 'running ....<br>';
       if (is_dir($source) === true)
       {
           $files = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($source), RecursiveIteratorIterator::SELF_FIRST);
-  
+
           foreach ($files as $file)
           {
               $file = str_replace('\\', '/', $file);
-  
+
               // Ignore "." and ".." folders
               if( in_array(substr($file, strrpos($file, '/')+1), array('.', '..')) )
                   continue;
-  
+
              // $file = realpath($file);
   //echo $file . '<br>';
               if (is_dir($file) === true)
@@ -317,10 +318,10 @@ if(file_exists("path.php")){
       {
           $zip->addFromString(basename($source), file_get_contents($source));
       }
-  
+
       return $zip->close();
   }
-  
+
   function wd_zip_files($source, $destination)
   {
      $zip = new ZipArchive();
@@ -334,11 +335,11 @@ if(file_exists("path.php")){
     }
     $zip->close();
   }
-  
+
   function wd_confirm($wd_type, $app, $sec, $get, $id, $text){
   $link = "desktopSub.php?type=" . $wd_type . "&app=" . $app . "&sec=" . $sec . $get;
   echo '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#' . $wd_type . '-' . $app . '-' . $id . '">' . $text . '</button>
-  
+
     <!-- Modal -->
     <div class="modal fade" id="' . $wd_type . '-' . $app . '-' . $id . '" role="dialog">
       <div class="modal-dialog modal-sm">
