@@ -97,9 +97,9 @@ else{
 ?>;">
 
     <div style="background-color: #666699;">
-    <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" data-toggle="tooltip" title="Back" id="wd_back" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-arrow-left"></span></a>
-    <a href="<?php echo $_SERVER['REQUEST_URI']; ?>" data-toggle="tooltip" title="Refresh" id="wd_refresh" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-refresh"></span></a>
-<a href="desktop.php" class="btn btn-info btn-sm" data-toggle="tooltip" title="Home"><span class="glyphicon glyphicon-home"></span></a>
+    <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" data-toggle="tooltip" title="Back" id="wd_back" class="btn btn-info btn-sm"><span class="fa fa-arrow-left"></span></a>
+    <a href="<?php echo $_SERVER['REQUEST_URI']; ?>" data-toggle="tooltip" title="Refresh" id="wd_refresh" class="btn btn-info btn-sm"><span class="fa fa-refresh"></span></a>
+<a href="desktop.php" class="btn btn-info btn-sm" data-toggle="tooltip" title="Home"><span class="fa fa-home"></span></a>
 <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#wd_app_help" title="Help Doc"><span class="glyphicon glyphicon-education"></span></button>
 <?php
 if(isset($_GET["app"])){echo ' <span><b>' . $app . '</b></span>'; }
@@ -278,7 +278,7 @@ foreach (scandir('MyApps/') as $entry){
 			}
 ?>
 <!-- wd_app_help-->
-  <div class="modal fade" id="wd_app_help" role="dialog">
+  <div class="webdesk_modal fade" id="wd_app_help" role="dialog">
     <div class="modal-dialog">
     
       

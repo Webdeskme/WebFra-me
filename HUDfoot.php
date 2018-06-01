@@ -1,12 +1,12 @@
 <!-- wd_clock -->
-  <div class="modal fade" id="wd_clock" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
+  <div class="webdesk_modal" id="wd_clock" role="dialog">
+    <div class="webdesk_modal-dialog webdesk_modal-lg">
+      <div class="webdesk_modal-content">
+        <div class="webdesk_modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Time</h4>
+          <h4 class="webdesk_modal-title">Time</h4>
         </div>
-        <div class="modal-body">
+        <div class="webdesk_modal-body">
           
           <canvas id="canvas" width="400" height="400"
 style="background-color:#333">
@@ -97,7 +97,7 @@ function drawHand(ctx, pos, length, width) {
 
           
         </div>
-        <div class="modal-footer">
+        <div class="webdesk_modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -106,14 +106,14 @@ function drawHand(ctx, pos, length, width) {
 <!-- End wd_clock -->
   
 <!-- wd_cal -->
-  <div class="modal fade" id="wd_cal" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
+  <div class="webdesk_modal" id="wd_cal" role="dialog">
+    <div class="webdesk_modal-dialog webdesk_modal-lg">
+      <div class="webdesk_modal-content">
+        <div class="webdesk_modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Date: <?php echo date("F j, Y"); ?></h4>
+          <h4 class="webdesk_modal-title">Date: <?php echo date("F j, Y"); ?></h4>
         </div>
-        <div class="modal-body">
+        <div class="webdesk_modal-body">
 			<script>
 
 	$(document).ready(function() {
@@ -141,7 +141,7 @@ if(isset($_GET['title'])){
 <div id='calendar'></div>
 
         </div>
-        <div class="modal-footer">
+        <div class="webdesk_modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -149,16 +149,16 @@ if(isset($_GET['title'])){
   </div>
 <!-- End wd_cal -->
 <!-- wd_app_help-->
-  <div class="modal fade" id="wd_app_help" role="dialog">
-    <div class="modal-dialog">
+  <div class="webdesk_modal" id="wd_app_help" role="dialog">
+    <div class="webdesk_modal-dialog">
     
       
-      <div class="modal-content">
-        <div class="modal-header">
+      <div class="webdesk_modal-content">
+        <div class="webdesk_modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><?php if(isset($wd_app)){ echo $wd_app; }; ?> Help</h4>
+          <h4 class="webdesk_modal-title"><?php if(isset($wd_app)){ echo $wd_app; }; ?> Help</h4>
         </div>
-        <div class="modal-body">
+        <div class="webdesk_modal-body">
           <?php
 if(isset($sec) && isset($wd_app)){
               if(file_exists($wd_type . '/' . $wd_app . '/help_' . $sec)){
@@ -179,7 +179,7 @@ else{
 }
           ?>
         </div>
-        <div class="modal-footer">
+        <div class="webdesk_modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -188,22 +188,22 @@ else{
   </div>
 <!-- End wd_app_help -->
 <!-- wd_info -->
-<div id="wd_info" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+<div id="wd_info" class="webdesk_modal" role="dialog">
+  <div class="webdesk_modal-dialog">
 
     <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
+    <div class="webdesk_modal-content">
+      <div class="webdesk_modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">WebDesk Information</h4>
+        <h4 class="webdesk_modal-title">WebDesk Information</h4>
       </div>
-      <div class="modal-body">
-		  <p><b>Version: </b>1.0</p>
+      <div class="webdesk_modal-body">
+		  <p><b>Version: </b>2.0</p>
         <a href="">License</a><br>
         <a href="">Terms of Use</a><br>
         <a href="">Pricay Policy</a>
       </div>
-      <div class="modal-footer">
+      <div class="webdesk_modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -362,17 +362,17 @@ if ($handle = opendir('Applets/')) {
 $aplname = explode(".", $entry); 
 $aplxml=json_decode(file_get_contents("Applets/" . $entry));
 ?> 
-  <div class="modal fade" id="<?php echo $aplname[0]; ?>" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
+  <div class="webdesk_modal" id="<?php echo $aplname[0]; ?>" role="dialog">
+    <div class="webdesk_modal-dialog webdesk_modal-lg">
+      <div class="webdesk_modal-content">
+        <div class="webdesk_modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><?php echo $aplname[0]; ?></h4>
+          <h4 class="webdesk_modal-title"><?php echo $aplname[0]; ?></h4>
         </div>
-        <div class="modal-body">
+        <div class="webdesk_modal-body">
 <?php echo htmlspecialchars_decode($aplxml->code, ENT_QUOTES); ?>
 </div>
-        <div class="modal-footer">
+        <div class="webdesk_modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -386,17 +386,17 @@ if ($handle = opendir('MyApplets/')) {
 $aplname = explode(".", $entry); 
 $aplxml=json_decode(file_get_contents("MyApplets/" . $entry));
 ?> 
-  <div class="modal fade" id="M<?php echo $aplname[0]; ?>" role="dialog">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header">
+  <div class="webdesk_modal" id="M<?php echo $aplname[0]; ?>" role="dialog">
+    <div class="webdesk_modal-dialog webdesk_modal-lg">
+      <div class="webdesk_modal-content">
+        <div class="webdesk_modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><?php echo $aplname[0]; ?></h4>
+          <h4 class="webdesk_modal-title"><?php echo $aplname[0]; ?></h4>
         </div>
-        <div class="modal-body">
+        <div class="webdesk_modal-body">
 <?php echo htmlspecialchars_decode($aplxml->code, ENT_QUOTES); ?>
 </div>
-        <div class="modal-footer">
+        <div class="webdesk_modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -462,7 +462,7 @@ $(document).ready(function(){
 </script>
 <script>
 $(document).ready(function(){
-    $('[data-toggle="popover"]').popover();   
+    $('[data-toggle="webdesk_popitover"]').popover();   
 });
 </script>
   <?php
@@ -491,16 +491,16 @@ $(document).ready(function(){
     })
   });
 </script>
-  <div id="wd_ext" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div id="wd_ext" class="webdesk_modal" role="dialog">
+  <div class="webdesk_modal-dialog">
 
     <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
+    <div class="webdesk_modal-content">
+      <div class="webdesk_modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Set as Default</h4>
+        <h4 class="webdesk_modal-title">Set as Default</h4>
       </div>
-      <div class="modal-body">
+      <div class="webdesk_modal-body">
         <form method="post" action="dext.php?type=<?php echo $wd_type; ?>&app=<?php echo $wd_app; ?>">
         <p>Would you like to set this app as the primary app to use the following ext:</p>
         <b><i><?php 
@@ -520,7 +520,7 @@ $(document).ready(function(){
         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
         </form>
       </div>
-      <div class="modal-footer">
+      <div class="webdesk_modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
@@ -533,7 +533,7 @@ $(document).ready(function(){
   }
     ?>
   
-  <div id="wd_chatting" class="chat"><div class="container"><h3><button id="wd_hChat" class="btn btn-info"><span class="glyphicon glyphicon-chevron-down"></span></button> <button id="wd_fChat" class="btn btn-info"><span class="glyphicon glyphicon-resize-full"></span></button> <button id="wd_mChat" class="btn btn-info"><span class="glyphicon glyphicon-resize-small"></span></button> Chat</h3><div class="col-xs-4"><input type="text" id="wd_tChat" class="form-control" placeholder="Type you message here..."></div><button id="wd_bChat" class="btn btn-success">Send</button><br><div class="scroll"><div id="wd_chat"></div><div id="wd_sto_chat"></div></div></div></div>
+  <div id="wd_chatting" class="chat webdesk_card webdesk_bg-light"><div class="webdesk_card-body"><div class="container"><h3><button id="wd_hChat" class="btn btn-info"><span class="fa fa-caret-down"></span></button> <button id="wd_fChat" class="btn btn-info"><span class="fa fa-expand"></span></button> <button id="wd_mChat" class="btn btn-info"><span class="fa fa-expand"></span></button> Chat</h3><div class="col-xs-4"><input type="text" id="wd_tChat" class="form-control" placeholder="Type you message here..."></div><button id="wd_bChat" class="btn btn-success">Send</button><br><div class="scroll"><div id="wd_chat"></div><div id="wd_sto_chat"></div></div></div></div></div>
   
 <script>
   var oldD = "";
