@@ -187,7 +187,7 @@
     ?>;">
     <?php include 'HUDtask.php';?>
     </div>
-    <div id="tabs-1" class="webdesk_card webdesk_tab" style="overflow: hidden; padding: 0px; margin: 0px; width: 80vw; height: 60vh;">
+    <div id="tabs-1" class="webdesk_card webdesk_tab" style="overflow: hidden; padding: 0px; margin: 0px; ">
         <div id="1tab" style="padding: 0px; margin: 0px; overflow: scroll; height: 100%; background-color: <?php 
         if(file_exists($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){ 
             $pcolor = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt');
