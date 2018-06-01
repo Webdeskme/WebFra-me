@@ -12,7 +12,7 @@ header("Content-type: text/css; charset: UTF-8");
             padding: 0px;
             margin: 0px;
         }
-        div.tab{
+        div.webdesk_tab{
             background-color: <?php 
 if(file_exists('../../../webdesk/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){ 
     $pcolor = file_get_contents('../../../webdesk/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt');
