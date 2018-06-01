@@ -10,23 +10,13 @@
     <ul id="wd_tabs">
     <li><a href="#tabs-1"><span class="fa fa-folder-open"></span> <?php if(isset($app)){echo $app;} else{echo "Welcome";} ?></a></li>
     <li><a href="#tabs-2"><span class="fa fa-globe"></span> Web</a></li>
-    <li><a href="#tabs-3"><span class="fa fa-exclamation-triangle"></span> Alerts <span class="webdesk_badge"><?php
-    $wd = 0;
-    if ($handle = opendir($wd_root . '/User/' . $_SESSION["user"] . '/Sec/')) {
-        while (false !== ($entry = readdir($handle))) {
-            if ($entry != "." && $entry != "..") {
-        		$wd = $wd + 1;
-        	}
-        }
-    }
-    echo $wd;
-    ?></span></a></li>
+    <li><a href="#tabs-3"><span class="fa fa-exclamation-triangle"></span> Alerts <span class="webdesk_badge webdesk_badge-secondary"><?php echo get_number_of_user_alerts(); ?></span></a></li>
     <li><a href="#tabs-4"><span class="fa fa-user"></span> <?php echo f_dec($_SESSION["user"]); ?></a></li>
     <li><a href="#tabs-5"><span class="fa fa-hourglass"></span> Tasks</a></li>
     <li><a href="#tabs-6"><span class="fa fa-folder"></span> Apps</a></li>
     &emsp; <a href="#" data-toggle="webdesk_popitover" title="Search Apps" data-placement="top" data-html="true" data-content='<form metod="get" action="desktop.php">
     <input list="wd_app_sd" placeholder="Type App Name" id="wd_app_s" name="app">
-      <datalist id="wd_app_sd">
+    <datalist id="wd_app_sd">
       <?php 
     $wd = 0;
     $wd_tier = test_input($wd_tier);
@@ -37,61 +27,80 @@
     $wd_obj = "";
     }
     if ($handle = opendir('Apps/')) {
-                    while (false !== ($entry = readdir($handle))) {
-                        if ($entry != "." && $entry != "..") {
-                            if(!file_exists($wd_tierFile)){$wd_teatobj = 0;}
-                            elseif(isset($wd_obj->$entry) && $wd_obj->$entry == 'Yes'){$wd_teatobj = 1;}
-                            else{$wd_teatobj = 0;}
-                            if($wd_tier === 'tA' || $wd_teatobj === 1){
-    						$wd = $wd + 1;
-      ?>
-      <option value="<?php echo $entry; ?>">
-      <?php
-                        }
-    else{
-        if(isset($_GET['app']) && $_GET['app'] == $entry){
-            //header('Location: desktop.php?wd_aw=Do not try to hack the system.');
-            exit('Do not try to hack the system');
-        }
-    }
-                        }
+        while (false !== ($entry = readdir($handle))) {
+            if ($entry != "." && $entry != "..") {
+                if(!file_exists($wd_tierFile)){
+                    $wd_teatobj = 0;
+                }
+                elseif(isset($wd_obj->$entry) && $wd_obj->$entry == 'Yes'){
+                    $wd_teatobj = 1;
+                    
+                }
+                else{
+                    $wd_teatobj = 0;
+                    
+                }
+                if($wd_tier === 'tA' || $wd_teatobj === 1){
+    			    $wd = $wd + 1;
+                    ?>
+                    <option value="<?php echo $entry; ?>">
+                    <?php
+                }
+                else{
+                    if(isset($_GET['app']) && $_GET['app'] == $entry){
+                        //header('Location: desktop.php?wd_aw=Do not try to hack the system.');
+                        exit('Do not try to hack the system');
                     }
+                }
+            }
+        }
     }
     $wd = 0;
     $wd_tier = test_input($wd_tier);
     $wd_tierFile = $wd_admin . $wd_tier . '.json';
-    if(file_exists($wd_tierFile)){$wd_tierobj=json_decode(file_get_contents($wd_tierFile)); $wd_obj = $wd_tierobj;} 
+    if(file_exists($wd_tierFile)){
+        $wd_tierobj=json_decode(file_get_contents($wd_tierFile)); $wd_obj = $wd_tierobj;
+        
+    } 
     else{
-    $wd_tierobj = "";
-    $wd_obj = "";
+        $wd_tierobj = "";
+        $wd_obj = "";
     }
     if ($handle = opendir('MyApps/')) {
-                    while (false !== ($entry = readdir($handle))) {
-                        if ($entry != "." && $entry != "..") {
-                            if(!file_exists($wd_tierFile)){$wd_teatobj = 0;}
-                            elseif(isset($wd_obj->$entry) && $wd_obj->$entry == 'Yes'){$wd_teatobj = 1;}
-                            else{$wd_teatobj = 0;}
-                            if($wd_tier === 'tA' || $wd_teatobj === 1){
-    						$wd = $wd + 1;
-      ?>
-      <option value="<?php echo $entry; ?>">
-      <?php
-                        }
-    else{
-        if(isset($_GET['app']) && $_GET['app'] == $entry){
-            //header('Location: desktop.php?wd_aw=Do not try to hack the system.');
-            exit('Do not try to hack the system');
+        while (false !== ($entry = readdir($handle))) {
+            if ($entry != "." && $entry != "..") {
+                if(!file_exists($wd_tierFile)){
+                    $wd_teatobj = 0;
+                }
+                elseif(isset($wd_obj->$entry) && $wd_obj->$entry == 'Yes'){
+                    $wd_teatobj = 1;
+                    
+                }
+                else{
+                    $wd_teatobj = 0;
+                    
+                }
+                if($wd_tier === 'tA' || $wd_teatobj === 1){
+				    $wd = $wd + 1;
+                    ?>
+                    <option value="<?php echo $entry; ?>">
+                    <?php
+                }
+                else{
+                    if(isset($_GET['app']) && $_GET['app'] == $entry){
+                        //header('Location: desktop.php?wd_aw=Do not try to hack the system.');
+                        exit('Do not try to hack the system');
+                    }
+                }
+            }
         }
     }
-                        }
-                    }
-    }
     ?>
-      </datalist>
-      <!--<input type="hidden" name="type" value="Apps">-->
-      <input type="hidden" name="sec" value="start.php">
-      <button type="submit" class="webdesk_btn webdesk_btn-primary">
-      <i class="fa fa-search"></i>
+    </datalist>
+    <!--<input type="hidden" name="type" value="Apps">-->
+    <input type="hidden" name="sec" value="start.php">
+    <button type="submit" class="webdesk_btn webdesk_btn-primary">
+        <i class="fa fa-search"></i>
     </button>
     </form>'><span class="fa fa-search"></span></a>
     <span style="float: right;"><?php if(file_exists($wd_admin . $_SESSION['tier'] . '.json')){$myObj = file_get_contents($wd_admin . $_SESSION['tier'] . '.json');

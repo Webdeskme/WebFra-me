@@ -207,20 +207,20 @@
    * --------------------------------------------------------------------------
    */
 
-  var Alert = function ($$$1) {
+  var webdesk_Alert = function ($$$1) {
     /**
      * ------------------------------------------------------------------------
      * Constants
      * ------------------------------------------------------------------------
      */
-    var NAME = 'alert';
+    var NAME = 'webdesk_alert';
     var VERSION = '4.1.1';
     var DATA_KEY = 'bs.alert';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
     var Selector = {
-      DISMISS: '[data-dismiss="alert"]'
+      DISMISS: '[data-dismiss="webdesk_alert"]'
     };
     var Event = {
       CLOSE: "close" + EVENT_KEY,
@@ -228,7 +228,7 @@
       CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
     };
     var ClassName = {
-      ALERT: 'alert',
+      ALERT: 'webdesk_alert',
       FADE: 'fade',
       SHOW: 'show'
       /**
@@ -239,15 +239,15 @@
 
     };
 
-    var Alert =
+    var webdesk_Alert =
     /*#__PURE__*/
     function () {
-      function Alert(element) {
+      function webdesk_Alert(element) {
         this._element = element;
       } // Getters
 
 
-      var _proto = Alert.prototype;
+      var _proto = webdesk_Alert.prototype;
 
       // Public
       _proto.close = function close(element) {
@@ -315,13 +315,13 @@
       }; // Static
 
 
-      Alert._jQueryInterface = function _jQueryInterface(config) {
+      webdesk_Alert._jQueryInterface = function _jQueryInterface(config) {
         return this.each(function () {
           var $element = $$$1(this);
           var data = $element.data(DATA_KEY);
 
           if (!data) {
-            data = new Alert(this);
+            data = new webdesk_Alert(this);
             $element.data(DATA_KEY, data);
           }
 
@@ -331,7 +331,7 @@
         });
       };
 
-      Alert._handleDismiss = function _handleDismiss(alertInstance) {
+      webdesk_Alert._handleDismiss = function _handleDismiss(alertInstance) {
         return function (event) {
           if (event) {
             event.preventDefault();
@@ -341,14 +341,14 @@
         };
       };
 
-      _createClass(Alert, null, [{
+      _createClass(webdesk_Alert, null, [{
         key: "VERSION",
         get: function get() {
           return VERSION;
         }
       }]);
 
-      return Alert;
+      return webdesk_Alert;
     }();
     /**
      * ------------------------------------------------------------------------
@@ -357,22 +357,22 @@
      */
 
 
-    $$$1(document).on(Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
+    $$$1(document).on(Event.CLICK_DATA_API, Selector.DISMISS, webdesk_Alert._handleDismiss(new webdesk_Alert()));
     /**
      * ------------------------------------------------------------------------
      * jQuery
      * ------------------------------------------------------------------------
      */
 
-    $$$1.fn[NAME] = Alert._jQueryInterface;
-    $$$1.fn[NAME].Constructor = Alert;
+    $$$1.fn[NAME] = webdesk_Alert._jQueryInterface;
+    $$$1.fn[NAME].Constructor = webdesk_Alert;
 
     $$$1.fn[NAME].noConflict = function () {
       $$$1.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Alert._jQueryInterface;
+      return webdesk_Alert._jQueryInterface;
     };
 
-    return Alert;
+    return webdesk_Alert;
   }($);
 
   /**
@@ -382,13 +382,13 @@
    * --------------------------------------------------------------------------
    */
 
-  var Button = function ($$$1) {
+  var webdesk_Button = function ($$$1) {
     /**
      * ------------------------------------------------------------------------
      * Constants
      * ------------------------------------------------------------------------
      */
-    var NAME = 'button';
+    var NAME = 'webdesk_button';
     var VERSION = '4.1.1';
     var DATA_KEY = 'bs.button';
     var EVENT_KEY = "." + DATA_KEY;
@@ -396,7 +396,7 @@
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
     var ClassName = {
       ACTIVE: 'active',
-      BUTTON: 'btn',
+      BUTTON: 'webdesk_btn',
       FOCUS: 'focus'
     };
     var Selector = {
@@ -404,7 +404,7 @@
       DATA_TOGGLE: '[data-toggle="buttons"]',
       INPUT: 'input',
       ACTIVE: '.active',
-      BUTTON: '.btn'
+      BUTTON: '.webdesk_btn'
     };
     var Event = {
       CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY,
@@ -417,15 +417,15 @@
 
     };
 
-    var Button =
+    var webdesk_Button =
     /*#__PURE__*/
     function () {
-      function Button(element) {
+      function webdesk_Button(element) {
         this._element = element;
       } // Getters
 
 
-      var _proto = Button.prototype;
+      var _proto = webdesk_Button.prototype;
 
       // Public
       _proto.toggle = function toggle() {
@@ -478,12 +478,12 @@
       }; // Static
 
 
-      Button._jQueryInterface = function _jQueryInterface(config) {
+      webdesk_Button._jQueryInterface = function _jQueryInterface(config) {
         return this.each(function () {
           var data = $$$1(this).data(DATA_KEY);
 
           if (!data) {
-            data = new Button(this);
+            data = new webdesk_Button(this);
             $$$1(this).data(DATA_KEY, data);
           }
 
@@ -493,14 +493,14 @@
         });
       };
 
-      _createClass(Button, null, [{
+      _createClass(webdesk_Button, null, [{
         key: "VERSION",
         get: function get() {
           return VERSION;
         }
       }]);
 
-      return Button;
+      return webdesk_Button;
     }();
     /**
      * ------------------------------------------------------------------------
@@ -517,7 +517,7 @@
         button = $$$1(button).closest(Selector.BUTTON);
       }
 
-      Button._jQueryInterface.call($$$1(button), 'toggle');
+      webdesk_Button._jQueryInterface.call($$$1(button), 'toggle');
     }).on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
       var button = $$$1(event.target).closest(Selector.BUTTON)[0];
       $$$1(button).toggleClass(ClassName.FOCUS, /^focus(in)?$/.test(event.type));
@@ -528,15 +528,15 @@
      * ------------------------------------------------------------------------
      */
 
-    $$$1.fn[NAME] = Button._jQueryInterface;
-    $$$1.fn[NAME].Constructor = Button;
+    $$$1.fn[NAME] = webdesk_Button._jQueryInterface;
+    $$$1.fn[NAME].Constructor = webdesk_Button;
 
     $$$1.fn[NAME].noConflict = function () {
       $$$1.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Button._jQueryInterface;
+      return webdesk_Button._jQueryInterface;
     };
 
-    return Button;
+    return webdesk_Button;
   }($);
 
   /**
@@ -6427,8 +6427,8 @@
   })($);
 
   exports.Util = Util;
-  exports.Alert = Alert;
-  exports.Button = Button;
+  exports.webdesk_Alert = webdesk_Alert;
+  exports.webdesk_Button = webdesk_Button;
   exports.Carousel = Carousel;
   exports.Collapse = Collapse;
   exports.Dropdown = Dropdown;

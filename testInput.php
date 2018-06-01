@@ -1,5 +1,19 @@
 <?php
 $_SESSION['wd_home'] = 'desktop.php';
+function get_number_of_user_alerts(){
+  
+  global $wd_root;
+  
+  $wd = 0;
+  if ($handle = opendir($wd_root . '/User/' . $_SESSION["user"] . '/Sec/')) {
+    while (false !== ($entry = readdir($handle))) {
+      if ($entry != "." && $entry != "..") {
+      $wd = $wd + 1;
+      }
+    }
+  }
+  return $wd;
+}
 function test_input($data) {
     if (!empty($data)) {
         $data = trim($data);

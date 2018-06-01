@@ -1,38 +1,48 @@
 <?php
-  if(isset($_SESSION['wd_adminView'])){
-?>
-  <div class="webdesk_alert webdesk_alert-warning webdesk_alert-dismissable  webdesk_in">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+if(isset($_SESSION['wd_adminView'])){
+  ?>
+  <div class="webdesk_alert webdesk_alert-warning webdesk_alert-dismissable">
+    <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
     <strong>Warning:</strong> Viewing as user. <a href="desktop.php?adminView=stop">Click hear to stop.</a>
   </div>
-<?php 
+  <?php 
 }
-  if(isset($_GET['wd_as'])){ ?>
-<div class="webdesk_alert webdesk_alert-success webdesk_alert-dismissable  webdesk_in">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+if(isset($_GET['wd_as'])){ 
+  ?>
+  <div class="webdesk_alert webdesk_alert-success webdesk_alert-dismissable">
+    <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
     <strong>Success:</strong> <?php $wd = test_input($_GET['wd_as']); echo $wd; ?>
   </div>
-<?php } if(isset($_GET['wd_ai'])){ ?>
-<div class="webdesk_alert webdesk_alert-info webdesk_alert-dismissable  webdesk_in">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <?php 
+} 
+if(isset($_GET['wd_ai'])){ 
+  ?>
+  <div class="webdesk_alert webdesk_alert-info webdesk_alert-dismissable">
+    <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
     <strong>Info:</strong> <?php $wd = test_input($_GET['wd_ai']); echo $wd; ?>
   </div>
-<?php } if(isset($_GET['wd_aw'])){ ?>
- <div class="webdesk_alert webdesk_alert-warning webdesk_alert-dismissable  webdesk_in">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <?php 
+} 
+if(isset($_GET['wd_aw'])){ 
+  ?>
+  <div class="webdesk_alert webdesk_alert-warning webdesk_alert-dismissable">
+    <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
     <strong>Warning:</strong> <?php $wd = test_input($_GET['wd_aw']); echo $wd; ?>
   </div>
-<?php } if(isset($_GET['wd_ad'])){ ?>
-<div class="webdesk_alert webdesk_alert-danger webdesk_alert-dismissable  webdesk_in">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <?php 
+} 
+if(isset($_GET['wd_ad'])){
+  ?>
+  <div class="webdesk_alert webdesk_alert-danger webdesk_alert-dismissable">
+    <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
     <strong>Danger:</strong> <?php $wd = test_input($_GET['wd_ad']); echo $wd; ?>
   </div>
-    <?php 
-    }
-    if(isset($_GET['link'])){ 
-      ?>
-<div class="webdesk_alert webdesk_alert-info webdesk_alert-dismissable  webdesk_in">
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+  <?php 
+}
+if(isset($_GET['link'])){ 
+  ?>
+  <div class="webdesk_alert webdesk_alert-info webdesk_alert-dismissable">
+    <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
     <strong>Link <?php echo $wd_link->name; ?>:</strong><span> To close the conection to the shared folder open and return to you own files please <a href="desktop.php" class="alert-link">click here</a>.</span>
   </div>
   <?php
@@ -43,7 +53,7 @@ if(isset($_GET["app"]) and isset($_GET["sec"])){
     include($type . "/" . $app . "/banner.php");
   }
   if(file_exists($type . "/" . $app . "/" . $sec)){
-        include($type . "/" . $app . "/" . $sec);
+    include($type . "/" . $app . "/" . $sec);
   }
   else{
     include("404.php");
