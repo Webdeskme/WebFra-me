@@ -23,7 +23,7 @@ function test_input($data) {
    return $data;
     }
 }
-require_once 'Plugins/htmlpurifier-4.10.0/library/HTMLPurifier.auto.php';
+require_once 'Plugins/htmlpurifier/library/HTMLPurifier.auto.php';
 $config = HTMLPurifier_Config::createDefault();
 $purifier = new HTMLPurifier($config);
 if(isset($_POST)){
