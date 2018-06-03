@@ -25,21 +25,37 @@ $wd_path ="";
     <body>
         <h1>WebDesk Install</h1>
         <form method="POST" action="installSub.php">
-		<label>Website Title:</label><br>
-            <input type="text" name="title" placeholder="Website Title">
+		<label for="title">Website Title:</label><br>
+            <input type="text" name="title" id="title" placeholder="Website Title" required>
             <br><hr><br>
-			<label>Username:</label><br>
-            <input type="text" name="Username" placeholder="Username">
+			<label for="Username">Username:</label><br>
+            <input type="text" name="Username" id="Username" placeholder="Username" required>
             <br><hr><br>
-            <label>New Password</label><br>
-            <input type="password" name="password" placeholder="New Password">
+            <label for="password">New Password</label><br>
+            <input type="password" name="password" id="password" placeholder="New Password" required>
             <br><br>
-            <label>Confirm</label><br>
-            <input type="password" name="confirm" placeholder="Confirm Password">
+            <label for="confirm">Confirm</label><br>
+            <input type="password" name="confirm" id="confirm" placeholder="Confirm Password" required>
             <br><hr><br>
-            <label>Offline File Path</label><br>
-            <input type="text" name="path" placeholder="File Path" value="<?php echo __DIR__ . '/' . $string; ?>">
-            <br><br>
+	    <label for="web">Web Directory</label><br>
+            <input type="text" name="web" id="web" placeholder="Web Directory" value="default">
+	    <br><br>
+            <label for="path">Offline File Path</label><br>
+            <input type="text" name="path" id="path" placeholder="File Path" value="<?php echo __DIR__ . '/' . $string; ?>">
+            <br><hr><br>
+		<h3>Email is optional but highly adviced.</h3>
+		<label for="SMTP">SMTP Server</label><br>
+		<input type="text" name="SMTP" id="SMTP" placeholder="SMTP Server">
+		<br><br>
+		<label for="port">SMTP Port</label><br>
+		<input type="text" name="port" id="port" placeholder="SMTP Port">
+		<br><br>
+		<label for="email">Email</label><br>
+		<input type="text" name="email" id="email" placeholder="Email">
+		<br><br>
+		<label for="epass">Email Password</label><br>
+		<input type="text" name="epass" id="epass" placeholder="Email Password">
+		<br><br>
             <p>By clicking install you are agreeing <a href="License.html" target="_blank">WebDesk's Licence</a>. This install also comes with a generic pricey policy and terms of use for your install. You will be held accountable to that terns of use and privacy policy until the time you edit it.</p>
             <input type="submit" value="install">
         </form>
