@@ -9,7 +9,10 @@ $wd_path ="";
 		header('Location: index.php');
 	}
 	else{
-$rand = rand(10000000000000000000, 99999999999999999999);
+$pass = test_input($_POST["password"]);
+$verify = test_input($_POST["confirm"]);
+if ($pass == $verify){
+	$rand = rand(10000000000000000000, 99999999999999999999);
 $rand = $rand . 'abcdefghijklmnopqrstuvwxyz';
 $rand = str_shuffle($rand);
 $arand = rand(10000000000000000000, 99999999999999999999);
@@ -21,12 +24,14 @@ $vrand = str_shuffle($vrand);
 $vfrand = rand(10000000000000000000, 99999999999999999999);
 //$vfrand = $vfrand . 'abcdefghijklmnopqrstuvwxyz';
 //$vfrand = str_shuffle($vfrand);
-$pass = test_input($_POST["password"]);
-$verify = test_input($_POST["confirm"]);
 $path = test_input($_POST["path"]);
 $user = f_enc(test_input($_POST['Username']));
 $title = test_input($_POST['title']);
-if ($pass == $verify){
+$web = test_input($_POST['web']);
+	if(!file_exists('www/Client/')){
+			mkdir('www/Client/');
+	}
+			mkdir('www/Client/' $web . '/');
                       	mkdir($path);
                         mkdir($path . '/Admin/');
                         file_put_contents($path . '/Admin/appWeb.txt', $arand);
@@ -65,6 +70,14 @@ if ($pass == $verify){
                         file_put_contents($path . '/User/' . $user .'/Admin/tier.txt', 'tA');
                         file_put_contents($path . '/User/' . $user .'/Admin/color.txt', '#FFFFFF');
                         file_put_contents($path . '/User/' . $user .'/Admin/Pcolor.txt', '#FFFFFF');
+			if(isset($_POST['email']) && isset($_POST['SMTP']) && isset($_POST['port']) && isset($_POST['epass'])){
+				$esmtp['SMTP'] = test_input($_POST['SMTP']);
+				$esmtp['email'] = t_enc($_POST['email']);
+				$esmtp['port'] = test_input($_POST['port']);
+				$esmtp['epass'] = t_enc($_POST['epass']);
+				$esmtp = json_encode($esmtp);
+				file_put_contents($path . '/User/' . $user .'/Admin/esmtp.json', $esmtp);
+			}
                         file_put_contents('path.php', $path);
                         //file_put_contents('../../webdesk/User/' . $user .'/Admin/valf.txt', $vfrad);
                         //file_put_contents('349y45fjfsm/yhftg8356mjvf90/' . $rand .'/' . $vrad . '.php', file_get_contents(''));
