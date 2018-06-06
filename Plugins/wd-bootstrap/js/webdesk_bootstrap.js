@@ -1085,8 +1085,8 @@
       HEIGHT: 'height'
     };
     var Selector = {
-      ACTIVES: '.show, .collapsing',
-      DATA_TOGGLE: '[data-toggle="collapse"]'
+      ACTIVES: '.webdesk_show, .webdesk_collapsing',
+      DATA_TOGGLE: '[data-toggle="webdesk_collapse"]'
       /**
        * ------------------------------------------------------------------------
        * Class Definition
@@ -1098,11 +1098,11 @@
     var webdesk_Collapse =
     /*#__PURE__*/
     function () {
-      function Collapse(element, config) {
+      function webdesk_Collapse(element, config) {
         this._isTransitioning = false;
         this._element = element;
         this._config = this._getConfig(config);
-        this._triggerArray = $$$1.makeArray($$$1("[data-toggle=\"collapse\"][href=\"#" + element.id + "\"]," + ("[data-toggle=\"collapse\"][data-target=\"#" + element.id + "\"]")));
+        this._triggerArray = $$$1.makeArray($$$1("[data-toggle=\"webdesk_collapse\"][href=\"#" + element.id + "\"]," + ("[data-toggle=\"webdesk_collapse\"][data-target=\"#" + element.id + "\"]")));
         var tabToggles = $$$1(Selector.DATA_TOGGLE);
 
         for (var i = 0; i < tabToggles.length; i++) {
@@ -1128,7 +1128,7 @@
       } // Getters
 
 
-      var _proto = Collapse.prototype;
+      var _proto = webdesk_Collapse.prototype;
 
       // Public
       _proto.toggle = function toggle() {
@@ -1173,7 +1173,7 @@
         }
 
         if (actives) {
-          Collapse._jQueryInterface.call($$$1(actives).not(this._selector), 'hide');
+          webdesk_Collapse._jQueryInterface.call($$$1(actives).not(this._selector), 'hide');
 
           if (!activesData) {
             $$$1(actives).data(DATA_KEY, null);
@@ -1192,6 +1192,7 @@
         this.setTransitioning(true);
 
         var complete = function complete() {
+          
           $$$1(_this._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).addClass(ClassName.SHOW);
           _this._element.style[dimension] = '';
 
@@ -1297,9 +1298,9 @@
           parent = $$$1(this._config.parent)[0];
         }
 
-        var selector = "[data-toggle=\"collapse\"][data-parent=\"" + this._config.parent + "\"]";
+        var selector = "[data-toggle=\"webdesk_collapse\"][data-parent=\"" + this._config.parent + "\"]";
         $$$1(parent).find(selector).each(function (i, element) {
-          _this3._addAriaAndCollapsedClass(Collapse._getTargetFromElement(element), [element]);
+          _this3._addAriaAndCollapsedClass(webdesk_._getTargetFromElement(element), [element]);
         });
         return parent;
       };
@@ -1315,12 +1316,12 @@
       }; // Static
 
 
-      Collapse._getTargetFromElement = function _getTargetFromElement(element) {
+      webdesk_Collapse._getTargetFromElement = function _getTargetFromElement(element) {
         var selector = Util.getSelectorFromElement(element);
         return selector ? $$$1(selector)[0] : null;
       };
 
-      Collapse._jQueryInterface = function _jQueryInterface(config) {
+      webdesk_Collapse._jQueryInterface = function _jQueryInterface(config) {
         return this.each(function () {
           var $this = $$$1(this);
           var data = $this.data(DATA_KEY);
@@ -1332,7 +1333,7 @@
           }
 
           if (!data) {
-            data = new Collapse(this, _config);
+            data = new webdesk_Collapse(this, _config);
             $this.data(DATA_KEY, data);
           }
 
@@ -1346,7 +1347,7 @@
         });
       };
 
-      _createClass(Collapse, null, [{
+      _createClass(webdesk_Collapse, null, [{
         key: "VERSION",
         get: function get() {
           return VERSION;
@@ -1358,7 +1359,7 @@
         }
       }]);
 
-      return Collapse;
+      return webdesk_Collapse;
     }();
     /**
      * ------------------------------------------------------------------------
@@ -1380,7 +1381,7 @@
         var data = $target.data(DATA_KEY);
         var config = data ? 'toggle' : $trigger.data();
 
-        Collapse._jQueryInterface.call($target, config);
+        webdesk_Collapse._jQueryInterface.call($target, config);
       });
     });
     /**
@@ -1389,12 +1390,12 @@
      * ------------------------------------------------------------------------
      */
 
-    $$$1.fn[NAME] = Collapse._jQueryInterface;
-    $$$1.fn[NAME].Constructor = Collapse;
+    $$$1.fn[NAME] = webdesk_Collapse._jQueryInterface;
+    $$$1.fn[NAME].Constructor = webdesk_Collapse;
 
     $$$1.fn[NAME].noConflict = function () {
       $$$1.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Collapse._jQueryInterface;
+      return webdesk_Collapse._jQueryInterface;
     };
 
     return webdesk_Collapse;
@@ -6429,8 +6430,8 @@
   exports.Util = Util;
   exports.webdesk_Alert = webdesk_Alert;
   exports.webdesk_Button = webdesk_Button;
-  exports.Carousel = Carousel;
-  exports.Collapse = Collapse;
+  //exports.webdesk_Carousel = webdesk_Carousel;
+  exports.webdesk_Collapse = webdesk_Collapse;
   exports.Dropdown = Dropdown;
   exports.Modal = Modal;
   exports.Popover = Popover;

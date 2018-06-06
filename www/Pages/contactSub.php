@@ -29,6 +29,7 @@ if(!$mail->send()) {
 } else {
     header('Location: index.php?page=contact.php');;
 }
+}
 else{
   echo "Sorry this contact form has not been setup yet. Please try again later.";
 }
