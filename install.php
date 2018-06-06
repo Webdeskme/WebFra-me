@@ -37,9 +37,6 @@ $wd_path ="";
             <label for="confirm">Confirm</label><br>
             <input type="password" name="confirm" id="confirm" placeholder="Confirm Password" required>
             <br><hr><br>
-	    <label for="web">Web Directory</label><br>
-            <input type="text" name="web" id="web" placeholder="Web Directory" value="default">
-	    <br><br>
             <label for="path">Offline File Path</label><br>
             <input type="text" name="path" id="path" placeholder="File Path" value="<?php echo __DIR__ . '/' . $string; ?>">
             <br><hr><br>
