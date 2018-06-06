@@ -27,11 +27,6 @@ $vfrand = rand(10000000000000000000, 99999999999999999999);
 $path = test_input($_POST["path"]);
 $user = f_enc(test_input($_POST['Username']));
 $title = test_input($_POST['title']);
-$web = test_input($_POST['web']);
-	if(!file_exists('www/Client/')){
-			mkdir('www/Client/');
-	}
-			mkdir('www/Client/' . $web . '/');
                       	mkdir($path);
                         mkdir($path . '/Admin/');
                         file_put_contents($path . '/Admin/appWeb.txt', $arand);
