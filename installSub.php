@@ -76,7 +76,7 @@ $web = test_input($_POST['web']);
 				$esmtp['port'] = test_input($_POST['port']);
 				$esmtp['epass'] = t_enc($_POST['epass']);
 				$esmtp = json_encode($esmtp);
-				file_put_contents($path . '/User/' . $user .'/Admin/esmtp.json', $esmtp);
+				file_put_contents($path . 'Admin/esmtp.json', $esmtp);
 			}
                         file_put_contents('path.php', $path);
                         //file_put_contents('../../webdesk/User/' . $user .'/Admin/valf.txt', $vfrad);
