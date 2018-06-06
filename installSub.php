@@ -41,10 +41,10 @@ $title = test_input($_POST['title']);
                         mkdir($path . '/User/' . $user . '/App/');
                         mkdir($path . '/User/' . $user . '/Book/');
                         mkdir($path . '/User/' . $user . '/Ext/');
-			mkdir($path . '/User/' . $user . '/www/');
+			mkdir($path . '/www/');
 			$wwwCopy = scandir('www/Pages/');
 			foreach($wwwCopy as $key => $value){
-				copy('www/Pages/' . $value,$path . '/User/' . $user . '/www/' . $value);
+				copy('www/Pages/' . $value, $path . '/www/' . $value);
 			}
                         //Temp
                         //mkdir('349y45fjfsm/7fhnsvfk340js/' . $rand .'/');
