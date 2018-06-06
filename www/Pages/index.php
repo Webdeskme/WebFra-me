@@ -1,4 +1,4 @@
-<!--?php 
+<?php 
 if(file_exists("feed.xml")){
 $xml=("feed.xml");
 $xmlDoc = new DOMDocument();
@@ -14,10 +14,9 @@ for ($i=0; $i<=2; $i++) {
   ->item(0)->childNodes->item(0)->nodeValue;
 //$item_date=$x->item($i)->getElementsByTagName('pubDate')
 //  ->item(0)->childNodes->item(0)->nodeValue;
-  echo ("<div><h2><a href='" . $item_link
-  . "'>" . $item_title . "</a></h2>");
-  echo ("<div>" . $item_desc . "</div></div>");
+  echo '<div><h2><a href="' . $item_link
+  . '">' . $item_title . "</a></h2>";
+  echo "<div>" . $item_desc . "</div></div>";
 }}
 }
-?-->
-<p>Wow what a great site!</p>
+?>
