@@ -1,4 +1,4 @@
-<?php
+<!--?php 
 if(file_exists("feed.xml")){
 $xml=("feed.xml");
 $xmlDoc = new DOMDocument();
@@ -19,4 +19,5 @@ for ($i=0; $i<=2; $i++) {
   echo ("<div>" . $item_desc . "</div></div>");
 }}
 }
-?>
+?-->
+<p>Wow what a great site!</p>

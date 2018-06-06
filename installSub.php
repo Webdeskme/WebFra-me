@@ -31,7 +31,7 @@ $web = test_input($_POST['web']);
 	if(!file_exists('www/Client/')){
 			mkdir('www/Client/');
 	}
-			mkdir('www/Client/' $web . '/');
+			mkdir('www/Client/' . $web . '/');
                       	mkdir($path);
                         mkdir($path . '/Admin/');
                         file_put_contents($path . '/Admin/appWeb.txt', $arand);
