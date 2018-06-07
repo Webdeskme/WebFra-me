@@ -7,7 +7,7 @@ else{
 }
 if(isset($_POST['con'])){
   $con = htmlspecialchars_decode($wd_POST["con"], ENT_QUOTES);
-  file_put_contents("www/Pages/" . $page, $con);
+  file_put_contents($wd_www . $page, $con);
 }
 ?>
 <script>
@@ -61,6 +61,8 @@ tinymce.init({
         <li><a href="<?php wd_url($wd_type, $wd_app, 'psettings.php', ''); ?>">Settings</a></li>
         <li><a href="<?php wd_url($wd_type, $wd_app, 'pplugins.php', ''); ?>">Plugins</a></li>
         <li><a href="<?php wd_url($wd_type, $wd_app, 'pthemes.php', ''); ?>">Themes</a></li>
+        <li><a href="<?php wd_url($wd_type, $wd_app, 'stats.php', ''); ?>">Stats</a></li>
+        <li><a href="<?php wd_url($wd_type, $wd_app, 'log.php', ''); ?>">Log</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<?php wd_url($wd_type, $wd_app, 'page.php', '&page=' . $page); ?>"><span class="glyphicon glyphicon-pencil"></span> Code Editor</a></li>
@@ -73,15 +75,15 @@ tinymce.init({
 <div>
 <form method="post" action="<?php wd_url($wd_type, $wd_app, 'pageB.php', '&page=' . $page); ?>" style="width: 90%; height: 70%;">
     <label for="con">Page Content: </label><br>
-    <textarea name="con" id="con" for="con" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:100%;"  autofocus><?php 
-if(isset($_GET['page']) && file_exists("www/Pages/" . $page)){
-    echo htmlspecialchars(file_get_contents("www/Pages/" . $page));
+    <textarea name="con" id="con" for="con" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:100%;"  autofocus><?php
+if(isset($_GET['page']) && file_exists($wd_www . $page)){
+    echo htmlspecialchars(file_get_contents($wd_www . $page));
 //$f = fopen("www/Pages/" . $page, "r");
-//  while(!feof($f)) { 
+//  while(!feof($f)) {
 //	    echo fgets($f);
 //	}
 //	fclose($f);
-} 
+}
 ?></textarea>
     <br>
     <input type="submit" class="btn btn-success" value="Save">
