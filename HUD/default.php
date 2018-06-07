@@ -209,7 +209,7 @@
         } 
         else{
             ?>
-            <a href="<?php echo preg_replace("/wd_fullS\=(on|off)/i", "", $_SERVER["REQUEST_URL"]) . ((empty($_GET)) ? "?" : "&") . "wd_fullS=on"; ?>" class="webdesk_btn webdesk_btn-info webdesk_btn-sm" data-toggle="tooltip" title="Maximize"><span class="fa fa-expand  webdesk_text-white"></span></a>
+            <a href="<?php echo preg_replace("/wd_fullS\=(on|off)/i", "", $_SERVER["REQUEST_URI"]) . ((empty($_GET)) ? "?" : "&") . "wd_fullS=on"; ?>" class="webdesk_btn webdesk_btn-info webdesk_btn-sm" data-toggle="tooltip" title="Maximize"><span class="fa fa-expand  webdesk_text-white"></span></a>
             <?php
         }
         ?>
