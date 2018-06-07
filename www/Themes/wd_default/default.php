@@ -1,6 +1,6 @@
 <?php
   //include "testInput.php";
-  include "www/functions.php";
+  //include "www/functions.php";
 ?>
 <!DOCTYPE html>
 <!--<Webdesk.me Making web aplications easy.>
@@ -51,14 +51,14 @@
       <link rel="stylesheet" type="text/css" href="Theme/default.php">
 <link rel="stylesheet" type="text/css" href="www/Themes/wd_default/style.css">
 <?php
-if(file_exists("www/Pages/style.css")){
-	echo '<link rel="stylesheet" type="text/css" href="www/Pages/style.css">';
+//if(file_exists("www/Pages/style.css")){
+//	echo '<link rel="stylesheet" type="text/css" href="www/Pages/style.css">';
+//}
+if(file_exists($wd_www . "header.php")){
+	include $wd_www . "header.php";
 }
-if(file_exists("www/Pages/header.php")){
-	include "www/Pages/header.php";
-}
-if(isset($_GET['page']) && file_exists("www/Pages/header_" . $page)){
-	include "www/Pages/header_" . $page;
+if(isset($_GET['page']) && file_exists($wd_www . "header_" . $page)){
+	include $wd_www . "header_" . $page;
 }
 ?>
 <script src="Plugins/jquery.min.js"></script>
@@ -71,26 +71,26 @@ if(isset($_GET['page']) && file_exists("www/Pages/header_" . $page)){
 </head>
 <body>
   <?php
-  if(file_exists("www/Pages/banner_" . $page) && $page != ""){
-	include "www/Pages/banner_" . $page;
+  if(file_exists($wd_www . "banner_" . $page) && $page != ""){
+	include $wd_www . "banner_" . $page;
   }
-  elseif(file_exists("www/Pages/banner.php")){
-	include "www/Pages/banner.php";
+  elseif(file_exists($wd_www . "banner.php")){
+	include $wd_www . "banner.php";
   }
   ?>
   <div class="container">
 <?php
-if(isset($_GET['page']) && file_exists("www/Pages/" . $page)){
-	include "www/Pages/" . $page;
+if(isset($_GET['page']) && file_exists($wd_www . $page)){
+	include $wd_www . $page;
 }
     ?>
   </div>
     <?php
-if(file_exists("www/Pages/footer_" . $page) && $page != ""){
-	echo file_get_contents("www/Pages/footer_" . $page);
+if(file_exists($wd_www . "footer_" . $page) && $page != ""){
+	echo file_get_contents($wd_www . "footer_" . $page);
 }
-elseif(file_exists("www/Pages/footer.php")){
-	include "www/Pages/footer.php";
+elseif(file_exists($wd_www . "footer.php")){
+	include $wd_www . "footer.php";
 }
 ?>
 <script>
