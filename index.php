@@ -10,12 +10,12 @@ else{
   $page = "";
 }
 if(isset($_GET['page']) && $page != "login.php"){
-  if(file_exists("www/Pages/" . $page)){
+  if(file_exists($wd_www . $page)){
     include "www/Themes/" . $theme . "/default.php";
   }
   else{
-    if(file_exists("www/Pages/404.php")){
-      include "www/Pages/404.php";
+    if(file_exists($wd_www . "404.php")){
+      include $wd_www . "404.php";
     }
     elseif(file_exists("www/Themes/" . $theme . "/404.php")){
       include "www/Themes/" . $theme . "/404.php";
@@ -25,7 +25,7 @@ if(isset($_GET['page']) && $page != "login.php"){
     }
   }
 }
-elseif(file_exists("www/Pages/index.php") && $page != "login.php"){
+elseif(file_exists($wd_www . "index.php") && $page != "login.php"){
   header('Location: index.php?page=index.php');
 }
 else{
