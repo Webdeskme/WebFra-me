@@ -129,6 +129,7 @@ if(file_exists("path.php")){
   }
   $wd_admin = $wd_root . '/Admin/';
   $wd_appr = $wd_root . '/App/';
+  $wd_www = $wd_root . '/www/';
   $wd_Title = file_get_contents($wd_admin . 'title.txt');
   if(isset($_GET['type'])){
   	$wd_type = test_input($_GET['type']);
