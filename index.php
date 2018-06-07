@@ -1,7 +1,8 @@
 <?php
 session_start();
+include "testInput.php";
 if(file_exists("path.php") && isset($wd_roots[$_SERVER['HTTP_HOST']]) && ($wd_roots[$_SERVER['HTTP_HOST']] != "NA") ){
-  include "testInput.php";
+  
   $theme = test_input(file_get_contents("www/dtheme.txt"));
   if(isset($_GET['page'])){
     $page = test_input($_GET['page']);
@@ -33,7 +34,11 @@ if(file_exists("path.php") && isset($wd_roots[$_SERVER['HTTP_HOST']]) && ($wd_ro
   }
 }
 else{
-  header('Location: install.php');
+  //header('Location: install.php');
+  ?>
+  <h1>Webdesk not installed on this domain</h1>
+  <a href="//<?php echo $_SERVER["HTTP_HOST"] ?>/install.php">Click to install</a>
+  <?php
 }
 exit();
 ?>
