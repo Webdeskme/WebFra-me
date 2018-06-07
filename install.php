@@ -1,9 +1,5 @@
 <?php
-$wd_path ="";
-    if(file_exists("path.php")){
-        $wd_path = file_get_contents("path.php");
-    }
-    if($wd_path != ""){
+    if(!file_exists("path.php") || $wd_roots[$_SERVER['HTTP_HOST']] == "NA"){
 		header('Location: index.php');
 	}
 	else{
