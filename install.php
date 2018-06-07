@@ -1,5 +1,5 @@
 <?php
-include(testInput.php)
+include(testInput.php);
     if(!file_exists("path.php") || $wd_roots[$_SERVER['HTTP_HOST']] == "NA"){
 		header('Location: index.php');
 	}
