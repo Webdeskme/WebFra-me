@@ -1,14 +1,22 @@
 <?php
 session_start();
 include("testInput.php");
-$wd_path ="";
+$wd_path = "stop";
+$wd_pathD = "no";
     if(file_exists("path.php")){
-        $wd_path = file_get_contents("path.php");
+        //header('Location: index.php');
+      if(isset($wd_roots[$_SERVER['HTTP_HOST']]) && $wd_roots[$_SERVER['HTTP_HOST']] == "NA"){
+        $wd_path = "next";
+      }
+      else{
+        header('Location: index.php');
+      }
     }
-    if($wd_path != ""){
-		header('Location: index.php');
-	}
 	else{
+      $wd_path = "next";
+      $wd_pathD = "yes";
+    }
+if($wd_path == "next"){
 $pass = test_input($_POST["password"]);
 $verify = test_input($_POST["confirm"]);
 if ($pass == $verify){
@@ -27,6 +35,7 @@ $vfrand = rand(10000000000000000000, 99999999999999999999);
 $path = test_input($_POST["path"]);
 $user = f_enc(test_input($_POST['Username']));
 $title = test_input($_POST['title']);
+$wd_roots[$_SERVER['HTTP_HOST']] = $path;
                       	mkdir($path);
                         mkdir($path . '/Admin/');
                         file_put_contents($path . '/Admin/appWeb.txt', $arand);
@@ -78,7 +87,19 @@ $title = test_input($_POST['title']);
 				$esmtp = json_encode($esmtp);
 				file_put_contents($path . '/Admin/esmtp.json', $esmtp);
 			}
-                        file_put_contents('path.php', $path);
+  $con = "<?php return [";
+  foreach($wd_roots as $key => $value){
+    if($key != "default"){
+     $con = $con . "'" . $key . "' => '" . $value . "', ";
+    }
+  }
+  if($wd_pathD == "yes"){
+    $con = $con . "'default' => '" . $path . "' ]; ?>";
+  }
+  else{
+    $con = $con . "'default' => '" . $wd_roots['default'] . "' ]; ?>";
+  }
+                        file_put_contents('path.php', $con);
                         //file_put_contents('../../webdesk/User/' . $user .'/Admin/valf.txt', $vfrad);
                         //file_put_contents('349y45fjfsm/yhftg8356mjvf90/' . $rand .'/' . $vrad . '.php', file_get_contents(''));
                         header('Location: index.php?a=done');

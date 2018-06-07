@@ -1,20 +1,6 @@
 <?php
 $wd_protect = "yes";
 $_SESSION['wd_home'] = 'desktop.php';
-function get_number_of_user_alerts(){
-
-  global $wd_root;
-
-  $wd = 0;
-  if ($handle = opendir($wd_root . '/User/' . $_SESSION["user"] . '/Sec/')) {
-    while (false !== ($entry = readdir($handle))) {
-      if ($entry != "." && $entry != "..") {
-      $wd = $wd + 1;
-      }
-    }
-  }
-  return $wd;
-}
 function test_input($data) {
     if (!empty($data)) {
         $data = trim($data);
@@ -115,8 +101,16 @@ function up_enc($data) {
 if(isset($_GET['adminView']) && isset($_SESSION['wd_adminView'])){
   unset($_SESSION['wd_adminView']);
 }
+$wd_root = "NA1";
+$wd_roots = array();
 if(file_exists("path.php")){
-  $wd_root = test_input(file_get_contents('path.php'));
+  $wd_roots = include('path.php');
+  if(isset($wd_roots[$_SERVER['HTTP_HOST']])){
+    $wd_root = test_input($wd_roots[$_SERVER['HTTP_HOST']]);
+  }
+  else{
+    $wd_root = test_input($wd_roots['default']);
+  }
   $pcolor = "#FFFFFF";
   if(isset($_SESSION["user"])){
   $back = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/back.txt');
@@ -131,6 +125,21 @@ if(file_exists("path.php")){
   $wd_appr = $wd_root . '/App/';
   $wd_www = $wd_root . '/www/';
   $wd_Title = file_get_contents($wd_admin . 'title.txt');
+
+  function get_number_of_user_alerts(){
+
+  global $wd_root;
+
+  $wd = 0;
+  if ($handle = opendir($wd_root . '/User/' . $_SESSION["user"] . '/Sec/')) {
+    while (false !== ($entry = readdir($handle))) {
+      if ($entry != "." && $entry != "..") {
+      $wd = $wd + 1;
+      }
+    }
+  }
+  return $wd;
+}
   if(isset($_GET['type'])){
   	$wd_type = test_input($_GET['type']);
   }
