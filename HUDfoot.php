@@ -533,7 +533,7 @@ $(document).ready(function(){
   }
     ?>
   
-  <div id="wd_chatting" class="chat webdesk_card webdesk_bg-light"><div class="webdesk_card-body"><div class="container"><h3><button id="wd_hChat" class="btn btn-info"><span class="fa fa-caret-down"></span></button> <button id="wd_fChat" class="btn btn-info"><span class="fa fa-expand"></span></button> <button id="wd_mChat" class="btn btn-info"><span class="fa fa-expand"></span></button> Chat</h3><div class="col-xs-4"><input type="text" id="wd_tChat" class="form-control" placeholder="Type you message here..."></div><button id="wd_bChat" class="btn btn-success">Send</button><br><div class="scroll"><div id="wd_chat"></div><div id="wd_sto_chat"></div></div></div></div></div>
+  <div id="wd_chatting" class="chat webdesk_card"><div class="webdesk_card-body"><div class="container"><h3><button id="wd_hChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-caret-down"></span></button> <button id="wd_fChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-expand"></span></button> <button id="wd_mChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-expand"></span></button> Chat</h3><div class="col-xs-4"><input type="text" id="wd_tChat" class="form-control" placeholder="Type you message here..."></div><button id="wd_bChat" class="webdesk_btn webdesk_btn-success">Send</button><br><div class="scroll"><div id="wd_chat"></div><div id="wd_sto_chat"></div></div></div></div></div>
   
 <script>
   var oldD = "";
