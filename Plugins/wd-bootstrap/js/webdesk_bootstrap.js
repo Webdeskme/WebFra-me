@@ -74,7 +74,7 @@
    * --------------------------------------------------------------------------
    */
 
-  var Util = function ($$$1) {
+  var webdesk_Util = function ($$$1) {
     /**
      * ------------------------------------------------------------------------
      * Private TransitionEnd Helpers
@@ -106,12 +106,12 @@
       var _this = this;
 
       var called = false;
-      $$$1(this).one(Util.TRANSITION_END, function () {
+      $$$1(this).one(webdesk_Util.TRANSITION_END, function () {
         called = true;
       });
       setTimeout(function () {
         if (!called) {
-          Util.triggerTransitionEnd(_this);
+          webdesk_Util.triggerTransitionEnd(_this);
         }
       }, duration);
       return this;
@@ -119,7 +119,7 @@
 
     function setTransitionEndSupport() {
       $$$1.fn.emulateTransitionEnd = transitionEndEmulator;
-      $$$1.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
+      $$$1.event.special[webdesk_Util.TRANSITION_END] = getSpecialTransitionEndEvent();
     }
     /**
      * --------------------------------------------------------------------------
@@ -128,7 +128,7 @@
      */
 
 
-    var Util = {
+    var webdesk_Util = {
       TRANSITION_END: 'bsTransitionEnd',
       getUID: function getUID(prefix) {
         do {
@@ -187,7 +187,7 @@
           if (Object.prototype.hasOwnProperty.call(configTypes, property)) {
             var expectedTypes = configTypes[property];
             var value = config[property];
-            var valueType = value && Util.isElement(value) ? 'element' : toType(value);
+            var valueType = value && webdesk_Util.isElement(value) ? 'element' : toType(value);
 
             if (!new RegExp(expectedTypes).test(valueType)) {
               throw new Error(componentName.toUpperCase() + ": " + ("Option \"" + property + "\" provided type \"" + valueType + "\" ") + ("but expected type \"" + expectedTypes + "\"."));
@@ -197,7 +197,7 @@
       }
     };
     setTransitionEndSupport();
-    return Util;
+    return webdesk_Util;
   }($);
 
   /**
@@ -273,7 +273,7 @@
 
 
       _proto._getRootElement = function _getRootElement(element) {
-        var selector = Util.getSelectorFromElement(element);
+        var selector = webdesk_Util.getSelectorFromElement(element);
         var parent = false;
 
         if (selector) {
@@ -304,8 +304,8 @@
           return;
         }
 
-        var transitionDuration = Util.getTransitionDurationFromElement(element);
-        $$$1(element).one(Util.TRANSITION_END, function (event) {
+        var transitionDuration = webdesk_Util.getTransitionDurationFromElement(element);
+        $$$1(element).one(webdesk_Util.TRANSITION_END, function (event) {
           return _this._destroyElement(element, event);
         }).emulateTransitionEnd(transitionDuration);
       };
@@ -667,7 +667,7 @@
   //       }
 
   //       if ($$$1(this._element).find(Selector.NEXT_PREV)[0]) {
-  //         Util.triggerTransitionEnd(this._element);
+  //         webdesk_Util.triggerTransitionEnd(this._element);
   //         this.cycle(true);
   //       }
 
@@ -735,7 +735,7 @@
 
   //     _proto._getConfig = function _getConfig(config) {
   //       config = _objectSpread({}, Default, config);
-  //       Util.typeCheckConfig(NAME, config, DefaultType);
+  //       webdesk_Util.typeCheckConfig(NAME, config, DefaultType);
   //       return config;
   //     };
 
@@ -907,11 +907,11 @@
 
   //       if ($$$1(this._element).hasClass(ClassName.SLIDE)) {
   //         $$$1(nextElement).addClass(orderClassName);
-  //         Util.reflow(nextElement);
+  //         webdesk_Util.reflow(nextElement);
   //         $$$1(activeElement).addClass(directionalClassName);
   //         $$$1(nextElement).addClass(directionalClassName);
-  //         var transitionDuration = Util.getTransitionDurationFromElement(activeElement);
-  //         $$$1(activeElement).one(Util.TRANSITION_END, function () {
+  //         var transitionDuration = webdesk_Util.getTransitionDurationFromElement(activeElement);
+  //         $$$1(activeElement).one(webdesk_Util.TRANSITION_END, function () {
   //           $$$1(nextElement).removeClass(directionalClassName + " " + orderClassName).addClass(ClassName.ACTIVE);
   //           $$$1(activeElement).removeClass(ClassName.ACTIVE + " " + orderClassName + " " + directionalClassName);
   //           _this3._isSliding = false;
@@ -965,7 +965,7 @@
   //     };
 
   //     Carousel._dataApiClickHandler = function _dataApiClickHandler(event) {
-  //       var selector = Util.getSelectorFromElement(this);
+  //       var selector = webdesk_Util.getSelectorFromElement(this);
 
   //       if (!selector) {
   //         return;
@@ -1107,7 +1107,7 @@
 
         for (var i = 0; i < tabToggles.length; i++) {
           var elem = tabToggles[i];
-          var selector = Util.getSelectorFromElement(elem);
+          var selector = webdesk_Util.getSelectorFromElement(elem);
 
           if (selector !== null && $$$1(selector).filter(element).length > 0) {
             this._selector = selector;
@@ -1203,8 +1203,8 @@
 
         var capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
         var scrollSize = "scroll" + capitalizedDimension;
-        var transitionDuration = Util.getTransitionDurationFromElement(this._element);
-        $$$1(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
+        var transitionDuration = webdesk_Util.getTransitionDurationFromElement(this._element);
+        $$$1(this._element).one(webdesk_Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
         this._element.style[dimension] = this._element[scrollSize] + "px";
       };
 
@@ -1225,13 +1225,13 @@
         var dimension = this._getDimension();
 
         this._element.style[dimension] = this._element.getBoundingClientRect()[dimension] + "px";
-        Util.reflow(this._element);
+        webdesk_Util.reflow(this._element);
         $$$1(this._element).addClass(ClassName.COLLAPSING).removeClass(ClassName.COLLAPSE).removeClass(ClassName.SHOW);
 
         if (this._triggerArray.length > 0) {
           for (var i = 0; i < this._triggerArray.length; i++) {
             var trigger = this._triggerArray[i];
-            var selector = Util.getSelectorFromElement(trigger);
+            var selector = webdesk_Util.getSelectorFromElement(trigger);
 
             if (selector !== null) {
               var $elem = $$$1(selector);
@@ -1252,8 +1252,8 @@
         };
 
         this._element.style[dimension] = '';
-        var transitionDuration = Util.getTransitionDurationFromElement(this._element);
-        $$$1(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
+        var transitionDuration = webdesk_Util.getTransitionDurationFromElement(this._element);
+        $$$1(this._element).one(webdesk_Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
       };
 
       _proto.setTransitioning = function setTransitioning(isTransitioning) {
@@ -1274,7 +1274,7 @@
         config = _objectSpread({}, Default, config);
         config.toggle = Boolean(config.toggle); // Coerce string values
 
-        Util.typeCheckConfig(NAME, config, DefaultType);
+        webdesk_Util.typeCheckConfig(NAME, config, DefaultType);
         return config;
       };
 
@@ -1288,7 +1288,7 @@
 
         var parent = null;
 
-        if (Util.isElement(this._config.parent)) {
+        if (webdesk_Util.isElement(this._config.parent)) {
           parent = this._config.parent; // It's a jQuery object
 
           if (typeof this._config.parent.jquery !== 'undefined') {
@@ -1317,7 +1317,7 @@
 
 
       webdesk_Collapse._getTargetFromElement = function _getTargetFromElement(element) {
-        var selector = Util.getSelectorFromElement(element);
+        var selector = webdesk_Util.getSelectorFromElement(element);
         return selector ? $$$1(selector)[0] : null;
       };
 
@@ -1375,7 +1375,7 @@
       }
 
       var $trigger = $$$1(this);
-      var selector = Util.getSelectorFromElement(this);
+      var selector = webdesk_Util.getSelectorFromElement(this);
       $$$1(selector).each(function () {
         var $target = $$$1(this);
         var data = $target.data(DATA_KEY);
@@ -4065,7 +4065,7 @@
 
           if (this._config.reference === 'parent') {
             referenceElement = parent;
-          } else if (Util.isElement(this._config.reference)) {
+          } else if (webdesk_Util.isElement(this._config.reference)) {
             referenceElement = this._config.reference; // Check if it's jQuery element
 
             if (typeof this._config.reference.jquery !== 'undefined') {
@@ -4134,7 +4134,7 @@
 
       _proto._getConfig = function _getConfig(config) {
         config = _objectSpread({}, this.constructor.Default, $$$1(this._element).data(), config);
-        Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
+        webdesk_Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
         return config;
       };
 
@@ -4282,7 +4282,7 @@
 
       Dropdown._getParentFromElement = function _getParentFromElement(element) {
         var parent;
-        var selector = Util.getSelectorFromElement(element);
+        var selector = webdesk_Util.getSelectorFromElement(element);
 
         if (selector) {
           parent = $$$1(selector)[0];
@@ -4576,8 +4576,8 @@
         $$$1(this._dialog).off(Event.MOUSEDOWN_DISMISS);
 
         if (transition) {
-          var transitionDuration = Util.getTransitionDurationFromElement(this._element);
-          $$$1(this._element).one(Util.TRANSITION_END, function (event) {
+          var transitionDuration = webdesk_Util.getTransitionDurationFromElement(this._element);
+          $$$1(this._element).one(webdesk_Util.TRANSITION_END, function (event) {
             return _this2._hideModal(event);
           }).emulateTransitionEnd(transitionDuration);
         } else {
@@ -4605,7 +4605,7 @@
 
       _proto._getConfig = function _getConfig(config) {
         config = _objectSpread({}, Default, config);
-        Util.typeCheckConfig(NAME, config, DefaultType);
+        webdesk_Util.typeCheckConfig(NAME, config, DefaultType);
         return config;
       };
 
@@ -4626,7 +4626,7 @@
         this._element.scrollTop = 0;
 
         if (transition) {
-          Util.reflow(this._element);
+          webdesk_Util.reflow(this._element);
         }
 
         $$$1(this._element).addClass(ClassName.SHOW);
@@ -4649,8 +4649,8 @@
         };
 
         if (transition) {
-          var transitionDuration = Util.getTransitionDurationFromElement(this._element);
-          $$$1(this._dialog).one(Util.TRANSITION_END, transitionComplete).emulateTransitionEnd(transitionDuration);
+          var transitionDuration = webdesk_Util.getTransitionDurationFromElement(this._element);
+          $$$1(this._dialog).one(webdesk_Util.TRANSITION_END, transitionComplete).emulateTransitionEnd(transitionDuration);
         } else {
           transitionComplete();
         }
@@ -4754,7 +4754,7 @@
           });
 
           if (animate) {
-            Util.reflow(this._backdrop);
+            webdesk_Util.reflow(this._backdrop);
           }
 
           $$$1(this._backdrop).addClass(ClassName.SHOW);
@@ -4768,8 +4768,8 @@
             return;
           }
 
-          var backdropTransitionDuration = Util.getTransitionDurationFromElement(this._backdrop);
-          $$$1(this._backdrop).one(Util.TRANSITION_END, callback).emulateTransitionEnd(backdropTransitionDuration);
+          var backdropTransitionDuration = webdesk_Util.getTransitionDurationFromElement(this._backdrop);
+          $$$1(this._backdrop).one(webdesk_Util.TRANSITION_END, callback).emulateTransitionEnd(backdropTransitionDuration);
         } else if (!this._isShown && this._backdrop) {
           $$$1(this._backdrop).removeClass(ClassName.SHOW);
 
@@ -4782,9 +4782,9 @@
           };
 
           if ($$$1(this._element).hasClass(ClassName.FADE)) {
-            var _backdropTransitionDuration = Util.getTransitionDurationFromElement(this._backdrop);
+            var _backdropTransitionDuration = webdesk_Util.getTransitionDurationFromElement(this._backdrop);
 
-            $$$1(this._backdrop).one(Util.TRANSITION_END, callbackRemove).emulateTransitionEnd(_backdropTransitionDuration);
+            $$$1(this._backdrop).one(webdesk_Util.TRANSITION_END, callbackRemove).emulateTransitionEnd(_backdropTransitionDuration);
           } else {
             callbackRemove();
           }
@@ -4935,7 +4935,7 @@
       var _this10 = this;
 
       var target;
-      var selector = Util.getSelectorFromElement(this);
+      var selector = webdesk_Util.getSelectorFromElement(this);
 
       if (selector) {
         target = $$$1(selector)[0];
@@ -5189,7 +5189,7 @@
           }
 
           var tip = this.getTipElement();
-          var tipId = Util.getUID(this.constructor.NAME);
+          var tipId = webdesk_Util.getUID(this.constructor.NAME);
           tip.setAttribute('id', tipId);
           this.element.setAttribute('aria-describedby', tipId);
           this.setContent();
@@ -5260,8 +5260,8 @@
           };
 
           if ($$$1(this.tip).hasClass(ClassName.FADE)) {
-            var transitionDuration = Util.getTransitionDurationFromElement(this.tip);
-            $$$1(this.tip).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
+            var transitionDuration = webdesk_Util.getTransitionDurationFromElement(this.tip);
+            $$$1(this.tip).one(webdesk_Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
           } else {
             complete();
           }
@@ -5312,8 +5312,8 @@
         this._activeTrigger[Trigger.HOVER] = false;
 
         if ($$$1(this.tip).hasClass(ClassName.FADE)) {
-          var transitionDuration = Util.getTransitionDurationFromElement(tip);
-          $$$1(tip).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
+          var transitionDuration = webdesk_Util.getTransitionDurationFromElement(tip);
+          $$$1(tip).one(webdesk_Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
         } else {
           complete();
         }
@@ -5515,7 +5515,7 @@
           config.content = config.content.toString();
         }
 
-        Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
+        webdesk_Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
         return config;
       };
 
@@ -5942,7 +5942,7 @@
         var targets = $$$1.makeArray($$$1(this._selector));
         targets.map(function (element) {
           var target;
-          var targetSelector = Util.getSelectorFromElement(element);
+          var targetSelector = webdesk_Util.getSelectorFromElement(element);
 
           if (targetSelector) {
             target = $$$1(targetSelector)[0];
@@ -5990,14 +5990,14 @@
           var id = $$$1(config.target).attr('id');
 
           if (!id) {
-            id = Util.getUID(NAME);
+            id = webdesk_Util.getUID(NAME);
             $$$1(config.target).attr('id', id);
           }
 
           config.target = "#" + id;
         }
 
-        Util.typeCheckConfig(NAME, config, DefaultType);
+        webdesk_Util.typeCheckConfig(NAME, config, DefaultType);
         return config;
       };
 
@@ -6225,7 +6225,7 @@
         var target;
         var previous;
         var listElement = $$$1(this._element).closest(Selector.NAV_LIST_GROUP)[0];
-        var selector = Util.getSelectorFromElement(this._element);
+        var selector = webdesk_Util.getSelectorFromElement(this._element);
 
         if (listElement) {
           var itemSelector = listElement.nodeName === 'UL' ? Selector.ACTIVE_UL : Selector.ACTIVE;
@@ -6299,8 +6299,8 @@
         };
 
         if (active && isTransitioning) {
-          var transitionDuration = Util.getTransitionDurationFromElement(active);
-          $$$1(active).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
+          var transitionDuration = webdesk_Util.getTransitionDurationFromElement(active);
+          $$$1(active).one(webdesk_Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
         } else {
           complete();
         }
@@ -6326,7 +6326,7 @@
           element.setAttribute('aria-selected', true);
         }
 
-        Util.reflow(element);
+        webdesk_Util.reflow(element);
         $$$1(element).addClass(ClassName.SHOW);
 
         if (element.parentNode && $$$1(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
@@ -6427,7 +6427,7 @@
     }
   })($);
 
-  exports.Util = Util;
+  exports.webdesk_Util = webdesk_Util;
   exports.webdesk_Alert = webdesk_Alert;
   exports.webdesk_Button = webdesk_Button;
   //exports.webdesk_Carousel = webdesk_Carousel;
