@@ -1,4 +1,4 @@
-<?php 
+<?php include_once "../../wd_protect.php";
 $content = test_input($_POST['content']);
 //$content = $_POST['content'];
 $title = test_input($_POST['title']);
@@ -8,7 +8,4 @@ $f = fopen($file, "w");
     fclose($f);
     $date = date("F j, Y, g:i a");
 wd_head($wd_type, 'Writer', 'start.php', '&title=' . $title . '&date=' . $date . '&wd_as=Saved!');
-//echo $wd_head;
-//echo 'bob: ' . $content . $title;
-//header('Location: ' . $wd_head);
 ?>
