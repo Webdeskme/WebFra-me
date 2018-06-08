@@ -1,4 +1,4 @@
-<?php
+<?php include_once "../../wd_protect.php";
 if(isset($_GET['dir'])){
         $dir =  test_input($_GET['dir']);
     }

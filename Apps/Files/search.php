@@ -1,8 +1,9 @@
+<?php include_once "../../wd_protect.php"; ?>
 <div id="load">Loading</div>
 <form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'searchSub.php', ''); ?>">
 <input list="ldir" placeholder="Type App Name" id="dir" name="dir">
   <datalist id="ldir">
-<?php 
+<?php
 function search($wd_file, $file){
 foreach(glob($file) as $entry){
  if($entry != '.' || $entry != '..'){

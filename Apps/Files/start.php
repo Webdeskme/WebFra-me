@@ -1,10 +1,11 @@
+<?php include_once "../../wd_protect.php"; ?>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#">Files</a>
     </div>
@@ -31,7 +32,7 @@
     </div>
   </div>
 </nav>
-<?php 
+<?php
 //ini_set("error_reporting", E_ALL);
 if(isset($_GET['dir'])){$dir = test_input($_GET['dir']);} else{$dir = "";} ?>
 <div style="width: 100%; height: 100%; padding: 0px; margin: 0px;">
@@ -39,13 +40,13 @@ if(isset($_GET['dir'])){$dir = test_input($_GET['dir']);} else{$dir = "";} ?>
 if($dir != ""){
 $dir=rtrim($dir, '/');
 $dir=ltrim($dir, '/');
-$bread = explode('/', $dir); 
-$valuex=""; 
+$bread = explode('/', $dir);
+$valuex="";
 foreach($bread as $value){
 $valuex = $valuex . $value . '/';
-//$valuey = rtrim($valuex, '/'); 
-?><a href="<?php wd_url($wd_type, $wd_app, 'start.php', '&dir=' . $valuex); ?>"><?php echo $value; ?>/</a> 
-<?php 
+//$valuey = rtrim($valuex, '/');
+?><a href="<?php wd_url($wd_type, $wd_app, 'start.php', '&dir=' . $valuex); ?>"><?php echo $value; ?>/</a>
+<?php
 } }
 if(isset($_GET['dir'])){$dir = $dir . '/';}
 ?></h1>
@@ -92,7 +93,7 @@ $pb = test_input($_GET['pb']); $prog = test_input($_GET['prog']); $ptype = test_
   <input type="text" name="temp" placeholder="file name">
   <input type="submit" value="Download to files root directory" class="btn btn-success">
 </form>
-<?php 
+<?php
 if(isset($_POST['url']) && $_POST['temp']){
 file_put_contents($wd_file . $_POST['temp'], fopen($_POST['url'], 'r'));
 //echo 'done';
@@ -143,19 +144,19 @@ $( window ).on( "load", function(){
   } );
 </script>
 <?php
-$newEntry = explode('.', $entry); 
+$newEntry = explode('.', $entry);
 if(isset($newEntry[1])){$wd_extE = $newEntry[1];}
 else{$wd_extE = "";}
 
 if(isset($_GET['prog']) and isset($_GET['ptype']) and isset($_GET['psec'])){
-$prog = test_input($_GET['prog']); 
-$ptype = test_input($_GET['ptype']); 
-$psec = test_input($_GET['psec']); 
+$prog = test_input($_GET['prog']);
+$ptype = test_input($_GET['ptype']);
+$psec = test_input($_GET['psec']);
 //$newEntry = explode('.', $entry);
 }
-elseif(file_exists($wd_extFile . "ext.json")){ 
+elseif(file_exists($wd_extFile . "ext.json")){
   $obj = file_get_contents($wd_extFile . "ext.json");
-  $obj = json_decode($obj); 
+  $obj = json_decode($obj);
   if(isset($obj->$wd_extE)){
 	$gr = $obj->$wd_extE;
 	$gr1 = explode('/', $gr);
@@ -164,14 +165,14 @@ elseif(file_exists($wd_extFile . "ext.json")){
 	$psec = 'start.php';
   }
   else{
-$ptype = 'Apps'; 
-$prog = 'Viewer'; 
+$ptype = 'Apps';
+$prog = 'Viewer';
 $psec = 'start.php';
 }
-} 
+}
 else{
-$ptype = 'Apps'; 
-$prog = 'Viewer'; 
+$ptype = 'Apps';
+$prog = 'Viewer';
 $psec = 'start.php';
 }
 ?>
@@ -206,7 +207,7 @@ compress: false // If set to true, context menus will have less padding, making 
 <?php
 }
 else{
-if(isset($_GET['prog']) and isset($_GET['ptype']) and isset($_GET['psec'])){$prog = test_input($_GET['prog']); $ptype = test_input($_GET['ptype']); $psec = test_input($_GET['psec']); $wd1 = '&prog=' . $prog . '&ptype=' . $ptype . '&psec=' . $psec;  
+if(isset($_GET['prog']) and isset($_GET['ptype']) and isset($_GET['psec'])){$prog = test_input($_GET['prog']); $ptype = test_input($_GET['ptype']); $psec = test_input($_GET['psec']); $wd1 = '&prog=' . $prog . '&ptype=' . $ptype . '&psec=' . $psec;
 }
 else{$wd1 = "";}
 ?>

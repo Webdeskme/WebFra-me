@@ -1,4 +1,4 @@
-<?php
+<?php include_once "../../wd_protect.php";
 $dir = test_input($_POST['dir']);
 if(file_exists($wd_file . $dir)){
   if(is_dir($wd_file . $dir)){

@@ -1,4 +1,4 @@
-<?php
+<?php include_once "../../wd_protect.php";
 $folder = file_get_contents($wd_adminFile . 'oid.txt');
 $dir=test_input($_GET["dir"]);
 $file=test_input($_GET["file"]);
