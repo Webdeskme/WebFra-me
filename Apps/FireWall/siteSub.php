@@ -1,4 +1,4 @@
-<?php 
+<?php include_once "../../wd_protect.php"; 
 $num = test_input($_POST['num']);
 $default = test_input($_POST['default']);
 $con = "<?php return [ ";
