@@ -1,6 +1,6 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1>Your Sites</h1>  
+    <h1>Your Sites</h1>
     <p>Delete a domain name and press save to remove a domain name. Fill in the empty field at the bottom to add a domain name. After adding a domain name and pointing the domain name to this site, go through the install process like normal.</p>
     <?php //print_r($wd_roots); ?>
   </div>
@@ -17,7 +17,7 @@
       </tr>
     </thead>
     <tbody>
-      <?php 
+      <?php
       $x = 1;
       foreach($wd_roots as $key => $value){
         if($key != 'default'){
@@ -44,3 +44,4 @@
     <input type="hidden" name="num" value="<?php echo $x; ?>">
   </form>
 </div>
+<br><br><br><br>
