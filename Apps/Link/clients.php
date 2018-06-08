@@ -1,5 +1,6 @@
+<?php include_once "../../wd_protect.php"; ?>
 <h1>Client List:</h1>
-<?php 
+<?php
 $file = test_input($_GET['file']);
 $dobj = file_get_contents($wd_appr . $wd_app . '/' . $file);
 $dobj = json_decode($dobj);

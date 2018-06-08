@@ -1,4 +1,4 @@
-<?php 
+<?php include_once "../../wd_protect.php";
 if(isset($_POST['wd_Link_type']) && isset($_POST['wd_Link_app']) && isset($_POST['wd_Link_sec'])){
   $wd_Link_type = test_input($_POST['wd_Link_type']);
   $wd_Link_app = test_input($_POST['wd_Link_app']);

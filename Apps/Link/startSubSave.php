@@ -1,4 +1,4 @@
-<?php 
+<?php include_once "../../wd_protect.php";
 if(isset($_SESSION["user"]) && isset($_POST['name']) && isset($_POST['dirpath']) && isset($_POST['file']) && isset($_POST['pass']) && isset($_POST['type'])){
 $name = test_input($_POST['name']);
 $dirpath = test_input($_POST['dirpath']);

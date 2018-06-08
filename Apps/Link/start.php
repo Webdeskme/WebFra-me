@@ -1,3 +1,4 @@
+<?php include_once "../../wd_protect.php"; ?>
  <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
