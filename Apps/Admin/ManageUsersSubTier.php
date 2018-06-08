@@ -1,4 +1,4 @@
-<?php 
+<?php include_once "../../wd_protect.php";
 $tier = test_input($_POST['tier']);
 $user = test_input($_POST['user']);
 file_put_contents($wd_root . '/User/' . $user . '/Admin/tier.txt', $tier);

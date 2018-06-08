@@ -1,3 +1,4 @@
+<?php include_once "../../wd_protect.php"; ?>
 <h1>Manage Users</h1>
 <details>
 <summary><h3>Add User</h3></summary>
@@ -27,7 +28,7 @@
 <div class="panel panel-primary">
     <div class="panel-heading"><b>Users</b></div>
     <div class="panel-body">
-    <div class="table-responsive">          
+    <div class="table-responsive">
   <table class="table">
     <thead>
       <tr>
@@ -65,4 +66,3 @@
   </div>
     </div>
 </div>
-

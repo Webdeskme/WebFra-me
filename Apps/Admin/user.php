@@ -1,4 +1,4 @@
-<?php
+<?php include_once "../../wd_protect.php";
 if(isset($_GET['user'])){
 $user = test_input($_GET['user']);
 if(file_exists($wd_root . '/User/' . $user . '/Admin/info.json')){

@@ -1,3 +1,4 @@
+<?php include_once "../../wd_protect.php"; ?>
 <style>
 	table {
     font-family: arial, sans-serif;
@@ -82,7 +83,7 @@ if(file_exists($wd_admin . 't' . $tier . '.json')){$Obj=json_decode(file_get_con
     <div class="panel-heading"><b>Tier <?php echo $tier; ?>: permissions</b></div>
         <div class="panel-body">
             <form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'PermissionsSub.php', '&tier=' . $tier) ?>">
-               <!-- List Type: 
+               <!-- List Type:
                 <select name="type">
                     <option value="Blacklist">Blacklist</option>
                     <option value="Whitelist">Whitelist</option>

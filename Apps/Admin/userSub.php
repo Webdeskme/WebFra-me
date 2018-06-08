@@ -1,4 +1,4 @@
-<?php 
+<?php include_once "../../wd_protect.php";
 $user = test_input($_POST["user"]);
 $fn = test_input($_POST["fn"]);
 $ln = test_input($_POST["ln"]);

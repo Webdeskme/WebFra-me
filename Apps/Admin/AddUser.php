@@ -1,4 +1,4 @@
-<?php
+<?php include_once "../../wd_protect.php";
 $user = f_enc(strtolower(test_input($_POST["user"])));
 $pass = up_enc(test_input($_POST["pass"]));
 $tier = test_input($_POST["tier"]);

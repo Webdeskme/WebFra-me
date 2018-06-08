@@ -1,4 +1,4 @@
-<?php
+<?php include_once "../../wd_protect.php";
 $i = 0;
 $tier = test_input($_POST['tier']);
 $pass = f_enc(test_input($_POST['pass']));
@@ -76,7 +76,7 @@ $obj->contact = $user[$z][4];
 $nObj = json_encode($obj);
 file_put_contents($wd_root . '/User/' . $user[$z][2] . '/Admin/info.json', $nObj);
 }
-  
+
   $z = $z + 1;
 }
 wd_head($wd_type, $wd_app, 'ManageUsers.php', '');
