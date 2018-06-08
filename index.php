@@ -4,7 +4,7 @@ include "testInput.php";
 if(!file_exists("path.php")){
   header('Location: install.php');
 }
-elseif(file_exists("path.php") && isset($wd_roots[$_SERVER['HTTP_HOST']]) && ($wd_roots[$_SERVER['HTTP_HOST']] != "NA") ){
+elseif(file_exists("path.php") && isset($wd_roots[$_SERVER['HTTP_HOST']]) && ($wd_roots[$_SERVER['HTTP_HOST']] != "NA" || file_exists("path.php") && !isset($wd_roots[$_SERVER['HTTP_HOST']])) ){
 
   $theme = test_input(file_get_contents("www/dtheme.txt"));
   if(isset($_GET['page'])){
