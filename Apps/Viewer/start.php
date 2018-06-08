@@ -1,17 +1,17 @@
-<?php ini_set("error_reporting", E_ALL); 
-if(isset($_GET['title'])){  
+<?php include_once "../../wd_protect.php";
+if(isset($_GET['title'])){
     $title1 = test_input($_GET['title']);
-} 
+}
 else{
     $title1 = "";
 }
-if(isset($_GET['dir'])){ 
+if(isset($_GET['dir'])){
     $dir1 = test_input($_GET['dir']);
 }
 else{
     $dir1 = "";
 }
-if(isset($_GET['entry'])){ 
+if(isset($_GET['entry'])){
     $Uentry1 = test_input($_GET['entry']);
 }
 else{
@@ -19,21 +19,21 @@ else{
 }
 ?>
 <a href="<?php wd_url('Apps', 'Files', 'start.php', '&prog=' . $wd_app . '&ptype=' . $wd_type . '&psec=start.php'); ?>">Open File</a> | <a href="<?php wd_url('Apps', 'Files', 'start.php', '&prog=' . $wd_app . '&ptype=' . $wd_type . '&psec=start.php&pb=View Slide Show'); ?>">Set Slide Show</a> | <a href="<?php wd_urlSub($wd_type, $wd_app, 'viewerSub.php', '&title=' . $title1 . '&dir=' . $dir1 . '&entry=' . $Uentry1); ?>">Make Desktop Background if suported image.</a><br>
-<?php 
+<?php
 if(!isset($_GET['pb'])){
-if(isset($_GET['title'])){  
+if(isset($_GET['title'])){
     $title = test_input($_GET['title']);
-} 
+}
 else{
     $title = "";
 }
-if(isset($_GET['dir'])){ 
+if(isset($_GET['dir'])){
     $dir = test_input($_GET['dir']);
 }
 else{
     $dir = "";
 }
-if(isset($_GET['entry'])){ 
+if(isset($_GET['entry'])){
     $Uentry = test_input($_GET['entry']);
 }
 else{
@@ -122,7 +122,7 @@ if($ext == "mp3"){
 }
 else{
 $pb = test_input($_GET['pb']);
-$folder = $wd_file . $pb; 
+$folder = $wd_file . $pb;
 
         ?>
 <style>
@@ -219,7 +219,7 @@ $folder = $wd_file . $pb;
 <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-    
+
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -268,7 +268,7 @@ $folder = $wd_file . $pb;
       }}}}
       ?>
     </div>
-    <!-- Left and right controls 
+    <!-- Left and right controls
     <a class="left carousel-control" href="#myCarouselF" role="button" data-slide="prev">
       <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
@@ -283,7 +283,7 @@ $folder = $wd_file . $pb;
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
-      
+
     </div>
   </div>
 <script>

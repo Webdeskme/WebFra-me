@@ -1,4 +1,4 @@
-<?php
+<?php include_once "../../wd_protect.php";
 $epub = test_input($_GET['epub']);
 ?>
 <!DOCTYPE html>
@@ -51,11 +51,11 @@ $epub = test_input($_GET['epub']);
         <script src="<?php echo $wd_type . '/' . $wd_app ;?>/epub.js-master/reader/js/reader.min.js"></script>
 
         <!-- Plugins -->
-         <script src="<?php echo $wd_type . '/' . $wd_app ;?>/epub.js-master/reader/js/plugins/search.js"></script> 
+         <script src="<?php echo $wd_type . '/' . $wd_app ;?>/epub.js-master/reader/js/plugins/search.js"></script>
 
         <!-- Highlights -->
-         <script src="<?php echo $wd_type . '/' . $wd_app ;?>/epub.js-master/reader/js/libs/jquery.highlight.js"></script> 
-         <script src="<?php echo $wd_type . '/' . $wd_app ;?>/epub.js-master/reader/js/hooks/extensions/highlight.js"></script> 
+         <script src="<?php echo $wd_type . '/' . $wd_app ;?>/epub.js-master/reader/js/libs/jquery.highlight.js"></script>
+         <script src="<?php echo $wd_type . '/' . $wd_app ;?>/epub.js-master/reader/js/hooks/extensions/highlight.js"></script>
 
     </head>
     <body>

@@ -1,4 +1,4 @@
-<?php
+<?php include_once "../../wd_protect.php"; 
 if(isset($_GET['title'])){
 	$title = test_input($_GET['title']);
 	$tentry = test_input($_GET['entry']);
