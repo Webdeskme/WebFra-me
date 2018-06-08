@@ -1,7 +1,7 @@
 <?php
-if(isset($_POST['con'])){
-  $con = htmlspecialchars_decode($_POST["con"], ENT_QUOTES);
-  file_put_contents("www/Pages/style.css", $con);
+if(isset($wd_POST['con'])){
+  $con = htmlspecialchars_decode($wd_POST["con"], ENT_QUOTES);
+  file_put_contents($wd_www . "style.css", $con);
 }
 ?>
 <nav class="navbar navbar-inverse">
@@ -35,9 +35,9 @@ if(isset($_POST['con'])){
 </nav>
 <form method="post" action="<?php wd_url($wd_type, $wd_app, 'pcss.php', ''); ?>" style="width: 90%; height: 70%;">
     <label for="con">CSS Content: </label><br>
-    <textarea name="con" id="con" for="con" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:100%; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"  autofocus><?php 
-if(file_exists("www/Pages/style.css")){
-    echo htmlspecialchars(file_get_contents("www/Pages/style.css"));} 
+    <textarea name="con" id="con" for="con" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:100%; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"  autofocus><?php
+if(file_exists($wd_www . "style.css")){
+    echo htmlspecialchars(file_get_contents($wd_www . "style.css"));}
 ?></textarea>
     <br>
     <input type="submit" class="btn btn-success" value="Save">

@@ -8,16 +8,16 @@ else{
 */
 $t = "";
 $c = "";
-if(isset($_POST['ed']) && file_exists("www/Pages/feed.json")){
+if(isset($_POST['ed']) && file_exists($wd_www . "feed.json")){
   $ed = test_input($_POST['ed']);
-  $objFeed = file_get_contents("www/Pages/feed.json");
+  $objFeed = file_get_contents($wd_www . "feed.json");
   $objFeed = json_decode($objFeed, true);
   if(isset($_POST['ide'])){
     $ide = $_POST['ide'];
   if($ed == 'Delete'){
 	unset($objFeed[$ide]);
     $nObjF = json_encode($objFeed);
-     file_put_contents("www/Pages/feed.json", $nObjF);
+     file_put_contents($wd_www . "feed.json", $nObjF);
     if (isset($_SERVER['HTTPS']) &&
     ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
     isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
@@ -34,7 +34,7 @@ $feed = '<?xml version="1.0" encoding="UTF-8" ?>
   <link>' . $protocol . $_SERVER["SERVER_NAME"] . '</link>
   <description>' . $_SERVER["SERVER_NAME"] . ' site feed</description>';
 if(file_exists("www/Pages/feed.json")){
-  $obj = file_get_contents("www/Pages/feed.json");
+  $obj = file_get_contents($wd_www . "feed.json");
   $obj = json_decode($obj, TRUE);
   foreach($obj as $post){
     $title = $post["title"];
@@ -59,11 +59,11 @@ file_put_contents("feed.xml", $feed);
 if(isset($_POST['con']) && isset($_POST['title'])){
   $title = test_input($_POST['title']);
   $con = test_input($_POST["con"], ENT_QUOTES);
-  if(!file_exists("www/Pages/feed.json")){
+  if(!file_exists($wd_www . "feed.json")){
     $obj = new stdClass;
   }
   else{
-    $obj = file_get_contents("www/Pages/feed.json");
+    $obj = file_get_contents($wd_www . "feed.json");
     $obj = json_decode($obj);
   }
   if(isset($_GET['id']) && $_GET['id'] != ""){
@@ -78,7 +78,7 @@ else{
      $post = array("title" => $title, "con" => $con);
      $obj->$id = $post;
      $nObj = json_encode($obj);
-     file_put_contents("www/Pages/feed.json", $nObj);
+     file_put_contents($wd_www . "feed.json", $nObj);
 if (isset($_SERVER['HTTPS']) &&
     ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
     isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
@@ -94,8 +94,8 @@ $feed = '<?xml version="1.0" encoding="UTF-8" ?>
   <title>' . $_SERVER["SERVER_NAME"] . '</title>
   <link>' . $protocol . $_SERVER["SERVER_NAME"] . '</link>
   <description>' . $_SERVER["SERVER_NAME"] . ' site feed</description>';
-if(file_exists("www/Pages/feed.json")){
-  $obj = file_get_contents("www/Pages/feed.json");
+if(file_exists($wd_www . "feed.json")){
+  $obj = file_get_contents($wd_www . "feed.json");
   $obj = json_decode($obj, TRUE);
   foreach($obj as $post){
     $title = $post["title"];
@@ -168,7 +168,7 @@ tinymce.init({
         <li><a href="<?php wd_url($wd_type, $wd_app, 'log.php', ''); ?>">Log</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+
       </ul>
     </div>
   </div>
@@ -178,7 +178,7 @@ tinymce.init({
     <input id="title" name="title" title="The Title" placeholder="The Title" value="<?php echo $t; ?>">
   <br>
     <label for="con">Post Content: </label><br>
-    <textarea name="con" id="con" for="con" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:100%;"  autofocus><?php 
+    <textarea name="con" id="con" for="con" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:100%;"  autofocus><?php
 echo $c;
 ?></textarea>
   <?php
@@ -193,15 +193,15 @@ echo $c;
 </form>
 <hr>
 <?php
-if(file_exists("www/Pages/feed.json")){
+if(file_exists($wd_www . "feed.json")){
 ?>
 <form method="post" action="<?php wd_url($wd_type, $wd_app, 'ppost.php', ''); ?>" style="width: 90%; height: 70%;">
    <div class="form-group">
   <label for="ide">Select post to edit or delete:</label>
   <select class="form-control" id="ide" name="ide">
     <?php
-    if(file_exists("www/Pages/feed.json")){
-  $obj = file_get_contents("www/Pages/feed.json");
+    if(file_exists($wd_www . "feed.json")){
+  $obj = file_get_contents($wd_www . "feed.json");
   $obj = json_decode($obj, TRUE);
     }
     foreach($obj as $key => $post){
@@ -211,7 +211,7 @@ if(file_exists("www/Pages/feed.json")){
     }
     ?>
   </select>
-</div> 
+</div>
   <input type="submit" class="btn btn-success" name="ed" value="Edit"> <input type="submit" class="btn btn-danger" name="ed" value="Delete">
 </form>
 <?php
