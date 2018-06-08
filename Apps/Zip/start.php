@@ -1,5 +1,6 @@
+<?php include_once "../../wd_protect.php"; ?>
 <a href="<?php wd_url('Apps', 'Files', 'start.php', '&prog=' . $wd_app . '&ptype=' . $wd_type . '&psec=start.php&pb=Zip This Folder'); ?>">Zip Folder</a><br>
-<?php 
+<?php
 if(isset($_GET['title']) && isset($_GET['dir'])){
 $title = test_input($_GET['title']);
 $dir = test_input($_GET['dir']);
@@ -34,8 +35,8 @@ function Zip($source, $destination)
 	}
 
     //$source = str_replace('\\', '/', realpath($source));
-    
-    echo 'Source: ' . $source . '<br>Destination: ' . $destination . '<br>'; 
+
+    echo 'Source: ' . $source . '<br>Destination: ' . $destination . '<br>';
 echo 'running ....<br>';
     if (is_dir($source) === true)
     {
