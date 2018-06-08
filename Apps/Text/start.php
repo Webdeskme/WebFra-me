@@ -1,3 +1,4 @@
+<?php include_once "../../wd_protect.php"; ?>
 <div style="width: 100%; height: 100%; background-color: yellow; padding: 0px; margin: 0px;">
 <h1 style="margin: 0px;">Text</h1>
 <a href="<?php wd_url('Apps', 'Files', 'start.php', '&prog=' . $wd_app . '&ptype=' . $wd_type . '&psec=start.php'); ?>">Open File</a><br>
