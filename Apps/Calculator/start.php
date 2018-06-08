@@ -1,3 +1,4 @@
+<?php include_once "../../wd_protect.php"; ?>
 <style>
   .lg{
     font-size: 2em;
