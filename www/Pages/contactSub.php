@@ -1,4 +1,4 @@
-<?php
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 if(file_exists($wd_admin . 'esmtp.json')){
 $esmtp = file_get_contents($wd_admin . 'esmtp.json');
 $esmtp = json_decode($esmtp, true);

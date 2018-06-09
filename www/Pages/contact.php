@@ -1,3 +1,4 @@
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
 <div>
   <div>
     <div>
@@ -31,7 +32,7 @@
             <label for="con">Content:</label>
             <textarea id="con" name="con"  class="form-control" data-toggle="tooltip" title="Your content." placeholder="Your content" required></textarea>
           </div>
-          <input type="submit" id="submit" value="send" class="btn btn-success"> <span id="bcontact"></span> 
+          <input type="submit" id="submit" value="send" class="btn btn-success"> <span id="bcontact"></span>
         </form>
       </div>
     </div>

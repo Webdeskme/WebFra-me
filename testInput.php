@@ -180,6 +180,10 @@ if(file_exists("path.php")){
       echo $url = "desktop.php?type=" . $wd_type . "&app=" . $app . "&sec=" . $sec . $get . $GLOBALS['wd_url'];
      // return $url;
   }
+  function wd_www($wd_page, $get) {
+      echo $url = "index.php?page=" . $wd_page . $get . $GLOBALS['wd_url'];
+     // return $url;
+  }
   function wd_web($wd_type, $app, $sec, $get) {
       echo $url = "web.php?type=" . $wd_type . "&app=" . $app . "&sec=" . $sec . $get . $GLOBALS['wd_url'];
      // return $url;

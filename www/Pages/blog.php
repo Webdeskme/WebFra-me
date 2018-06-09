@@ -1,4 +1,4 @@
-<?php
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 $xml=("feed.xml");
 $xmlDoc = new DOMDocument();
 $xmlDoc->load($xml);

@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
+<!--<!DOCTYPE html>
 <html><head>
 	<title>Community Covenant</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -51,7 +52,7 @@
 	</style>
 </head>
 
-<body>
+<body>-->
 
 <h1>Community Covenant</h1>
 
@@ -192,4 +193,4 @@ future.</p>
 <p><span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" property="dct:title" rel="dct:type">Community Covenant</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://community-covenant.net/" property="cc:attributionName" rel="cc:attributionURL">Coraline Ada Ehmke</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.<br>Based on a work at <a xmlns:dct="http://purl.org/dc/terms/" href="http://community-covenant.net/latest/" rel="dct:source">http://community-covenant.net/</a>.</p>
 
 
-</body></html>
+<!--</body></html>-->

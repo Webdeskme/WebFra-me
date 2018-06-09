@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
+<!--<!DOCTYPE html>
 <html>
 <title>Terms and Conditions of Use</title>
-<body>
+<body>-->
 
 <h2>
 	Web Site Terms and Conditions of Use (WebDesk 0.1.0 Genral Public Terms and Conditions: vA)
@@ -12,11 +13,11 @@
 </h3>
 
 <p>
-	By accessing this web site, you are agreeing to be bound by these 
-	web site Terms and Conditions of Use, all applicable laws and regulations, 
-	and agree that you are responsible for compliance with any applicable local 
-	laws. If you do not agree with any of these terms, you are prohibited from 
-	using or accessing this site. The materials contained in this web site are 
+	By accessing this web site, you are agreeing to be bound by these
+	web site Terms and Conditions of Use, all applicable laws and regulations,
+	and agree that you are responsible for compliance with any applicable local
+	laws. If you do not agree with any of these terms, you are prohibited from
+	using or accessing this site. The materials contained in this web site are
 	protected by applicable copyright and trade mark law.
 </p>
 
@@ -37,7 +38,7 @@
 <p>
 	In no event shall this web site or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption,) arising out of the use or inability to use the materials on this web site, even if an authorized representative from this web site has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
 </p>
-			
+
 <h3>
 	4. Revisions and Errata
 </h3>
@@ -73,5 +74,5 @@
 <p>
 	General Terms and Conditions applicable to Use of a Web Site.
 </p>
-</body>
-</html>
+<!--</body>
+</html>-->
