@@ -1,4 +1,4 @@
-<?php include_once "../../wd_protect.php"; ?>
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
 <h1>Client List:</h1>
 <?php
 $file = test_input($_GET['file']);

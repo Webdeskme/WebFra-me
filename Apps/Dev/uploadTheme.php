@@ -1,4 +1,4 @@
-<?php
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 $app = test_input($_POST['app']);
 $target_dir = "www/Themes/" . $app . "/";
 //$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);

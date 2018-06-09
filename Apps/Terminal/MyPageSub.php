@@ -1,4 +1,4 @@
-<?php
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 //session_start();
 //include("testInput.php");
 $dir = test_input($_POST["dir"]);

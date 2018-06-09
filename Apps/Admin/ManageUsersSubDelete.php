@@ -1,4 +1,4 @@
-<?php include_once "../../wd_protect.php";
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 $user = test_input($_POST['user']);
 $userd = f_dec($user);
 //echo $wd_root . 'User/' . $user . '/';

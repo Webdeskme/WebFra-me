@@ -1,4 +1,4 @@
-<?php include_once "../../wd_protect.php";
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 $htype = test_input($_GET['htype']);
 $app = test_input($_GET['happ']);
 ?>

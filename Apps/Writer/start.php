@@ -1,4 +1,4 @@
-<?php include_once "../../wd_protect.php"; 
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 if(isset($_GET["title"])){$title = $_GET["title"]; $title=explode(".", $title); $title = $title[0];}
 else{
 	$cdate = date("M_j_Y--g_i_a");

@@ -1,4 +1,4 @@
-<?php
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 //session_start();
 //ini_set("display_errors", 1);
 //include("testInput.php");

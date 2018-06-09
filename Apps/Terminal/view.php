@@ -1,8 +1,8 @@
-<?php
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 if(isset($_GET['dir'])){$dir = test_input($_GET['dir']); if(isset($_GET['file'])){$file = test_input($_GET['file']);}}
 else{ $dir = ""; $file=""; }
-$OldDir = $dir; 
-$dir = $dir . $file; 
+$OldDir = $dir;
+$dir = $dir . $file;
 if(isset($_POST['css'])){
 	$css = test_input($_POST['css']);
 }
@@ -48,9 +48,9 @@ else{
 		</form>
     <h1>Terminal View: <?php echo $dir; ?></h1>
     <pre><code class="html">
-<?php 
+<?php
 if(file_exists($dir)){
-    echo htmlspecialchars(file_get_contents($dir));} 
+    echo htmlspecialchars(file_get_contents($dir));}
 ?>
     </code></pre>
     <script src="<?php echo $wd_type . '/' . $wd_app; ?>/highlight.pack.js"></script>

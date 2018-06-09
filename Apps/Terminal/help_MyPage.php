@@ -1,3 +1,4 @@
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
 <dl>
       <dt class=command id=command_selectAll><code><strong>selectAll</strong></code><span class=keybinding>Ctrl-A (PC), Cmd-A (Mac)</span></dt>
       <dd>Select the whole content of the editor.</dd>

@@ -1,3 +1,4 @@
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -23,7 +24,7 @@
         <li><a href="<?php wd_url($wd_type, $wd_app, 'log.php', ''); ?>">Log</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+
       </ul>
     </div>
   </div>
@@ -38,7 +39,7 @@
         ?>
     <span class="well"<?php if(file_exists("www/dtheme.txt")){
           $dtheme = test_input(file_get_contents("www/dtheme.txt"));
-          if($theme == $dtheme){ 
+          if($theme == $dtheme){
             echo 'style="background-color: #99ff99;" data-toggle="popover" data-trigger="hover" title="Active" data-content="This theme is currently set to active."';
           }
         } ?>>

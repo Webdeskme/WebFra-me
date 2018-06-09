@@ -1,5 +1,5 @@
-<?php 
-$MyApp = test_input($_GET["MyApp"]); 
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
+$MyApp = test_input($_GET["MyApp"]);
 ?>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -7,7 +7,7 @@ $MyApp = test_input($_GET["MyApp"]);
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>">Developer Portal: <?php echo $MyApp; ?></a>
     </div>
@@ -32,9 +32,9 @@ $MyApp = test_input($_GET["MyApp"]);
 <form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'HUDSub.php', ''); ?>" style="width: 90%; height: 70%;">
     <label for="nameA">Page Content: </label><br>
     <input type="hidden" name="nameA" value="<?php echo $MyApp; ?>">
-    <textarea name="con" id="con" for="con" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:100%; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"  autofocus><?php 
+    <textarea name="con" id="con" for="con" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:100%; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"  autofocus><?php
 if(file_exists("HUD/" . $MyApp)){
-    echo htmlspecialchars(file_get_contents("HUD/" . $MyApp));} 
+    echo htmlspecialchars(file_get_contents("HUD/" . $MyApp));}
 ?></textarea>
     <br>
     <input type="submit" class="btn btn-success" value="Save">

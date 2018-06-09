@@ -1,4 +1,4 @@
-<?php
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 $nameA = test_input($_GET["MyApp"]);
 $dir = "www/Themes/" . $nameA . "/";
 wd_deleteDir($dir);

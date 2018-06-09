@@ -1,4 +1,4 @@
-<?php include_once "../../wd_protect.php";
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 $user = test_input($_POST['user']);
 $target_dir = $wd_root . '/User/' . $user . '/Admin/';
 $target_file = $target_dir . 'pic.jpg';

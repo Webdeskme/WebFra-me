@@ -1,10 +1,11 @@
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>">Developer Portal: Apps</a>
     </div>
@@ -19,11 +20,11 @@
         <li><a href="<?php wd_url($wd_type, $wd_app, 'startMhud.php', ''); ?>">MHUD</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-		<li><a href="#" data-toggle="collapse" data-target="#NewA">Create Applet</a></li>  
+		<li><a href="#" data-toggle="collapse" data-target="#NewA">Create Applet</a></li>
 	  </ul>
     </div>
   </div>
-</nav> 
+</nav>
 <div id="NewA" class="collapse">
 <form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'startAplSub.php', ''); ?>">
     <label for="nameA">New App Name: </label>

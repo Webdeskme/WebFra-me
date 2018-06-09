@@ -1,7 +1,7 @@
-<?php
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 $wd_tier = test_input($wd_tier);
 $wd_tierFile = $wd_admin . $wd_tier . '.json';
-if(file_exists($wd_tierFile)){$wd_tierobj=json_decode(file_get_contents($wd_tierFile)); $wd_obj = $wd_tierobj;} 
+if(file_exists($wd_tierFile)){$wd_tierobj=json_decode(file_get_contents($wd_tierFile)); $wd_obj = $wd_tierobj;}
 else{
 $wd_tierobj = "";
 $wd_obj = "";

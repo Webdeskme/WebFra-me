@@ -1,4 +1,4 @@
-<?php
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 /*if(isset($_GET['page'])){
   $page = test_input($_GET['page']);
 }

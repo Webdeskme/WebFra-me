@@ -1,4 +1,4 @@
-<?php
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } 
 $target_dir = "www/Media/";
 //$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 $target_file = $target_dir . basename( $_FILES["fileToUpload"]["name"]);

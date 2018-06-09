@@ -1,4 +1,4 @@
-<?php 
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 $MyApp = test_input($_GET['MyApp']);
 $MyPage = test_input($_GET['MyPage']);
 if(isset($_POST['css'])){
@@ -44,9 +44,9 @@ else{
 		</form>
     <h1>Dev View: <?php echo "MyApps/" . $MyApp . "/" . $MyPage; ?></h1>
     <pre><code class="html">
-<?php 
+<?php
 if(file_exists("MyApps/" . $MyApp . "/" . $MyPage)){
-    echo htmlspecialchars(file_get_contents("MyApps/" . $MyApp . "/" . $MyPage));} 
+    echo htmlspecialchars(file_get_contents("MyApps/" . $MyApp . "/" . $MyPage));}
 ?>
     </code></pre>
     <script src="<?php echo $wd_type . '/' . $wd_app; ?>/highlight.pack.js"></script>

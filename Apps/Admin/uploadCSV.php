@@ -1,4 +1,4 @@
-<?php include_once "../../wd_protect.php";
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 $i = 0;
 $tier = test_input($_POST['tier']);
 $pass = f_enc(test_input($_POST['pass']));

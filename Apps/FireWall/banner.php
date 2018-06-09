@@ -1,4 +1,4 @@
-<?php include_once "../../wd_protect.php"; ?>
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
  <nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <!-- Brand -->
   <a class="navbar-brand" href="<?php wd_url($wd_type, $wd_app, 'start.php', '') ?>"><?php echo $wd_app; ?></a>

@@ -1,4 +1,4 @@
-<?php include_once "../../wd_protect.php";
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 if(isset($_GET['wd_Link_type']) && isset($_GET['wd_Link_app']) && isset($_GET['wd_Link_sec'])){
   $wd_Link_type = test_input($_GET['wd_Link_type']);
   $wd_Link_app = test_input($_GET['wd_Link_app']);

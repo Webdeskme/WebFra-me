@@ -1,3 +1,4 @@
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
 <div class="webdesk_accordion" id="accordionExample">
   <div class="webdesk_card">
     <div class="webdesk_card-header" id="headingOne">

@@ -1,4 +1,4 @@
-<?php include_once "../../wd_protect.php";
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 if(isset($_GET['title'])){$title = test_input($_GET['title']); file_put_contents($wd_type . '/'. $wd_app . '/view.html', file_get_contents($wd_file . $title)); $_POST['url'] = $wd_type . '/' . $wd_app . '/view.html';}
 if(isset($_POST['url'])){$url = test_input($_POST['url']);}
 else{$url = "https://duckduckgo.com/";}

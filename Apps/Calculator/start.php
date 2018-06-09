@@ -1,4 +1,4 @@
-<?php include_once "../../wd_protect.php"; ?>
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
 <style>
   .lg{
     font-size: 2em;
@@ -41,7 +41,7 @@
         <div class="col-xs-2 my-column"><button type="button" class="btn btn-primary btn-lg btn-block my-column" onclick="display.value += '9'"><b class="lg">9</b></button></div>
         <div class="col-xs-2 my-column"><button type="button" class="btn btn-danger btn-lg btn-block my-column" onclick="display.value = ''"><b class="lg">C</b></button></div>
         <div class="col-xs-2 my-column"><button type="button" class="btn btn-success btn-lg btn-block my-column" onclick="if (checkNum(display.value)) {display.value = eval(display.value);}"><b class="lg">=</b></button></div>
-      </div> 
+      </div>
       <div class="row">
         <div class="col-xs-1 my-column"></div>
         <div class="col-xs-2 my-column"><button type="button" class="btn btn-primary btn-lg btn-block my-column" onclick="display.value += '4'"><b class="lg">4</b></button></div>
@@ -49,7 +49,7 @@
         <div class="col-xs-2 my-column"><button type="button" class="btn btn-primary btn-lg btn-block my-column" onclick="display.value += '6'"><b class="lg">6</b></button></div>
         <div class="col-xs-2 my-column"><button type="button" class="btn btn-warning btn-lg btn-block my-column" onclick="display.value += '*'"><b class="lg">X</b></button></div>
         <div class="col-xs-2 my-column"><button type="button" class="btn btn-warning btn-lg btn-block my-column" onclick="display.value += '/'"><b class="lg">/</b></button></div>
-      </div> 
+      </div>
       <div class="row">
         <div class="col-xs-1 my-column"></div>
         <div class="col-xs-2 my-column"><button type="button" class="btn btn-primary btn-lg btn-block my-column" onclick="display.value += '1'"><b class="lg">1</b></button></div>
@@ -57,7 +57,7 @@
         <div class="col-xs-2 my-column"><button type="button" class="btn btn-primary btn-lg btn-block my-column" onclick="display.value += '3'"><b class="lg">3</b></button></div>
         <div class="col-xs-2 my-column"><button type="button" class="btn btn-warning btn-lg btn-block my-column" onclick="display.value += '+'"><b class="lg">+</b></button></div>
         <div class="col-xs-2 my-column"><button type="button" class="btn btn-warning btn-lg btn-block my-column" onclick="display.value += '-'"><b class="lg">-</b></button></div>
-      </div> 
+      </div>
       <div class="row">
         <div class="col-xs-1 my-column"></div>
         <div class="col-xs-2 my-column"><button type="button" class="btn btn-primary btn-lg btn-block my-column" onclick="display.value += '0'"><b class="lg">0</b></button></div>
@@ -65,7 +65,7 @@
         <div class="col-xs-2 my-column"><button type="button" class="btn btn-primary btn-lg btn-block my-column" onclick="changeSign(display);"><b class="lg">+/-</b></button></div>
         <div class="col-xs-2 my-column"><button type="button" class="btn btn-warning btn-lg btn-block my-column" onclick="display.value += '('"><b class="lg">(</b></button></div>
         <div class="col-xs-2 my-column"><button type="button" class="btn btn-warning btn-lg btn-block my-column" onclick="display.value += ')'"><b class="lg">)</b></button></div>
-      </div> 
+      </div>
     </div>
   </div>
 </div>

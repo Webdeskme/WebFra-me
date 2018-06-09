@@ -1,4 +1,4 @@
-<?php 
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 $_SESSION['root'] = getcwd() . '/';
 //$_SESSION['root'] = '../../html';
 if(isset($_GET['dir'])){$dir = test_input($_GET['dir']);}
@@ -10,7 +10,7 @@ else{ $dir = ""; }
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>">Terminal Portal</a>
     </div>
@@ -29,14 +29,14 @@ else{ $dir = ""; }
   <li><a href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>">wd://root</a></li>
   <?php
   if(isset($_GET['dir']) && $_GET['dir'] != "" && $_GET['dir'] != "/"){
-$bread = explode('/', $dir); 
-$valuex=""; 
+$bread = explode('/', $dir);
+$valuex="";
 foreach($bread as $value){
 $valuex = $valuex . $value . '/';
-$valuey = rtrim($valuex, '/'); 
+$valuey = rtrim($valuex, '/');
 ?>
-<li><a href="<?php wd_url($wd_type, $wd_app, 'start.php', '&dir=' . $valuey ); ?>"><?php echo $value; ?></a></li> 
-<?php 
+<li><a href="<?php wd_url($wd_type, $wd_app, 'start.php', '&dir=' . $valuey ); ?>"><?php echo $value; ?></a></li>
+<?php
 } }
 if(isset($_GET['dir'])){$dir = $dir . '/';}
 ?>

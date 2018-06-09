@@ -1,3 +1,4 @@
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -30,7 +31,7 @@
   </div>
 </nav>
 <h2>Monthly Log:</h2>
-<?php 
+<?php
 if(file_exists($wd_admin . 'fstat.txt')){
   echo file_get_contents($wd_admin . 'fstat.txt');
 }

@@ -1,6 +1,6 @@
-<?php 
-$MyApp = test_input($_GET["MyApp"]); 
-$MyPage = test_input($_GET["MyPage"]); 
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
+$MyApp = test_input($_GET["MyApp"]);
+$MyPage = test_input($_GET["MyPage"]);
 ?>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
@@ -8,7 +8,7 @@ $MyPage = test_input($_GET["MyPage"]);
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>">Developer Portal: <?php echo $MyApp . "/" . $MyPage; ?></a>
     </div>
@@ -34,9 +34,9 @@ $MyPage = test_input($_GET["MyPage"]);
     <label for="nameA">New Page Content: </label><br>
     <input type="hidden" name="nameA" value="<?php echo $MyApp; ?>">
     <input type="hidden" name="nameP" value="<?php echo $MyPage; ?>">
-    <textarea name="con" id="con" for="con" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:100%; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"  autofocus><?php 
+    <textarea name="con" id="con" for="con" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:100%; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"  autofocus><?php
 if(file_exists("MyApps/" . $MyApp . "/" . $MyPage)){
-    echo htmlspecialchars(file_get_contents("MyApps/" . $MyApp . "/" . $MyPage));} 
+    echo htmlspecialchars(file_get_contents("MyApps/" . $MyApp . "/" . $MyPage));}
 ?></textarea>
     <br>
     <input type="submit" class="btn btn-success" value="Save">

@@ -1,3 +1,4 @@
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -47,7 +48,7 @@
     $pb = number_format((float)$pb, 2, '.', '');
 ?>
   <h3>Your Servers Disk has <?php echo $left . " out of " . $total; ?> remaining. That is <?php echo $pb; ?>% left.</h3>
-<?php 
+<?php
 if(file_exists($wd_admin . 'fstat.json')){
   $obj = file_get_contents($wd_admin . 'fstat.json');
   $obj = json_decode($obj, true);

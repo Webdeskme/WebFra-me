@@ -1,11 +1,12 @@
-<?php $MyApp = test_input($_GET["MyApp"]); ?>
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
+$MyApp = test_input($_GET["MyApp"]); ?>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>">Developer Portal: <?php echo $MyApp; ?></a>
     </div>
@@ -22,7 +23,7 @@
       <ul class="nav navbar-nav navbar-right">
 		<li><a href="#" data-toggle="collapse" data-target="#newP"><span class="glyphicon glyphicon-pencil"></span> Add Page</a></li>
 		<li><a href="#" data-toggle="collapse" data-target="#newI"><span class="glyphicon glyphicon-picture"></span> Add Icon</a></li>
-        <li><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Publish</button></li> 
+        <li><button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">Publish</button></li>
         <li><?php wd_confirm($wd_type, $wd_app, 'MyAppSubDelete.php', '&MyApp=' . $MyApp, '1', '<span class="glyphicon glyphicon-trash"></span> Delete'); ?></li>
       </ul>
     </div>

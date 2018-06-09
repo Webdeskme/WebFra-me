@@ -1,4 +1,4 @@
-<?php include_once "../../wd_protect.php"; ?>
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
 <a href="<?php wd_url($wd_type, $wd_app, 'LoginLog.php', ''); ?>"><h3>Monthly Login Log</h3></a>
 <a href="<?php wd_url($wd_type, $wd_app, 'LoginFLog.php', ''); ?>"><h3>Monthly Failed Login Log</h3></a>
 <a href="<?php wd_url($wd_type, $wd_app, 'ManageUsers.php', ''); ?>"><h3>Manage Users</h3></a>

@@ -1,4 +1,4 @@
-<?php
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 if(isset($wd_POST['con'])){
   $con = htmlspecialchars_decode($wd_POST["con"], ENT_QUOTES);
   file_put_contents($wd_www . "banner.php", $con);

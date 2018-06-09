@@ -1,3 +1,4 @@
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -27,7 +28,7 @@
     </div>
   </div>
 </nav>
-<?php 
+<?php
 if(file_exists("www/dtheme.txt")){
   $theme = file_get_contents("www/dtheme.txt");
   if(file_exists("www/Themes/" . $theme . "/settings.php")){

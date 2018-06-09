@@ -1,4 +1,4 @@
-<?php include_once "../../wd_protect.php"; ?>
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
 <br><br>
 <div class="panel panel-primary">
   <div class="panel-heading"><b>Upload CSV(Users)</b></div>

@@ -1,4 +1,4 @@
-<?php include_once "../../wd_protect.php"; ?>
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
 <br><br>
 <a href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>"><button class="btn btn-primary">Back</button></a>
 <?php
