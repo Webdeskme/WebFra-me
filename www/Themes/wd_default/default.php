@@ -27,7 +27,7 @@
     A link to the terms of use, cookie and privacy policy, and licences
     can be found at the bottom right corner of the menu bar by clicking
     the exlmation point once loged in, and in the menu of the login page.-->
-<html>
+<html lang="en-US">
 <head>
   <meta charset="utf-8">
      <meta http-equiv="content-language" content="ll-cc">
