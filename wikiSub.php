@@ -1,9 +1,4 @@
 <?php
-header("X-Robots-Tag: noIndex, nofollow", true);
-if ($_SERVER['SERVER_ADDR'] != $_SERVER['REMOTE_ADDR']){
-  $this->output->set_status_header(400, 'No Remote Access Allowed');
-  exit; //just for good measure
-}
 session_start();
 include "testInput.php";
 if(isset($_SESSION["Login"])){
