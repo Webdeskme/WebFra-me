@@ -1,7 +1,3 @@
-<?php
-  //include "testInput.php";
-  //include "www/functions.php";
-?>
 <!DOCTYPE html>
 <!--<Webdesk.me Making web aplications easy.>
     Copyright (C) 2017  Adam W. Telford
@@ -51,9 +47,6 @@
       <link rel="stylesheet" type="text/css" href="Theme/default.php">
 <link rel="stylesheet" type="text/css" href="www/Themes/wd_default/style.css">
 <?php
-//if(file_exists("www/Pages/style.css")){
-//	echo '<link rel="stylesheet" type="text/css" href="www/Pages/style.css">';
-//}
 if(file_exists($wd_www . "header.php")){
 	include $wd_www . "header.php";
 }
@@ -116,5 +109,12 @@ $(document).ready(function(){
 </script>
 <script src="Plugins/context.js"></script>
 	<script type="text/javascript" src="fstat-js.php?page=<?php echo $page;?>"></script>
+  <?php
+if(isset($_GET['wd_dev'])){
+  ?>
+<script src="Plugins/tota11y-master/build/tota11y.min.js"></script>
+  <?php
+}
+   ?>
 </body>
 </html>

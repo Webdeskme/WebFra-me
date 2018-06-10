@@ -66,7 +66,7 @@ tinymce.init({
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<?php wd_url($wd_type, $wd_app, 'page.php', '&page=' . $page); ?>"><span class="glyphicon glyphicon-pencil"></span> Code Editor</a></li>
-        <li><a href="index.php?page=<?php echo $page; ?>" target="_blank"><span class="glyphicon glyphicon-sunglasses"></span> View Page</a></li>
+        <li><a href="index.php?page=<?php echo $page; ?>&wd_dev=on" target="_blank"><span class="glyphicon glyphicon-sunglasses"></span> View Page</a></li>
         <li><?php wd_confirm($wd_type, $wd_app, 'pageSubDelete.php', '&page=' . $page, '1', '<i class="glyphicon glyphicon-trash"> Delete</i>'); ?></li>
       </ul>
     </div>
