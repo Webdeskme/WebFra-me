@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<?php 
+<?php
 $wd_stype = 'MyApps';
 $wd_sapp = 'Pass';
-include 'HUDstart.php'; 
+include 'HUDstart.php';
 if(!isset($_GET['type']) || !isset($_GET['app']) || !isset($_GET['sec'])){
   wd_head($wd_stype, $wd_sapp, 'start.php', '');
 }
@@ -27,9 +27,16 @@ if(!isset($_GET['type']) || !isset($_GET['app']) || !isset($_GET['sec'])){
     </form>
       </span>
     </div>
-    <?php 
+    <?php
     include 'HUDcon.php';
     include 'HUDfoot.php';
     ?>
+    <?php
+  if(isset($_GET['wd_dev'])){
+    ?>
+  <script src="Plugins/tota11y-master/build/tota11y.min.js"></script>
+    <?php
+  }
+     ?>
   </body>
 </html>

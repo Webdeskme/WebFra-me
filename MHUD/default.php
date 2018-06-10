@@ -14,16 +14,16 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-    
-    
-    While using this site, you agree to have read and accepted our terms 
-    of use, cookie and privacy policy. Copyright 2017 Adam W. Telford. 
+
+
+    While using this site, you agree to have read and accepted our terms
+    of use, cookie and privacy policy. Copyright 2017 Adam W. Telford.
     All Rights Reserved.
-    
+
     A link to the terms of use, cookie and privacy policy, and licences
-    can be found at the bottom right corner of the menu bar by clicking 
+    can be found at the bottom right corner of the menu bar by clicking
     the exlmation point once loged in, and in the menu of the login page.-->
-<?php 
+<?php
 //session_start();
 //ini_set("error_reporting", E_ALL);
 file_put_contents($wd_adminFile . 'lastPage.txt', $_SERVER['QUERY_STRING']);
@@ -40,7 +40,7 @@ if ($handle = opendir($temp)) {
     <meta charset="utf-8">
 <title>Desktop</title>
    <meta http-equiv="content-language" content="ll-cc">
-    <meta name="language" content="English"> 
+    <meta name="language" content="English">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="keywords" content="WebDesk, Web app, webtop, web desktop">
@@ -86,8 +86,8 @@ if(isset($_GET["app"])){
 </head>
 
 <body>
-	<div id="1tab" style="padding: 0px; margin: 0px; overflow: scroll; height: 100%; background-color: <?php 
-if(file_exists($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){ 
+	<div id="1tab" style="padding: 0px; margin: 0px; overflow: scroll; height: 100%; background-color: <?php
+if(file_exists($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){
     $pcolor = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt');
     echo $pcolor;
 }
@@ -126,7 +126,7 @@ if(isset($_GET["app"])){echo ' <span><b>' . $app . '</b></span>'; }
     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Danger:</strong> <?php $wd = test_input($_GET['wd_ad']); echo $wd; ?>
   </div>
-    <?php 
+    <?php
     }
     if(isset($_GET['link'])){ ?>
 <div class="alert alert-info alert-dismissable fade in">
@@ -137,7 +137,7 @@ if(isset($_GET["app"])){echo ' <span><b>' . $app . '</b></span>'; }
 }
 if(isset($_GET["app"]) and isset($_GET["sec"])){
         include($type . "/" . $app . "/" . $sec);
-    } 
+    }
       elseif(isset($_GET["wd_tab"]) && $_GET["wd_tab"] == "settings"){
         ?>
         <div style="background-color: <?php
@@ -218,7 +218,7 @@ if ($handle = opendir('MyApps/')) {
 ?>
         </select>
         <input type="submit" value="Save">
-    </form> 
+    </form>
     </details><br><br>
     <details>
     <summary><b style="font-size: 1.5em;">Delete Account</b></summary><br><br>
@@ -230,7 +230,7 @@ if ($handle = opendir('MyApps/')) {
 $wd = 0;
 $wd_tier = test_input($wd_tier);
 $wd_tierFile = $wd_admin . $wd_tier . '.json';
-if(file_exists($wd_tierFile)){$wd_tierobj=json_decode(file_get_contents($wd_tierFile)); $wd_obj = $wd_tierobj;} 
+if(file_exists($wd_tierFile)){$wd_tierobj=json_decode(file_get_contents($wd_tierFile)); $wd_obj = $wd_tierobj;}
 else{
 $wd_tierobj = "";
 $wd_obj = "";
@@ -260,7 +260,7 @@ else{
 ?>
     <div style="width: 100%; clear: both;"><h1>My Apps</h1>
     <hr></div>
-<?php 
+<?php
 foreach (scandir('MyApps/') as $entry){
                     if ($entry != "." && $entry != "..") {
                         if(!file_exists($wd_tierFile)){$wd_teatobj = 0;}
@@ -280,8 +280,8 @@ foreach (scandir('MyApps/') as $entry){
 <!-- wd_app_help-->
   <div class="webdesk_modal fade" id="wd_app_help" role="dialog">
     <div class="modal-dialog">
-    
-      
+
+
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -312,7 +312,7 @@ else{
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
-      
+
     </div>
   </div>
 <!-- End wd_app_help -->
@@ -323,19 +323,26 @@ for(var i=0;i<a.length;i++) {
     if(!a[i].onclick && a[i].getAttribute("target") != "_blank") {
         a[i].onclick=function() {
                 window.location=this.getAttribute("href");
-                return false; 
+                return false;
         }
     }
 }
     </script>
 <script>
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();  
+    $('[data-toggle="tooltip"]').tooltip();
     $(".wd_confirm").click(function(){
         if (!confirm("Please Confirm:")){ return false; }
     });
 });
 </script>
   <script src="Plugins/context.js"></script>
+  <?php
+if(isset($_GET['wd_dev'])){
+  ?>
+<script src="Plugins/tota11y-master/build/tota11y.min.js"></script>
+  <?php
+}
+   ?>
 </body>
 </html>

@@ -17,11 +17,11 @@
     &emsp; <a href="#" data-toggle="webdesk_popitover" title="Search Apps" data-placement="top" data-html="true" data-content='<form metod="get" action="desktop.php">
     <input list="wd_app_sd" placeholder="Type App Name" id="wd_app_s" name="app">
     <datalist id="wd_app_sd">
-      <?php 
+      <?php
     $wd = 0;
     $wd_tier = test_input($wd_tier);
     $wd_tierFile = $wd_admin . $wd_tier . '.json';
-    if(file_exists($wd_tierFile)){$wd_tierobj=json_decode(file_get_contents($wd_tierFile)); $wd_obj = $wd_tierobj;} 
+    if(file_exists($wd_tierFile)){$wd_tierobj=json_decode(file_get_contents($wd_tierFile)); $wd_obj = $wd_tierobj;}
     else{
     $wd_tierobj = "";
     $wd_obj = "";
@@ -34,11 +34,11 @@
                 }
                 elseif(isset($wd_obj->$entry) && $wd_obj->$entry == 'Yes'){
                     $wd_teatobj = 1;
-                    
+
                 }
                 else{
                     $wd_teatobj = 0;
-                    
+
                 }
                 if($wd_tier === 'tA' || $wd_teatobj === 1){
     			    $wd = $wd + 1;
@@ -60,8 +60,8 @@
     $wd_tierFile = $wd_admin . $wd_tier . '.json';
     if(file_exists($wd_tierFile)){
         $wd_tierobj=json_decode(file_get_contents($wd_tierFile)); $wd_obj = $wd_tierobj;
-        
-    } 
+
+    }
     else{
         $wd_tierobj = "";
         $wd_obj = "";
@@ -74,11 +74,11 @@
                 }
                 elseif(isset($wd_obj->$entry) && $wd_obj->$entry == 'Yes'){
                     $wd_teatobj = 1;
-                    
+
                 }
                 else{
                     $wd_teatobj = 0;
-                    
+
                 }
                 if($wd_tier === 'tA' || $wd_teatobj === 1){
 				    $wd = $wd + 1;
@@ -110,19 +110,19 @@
     <?php
     if ($handle = opendir("Applets/")) {
                     while (false !== ($entry = readdir($handle))) {
-                        if ($entry != "." && $entry != "..") { 
-    $aplname = explode(".", $entry); 
+                        if ($entry != "." && $entry != "..") {
+    $aplname = explode(".", $entry);
     $aplxml=json_decode(file_get_contents("Applets/" . $entry));
-    ?> 
+    ?>
     <i class="<?php echo $aplxml->icon ; ?>" style="text-align: right;" data-toggle="modal" data-target="#<?php echo $aplname[0]; ?>" title="<?php echo $aplxml->tooltip; ?>"></i> &emsp;
     <?php
     }}}
     if ($handle = opendir("MyApplets/")) {
         while (false !== ($entry = readdir($handle))) {
-            if ($entry != "." && $entry != "..") { 
-    $aplname = explode(".", $entry); 
+            if ($entry != "." && $entry != "..") {
+    $aplname = explode(".", $entry);
     $aplxml=json_decode(file_get_contents("MyApplets/" . $entry));
-    ?> 
+    ?>
     <i class="<?php echo $aplxml->icon ; ?>" style="text-align: right;" data-toggle="modal" data-target="#M<?php echo $aplname[0]; ?>" title="<?php echo $aplxml->tooltip; ?>"></i> &emsp;
     <?php
     }}}
@@ -145,8 +145,8 @@
         <!--<a href="" style="float: right;">Add App to Desktop</a>-->
         <?php include 'HUDapp.php';?>
     </div>
-    <div id="tabs-2" class="webdesk_tab" style="background-color: <?php 
-    if(file_exists($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){ 
+    <div id="tabs-2" class="webdesk_tab" style="background-color: <?php
+    if(file_exists($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){
         $pcolor = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt');
         echo $pcolor;
     }
@@ -188,8 +188,8 @@
     <?php include 'HUDtask.php';?>
     </div>
     <div id="tabs-1" class="webdesk_card webdesk_tab" style="overflow: hidden; padding: 0px; margin: 0px; ">
-        <div id="1tab" style="padding: 0px; margin: 0px; overflow: scroll; height: 100%; background-color: <?php 
-        if(file_exists($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){ 
+        <div id="1tab" style="padding: 0px; margin: 0px; overflow: scroll; height: 100%; background-color: <?php
+        if(file_exists($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){
             $pcolor = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt');
             echo $pcolor;
         }
@@ -197,7 +197,7 @@
             echo '#FFFFFF';
         }
         ?>;">
-        
+
         <div style="background-color: #666699;">
         <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" data-toggle="tooltip" title="Back" id="wd_back" class="webdesk_btn webdesk_btn-info webdesk_btn-sm"><span class="fa fa-arrow-left webdesk_text-white"></span></a>
         <a href="<?php echo $_SERVER['REQUEST_URI']; ?>" data-toggle="tooltip" title="Refresh" id="wd_refresh" class="webdesk_btn webdesk_btn-info webdesk_btn-sm"><i class="fa fa-sync webdesk_text-white"></i></a>
@@ -206,7 +206,7 @@
         	?>
         	<a href="<?php if (empty($_GET)) { echo $_SERVER['REQUEST_URI'] . '?wd_fullS=off';} else{ echo $_SERVER['REQUEST_URI'] . '&wd_fullS=off';} ?>" class="webdesk_btn webdesk_btn-info webdesk_btn-sm" data-toggle="tooltip" title="Minimize"><i class="fa fa-window-minimize webdesk_text-white"></i></a>
         	<?php
-        } 
+        }
         else{
             ?>
             <a href="<?php echo preg_replace("/wd_fullS\=(on|off)/i", "", $_SERVER["REQUEST_URI"]) . ((empty($_GET)) ? "?" : "&") . "wd_fullS=on"; ?>" class="webdesk_btn webdesk_btn-info webdesk_btn-sm" data-toggle="tooltip" title="Maximize"><span class="fa fa-expand  webdesk_text-white"></span></a>
@@ -226,5 +226,12 @@
     </div>
 </div>
 <?php include 'HUDfoot.php';?>
+<?php
+if(isset($_GET['wd_dev'])){
+?>
+<script src="Plugins/tota11y-master/build/tota11y.min.js"></script>
+<?php
+}
+ ?>
 </body>
 </html>
