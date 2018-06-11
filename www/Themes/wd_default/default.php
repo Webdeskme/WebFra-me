@@ -34,6 +34,7 @@
       <meta name="description" content="Welcome to <?php echo $wd_Title; ?>.">
       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
       <meta charset="UTF-8">
+      <meta name="theme-color" content="#000000"/>
       <!--<meta name="viewport" width="device-width">-->
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="copyright" content="&copy; <?php echo date("Y") . ' ' . $wd_Title; ?>">

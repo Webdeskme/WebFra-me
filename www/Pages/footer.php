@@ -19,7 +19,7 @@
       <li><a href="feed.xml" target="_blank">RSS Feed <i class="fas fa-rss"></i></a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="http://webdesk.me" target="_blank">Proudly powerd by WebDesk</a></li>
+      <li><a href="http://webdesk.me" target="_blank" rel="noopener">Proudly powerd by WebDesk</a></li>
     </ul>
     </div>
   </div>
