@@ -12,10 +12,10 @@ Not all	websites will allow this browser to work properly.
 <form method="POST" action="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>" style="float: right;">
 <select name="url">
 <?php
-if ($handle = opendir('../../webdesk/User/' . $_SESSION["user"] . '/Web/')) {
+if ($handle = opendir($wd_root . '/User/' . $_SESSION["user"] . '/Web/')) {
                 while (false !== ($entry = readdir($handle))) {
                     if ($entry != "." && $entry != "..") {
-                $url2 = file_get_contents('../../webdesk/User/' . $_SESSION["user"] . '/Web/' . $entry);
+                $url2 = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Web/' . $entry);
                 $arr = parse_url($url2);
                 $host = explode('.', $arr["host"]);
                 if(isset($host[2])){
