@@ -80,6 +80,7 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
                         file_put_contents($path . '/User/' . $user .'/Admin/tier.txt', 'tA');
                         file_put_contents($path . '/User/' . $user .'/Admin/color.txt', '#FFFFFF');
                         file_put_contents($path . '/User/' . $user .'/Admin/Pcolor.txt', '#FFFFFF');
+                        file_put_contents($path . '/Admin/dtheme.txt', 'wd_default');
 			if(isset($_POST['email']) && isset($_POST['SMTP']) && isset($_POST['port']) && isset($_POST['epass'])){
 				$esmtp['SMTP'] = test_input($_POST['SMTP']);
 				$esmtp['email'] = t_enc($_POST['email']);
