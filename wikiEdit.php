@@ -1,4 +1,4 @@
-<?php
+<?php if(is_file("wd_protect.php")){ include_once "wd_protect.php"; }
 header("X-Robots-Tag: noIndex, nofollow", true);
 if(isset($_SESSION["Login"])){
 if ($_SESSION["Login"] != "YES") {

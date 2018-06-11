@@ -1,3 +1,4 @@
+<?php if(is_file("wd_protect.php")){ include_once "wd_protect.php"; } ?>
 <!DOCTYPE html>
 <!--<Webdesk.me Making web aplications easy.>
     Copyright (C) 2017  Adam W. Telford
