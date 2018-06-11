@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 header("X-Robots-Tag: noIndex, nofollow", true);
 if(!isset($_POST['lastPage'])){
@@ -13,14 +13,15 @@ if(file_exists($wd_root . '/Admin/month.txt')){
 else{
     $month = 'yes';
 }
-$data = f_dec($user) . ': ' . $_SERVER['REMOTE_ADDR'] . '[' . date("l jS \of F Y h:i:s A") . ']-Home.php<br>'; 
+$data = f_dec($user) . ': ' . $_SERVER['REMOTE_ADDR'] . '[' . date("l jS \of F Y h:i:s A") . ']-Home.php<br>';
 $d = date("F");
 if ($pass === $var && file_exists($wd_root . '/User/' . $user . '/Admin/tier.txt')){
+  session_regenerate_id();
     $_SESSION["Login"] = 'YES';
     $_SESSION["user"] = $user;
     $_SESSION["tier"] = test_input(file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/tier.txt'));
 
-$data =  f_dec($_SESSION["user"]) . ': ' . $_SERVER['REMOTE_ADDR'] . '[' . date("l jS \of F Y h:i:s A") . ']' . '<br>'; 
+$data =  f_dec($_SESSION["user"]) . ': ' . $_SERVER['REMOTE_ADDR'] . '[' . date("l jS \of F Y h:i:s A") . ']' . '<br>';
 $d = date("F");
 if($month == $d){
     file_put_contents($wd_root . '/Admin/LoginLog.txt', $data, FILE_APPEND);
@@ -69,7 +70,7 @@ else{
     <meta charset="utf-8">
 <title>WebDesk</title>
    <meta http-equiv="content-language" content="ll-cc">
-    <meta name="language" content="English"> 
+    <meta name="language" content="English">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="keywords" content="WebDesk, Web app, webtop, web desktop">
