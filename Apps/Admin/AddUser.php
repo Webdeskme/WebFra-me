@@ -2,6 +2,7 @@
 $user = f_enc(strtolower(test_input($_POST["user"])));
 $prand = test_input(file_get_contents($wd_root . '/User/' . $user .'/Admin/prand.txt'));
 $pass = up_enc(test_input($_POST["pass"]) . $user . $prand);
+$pass = password_hash($pass, PASSWORD_DEFAULT);
 $tier = test_input($_POST["tier"]);
 if(!file_exists($wd_root . '/User/' . $user . '/')){
                         mkdir($wd_root . '/User/' . $user . '/');

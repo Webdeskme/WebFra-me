@@ -16,7 +16,7 @@ else{
 }
 $data = f_dec($user) . ': ' . $_SERVER['REMOTE_ADDR'] . '[' . date("l jS \of F Y h:i:s A") . ']-login.php<br>';
 $d = date("F");
-if ($pass == $var && file_exists($wd_root . '/User/' . $user . '/Admin/tier.txt')){
+if (password_verify($pass, $var) && file_exists($wd_root . '/User/' . $user . '/Admin/tier.txt')){
   session_regenerate_id();
     $_SESSION["Login"] = 'YES';
     $_SESSION["user"] = $user;
