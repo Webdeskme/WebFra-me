@@ -1,6 +1,7 @@
 <?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 $user = f_enc(strtolower(test_input($_POST["user"])));
-$pass = up_enc(test_input($_POST["pass"]));
+$prand = test_input(file_get_contents($wd_root . '/User/' . $user .'/Admin/prand.txt'));
+$pass = up_enc(test_input($_POST["pass"]) . $user . $prand);
 $tier = test_input($_POST["tier"]);
 if(!file_exists($wd_root . '/User/' . $user . '/')){
                         mkdir($wd_root . '/User/' . $user . '/');

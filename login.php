@@ -1,8 +1,10 @@
 <?php
 session_start();
 include("testInput.php");
-$user = f_enc(test_input($_POST["user"]));
-$pass = up_enc($_POST["pass"]);
+$user = f_enc(strtolower(test_input($_POST["user"])));
+$prand = test_input(file_get_contents($wd_root . '/User/' . $user .'/Admin/prand.txt'));
+$pass = test_input($_POST["pass"]);
+$pass = up_enc($pass . $user . $prand);
 $var = file_get_contents($wd_root . '/User/' . $user . '/Admin/pass.txt');
 $var = test_input($var);
 $type = test_input($_POST["type"]);
