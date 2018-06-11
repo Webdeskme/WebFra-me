@@ -37,7 +37,7 @@ include("testInput.php");
             <label for="path">Offline File Path</label><br>
             <input type="text" name="path" id="path" placeholder="File Path" value="<?php echo __DIR__ . '/' . $string; ?>">
             <br><hr><br>
-		<h3>Email is optional but highly adviced.</h3>
+		<h3>Email is optional but highly advised.</h3>
 		<label for="SMTP">SMTP Server</label><br>
 		<input type="text" name="SMTP" id="SMTP" placeholder="SMTP Server">
 		<br><br>
