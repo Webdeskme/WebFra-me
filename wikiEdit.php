@@ -61,9 +61,9 @@ else{
     <link rel="apple-touch-startup-image" href="/custom_icon.png">-->
     <link rel="apple-touch-icon" href="favicon.ico">
     <link rel="apple-touch-startup-image" href="favicon.ico">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="Plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <script src="Plugins/jquery.min.js"></script>
+  <script src="Plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
   <script src="Plugins/tinymce/js/tinymce/tinymce.min.js"></script>
   <script>
 tinymce.init({
