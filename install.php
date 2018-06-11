@@ -13,7 +13,7 @@ include("testInput.php");
 ?>
 <!doctype html>
 
-<!-- Copyright 2015 WebDesk.me -->
+<!-- Copyright <?php echo date("Y"); ?> WebDesk.me -->
 
 <html>
     <head>
@@ -21,6 +21,23 @@ include("testInput.php");
     </head>
     <body>
         <h1>WebDesk Install</h1>
+        <h2>Version Check</h2>
+        <table class="table mb-5" border='0' cellspacing='0' style="width: 50vw;margin: 2rem 0 4rem;" cellpadding="10">
+            <tbody>
+                <tr>
+                    <th width="33%">
+                        PHP Version
+                    </th>
+                    <td width="33%">
+                        <?php echo phpversion(); ?>
+                    </td>
+                    <td width="33%" style="background-color: <?php echo (phpversion() >= 5.1) ? "green" : "red"; ?>;text-align: center;color:white;">
+                        <?php echo (phpversion() >= 5.1) ? "&#10003;" : 'X'; ?>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr />
         <form method="POST" action="installSub.php">
 		<label for="title">Website Title:</label><br>
             <input type="text" name="title" id="title" placeholder="Website Title" required>
