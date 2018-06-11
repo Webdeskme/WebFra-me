@@ -49,8 +49,8 @@
 </head>
 <body>
   <?php
-  if(file_exists($wd_root . 'Wiki/wiki-banner.php')){
-    echo file_get_contents($wd_root . 'Wiki/wiki-banner.php');
+  if(file_exists($wd_root . '/Wiki/wiki-banner.php')){
+    echo file_get_contents($wd_root . '/Wiki/wiki-banner.php');
   }
   ?>
   <nav class="navbar navbar-inverse">
@@ -86,8 +86,8 @@
 <h3>If you do not have a login or forgot it. Please contact an administrator of this website.</h3>
     <hr>
     <?php
-  if(file_exists($wd_root . 'Wiki/wiki-footer.php')){
-    echo file_get_contents($wd_root . 'Wiki/wiki-footer.php');
+  if(file_exists($wd_root . '/Wiki/wiki-footer.php')){
+    echo file_get_contents($wd_root . '/Wiki/wiki-footer.php');
   }
   ?>
   </div>

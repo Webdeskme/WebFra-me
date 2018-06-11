@@ -23,7 +23,7 @@
     A link to the terms of use, cookie and privacy policy, and licences
     can be found at the bottom right corner of the menu bar by clicking
     the exlmation point once loged in, and in the menu of the login page.-->
-<html>
+<html lang="en-US">
 <head>
   <title>Wiki-<?php echo $wd_page; ?></title>
   <meta http-equiv="content-language" content="ll-cc">
@@ -46,8 +46,8 @@
 </head>
 <body>
   <?php
-  if(file_exists($wd_root . 'Wiki/wiki-banner.php')){
-    echo file_get_contents($wd_root . 'Wiki/wiki-banner.php');
+  if(file_exists($wd_root . '/Wiki/wiki-banner.php')){
+    echo file_get_contents($wd_root . '/Wiki/wiki-banner.php');
   }
   ?>
   <nav class="navbar navbar-inverse">
@@ -80,14 +80,14 @@
     <h1><?php echo $wd_page; ?>:</h1>
     <hr>
     <?php
-  if(file_exists($wd_root . 'Wiki/' . $wd_page . '.php')){
-    echo file_get_contents($wd_root . 'Wiki/' . $wd_page . '.php');
+  if(file_exists($wd_root . '/Wiki/' . $wd_page . '.php')){
+    echo file_get_contents($wd_root . '/Wiki/' . $wd_page . '.php');
   }
   ?>
     <hr>
     <?php
-  if(file_exists($wd_root . 'Wiki/wiki-footer.php')){
-    echo file_get_contents($wd_root . 'Wiki/wiki-footer.php');
+  if(file_exists($wd_root . '/Wiki/wiki-footer.php')){
+    echo file_get_contents($wd_root . '/Wiki/wiki-footer.php');
   }
   ?>
   </div>

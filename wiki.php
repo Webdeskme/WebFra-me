@@ -3,7 +3,7 @@ session_start();
 include "testInput.php";
 if(isset($_GET['page'])){
   $wd_page = test_input($_GET['page']);
-  if(file_exists($wd_root . 'Wiki/' . $wd_page . '.php')){
+  if(file_exists($wd_root . '/Wiki/' . $wd_page . '.php')){
     if(isset($_GET['type'])){
       $wd_type = test_input($_GET['type']);
       if($wd_type == 'edit'){

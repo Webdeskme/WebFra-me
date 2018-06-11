@@ -23,7 +23,7 @@ if(isset($_GET['go'])){
 else{
   $wd_go = $wd_page;
 }
-file_put_contents($wd_root . 'Wiki/' . $wd_page . '.php', $wd_con);
+file_put_contents($wd_root . '/Wiki/' . $wd_page . '.php', $wd_con);
 $wd_logO = file_get_contents('wikiLogFile.php');
 $wd_log = '->' . f_dec($_SESSION['user']) . ' has modified ' . $wd_page . '.php on ' . date("Y/m/d") . ' at ' . date("h:i:sa"). ' EST.<br>' . $wd_logO;
 $wd_log = substr($wd_log, 0, 2000);

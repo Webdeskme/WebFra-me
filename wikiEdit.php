@@ -106,8 +106,8 @@ tinymce.init({
       <div class="form-group">
         <label for="banner">Banner:</label>
         <textarea class="form-control" id="banner" name="con"><?php
-          if(file_exists($wd_root . 'Wiki/wiki-banner.php')){
-            echo htmlspecialchars(file_get_contents($wd_root . 'Wiki/wiki-banner.php'));
+          if(file_exists($wd_root . '/Wiki/wiki-banner.php')){
+            echo htmlspecialchars(file_get_contents($wd_root . '/Wiki/wiki-banner.php'));
           }
           ?></textarea>
       </div>
@@ -152,8 +152,8 @@ tinymce.init({
       <div class="form-group">
         <label for="con">Content:</label>
         <textarea class="form-control" id="con" name="con" autofocus><?php
-          if(file_exists($wd_root . 'Wiki/' . $wd_page . '.php')){
-            echo htmlspecialchars(file_get_contents($wd_root . 'Wiki/' . $wd_page . '.php'));
+          if(file_exists($wd_root . '/Wiki/' . $wd_page . '.php')){
+            echo htmlspecialchars(file_get_contents($wd_root . '/Wiki/' . $wd_page . '.php'));
           }
           ?></textarea>
       </div>
@@ -164,8 +164,8 @@ tinymce.init({
       <div class="form-group">
         <label for="footer">Footer:</label>
         <textarea class="form-control" id="footer" name="con"><?php
-          if(file_exists($wd_root . 'Wiki/wiki-footer.php')){
-            echo htmlspecialchars(file_get_contents($wd_root . 'Wiki/wiki-footer.php'));
+          if(file_exists($wd_root . '/Wiki/wiki-footer.php')){
+            echo htmlspecialchars(file_get_contents($wd_root . '/Wiki/wiki-footer.php'));
           }
           ?></textarea>
       </div>
