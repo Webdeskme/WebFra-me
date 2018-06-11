@@ -50,6 +50,7 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
                         mkdir($path . '/User/' . $user . '/App/');
                         mkdir($path . '/User/' . $user . '/Book/');
                         mkdir($path . '/User/' . $user . '/Ext/');
+                        mkdir($path . '/Wiki/');
 			mkdir($path . '/www/');
 			$wwwCopy = scandir('www/Pages/');
 			foreach($wwwCopy as $key => $value){

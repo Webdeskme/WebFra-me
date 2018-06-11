@@ -13,8 +13,8 @@ else{
 }
 if(isset($_GET['page'])){
   $wd_page = test_input($_GET['page']);
-  if(file_exists('www/Wiki/' . $wd_page . '.php')){
-    unlink('www/Wiki/' . $wd_page . '.php');
+  if(file_exists($wd_root . 'Wiki/' . $wd_page . '.php')){
+    unlink($wd_root . 'Wiki/' . $wd_page . '.php');
   }
 }
 header('Location: wiki.php');

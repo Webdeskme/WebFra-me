@@ -14,20 +14,20 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-    
-    
-    While using this site, you agree to have read and accepted our terms 
-    of use, cookie and privacy policy. Copyright 2017 Adam W. Telford. 
+
+
+    While using this site, you agree to have read and accepted our terms
+    of use, cookie and privacy policy. Copyright 2017 Adam W. Telford.
     All Rights Reserved.
-    
+
     A link to the terms of use, cookie and privacy policy, and licences
-    can be found at the bottom right corner of the menu bar by clicking 
+    can be found at the bottom right corner of the menu bar by clicking
     the exlmation point once loged in, and in the menu of the login page.-->
 <html>
 <head>
   <title>Wiki-<?php echo $wd_page; ?></title>
   <meta http-equiv="content-language" content="ll-cc">
-    <meta name="language" content="English"> 
+    <meta name="language" content="English">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="keywords" content="WebDesk, Web app, webtop, web desktop">
@@ -46,8 +46,8 @@
 </head>
 <body>
   <?php
-  if(file_exists('www/Wiki/wiki-banner.php')){
-    echo file_get_contents('www/Wiki/wiki-banner.php');
+  if(file_exists($wd_root . 'Wiki/wiki-banner.php')){
+    echo file_get_contents($wd_root . 'Wiki/wiki-banner.php');
   }
   ?>
   <nav class="navbar navbar-inverse">
@@ -56,7 +56,7 @@
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span> 
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="index.php" title="Websit"><span class="glyphicon glyphicon-globe"></span></a>
     </div>
@@ -80,14 +80,14 @@
     <h1><?php echo $wd_page; ?>:</h1>
     <hr>
     <?php
-  if(file_exists('www/Wiki/' . $wd_page . '.php')){
-    echo file_get_contents('www/Wiki/' . $wd_page . '.php');
+  if(file_exists($wd_root . 'Wiki/' . $wd_page . '.php')){
+    echo file_get_contents($wd_root . 'Wiki/' . $wd_page . '.php');
   }
   ?>
     <hr>
     <?php
-  if(file_exists('www/Wiki/wiki-footer.php')){
-    echo file_get_contents('www/Wiki/wiki-footer.php');
+  if(file_exists($wd_root . 'Wiki/wiki-footer.php')){
+    echo file_get_contents($wd_root . 'Wiki/wiki-footer.php');
   }
   ?>
   </div>
