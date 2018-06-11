@@ -54,13 +54,6 @@ if(isset($_GET['page']) && file_exists($wd_www . "header_" . $page)){
 	include $wd_www . "header_" . $page;
 }
 ?>
-<script src="Plugins/jquery.min.js"></script>
-<script src="Plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-<script src="Plugins/jquery-ui/jquery-ui.min.js"></script>
-<script src="Plugins/tinymce/js/tinymce/tinymce.min.js"></script>
-<script src="Plugins/fullcalendar/lib/moment.min.js"></script>
-<script src="Plugins/fullcalendar/fullcalendar.min.js"></script>
-<script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>
 </head>
 <body>
   <?php
@@ -72,6 +65,13 @@ if(isset($_GET['page']) && file_exists($wd_www . "header_" . $page)){
   }
   ?>
   <div class="container">
+    <script src="Plugins/jquery.min.js"></script>
+    <script src="Plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="Plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="Plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script src="Plugins/fullcalendar/lib/moment.min.js"></script>
+    <script src="Plugins/fullcalendar/fullcalendar.min.js"></script>
+    <script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>
 <?php
 if(isset($_GET['page']) && file_exists($wd_www . $page)){
 	include $wd_www . $page;
