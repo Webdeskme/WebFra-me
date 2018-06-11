@@ -76,7 +76,7 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
                         //App Web Files
                         mkdir('web/' . $arand . '/');
                         //file_put_contents('../../webdesk/User/' . $user .'/Admin/email.txt', t_enc($_SESSION["email"]));
-                        file_put_contents($path . '/User/' . $user .'/Admin/pass.txt', up_enc($pass . $user . $prand));
+                        file_put_contents($path . '/User/' . $user .'/Admin/pass.txt', up_enc($pass . $user . test_input($prand)));
                         file_put_contents($path . '/User/' . $user .'/Admin/oid.txt', $rand);
                         file_put_contents($path . '/User/' . $user .'/Admin/prand.txt', $prand);
                         file_put_contents($path . '/User/' . $user .'/Admin/back.txt', 'back.jpg');
