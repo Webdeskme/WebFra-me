@@ -6,6 +6,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
+        Menu
       </button>
     </div>
     <div class="collapse navbar-collapse" id="footNavbar">
