@@ -2,7 +2,7 @@
 session_start();
 include("testInput.php");
 $user = f_enc(test_input($_POST["user"]));
-$pass = up_enc(test_input($_POST["pass"]));
+$pass = up_enc($_POST["pass"]);
 $var = file_get_contents($wd_root . '/User/' . $user . '/Admin/pass.txt');
 $var = test_input($var);
 $type = test_input($_POST["type"]);
@@ -12,9 +12,10 @@ if(file_exists($wd_root . '/Admin/month.txt')){
 else{
     $month = 'yes';
 }
-$data = f_dec($user) . ': ' . $_SERVER['REMOTE_ADDR'] . '[' . date("l jS \of F Y h:i:s A") . ']-login.php<br>'; 
+$data = f_dec($user) . ': ' . $_SERVER['REMOTE_ADDR'] . '[' . date("l jS \of F Y h:i:s A") . ']-login.php<br>';
 $d = date("F");
 if ($pass == $var && file_exists($wd_root . '/User/' . $user . '/Admin/tier.txt')){
+  session_regenerate_id();
     $_SESSION["Login"] = 'YES';
     $_SESSION["user"] = $user;
   $_SESSION["tier"] = test_input(file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/tier.txt'));

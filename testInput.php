@@ -91,8 +91,8 @@ function up_enc($data) {
    $data = preg_replace("/\s+/", "", $data);
    $data = str_rot13($data);
    $data = strrev($data);
-   //$data = password_hash($data, PASSWORD_DEFAULT);
-   $data = md5($data);
+   $data = password_hash($data, PASSWORD_DEFAULT);
+   //$data = md5($data);
    return $data;
     }
 }
