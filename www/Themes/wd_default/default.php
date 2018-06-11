@@ -35,14 +35,11 @@
       <meta http-equiv="content-type" content="text/html; charset=UTF-8">
       <meta charset="UTF-8">
       <meta name="theme-color" content="#000000"/>
-      <!--<meta name="viewport" width="device-width">-->
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="copyright" content="&copy; <?php echo date("Y") . ' ' . $wd_Title; ?>">
       <link rel="apple-touch-icon" href="favicon.ico">
       <link rel="apple-touch-startup-image" href="favicon.ico">
       <link rel="stylesheet" href="Plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-      <link rel="stylesheet" href="Plugins/jquery-ui/jquery-ui.min.css">
-      <!--<link rel="stylesheet" type="text/css" href="Plugins/context.standalone.css">-->
       <link rel="stylesheet" type="text/css" href="Theme/default.php">
 <link rel="stylesheet" type="text/css" href="www/Themes/wd_default/style.css">
 <?php
@@ -66,7 +63,6 @@ if(isset($_GET['page']) && file_exists($wd_www . "header_" . $page)){
   <div class="container">
     <script src="Plugins/jquery.min.js"></script>
     <script src="Plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script src="Plugins/jquery-ui/jquery-ui.min.js"></script>
     <script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>
 <?php
 if(isset($_GET['page']) && file_exists($wd_www . $page)){
@@ -103,7 +99,6 @@ $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
 });
 </script>
-<!--<script src="Plugins/context.js"></script>-->
 	<script type="text/javascript" src="fstat-js.php?page=<?php echo $page;?>"></script>
   <?php
 if(isset($_GET['wd_dev'])){
