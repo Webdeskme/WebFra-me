@@ -1,10 +1,3 @@
-<script src="Plugins/jquery.min.js"></script>
-<script src="Plugins/wd-bootstrap/js/webdesk_bootstrap.js"></script>
-<script src="Plugins/jquery-ui/jquery-ui.min.js"></script>
-<script src="Plugins/tinymce/js/tinymce/tinymce.min.js"></script>
-<script src="Plugins/fullcalendar/lib/moment.min.js"></script>
-<script src="Plugins/fullcalendar/fullcalendar.min.js"></script>
-<script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>
 <!-- wd_clock -->
   <div class="webdesk_modal" id="wd_clock" role="dialog">
     <div class="webdesk_modal-dialog webdesk_modal-lg">
