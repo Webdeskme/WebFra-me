@@ -79,6 +79,7 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
                         //file_put_contents('../../webdesk/User/' . $user .'/Admin/email.txt', t_enc($_SESSION["email"]));
                         $pass = up_enc($pass . $user . test_input($prand));
                         $pass = password_hash($pass, PASSWORD_DEFAULT);
+                        $feed = '<?xml version="1.0" encoding="UTF-8" ?><rss version="2.0"><channel><title>' . $title . '</title><link>' . test_input($_SERVER['HTTP_HOST']) . '</link><description>Blog</description><item><title>New Site!</title><link>' . test_input($_SERVER['HTTP_HOST']) . '</link><description><![CDATA[<p>We have a new website and we can not wait for you to check it out!</p>]]></description></item></channel></rss>';
                         file_put_contents($path . '/User/' . $user .'/Admin/pass.txt', $pass);
                         file_put_contents($path . '/User/' . $user .'/Admin/oid.txt', $rand);
                         file_put_contents($path . '/User/' . $user .'/Admin/prand.txt', $prand);
@@ -88,6 +89,7 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
                         file_put_contents($path . '/User/' . $user .'/Admin/color.txt', '#FFFFFF');
                         file_put_contents($path . '/User/' . $user .'/Admin/Pcolor.txt', '#FFFFFF');
                         file_put_contents($path . '/Admin/dtheme.txt', 'wd_default');
+                        file_put_contents($path . '/www/feed.xml', $feed);
 			if(isset($_POST['email']) && isset($_POST['SMTP']) && isset($_POST['port']) && isset($_POST['epass'])){
 				$esmtp['SMTP'] = test_input($_POST['SMTP']);
 				$esmtp['email'] = t_enc($_POST['email']);

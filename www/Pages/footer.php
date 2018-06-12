@@ -17,7 +17,7 @@
       <li><a href="<?php wd_www('Privacy.php', ''); ?>">Privacy Policy</a></li>
       <li><a href="<?php wd_www('community-covenant.php', ''); ?>">Community Covenant</a></li>
       <li><a href="<?php wd_www('blog.php', ''); ?>">Blog</a></li>
-      <li><a href="feed.xml" target="_blank">RSS Feed <i class="fas fa-rss"></i></a></li>
+      <li><a href="feed.php" target="_blank" rel="noopener">RSS Feed <i class="fas fa-rss"></i></a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="http://webdesk.me" target="_blank" rel="noopener">Proudly powerd by WebDesk</a></li>

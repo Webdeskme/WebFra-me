@@ -33,7 +33,7 @@ $feed = '<?xml version="1.0" encoding="UTF-8" ?>
   <title>' . $_SERVER["SERVER_NAME"] . '</title>
   <link>' . $protocol . $_SERVER["SERVER_NAME"] . '</link>
   <description>' . $_SERVER["SERVER_NAME"] . ' site feed</description>';
-if(file_exists("www/Pages/feed.json")){
+if(file_exists($wd_www . "feed.json")){
   $obj = file_get_contents($wd_www . "feed.json");
   $obj = json_decode($obj, TRUE);
   foreach($obj as $post){
@@ -48,7 +48,7 @@ if(file_exists("www/Pages/feed.json")){
 }
  $feed = $feed . '</channel>
 </rss>';
-file_put_contents("feed.xml", $feed);
+file_put_contents($wd_www . "feed.xml", $feed);
   }
   else{
     $t = $objFeed[$ide]['title'];
@@ -109,7 +109,7 @@ if(file_exists($wd_www . "feed.json")){
 }
  $feed = $feed . '</channel>
 </rss>';
-file_put_contents("feed.xml", $feed);
+file_put_contents($wd_www . "feed.xml", $feed);
 }
 ?>
 <script>
