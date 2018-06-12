@@ -446,7 +446,7 @@ if(file_exists("path.php")){
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-          Menu
+          <span style="color: #000000;">Menu</span>
         </button>
         <?php
       if($name != ""){

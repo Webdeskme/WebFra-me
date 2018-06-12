@@ -10,6 +10,7 @@ include 'testInput.php';
   "short_name": "<?php echo substr($wd_Title, 0, 10); ?>",
   "display": "standalone",
   "background_color": "#fff",
+  "theme_color": "#317EFB",
   "description": "App made on WebDesk!",
   "prefer_related_applications": false,
   "icons": [{
