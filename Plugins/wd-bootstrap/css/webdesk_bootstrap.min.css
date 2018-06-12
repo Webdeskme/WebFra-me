@@ -1824,35 +1824,35 @@ select.webdesk_form-control:focus::-ms-value {
 .webdesk_form-control-plaintext.webdesk_form-control-lg,
 .webdesk_form-control-plaintext.webdesk_form-control-sm,
 .webdesk_input-group-lg>.webdesk_form-control-plaintext.webdesk_form-control,
-.webdesk_input-group-lg>put-group-append>.webdesk_form-control-plaintextn,
-.webdesk_input-group-lg>put-group-append>.webdesk_form-control-plaintextput-group-text,
-.webdesk_input-group-lg>put-group-prepend>.webdesk_form-control-plaintextn,
-.webdesk_input-group-lg>put-group-prepend>.webdesk_form-control-plaintextput-group-text,
+.webdesk_input-group-lg>.webdesk_input-group-append>.webdesk_form-control-plaintextn,
+.webdesk_input-group-lg>.webdesk_input-group-append>.webdesk_form-control-plaintext.webdesk_input-group-text,
+.webdesk_input-group-lg>.webdesk_input-group-prepend>.webdesk_form-control-plaintextn,
+.webdesk_input-group-lg>.webdesk_input-group-prepend>.webdesk_form-control-plaintext.webdesk_input-group-text,
 .webdesk_input-group-sm>.webdesk_form-control-plaintext.webdesk_form-control,
-.webdesk_input-group-sm>put-group-append>.webdesk_form-control-plaintextn,
-.webdesk_input-group-sm>put-group-append>.webdesk_form-control-plaintextput-group-text,
-.webdesk_input-group-sm>put-group-prepend>.webdesk_form-control-plaintextn,
-.webdesk_input-group-sm>put-group-prepend>.webdesk_form-control-plaintextput-group-text {
+.webdesk_input-group-sm>.webdesk_input-group-append>.webdesk_form-control-plaintextn,
+.webdesk_input-group-sm>.webdesk_input-group-append>.webdesk_form-control-plaintext.webdesk_input-group-text,
+.webdesk_input-group-sm>.webdesk_input-group-prepend>.webdesk_form-control-plaintextn,
+.webdesk_input-group-sm>.webdesk_input-group-prepend>.webdesk_form-control-plaintext.webdesk_input-group-text {
     padding-right: 0;
     padding-left: 0
 }
 
 .webdesk_form-control-sm,
 .webdesk_input-group-sm>.webdesk_form-control,
-.webdesk_input-group-sm>put-group-append>n,
-.webdesk_input-group-sm>put-group-append>put-group-text,
-.webdesk_input-group-sm>put-group-prepend>n,
-.webdesk_input-group-sm>put-group-prepend>put-group-text {
+.webdesk_input-group-sm>.webdesk_input-group-append>n,
+.webdesk_input-group-sm>.webdesk_input-group-append>.webdesk_input-group-text,
+.webdesk_input-group-sm>.webdesk_input-group-prepend>n,
+.webdesk_input-group-sm>.webdesk_input-group-prepend>.webdesk_input-group-text {
     padding: .25rem .5rem;
     font-size: .875rem;
     line-height: 1.5;
     border-radius: .2rem
 }
 
-.webdesk_input-group-sm>put-group-append>selectn:not([size]):not([multiple]),
-.webdesk_input-group-sm>put-group-append>selectput-group-text:not([size]):not([multiple]),
-.webdesk_input-group-sm>put-group-prepend>selectn:not([size]):not([multiple]),
-.webdesk_input-group-sm>put-group-prepend>selectput-group-text:not([size]):not([multiple]),
+.webdesk_input-group-sm>.webdesk_input-group-append>selectn:not([size]):not([multiple]),
+.webdesk_input-group-sm>.webdesk_input-group-append>select.webdesk_input-group-text:not([size]):not([multiple]),
+.webdesk_input-group-sm>.webdesk_input-group-prepend>selectn:not([size]):not([multiple]),
+.webdesk_input-group-sm>.webdesk_input-group-prepend>select.webdesk_input-group-text:not([size]):not([multiple]),
 .webdesk_input-group-sm>select.webdesk_form-control:not([size]):not([multiple]),
 select.webdesk_form-control-sm:not([size]):not([multiple]) {
     height: calc(1.8125rem + 2px)
@@ -1860,20 +1860,20 @@ select.webdesk_form-control-sm:not([size]):not([multiple]) {
 
 .webdesk_form-control-lg,
 .webdesk_input-group-lg>.webdesk_form-control,
-.webdesk_input-group-lg>put-group-append>n,
-.webdesk_input-group-lg>put-group-append>put-group-text,
-.webdesk_input-group-lg>put-group-prepend>n,
-.webdesk_input-group-lg>put-group-prepend>put-group-text {
+.webdesk_input-group-lg>.webdesk_input-group-append>n,
+.webdesk_input-group-lg>.webdesk_input-group-append>.webdesk_input-group-text,
+.webdesk_input-group-lg>.webdesk_input-group-prepend>n,
+.webdesk_input-group-lg>.webdesk_input-group-prepend>.webdesk_input-group-text {
     padding: .5rem 1rem;
     font-size: 1.25rem;
     line-height: 1.5;
     border-radius: .3rem
 }
 
-.webdesk_input-group-lg>put-group-append>selectn:not([size]):not([multiple]),
-.webdesk_input-group-lg>put-group-append>selectput-group-text:not([size]):not([multiple]),
-.webdesk_input-group-lg>put-group-prepend>selectn:not([size]):not([multiple]),
-.webdesk_input-group-lg>put-group-prepend>selectput-group-text:not([size]):not([multiple]),
+.webdesk_input-group-lg>.webdesk_input-group-append>selectn:not([size]):not([multiple]),
+.webdesk_input-group-lg>.webdesk_input-group-append>select.webdesk_input-group-text:not([size]):not([multiple]),
+.webdesk_input-group-lg>.webdesk_input-group-prepend>selectn:not([size]):not([multiple]),
+.webdesk_input-group-lg>.webdesk_input-group-prepend>select.webdesk_input-group-text:not([size]):not([multiple]),
 .webdesk_input-group-lg>select.webdesk_form-control:not([size]):not([multiple]),
 select.webdesk_form-control-lg:not([size]):not([multiple]) {
     height: calc(2.875rem + 2px)
@@ -2154,7 +2154,7 @@ select.webdesk_form-control-lg:not([size]):not([multiple]) {
         display: inline-block
     }
     .webdesk_form-inline .webdesk_custom-select,
-    .webdesk_form-inline put-group {
+    .webdesk_form-inline .webdesk_input-group {
         width: auto
     }
     .webdesk_form-inline rm-check {
@@ -2812,7 +2812,7 @@ ow>.webdesk_btn-outline-darkopdown-toggle,
     pointer-events: none
 }
 
-.webdesk_btn-group-lg>.btn,
+.webdesk_btn-group-lg>.webdesk_btn,
 .webdesk_btn-lg {
     padding: .5rem 1rem;
     font-size: 1.25rem;
@@ -2820,7 +2820,7 @@ ow>.webdesk_btn-outline-darkopdown-toggle,
     border-radius: .3rem
 }
 
-.webdesk_btn-group-sm>.btn,
+.webdesk_btn-group-sm>.webdesk_btn,
 .webdesk_btn-sm {
     padding: .25rem .5rem;
     font-size: .875rem;
@@ -2833,13 +2833,13 @@ ow>.webdesk_btn-outline-darkopdown-toggle,
     width: 100%
 }
 
-.webdesk_btn-block+.btn-block {
+.webdesk_btn-block+.webdesk_btn-block {
     margin-top: .5rem
 }
 
-input[type=submit] .btn-block,
-input[type=button] .btn-block,
-input[type=reset] .btn-block {
+input[type=submit] .webdesk_btn-block,
+input[type=button] .webdesk_btn-block,
+input[type=reset] .webdesk_btn-block {
     width: 100%
 }
 
@@ -3032,8 +3032,8 @@ input[type=reset] .btn-block {
     border: 0
 }
 
-.webdesk_btn-group>.btn-group:not(:last-child)>.btn,
-.webdesk_btn-group>.btn:not(:last-child):not(.webdesk_dropdown-toggle),
+.webdesk_btn-group>.webdesk_btn-group:not(:last-child)>.webdesk_btn,
+.webdesk_btn-group>.webdesk_btn:not(:last-child):not(.webdesk_dropdown-toggle),
 .webdesk_input-group>.webdesk_custom-file:not(:last-child) .webdesk_custom-file-label,
 .webdesk_input-group>.webdesk_custom-file:not(:last-child) .webdesk_custom-file-label::after,
 .webdesk_input-group>.webdesk_custom-select:not(:last-child),
@@ -3042,8 +3042,8 @@ input[type=reset] .btn-block {
     border-bottom-right-radius: 0
 }
 
-.webdesk_btn-group>.btn-group:not(:first-child)>n,
-.webdesk_btn-group>.btn:not(:first-child),
+.webdesk_btn-group>.webdesk_btn-group:not(:first-child)>n,
+.webdesk_btn-group>.webdesk_btn:not(:first-child),
 .webdesk_input-group>.webdesk_custom-file:not(:first-child) .webdesk_custom-file-label,
 .webdesk_input-group>.webdesk_custom-select:not(:first-child),
 .webdesk_input-group>.webdesk_form-control:not(:first-child) {
@@ -3125,9 +3125,9 @@ input[type=reset] .btn-block {
     margin-left: -1px
 }
 
-opright .webdesk_dropdown-toggle-split::after,
-opup .webdesk_dropdown-toggle-split::after,
-.webdesk_btn-group>n:first-child,
+.webdesk_dropright .webdesk_dropdown-toggle-split::after,
+.webdesk_dropup .webdesk_dropdown-toggle-split::after,
+.webdesk_btn-group>.webdesk_btn:first-child,
 .webdesk_dropdown-toggle-split::after {
     margin-left: 0
 }
@@ -3138,7 +3138,7 @@ opup .webdesk_dropdown-toggle-split::after,
     justify-content: flex-start
 }
 
-.webdesk_btn-toolbar put-group {
+.webdesk_btn-toolbar .webdesk_input-group {
     width: auto
 }
 
@@ -3151,14 +3151,14 @@ opleft .webdesk_dropdown-toggle-split::before {
     margin-right: 0
 }
 
-.webdesk_btn-group-sm>n+opdown-toggle-split,
-.webdesk_btn-sm+opdown-toggle-split {
+.webdesk_btn-group-sm>.webdesk_btn+.webdesk_dropdown-toggle-split,
+.webdesk_btn-sm+.webdesk_dropdown-toggle-split {
     padding-right: .375rem;
     padding-left: .375rem
 }
 
-.webdesk_btn-group-lg>n+opdown-toggle-split,
-.webdesk_btn-lg+opdown-toggle-split {
+.webdesk_btn-group-lg>.webdesk_btn+.webdesk_dropdown-toggle-split,
+.webdesk_btn-lg+.webdesk_dropdown-toggle-split {
     padding-right: .75rem;
     padding-left: .75rem
 }
@@ -3169,28 +3169,28 @@ opleft .webdesk_dropdown-toggle-split::before {
     justify-content: center
 }
 
-.webdesk_btn-group-vertical n,
-.webdesk_btn-group-vertical n-group {
+.webdesk_btn-group-vertical .webdesk_btn,
+.webdesk_btn-group-vertical .webdesk_btn-group {
     width: 100%
 }
 
-.webdesk_btn-group-vertical>n+n,
-.webdesk_btn-group-vertical>n+n-group,
-.webdesk_btn-group-vertical>n-group+n,
-.webdesk_btn-group-vertical>n-group+n-group {
+.webdesk_btn-group-vertical>.webdesk_btn+.webdesk_btn,
+.webdesk_btn-group-vertical>.webdesk_btn+.webdesk_btn-group,
+.webdesk_btn-group-vertical>.webdesk_btn-group+.webdesk_btn,
+.webdesk_btn-group-vertical>.webdesk_btn-group+.webdesk_btn-group {
     margin-top: -1px;
     margin-left: 0
 }
 
 .webdesk_input-group-append,
-.webdesk_input-group-append n+n,
-.webdesk_input-group-append n+put-group-text,
-.webdesk_input-group-append put-group-text+n,
-.webdesk_input-group-append put-group-text+put-group-text,
-.webdesk_input-group-prepend n+n,
-.webdesk_input-group-prepend n+put-group-text,
-.webdesk_input-group-prepend put-group-text+n,
-.webdesk_input-group-prepend put-group-text+put-group-text,
+.webdesk_input-group-append .webdesk_btn+.webdesk_btn,
+.webdesk_input-group-append .webdesk_btn+.webdesk_input-group-text,
+.webdesk_input-group-append .webdesk_input-group-text+.webdesk_btn,
+.webdesk_input-group-append .webdesk_input-group-text+.webdesk_input-group-text,
+.webdesk_input-group-prepend .webdesk_btn+.webdesk_btn,
+.webdesk_input-group-prepend .webdesk_btn+.webdesk_input-group-text,
+.webdesk_input-group-prepend .webdesk_input-group-text+.webdesk_btn,
+.webdesk_input-group-prepend .webdesk_input-group-text+.webdesk_input-group-text,
 .webdesk_input-group>.webdesk_custom-file+.webdesk_custom-file,
 .webdesk_input-group>.webdesk_custom-file+.webdesk_custom-select,
 .webdesk_input-group>.webdesk_custom-file+.webdesk_form-control,
@@ -3203,27 +3203,27 @@ opleft .webdesk_dropdown-toggle-split::before {
     margin-left: -1px
 }
 
-.webdesk_btn-group-vertical>n-group:not(:last-child)>n,
-.webdesk_btn-group-vertical>n:not(:last-child):not(opdown-toggle) {
+.webdesk_btn-group-vertical>.webdesk_btn-group:not(:last-child)>.webdesk_btn,
+.webdesk_btn-group-vertical>.webdesk_btn:not(:last-child):not(.webdesk_dropdown-toggle) {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0
 }
 
-.webdesk_btn-group-vertical>n-group:not(:first-child)>n,
-.webdesk_btn-group-vertical>n:not(:first-child) {
+.webdesk_btn-group-vertical>.webdesk_btn-group:not(:first-child)>.webdesk_btn,
+.webdesk_btn-group-vertical>.webdesk_btn:not(:first-child) {
     border-top-left-radius: 0;
     border-top-right-radius: 0
 }
 
-.webdesk_btn-group-toggle>n,
-.webdesk_btn-group-toggle>n-group>n {
+.webdesk_btn-group-toggle>.webdesk_btn,
+.webdesk_btn-group-toggle>.webdesk_btn-group>.webdesk_btn {
     margin-bottom: 0
 }
 
-.webdesk_btn-group-toggle>n input[type=radio],
-.webdesk_btn-group-toggle>n input[type=checkbox],
-.webdesk_btn-group-toggle>n-group>n input[type=radio],
-.webdesk_btn-group-toggle>n-group>n input[type=checkbox] {
+.webdesk_btn-group-toggle>.webdesk_btn input[type=radio],
+.webdesk_btn-group-toggle>.webdesk_btn input[type=checkbox],
+.webdesk_btn-group-toggle>.webdesk_btn-group>.webdesk_btn input[type=radio],
+.webdesk_btn-group-toggle>.webdesk_btn-group>.webdesk_btn input[type=checkbox] {
     position: absolute;
     clip: rect(0, 0, 0, 0);
     pointer-events: none
@@ -3262,8 +3262,8 @@ opleft .webdesk_dropdown-toggle-split::before {
     display: flex
 }
 
-.webdesk_input-group-append n,
-.webdesk_input-group-prepend n {
+.webdesk_input-group-append .webdesk_btn,
+.webdesk_input-group-prepend .webdesk_btn {
     position: relative;
     z-index: 2
 }
@@ -3293,22 +3293,22 @@ opleft .webdesk_dropdown-toggle-split::before {
     margin-top: 0
 }
 
-.webdesk_input-group>put-group-append:last-child>n:not(:last-child):not(opdown-toggle),
-.webdesk_input-group>put-group-append:last-child>put-group-text:not(:last-child),
-.webdesk_input-group>put-group-append:not(:last-child)>n,
-.webdesk_input-group>put-group-append:not(:last-child)>put-group-text,
-.webdesk_input-group>put-group-prepend>n,
-.webdesk_input-group>put-group-prepend>put-group-text {
+.webdesk_input-group>.webdesk_input-group-append:last-child>.webdesk_btn:not(:last-child):not(.webdesk_dropdown-toggle),
+.webdesk_input-group>.webdesk_input-group-append:last-child>.webdesk_input-group-text:not(:last-child),
+.webdesk_input-group>.webdesk_input-group-append:not(:last-child)>.webdesk_btn,
+.webdesk_input-group>.webdesk_input-group-append:not(:last-child)>.webdesk_input-group-text,
+.webdesk_input-group>.webdesk_input-group-prepend>.webdesk_btn,
+.webdesk_input-group>.webdesk_input-group-prepend>.webdesk_input-group-text {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0
 }
 
-.webdesk_input-group>put-group-append>n,
-.webdesk_input-group>put-group-append>put-group-text,
-.webdesk_input-group>put-group-prepend:first-child>n:not(:first-child),
-.webdesk_input-group>put-group-prepend:first-child>put-group-text:not(:first-child),
-.webdesk_input-group>put-group-prepend:not(:first-child)>n,
-.webdesk_input-group>put-group-prepend:not(:first-child)>put-group-text {
+.webdesk_input-group>.webdesk_input-group-append>.webdesk_btn,
+.webdesk_input-group>.webdesk_input-group-append>.webdesk_input-group-text,
+.webdesk_input-group>.webdesk_input-group-prepend:first-child>.webdesk_btn:not(:first-child),
+.webdesk_input-group>.webdesk_input-group-prepend:first-child>.webdesk_input-group-text:not(:first-child),
+.webdesk_input-group>.webdesk_input-group-prepend:not(:first-child)>.webdesk_btn,
+.webdesk_input-group>.webdesk_input-group-prepend:not(:first-child)>.webdesk_input-group-text {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0
 }
