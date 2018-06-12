@@ -62,9 +62,10 @@ if(isset($_GET['page']) && file_exists($wd_www . "header_" . $page)){
   }
   ?>
   <div class="container">
-    <script src="Plugins/jquery.min.js"></script>
+    <!--<script src="Plugins/jquery.min.js"></script>
     <script src="Plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-    <script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>
+    <script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>-->
+    <script src="www/Themes/wd_default/plugins.php"></script>
 <?php
 if(isset($_GET['page']) && file_exists($wd_www . $page)){
 	include $wd_www . $page;
