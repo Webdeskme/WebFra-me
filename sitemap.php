@@ -13,11 +13,11 @@ if(file_exists($wd_www . 'nav.json')){
   $json = file_get_contents($wd_www . 'nav.json');
   $json = json_decode($json, true);
   foreach($json as $key => $vlue){
+    if( isset($_SERVER['HTTPS'] ) ) { if($_SERVER['HTTPS'] != 'off'){$h = "https"} else{$h = "http"} } else{ $h = "http"}
     ?>
     <url>
-       <loc><?php echo $_SERVER['HTTP_HOST']; ?>?page=<?php echo $json[$key]['page']; ?></loc>
+       <loc><?php echo $h; ?>://<?php echo $_SERVER['HTTP_HOST']; ?>/?page=<?php echo $json[$key]['page']; ?></loc>
        <lastmod><?php echo date("c", filemtime($wd_www . $json[$key]['page'])); ?></lastmod>
-       <lastmod>2018-06-12T10:01:56+00:00</lastmod>
        <changefreq>monthly</changefreq>
     </url>
     <?php
