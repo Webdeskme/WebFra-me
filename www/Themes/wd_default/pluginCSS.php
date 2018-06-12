@@ -5,6 +5,6 @@ header("Expires: $ts");
 header("Pragma: cache");
 header("Cache-Control: Public, max-age=$seconds_to_cache");
 echo file_get_contents("../../../Plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css");
-echo file_get_contents("../../../Theme/default.php");
-echo file_get_contents("style.css");
+//echo file_get_contents("../../../Theme/default.php");
+//echo file_get_contents("style.css");
 ?>
