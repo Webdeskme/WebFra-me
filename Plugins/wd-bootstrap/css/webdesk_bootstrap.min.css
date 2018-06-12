@@ -1839,9 +1839,9 @@ select.webdesk_form-control:focus::-ms-value {
 
 .webdesk_form-control-sm,
 .webdesk_input-group-sm>.webdesk_form-control,
-.webdesk_input-group-sm>.webdesk_input-group-append>n,
+.webdesk_input-group-sm>.webdesk_input-group-append>.webdesk_btn,
 .webdesk_input-group-sm>.webdesk_input-group-append>.webdesk_input-group-text,
-.webdesk_input-group-sm>.webdesk_input-group-prepend>n,
+.webdesk_input-group-sm>.webdesk_input-group-prepend>.webdesk_btn,
 .webdesk_input-group-sm>.webdesk_input-group-prepend>.webdesk_input-group-text {
     padding: .25rem .5rem;
     font-size: .875rem;
@@ -1860,9 +1860,9 @@ select.webdesk_form-control-sm:not([size]):not([multiple]) {
 
 .webdesk_form-control-lg,
 .webdesk_input-group-lg>.webdesk_form-control,
-.webdesk_input-group-lg>.webdesk_input-group-append>n,
+.webdesk_input-group-lg>.webdesk_input-group-append>.webdesk_btn,
 .webdesk_input-group-lg>.webdesk_input-group-append>.webdesk_input-group-text,
-.webdesk_input-group-lg>.webdesk_input-group-prepend>n,
+.webdesk_input-group-lg>.webdesk_input-group-prepend>.webdesk_btn,
 .webdesk_input-group-lg>.webdesk_input-group-prepend>.webdesk_input-group-text {
     padding: .5rem 1rem;
     font-size: 1.25rem;
@@ -3042,7 +3042,7 @@ input[type=reset] .webdesk_btn-block {
     border-bottom-right-radius: 0
 }
 
-.webdesk_btn-group>.webdesk_btn-group:not(:first-child)>n,
+.webdesk_btn-group>.webdesk_btn-group:not(:first-child)>.webdesk_btn,
 .webdesk_btn-group>.webdesk_btn:not(:first-child),
 .webdesk_input-group>.webdesk_custom-file:not(:first-child) .webdesk_custom-file-label,
 .webdesk_input-group>.webdesk_custom-select:not(:first-child),
@@ -3097,31 +3097,31 @@ input[type=reset] .webdesk_btn-block {
     vertical-align: middle
 }
 
-.webdesk_btn-group-vertical>n,
-.webdesk_btn-group>n {
+.webdesk_btn-group-vertical>.webdesk_btn,
+.webdesk_btn-group>.webdesk_btn {
     position: relative;
     flex: 0 1 auto
 }
 
-.webdesk_btn-group-vertical>n:active,
-.webdesk_btn-group-vertical>n:active,
-.webdesk_btn-group-vertical>n:focus,
-.webdesk_btn-group-vertical>n:hover,
-.webdesk_btn-group>n:active,
-.webdesk_btn-group>n:active,
-.webdesk_btn-group>n:focus,
-.webdesk_btn-group>n:hover {
+.webdesk_btn-group-vertical>.webdesk_btn:active,
+.webdesk_btn-group-vertical>.webdesk_btn:active,
+.webdesk_btn-group-vertical>.webdesk_btn:focus,
+.webdesk_btn-group-vertical>.webdesk_btn:hover,
+.webdesk_btn-group>.webdesk_btn:active,
+.webdesk_btn-group>.webdesk_btn:active,
+.webdesk_btn-group>.webdesk_btn:focus,
+.webdesk_btn-group>.webdesk_btn:hover {
     z-index: 1
 }
 
-.webdesk_btn-group n+n,
-.webdesk_btn-group n+n-group,
-.webdesk_btn-group n-group+n,
-.webdesk_btn-group n-group+n-group,
-.webdesk_btn-group-vertical n+n,
-.webdesk_btn-group-vertical n+n-group,
-.webdesk_btn-group-vertical n-group+n,
-.webdesk_btn-group-vertical n-group+n-group {
+.webdesk_btn-group .webdesk_btn+.webdesk_btn,
+.webdesk_btn-group .webdesk_btn+.webdesk_btn-group,
+.webdesk_btn-group .webdesk_btn-group+.webdesk_btn,
+.webdesk_btn-group .webdesk_btn-group+.webdesk_btn-group,
+.webdesk_btn-group-vertical .webdesk_btn+.webdesk_btn,
+.webdesk_btn-group-vertical .webdesk_btn+.webdesk_btn-group,
+.webdesk_btn-group-vertical .webdesk_btn-group+.webdesk_btn,
+.webdesk_btn-group-vertical .webdesk_btn-group+.webdesk_btn-group {
     margin-left: -1px
 }
 
@@ -8418,7 +8418,7 @@ a.text-dark:hover {
         text-shadow: none!important;
         box-shadow: none!important
     }
-    a:not(n) {
+    a:not(.webdesk_btn) {
         text-decoration: underline
     }
     abbr[title]::after {
