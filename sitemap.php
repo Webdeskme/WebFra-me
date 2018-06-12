@@ -13,7 +13,7 @@ if(file_exists($wd_www . 'nav.json')){
   $json = file_get_contents($wd_www . 'nav.json');
   $json = json_decode($json, true);
   foreach($json as $key => $vlue){
-    if( isset($_SERVER['HTTPS'] ) ) { if($_SERVER['HTTPS'] != 'off'){$h = "https"} else{$h = "http"} } else{ $h = "http"}
+    if( isset($_SERVER['HTTPS'] ) ) { if($_SERVER['HTTPS'] != 'off'){$h = "https";} else{$h = "http";} } else{ $h = "http";}
     ?>
     <url>
        <loc><?php echo $h; ?>://<?php echo $_SERVER['HTTP_HOST']; ?>/?page=<?php echo $json[$key]['page']; ?></loc>
