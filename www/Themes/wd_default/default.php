@@ -108,5 +108,12 @@ if(isset($_GET['wd_dev'])){
   <?php
 }
    ?>
+<script>
+if('serviceWorker' in navigator) {
+  navigator.serviceWorker
+           .register('/www/Themes/wd_default/sw.js')
+           .then(function() { console.log("Service Worker Registered"); });
+}
+</script>
 </body>
 </html>
