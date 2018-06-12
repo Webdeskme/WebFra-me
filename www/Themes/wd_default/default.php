@@ -23,7 +23,7 @@
     A link to the terms of use, cookie and privacy policy, and licences
     can be found at the bottom right corner of the menu bar by clicking
     the exlmation point once loged in, and in the menu of the login page.-->
-<html lang="en-US">
+<html lang="en-US" manifest="manifest.appcache">
 <head>
   <meta charset="utf-8">
   <link rel="manifest" href="manifest.php">
@@ -108,12 +108,12 @@ if(isset($_GET['wd_dev'])){
   <?php
 }
    ?>
-<script>
+<!--<script>
 if('serviceWorker' in navigator) {
   navigator.serviceWorker
            .register('/www/Themes/wd_default/sw.js')
            .then(function() { console.log("Service Worker Registered"); });
 }
-</script>
+</script>-->
 </body>
 </html>
