@@ -1544,7 +1544,7 @@
 
     // Firefox want us to check `-x` and `-y` variations as well
 
-    var _getStyleComputedProp = getStyleComputedProperty(element),
+    var _getStyleComputedProp = webdesk_getStyleComputedProperty(element),
         overflow = _getStyleComputedProp.overflow,
         overflowX = _getStyleComputedProp.overflowX,
         overflowY = _getStyleComputedProp.overflowY;
@@ -1553,7 +1553,7 @@
       return element;
     }
 
-    return getScrollParent(getParentNode(element));
+    return webdesk_getScrollParent(webdesk_getParentNode(element));
   }
 
   var isIE11 = isBrowser && !!(window.MSInputMethodContext && document.documentMode);
@@ -1743,17 +1743,17 @@
   }
 
   function webdesk_getSize(axis, body, html, computedStyle) {
-    return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis], html['scroll' + axis], isIE(10) ? html['offset' + axis] + computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')] + computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')] : 0);
+    return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis], html['scroll' + axis], webdesk_isIE(10) ? html['offset' + axis] + computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')] + computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')] : 0);
   }
 
   function webdesk_getWindowSizes() {
     var body = document.body;
     var html = document.documentElement;
-    var computedStyle = isIE(10) && getComputedStyle(html);
+    var computedStyle = webdesk_isIE(10) && getComputedStyle(html);
 
     return {
-      height: getSize('Height', body, html, computedStyle),
-      width: getSize('Width', body, html, computedStyle)
+      height: webdesk_getSize('Height', body, html, computedStyle),
+      width: webdesk_getSize('Width', body, html, computedStyle)
     };
   }
 
@@ -1863,7 +1863,7 @@
     };
 
     // subtract scrollbar size from sizes
-    var sizes = element.nodeName === 'HTML' ? getWindowSizes() : {};
+    var sizes = element.nodeName === 'HTML' ? webdesk_getWindowSizes() : {};
     var width = sizes.width || element.clientWidth || result.right - result.left;
     var height = sizes.height || element.clientHeight || result.bottom - result.top;
 
@@ -1873,27 +1873,27 @@
     // if an hypothetical scrollbar is detected, we must be sure it's not a `border`
     // we make this check conditional for performance reasons
     if (horizScrollbar || vertScrollbar) {
-      var styles = getStyleComputedProperty(element);
-      horizScrollbar -= getBordersSize(styles, 'x');
-      vertScrollbar -= getBordersSize(styles, 'y');
+      var styles = webdesk_getStyleComputedProperty(element);
+      horizScrollbar -= webdesk_getBordersSize(styles, 'x');
+      vertScrollbar -= webdesk_getBordersSize(styles, 'y');
 
       result.width -= horizScrollbar;
       result.height -= vertScrollbar;
     }
 
-    return getClientRect(result);
+    return webdesk_getClientRect(result);
   }
 
   function webdesk_getOffsetRectRelativeToArbitraryNode(children, parent) {
     var fixedPosition = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-    var isIE10 = isIE(10);
+    var isIE10 = webdesk_isIE(10);
     var isHTML = parent.nodeName === 'HTML';
-    var childrenRect = getBoundingClientRect(children);
-    var parentRect = getBoundingClientRect(parent);
-    var scrollParent = getScrollParent(children);
+    var childrenRect = webdesk_getBoundingClientRect(children);
+    var parentRect = webdesk_getBoundingClientRect(parent);
+    var scrollParent = webdesk_getScrollParent(children);
 
-    var styles = getStyleComputedProperty(parent);
+    var styles = webdesk_getStyleComputedProperty(parent);
     var borderTopWidth = parseFloat(styles.borderTopWidth, 10);
     var borderLeftWidth = parseFloat(styles.borderLeftWidth, 10);
 
@@ -1902,7 +1902,7 @@
       parentRect.top = Math.max(parentRect.top, 0);
       parentRect.left = Math.max(parentRect.left, 0);
     }
-    var offsets = getClientRect({
+    var offsets = webdesk_getClientRect({
       top: childrenRect.top - parentRect.top - borderTopWidth,
       left: childrenRect.left - parentRect.left - borderLeftWidth,
       width: childrenRect.width,
@@ -2139,8 +2139,8 @@
   function webdesk_getReferenceOffsets(state, popper, reference) {
     var fixedPosition = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
-    var commonOffsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, reference);
-    return getOffsetRectRelativeToArbitraryNode(reference, commonOffsetParent, fixedPosition);
+    var commonOffsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : webdesk_findCommonOffsetParent(popper, reference);
+    return webdesk_getOffsetRectRelativeToArbitraryNode(reference, commonOffsetParent, fixedPosition);
   }
 
   /**
@@ -2587,12 +2587,12 @@
    */
   function webdesk_applyStyleOnLoad(reference, popper, options, modifierOptions, state) {
     // compute reference element offsets
-    var referenceOffsets = getReferenceOffsets(state, popper, reference, options.positionFixed);
+    var referenceOffsets = webdesk_getReferenceOffsets(state, popper, reference, options.positionFixed);
 
     // compute auto placement, store placement inside the data object,
     // modifiers will be able to edit `placement` if needed
     // and refer to originalPlacement to know the original value
-    var placement = computeAutoPlacement(options.placement, referenceOffsets, popper, reference, options.modifiers.flip.boundariesElement, options.modifiers.flip.padding);
+    var placement = webdesk_computeAutoPlacement(options.placement, referenceOffsets, popper, reference, options.modifiers.flip.boundariesElement, options.modifiers.flip.padding);
 
     popper.setAttribute('x-placement', placement);
 
@@ -3833,7 +3833,7 @@
       // they could add new properties to their options configuration
       // BE AWARE: don't add options to `options.modifiers.name` but to `modifierOptions`!
       this.modifiers.forEach(function (modifierOptions) {
-        if (modifierOptions.enabled && isFunction(modifierOptions.onLoad)) {
+        if (modifierOptions.enabled && webdesk_isFunction(modifierOptions.onLoad)) {
           modifierOptions.onLoad(_this.reference, _this.popper, _this.options, modifierOptions, _this.state);
         }
       });
