@@ -8,6 +8,7 @@ include "testInput.php";
 	  xmlns:xhtml="http://www.w3.org/1999/xhtml"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      <?php
 if(file_exists($wd_www . 'nav.json')){
   $json = file_get_contents($wd_www . 'nav.json');
   $json = json_decode($json, true);
