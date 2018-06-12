@@ -4,7 +4,7 @@
 <head>
     <?php include 'HUDhead.php';?>
 </head>
-<body onload="display_ct();">
+<body onload="display_ct();" style="fontSize: 1.75em;">
 
 <div id="tabs" class="con">
     <ul id="wd_tabs">
