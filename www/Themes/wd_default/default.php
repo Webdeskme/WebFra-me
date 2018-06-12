@@ -40,10 +40,10 @@
       <meta name="copyright" content="&copy; <?php echo date("Y") . ' ' . $wd_Title; ?>">
       <link rel="apple-touch-icon" href="favicon.ico">
       <link rel="apple-touch-startup-image" href="favicon.ico">
-      <!--<link rel="stylesheet" href="Plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">-->
+      <link rel="stylesheet" href="Plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
       <link rel="stylesheet" type="text/css" href="Theme/default.php">
 <link rel="stylesheet" type="text/css" href="www/Themes/wd_default/style.css">
-<link rel="stylesheet" type="text/css" href="www/Themes/wd_default/pluginCSS.php">
+<!--<link rel="stylesheet" type="text/css" href="www/Themes/wd_default/pluginCSS.php">-->
 <?php
 if(file_exists($wd_www . "header.php")){
 	include $wd_www . "header.php";
