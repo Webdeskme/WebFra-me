@@ -1,5 +1,5 @@
 <!--<Webdesk.me Making web aplications easy.>
-    Copyright (C) 2017  Adam W. Telford
+    Copyright (C) <?php echo date("Y"); ?>  Adam W. Telford
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by

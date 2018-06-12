@@ -1762,11 +1762,11 @@ pre code {
     opacity: 1
 }
 
-selectrm-control:not([size]):not([multiple]) {
+select.form-control:not([size]):not([multiple]) {
     height: calc(2.25rem + 2px)
 }
 
-selectrm-control:focus::-ms-value {
+select.webdesk_form-control:focus::-ms-value {
     color: #495057;
     background-color: #fff
 }
@@ -1812,33 +1812,33 @@ selectrm-control:focus::-ms-value {
     border-width: 1px 0
 }
 
-.webdesk_was-validated .webdesk_custom-file-input:valid~stom-file-label,
+.webdesk_was-validated .webdesk_custom-file-input:valid~.webdesk_custom-file-label,
 .webdesk_was-validated .webdesk_custom-select:valid,
 .webdesk_was-validated .webdesk_form-control:valid,
-.webdesk_custom-file-input-valid~stom-file-label,
+.webdesk_custom-file-input-valid~.webdesk_custom-file-label,
 .webdesk_custom-select-valid,
 .webdesk_form-control-valid {
     border-color: #28a745
 }
 
-.webdesk_form-control-plaintextrm-control-lg,
-.webdesk_form-control-plaintextrm-control-sm,
-.webdesk_input-group-lg>rm-control-plaintextrm-control,
-.webdesk_input-group-lg>put-group-append>rm-control-plaintextn,
-.webdesk_input-group-lg>put-group-append>rm-control-plaintextput-group-text,
-.webdesk_input-group-lg>put-group-prepend>rm-control-plaintextn,
-.webdesk_input-group-lg>put-group-prepend>rm-control-plaintextput-group-text,
-.webdesk_input-group-sm>rm-control-plaintextrm-control,
-.webdesk_input-group-sm>put-group-append>rm-control-plaintextn,
-.webdesk_input-group-sm>put-group-append>rm-control-plaintextput-group-text,
-.webdesk_input-group-sm>put-group-prepend>rm-control-plaintextn,
-.webdesk_input-group-sm>put-group-prepend>rm-control-plaintextput-group-text {
+.webdesk_form-control-plaintext.webdesk_form-control-lg,
+.webdesk_form-control-plaintext.webdesk_form-control-sm,
+.webdesk_input-group-lg>.webdesk_form-control-plaintext.webdesk_form-control,
+.webdesk_input-group-lg>put-group-append>.webdesk_form-control-plaintextn,
+.webdesk_input-group-lg>put-group-append>.webdesk_form-control-plaintextput-group-text,
+.webdesk_input-group-lg>put-group-prepend>.webdesk_form-control-plaintextn,
+.webdesk_input-group-lg>put-group-prepend>.webdesk_form-control-plaintextput-group-text,
+.webdesk_input-group-sm>.webdesk_form-control-plaintext.webdesk_form-control,
+.webdesk_input-group-sm>put-group-append>.webdesk_form-control-plaintextn,
+.webdesk_input-group-sm>put-group-append>.webdesk_form-control-plaintextput-group-text,
+.webdesk_input-group-sm>put-group-prepend>.webdesk_form-control-plaintextn,
+.webdesk_input-group-sm>put-group-prepend>.webdesk_form-control-plaintextput-group-text {
     padding-right: 0;
     padding-left: 0
 }
 
 .webdesk_form-control-sm,
-.webdesk_input-group-sm>rm-control,
+.webdesk_input-group-sm>.webdesk_form-control,
 .webdesk_input-group-sm>put-group-append>n,
 .webdesk_input-group-sm>put-group-append>put-group-text,
 .webdesk_input-group-sm>put-group-prepend>n,
@@ -1853,13 +1853,13 @@ selectrm-control:focus::-ms-value {
 .webdesk_input-group-sm>put-group-append>selectput-group-text:not([size]):not([multiple]),
 .webdesk_input-group-sm>put-group-prepend>selectn:not([size]):not([multiple]),
 .webdesk_input-group-sm>put-group-prepend>selectput-group-text:not([size]):not([multiple]),
-.webdesk_input-group-sm>selectrm-control:not([size]):not([multiple]),
-selectrm-control-sm:not([size]):not([multiple]) {
+.webdesk_input-group-sm>select.webdesk_form-control:not([size]):not([multiple]),
+select.webdesk_form-control-sm:not([size]):not([multiple]) {
     height: calc(1.8125rem + 2px)
 }
 
 .webdesk_form-control-lg,
-.webdesk_input-group-lg>rm-control,
+.webdesk_input-group-lg>.webdesk_form-control,
 .webdesk_input-group-lg>put-group-append>n,
 .webdesk_input-group-lg>put-group-append>put-group-text,
 .webdesk_input-group-lg>put-group-prepend>n,
@@ -1874,8 +1874,8 @@ selectrm-control-sm:not([size]):not([multiple]) {
 .webdesk_input-group-lg>put-group-append>selectput-group-text:not([size]):not([multiple]),
 .webdesk_input-group-lg>put-group-prepend>selectn:not([size]):not([multiple]),
 .webdesk_input-group-lg>put-group-prepend>selectput-group-text:not([size]):not([multiple]),
-.webdesk_input-group-lg>selectrm-control:not([size]):not([multiple]),
-selectrm-control-lg:not([size]):not([multiple]) {
+.webdesk_input-group-lg>select.webdesk_form-control:not([size]):not([multiple]),
+select.webdesk_form-control-lg:not([size]):not([multiple]) {
     height: calc(2.875rem + 2px)
 }
 
@@ -2019,22 +2019,22 @@ selectrm-control-lg:not([size]):not([multiple]) {
     box-shadow: 0 0 0 1px #fff, 0 0 0 .2rem rgba(40, 167, 69, .25)
 }
 
-.webdesk_was-validated .webdesk_custom-file-input:valid~stom-file-label::before,
-.webdesk_custom-file-input-valid~stom-file-label::before {
+.webdesk_was-validated .webdesk_custom-file-input:valid~.webdesk_custom-file-label::before,
+.webdesk_custom-file-input-valid~.webdesk_custom-file-label::before {
     border-color: inherit
 }
 
-.webdesk_was-validated .webdesk_custom-file-input:invalid~stom-file-label,
+.webdesk_was-validated .webdesk_custom-file-input:invalid~.webdesk_custom-file-label,
 .webdesk_was-validated .webdesk_custom-select:invalid,
 .webdesk_was-validated .webdesk_form-control:invalid,
-.webdesk_custom-file-input-invalid~stom-file-label,
+.webdesk_custom-file-input-invalid~.webdesk_custom-file-label,
 .webdesk_custom-select-invalid,
 .webdesk_form-control-invalid {
     border-color: #dc3545
 }
 
-.webdesk_was-validated .webdesk_custom-file-input:valid:focus~stom-file-label,
-.webdesk_custom-file-input-valid:focus~stom-file-label {
+.webdesk_was-validated .webdesk_custom-file-input:valid:focus~.webdesk_custom-file-label,
+.webdesk_custom-file-input-valid:focus~.webdesk_custom-file-label {
     box-shadow: 0 0 0 .2rem rgba(40, 167, 69, .25)
 }
 
@@ -2111,13 +2111,13 @@ selectrm-control-lg:not([size]):not([multiple]) {
     box-shadow: 0 0 0 1px #fff, 0 0 0 .2rem rgba(220, 53, 69, .25)
 }
 
-.webdesk_was-validated .webdesk_custom-file-input:invalid~stom-file-label::before,
-.webdesk_custom-file-input-invalid~stom-file-label::before {
+.webdesk_was-validated .webdesk_custom-file-input:invalid~.webdesk_custom-file-label::before,
+.webdesk_custom-file-input-invalid~.webdesk_custom-file-label::before {
     border-color: inherit
 }
 
-.webdesk_was-validated .webdesk_custom-file-input:invalid:focus~stom-file-label,
-.webdesk_custom-file-input-invalid:focus~stom-file-label {
+.webdesk_was-validated .webdesk_custom-file-input:invalid:focus~.webdesk_custom-file-label,
+.webdesk_custom-file-input-invalid:focus~.webdesk_custom-file-label {
     box-shadow: 0 0 0 .2rem rgba(220, 53, 69, .25)
 }
 
@@ -2145,15 +2145,15 @@ selectrm-control-lg:not([size]):not([multiple]) {
         align-items: center;
         margin-bottom: 0
     }
-    .webdesk_form-inline rm-control {
+    .webdesk_form-inline .webdesk_form-control {
         display: inline-block;
         width: auto;
         vertical-align: middle
     }
-    .webdesk_form-inline rm-control-plaintext {
+    .webdesk_form-inline .webdesk_form-control-plaintext {
         display: inline-block
     }
-    .webdesk_form-inline stom-select,
+    .webdesk_form-inline .webdesk_custom-select,
     .webdesk_form-inline put-group {
         width: auto
     }
@@ -2812,7 +2812,7 @@ ow>.webdesk_btn-outline-darkopdown-toggle,
     pointer-events: none
 }
 
-.webdesk_btn-group-lg>n,
+.webdesk_btn-group-lg>.btn,
 .webdesk_btn-lg {
     padding: .5rem 1rem;
     font-size: 1.25rem;
@@ -2820,7 +2820,7 @@ ow>.webdesk_btn-outline-darkopdown-toggle,
     border-radius: .3rem
 }
 
-.webdesk_btn-group-sm>n,
+.webdesk_btn-group-sm>.btn,
 .webdesk_btn-sm {
     padding: .25rem .5rem;
     font-size: .875rem;
@@ -2833,18 +2833,18 @@ ow>.webdesk_btn-outline-darkopdown-toggle,
     width: 100%
 }
 
-.webdesk_btn-block+n-block {
+.webdesk_btn-block+.btn-block {
     margin-top: .5rem
 }
 
-input[type=submit]n-block,
-input[type=button]n-block,
-input[type=reset]n-block {
+input[type=submit] .btn-block,
+input[type=button] .btn-block,
+input[type=reset] .btn-block {
     width: 100%
 }
 
 .webdesk_dropdown-toggle::after,
-.webdesk_dropup opdown-toggle::after {
+.webdesk_dropup .webdesk_dropdown-toggle::after {
     width: 0;
     height: 0;
     vertical-align: .255em;
@@ -3032,21 +3032,21 @@ input[type=reset]n-block {
     border: 0
 }
 
-.webdesk_btn-group>n-group:not(:last-child)>n,
-.webdesk_btn-group>n:not(:last-child):not(opdown-toggle),
-.webdesk_input-group>stom-file:not(:last-child) stom-file-label,
-.webdesk_input-group>stom-file:not(:last-child) stom-file-label::after,
-.webdesk_input-group>stom-select:not(:last-child),
-.webdesk_input-group>rm-control:not(:last-child) {
+.webdesk_btn-group>.btn-group:not(:last-child)>.btn,
+.webdesk_btn-group>.btn:not(:last-child):not(.webdesk_dropdown-toggle),
+.webdesk_input-group>.webdesk_custom-file:not(:last-child) .webdesk_custom-file-label,
+.webdesk_input-group>.webdesk_custom-file:not(:last-child) .webdesk_custom-file-label::after,
+.webdesk_input-group>.webdesk_custom-select:not(:last-child),
+.webdesk_input-group>.webdesk_form-control:not(:last-child) {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0
 }
 
-.webdesk_btn-group>n-group:not(:first-child)>n,
-.webdesk_btn-group>n:not(:first-child),
-.webdesk_input-group>stom-file:not(:first-child) stom-file-label,
-.webdesk_input-group>stom-select:not(:first-child),
-.webdesk_input-group>rm-control:not(:first-child) {
+.webdesk_btn-group>.btn-group:not(:first-child)>n,
+.webdesk_btn-group>.btn:not(:first-child),
+.webdesk_input-group>.webdesk_custom-file:not(:first-child) .webdesk_custom-file-label,
+.webdesk_input-group>.webdesk_custom-select:not(:first-child),
+.webdesk_input-group>.webdesk_form-control:not(:first-child) {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0
 }
@@ -3191,15 +3191,15 @@ opleft .webdesk_dropdown-toggle-split::before {
 .webdesk_input-group-prepend n+put-group-text,
 .webdesk_input-group-prepend put-group-text+n,
 .webdesk_input-group-prepend put-group-text+put-group-text,
-.webdesk_input-group>stom-file+stom-file,
-.webdesk_input-group>stom-file+stom-select,
-.webdesk_input-group>stom-file+rm-control,
-.webdesk_input-group>stom-select+stom-file,
-.webdesk_input-group>stom-select+stom-select,
-.webdesk_input-group>stom-select+rm-control,
-.webdesk_input-group>rm-control+stom-file,
-.webdesk_input-group>rm-control+stom-select,
-.webdesk_input-group>rm-control+rm-control {
+.webdesk_input-group>.webdesk_custom-file+.webdesk_custom-file,
+.webdesk_input-group>.webdesk_custom-file+.webdesk_custom-select,
+.webdesk_input-group>.webdesk_custom-file+.webdesk_form-control,
+.webdesk_input-group>.webdesk_custom-select+.webdesk_custom-file,
+.webdesk_input-group>.webdesk_custom-select+.webdesk_custom-select,
+.webdesk_input-group>.webdesk_custom-select+.webdesk_form-control,
+.webdesk_input-group>.webdesk_form-control+.webdesk_custom-file,
+.webdesk_input-group>.webdesk_form-control+.webdesk_custom-select,
+.webdesk_input-group>.webdesk_form-control+.webdesk_form-control {
     margin-left: -1px
 }
 
@@ -3237,22 +3237,22 @@ opleft .webdesk_dropdown-toggle-split::before {
     width: 100%
 }
 
-.webdesk_input-group>stom-file,
-.webdesk_input-group>stom-select,
-.webdesk_input-group>rm-control {
+.webdesk_input-group>.webdesk_custom-file,
+.webdesk_input-group>.webdesk_custom-select,
+.webdesk_input-group>.webdesk_form-control {
     position: relative;
     flex: 1 1 auto;
     width: 1%;
     margin-bottom: 0
 }
 
-.webdesk_input-group>stom-file:focus,
-.webdesk_input-group>stom-select:focus,
-.webdesk_input-group>rm-control:focus {
+.webdesk_input-group>.webdesk_custom-file:focus,
+.webdesk_input-group>.webdesk_custom-select:focus,
+.webdesk_input-group>.webdesk_form-control:focus {
     z-index: 3
 }
 
-.webdesk_input-group>stom-file {
+.webdesk_input-group>.webdesk_custom-file {
     display: flex;
     align-items: center
 }
@@ -3386,7 +3386,7 @@ opleft .webdesk_dropdown-toggle-split::before {
     background-size: 50% 50%
 }
 
-.webdesk_custom-file-input:lang(en)~stom-file-label::after,
+.webdesk_custom-file-input:lang(en)~.webdesk_custom-file-label::after,
 .webdesk_custom-file-label::after {
     content: "Browse"
 }
@@ -3507,12 +3507,12 @@ opleft .webdesk_dropdown-toggle-split::before {
     right: 0
 }
 
-.webdesk_custom-file-input:focus~stom-file-label {
+.webdesk_custom-file-input:focus~.webdesk_custom-file-label {
     border-color: #80bdff;
     box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
 }
 
-.webdesk_custom-file-input:focus~stom-file-label::after {
+.webdesk_custom-file-input:focus~.webdesk_custom-file-label::after {
     border-color: #80bdff
 }
 

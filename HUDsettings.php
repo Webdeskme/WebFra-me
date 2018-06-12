@@ -7,17 +7,22 @@ else{
     echo '#FFFFFF';
 }
 ?>; overflow: scroll; height: 90%;">
-    <h1><span class="glyphicon glyphicon-cog"></span> <?php echo f_dec($_SESSION["user"]); ?>'s Settings</h1>
-    <a href="logout.php"><button class="btn btn-danger"><span class="glyphicon glyphicon-off"></span> Logout</button></a>
-<br><br>
-    <form method="post" action="Home.php?id=<?php $val = test_input(file_get_contents($wd_adminFile . 'val.txt')); echo $_SESSION["user"] . '&val=' . $val; ?>&type=<?php echo $_SESSION["HUD"]; ?>">
-        <input type="submit" name="lastPage" class="btn btn-primary" Value="AutoLogin">
-    </form>
+    
+    <div class="webdesk_float-right">
+        <form method="post" action="Home.php?id=<?php $val = test_input(file_get_contents($wd_adminFile . 'val.txt')); echo $_SESSION["user"] . '&val=' . $val; ?>&type=<?php echo $_SESSION["HUD"]; ?>">
+        <div class="webdesk_btn-group">
+            <a href="logout.php" class="webdesk_btn webdesk_btn-danger webdesk_text-white"><i class="fa fa-power-off"></i> Logout</a>
+            <button type="submit" name="lastPage" class="webdesk_btn webdesk_btn-secondary"><i class="fa fa-sign-in"></i> AutoLogin</button>
+        </div>
+        </form>
+    </div>
+    
+    <h1 class="webdesk_mb-5"><span class="fa fa-cogs"></span> <?php echo f_dec($_SESSION["user"]); ?>'s Settings</h1>
     <details>
     <summary><b style="font-size: 1.5em;">URL for your WebDesk</b></summary><br><br>
     <form method="post" action="url.php">
         <input type="text" name="url" placeholder="http://www.somthing.com" title="http://www.somthing.com" required><br><br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" class="webdesk_btn webdesk_btn-primary">
     </form>
     </details><br><br>
     <details>
