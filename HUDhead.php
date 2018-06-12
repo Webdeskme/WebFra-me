@@ -13,6 +13,7 @@
     <meta name="copyright" content="&copy; <?php echo date("Y") . ' ' . $wd_Title; ?>">
     <link rel="apple-touch-icon" href="favicon.ico">
     <link rel="apple-touch-startup-image" href="favicon.ico">
+<link rel="manifest" href="manifest.php">
 <link rel="stylesheet" href="Plugins/wd-bootstrap/css/webdesk_bootstrap.min.css">
 <link rel="stylesheet" href="Plugins/jquery-ui/jquery-ui.min.css">
 <link rel="stylesheet" type="text/css" href="Plugins/context.standalone.css">
