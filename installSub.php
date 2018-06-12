@@ -39,6 +39,7 @@ $path = test_input($_POST["path"]);
 $user = f_enc(strtolower(test_input($_POST['Username'])));
 $title = test_input($_POST['title']);
 $wd_roots[$_SERVER['HTTP_HOST']] = $path;
+//file_put_contents('manifest.json', );
                       	mkdir($path);
                         mkdir($path . '/Admin/');
                         file_put_contents($path . '/Admin/appWeb.txt', $arand);

@@ -26,6 +26,7 @@
 <html lang="en-US">
 <head>
   <meta charset="utf-8">
+  <link rel="manifest" href="manifest.php">
      <meta http-equiv="content-language" content="ll-cc">
       <meta name="language" content="English">
       <meta name="mobile-web-app-capable" content="yes">

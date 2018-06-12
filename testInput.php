@@ -451,7 +451,7 @@ if(file_exists("path.php")){
         <?php
       if($name != ""){
       ?>
-        <a class="navbar-brand" href="index.php?page=index.php"><?php echo $name; ?></a>
+        <a class="navbar-brand" style="color: #000000;" href="index.php?page=index.php"><?php echo $name; ?></a>
         <?php
       }
       ?>
