@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: index.php
+Allow: web.php
+Allow: wiki.php
+Disallow: /
+sitemap: sitemap.php
