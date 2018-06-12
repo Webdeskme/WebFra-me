@@ -19,6 +19,7 @@ if(file_exists($wd_www . 'nav.json')){
        <loc><?php echo $h; ?>://<?php echo $_SERVER['HTTP_HOST']; ?>/?page=<?php echo $json[$key]['page']; ?></loc>
        <lastmod><?php echo date("c", filemtime($wd_www . $json[$key]['page'])); ?></lastmod>
        <changefreq>monthly</changefreq>
+       <priority>0.8</priority>
     </url>
     <?php
   }
