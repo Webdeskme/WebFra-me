@@ -1,6 +1,7 @@
 <?php
 header('Content-Type: application/xml; charset=utf-8');
 include "testInput.php";
+?>
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
