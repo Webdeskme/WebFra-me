@@ -1,5 +1,5 @@
 <?php
-string session_cache_limiter ('public');
+//
 $seconds_to_cache = 86400;
 $ts = gmdate("D, d M Y H:i:s", time() + $seconds_to_cache) . " GMT";
 header("Expires: $ts");
