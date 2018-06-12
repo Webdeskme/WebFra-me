@@ -1,3 +1,10 @@
+<script src="Plugins/jquery.min.js"></script>
+<script src="Plugins/wd-bootstrap/js/webdesk_bootstrap.js"></script>
+<script src="Plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="Plugins/tinymce/js/tinymce/tinymce.min.js"></script>
+<script src="Plugins/fullcalendar/lib/moment.min.js"></script>
+<script src="Plugins/fullcalendar/fullcalendar.min.js"></script>
+<script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>
 <!-- wd_clock -->
   <div class="webdesk_modal" id="wd_clock" role="dialog">
     <div class="webdesk_modal-dialog webdesk_modal-lg">
@@ -7,7 +14,7 @@
           <h4 class="webdesk_modal-title">Time</h4>
         </div>
         <div class="webdesk_modal-body">
-          
+
           <canvas id="canvas" width="400" height="400"
 style="background-color:#333">
 </canvas>
@@ -95,7 +102,7 @@ function drawHand(ctx, pos, length, width) {
 </script>
 
 
-          
+
         </div>
         <div class="webdesk_modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -104,7 +111,7 @@ function drawHand(ctx, pos, length, width) {
     </div>
   </div>
 <!-- End wd_clock -->
-  
+
 <!-- wd_cal -->
   <div class="webdesk_modal" id="wd_cal" role="dialog">
     <div class="webdesk_modal-dialog webdesk_modal-lg">
@@ -133,7 +140,7 @@ if(isset($_GET['title'])){
 ?>
 			]
 		});
-		
+
 	});
 
 </script>
@@ -151,8 +158,8 @@ if(isset($_GET['title'])){
 <!-- wd_app_help-->
   <div class="webdesk_modal" id="wd_app_help" role="dialog">
     <div class="webdesk_modal-dialog">
-    
-      
+
+
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -183,7 +190,7 @@ else{
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
-      
+
     </div>
   </div>
 <!-- End wd_app_help -->
@@ -234,25 +241,25 @@ else{
 .cloud {
 	width: 200px; height: 60px;
 	background: #fff;
-	
+
 	border-radius: 200px;
 	-moz-border-radius: 200px;
 	-webkit-border-radius: 200px;
-	
-	position: relative; 
+
+	position: relative;
 }
 
 .cloud:before, .cloud:after {
 	content: '';
-	position: absolute; 
+	position: absolute;
 	background: #fff;
 	width: 100px; height: 80px;
 	position: absolute; top: -15px; left: 10px;
-	
+
 	border-radius: 100px;
 	-moz-border-radius: 100px;
 	-webkit-border-radius: 100px;
-	
+
 	-webkit-transform: rotate(30deg);
 	transform: rotate(30deg);
 	-moz-transform: rotate(30deg);
@@ -273,12 +280,12 @@ else{
 /*variable speed, opacity, and position of clouds for realistic effect*/
 .x2 {
 	left: 200px;
-	
+
 	-webkit-transform: scale(0.6);
 	-moz-transform: scale(0.6);
 	transform: scale(0.6);
 	opacity: 0.6; /*opacity proportional to the size*/
-	
+
 	/*Speed will also be proportional to the size and opacity*/
 	/*More the speed. Less the time in 's' = seconds*/
 	-webkit-animation: moveclouds 25s linear infinite;
@@ -288,12 +295,12 @@ else{
 
 .x3 {
 	left: -250px; top: -200px;
-	
+
 	-webkit-transform: scale(0.8);
 	-moz-transform: scale(0.8);
 	transform: scale(0.8);
 	opacity: 0.8; /*opacity proportional to the size*/
-	
+
 	-webkit-animation: moveclouds 20s linear infinite;
 	-moz-animation: moveclouds 20s linear infinite;
 	-o-animation: moveclouds 20s linear infinite;
@@ -301,12 +308,12 @@ else{
 
 .x4 {
 	left: 470px; top: -250px;
-	
+
 	-webkit-transform: scale(0.75);
 	-moz-transform: scale(0.75);
 	transform: scale(0.75);
 	opacity: 0.75; /*opacity proportional to the size*/
-	
+
 	-webkit-animation: moveclouds 18s linear infinite;
 	-moz-animation: moveclouds 18s linear infinite;
 	-o-animation: moveclouds 18s linear infinite;
@@ -314,12 +321,12 @@ else{
 
 .x5 {
 	left: -150px; top: -150px;
-	
+
 	-webkit-transform: scale(0.8);
 	-moz-transform: scale(0.8);
 	transform: scale(0.8);
 	opacity: 0.8; /*opacity proportional to the size*/
-	
+
 	-webkit-animation: moveclouds 20s linear infinite;
 	-moz-animation: moveclouds 20s linear infinite;
 	-o-animation: moveclouds 20s linear infinite;
@@ -358,10 +365,10 @@ else{
 <?php
 if ($handle = opendir('Applets/')) {
                 while (false !== ($entry = readdir($handle))) {
-                    if ($entry != "." && $entry != "..") { 
-$aplname = explode(".", $entry); 
+                    if ($entry != "." && $entry != "..") {
+$aplname = explode(".", $entry);
 $aplxml=json_decode(file_get_contents("Applets/" . $entry));
-?> 
+?>
   <div class="webdesk_modal" id="<?php echo $aplname[0]; ?>" role="dialog">
     <div class="webdesk_modal-dialog webdesk_modal-lg">
       <div class="webdesk_modal-content">
@@ -382,10 +389,10 @@ $aplxml=json_decode(file_get_contents("Applets/" . $entry));
 }}}
 if ($handle = opendir('MyApplets/')) {
                 while (false !== ($entry = readdir($handle))) {
-                    if ($entry != "." && $entry != "..") { 
-$aplname = explode(".", $entry); 
+                    if ($entry != "." && $entry != "..") {
+$aplname = explode(".", $entry);
 $aplxml=json_decode(file_get_contents("MyApplets/" . $entry));
-?> 
+?>
   <div class="webdesk_modal" id="M<?php echo $aplname[0]; ?>" role="dialog">
     <div class="webdesk_modal-dialog webdesk_modal-lg">
       <div class="webdesk_modal-content">
@@ -404,7 +411,7 @@ $aplxml=json_decode(file_get_contents("MyApplets/" . $entry));
   </div>
 <?php
 }}}
-?>			
+?>
 <script>
   $(function() {
     $( "#tabers" ).tabs({
@@ -435,7 +442,7 @@ $aplxml=json_decode(file_get_contents("MyApplets/" . $entry));
   hours = hours ? hours : 12; // the hour '0' should be '12'
   minutes = minutes < 10 ? '0'+minutes : minutes;
   var strTime = hours + ':' + minutes + ' ' + ampm;
-            
+
             document.getElementById('ct').innerHTML = strTime;
             document.getElementById('dt').innerHTML = xf5.toDateString();
             tt=display_c();
@@ -447,14 +454,14 @@ for(var i=0;i<a.length;i++) {
     if(!a[i].onclick && a[i].getAttribute("target") != "_blank") {
         a[i].onclick=function() {
                 window.location=this.getAttribute("href");
-                return false; 
+                return false;
         }
     }
 }
     </script>
 <script>
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();  
+    $('[data-toggle="tooltip"]').tooltip();
     $(".wd_confirm").click(function(){
         if (!confirm("Please Confirm:")){ return false; }
     });
@@ -462,7 +469,7 @@ $(document).ready(function(){
 </script>
 <script>
 $(document).ready(function(){
-    $('[data-toggle="webdesk_popitover"]').popover();   
+    $('[data-toggle="webdesk_popitover"]').popover();
 });
 </script>
   <?php
@@ -471,7 +478,7 @@ $(document).ready(function(){
   $wd = 1;
   if(file_exists($wd_extFile . "ext.json")){
     $obj = file_get_contents($wd_extFile . "ext.json");
-    $obj = json_decode($obj); 
+    $obj = json_decode($obj);
     $wd_prog = $wd_type . '/' . $wd_app;
     foreach($obj as $key => $value){
       if($wd_prog == $value){
@@ -503,9 +510,9 @@ $(document).ready(function(){
       <div class="webdesk_modal-body">
         <form method="post" action="dext.php?type=<?php echo $wd_type; ?>&app=<?php echo $wd_app; ?>">
         <p>Would you like to set this app as the primary app to use the following ext:</p>
-        <b><i><?php 
-    $wd = file_get_contents($wd_type . '/' . $wd_app . '/ext.txt'); 
-    $wd = explode(',', $wd); 
+        <b><i><?php
+    $wd = file_get_contents($wd_type . '/' . $wd_app . '/ext.txt');
+    $wd = explode(',', $wd);
     foreach($wd as $entry){
       echo $entry;
       ?>
@@ -532,9 +539,9 @@ $(document).ready(function(){
   }
   }
     ?>
-  
+
   <div id="wd_chatting" class="chat webdesk_card"><div class="webdesk_card-body"><div class="container"><h3><button id="wd_hChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-caret-down"></span></button> <button id="wd_fChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-expand"></span></button> <button id="wd_mChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-expand"></span></button> Chat</h3><div class="col-xs-4"><input type="text" id="wd_tChat" class="form-control" placeholder="Type you message here..."></div><button id="wd_bChat" class="webdesk_btn webdesk_btn-success">Send</button><br><div class="scroll"><div id="wd_chat"></div><div id="wd_sto_chat"></div></div></div></div></div>
-  
+
 <script>
   var oldD = "";
 if(typeof(EventSource) !== "undefined") {
@@ -583,7 +590,7 @@ $(document).ready(function(){
         {
           chat: wd_ctext
         });
-      $('#wd_tChat').val('');  
+      $('#wd_tChat').val('');
     }
 });
   if(typeof(Storage) !== "undefined") {
