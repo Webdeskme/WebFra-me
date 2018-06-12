@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php include 'HUDstart.php';?>
-<html>
+<html lang="en-US">
 <head>
     <?php include 'HUDhead.php';?>
 </head>
