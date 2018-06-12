@@ -27,15 +27,11 @@ include 'testInput.php';
     "type": "image/x-icon"
   }, {
     "src": "favicon.ico",
-    "sizes": "144x144",
+    "sizes": "128x128",
     "type": "image/x-icon"
   }, {
-    "src": "favicon.ico",
-    "sizes": "168x168",
-    "type": "image/x-icon"
-  }, {
-    "src": "favicon.ico",
-    "sizes": "192x192",
-    "type": "image/x-icon"
+    "src": "splash.png",
+    "sizes": "4096×2160",
+    "type": "image/png"
   }]
 }
