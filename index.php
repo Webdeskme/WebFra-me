@@ -33,6 +33,7 @@ elseif(file_exists("path.php") && $wd_roots[$_SERVER['HTTP_HOST']] != "NA" || fi
         ''
     );
     $string = preg_replace($search, $replace, $string);
+    file_put_contents($cache_file, $string);
     return $string;
   }
 
@@ -52,6 +53,14 @@ elseif(file_exists("path.php") && $wd_roots[$_SERVER['HTTP_HOST']] != "NA" || fi
   if (file_exists($cache_file)) { // is there a cache file?
       $timedif = (time() - filemtime($cache_file)); // how old is the file?
        if ($timedif < 3600*24) { // get a new file 24 hours
+         $seconds_to_cache = 86400;
+         $ts = gmdate("D, d M Y H:i:s", time() + $seconds_to_cache) . " GMT";
+         header("Expires: $ts");
+         header("Pragma: cache");
+         header("Cache-Control: public, max-age=$seconds_to_cache");
+         $last_modified_time = filemtime($cache_file);
+         $etag = md5_file($page . $last_modified_time);
+         header("Etag: $etag");
           $html = read_content($cache_file); // read the content from cache
       } else { // create a new cache file
           $html = get_and_write($url, $cache_file);
