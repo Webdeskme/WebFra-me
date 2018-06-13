@@ -15,18 +15,6 @@ include 'testInput.php';
   "prefer_related_applications": false,
   "icons": [{
     "src": "favicon.ico",
-    "sizes": "48x48",
-    "type": "image/x-icon"
-  }, {
-    "src": "favicon.ico",
-    "sizes": "72x72",
-    "type": "image/x-icon"
-  }, {
-    "src": "favicon.ico",
-    "sizes": "96x96",
-    "type": "image/x-icon"
-  }, {
-    "src": "favicon.ico",
     "sizes": "128x128",
     "type": "image/x-icon"
   }, {
