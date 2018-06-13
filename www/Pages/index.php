@@ -21,7 +21,7 @@ for ($i=0; $i<=2; $i++) {
 } */
 ?>
 <div id="content-div"></div>
-<script>
+<script async>
 $.get("/feeds/newsfeed.php", function(data) {
     var $XML = $(data);
     $XML.find("item").each(function() {
