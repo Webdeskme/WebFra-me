@@ -15,10 +15,6 @@ elseif(file_exists("path.php") && $wd_roots[$_SERVER['HTTP_HOST']] != "NA" || fi
   }
   if(isset($_GET['page']) && $page != "login.php"){
     if(file_exists($wd_www . $page)){
-      if(isset($_GET['wd_no-cache'])){
-              include "www/Themes/" . $theme . "/default.php";
-      }
-else{
   function get_and_write($url, $cache_file) {
     $string = file_get_contents($url);
     $f = fopen($cache_file, 'w');
@@ -39,7 +35,7 @@ else{
   }
 
   $cache_file = $wd_root . '/Cache/' . $page;
-  $url = 'index.php?page=' . $page . '&wd_no-cache=on';
+  $url = 'cache.php?page=' . $page . '&wd_no-cache=' . $theme;
 
   if (file_exists($cache_file)) { // is there a cache file?
       $timedif = (time() - filemtime($cache_file)); // how old is the file?
@@ -53,7 +49,6 @@ else{
   }
   echo $html;
   exit;
-}
     }
     else{
       if(file_exists($wd_www . "404.php")){
