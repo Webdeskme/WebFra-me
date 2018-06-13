@@ -10,14 +10,14 @@ else{
   $page = "";
 }
 if(isset($_GET['page']) && $page != "login.php"){
-  if(file_exists("www/Pages/" . $page)){
-    include "www/Pages/" . $page;
+  if(file_exists($wd_www . $page)){
+    include $wd_www . $page;
   }
   else{
     include "www/Themes/" . $theme . "/404.php";
   }
 }
-elseif(file_exists("www/Pages/index.php") && $page != "login.php"){
+elseif(file_exists($wd_www . "index.php") && $page != "login.php"){
   header('Location: index.php?page=index.php');
 }
 else{

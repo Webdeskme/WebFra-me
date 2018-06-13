@@ -14,6 +14,10 @@ include 'testInput.php';
   "description": "App made on WebDesk!",
   "prefer_related_applications": false,
   "icons": [{
+    "src": "favicon.ico",
+    "sizes": "128x128",
+    "type": "image/x-icon"
+  }, {
     "src": "splash.png",
     "sizes": "512×512",
     "type": "image/png"
