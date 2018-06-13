@@ -66,7 +66,7 @@ if(isset($_GET['page']) && file_exists($wd_www . "header_" . $page)){
     <!--<script src="Plugins/jquery.min.js"></script>
     <script src="Plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>-->
-    <script type="text/javascript" src="www/Themes/wd_default/plugins.php"></script>
+    <script type="text/javascript" src="www/Themes/wd_default/plugins.php" async></script>
 <?php
 if(isset($_GET['page']) && file_exists($wd_www . $page)){
 	include $wd_www . $page;
@@ -106,7 +106,7 @@ $(document).ready(function(){
   <?php
 if(isset($_GET['wd_dev'])){
   ?>
-<script src="Plugins/tota11y-master/build/tota11y.min.js"></script>
+<script src="Plugins/tota11y-master/build/tota11y.min.js" async></script>
   <?php
 }
    ?>
