@@ -1,5 +1,5 @@
 <?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
-if(file_exists("feed.php")){
+/* if(file_exists("feed.php")){
 $xml=("feed.php");
 $xmlDoc = new DOMDocument();
 $xmlDoc->load($xml);
@@ -18,5 +18,24 @@ for ($i=0; $i<=2; $i++) {
   . '">' . $item_title . "</a></h2>";
   echo "<div>" . $item_desc . "</div></div>";
 }}
-}
+} */
+?>
+<div id="content-div"></div>
+<script>
+$.get("/feeds/newsfeed.php", function(data) {
+    var $XML = $(data);
+    $XML.find("item").each(function() {
+        var $this = $(this),
+            item = {
+                title:       $this.find("title").text(),
+                link:        $this.find("link").text(),
+                description: $this.find("description").text(),
+                pubDate:     $this.find("pubDate").text(),
+                author:      $this.find("author").text()
+            };
+        $('#content-div').append($('<h2/>').text(item.title));
+        $('#content-div').append($('<h2/>').text(item.title));
+        //etc...
+    });
+});
 ?>
