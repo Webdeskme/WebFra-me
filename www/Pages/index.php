@@ -1,6 +1,6 @@
 <?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
-if(file_exists("feed.xml")){
-$xml=("feed.xml");
+if(file_exists("feed.php")){
+$xml=("feed.php");
 $xmlDoc = new DOMDocument();
 $xmlDoc->load($xml);
 $x=$xmlDoc->getElementsByTagName('item');

@@ -31,7 +31,7 @@ include 'testInput.php';
     "type": "image/x-icon"
   }, {
     "src": "splash.png",
-    "sizes": "4096×2160",
+    "sizes": "512×512",
     "type": "image/png"
   }]
 }
