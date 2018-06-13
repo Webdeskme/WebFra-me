@@ -35,7 +35,7 @@ elseif(file_exists("path.php") && $wd_roots[$_SERVER['HTTP_HOST']] != "NA" || fi
   }
 
   $cache_file = $wd_root . '/Cache/' . $page;
-  $url = 'cache.php?page=' . $page . '&wd_no-cache=' . $theme;
+  $url = __DIR__ . '/cache.php?page=' . $page . '&wd_no-cache=' . $theme;
 
   if (file_exists($cache_file)) { // is there a cache file?
       $timedif = (time() - filemtime($cache_file)); // how old is the file?
