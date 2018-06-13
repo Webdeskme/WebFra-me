@@ -66,7 +66,7 @@ if(isset($_GET['page']) && file_exists($wd_www . "header_" . $page)){
     <!--<script src="Plugins/jquery.min.js"></script>
     <script src="Plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>-->
-    <script type="text/javascript" src="www/Themes/wd_default/plugins.php" async></script>
+    <script type="text/javascript" src="www/Themes/wd_default/plugins.php?page=<?php echo $page;?>" async></script>
 <?php
 if(isset($_GET['page']) && file_exists($wd_www . $page)){
 	include $wd_www . $page;
@@ -92,7 +92,7 @@ for(var i=0;i<a.length;i++) {
     }
 }
 </script>
-<script>
+<!--<script>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
@@ -101,8 +101,8 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
 });
-</script>
-	<script type="text/javascript" src="fstat-js.php?page=<?php echo $page;?>"></script>
+</script>-->
+	<!--<script type="text/javascript" src="fstat-js.php?page=<?php echo $page;?>"></script>-->
   <?php
 if(isset($_GET['wd_dev'])){
   ?>
