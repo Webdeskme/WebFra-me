@@ -17,9 +17,22 @@ elseif(file_exists("path.php") && $wd_roots[$_SERVER['HTTP_HOST']] != "NA" || fi
     if(file_exists($wd_www . $page)){
   function get_and_write($url, $cache_file) {
     $string = file_get_contents($url);
-    $f = fopen($cache_file, 'w');
-    fwrite ($f, $string, strlen($string));
-    fclose($f);
+    //$f = fopen($cache_file, 'w');
+    //fwrite ($f, $string, strlen($string));
+    //fclose($f);
+    $search = array(
+        '/\>[^\S ]+/s',     // strip whitespaces after tags, except space
+        '/[^\S ]+\</s',     // strip whitespaces before tags, except space
+        '/(\s)+/s',         // shorten multiple whitespace sequences
+        '/<!--(.|\s)*?-->/' // Remove HTML comments
+    );
+    $replace = array(
+        '>',
+        '<',
+        '\\1',
+        ''
+    );
+    $string = preg_replace($search, $replace, $string);
     return $string;
   }
 
@@ -33,7 +46,6 @@ elseif(file_exists("path.php") && $wd_roots[$_SERVER['HTTP_HOST']] != "NA" || fi
     fclose($f);
     return $buffer;
   }
-
   $cache_file = $wd_root . '/Cache/' . $page;
   $url = 'http://' . $_SERVER['HTTP_HOST'] . '/cache.php?page=' . $page . '&wd_no-cache=' . $theme;
 
