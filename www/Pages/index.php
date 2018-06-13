@@ -20,7 +20,7 @@ for ($i=0; $i<=2; $i++) {
 }}
 } */
 ?>
-<div id="content-div"></div>
+<!--<div id="content-div"></div>
 <script async>
 $.get("/feeds/newsfeed.php", function(data) {
     var $XML = $(data);
@@ -38,4 +38,4 @@ $.get("/feeds/newsfeed.php", function(data) {
         //etc...
     });
 });
-</script>
+</script>-->
