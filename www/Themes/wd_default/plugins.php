@@ -17,9 +17,8 @@ header("Etag: $etag");
 foreach ($a as $value) {
   echo file_get_contents($value);
 }
+?>
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
     $('[data-toggle="popover"]').popover();
 });
-
-?>
