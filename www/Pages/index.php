@@ -38,4 +38,4 @@ $.get("/feeds/newsfeed.php", function(data) {
         //etc...
     });
 });
-?>
+</script>
