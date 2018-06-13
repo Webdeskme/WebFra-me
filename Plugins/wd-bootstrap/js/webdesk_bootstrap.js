@@ -3834,6 +3834,7 @@
       // BE AWARE: don't add options to `options.modifiers.name` but to `modifierOptions`!
       this.modifiers.forEach(function (modifierOptions) {
         if (modifierOptions.enabled && webdesk_isFunction(modifierOptions.onLoad)) {
+          
           modifierOptions.onLoad(_this.reference, _this.popper, _this.options, modifierOptions, _this.state);
         }
       });
@@ -4070,12 +4071,13 @@
           }
 
           var referenceElement = this._element;
-
+          
           if (this._config.reference === 'parent') {
             referenceElement = parent;
+            
           } else if (webdesk_Util.isElement(this._config.reference)) {
             referenceElement = this._config.reference; // Check if it's jQuery element
-
+            
             if (typeof this._config.reference.jquery !== 'undefined') {
               referenceElement = this._config.reference[0];
             }
