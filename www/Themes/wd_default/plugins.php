@@ -9,7 +9,7 @@ $last_modified_time = "";
 foreach ($a as $value) {
   $last_modified_time = $last_modified_time . filemtime($value);
 }
-$etag = md5_file("pluginCSS.php" . $last_modified_time);
+$etag = md5_file("plugins.php" . $last_modified_time);
 //header("Last-Modified: ".gmdate("D, d M Y H:i:s", $last_modified_time)." GMT");
 header("Etag: $etag");
 foreach ($a as $value) {
