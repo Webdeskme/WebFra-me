@@ -1,6 +1,7 @@
 <?php
 session_start();
-include "testInput.php";
+require "testInput.php";
+require "Plugins/php-html-css-js-minifier.php";
 if(!file_exists("path.php")){
   header('Location: install.php');
 }
@@ -32,7 +33,8 @@ elseif(file_exists("path.php") && $wd_roots[$_SERVER['HTTP_HOST']] != "NA" || fi
         '\\1',
         ''
     );
-    $string = preg_replace($search, $replace, $string);
+    //$string = preg_replace($search, $replace, $string);
+    $string = fn_minify_html($string);
     file_put_contents($cache_file, $string);
     return $string;
   }
