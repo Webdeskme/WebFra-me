@@ -57,10 +57,10 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
                         mkdir($path . '/Wiki/');
                         mkdir($path . '/Cache/');
 			mkdir($path . '/www/');
+      require "Plugins/php-html-css-js-minifier.php";
 			$wwwCopy = scandir('www/Pages/');
 			foreach($wwwCopy as $key => $value){
 				copy('www/Pages/' . $value, $path . '/www/' . $value);
-        require "Plugins/php-html-css-js-minifier.php";
         $cache_file = $path . '/Cache/' . $value;
         $url = 'http://' . $_SERVER['HTTP_HOST'] . '/cache.php?page=' . $value . '&wd_no-cache=wd_default';
         $string = file_get_contents($url);
