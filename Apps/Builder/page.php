@@ -6,18 +6,18 @@ else{
   $page = "";
 }
 if(isset($_POST['con']) && isset($_POST['par']) && isset($_POST['pr']) && isset($_POST['title'])){
-  require "Plugins/php-html-css-js-minifier.php";
-  $theme = test_input(file_get_contents($wd_root . "/Admin/dtheme.txt"));
-  $cache_file = $wd_root . '/Cache/' . $page;
-  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/cache.php?page=' . $page . '&wd_no-cache=' . $theme;
+  //require "Plugins/php-html-css-js-minifier.php";
+  //$theme = test_input(file_get_contents($wd_root . "/Admin/dtheme.txt"));
+  //$cache_file = $wd_root . '/Cache/' . $page;
+  //$url = 'http://' . $_SERVER['HTTP_HOST'] . '/cache.php?page=' . $page . '&wd_no-cache=' . $theme;
   $con = htmlspecialchars_decode($wd_POST["con"], ENT_QUOTES);
   $par = test_input($_POST['par']);
   $pr = test_input($_POST['pr']);
   $title = test_input($_POST['title']);
   file_put_contents($wd_www . $page, $con);
-  $string = file_get_contents($url);
-  $string = fn_minify_html($con);
-  file_put_contents($cache_file, $string);
+  //$string = file_get_contents($url);
+  //$string = fn_minify_html($string);
+  //file_put_contents($cache_file, $string);
   if(!file_exists($wd_www . "nav.json")){
     $obj = new stdClass;
   }
