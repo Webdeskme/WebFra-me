@@ -60,12 +60,14 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
       require "Plugins/php-html-css-js-minifier.php";
 			$wwwCopy = scandir('www/Pages/');
 			foreach($wwwCopy as $key => $value){
+        if($value != '.' && $value != '..'){
 				copy('www/Pages/' . $value, $path . '/www/' . $value);
         $cache_file = $path . '/Cache/' . $value;
         $url = 'http://' . $_SERVER['HTTP_HOST'] . '/cache.php?page=' . $value . '&wd_no-cache=wd_default';
         $string = file_get_contents($url);
         $string = fn_minify_html($string);
         file_put_contents($cache_file, $string);
+      }
 			}
                         //Temp
                         //mkdir('349y45fjfsm/7fhnsvfk340js/' . $rand .'/');
