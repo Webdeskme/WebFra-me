@@ -60,7 +60,7 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
       require "Plugins/php-html-css-js-minifier.php";
       function get_and_write($url, $cache_file) {
     $string = file_get_contents($url);
-    $string = fn_minify_html($string);
+    //$string = fn_minify_html($string);
     $f = fopen($cache_file, 'w');
 	  fwrite ($f, $string, strlen($string));
 	  fclose($f);
