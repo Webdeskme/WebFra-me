@@ -66,7 +66,7 @@ if(isset($_GET['page']) && file_exists($wd_www . "header_" . $page)){
     <!--<script src="Plugins/jquery.min.js"></script>
     <script src="Plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
     <script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>-->
-    <script type="text/javascript" src="www/Themes/wd_default/plugins.php?page=<?php echo $page;?>" async></script>
+    <script type="text/javascript" src="www/Themes/wd_default/plugins.php?page=<?php echo $page;?>" defer></script>
 <?php
 if(isset($_GET['page']) && file_exists($wd_www . $page)){
 	include $wd_www . $page;
@@ -81,7 +81,7 @@ elseif(file_exists($wd_www . "footer.php")){
 	include $wd_www . "footer.php";
 }
 ?>
-<script>
+<script defer>
 var a=document.getElementsByTagName("a");
 for(var i=0;i<a.length;i++) {
     if(!a[i].onclick && a[i].getAttribute("target") != "_blank") {
@@ -106,7 +106,7 @@ $(document).ready(function(){
   <?php
 if(isset($_GET['wd_dev'])){
   ?>
-<script src="Plugins/tota11y-master/build/tota11y.min.js" async></script>
+<script src="Plugins/tota11y-master/build/tota11y.min.js" defer></script>
   <?php
 }
    ?>
