@@ -61,8 +61,9 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
       function get_and_write($url, $cache_file) {
     $string = file_get_contents($url);
     $string = fn_minify_html($string);
-    file_put_contents($cache_file, $string);
-    //return $string;
+    $f = fopen($cache_file, 'w');
+	  fwrite ($f, $string, strlen($string));
+	  fclose($f);
   }
 			$wwwCopy = scandir('www/Pages/');
 			foreach($wwwCopy as $key => $value){
