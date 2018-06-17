@@ -68,6 +68,10 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
 			foreach($wwwCopy as $key => $value){
         if($value != '.' && $value != '..'){
 				copy('www/Pages/' . $value, $path . '/www/' . $value);
+      }
+			}
+      foreach($wwwCopy as $key => $value){
+        if($value != '.' && $value != '..' && $value != 'blog.php' && $value != 'banner.php' && $value != 'header.php' && $value != 'footer.php' && $value != 'feed.json' && $value != 'nav.json' && $value != 'contactSub.php'){
         $cache_file = $path . '/Cache/' . $value;
         $url = 'http://' . $_SERVER['HTTP_HOST'] . '/cache.php?page=' . $value . '&wd_no-cache=wd_default';
         get_and_write($url, $cache_file);
