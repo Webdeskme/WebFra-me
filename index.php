@@ -1,45 +1,64 @@
 <?php
 session_start();
-require "testInput.php";
-if(!file_exists("path.php")){
-  header('Location: install.php');
+function test_input($data) {
+    if (!empty($data)) {
+        $data = trim($data);
+   $data = stripslashes($data);
+   $data = htmlspecialchars($data);
+   return $data;
+    }
 }
-elseif(file_exists("path.php") && $wd_roots[$_SERVER['HTTP_HOST']] != "NA" || file_exists("path.php") && !isset($wd_roots[$_SERVER['HTTP_HOST']]) ){
+require_once 'Plugins/htmlpurifier/library/HTMLPurifier.auto.php';
+$config = HTMLPurifier_Config::createDefault();
+$purifier = new HTMLPurifier($config);
+if(isset($_POST)){
+  foreach($_POST as $key => $value){
+    $_POST[$key] = $purifier->purify($value);
+    $wd_POST[$key] = $value;
+  }
+}
+if(isset($_GET)){
+  foreach($_GET as $key => $value){
+    $_GET[$key] = $purifier->purify($value);
+    $wd_GET[$key] = $value;
+  }
+}
+if(isset($_REQUEST)){
+  foreach($_REQUEST as $key => $value){
+    $_REQUEST[$key] = $purifier->purify($value);
+    $wd_REQUEST[$key] = $value;
+  }
+}
+$wd_www = $wd_root . '/www/';
+if(file_exists("path.php") && $wd_roots[$_SERVER['HTTP_HOST']] != "NA" || file_exists("path.php") && !isset($wd_roots[$_SERVER['HTTP_HOST']]) ){
+  $wd_roots = include('path.php');
+  if(isset($wd_roots[$_SERVER['HTTP_HOST']])){
+    $wd_root = test_input($wd_roots[$_SERVER['HTTP_HOST']]);
+  }
+  else{
+    $wd_root = test_input($wd_roots['default']);
+  }
   $theme = test_input(file_get_contents($wd_root . "/Admin/dtheme.txt"));
   if(isset($_GET['page'])){
     $page = test_input($_GET['page']);
   }
   else{
-    $page = "";
+    $page = "index.php";
   }
   if(isset($_GET['page']) && $page != "login.php"){
-    if(file_exists($wd_www . $page)){
-  function read_content($path) {
-    $f = fopen($path, 'r');
-    $buffer = '';
-    while(!feof($f)) {
-      $buffer .= fread($f, 2048);
-    }
-    fclose($f);
-    return $buffer;
-  }
-  $cache_file = $wd_root . '/Cache/' . $page;
-  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/cache.php?page=' . $page . '&wd_no-cache=' . $theme;
-  if (file_exists($cache_file)) {
-         $seconds_to_cache = 86400;
-         $ts = gmdate("D, d M Y H:i:s", time() + $seconds_to_cache) . " GMT";
-         header("Expires: $ts");
+    if(file_exists($wd_root . '/Cache/' . $page)){
+         header("Expires: " . gmdate("D, d M Y H:i:s", time() + 86400) . " GMT");
          header("Pragma: cache");
-         header("Cache-Control: public, max-age=$seconds_to_cache");
-         $last_modified_time = filemtime($cache_file);
-         $etag = md5($page . $last_modified_time);
-         header("Etag: $etag");
-          $html = read_content($cache_file);
-  } else {
-      include "www/Themes/" . $theme . "/default.php";
-  }
-  echo $html;
-  exit;
+         header("Cache-Control: public, max-age=86400");
+         header("Etag: " . md5($page . filemtime($wd_root . '/Cache/' . $page)));
+         $f = fopen($wd_root . '/Cache/' . $page, 'r');
+         $buffer = '';
+         while(!feof($f)) {
+           $buffer .= fread($f, 2048);
+         }
+         fclose($f);
+          echo $buffer;
+  exit();
     }
     else{
       if(file_exists($wd_www . "404.php")){
