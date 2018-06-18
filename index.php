@@ -32,7 +32,7 @@ elseif(file_exists("path.php") && $wd_roots[$_SERVER['HTTP_HOST']] != "NA" || fi
          header("Pragma: cache");
          header("Cache-Control: public, max-age=$seconds_to_cache");
          $last_modified_time = filemtime($cache_file);
-         $etag = md5_file($page . $last_modified_time);
+         $etag = md5($page . $last_modified_time);
          header("Etag: $etag");
           $html = read_content($cache_file);
   } else {

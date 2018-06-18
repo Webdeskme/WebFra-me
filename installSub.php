@@ -20,17 +20,17 @@ if($wd_path == "next"){
 $pass = test_input($_POST["password"]);
 $verify = test_input($_POST["confirm"]);
 if ($pass == $verify){
-	$rand = rand(10000000000000000000, 99999999999999999999);
+	$rand = rand((int)10000000000000000000, (int)99999999999999999999);
 $rand = $rand . 'abcdefghijklmnopqrstuvwxyz';
 $rand = str_shuffle($rand);
-$arand = rand(10000000000000000000, 99999999999999999999);
+$arand = rand((int)10000000000000000000, (int)99999999999999999999);
 $arand = $arand . 'abcdefghijklmnopqrstuvwxyz';
 $arand = str_shuffle($arand);
-$vrand = rand(10000000000000000000, 99999999999999999999);
+$vrand = rand((int)10000000000000000000, (int)99999999999999999999);
 $vrand = $vrand . 'abcdefghijklmnopqrstuvwxyz';
 $vrand = str_shuffle($vrand);
-$vfrand = rand(10000000000000000000, 99999999999999999999);
-$prand = rand(10000000000000000000, 99999999999999999999);
+$vfrand = rand((int)10000000000000000000, (int)99999999999999999999);
+$prand = rand((int)10000000000000000000, (int)99999999999999999999);
 $prand = $arand . 'abcdefghijklmnopqrstuvwxyz';
 $prand = str_shuffle($arand);
 //$vfrand = $vfrand . 'abcdefghijklmnopqrstuvwxyz';
@@ -60,7 +60,7 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
       require "Plugins/php-html-css-js-minifier.php";
       function get_and_write($url, $cache_file) {
     $string = file_get_contents($url);
-    //$string = fn_minify_html($string);
+    $string = fn_minify_html($string);
     $f = fopen($cache_file, 'w');
 	  fwrite ($f, $string, strlen($string));
 	  fclose($f);
@@ -71,13 +71,6 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
 				copy('www/Pages/' . $value, $path . '/www/' . $value);
       }
 			}
-      foreach($wwwCopy as $key => $value){
-        if($value != '.' && $value != '..' && $value != 'blog.php' && $value != 'banner.php' && $value != 'header.php' && $value != 'footer.php' && $value != 'feed.json' && $value != 'nav.json' && $value != 'contactSub.php'){
-        $cache_file = $path . '/Cache/' . $value;
-        $url = 'http://' . $_SERVER['HTTP_HOST'] . '/cache.php?page=' . $value . '&wd_no-cache=wd_default';
-        get_and_write($url, $cache_file);
-      }
-			}
                         //Temp
                         //mkdir('349y45fjfsm/7fhnsvfk340js/' . $rand .'/');
                         //Personal Personal
@@ -85,9 +78,15 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
                         //Personal Pub
                         //mkdir('349y45fjfsm/yhftg8356mjvf90/' . $rand .'/');
                         //Pub
+if(!file_exists('web/')){
                         mkdir('web/');
+}
+if(!file_exists('web/Pub/')){
                         mkdir('web/Pub/');
+}
+if(!file_exists('Pub/')){
                         mkdir('Pub/');
+}
                         //Temp
                         mkdir('web/' . $rand . '/');
                         //private share
@@ -102,7 +101,7 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
                         file_put_contents($path . '/User/' . $user .'/Admin/oid.txt', $rand);
                         file_put_contents($path . '/User/' . $user .'/Admin/prand.txt', $prand);
                         file_put_contents($path . '/User/' . $user .'/Admin/back.txt', 'back.jpg');
-                        file_put_contents($path . '/User/' . $user .'/Admin/val.txt', $vrad);
+                        file_put_contents($path . '/User/' . $user .'/Admin/val.txt', $vrand);
                         file_put_contents($path . '/User/' . $user .'/Admin/tier.txt', 'tA');
                         file_put_contents($path . '/User/' . $user .'/Admin/color.txt', '#FFFFFF');
                         file_put_contents($path . '/User/' . $user .'/Admin/Pcolor.txt', '#FFFFFF');
@@ -129,6 +128,13 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
     $con = $con . "'default' => '" . $wd_roots['default'] . "' ]; ?>";
   }
                         file_put_contents('path.php', $con);
+foreach($wwwCopy as $key => $value){
+                          if($value != '.' && $value != '..' && $value != 'blog.php' && $value != 'banner.php' && $value != 'header.php' && $value != 'footer.php' && $value != 'feed.json' && $value != 'nav.json' && $value != 'contactSub.php'){
+                          $cache_file = $path . '/Cache/' . $value;
+                          $url = 'http://' . $_SERVER['HTTP_HOST'] . '/cache.php?page=' . $value . '&wd_no-cache=wd_default';
+                          get_and_write($url, $cache_file);
+                        }
+                  			}
                         //file_put_contents('../../webdesk/User/' . $user .'/Admin/valf.txt', $vfrad);
                         //file_put_contents('349y45fjfsm/yhftg8356mjvf90/' . $rand .'/' . $vrad . '.php', file_get_contents(''));
                         header('Location: index.php?a=done');

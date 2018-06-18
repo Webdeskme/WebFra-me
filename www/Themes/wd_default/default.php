@@ -102,7 +102,7 @@ $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
 });
 </script>-->
-	<!--<script type="text/javascript" src="fstat-js.php?page=<?php echo $page;?>"></script>-->
+	<!--<script type="text/javascript" src="fstat-js.php?page=<?php echo $page;?>" defer></script>-->
   <?php
 if(isset($_GET['wd_dev'])){
   ?>
