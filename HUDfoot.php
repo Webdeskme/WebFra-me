@@ -605,6 +605,37 @@ $("#wd_mChat").click(function(){
 });
 });
 </script>
+<script>
+    $( function() {
+    var tabs = $( "#tabs" ).tabs();
+    tabs.find( ".ui-tabs-nav" ).sortable({
+      axis: "x",
+      stop: function() {
+        tabs.tabs( "refresh" );
+      }
+    });
+  } );
+  </script>
+<script>
+$(function() {
+  $("[data-target='modal'],.webdesk_modal").modal({
+    backdrop: false,
+    show: false
+  });
+  $( "#tabs" ).tabs({
+
+  collapsible: true
+  //active: false
+  });
+  $( ".webdesk_tab" ).resizable();
+
+
+  <?php if(!isset($_SESSION["wd_fullscreen"]) || $_SESSION["wd_fullscreen"] != 'on'){  ?>
+  $( ".webdesk_tab" ).draggable();
+  <?php } ?>
+  //$('.webdesk_dropdown-toggle').dropdown();
+});
+</script>
 <script src="Plugins/context.js"></script>
 <?php
 if(isset($_GET["app"])){

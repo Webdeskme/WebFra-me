@@ -2587,11 +2587,13 @@
    */
   function webdesk_applyStyleOnLoad(reference, popper, options, modifierOptions, state) {
     // compute reference element offsets
+    
     var referenceOffsets = webdesk_getReferenceOffsets(state, popper, reference, options.positionFixed);
 
     // compute auto placement, store placement inside the data object,
     // modifiers will be able to edit `placement` if needed
     // and refer to originalPlacement to know the original value
+    
     var placement = webdesk_computeAutoPlacement(options.placement, referenceOffsets, popper, reference, options.modifiers.flip.boundariesElement, options.modifiers.flip.padding);
 
     popper.setAttribute('x-placement', placement);
@@ -4029,7 +4031,9 @@
         this._inNavbar = this._detectNavbar();
 
         this._addEventListeners();
+        
       } // Getters
+      
 
 
       var _proto = webdesk_Dropdown.prototype;
@@ -4089,7 +4093,7 @@
           if (this._config.boundary !== 'scrollParent') {
             $$$1(parent).addClass(ClassName.POSITION_STATIC);
           }
-
+          
           this._popper = new webdesk_Popper(referenceElement, this._menu, this._getPopperConfig());
         } // If this is a touch-enabled device we add extra
         // empty mouseover listeners to the body's immediate children;
@@ -4226,7 +4230,7 @@
           var data = $$$1(this).data(DATA_KEY);
 
           var _config = typeof config === 'object' ? config : null;
-
+console.log(data);
           if (!data) {
             data = new webdesk_Dropdown(this, _config);
             $$$1(this).data(DATA_KEY, data);
@@ -4311,6 +4315,7 @@
         //    - If key is not up or down => not a dropdown command
         //    - If trigger inside the menu => not a dropdown command
         if (/input|textarea/i.test(event.target.tagName) ? event.which === SPACE_KEYCODE || event.which !== ESCAPE_KEYCODE && (event.which !== ARROW_DOWN_KEYCODE && event.which !== ARROW_UP_KEYCODE || $$$1(event.target).closest(Selector.MENU).length) : !REGEXP_KEYDOWN.test(event.which)) {
+        
           return;
         }
 
