@@ -29,7 +29,8 @@ if(isset($_REQUEST)){
     $wd_REQUEST[$key] = $value;
   }
 }
-if((file_exists("path.php") && $wd_roots[$_SERVER['HTTP_HOST']] != "NA") || (file_exists("path.php") && !isset($wd_roots[$_SERVER['HTTP_HOST']])) ){
+if(file_exists("path.php"){
+if($wd_roots[$_SERVER['HTTP_HOST']] != "NA" || !isset($wd_roots[$_SERVER['HTTP_HOST']]) ){
   $wd_roots = include('path.php');
   if(isset($wd_roots[$_SERVER['HTTP_HOST']])){
     $wd_root = test_input($wd_roots[$_SERVER['HTTP_HOST']]);
@@ -78,6 +79,10 @@ if((file_exists("path.php") && $wd_roots[$_SERVER['HTTP_HOST']] != "NA") || (fil
   else{
     include "www/Themes/" . $theme . "/login.php";
   }
+}
+else{
+  header('Location: install.php');
+}
 }
 else{
   header('Location: install.php');
