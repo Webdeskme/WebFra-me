@@ -29,7 +29,7 @@ if(isset($_REQUEST)){
     $wd_REQUEST[$key] = $value;
   }
 }
-if(file_exists("path.php"){
+if(file_exists("path.php")){
 if($wd_roots[$_SERVER['HTTP_HOST']] != "NA" || !isset($wd_roots[$_SERVER['HTTP_HOST']]) ){
   $wd_roots = include('path.php');
   if(isset($wd_roots[$_SERVER['HTTP_HOST']])){
