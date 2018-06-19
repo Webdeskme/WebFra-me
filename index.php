@@ -30,7 +30,6 @@ if(isset($_REQUEST)){
   }
 }
 if(file_exists("path.php")){
-if($wd_roots[$_SERVER['HTTP_HOST']] != "NA" || !isset($wd_roots[$_SERVER['HTTP_HOST']]) ){
   $wd_roots = include('path.php');
   if(isset($wd_roots[$_SERVER['HTTP_HOST']])){
     $wd_root = test_input($wd_roots[$_SERVER['HTTP_HOST']]);
@@ -40,6 +39,7 @@ if($wd_roots[$_SERVER['HTTP_HOST']] != "NA" || !isset($wd_roots[$_SERVER['HTTP_H
   }
   $wd_www = $wd_root . '/www/';
   $theme = test_input(file_get_contents($wd_root . "/Admin/dtheme.txt"));
+if($wd_roots[$_SERVER['HTTP_HOST']] != "NA" || !isset($wd_roots[$_SERVER['HTTP_HOST']]) ){
   if(isset($_GET['page'])){
     $page = test_input($_GET['page']);
   }
