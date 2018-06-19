@@ -1,5 +1,5 @@
 <div class="webdesk_dropdown">
-  <button class="webdesk_btn webdesk_btn-secondary webdesk_dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <button class="webdesk_btn webdesk_btn-secondary webdesk_dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="webdesk_dropdown" aria-haspopup="true" aria-expanded="false">
     Dropdown button
   </button>
   <div class="webdesk_dropdown-menu" aria-labelledby="dropdownMenuButton">

@@ -22,11 +22,11 @@
 <link rel="stylesheet" type="text/css" href="Theme/default.php">
 <script src="Plugins/jquery.min.js"></script>
 <script src="Plugins/wd-bootstrap/js/webdesk_bootstrap.js"></script>
-<script src="Plugins/jquery-ui/jquery-ui.min.js"></script>
-<script src="Plugins/tinymce/js/tinymce/tinymce.min.js"></script>
-<script src="Plugins/fullcalendar/lib/moment.min.js"></script>
-<script src="Plugins/fullcalendar/fullcalendar.min.js"></script>
-<script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>
+<!--<script src="Plugins/jquery-ui/jquery-ui.min.js"></script>-->
+<!--<script src="Plugins/tinymce/js/tinymce/tinymce.min.js"></script>-->
+<!--<script src="Plugins/fullcalendar/lib/moment.min.js"></script>-->
+<!--<script src="Plugins/fullcalendar/fullcalendar.min.js"></script>-->
+<!--<script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>-->
 <?php
 include 'wd_ch.php';
 if(isset($_GET["app"])){

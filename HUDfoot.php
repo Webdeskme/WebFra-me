@@ -636,7 +636,7 @@ $(function() {
   //$('.webdesk_dropdown-toggle').dropdown();
 });
 </script>
-<script src="Plugins/context.js"></script>
+<!--<script src="Plugins/context.js"></script>-->
 <?php
 if(isset($_GET["app"])){
         if(file_exists($type . "/" . $app . "/script.js")){

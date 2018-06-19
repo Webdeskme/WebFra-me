@@ -2205,13 +2205,13 @@ select.webdesk_form-control-lg:not([size]):not([multiple]) {
     text-decoration: none
 }
 
-.webdesk_btncus,
+.webdesk_btn:focus,
 .webdesk_btn:focus {
     outline: 0;
     box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25)
 }
 
-ow>.webdesk_btn-primary.webdesk_dropdown-toggle:focus,
+.webdesk_row>.webdesk_btn-primary.webdesk_dropdown-toggle:focus,
 .webdesk_btn-primarycus,
 .webdesk_btn-primary:focus,
 .webdesk_btn-primary:not(:disabled):not(.disabled):active:focus,
@@ -2253,7 +2253,7 @@ fieldset:disabled an {
     border-color: #007bff
 }
 
-ow>.webdesk_btn-primary.webdesk_dropdown-toggle,
+.webdesk_row>.webdesk_btn-primary.webdesk_dropdown-toggle,
 .webdesk_btn-primary:not(:disabled):not(.disabled):active,
 .webdesk_btn-primary:not(:disabled):not(.disabled):active {
     color: #fff;
@@ -2261,7 +2261,7 @@ ow>.webdesk_btn-primary.webdesk_dropdown-toggle,
     border-color: #005cbf
 }
 
-ow>.webdesk_btn-secondary.webdesk_dropdown-toggle:focus,
+.webdesk_row>.webdesk_btn-secondary.webdesk_dropdown-toggle:focus,
 .webdesk_btn-secondarycus,
 .webdesk_btn-secondary:focus,
 .webdesk_btn-secondary:not(:disabled):not(.disabled):active:focus,
@@ -2288,7 +2288,7 @@ ow>.webdesk_btn-secondary.webdesk_dropdown-toggle:focus,
     border-color: #6c757d
 }
 
-ow>.webdesk_btn-secondary.webdesk_dropdown-toggle,
+.webdesk_row>.webdesk_btn-secondary.webdesk_dropdown-toggle,
 .webdesk_btn-secondary:not(:disabled):not(.disabled):active,
 .webdesk_btn-secondary:not(:disabled):not(.disabled):active {
     color: #fff;
@@ -2296,7 +2296,7 @@ ow>.webdesk_btn-secondary.webdesk_dropdown-toggle,
     border-color: #4e555b
 }
 
-ow>.webdesk_btn-success.webdesk_dropdown-toggle:focus,
+.webdesk-row>.webdesk_btn-success.webdesk_dropdown-toggle:focus,
 .webdesk_btn-successcus,
 .webdesk_btn-success:focus,
 .webdesk_btn-success:not(:disabled):not(.disabled):active:focus,
@@ -2323,7 +2323,7 @@ ow>.webdesk_btn-success.webdesk_dropdown-toggle:focus,
     border-color: #28a745
 }
 
-ow>.webdesk_btn-success.webdesk_dropdown-toggle,
+.webdesk_row>.webdesk_btn-success.webdesk_dropdown-toggle,
 .webdesk_btn-success:not(:disabled):not(.disabled):active,
 .webdesk_btn-success:not(:disabled):not(.disabled):active {
     color: #fff;
@@ -2331,7 +2331,7 @@ ow>.webdesk_btn-success.webdesk_dropdown-toggle,
     border-color: #1c7430
 }
 
-ow>.webdesk_btn-info.webdesk_dropdown-toggle:focus,
+.webdesk_row>.webdesk_btn-info.webdesk_dropdown-toggle:focus,
 .webdesk_btn-infocus,
 .webdesk_btn-info:focus,
 .webdesk_btn-info:not(:disabled):not(.disabled):active:focus,
@@ -2358,7 +2358,7 @@ ow>.webdesk_btn-info.webdesk_dropdown-toggle:focus,
     border-color: #17a2b8
 }
 
-ow>.webdesk_btn-info.webdesk_dropdown-toggle,
+.webdesk_row>.webdesk_btn-info.webdesk_dropdown-toggle,
 .webdesk_btn-info:not(:disabled):not(.disabled):active,
 .webdesk_btn-info:not(:disabled):not(.disabled):active {
     color: #fff;
@@ -2366,7 +2366,7 @@ ow>.webdesk_btn-info.webdesk_dropdown-toggle,
     border-color: #10707f
 }
 
-ow>.webdesk_btn-warning.webdesk_dropdown-toggle:focus,
+.webdesk_row>.webdesk_btn-warning.webdesk_dropdown-toggle:focus,
 .webdesk_btn-warningcus,
 .webdesk_btn-warning:focus,
 .webdesk_btn-warning:not(:disabled):not(.disabled):active:focus,
@@ -2393,7 +2393,7 @@ ow>.webdesk_btn-warning.webdesk_dropdown-toggle:focus,
     border-color: #ffc107
 }
 
-ow>.webdesk_btn-warning.webdesk_dropdown-toggle,
+.webdesk_row>.webdesk_btn-warning.webdesk_dropdown-toggle,
 .webdesk_btn-warning:not(:disabled):not(.disabled):active,
 .webdesk_btn-warning:not(:disabled):not(.disabled):active {
     color: #212529;
@@ -2401,7 +2401,7 @@ ow>.webdesk_btn-warning.webdesk_dropdown-toggle,
     border-color: #c69500
 }
 
-ow>.webdesk_btn-dangeropdown-toggle:focus,
+.webdesk_row>.webdesk_btn-dangeropdown-toggle:focus,
 .webdesk_btn-dangercus,
 .webdesk_btn-danger:focus,
 .webdesk_btn-danger:not(:disabled):not(.disabled):active:focus,
@@ -2428,7 +2428,7 @@ ow>.webdesk_btn-dangeropdown-toggle:focus,
     border-color: #dc3545
 }
 
-ow>.webdesk_btn-dangeropdown-toggle,
+.webdesk_row>.webdesk_btn-dangeropdown-toggle,
 .webdesk_btn-danger:not(:disabled):not(.disabled):active,
 .webdesk_btn-danger:not(:disabled):not(.disabled):active {
     color: #fff;
@@ -2436,7 +2436,7 @@ ow>.webdesk_btn-dangeropdown-toggle,
     border-color: #b21f2d
 }
 
-ow>.webdesk_btn-light.webdesk_dropdown-toggle:focus,
+.webdesk_row>.webdesk_btn-light.webdesk_dropdown-toggle:focus,
 .webdesk_btn-lightcus,
 .webdesk_btn-light:focus,
 .webdesk_btn-light:not(:disabled):not(.disabled):active:focus,
@@ -2463,7 +2463,7 @@ ow>.webdesk_btn-light.webdesk_dropdown-toggle:focus,
     border-color: #f8f9fa
 }
 
-ow>.webdesk_btn-light.webdesk_dropdown-toggle,
+.webdesk_row>.webdesk_btn-light.webdesk_dropdown-toggle,
 .webdesk_btn-light:not(:disabled):not(.disabled):active,
 .webdesk_btn-light:not(:disabled):not(.disabled):active {
     color: #212529;
@@ -2471,7 +2471,7 @@ ow>.webdesk_btn-light.webdesk_dropdown-toggle,
     border-color: #d3d9df
 }
 
-ow>.webdesk_btn-dark.webdesk_dropdown-toggle:focus,
+.webdesk_row>.webdesk_btn-dark.webdesk_dropdown-toggle:focus,
 .webdesk_btn-darkcus,
 .webdesk_btn-dark:focus,
 .webdesk_btn-dark:not(:disabled):not(.disabled):active:focus,
@@ -2498,7 +2498,7 @@ ow>.webdesk_btn-dark.webdesk_dropdown-toggle:focus,
     border-color: #343a40
 }
 
-ow>.webdesk_btn-dark.webdesk_dropdown-toggle,
+.webdesk_row>.webdesk_btn-dark.webdesk_dropdown-toggle,
 .webdesk_btn-dark:not(:disabled):not(.disabled):active,
 .webdesk_btn-dark:not(:disabled):not(.disabled):active {
     color: #fff;
@@ -2506,7 +2506,7 @@ ow>.webdesk_btn-dark.webdesk_dropdown-toggle,
     border-color: #171a1d
 }
 
-ow>.webdesk_btn-outline-primary.webdesk_dropdown-toggle:focus,
+.webdesk_row>.webdesk_btn-outline-primary.webdesk_dropdown-toggle:focus,
 .webdesk_btn-outline-primarycus,
 .webdesk_btn-outline-primary:focus,
 .webdesk_btn-outline-primary:not(:disabled):not(.disabled):active:focus,
@@ -2533,7 +2533,7 @@ ow>.webdesk_btn-outline-primary.webdesk_dropdown-toggle:focus,
     background-color: transparent
 }
 
-ow>.webdesk_btn-outline-primary.webdesk_dropdown-toggle,
+.webdesk_row>.webdesk_btn-outline-primary.webdesk_dropdown-toggle,
 .webdesk_btn-outline-primary:not(:disabled):not(.disabled):active,
 .webdesk_btn-outline-primary:not(:disabled):not(.disabled):active {
     color: #fff;
@@ -2541,7 +2541,7 @@ ow>.webdesk_btn-outline-primary.webdesk_dropdown-toggle,
     border-color: #007bff
 }
 
-ow>.webdesk_btn-outline-secondary.webdesk_dropdown-toggle:focus,
+.webdesk_row>.webdesk_btn-outline-secondary.webdesk_dropdown-toggle:focus,
 .webdesk_btn-outline-secondarycus,
 .webdesk_btn-outline-secondary:focus,
 .webdesk_btn-outline-secondary:not(:disabled):not(.disabled):active:focus,
