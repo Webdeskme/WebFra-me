@@ -38,6 +38,7 @@
       <meta name="theme-color" content="#000000"/>
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="copyright" content="&copy; <?php echo date("Y") . ' ' . $wd_Title; ?>">
+      <meta http-equiv="Cache-control" content="public">
       <link rel="apple-touch-icon" href="favicon.ico">
       <link rel="apple-touch-startup-image" href="favicon.ico">
       <!--<link rel="stylesheet" href="Plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
