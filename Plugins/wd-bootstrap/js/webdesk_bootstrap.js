@@ -74,7 +74,7 @@
    * --------------------------------------------------------------------------
    */
 
-  var Util = function ($$$1) {
+  var webdesk_Util = function ($$$1) {
     /**
      * ------------------------------------------------------------------------
      * Private TransitionEnd Helpers
@@ -106,12 +106,12 @@
       var _this = this;
 
       var called = false;
-      $$$1(this).one(Util.TRANSITION_END, function () {
+      $$$1(this).one(webdesk_Util.TRANSITION_END, function () {
         called = true;
       });
       setTimeout(function () {
         if (!called) {
-          Util.triggerTransitionEnd(_this);
+          webdesk_Util.triggerTransitionEnd(_this);
         }
       }, duration);
       return this;
@@ -119,7 +119,7 @@
 
     function setTransitionEndSupport() {
       $$$1.fn.emulateTransitionEnd = transitionEndEmulator;
-      $$$1.event.special[Util.TRANSITION_END] = getSpecialTransitionEndEvent();
+      $$$1.event.special[webdesk_Util.TRANSITION_END] = getSpecialTransitionEndEvent();
     }
     /**
      * --------------------------------------------------------------------------
@@ -128,7 +128,7 @@
      */
 
 
-    var Util = {
+    var webdesk_Util = {
       TRANSITION_END: 'bsTransitionEnd',
       getUID: function getUID(prefix) {
         do {
@@ -187,7 +187,7 @@
           if (Object.prototype.hasOwnProperty.call(configTypes, property)) {
             var expectedTypes = configTypes[property];
             var value = config[property];
-            var valueType = value && Util.isElement(value) ? 'element' : toType(value);
+            var valueType = value && webdesk_Util.isElement(value) ? 'element' : toType(value);
 
             if (!new RegExp(expectedTypes).test(valueType)) {
               throw new Error(componentName.toUpperCase() + ": " + ("Option \"" + property + "\" provided type \"" + valueType + "\" ") + ("but expected type \"" + expectedTypes + "\"."));
@@ -197,30 +197,30 @@
       }
     };
     setTransitionEndSupport();
-    return Util;
+    return webdesk_Util;
   }($);
 
-  /**
+    /**
    * --------------------------------------------------------------------------
    * Bootstrap (v4.1.1): alert.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
 
-  var Alert = function ($$$1) {
+  var webdesk_Alert = function ($$$1) {
     /**
      * ------------------------------------------------------------------------
      * Constants
      * ------------------------------------------------------------------------
      */
-    var NAME = 'alert';
+    var NAME = 'webdesk_alert';
     var VERSION = '4.1.1';
     var DATA_KEY = 'bs.alert';
     var EVENT_KEY = "." + DATA_KEY;
     var DATA_API_KEY = '.data-api';
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
     var Selector = {
-      DISMISS: '[data-dismiss="alert"]'
+      DISMISS: '[data-dismiss="webdesk_alert"]'
     };
     var Event = {
       CLOSE: "close" + EVENT_KEY,
@@ -228,7 +228,7 @@
       CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
     };
     var ClassName = {
-      ALERT: 'alert',
+      ALERT: 'webdesk_alert',
       FADE: 'fade',
       SHOW: 'show'
       /**
@@ -239,156 +239,156 @@
 
     };
 
-    var Alert =
-    /*#__PURE__*/
-    function () {
-      function Alert(element) {
-        this._element = element;
-      } // Getters
-
-
-      var _proto = Alert.prototype;
-
-      // Public
-      _proto.close = function close(element) {
-        var rootElement = this._element;
-
-        if (element) {
-          rootElement = this._getRootElement(element);
-        }
-
-        var customEvent = this._triggerCloseEvent(rootElement);
-
-        if (customEvent.isDefaultPrevented()) {
-          return;
-        }
-
-        this._removeElement(rootElement);
-      };
-
-      _proto.dispose = function dispose() {
-        $$$1.removeData(this._element, DATA_KEY);
-        this._element = null;
-      }; // Private
-
-
-      _proto._getRootElement = function _getRootElement(element) {
-        var selector = Util.getSelectorFromElement(element);
-        var parent = false;
-
-        if (selector) {
-          parent = $$$1(selector)[0];
-        }
-
-        if (!parent) {
-          parent = $$$1(element).closest("." + ClassName.ALERT)[0];
-        }
-
-        return parent;
-      };
-
-      _proto._triggerCloseEvent = function _triggerCloseEvent(element) {
-        var closeEvent = $$$1.Event(Event.CLOSE);
-        $$$1(element).trigger(closeEvent);
-        return closeEvent;
-      };
-
-      _proto._removeElement = function _removeElement(element) {
-        var _this = this;
-
-        $$$1(element).removeClass(ClassName.SHOW);
-
-        if (!$$$1(element).hasClass(ClassName.FADE)) {
-          this._destroyElement(element);
-
-          return;
-        }
-
-        var transitionDuration = Util.getTransitionDurationFromElement(element);
-        $$$1(element).one(Util.TRANSITION_END, function (event) {
-          return _this._destroyElement(element, event);
-        }).emulateTransitionEnd(transitionDuration);
-      };
-
-      _proto._destroyElement = function _destroyElement(element) {
-        $$$1(element).detach().trigger(Event.CLOSED).remove();
-      }; // Static
-
-
-      Alert._jQueryInterface = function _jQueryInterface(config) {
-        return this.each(function () {
-          var $element = $$$1(this);
-          var data = $element.data(DATA_KEY);
-
-          if (!data) {
-            data = new Alert(this);
-            $element.data(DATA_KEY, data);
+    var webdesk_Alert =
+      /*#__PURE__*/
+      function () {
+        function webdesk_Alert(element) {
+          this._element = element;
+        } // Getters
+  
+  
+        var _proto = webdesk_Alert.prototype;
+  
+        // Public
+        _proto.close = function close(element) {
+          var rootElement = this._element;
+  
+          if (element) {
+            rootElement = this._getRootElement(element);
           }
-
-          if (config === 'close') {
-            data[config](this);
+  
+          var customEvent = this._triggerCloseEvent(rootElement);
+  
+          if (customEvent.isDefaultPrevented()) {
+            return;
           }
-        });
-      };
-
-      Alert._handleDismiss = function _handleDismiss(alertInstance) {
-        return function (event) {
-          if (event) {
-            event.preventDefault();
-          }
-
-          alertInstance.close(this);
+  
+          this._removeElement(rootElement);
         };
+  
+        _proto.dispose = function dispose() {
+          $$$1.removeData(this._element, DATA_KEY);
+          this._element = null;
+        }; // Private
+  
+  
+        _proto._getRootElement = function _getRootElement(element) {
+          var selector = webdesk_Util.getSelectorFromElement(element);
+          var parent = false;
+  
+          if (selector) {
+            parent = $$$1(selector)[0];
+          }
+  
+          if (!parent) {
+            parent = $$$1(element).closest("." + ClassName.ALERT)[0];
+          }
+  
+          return parent;
+        };
+  
+        _proto._triggerCloseEvent = function _triggerCloseEvent(element) {
+          var closeEvent = $$$1.Event(Event.CLOSE);
+          $$$1(element).trigger(closeEvent);
+          return closeEvent;
+        };
+  
+        _proto._removeElement = function _removeElement(element) {
+          var _this = this;
+  
+          $$$1(element).removeClass(ClassName.SHOW);
+  
+          if (!$$$1(element).hasClass(ClassName.FADE)) {
+            this._destroyElement(element);
+  
+            return;
+          }
+  
+          var transitionDuration = webdesk_Util.getTransitionDurationFromElement(element);
+          $$$1(element).one(webdesk_Util.TRANSITION_END, function (event) {
+            return _this._destroyElement(element, event);
+          }).emulateTransitionEnd(transitionDuration);
+        };
+  
+        _proto._destroyElement = function _destroyElement(element) {
+          $$$1(element).detach().trigger(Event.CLOSED).remove();
+        }; // Static
+  
+  
+        webdesk_Alert._jQueryInterface = function _jQueryInterface(config) {
+          return this.each(function () {
+            var $element = $$$1(this);
+            var data = $element.data(DATA_KEY);
+  
+            if (!data) {
+              data = new webdesk_Alert(this);
+              $element.data(DATA_KEY, data);
+            }
+  
+            if (config === 'close') {
+              data[config](this);
+            }
+          });
+        };
+  
+        webdesk_Alert._handleDismiss = function _handleDismiss(alertInstance) {
+          return function (event) {
+            if (event) {
+              event.preventDefault();
+            }
+  
+            alertInstance.close(this);
+          };
+        };
+  
+        _createClass(webdesk_Alert, null, [{
+          key: "VERSION",
+          get: function get() {
+            return VERSION;
+          }
+        }]);
+  
+        return webdesk_Alert;
+      }();
+      /**
+       * ------------------------------------------------------------------------
+       * Data Api implementation
+       * ------------------------------------------------------------------------
+       */
+  
+  
+      $$$1(document).on(Event.CLICK_DATA_API, Selector.DISMISS, webdesk_Alert._handleDismiss(new webdesk_Alert()));
+      /**
+       * ------------------------------------------------------------------------
+       * jQuery
+       * ------------------------------------------------------------------------
+       */
+  
+      $$$1.fn[NAME] = webdesk_Alert._jQueryInterface;
+      $$$1.fn[NAME].Constructor = webdesk_Alert;
+  
+      $$$1.fn[NAME].noConflict = function () {
+        $$$1.fn[NAME] = JQUERY_NO_CONFLICT;
+        return webdesk_Alert._jQueryInterface;
       };
-
-      _createClass(Alert, null, [{
-        key: "VERSION",
-        get: function get() {
-          return VERSION;
-        }
-      }]);
-
-      return Alert;
-    }();
+  
+      return webdesk_Alert;
+    }($);
+    
     /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
-
-
-    $$$1(document).on(Event.CLICK_DATA_API, Selector.DISMISS, Alert._handleDismiss(new Alert()));
-    /**
-     * ------------------------------------------------------------------------
-     * jQuery
-     * ------------------------------------------------------------------------
-     */
-
-    $$$1.fn[NAME] = Alert._jQueryInterface;
-    $$$1.fn[NAME].Constructor = Alert;
-
-    $$$1.fn[NAME].noConflict = function () {
-      $$$1.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Alert._jQueryInterface;
-    };
-
-    return Alert;
-  }($);
-
-  /**
    * --------------------------------------------------------------------------
    * Bootstrap (v4.1.1): button.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
-
-  var Button = function ($$$1) {
+  
+  var webdesk_Button = function ($$$1) {
     /**
      * ------------------------------------------------------------------------
      * Constants
      * ------------------------------------------------------------------------
      */
-    var NAME = 'button';
+    var NAME = 'webdesk_button';
     var VERSION = '4.1.1';
     var DATA_KEY = 'bs.button';
     var EVENT_KEY = "." + DATA_KEY;
@@ -396,7 +396,7 @@
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
     var ClassName = {
       ACTIVE: 'active',
-      BUTTON: 'btn',
+      BUTTON: 'webdesk_btn',
       FOCUS: 'focus'
     };
     var Selector = {
@@ -404,7 +404,7 @@
       DATA_TOGGLE: '[data-toggle="buttons"]',
       INPUT: 'input',
       ACTIVE: '.active',
-      BUTTON: '.btn'
+      BUTTON: '.webdesk_btn'
     };
     var Event = {
       CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY,
@@ -414,110 +414,110 @@
        * Class Definition
        * ------------------------------------------------------------------------
        */
-
+  
     };
-
-    var Button =
+  
+    var webdesk_Button =
     /*#__PURE__*/
     function () {
-      function Button(element) {
+      function webdesk_Button(element) {
         this._element = element;
       } // Getters
-
-
-      var _proto = Button.prototype;
-
+  
+  
+      var _proto = webdesk_Button.prototype;
+  
       // Public
       _proto.toggle = function toggle() {
         var triggerChangeEvent = true;
         var addAriaPressed = true;
         var rootElement = $$$1(this._element).closest(Selector.DATA_TOGGLE)[0];
-
+  
         if (rootElement) {
           var input = $$$1(this._element).find(Selector.INPUT)[0];
-
+  
           if (input) {
             if (input.type === 'radio') {
               if (input.checked && $$$1(this._element).hasClass(ClassName.ACTIVE)) {
                 triggerChangeEvent = false;
               } else {
                 var activeElement = $$$1(rootElement).find(Selector.ACTIVE)[0];
-
+  
                 if (activeElement) {
                   $$$1(activeElement).removeClass(ClassName.ACTIVE);
                 }
               }
             }
-
+  
             if (triggerChangeEvent) {
               if (input.hasAttribute('disabled') || rootElement.hasAttribute('disabled') || input.classList.contains('disabled') || rootElement.classList.contains('disabled')) {
                 return;
               }
-
+  
               input.checked = !$$$1(this._element).hasClass(ClassName.ACTIVE);
               $$$1(input).trigger('change');
             }
-
+  
             input.focus();
             addAriaPressed = false;
           }
         }
-
+  
         if (addAriaPressed) {
           this._element.setAttribute('aria-pressed', !$$$1(this._element).hasClass(ClassName.ACTIVE));
         }
-
+  
         if (triggerChangeEvent) {
           $$$1(this._element).toggleClass(ClassName.ACTIVE);
         }
       };
-
+  
       _proto.dispose = function dispose() {
         $$$1.removeData(this._element, DATA_KEY);
         this._element = null;
       }; // Static
-
-
-      Button._jQueryInterface = function _jQueryInterface(config) {
+  
+  
+      webdesk_Button._jQueryInterface = function _jQueryInterface(config) {
         return this.each(function () {
           var data = $$$1(this).data(DATA_KEY);
-
+  
           if (!data) {
-            data = new Button(this);
+            data = new webdesk_Button(this);
             $$$1(this).data(DATA_KEY, data);
           }
-
+  
           if (config === 'toggle') {
             data[config]();
           }
         });
       };
-
-      _createClass(Button, null, [{
+  
+      _createClass(webdesk_Button, null, [{
         key: "VERSION",
         get: function get() {
           return VERSION;
         }
       }]);
-
-      return Button;
+  
+      return webdesk_Button;
     }();
     /**
      * ------------------------------------------------------------------------
      * Data Api implementation
      * ------------------------------------------------------------------------
      */
-
-
+  
+  
     $$$1(document).on(Event.CLICK_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
       event.preventDefault();
       var button = event.target;
-
+  
       if (!$$$1(button).hasClass(ClassName.BUTTON)) {
         button = $$$1(button).closest(Selector.BUTTON);
       }
-
-      Button._jQueryInterface.call($$$1(button), 'toggle');
+  
+      webdesk_Button._jQueryInterface.call($$$1(button), 'toggle');
     }).on(Event.FOCUS_BLUR_DATA_API, Selector.DATA_TOGGLE_CARROT, function (event) {
       var button = $$$1(event.target).closest(Selector.BUTTON)[0];
       $$$1(button).toggleClass(ClassName.FOCUS, /^focus(in)?$/.test(event.type));
@@ -527,533 +527,534 @@
      * jQuery
      * ------------------------------------------------------------------------
      */
-
-    $$$1.fn[NAME] = Button._jQueryInterface;
-    $$$1.fn[NAME].Constructor = Button;
-
+  
+    $$$1.fn[NAME] = webdesk_Button._jQueryInterface;
+    $$$1.fn[NAME].Constructor = webdesk_Button;
+  
     $$$1.fn[NAME].noConflict = function () {
       $$$1.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Button._jQueryInterface;
+      return webdesk_Button._jQueryInterface;
     };
-
-    return Button;
+  
+    return webdesk_Button;
   }($);
-
+  
+  
   /**
-   * --------------------------------------------------------------------------
-   * Bootstrap (v4.1.1): carousel.js
-   * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
-   * --------------------------------------------------------------------------
-   */
+  // * --------------------------------------------------------------------------
+  // * Bootstrap (v4.1.1): carousel.js
+  // * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+  // * --------------------------------------------------------------------------
+  // */
+  
+  // var webdesk_Carousel = function ($$$1) {
+  //   /**
+  //   * ------------------------------------------------------------------------
+  //   * Constants
+  //   * ------------------------------------------------------------------------
+  //   */
+  //   var NAME = 'webdesk_carousel';
+  //   var VERSION = '4.1.1';
+  //   var DATA_KEY = 'bs.carousel';
+  //   var EVENT_KEY = "." + DATA_KEY;
+  //   var DATA_API_KEY = '.data-api';
+  //   var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
+  //   var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
+  
+  //   var ARROW_RIGHT_KEYCODE = 39; // KeyboardEvent.which value for right arrow key
+  
+  //   var TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
+  
+  //   var Default = {
+  //     interval: 5000,
+  //     keyboard: true,
+  //     slide: false,
+  //     pause: 'hover',
+  //     wrap: true
+  //   };
+  //   var DefaultType = {
+  //     interval: '(number|boolean)',
+  //     keyboard: 'boolean',
+  //     slide: '(boolean|string)',
+  //     pause: '(string|boolean)',
+  //     wrap: 'boolean'
+  //   };
+  //   var Direction = {
+  //     NEXT: 'next',
+  //     PREV: 'prev',
+  //     LEFT: 'left',
+  //     RIGHT: 'right'
+  //   };
+  //   var Event = {
+  //     SLIDE: "slide" + EVENT_KEY,
+  //     SLID: "slid" + EVENT_KEY,
+  //     KEYDOWN: "keydown" + EVENT_KEY,
+  //     MOUSEENTER: "mouseenter" + EVENT_KEY,
+  //     MOUSELEAVE: "mouseleave" + EVENT_KEY,
+  //     TOUCHEND: "touchend" + EVENT_KEY,
+  //     LOAD_DATA_API: "load" + EVENT_KEY + DATA_API_KEY,
+  //     CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
+  //   };
+  //   var ClassName = {
+  //     CAROUSEL: 'webdesk_carousel',
+  //     ACTIVE: 'webdesk_active',
+  //     SLIDE: 'webdesk_slide',
+  //     RIGHT: 'webdesk_carousel-item-right',
+  //     LEFT: 'webdesk_carousel-item-left',
+  //     NEXT: 'webdesk_carousel-item-next',
+  //     PREV: 'webdesk_carousel-item-prev',
+  //     ITEM: 'webdesk_carousel-item'
+  //   };
+  //   var Selector = {
+  //     ACTIVE: '.webdesk_active',
+  //     ACTIVE_ITEM: '.active.carousel-item',
+  //     ITEM: '.carousel-item',
+  //     NEXT_PREV: '.carousel-item-next, .carousel-item-prev',
+  //     INDICATORS: '.carousel-indicators',
+  //     DATA_SLIDE: '[data-slide], [data-slide-to]',
+  //     DATA_RIDE: '[data-ride="carousel"]'
+  //     /**
+  //     * ------------------------------------------------------------------------
+  //     * Class Definition
+  //     * ------------------------------------------------------------------------
+  //     */
+  
+  //   };
+  
+  //   var Carousel =
+  //   /*#__PURE__*/
+  //   function () {
+  //     function Carousel(element, config) {
+  //       this._items = null;
+  //       this._interval = null;
+  //       this._activeElement = null;
+  //       this._isPaused = false;
+  //       this._isSliding = false;
+  //       this.touchTimeout = null;
+  //       this._config = this._getConfig(config);
+  //       this._element = $$$1(element)[0];
+  //       this._indicatorsElement = $$$1(this._element).find(Selector.INDICATORS)[0];
+  
+  //       this._addEventListeners();
+  //     } // Getters
+  
+  
+  //     var _proto = Carousel.prototype;
+  
+  //     // Public
+  //     _proto.next = function next() {
+  //       if (!this._isSliding) {
+  //         this._slide(Direction.NEXT);
+  //       }
+  //     };
+  
+  //     _proto.nextWhenVisible = function nextWhenVisible() {
+  //       // Don't call next when the page isn't visible
+  //       // or the carousel or its parent isn't visible
+  //       if (!document.hidden && $$$1(this._element).is(':visible') && $$$1(this._element).css('visibility') !== 'hidden') {
+  //         this.next();
+  //       }
+  //     };
+  
+  //     _proto.prev = function prev() {
+  //       if (!this._isSliding) {
+  //         this._slide(Direction.PREV);
+  //       }
+  //     };
+  
+  //     _proto.pause = function pause(event) {
+  //       if (!event) {
+  //         this._isPaused = true;
+  //       }
+  
+  //       if ($$$1(this._element).find(Selector.NEXT_PREV)[0]) {
+  //         webdesk_Util.triggerTransitionEnd(this._element);
+  //         this.cycle(true);
+  //       }
+  
+  //       clearInterval(this._interval);
+  //       this._interval = null;
+  //     };
+  
+  //     _proto.cycle = function cycle(event) {
+  //       if (!event) {
+  //         this._isPaused = false;
+  //       }
+  
+  //       if (this._interval) {
+  //         clearInterval(this._interval);
+  //         this._interval = null;
+  //       }
+  
+  //       if (this._config.interval && !this._isPaused) {
+  //         this._interval = setInterval((document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval);
+  //       }
+  //     };
+  
+  //     _proto.to = function to(index) {
+  //       var _this = this;
+  
+  //       this._activeElement = $$$1(this._element).find(Selector.ACTIVE_ITEM)[0];
+  
+  //       var activeIndex = this._getItemIndex(this._activeElement);
+  
+  //       if (index > this._items.length - 1 || index < 0) {
+  //         return;
+  //       }
+  
+  //       if (this._isSliding) {
+  //         $$$1(this._element).one(Event.SLID, function () {
+  //           return _this.to(index);
+  //         });
+  //         return;
+  //       }
+  
+  //       if (activeIndex === index) {
+  //         this.pause();
+  //         this.cycle();
+  //         return;
+  //       }
+  
+  //       var direction = index > activeIndex ? Direction.NEXT : Direction.PREV;
+  
+  //       this._slide(direction, this._items[index]);
+  //     };
+  
+  //     _proto.dispose = function dispose() {
+  //       $$$1(this._element).off(EVENT_KEY);
+  //       $$$1.removeData(this._element, DATA_KEY);
+  //       this._items = null;
+  //       this._config = null;
+  //       this._element = null;
+  //       this._interval = null;
+  //       this._isPaused = null;
+  //       this._isSliding = null;
+  //       this._activeElement = null;
+  //       this._indicatorsElement = null;
+  //     }; // Private
+  
+  
+  //     _proto._getConfig = function _getConfig(config) {
+  //       config = _objectSpread({}, Default, config);
+  //       webdesk_Util.typeCheckConfig(NAME, config, DefaultType);
+  //       return config;
+  //     };
+  
+  //     _proto._addEventListeners = function _addEventListeners() {
+  //       var _this2 = this;
+  
+  //       if (this._config.keyboard) {
+  //         $$$1(this._element).on(Event.KEYDOWN, function (event) {
+  //           return _this2._keydown(event);
+  //         });
+  //       }
+  
+  //       if (this._config.pause === 'hover') {
+  //         $$$1(this._element).on(Event.MOUSEENTER, function (event) {
+  //           return _this2.pause(event);
+  //         }).on(Event.MOUSELEAVE, function (event) {
+  //           return _this2.cycle(event);
+  //         });
+  
+  //         if ('ontouchstart' in document.documentElement) {
+  //           // If it's a touch-enabled device, mouseenter/leave are fired as
+  //           // part of the mouse compatibility events on first tap - the carousel
+  //           // would stop cycling until user tapped out of it;
+  //           // here, we listen for touchend, explicitly pause the carousel
+  //           // (as if it's the second time we tap on it, mouseenter compat event
+  //           // is NOT fired) and after a timeout (to allow for mouse compatibility
+  //           // events to fire) we explicitly restart cycling
+  //           $$$1(this._element).on(Event.TOUCHEND, function () {
+  //             _this2.pause();
+  
+  //             if (_this2.touchTimeout) {
+  //               clearTimeout(_this2.touchTimeout);
+  //             }
+  
+  //             _this2.touchTimeout = setTimeout(function (event) {
+  //               return _this2.cycle(event);
+  //             }, TOUCHEVENT_COMPAT_WAIT + _this2._config.interval);
+  //           });
+  //         }
+  //       }
+  //     };
+  
+  //     _proto._keydown = function _keydown(event) {
+  //       if (/input|textarea/i.test(event.target.tagName)) {
+  //         return;
+  //       }
+  
+  //       switch (event.which) {
+  //         case ARROW_LEFT_KEYCODE:
+  //           event.preventDefault();
+  //           this.prev();
+  //           break;
+  
+  //         case ARROW_RIGHT_KEYCODE:
+  //           event.preventDefault();
+  //           this.next();
+  //           break;
+  
+  //         default:
+  //       }
+  //     };
+  
+  //     _proto._getItemIndex = function _getItemIndex(element) {
+  //       this._items = $$$1.makeArray($$$1(element).parent().find(Selector.ITEM));
+  //       return this._items.indexOf(element);
+  //     };
+  
+  //     _proto._getItemByDirection = function _getItemByDirection(direction, activeElement) {
+  //       var isNextDirection = direction === Direction.NEXT;
+  //       var isPrevDirection = direction === Direction.PREV;
+  
+  //       var activeIndex = this._getItemIndex(activeElement);
+  
+  //       var lastItemIndex = this._items.length - 1;
+  //       var isGoingToWrap = isPrevDirection && activeIndex === 0 || isNextDirection && activeIndex === lastItemIndex;
+  
+  //       if (isGoingToWrap && !this._config.wrap) {
+  //         return activeElement;
+  //       }
+  
+  //       var delta = direction === Direction.PREV ? -1 : 1;
+  //       var itemIndex = (activeIndex + delta) % this._items.length;
+  //       return itemIndex === -1 ? this._items[this._items.length - 1] : this._items[itemIndex];
+  //     };
+  
+  //     _proto._triggerSlideEvent = function _triggerSlideEvent(relatedTarget, eventDirectionName) {
+  //       var targetIndex = this._getItemIndex(relatedTarget);
+  
+  //       var fromIndex = this._getItemIndex($$$1(this._element).find(Selector.ACTIVE_ITEM)[0]);
+  
+  //       var slideEvent = $$$1.Event(Event.SLIDE, {
+  //         relatedTarget: relatedTarget,
+  //         direction: eventDirectionName,
+  //         from: fromIndex,
+  //         to: targetIndex
+  //       });
+  //       $$$1(this._element).trigger(slideEvent);
+  //       return slideEvent;
+  //     };
+  
+  //     _proto._setActiveIndicatorElement = function _setActiveIndicatorElement(element) {
+  //       if (this._indicatorsElement) {
+  //         $$$1(this._indicatorsElement).find(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
+  
+  //         var nextIndicator = this._indicatorsElement.children[this._getItemIndex(element)];
+  
+  //         if (nextIndicator) {
+  //           $$$1(nextIndicator).addClass(ClassName.ACTIVE);
+  //         }
+  //       }
+  //     };
+  
+  //     _proto._slide = function _slide(direction, element) {
+  //       var _this3 = this;
+  
+  //       var activeElement = $$$1(this._element).find(Selector.ACTIVE_ITEM)[0];
+  
+  //       var activeElementIndex = this._getItemIndex(activeElement);
+  
+  //       var nextElement = element || activeElement && this._getItemByDirection(direction, activeElement);
+  
+  //       var nextElementIndex = this._getItemIndex(nextElement);
+  
+  //       var isCycling = Boolean(this._interval);
+  //       var directionalClassName;
+  //       var orderClassName;
+  //       var eventDirectionName;
+  
+  //       if (direction === Direction.NEXT) {
+  //         directionalClassName = ClassName.LEFT;
+  //         orderClassName = ClassName.NEXT;
+  //         eventDirectionName = Direction.LEFT;
+  //       } else {
+  //         directionalClassName = ClassName.RIGHT;
+  //         orderClassName = ClassName.PREV;
+  //         eventDirectionName = Direction.RIGHT;
+  //       }
+  
+  //       if (nextElement && $$$1(nextElement).hasClass(ClassName.ACTIVE)) {
+  //         this._isSliding = false;
+  //         return;
+  //       }
+  
+  //       var slideEvent = this._triggerSlideEvent(nextElement, eventDirectionName);
+  
+  //       if (slideEvent.isDefaultPrevented()) {
+  //         return;
+  //       }
+  
+  //       if (!activeElement || !nextElement) {
+  //         // Some weirdness is happening, so we bail
+  //         return;
+  //       }
+  
+  //       this._isSliding = true;
+  
+  //       if (isCycling) {
+  //         this.pause();
+  //       }
+  
+  //       this._setActiveIndicatorElement(nextElement);
+  
+  //       var slidEvent = $$$1.Event(Event.SLID, {
+  //         relatedTarget: nextElement,
+  //         direction: eventDirectionName,
+  //         from: activeElementIndex,
+  //         to: nextElementIndex
+  //       });
+  
+  //       if ($$$1(this._element).hasClass(ClassName.SLIDE)) {
+  //         $$$1(nextElement).addClass(orderClassName);
+  //         webdesk_Util.reflow(nextElement);
+  //         $$$1(activeElement).addClass(directionalClassName);
+  //         $$$1(nextElement).addClass(directionalClassName);
+  //         var transitionDuration = webdesk_Util.getTransitionDurationFromElement(activeElement);
+  //         $$$1(activeElement).one(webdesk_Util.TRANSITION_END, function () {
+  //           $$$1(nextElement).removeClass(directionalClassName + " " + orderClassName).addClass(ClassName.ACTIVE);
+  //           $$$1(activeElement).removeClass(ClassName.ACTIVE + " " + orderClassName + " " + directionalClassName);
+  //           _this3._isSliding = false;
+  //           setTimeout(function () {
+  //             return $$$1(_this3._element).trigger(slidEvent);
+  //           }, 0);
+  //         }).emulateTransitionEnd(transitionDuration);
+  //       } else {
+  //         $$$1(activeElement).removeClass(ClassName.ACTIVE);
+  //         $$$1(nextElement).addClass(ClassName.ACTIVE);
+  //         this._isSliding = false;
+  //         $$$1(this._element).trigger(slidEvent);
+  //       }
+  
+  //       if (isCycling) {
+  //         this.cycle();
+  //       }
+  //     }; // Static
+  
+  
+  //     Carousel._jQueryInterface = function _jQueryInterface(config) {
+  //       return this.each(function () {
+  //         var data = $$$1(this).data(DATA_KEY);
+  
+  //         var _config = _objectSpread({}, Default, $$$1(this).data());
+  
+  //         if (typeof config === 'object') {
+  //           _config = _objectSpread({}, _config, config);
+  //         }
+  
+  //         var action = typeof config === 'string' ? config : _config.slide;
+  
+  //         if (!data) {
+  //           data = new Carousel(this, _config);
+  //           $$$1(this).data(DATA_KEY, data);
+  //         }
+  
+  //         if (typeof config === 'number') {
+  //           data.to(config);
+  //         } else if (typeof action === 'string') {
+  //           if (typeof data[action] === 'undefined') {
+  //             throw new TypeError("No method named \"" + action + "\"");
+  //           }
+  
+  //           data[action]();
+  //         } else if (_config.interval) {
+  //           data.pause();
+  //           data.cycle();
+  //         }
+  //       });
+  //     };
+  
+  //     Carousel._dataApiClickHandler = function _dataApiClickHandler(event) {
+  //       var selector = webdesk_Util.getSelectorFromElement(this);
+  
+  //       if (!selector) {
+  //         return;
+  //       }
+  
+  //       var target = $$$1(selector)[0];
+  
+  //       if (!target || !$$$1(target).hasClass(ClassName.CAROUSEL)) {
+  //         return;
+  //       }
+  
+  //       var config = _objectSpread({}, $$$1(target).data(), $$$1(this).data());
+  
+  //       var slideIndex = this.getAttribute('data-slide-to');
+  
+  //       if (slideIndex) {
+  //         config.interval = false;
+  //       }
+  
+  //       Carousel._jQueryInterface.call($$$1(target), config);
+  
+  //       if (slideIndex) {
+  //         $$$1(target).data(DATA_KEY).to(slideIndex);
+  //       }
+  
+  //       event.preventDefault();
+  //     };
+  
+  //     _createClass(Carousel, null, [{
+  //       key: "VERSION",
+  //       get: function get() {
+  //         return VERSION;
+  //       }
+  //     }, {
+  //       key: "Default",
+  //       get: function get() {
+  //         return Default;
+  //       }
+  //     }]);
+  
+  //     return Carousel;
+  //   }();
+  //   /**
+  //   * ------------------------------------------------------------------------
+  //   * Data Api implementation
+  //   * ------------------------------------------------------------------------
+  //   */
+  
+  
+  //   $$$1(document).on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
+  //   $$$1(window).on(Event.LOAD_DATA_API, function () {
+  //     $$$1(Selector.DATA_RIDE).each(function () {
+  //       var $carousel = $$$1(this);
+  
+  //       Carousel._jQueryInterface.call($carousel, $carousel.data());
+  //     });
+  //   });
+  //   /**
+  //   * ------------------------------------------------------------------------
+  //   * jQuery
+  //   * ------------------------------------------------------------------------
+  //   */
+  
+  //   $$$1.fn[NAME] = Carousel._jQueryInterface;
+  //   $$$1.fn[NAME].Constructor = Carousel;
+  
+  //   $$$1.fn[NAME].noConflict = function () {
+  //     $$$1.fn[NAME] = JQUERY_NO_CONFLICT;
+  //     return Carousel._jQueryInterface;
+  //   };
+  
+  //   return Carousel;
+  // }($);
 
-  var Carousel = function ($$$1) {
     /**
-     * ------------------------------------------------------------------------
-     * Constants
-     * ------------------------------------------------------------------------
-     */
-    var NAME = 'carousel';
-    var VERSION = '4.1.1';
-    var DATA_KEY = 'bs.carousel';
-    var EVENT_KEY = "." + DATA_KEY;
-    var DATA_API_KEY = '.data-api';
-    var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
-    var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
-
-    var ARROW_RIGHT_KEYCODE = 39; // KeyboardEvent.which value for right arrow key
-
-    var TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
-
-    var Default = {
-      interval: 5000,
-      keyboard: true,
-      slide: false,
-      pause: 'hover',
-      wrap: true
-    };
-    var DefaultType = {
-      interval: '(number|boolean)',
-      keyboard: 'boolean',
-      slide: '(boolean|string)',
-      pause: '(string|boolean)',
-      wrap: 'boolean'
-    };
-    var Direction = {
-      NEXT: 'next',
-      PREV: 'prev',
-      LEFT: 'left',
-      RIGHT: 'right'
-    };
-    var Event = {
-      SLIDE: "slide" + EVENT_KEY,
-      SLID: "slid" + EVENT_KEY,
-      KEYDOWN: "keydown" + EVENT_KEY,
-      MOUSEENTER: "mouseenter" + EVENT_KEY,
-      MOUSELEAVE: "mouseleave" + EVENT_KEY,
-      TOUCHEND: "touchend" + EVENT_KEY,
-      LOAD_DATA_API: "load" + EVENT_KEY + DATA_API_KEY,
-      CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
-    };
-    var ClassName = {
-      CAROUSEL: 'carousel',
-      ACTIVE: 'active',
-      SLIDE: 'slide',
-      RIGHT: 'carousel-item-right',
-      LEFT: 'carousel-item-left',
-      NEXT: 'carousel-item-next',
-      PREV: 'carousel-item-prev',
-      ITEM: 'carousel-item'
-    };
-    var Selector = {
-      ACTIVE: '.active',
-      ACTIVE_ITEM: '.active.carousel-item',
-      ITEM: '.carousel-item',
-      NEXT_PREV: '.carousel-item-next, .carousel-item-prev',
-      INDICATORS: '.carousel-indicators',
-      DATA_SLIDE: '[data-slide], [data-slide-to]',
-      DATA_RIDE: '[data-ride="carousel"]'
-      /**
-       * ------------------------------------------------------------------------
-       * Class Definition
-       * ------------------------------------------------------------------------
-       */
-
-    };
-
-    var Carousel =
-    /*#__PURE__*/
-    function () {
-      function Carousel(element, config) {
-        this._items = null;
-        this._interval = null;
-        this._activeElement = null;
-        this._isPaused = false;
-        this._isSliding = false;
-        this.touchTimeout = null;
-        this._config = this._getConfig(config);
-        this._element = $$$1(element)[0];
-        this._indicatorsElement = $$$1(this._element).find(Selector.INDICATORS)[0];
-
-        this._addEventListeners();
-      } // Getters
-
-
-      var _proto = Carousel.prototype;
-
-      // Public
-      _proto.next = function next() {
-        if (!this._isSliding) {
-          this._slide(Direction.NEXT);
-        }
-      };
-
-      _proto.nextWhenVisible = function nextWhenVisible() {
-        // Don't call next when the page isn't visible
-        // or the carousel or its parent isn't visible
-        if (!document.hidden && $$$1(this._element).is(':visible') && $$$1(this._element).css('visibility') !== 'hidden') {
-          this.next();
-        }
-      };
-
-      _proto.prev = function prev() {
-        if (!this._isSliding) {
-          this._slide(Direction.PREV);
-        }
-      };
-
-      _proto.pause = function pause(event) {
-        if (!event) {
-          this._isPaused = true;
-        }
-
-        if ($$$1(this._element).find(Selector.NEXT_PREV)[0]) {
-          Util.triggerTransitionEnd(this._element);
-          this.cycle(true);
-        }
-
-        clearInterval(this._interval);
-        this._interval = null;
-      };
-
-      _proto.cycle = function cycle(event) {
-        if (!event) {
-          this._isPaused = false;
-        }
-
-        if (this._interval) {
-          clearInterval(this._interval);
-          this._interval = null;
-        }
-
-        if (this._config.interval && !this._isPaused) {
-          this._interval = setInterval((document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval);
-        }
-      };
-
-      _proto.to = function to(index) {
-        var _this = this;
-
-        this._activeElement = $$$1(this._element).find(Selector.ACTIVE_ITEM)[0];
-
-        var activeIndex = this._getItemIndex(this._activeElement);
-
-        if (index > this._items.length - 1 || index < 0) {
-          return;
-        }
-
-        if (this._isSliding) {
-          $$$1(this._element).one(Event.SLID, function () {
-            return _this.to(index);
-          });
-          return;
-        }
-
-        if (activeIndex === index) {
-          this.pause();
-          this.cycle();
-          return;
-        }
-
-        var direction = index > activeIndex ? Direction.NEXT : Direction.PREV;
-
-        this._slide(direction, this._items[index]);
-      };
-
-      _proto.dispose = function dispose() {
-        $$$1(this._element).off(EVENT_KEY);
-        $$$1.removeData(this._element, DATA_KEY);
-        this._items = null;
-        this._config = null;
-        this._element = null;
-        this._interval = null;
-        this._isPaused = null;
-        this._isSliding = null;
-        this._activeElement = null;
-        this._indicatorsElement = null;
-      }; // Private
-
-
-      _proto._getConfig = function _getConfig(config) {
-        config = _objectSpread({}, Default, config);
-        Util.typeCheckConfig(NAME, config, DefaultType);
-        return config;
-      };
-
-      _proto._addEventListeners = function _addEventListeners() {
-        var _this2 = this;
-
-        if (this._config.keyboard) {
-          $$$1(this._element).on(Event.KEYDOWN, function (event) {
-            return _this2._keydown(event);
-          });
-        }
-
-        if (this._config.pause === 'hover') {
-          $$$1(this._element).on(Event.MOUSEENTER, function (event) {
-            return _this2.pause(event);
-          }).on(Event.MOUSELEAVE, function (event) {
-            return _this2.cycle(event);
-          });
-
-          if ('ontouchstart' in document.documentElement) {
-            // If it's a touch-enabled device, mouseenter/leave are fired as
-            // part of the mouse compatibility events on first tap - the carousel
-            // would stop cycling until user tapped out of it;
-            // here, we listen for touchend, explicitly pause the carousel
-            // (as if it's the second time we tap on it, mouseenter compat event
-            // is NOT fired) and after a timeout (to allow for mouse compatibility
-            // events to fire) we explicitly restart cycling
-            $$$1(this._element).on(Event.TOUCHEND, function () {
-              _this2.pause();
-
-              if (_this2.touchTimeout) {
-                clearTimeout(_this2.touchTimeout);
-              }
-
-              _this2.touchTimeout = setTimeout(function (event) {
-                return _this2.cycle(event);
-              }, TOUCHEVENT_COMPAT_WAIT + _this2._config.interval);
-            });
-          }
-        }
-      };
-
-      _proto._keydown = function _keydown(event) {
-        if (/input|textarea/i.test(event.target.tagName)) {
-          return;
-        }
-
-        switch (event.which) {
-          case ARROW_LEFT_KEYCODE:
-            event.preventDefault();
-            this.prev();
-            break;
-
-          case ARROW_RIGHT_KEYCODE:
-            event.preventDefault();
-            this.next();
-            break;
-
-          default:
-        }
-      };
-
-      _proto._getItemIndex = function _getItemIndex(element) {
-        this._items = $$$1.makeArray($$$1(element).parent().find(Selector.ITEM));
-        return this._items.indexOf(element);
-      };
-
-      _proto._getItemByDirection = function _getItemByDirection(direction, activeElement) {
-        var isNextDirection = direction === Direction.NEXT;
-        var isPrevDirection = direction === Direction.PREV;
-
-        var activeIndex = this._getItemIndex(activeElement);
-
-        var lastItemIndex = this._items.length - 1;
-        var isGoingToWrap = isPrevDirection && activeIndex === 0 || isNextDirection && activeIndex === lastItemIndex;
-
-        if (isGoingToWrap && !this._config.wrap) {
-          return activeElement;
-        }
-
-        var delta = direction === Direction.PREV ? -1 : 1;
-        var itemIndex = (activeIndex + delta) % this._items.length;
-        return itemIndex === -1 ? this._items[this._items.length - 1] : this._items[itemIndex];
-      };
-
-      _proto._triggerSlideEvent = function _triggerSlideEvent(relatedTarget, eventDirectionName) {
-        var targetIndex = this._getItemIndex(relatedTarget);
-
-        var fromIndex = this._getItemIndex($$$1(this._element).find(Selector.ACTIVE_ITEM)[0]);
-
-        var slideEvent = $$$1.Event(Event.SLIDE, {
-          relatedTarget: relatedTarget,
-          direction: eventDirectionName,
-          from: fromIndex,
-          to: targetIndex
-        });
-        $$$1(this._element).trigger(slideEvent);
-        return slideEvent;
-      };
-
-      _proto._setActiveIndicatorElement = function _setActiveIndicatorElement(element) {
-        if (this._indicatorsElement) {
-          $$$1(this._indicatorsElement).find(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
-
-          var nextIndicator = this._indicatorsElement.children[this._getItemIndex(element)];
-
-          if (nextIndicator) {
-            $$$1(nextIndicator).addClass(ClassName.ACTIVE);
-          }
-        }
-      };
-
-      _proto._slide = function _slide(direction, element) {
-        var _this3 = this;
-
-        var activeElement = $$$1(this._element).find(Selector.ACTIVE_ITEM)[0];
-
-        var activeElementIndex = this._getItemIndex(activeElement);
-
-        var nextElement = element || activeElement && this._getItemByDirection(direction, activeElement);
-
-        var nextElementIndex = this._getItemIndex(nextElement);
-
-        var isCycling = Boolean(this._interval);
-        var directionalClassName;
-        var orderClassName;
-        var eventDirectionName;
-
-        if (direction === Direction.NEXT) {
-          directionalClassName = ClassName.LEFT;
-          orderClassName = ClassName.NEXT;
-          eventDirectionName = Direction.LEFT;
-        } else {
-          directionalClassName = ClassName.RIGHT;
-          orderClassName = ClassName.PREV;
-          eventDirectionName = Direction.RIGHT;
-        }
-
-        if (nextElement && $$$1(nextElement).hasClass(ClassName.ACTIVE)) {
-          this._isSliding = false;
-          return;
-        }
-
-        var slideEvent = this._triggerSlideEvent(nextElement, eventDirectionName);
-
-        if (slideEvent.isDefaultPrevented()) {
-          return;
-        }
-
-        if (!activeElement || !nextElement) {
-          // Some weirdness is happening, so we bail
-          return;
-        }
-
-        this._isSliding = true;
-
-        if (isCycling) {
-          this.pause();
-        }
-
-        this._setActiveIndicatorElement(nextElement);
-
-        var slidEvent = $$$1.Event(Event.SLID, {
-          relatedTarget: nextElement,
-          direction: eventDirectionName,
-          from: activeElementIndex,
-          to: nextElementIndex
-        });
-
-        if ($$$1(this._element).hasClass(ClassName.SLIDE)) {
-          $$$1(nextElement).addClass(orderClassName);
-          Util.reflow(nextElement);
-          $$$1(activeElement).addClass(directionalClassName);
-          $$$1(nextElement).addClass(directionalClassName);
-          var transitionDuration = Util.getTransitionDurationFromElement(activeElement);
-          $$$1(activeElement).one(Util.TRANSITION_END, function () {
-            $$$1(nextElement).removeClass(directionalClassName + " " + orderClassName).addClass(ClassName.ACTIVE);
-            $$$1(activeElement).removeClass(ClassName.ACTIVE + " " + orderClassName + " " + directionalClassName);
-            _this3._isSliding = false;
-            setTimeout(function () {
-              return $$$1(_this3._element).trigger(slidEvent);
-            }, 0);
-          }).emulateTransitionEnd(transitionDuration);
-        } else {
-          $$$1(activeElement).removeClass(ClassName.ACTIVE);
-          $$$1(nextElement).addClass(ClassName.ACTIVE);
-          this._isSliding = false;
-          $$$1(this._element).trigger(slidEvent);
-        }
-
-        if (isCycling) {
-          this.cycle();
-        }
-      }; // Static
-
-
-      Carousel._jQueryInterface = function _jQueryInterface(config) {
-        return this.each(function () {
-          var data = $$$1(this).data(DATA_KEY);
-
-          var _config = _objectSpread({}, Default, $$$1(this).data());
-
-          if (typeof config === 'object') {
-            _config = _objectSpread({}, _config, config);
-          }
-
-          var action = typeof config === 'string' ? config : _config.slide;
-
-          if (!data) {
-            data = new Carousel(this, _config);
-            $$$1(this).data(DATA_KEY, data);
-          }
-
-          if (typeof config === 'number') {
-            data.to(config);
-          } else if (typeof action === 'string') {
-            if (typeof data[action] === 'undefined') {
-              throw new TypeError("No method named \"" + action + "\"");
-            }
-
-            data[action]();
-          } else if (_config.interval) {
-            data.pause();
-            data.cycle();
-          }
-        });
-      };
-
-      Carousel._dataApiClickHandler = function _dataApiClickHandler(event) {
-        var selector = Util.getSelectorFromElement(this);
-
-        if (!selector) {
-          return;
-        }
-
-        var target = $$$1(selector)[0];
-
-        if (!target || !$$$1(target).hasClass(ClassName.CAROUSEL)) {
-          return;
-        }
-
-        var config = _objectSpread({}, $$$1(target).data(), $$$1(this).data());
-
-        var slideIndex = this.getAttribute('data-slide-to');
-
-        if (slideIndex) {
-          config.interval = false;
-        }
-
-        Carousel._jQueryInterface.call($$$1(target), config);
-
-        if (slideIndex) {
-          $$$1(target).data(DATA_KEY).to(slideIndex);
-        }
-
-        event.preventDefault();
-      };
-
-      _createClass(Carousel, null, [{
-        key: "VERSION",
-        get: function get() {
-          return VERSION;
-        }
-      }, {
-        key: "Default",
-        get: function get() {
-          return Default;
-        }
-      }]);
-
-      return Carousel;
-    }();
-    /**
-     * ------------------------------------------------------------------------
-     * Data Api implementation
-     * ------------------------------------------------------------------------
-     */
-
-
-    $$$1(document).on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
-    $$$1(window).on(Event.LOAD_DATA_API, function () {
-      $$$1(Selector.DATA_RIDE).each(function () {
-        var $carousel = $$$1(this);
-
-        Carousel._jQueryInterface.call($carousel, $carousel.data());
-      });
-    });
-    /**
-     * ------------------------------------------------------------------------
-     * jQuery
-     * ------------------------------------------------------------------------
-     */
-
-    $$$1.fn[NAME] = Carousel._jQueryInterface;
-    $$$1.fn[NAME].Constructor = Carousel;
-
-    $$$1.fn[NAME].noConflict = function () {
-      $$$1.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Carousel._jQueryInterface;
-    };
-
-    return Carousel;
-  }($);
-
-  /**
    * --------------------------------------------------------------------------
    * Bootstrap (v4.1.1): collapse.js
    * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
    * --------------------------------------------------------------------------
    */
 
-  var Collapse = function ($$$1) {
+  var webdesk_Collapse = function ($$$1) {
     /**
      * ------------------------------------------------------------------------
      * Constants
      * ------------------------------------------------------------------------
      */
-    var NAME = 'collapse';
+    var NAME = 'webdesk_collapse';
     var VERSION = '4.1.1';
     var DATA_KEY = 'bs.collapse';
     var EVENT_KEY = "." + DATA_KEY;
@@ -1075,18 +1076,18 @@
       CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
     };
     var ClassName = {
-      SHOW: 'show',
-      COLLAPSE: 'collapse',
-      COLLAPSING: 'collapsing',
-      COLLAPSED: 'collapsed'
+      SHOW: 'webdesk_show',
+      COLLAPSE: 'webdesk_collapse',
+      COLLAPSING: 'webdesk_collapsing',
+      COLLAPSED: 'webdesk_collapsed'
     };
     var Dimension = {
       WIDTH: 'width',
       HEIGHT: 'height'
     };
     var Selector = {
-      ACTIVES: '.show, .collapsing',
-      DATA_TOGGLE: '[data-toggle="collapse"]'
+      ACTIVES: '.webdesk_show, .webdesk_collapsing',
+      DATA_TOGGLE: '[data-toggle="webdesk_collapse"]'
       /**
        * ------------------------------------------------------------------------
        * Class Definition
@@ -1095,19 +1096,19 @@
 
     };
 
-    var Collapse =
+  var webdesk_Collapse =
     /*#__PURE__*/
     function () {
-      function Collapse(element, config) {
+      function webdesk_Collapse(element, config) {
         this._isTransitioning = false;
         this._element = element;
         this._config = this._getConfig(config);
-        this._triggerArray = $$$1.makeArray($$$1("[data-toggle=\"collapse\"][href=\"#" + element.id + "\"]," + ("[data-toggle=\"collapse\"][data-target=\"#" + element.id + "\"]")));
+        this._triggerArray = $$$1.makeArray($$$1("[data-toggle=\"webdesk_collapse\"][href=\"#" + element.id + "\"]," + ("[data-toggle=\"webdesk_collapse\"][data-target=\"#" + element.id + "\"]")));
         var tabToggles = $$$1(Selector.DATA_TOGGLE);
 
         for (var i = 0; i < tabToggles.length; i++) {
           var elem = tabToggles[i];
-          var selector = Util.getSelectorFromElement(elem);
+          var selector = webdesk_Util.getSelectorFromElement(elem);
 
           if (selector !== null && $$$1(selector).filter(element).length > 0) {
             this._selector = selector;
@@ -1128,7 +1129,7 @@
       } // Getters
 
 
-      var _proto = Collapse.prototype;
+      var _proto = webdesk_Collapse.prototype;
 
       // Public
       _proto.toggle = function toggle() {
@@ -1173,7 +1174,7 @@
         }
 
         if (actives) {
-          Collapse._jQueryInterface.call($$$1(actives).not(this._selector), 'hide');
+          webdesk_Collapse._jQueryInterface.call($$$1(actives).not(this._selector), 'hide');
 
           if (!activesData) {
             $$$1(actives).data(DATA_KEY, null);
@@ -1192,6 +1193,7 @@
         this.setTransitioning(true);
 
         var complete = function complete() {
+          
           $$$1(_this._element).removeClass(ClassName.COLLAPSING).addClass(ClassName.COLLAPSE).addClass(ClassName.SHOW);
           _this._element.style[dimension] = '';
 
@@ -1202,8 +1204,8 @@
 
         var capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
         var scrollSize = "scroll" + capitalizedDimension;
-        var transitionDuration = Util.getTransitionDurationFromElement(this._element);
-        $$$1(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
+        var transitionDuration = webdesk_Util.getTransitionDurationFromElement(this._element);
+        $$$1(this._element).one(webdesk_Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
         this._element.style[dimension] = this._element[scrollSize] + "px";
       };
 
@@ -1224,13 +1226,13 @@
         var dimension = this._getDimension();
 
         this._element.style[dimension] = this._element.getBoundingClientRect()[dimension] + "px";
-        Util.reflow(this._element);
+        webdesk_Util.reflow(this._element);
         $$$1(this._element).addClass(ClassName.COLLAPSING).removeClass(ClassName.COLLAPSE).removeClass(ClassName.SHOW);
 
         if (this._triggerArray.length > 0) {
           for (var i = 0; i < this._triggerArray.length; i++) {
             var trigger = this._triggerArray[i];
-            var selector = Util.getSelectorFromElement(trigger);
+            var selector = webdesk_Util.getSelectorFromElement(trigger);
 
             if (selector !== null) {
               var $elem = $$$1(selector);
@@ -1251,8 +1253,8 @@
         };
 
         this._element.style[dimension] = '';
-        var transitionDuration = Util.getTransitionDurationFromElement(this._element);
-        $$$1(this._element).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
+        var transitionDuration = webdesk_Util.getTransitionDurationFromElement(this._element);
+        $$$1(this._element).one(webdesk_Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
       };
 
       _proto.setTransitioning = function setTransitioning(isTransitioning) {
@@ -1273,7 +1275,7 @@
         config = _objectSpread({}, Default, config);
         config.toggle = Boolean(config.toggle); // Coerce string values
 
-        Util.typeCheckConfig(NAME, config, DefaultType);
+        webdesk_Util.typeCheckConfig(NAME, config, DefaultType);
         return config;
       };
 
@@ -1287,7 +1289,7 @@
 
         var parent = null;
 
-        if (Util.isElement(this._config.parent)) {
+        if (webdesk_Util.isElement(this._config.parent)) {
           parent = this._config.parent; // It's a jQuery object
 
           if (typeof this._config.parent.jquery !== 'undefined') {
@@ -1297,9 +1299,9 @@
           parent = $$$1(this._config.parent)[0];
         }
 
-        var selector = "[data-toggle=\"collapse\"][data-parent=\"" + this._config.parent + "\"]";
+        var selector = "[data-toggle=\"webdesk_collapse\"][data-parent=\"" + this._config.parent + "\"]";
         $$$1(parent).find(selector).each(function (i, element) {
-          _this3._addAriaAndCollapsedClass(Collapse._getTargetFromElement(element), [element]);
+          _this3._addAriaAndCollapsedClass(webdesk_._getTargetFromElement(element), [element]);
         });
         return parent;
       };
@@ -1315,12 +1317,12 @@
       }; // Static
 
 
-      Collapse._getTargetFromElement = function _getTargetFromElement(element) {
-        var selector = Util.getSelectorFromElement(element);
+      webdesk_Collapse._getTargetFromElement = function _getTargetFromElement(element) {
+        var selector = webdesk_Util.getSelectorFromElement(element);
         return selector ? $$$1(selector)[0] : null;
       };
 
-      Collapse._jQueryInterface = function _jQueryInterface(config) {
+      webdesk_Collapse._jQueryInterface = function _jQueryInterface(config) {
         return this.each(function () {
           var $this = $$$1(this);
           var data = $this.data(DATA_KEY);
@@ -1332,7 +1334,7 @@
           }
 
           if (!data) {
-            data = new Collapse(this, _config);
+            data = new webdesk_Collapse(this, _config);
             $this.data(DATA_KEY, data);
           }
 
@@ -1346,7 +1348,7 @@
         });
       };
 
-      _createClass(Collapse, null, [{
+      _createClass(webdesk_Collapse, null, [{
         key: "VERSION",
         get: function get() {
           return VERSION;
@@ -1358,7 +1360,7 @@
         }
       }]);
 
-      return Collapse;
+      return webdesk_Collapse;
     }();
     /**
      * ------------------------------------------------------------------------
@@ -1374,34 +1376,35 @@
       }
 
       var $trigger = $$$1(this);
-      var selector = Util.getSelectorFromElement(this);
+      var selector = webdesk_Util.getSelectorFromElement(this);
       $$$1(selector).each(function () {
         var $target = $$$1(this);
         var data = $target.data(DATA_KEY);
         var config = data ? 'toggle' : $trigger.data();
 
-        Collapse._jQueryInterface.call($target, config);
+        webdesk_Collapse._jQueryInterface.call($target, config);
       });
     });
+    
     /**
      * ------------------------------------------------------------------------
      * jQuery
      * ------------------------------------------------------------------------
      */
 
-    $$$1.fn[NAME] = Collapse._jQueryInterface;
-    $$$1.fn[NAME].Constructor = Collapse;
+    $$$1.fn[NAME] = webdesk_Collapse._jQueryInterface;
+    $$$1.fn[NAME].Constructor = webdesk_Collapse;
 
     $$$1.fn[NAME].noConflict = function () {
       $$$1.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Collapse._jQueryInterface;
+      return webdesk_Collapse._jQueryInterface;
     };
 
-    return Collapse;
+    return webdesk_Collapse;
   }($);
 
   /**!
-   * @fileOverview Kickass library to create and place poppers near their reference elements.
+   * @fileOverview not-so-Kickass library to create and place poppers near their reference elements.
    * @version 1.14.3
    * @license
    * Copyright (c) 2016 Federico Zivolo and contributors
@@ -1424,6 +1427,7 @@
    * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
    * SOFTWARE.
    */
+   
   var isBrowser = typeof window !== 'undefined' && typeof document !== 'undefined';
 
   var longerTimeoutBrowsers = ['Edge', 'Trident', 'Firefox'];
@@ -1435,7 +1439,7 @@
     }
   }
 
-  function microtaskDebounce(fn) {
+  function webdesk_microtaskDebounce(fn) {
     var called = false;
     return function () {
       if (called) {
@@ -1449,7 +1453,7 @@
     };
   }
 
-  function taskDebounce(fn) {
+  function webdesk_taskDebounce(fn) {
     var scheduled = false;
     return function () {
       if (!scheduled) {
@@ -1469,20 +1473,20 @@
   * but called in the minimum time possible.
   *
   * @method
-  * @memberof Popper.Utils
+  * @memberof webdesk_Popper.Utils
   * @argument {Function} fn
   * @returns {Function}
   */
-  var debounce = supportsMicroTasks ? microtaskDebounce : taskDebounce;
+  var debounce = supportsMicroTasks ? webdesk_microtaskDebounce : taskDebounce;
 
   /**
    * Check if the given variable is a function
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Any} functionToCheck - variable to check
    * @returns {Boolean} answer to: is a function?
    */
-  function isFunction(functionToCheck) {
+  function webdesk_isFunction(functionToCheck) {
     var getType = {};
     return functionToCheck && getType.toString.call(functionToCheck) === '[object Function]';
   }
@@ -1490,11 +1494,11 @@
   /**
    * Get CSS computed property of the given element
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Eement} element
    * @argument {String} property
    */
-  function getStyleComputedProperty(element, property) {
+  function webdesk_getStyleComputedProperty(element, property) {
     if (element.nodeType !== 1) {
       return [];
     }
@@ -1506,11 +1510,11 @@
   /**
    * Returns the parentNode or the host of the element
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Element} element
    * @returns {Element} parent
    */
-  function getParentNode(element) {
+  function webdesk_getParentNode(element) {
     if (element.nodeName === 'HTML') {
       return element;
     }
@@ -1520,11 +1524,11 @@
   /**
    * Returns the scrolling parent of the given element
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Element} element
    * @returns {Element} scroll parent
    */
-  function getScrollParent(element) {
+  function webdesk_getScrollParent(element) {
     // Return body, `getScroll` will take care to get the correct `scrollTop` from it
     if (!element) {
       return document.body;
@@ -1540,7 +1544,7 @@
 
     // Firefox want us to check `-x` and `-y` variations as well
 
-    var _getStyleComputedProp = getStyleComputedProperty(element),
+    var _getStyleComputedProp = webdesk_getStyleComputedProperty(element),
         overflow = _getStyleComputedProp.overflow,
         overflowX = _getStyleComputedProp.overflowX,
         overflowY = _getStyleComputedProp.overflowY;
@@ -1549,7 +1553,7 @@
       return element;
     }
 
-    return getScrollParent(getParentNode(element));
+    return webdesk_getScrollParent(webdesk_getParentNode(element));
   }
 
   var isIE11 = isBrowser && !!(window.MSInputMethodContext && document.documentMode);
@@ -1558,11 +1562,11 @@
   /**
    * Determines if the browser is Internet Explorer
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @param {Number} version to check
    * @returns {Boolean} isIE
    */
-  function isIE(version) {
+  function webdesk_isIE(version) {
     if (version === 11) {
       return isIE11;
     }
@@ -1575,11 +1579,11 @@
   /**
    * Returns the offset parent of the given element
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Element} element
    * @returns {Element} offset parent
    */
-  function getOffsetParent(element) {
+  function webdesk_getOffsetParent(element) {
     if (!element) {
       return document.documentElement;
     }
@@ -1608,7 +1612,7 @@
     return offsetParent;
   }
 
-  function isOffsetContainer(element) {
+  function webdesk_isOffsetContainer(element) {
     var nodeName = element.nodeName;
 
     if (nodeName === 'BODY') {
@@ -1620,11 +1624,11 @@
   /**
    * Finds the root node (document, shadowDOM root) of the given element
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Element} node
    * @returns {Element} root node
    */
-  function getRoot(node) {
+  function webdesk_getRoot(node) {
     if (node.parentNode !== null) {
       return getRoot(node.parentNode);
     }
@@ -1635,12 +1639,12 @@
   /**
    * Finds the offset parent common to the two provided nodes
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Element} element1
    * @argument {Element} element2
    * @returns {Element} common offset parent
    */
-  function findCommonOffsetParent(element1, element2) {
+  function webdesk_findCommonOffsetParent(element1, element2) {
     // This check is needed to avoid errors in case one of the elements isn't defined for any reason
     if (!element1 || !element1.nodeType || !element2 || !element2.nodeType) {
       return document.documentElement;
@@ -1679,12 +1683,12 @@
   /**
    * Gets the scroll value of the given element in the given side (top and left)
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Element} element
    * @argument {String} side `top` or `left`
    * @returns {number} amount of scrolled pixels
    */
-  function getScroll(element) {
+  function webdesk_getScroll(element) {
     var side = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'top';
 
     var upperSide = side === 'top' ? 'scrollTop' : 'scrollLeft';
@@ -1702,13 +1706,13 @@
   /*
    * Sum or subtract the element scroll values (left and top) from a given rect object
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @param {Object} rect - Rect object you want to change
    * @param {HTMLElement} element - The element from the function reads the scroll values
    * @param {Boolean} subtract - set to true if you want to subtract the scroll values
    * @return {Object} rect - The modifier rect object
    */
-  function includeScroll(rect, element) {
+  function webdesk_includeScroll(rect, element) {
     var subtract = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
     var scrollTop = getScroll(element, 'top');
@@ -1724,32 +1728,32 @@
   /*
    * Helper to detect borders of a given element
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @param {CSSStyleDeclaration} styles
    * Result of `getStyleComputedProperty` on the given element
    * @param {String} axis - `x` or `y`
    * @return {number} borders - The borders size of the given axis
    */
 
-  function getBordersSize(styles, axis) {
+  function webdesk_getBordersSize(styles, axis) {
     var sideA = axis === 'x' ? 'Left' : 'Top';
     var sideB = sideA === 'Left' ? 'Right' : 'Bottom';
 
     return parseFloat(styles['border' + sideA + 'Width'], 10) + parseFloat(styles['border' + sideB + 'Width'], 10);
   }
 
-  function getSize(axis, body, html, computedStyle) {
-    return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis], html['scroll' + axis], isIE(10) ? html['offset' + axis] + computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')] + computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')] : 0);
+  function webdesk_getSize(axis, body, html, computedStyle) {
+    return Math.max(body['offset' + axis], body['scroll' + axis], html['client' + axis], html['offset' + axis], html['scroll' + axis], webdesk_isIE(10) ? html['offset' + axis] + computedStyle['margin' + (axis === 'Height' ? 'Top' : 'Left')] + computedStyle['margin' + (axis === 'Height' ? 'Bottom' : 'Right')] : 0);
   }
 
-  function getWindowSizes() {
+  function webdesk_getWindowSizes() {
     var body = document.body;
     var html = document.documentElement;
-    var computedStyle = isIE(10) && getComputedStyle(html);
+    var computedStyle = webdesk_isIE(10) && getComputedStyle(html);
 
     return {
-      height: getSize('Height', body, html, computedStyle),
-      width: getSize('Width', body, html, computedStyle)
+      height: webdesk_getSize('Height', body, html, computedStyle),
+      width: webdesk_getSize('Width', body, html, computedStyle)
     };
   }
 
@@ -1813,11 +1817,11 @@
   /**
    * Given element offsets, generate an output similar to getBoundingClientRect
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Object} offsets
    * @returns {Object} ClientRect like output
    */
-  function getClientRect(offsets) {
+  function webdesk_getClientRect(offsets) {
     return _extends({}, offsets, {
       right: offsets.left + offsets.width,
       bottom: offsets.top + offsets.height
@@ -1827,11 +1831,11 @@
   /**
    * Get bounding client rect of given element
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @param {HTMLElement} element
    * @return {Object} client rect
    */
-  function getBoundingClientRect(element) {
+  function webdesk_getBoundingClientRect(element) {
     var rect = {};
 
     // IE10 10 FIX: Please, don't ask, the element isn't
@@ -1859,7 +1863,7 @@
     };
 
     // subtract scrollbar size from sizes
-    var sizes = element.nodeName === 'HTML' ? getWindowSizes() : {};
+    var sizes = element.nodeName === 'HTML' ? webdesk_getWindowSizes() : {};
     var width = sizes.width || element.clientWidth || result.right - result.left;
     var height = sizes.height || element.clientHeight || result.bottom - result.top;
 
@@ -1869,27 +1873,27 @@
     // if an hypothetical scrollbar is detected, we must be sure it's not a `border`
     // we make this check conditional for performance reasons
     if (horizScrollbar || vertScrollbar) {
-      var styles = getStyleComputedProperty(element);
-      horizScrollbar -= getBordersSize(styles, 'x');
-      vertScrollbar -= getBordersSize(styles, 'y');
+      var styles = webdesk_getStyleComputedProperty(element);
+      horizScrollbar -= webdesk_getBordersSize(styles, 'x');
+      vertScrollbar -= webdesk_getBordersSize(styles, 'y');
 
       result.width -= horizScrollbar;
       result.height -= vertScrollbar;
     }
 
-    return getClientRect(result);
+    return webdesk_getClientRect(result);
   }
 
-  function getOffsetRectRelativeToArbitraryNode(children, parent) {
+  function webdesk_getOffsetRectRelativeToArbitraryNode(children, parent) {
     var fixedPosition = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
 
-    var isIE10 = isIE(10);
+    var isIE10 = webdesk_isIE(10);
     var isHTML = parent.nodeName === 'HTML';
-    var childrenRect = getBoundingClientRect(children);
-    var parentRect = getBoundingClientRect(parent);
-    var scrollParent = getScrollParent(children);
+    var childrenRect = webdesk_getBoundingClientRect(children);
+    var parentRect = webdesk_getBoundingClientRect(parent);
+    var scrollParent = webdesk_getScrollParent(children);
 
-    var styles = getStyleComputedProperty(parent);
+    var styles = webdesk_getStyleComputedProperty(parent);
     var borderTopWidth = parseFloat(styles.borderTopWidth, 10);
     var borderLeftWidth = parseFloat(styles.borderLeftWidth, 10);
 
@@ -1898,7 +1902,7 @@
       parentRect.top = Math.max(parentRect.top, 0);
       parentRect.left = Math.max(parentRect.left, 0);
     }
-    var offsets = getClientRect({
+    var offsets = webdesk_getClientRect({
       top: childrenRect.top - parentRect.top - borderTopWidth,
       left: childrenRect.left - parentRect.left - borderLeftWidth,
       width: childrenRect.width,
@@ -1932,7 +1936,7 @@
     return offsets;
   }
 
-  function getViewportOffsetRectRelativeToArtbitraryNode(element) {
+  function webdesk_getViewportOffsetRectRelativeToArtbitraryNode(element) {
     var excludeScroll = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
     var html = element.ownerDocument.documentElement;
@@ -1956,12 +1960,12 @@
   /**
    * Check if the given element is fixed or is inside a fixed parent
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Element} element
    * @argument {Element} customContainer
    * @returns {Boolean} answer to "isFixed?"
    */
-  function isFixed(element) {
+  function webdesk_isFixed(element) {
     var nodeName = element.nodeName;
     if (nodeName === 'BODY' || nodeName === 'HTML') {
       return false;
@@ -1975,12 +1979,12 @@
   /**
    * Finds the first parent of an element that has a transformed property defined
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Element} element
    * @returns {Element} first transformed parent or documentElement
    */
 
-  function getFixedPositionOffsetParent(element) {
+  function webdesk_getFixedPositionOffsetParent(element) {
     // This check is needed to avoid errors in case one of the elements isn't defined for any reason
     if (!element || !element.parentElement || isIE()) {
       return document.documentElement;
@@ -1995,7 +1999,7 @@
   /**
    * Computed the boundaries limits and return them
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @param {HTMLElement} popper
    * @param {HTMLElement} reference
    * @param {number} padding
@@ -2003,7 +2007,7 @@
    * @param {Boolean} fixedPosition - Is in fixed position mode
    * @returns {Object} Coordinates of the boundaries
    */
-  function getBoundaries(popper, reference, padding, boundariesElement) {
+  function webdesk_getBoundaries(popper, reference, padding, boundariesElement) {
     var fixedPosition = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
 
     // NOTE: 1 DOM access here
@@ -2055,7 +2059,7 @@
     return boundaries;
   }
 
-  function getArea(_ref) {
+  function webdesk_getArea(_ref) {
     var width = _ref.width,
         height = _ref.height;
 
@@ -2066,12 +2070,12 @@
    * Utility used to transform the `auto` placement to the placement with more
    * available space.
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Object} data - The data object generated by update method
    * @argument {Object} options - Modifiers configuration and options
    * @returns {Object} The data object, properly modified
    */
-  function computeAutoPlacement(placement, refRect, popper, reference, boundariesElement) {
+  function webdesk_computeAutoPlacement(placement, refRect, popper, reference, boundariesElement) {
     var padding = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 0;
 
     if (placement.indexOf('auto') === -1) {
@@ -2125,28 +2129,28 @@
   /**
    * Get offsets to the reference element
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @param {Object} state
    * @param {Element} popper - the popper element
    * @param {Element} reference - the reference element (the popper will be relative to this)
    * @param {Element} fixedPosition - is in fixed position mode
    * @returns {Object} An object containing the offsets which will be applied to the popper
    */
-  function getReferenceOffsets(state, popper, reference) {
+  function webdesk_getReferenceOffsets(state, popper, reference) {
     var fixedPosition = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
 
-    var commonOffsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, reference);
-    return getOffsetRectRelativeToArbitraryNode(reference, commonOffsetParent, fixedPosition);
+    var commonOffsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : webdesk_findCommonOffsetParent(popper, reference);
+    return webdesk_getOffsetRectRelativeToArbitraryNode(reference, commonOffsetParent, fixedPosition);
   }
 
   /**
    * Get the outer sizes of the given element (offset size + margins)
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Element} element
    * @returns {Object} object containing width and height properties
    */
-  function getOuterSizes(element) {
+  function webdesk_getOuterSizes(element) {
     var styles = getComputedStyle(element);
     var x = parseFloat(styles.marginTop) + parseFloat(styles.marginBottom);
     var y = parseFloat(styles.marginLeft) + parseFloat(styles.marginRight);
@@ -2160,11 +2164,11 @@
   /**
    * Get the opposite placement of the given one
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {String} placement
    * @returns {String} flipped placement
    */
-  function getOppositePlacement(placement) {
+  function webdesk_getOppositePlacement(placement) {
     var hash = { left: 'right', right: 'left', bottom: 'top', top: 'bottom' };
     return placement.replace(/left|right|bottom|top/g, function (matched) {
       return hash[matched];
@@ -2174,14 +2178,14 @@
   /**
    * Get offsets to the popper
    * @method
-   * @memberof Popper.Utils
-   * @param {Object} position - CSS position the Popper will get applied
+   * @memberof webdesk_Popper.Utils
+   * @param {Object} position - CSS position the webdesk_Popper will get applied
    * @param {HTMLElement} popper - the popper element
    * @param {Object} referenceOffsets - the reference offsets (the popper will be relative to this)
    * @param {String} placement - one of the valid placement options
    * @returns {Object} popperOffsets - An object containing the offsets which will be applied to the popper
    */
-  function getPopperOffsets(popper, referenceOffsets, placement) {
+  function webdesk_getPopperOffsets(popper, referenceOffsets, placement) {
     placement = placement.split('-')[0];
 
     // Get popper node sizes
@@ -2213,13 +2217,13 @@
   /**
    * Mimics the `find` method of Array
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Array} arr
    * @argument prop
    * @argument value
    * @returns index or -1
    */
-  function find(arr, check) {
+  function webdesk_find(arr, check) {
     // use native find if supported
     if (Array.prototype.find) {
       return arr.find(check);
@@ -2232,13 +2236,13 @@
   /**
    * Return the index of the matching object
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Array} arr
    * @argument prop
    * @argument value
    * @returns index or -1
    */
-  function findIndex(arr, prop, value) {
+  function webdesk_findIndex(arr, prop, value) {
     // use native findIndex if supported
     if (Array.prototype.findIndex) {
       return arr.findIndex(function (cur) {
@@ -2257,13 +2261,13 @@
    * Loop trough the list of modifiers and run them in order,
    * each of them will then edit the data object.
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @param {dataObject} data
    * @param {Array} modifiers
    * @param {String} ends - Optional modifier name used as stopper
    * @returns {dataObject}
    */
-  function runModifiers(modifiers, data, ends) {
+  function webdesk_runModifiers(modifiers, data, ends) {
     var modifiersToRun = ends === undefined ? modifiers : modifiers.slice(0, findIndex(modifiers, 'name', ends));
 
     modifiersToRun.forEach(function (modifier) {
@@ -2291,9 +2295,9 @@
    * the new style.<br />
    * Prefer `scheduleUpdate` over `update` because of performance reasons.
    * @method
-   * @memberof Popper
+   * @memberof webdesk_Popper
    */
-  function update() {
+  function webdesk_update() {
     // if popper is destroyed, don't perform any further update
     if (this.state.isDestroyed) {
       return;
@@ -2342,10 +2346,10 @@
   /**
    * Helper used to know if the given modifier is enabled.
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @returns {Boolean}
    */
-  function isModifierEnabled(modifiers, modifierName) {
+  function webdesk_isModifierEnabled(modifiers, modifierName) {
     return modifiers.some(function (_ref) {
       var name = _ref.name,
           enabled = _ref.enabled;
@@ -2356,11 +2360,11 @@
   /**
    * Get the prefixed supported property name
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {String} property (camelCase)
    * @returns {String} prefixed property (camelCase or PascalCase, depending on the vendor prefix)
    */
-  function getSupportedPropertyName(property) {
+  function webdesk_getSupportedPropertyName(property) {
     var prefixes = [false, 'ms', 'Webkit', 'Moz', 'O'];
     var upperProp = property.charAt(0).toUpperCase() + property.slice(1);
 
@@ -2377,9 +2381,9 @@
   /**
    * Destroy the popper
    * @method
-   * @memberof Popper
+   * @memberof webdesk_Popper
    */
-  function destroy() {
+  function webdesk_destroy() {
     this.state.isDestroyed = true;
 
     // touch DOM only if `applyStyle` modifier is enabled
@@ -2409,12 +2413,12 @@
    * @argument {Element} element
    * @returns {Window}
    */
-  function getWindow(element) {
+  function webdesk_getWindow(element) {
     var ownerDocument = element.ownerDocument;
     return ownerDocument ? ownerDocument.defaultView : window;
   }
 
-  function attachToScrollParents(scrollParent, event, callback, scrollParents) {
+  function webdesk_attachToScrollParents(scrollParent, event, callback, scrollParents) {
     var isBody = scrollParent.nodeName === 'BODY';
     var target = isBody ? scrollParent.ownerDocument.defaultView : scrollParent;
     target.addEventListener(event, callback, { passive: true });
@@ -2428,10 +2432,10 @@
   /**
    * Setup needed event listeners used to update the popper position
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @private
    */
-  function setupEventListeners(reference, options, state, updateBound) {
+  function webdesk_setupEventListeners(reference, options, state, updateBound) {
     // Resize event listener on window
     state.updateBound = updateBound;
     getWindow(reference).addEventListener('resize', state.updateBound, { passive: true });
@@ -2449,9 +2453,9 @@
    * It will add resize/scroll events and start recalculating
    * position of the popper element when they are triggered.
    * @method
-   * @memberof Popper
+   * @memberof webdesk_Popper
    */
-  function enableEventListeners() {
+  function webdesk_enableEventListeners() {
     if (!this.state.eventsEnabled) {
       this.state = setupEventListeners(this.reference, this.options, this.state, this.scheduleUpdate);
     }
@@ -2460,10 +2464,10 @@
   /**
    * Remove event listeners used to update the popper position
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @private
    */
-  function removeEventListeners(reference, state) {
+  function webdesk_removeEventListeners(reference, state) {
     // Remove resize event listener on window
     getWindow(reference).removeEventListener('resize', state.updateBound);
 
@@ -2485,9 +2489,9 @@
    * when they are triggered. It also won't trigger onUpdate callback anymore,
    * unless you call `update` method manually.
    * @method
-   * @memberof Popper
+   * @memberof webdesk_Popper
    */
-  function disableEventListeners() {
+  function webdesk_disableEventListeners() {
     if (this.state.eventsEnabled) {
       cancelAnimationFrame(this.scheduleUpdate);
       this.state = removeEventListeners(this.reference, this.state);
@@ -2497,23 +2501,23 @@
   /**
    * Tells if a given input is a number
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @param {*} input to check
    * @return {Boolean}
    */
-  function isNumeric(n) {
+  function webdesk_isNumeric(n) {
     return n !== '' && !isNaN(parseFloat(n)) && isFinite(n);
   }
 
   /**
    * Set the style to the given popper
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Element} element - Element to apply the style to
    * @argument {Object} styles
    * Object with a list of properties and values which will be applied to the element
    */
-  function setStyles(element, styles) {
+  function webdesk_setStyles(element, styles) {
     Object.keys(styles).forEach(function (prop) {
       var unit = '';
       // add unit if the value is numeric and is one of the following
@@ -2527,12 +2531,12 @@
   /**
    * Set the attributes to the given popper
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {Element} element - Element to apply the attributes to
    * @argument {Object} styles
    * Object with a list of properties and values which will be applied to the element
    */
-  function setAttributes(element, attributes) {
+  function webdesk_setAttributes(element, attributes) {
     Object.keys(attributes).forEach(function (prop) {
       var value = attributes[prop];
       if (value !== false) {
@@ -2552,7 +2556,7 @@
    * @argument {Object} options - Modifiers configuration and options
    * @returns {Object} The same data object
    */
-  function applyStyle(data) {
+  function webdesk_applyStyle(data) {
     // any property present in `data.styles` will be applied to the popper,
     // in this way we can make the 3rd party modifiers add custom styles to it
     // Be aware, modifiers could override the properties defined in the previous
@@ -2576,19 +2580,21 @@
    * to add margins to the popper margins needs to be calculated to get the
    * correct popper offsets.
    * @method
-   * @memberof Popper.modifiers
+   * @memberof webdesk_Popper.modifiers
    * @param {HTMLElement} reference - The reference element used to position the popper
    * @param {HTMLElement} popper - The HTML element used as popper
-   * @param {Object} options - Popper.js options
+   * @param {Object} options - webdesk_Popper.js options
    */
   function applyStyleOnLoad(reference, popper, options, modifierOptions, state) {
     // compute reference element offsets
-    var referenceOffsets = getReferenceOffsets(state, popper, reference, options.positionFixed);
+    
+    var referenceOffsets = webdesk_getReferenceOffsets(state, popper, reference, options.positionFixed);
 
     // compute auto placement, store placement inside the data object,
     // modifiers will be able to edit `placement` if needed
     // and refer to originalPlacement to know the original value
-    var placement = computeAutoPlacement(options.placement, referenceOffsets, popper, reference, options.modifiers.flip.boundariesElement, options.modifiers.flip.padding);
+    
+    var placement = webdesk_computeAutoPlacement(options.placement, referenceOffsets, popper, reference, options.modifiers.flip.boundariesElement, options.modifiers.flip.padding);
 
     popper.setAttribute('x-placement', placement);
 
@@ -2606,12 +2612,12 @@
    * @argument {Object} options - Modifiers configuration and options
    * @returns {Object} The data object, properly modified
    */
-  function computeStyle(data, options) {
+  function webdesk_computeStyle(data, options) {
     var x = options.x,
         y = options.y;
     var popper = data.offsets.popper;
 
-    // Remove this legacy support in Popper.js v2
+    // Remove this legacy support in webdesk_Popper.js v2
 
     var legacyGpuAccelerationOption = find(data.instance.modifiers, function (modifier) {
       return modifier.name === 'applyStyle';
@@ -2699,13 +2705,13 @@
    * Helper used to know if the given modifier depends from another one.<br />
    * It checks if the needed modifier is listed and enabled.
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @param {Array} modifiers - list of modifiers
    * @param {String} requestingName - name of requesting modifier
    * @param {String} requestedName - name of requested modifier
    * @returns {Boolean}
    */
-  function isModifierRequired(modifiers, requestingName, requestedName) {
+  function webdesk_isModifierRequired(modifiers, requestingName, requestedName) {
     var requesting = find(modifiers, function (_ref) {
       var name = _ref.name;
       return name === requestingName;
@@ -2730,7 +2736,7 @@
    * @argument {Object} options - Modifiers configuration and options
    * @returns {Object} The data object, properly modified
    */
-  function arrow(data, options) {
+  function webdesk_arrow(data, options) {
     var _data$offsets$arrow;
 
     // arrow depends on keepTogether in order to work
@@ -2808,11 +2814,11 @@
   /**
    * Get the opposite placement variation of the given one
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {String} placement variation
    * @returns {String} flipped placement variation
    */
-  function getOppositeVariation(variation) {
+  function webdesk_getOppositeVariation(variation) {
     if (variation === 'end') {
       return 'start';
     } else if (variation === 'start') {
@@ -2850,7 +2856,7 @@
    * @enum {String}
    * @readonly
    * @method placements
-   * @memberof Popper
+   * @memberof webdesk_Popper
    */
   var placements = ['auto-start', 'auto', 'auto-end', 'top-start', 'top', 'top-end', 'right-start', 'right', 'right-end', 'bottom-end', 'bottom', 'bottom-start', 'left-end', 'left', 'left-start'];
 
@@ -2862,12 +2868,12 @@
    * clockwise (or counter-clockwise).
    *
    * @method
-   * @memberof Popper.Utils
+   * @memberof webdesk_Popper.Utils
    * @argument {String} placement - A valid placement (it accepts variations)
    * @argument {Boolean} counter - Set to true to walk the placements counterclockwise
    * @returns {Array} placements including their variations
    */
-  function clockwise(placement) {
+  function webdesk_clockwise(placement) {
     var counter = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
     var index = validPlacements.indexOf(placement);
@@ -2888,7 +2894,7 @@
    * @argument {Object} options - Modifiers configuration and options
    * @returns {Object} The data object, properly modified
    */
-  function flip(data, options) {
+  function webdesk_flip(data, options) {
     // if `inner` modifier is enabled, we can't use the `flip` modifier
     if (isModifierEnabled(data.instance.modifiers, 'inner')) {
       return data;
@@ -2978,7 +2984,7 @@
    * @argument {Object} options - Modifiers configuration and options
    * @returns {Object} The data object, properly modified
    */
-  function keepTogether(data) {
+  function webdesk_keepTogether(data) {
     var _data$offsets = data.offsets,
         popper = _data$offsets.popper,
         reference = _data$offsets.reference;
@@ -3012,7 +3018,7 @@
    * @returns {Number|String}
    * Value in pixels, or original string if no values were extracted
    */
-  function toValue(str, measurement, popperOffsets, referenceOffsets) {
+  function webdesk_toValue(str, measurement, popperOffsets, referenceOffsets) {
     // separate value from unit
     var split = str.match(/((?:\-|\+)?\d*\.?\d*)(.*)/);
     var value = +split[1];
@@ -3064,7 +3070,7 @@
    * @argument {String} basePlacement
    * @returns {Array} a two cells array with x and y offsets in numbers
    */
-  function parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
+  function webdesk_parseOffset(offset, popperOffsets, referenceOffsets, basePlacement) {
     var offsets = [0, 0];
 
     // Use height if placement is left or right and index is 0 otherwise use width
@@ -3140,7 +3146,7 @@
    * The offset value as described in the modifier description
    * @returns {Object} The data object, properly modified
    */
-  function offset(data, _ref) {
+  function webdesk_offset(data, _ref) {
     var offset = _ref.offset;
     var placement = data.placement,
         _data$offsets = data.offsets,
@@ -3181,7 +3187,7 @@
    * @argument {Object} options - Modifiers configuration and options
    * @returns {Object} The data object, properly modified
    */
-  function preventOverflow(data, options) {
+  function webdesk_preventOverflow(data, options) {
     var boundariesElement = options.boundariesElement || getOffsetParent(data.instance.popper);
 
     // If offsetParent is the reference element, we really want to
@@ -3218,14 +3224,14 @@
     var popper = data.offsets.popper;
 
     var check = {
-      primary: function primary(placement) {
+      primary: function webdesk_primary(placement) {
         var value = popper[placement];
         if (popper[placement] < boundaries[placement] && !options.escapeWithReference) {
           value = Math.max(popper[placement], boundaries[placement]);
         }
         return defineProperty({}, placement, value);
       },
-      secondary: function secondary(placement) {
+      secondary: function webdesk_secondary(placement) {
         var mainSide = placement === 'right' ? 'left' : 'top';
         var value = popper[mainSide];
         if (popper[placement] > boundaries[placement] && !options.escapeWithReference) {
@@ -3252,7 +3258,7 @@
    * @argument {Object} options - Modifiers configuration and options
    * @returns {Object} The data object, properly modified
    */
-  function shift(data) {
+  function webdesk_shift(data) {
     var placement = data.placement;
     var basePlacement = placement.split('-')[0];
     var shiftvariation = placement.split('-')[1];
@@ -3285,7 +3291,7 @@
    * @argument {Object} options - Modifiers configuration and options
    * @returns {Object} The data object, properly modified
    */
-  function hide(data) {
+  function webdesk_hide(data) {
     if (!isModifierRequired(data.instance.modifiers, 'hide', 'preventOverflow')) {
       return data;
     }
@@ -3323,7 +3329,7 @@
    * @argument {Object} options - Modifiers configuration and options
    * @returns {Object} The data object, properly modified
    */
-  function inner(data) {
+  function webdesk_inner(data) {
     var placement = data.placement;
     var basePlacement = placement.split('-')[0];
     var _data$offsets = data.offsets,
@@ -3356,7 +3362,7 @@
 
   /**
    * Modifiers are plugins used to alter the behavior of your poppers.<br />
-   * Popper.js uses a set of 9 modifiers to provide all the basic functionalities
+   * webdesk_Popper.js uses a set of 9 modifiers to provide all the basic functionalities
    * needed by the library.
    *
    * Usually you don't want to override the `order`, `fn` and `onLoad` props.
@@ -3378,7 +3384,7 @@
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
       enabled: true,
       /** @prop {ModifierFn} */
-      fn: shift
+      fn: webdesk_shift
     },
 
     /**
@@ -3425,7 +3431,7 @@
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
       enabled: true,
       /** @prop {ModifierFn} */
-      fn: offset,
+      fn: webdesk_offset,
       /** @prop {Number|String} offset=0
        * The offset value as described in the modifier description
        */
@@ -3455,10 +3461,10 @@
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
       enabled: true,
       /** @prop {ModifierFn} */
-      fn: preventOverflow,
+      fn: webdesk_preventOverflow,
       /**
        * @prop {Array} [priority=['left','right','top','bottom']]
-       * Popper will try to prevent overflow following these priorities by default,
+       * webdesk_Popper will try to prevent overflow following these priorities by default,
        * then, it could overflow on the left and on top of the `boundariesElement`
        */
       priority: ['left', 'right', 'top', 'bottom'],
@@ -3492,7 +3498,7 @@
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
       enabled: true,
       /** @prop {ModifierFn} */
-      fn: keepTogether
+      fn: webdesk_keepTogether
     },
 
     /**
@@ -3511,7 +3517,7 @@
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
       enabled: true,
       /** @prop {ModifierFn} */
-      fn: arrow,
+      fn: webdesk_arrow,
       /** @prop {String|HTMLElement} element='[x-arrow]' - Selector or node used as arrow */
       element: '[x-arrow]'
     },
@@ -3533,7 +3539,7 @@
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
       enabled: true,
       /** @prop {ModifierFn} */
-      fn: flip,
+      fn: webdesk_flip,
       /**
        * @prop {String|Array} behavior='flip'
        * The behavior used to change the popper's placement. It can be one of
@@ -3568,7 +3574,7 @@
       /** @prop {Boolean} enabled=false - Whether the modifier is enabled or not */
       enabled: false,
       /** @prop {ModifierFn} */
-      fn: inner
+      fn: webdesk_inner
     },
 
     /**
@@ -3587,7 +3593,7 @@
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
       enabled: true,
       /** @prop {ModifierFn} */
-      fn: hide
+      fn: webdesk_hide
     },
 
     /**
@@ -3599,7 +3605,7 @@
      * in case you need to replace `applyStyle` with a custom implementation.
      *
      * This modifier has `850` as `order` value to maintain backward compatibility
-     * with previous versions of Popper.js. Expect the modifiers ordering method
+     * with previous versions of webdesk_Popper.js. Expect the modifiers ordering method
      * to change in future major versions of the library.
      *
      * @memberof modifiers
@@ -3611,7 +3617,7 @@
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
       enabled: true,
       /** @prop {ModifierFn} */
-      fn: computeStyle,
+      fn: webdesk_computeStyle,
       /**
        * @prop {Boolean} gpuAcceleration=true
        * If true, it uses the CSS 3d transformation to position the popper.
@@ -3636,11 +3642,11 @@
      * Applies the computed styles to the popper element.
      *
      * All the DOM manipulations are limited to this modifier. This is useful in case
-     * you want to integrate Popper.js inside a framework or view library and you
+     * you want to integrate webdesk_Popper.js inside a framework or view library and you
      * want to delegate all the DOM manipulations to it.
      *
      * Note that if you disable this modifier, you must make sure the popper element
-     * has its position set to `absolute` before Popper.js can do its work!
+     * has its position set to `absolute` before webdesk_Popper.js can do its work!
      *
      * Just disable this modifier and define you own to achieve the desired effect.
      *
@@ -3653,7 +3659,7 @@
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
       enabled: true,
       /** @prop {ModifierFn} */
-      fn: applyStyle,
+      fn: webdesk_applyStyle,
       /** @prop {Function} */
       onLoad: applyStyleOnLoad,
       /**
@@ -3667,10 +3673,10 @@
   };
 
   /**
-   * The `dataObject` is an object containing all the informations used by Popper.js
+   * The `dataObject` is an object containing all the informations used by webdesk_Popper.js
    * this object get passed to modifiers and to the `onCreate` and `onUpdate` callbacks.
    * @name dataObject
-   * @property {Object} data.instance The Popper.js instance
+   * @property {Object} data.instance The webdesk_Popper.js instance
    * @property {String} data.placement Placement applied to popper
    * @property {String} data.originalPlacement Placement originally defined on init
    * @property {Boolean} data.flipped True if popper has been flipped by flip modifier
@@ -3686,12 +3692,12 @@
    */
 
   /**
-   * Default options provided to Popper.js constructor.<br />
-   * These can be overriden using the `options` argument of Popper.js.<br />
+   * Default options provided to webdesk_Popper.js constructor.<br />
+   * These can be overriden using the `options` argument of webdesk_Popper.js.<br />
    * To override an option, simply pass as 3rd argument an object with the same
    * structure of this object, example:
    * ```
-   * new Popper(ref, pop, {
+   * new webdesk_Popper(ref, pop, {
    *   modifiers: {
    *     preventOverflow: { enabled: false }
    *   }
@@ -3699,12 +3705,12 @@
    * ```
    * @type {Object}
    * @static
-   * @memberof Popper
+   * @memberof webdesk_Popper
    */
   var Defaults = {
     /**
-     * Popper's placement
-     * @prop {Popper.placements} placement='bottom'
+     * webdesk_Popper's placement
+     * @prop {webdesk_Popper.placements} placement='bottom'
      */
     placement: 'bottom',
 
@@ -3730,7 +3736,7 @@
     /**
      * Callback called when the popper is created.<br />
      * By default, is set to no-op.<br />
-     * Access Popper.js instance with `data.instance`.
+     * Access webdesk_Popper.js instance with `data.instance`.
      * @prop {onCreate}
      */
     onCreate: function onCreate() {},
@@ -3740,14 +3746,14 @@
      * on the initialization/creation of the popper, but only on subsequent
      * updates.<br />
      * By default, is set to no-op.<br />
-     * Access Popper.js instance with `data.instance`.
+     * Access webdesk_Popper.js instance with `data.instance`.
      * @prop {onUpdate}
      */
-    onUpdate: function onUpdate() {},
+    onUpdate: function webdesk_onUpdate() {},
 
     /**
      * List of modifiers used to modify the offsets before they are applied to the popper.
-     * They provide most of the functionalities of Popper.js
+     * They provide most of the functionalities of webdesk_Popper.js
      * @prop {modifiers}
      */
     modifiers: modifiers
@@ -3763,22 +3769,29 @@
    * @param {dataObject} data
    */
 
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   // Utils
   // Methods
-  var Popper = function () {
+  var webdesk_Popper = function () {
     /**
-     * Create a new Popper.js instance
-     * @class Popper
+     * Create a new webdesk_Popper.js instance
+     * @class webdesk_Popper
      * @param {HTMLElement|referenceObject} reference - The reference element used to position the popper
      * @param {HTMLElement} popper - The HTML element used as popper.
      * @param {Object} options - Your custom options to override the ones defined in [Defaults](#defaults)
-     * @return {Object} instance - The generated Popper.js instance
+     * @return {Object} instance - The generated webdesk_Popper.js instance
      */
-    function Popper(reference, popper) {
+    function webdesk_Popper(reference, popper) {
+    
       var _this = this;
 
       var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
-      classCallCheck(this, Popper);
+      classCallCheck(this, webdesk_Popper);
 
       this.scheduleUpdate = function () {
         return requestAnimationFrame(_this.update);
@@ -3788,7 +3801,7 @@
       this.update = debounce(this.update.bind(this));
 
       // with {} we create a new object with the options inside it
-      this.options = _extends({}, Popper.Defaults, options);
+      this.options = _extends({}, webdesk_Popper.Defaults, options);
 
       // init state
       this.state = {
@@ -3803,8 +3816,8 @@
 
       // Deep merge modifiers options
       this.options.modifiers = {};
-      Object.keys(_extends({}, Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
-        _this.options.modifiers[name] = _extends({}, Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
+      Object.keys(_extends({}, webdesk_Popper.Defaults.modifiers, options.modifiers)).forEach(function (name) {
+        _this.options.modifiers[name] = _extends({}, webdesk_Popper.Defaults.modifiers[name] || {}, options.modifiers ? options.modifiers[name] : {});
       });
 
       // Refactoring modifiers' list (Object => Array)
@@ -3818,12 +3831,13 @@
         return a.order - b.order;
       });
 
-      // modifiers have the ability to execute arbitrary code when Popper.js get inited
+      // modifiers have the ability to execute arbitrary code when webdesk_Popper.js get inited
       // such code is executed in the same order of its modifier
       // they could add new properties to their options configuration
       // BE AWARE: don't add options to `options.modifiers.name` but to `modifierOptions`!
       this.modifiers.forEach(function (modifierOptions) {
-        if (modifierOptions.enabled && isFunction(modifierOptions.onLoad)) {
+        if (modifierOptions.enabled && webdesk_isFunction(modifierOptions.onLoad)) {
+          
           modifierOptions.onLoad(_this.reference, _this.popper, _this.options, modifierOptions, _this.state);
         }
       });
@@ -3844,7 +3858,7 @@
     // class prototype and break stuff like Sinon stubs
 
 
-    createClass(Popper, [{
+    createClass(webdesk_Popper, [{
       key: 'update',
       value: function update$$1() {
         return update.call(this);
@@ -3868,7 +3882,7 @@
       /**
        * Schedule an update, it will run on the next UI update available
        * @method scheduleUpdate
-       * @memberof Popper
+       * @memberof webdesk_Popper
        */
 
 
@@ -3877,8 +3891,8 @@
        * Starting from version 1.7, this method is available only if you
        * include `popper-utils.js` before `popper.js`.
        *
-       * **DEPRECATION**: This way to access PopperUtils is deprecated
-       * and will be removed in v2! Use the PopperUtils module directly instead.
+       * **DEPRECATION**: This way to access webdesk_PopperUtils is deprecated
+       * and will be removed in v2! Use the webdesk_PopperUtils module directly instead.
        * Due to the high instability of the methods contained in Utils, we can't
        * guarantee them to follow semver. Use them at your own risk!
        * @static
@@ -3886,11 +3900,11 @@
        * @type {Object}
        * @deprecated since version 1.8
        * @member Utils
-       * @memberof Popper
+       * @memberof webdesk_Popper
        */
 
     }]);
-    return Popper;
+    return webdesk_Popper;
   }();
 
   /**
@@ -3913,10 +3927,9 @@
    * An ES6 getter that will return the height of the virtual reference element.
    */
 
-
-  Popper.Utils = (typeof window !== 'undefined' ? window : global).PopperUtils;
-  Popper.placements = placements;
-  Popper.Defaults = Defaults;
+  webdesk_Popper.Utils = (typeof window !== 'undefined' ? window : global).webdesk_PopperUtils;
+  webdesk_Popper.placements = placements;
+  webdesk_Popper.Defaults = Defaults;
 
   /**
    * --------------------------------------------------------------------------
@@ -3925,7 +3938,7 @@
    * --------------------------------------------------------------------------
    */
 
-  var Dropdown = function ($$$1) {
+  var webdesk_Dropdown = function ($$$1) {
     /**
      * ------------------------------------------------------------------------
      * Constants
@@ -3971,7 +3984,7 @@
       POSITION_STATIC: 'position-static'
     };
     var Selector = {
-      DATA_TOGGLE: '[data-toggle="dropdown"]',
+      DATA_TOGGLE: '[data-toggle="webdesk_dropdown"]',
       FORM_CHILD: '.dropdown form',
       MENU: '.dropdown-menu',
       NAVBAR_NAV: '.navbar-nav',
@@ -4056,7 +4069,7 @@
            * Check for Popper dependency
            * Popper - https://popper.js.org
            */
-          if (typeof Popper === 'undefined') {
+          if (typeof webdesk_Popper === 'undefined') {
             throw new TypeError('Bootstrap dropdown require Popper.js (https://popper.js.org)');
           }
 
@@ -4064,7 +4077,7 @@
 
           if (this._config.reference === 'parent') {
             referenceElement = parent;
-          } else if (Util.isElement(this._config.reference)) {
+          } else if (webdesk_Util.isElement(this._config.reference)) {
             referenceElement = this._config.reference; // Check if it's jQuery element
 
             if (typeof this._config.reference.jquery !== 'undefined') {
@@ -4079,7 +4092,7 @@
             $$$1(parent).addClass(ClassName.POSITION_STATIC);
           }
 
-          this._popper = new Popper(referenceElement, this._menu, this._getPopperConfig());
+          this._popper = new webdesk_Popper(referenceElement, this._menu, this._getPopperConfig());
         } // If this is a touch-enabled device we add extra
         // empty mouseover listeners to the body's immediate children;
         // only needed because of broken event delegation on iOS
@@ -4133,7 +4146,7 @@
 
       _proto._getConfig = function _getConfig(config) {
         config = _objectSpread({}, this.constructor.Default, $$$1(this._element).data(), config);
-        Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
+        webdesk_Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
         return config;
       };
 
@@ -4281,7 +4294,7 @@
 
       Dropdown._getParentFromElement = function _getParentFromElement(element) {
         var parent;
-        var selector = Util.getSelectorFromElement(element);
+        var selector = webdesk_Util.getSelectorFromElement(element);
 
         if (selector) {
           parent = $$$1(selector)[0];
@@ -4398,7 +4411,7 @@
     };
 
     return Dropdown;
-  }($, Popper);
+  }($, webdesk_Popper);
 
   /**
    * --------------------------------------------------------------------------
@@ -4448,13 +4461,13 @@
     };
     var ClassName = {
       SCROLLBAR_MEASURER: 'modal-scrollbar-measure',
-      BACKDROP: 'modal-backdrop',
-      OPEN: 'modal-open',
-      FADE: 'fade',
-      SHOW: 'show'
+      BACKDROP: 'webdesk_modal-backdrop',
+      OPEN: 'webdesk_modal-open',
+      FADE: 'webdesk_fade',
+      SHOW: 'webdesk_show'
     };
     var Selector = {
-      DIALOG: '.modal-dialog',
+      DIALOG: '.webdesk_modal-dialog',
       DATA_TOGGLE: '[data-toggle="modal"]',
       DATA_DISMISS: '[data-dismiss="modal"]',
       FIXED_CONTENT: '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
@@ -4575,8 +4588,8 @@
         $$$1(this._dialog).off(Event.MOUSEDOWN_DISMISS);
 
         if (transition) {
-          var transitionDuration = Util.getTransitionDurationFromElement(this._element);
-          $$$1(this._element).one(Util.TRANSITION_END, function (event) {
+          var transitionDuration = webdesk_Util.getTransitionDurationFromElement(this._element);
+          $$$1(this._element).one(webdesk_Util.TRANSITION_END, function (event) {
             return _this2._hideModal(event);
           }).emulateTransitionEnd(transitionDuration);
         } else {
@@ -4604,7 +4617,7 @@
 
       _proto._getConfig = function _getConfig(config) {
         config = _objectSpread({}, Default, config);
-        Util.typeCheckConfig(NAME, config, DefaultType);
+        webdesk_Util.typeCheckConfig(NAME, config, DefaultType);
         return config;
       };
 
@@ -4625,7 +4638,7 @@
         this._element.scrollTop = 0;
 
         if (transition) {
-          Util.reflow(this._element);
+          webdesk_Util.reflow(this._element);
         }
 
         $$$1(this._element).addClass(ClassName.SHOW);
@@ -4648,8 +4661,8 @@
         };
 
         if (transition) {
-          var transitionDuration = Util.getTransitionDurationFromElement(this._element);
-          $$$1(this._dialog).one(Util.TRANSITION_END, transitionComplete).emulateTransitionEnd(transitionDuration);
+          var transitionDuration = webdesk_Util.getTransitionDurationFromElement(this._element);
+          $$$1(this._dialog).one(webdesk_Util.TRANSITION_END, transitionComplete).emulateTransitionEnd(transitionDuration);
         } else {
           transitionComplete();
         }
@@ -4753,7 +4766,7 @@
           });
 
           if (animate) {
-            Util.reflow(this._backdrop);
+            webdesk_Util.reflow(this._backdrop);
           }
 
           $$$1(this._backdrop).addClass(ClassName.SHOW);
@@ -4767,8 +4780,8 @@
             return;
           }
 
-          var backdropTransitionDuration = Util.getTransitionDurationFromElement(this._backdrop);
-          $$$1(this._backdrop).one(Util.TRANSITION_END, callback).emulateTransitionEnd(backdropTransitionDuration);
+          var backdropTransitionDuration = webdesk_Util.getTransitionDurationFromElement(this._backdrop);
+          $$$1(this._backdrop).one(webdesk_Util.TRANSITION_END, callback).emulateTransitionEnd(backdropTransitionDuration);
         } else if (!this._isShown && this._backdrop) {
           $$$1(this._backdrop).removeClass(ClassName.SHOW);
 
@@ -4781,9 +4794,9 @@
           };
 
           if ($$$1(this._element).hasClass(ClassName.FADE)) {
-            var _backdropTransitionDuration = Util.getTransitionDurationFromElement(this._backdrop);
+            var _backdropTransitionDuration = webdesk_Util.getTransitionDurationFromElement(this._backdrop);
 
-            $$$1(this._backdrop).one(Util.TRANSITION_END, callbackRemove).emulateTransitionEnd(_backdropTransitionDuration);
+            $$$1(this._backdrop).one(webdesk_Util.TRANSITION_END, callbackRemove).emulateTransitionEnd(_backdropTransitionDuration);
           } else {
             callbackRemove();
           }
@@ -4934,7 +4947,7 @@
       var _this10 = this;
 
       var target;
-      var selector = Util.getSelectorFromElement(this);
+      var selector = webdesk_Util.getSelectorFromElement(this);
 
       if (selector) {
         target = $$$1(selector)[0];
@@ -5076,11 +5089,11 @@
     function () {
       function Tooltip(element, config) {
         /**
-         * Check for Popper dependency
-         * Popper - https://popper.js.org
+         * Check for webdesk_Popper dependency
+         * webdesk_Popper - https://popper.js.org
          */
-        if (typeof Popper === 'undefined') {
-          throw new TypeError('Bootstrap tooltips require Popper.js (https://popper.js.org)');
+        if (typeof webdesk_Popper === 'undefined') {
+          throw new TypeError('Bootstrap tooltips require webdesk_Popper.js (https://popper.js.org)');
         } // private
 
 
@@ -5188,7 +5201,7 @@
           }
 
           var tip = this.getTipElement();
-          var tipId = Util.getUID(this.constructor.NAME);
+          var tipId = webdesk_Util.getUID(this.constructor.NAME);
           tip.setAttribute('id', tipId);
           this.element.setAttribute('aria-describedby', tipId);
           this.setContent();
@@ -5210,7 +5223,7 @@
           }
 
           $$$1(this.element).trigger(this.constructor.Event.INSERTED);
-          this._popper = new Popper(this.element, tip, {
+          this._popper = new webdesk_Popper(this.element, tip, {
             placement: attachment,
             modifiers: {
               offset: {
@@ -5259,8 +5272,8 @@
           };
 
           if ($$$1(this.tip).hasClass(ClassName.FADE)) {
-            var transitionDuration = Util.getTransitionDurationFromElement(this.tip);
-            $$$1(this.tip).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
+            var transitionDuration = webdesk_Util.getTransitionDurationFromElement(this.tip);
+            $$$1(this.tip).one(webdesk_Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
           } else {
             complete();
           }
@@ -5311,8 +5324,8 @@
         this._activeTrigger[Trigger.HOVER] = false;
 
         if ($$$1(this.tip).hasClass(ClassName.FADE)) {
-          var transitionDuration = Util.getTransitionDurationFromElement(tip);
-          $$$1(tip).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
+          var transitionDuration = webdesk_Util.getTransitionDurationFromElement(tip);
+          $$$1(tip).one(webdesk_Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
         } else {
           complete();
         }
@@ -5514,7 +5527,7 @@
           config.content = config.content.toString();
         }
 
-        Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
+        webdesk_Util.typeCheckConfig(NAME, config, this.constructor.DefaultType);
         return config;
       };
 
@@ -5643,7 +5656,7 @@
     };
 
     return Tooltip;
-  }($, Popper);
+  }($, webdesk_Popper);
 
   /**
    * --------------------------------------------------------------------------
@@ -5670,7 +5683,7 @@
       placement: 'right',
       trigger: 'click',
       content: '',
-      template: '<div class="popover" role="tooltip">' + '<div class="arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div></div>'
+      template: '<div class="webdesk_popover" role="tooltip">' + '<div class="arrow"></div>' + '<h3 class="webdesk_popover-header"></h3>' + '<div class="webdesk_popover-body"></div></div>'
     });
 
     var DefaultType = _objectSpread({}, Tooltip.DefaultType, {
@@ -5682,8 +5695,8 @@
       SHOW: 'show'
     };
     var Selector = {
-      TITLE: '.popover-header',
-      CONTENT: '.popover-body'
+      TITLE: '.webdesk_popover-header',
+      CONTENT: '.webdesk_popover-body'
     };
     var Event = {
       HIDE: "hide" + EVENT_KEY,
@@ -5941,7 +5954,7 @@
         var targets = $$$1.makeArray($$$1(this._selector));
         targets.map(function (element) {
           var target;
-          var targetSelector = Util.getSelectorFromElement(element);
+          var targetSelector = webdesk_Util.getSelectorFromElement(element);
 
           if (targetSelector) {
             target = $$$1(targetSelector)[0];
@@ -5989,14 +6002,14 @@
           var id = $$$1(config.target).attr('id');
 
           if (!id) {
-            id = Util.getUID(NAME);
+            id = webdesk_Util.getUID(NAME);
             $$$1(config.target).attr('id', id);
           }
 
           config.target = "#" + id;
         }
 
-        Util.typeCheckConfig(NAME, config, DefaultType);
+        webdesk_Util.typeCheckConfig(NAME, config, DefaultType);
         return config;
       };
 
@@ -6224,7 +6237,7 @@
         var target;
         var previous;
         var listElement = $$$1(this._element).closest(Selector.NAV_LIST_GROUP)[0];
-        var selector = Util.getSelectorFromElement(this._element);
+        var selector = webdesk_Util.getSelectorFromElement(this._element);
 
         if (listElement) {
           var itemSelector = listElement.nodeName === 'UL' ? Selector.ACTIVE_UL : Selector.ACTIVE;
@@ -6298,8 +6311,8 @@
         };
 
         if (active && isTransitioning) {
-          var transitionDuration = Util.getTransitionDurationFromElement(active);
-          $$$1(active).one(Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
+          var transitionDuration = webdesk_Util.getTransitionDurationFromElement(active);
+          $$$1(active).one(webdesk_Util.TRANSITION_END, complete).emulateTransitionEnd(transitionDuration);
         } else {
           complete();
         }
@@ -6325,7 +6338,7 @@
           element.setAttribute('aria-selected', true);
         }
 
-        Util.reflow(element);
+        webdesk_Util.reflow(element);
         $$$1(element).addClass(ClassName.SHOW);
 
         if (element.parentNode && $$$1(element.parentNode).hasClass(ClassName.DROPDOWN_MENU)) {
@@ -6426,12 +6439,12 @@
     }
   })($);
 
-  exports.Util = Util;
-  exports.Alert = Alert;
-  exports.Button = Button;
-  exports.Carousel = Carousel;
-  exports.Collapse = Collapse;
-  exports.Dropdown = Dropdown;
+  exports.webdesk_Util = webdesk_Util;
+  exports.webdesk_Alert = webdesk_Alert;
+  exports.webdesk_Button = webdesk_Button;
+  //exports.webdesk_Carousel = webdesk_Carousel;
+  exports.webdesk_Collapse = webdesk_Collapse;
+  exports.webdesk_Dropdown = webdesk_Dropdown;
   exports.Modal = Modal;
   exports.Popover = Popover;
   exports.Scrollspy = ScrollSpy;
@@ -6442,3 +6455,4 @@
 
 })));
 //# sourceMappingURL=bootstrap.bundle.js.map
+
