@@ -90,9 +90,10 @@ if(isset($_GET['dir'])){$dir = $dir . '/';}
         }
         natcasesort($ls["files"]);
         foreach($ls["files"] as $entry){
+          $entry_parts = explode(".",$entry);
           ?>
           <tr><td>
-            <a href="<?php wd_url($wd_type, $wd_app, 'MyPage.php', '&dir=' . $dir . '&file=' . $entry); ?>"><i class="fa fa-file fa-fw"></i> <?php echo $entry; ?></a>
+            <a href="<?php wd_url($wd_type, $wd_app, 'MyPage.php', '&dir=' . $dir . '&file=' . $entry); ?>"><i class="fa fa-<?php if(preg_match("/jpg|gif|png|bmp|ico|svg/i", $entry_parts[1])) echo "image"; else if(preg_match("/php/i", explode(".",$entry)[1])) echo "file-code"; else echo "file"; ?> fa-fw"></i> <?php echo $entry; ?></a>
           </td></tr>
           <?php
         }
