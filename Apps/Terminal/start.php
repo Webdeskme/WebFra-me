@@ -88,7 +88,8 @@ if(isset($_GET['dir'])){$dir = $dir . '/';}
           </td></tr>
           <?php 
         }
-        foreach($ls["folders"] as $entry){
+        natcasesort($ls["files"]);
+        foreach($ls["files"] as $entry){
           ?>
           <tr><td>
             <a href="<?php wd_url($wd_type, $wd_app, 'MyPage.php', '&dir=' . $dir . '&file=' . $entry); ?>"><i class="fa fa-file fa-fw"></i> <?php echo $entry; ?></a>
