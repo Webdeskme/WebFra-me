@@ -62,30 +62,42 @@ if(isset($_GET['dir'])){$dir = $dir . '/';}
 </div>
 <?php if(isset($_SESSION["wd_copy_file"])){ ?><div><a href="<?php wd_urlSub($wd_type, $wd_app, 'pasteSub.php', '&dir=' . $dir); ?>"><span class="glyphicon glyphicon-paste"></span> Paste</a></div><?php } ?>
 <br>
-<div class="panel panel-primary">
-  <div class="panel-heading">Directory: </div>
-  <div class="panel-body">
-    <table class="table table-striped">
-<?php
-if(isset($_GET['a'])){$a = test_input($_GET['a']); echo $a; }
-$x = 0;
-foreach (scandir($_SESSION['root'] . $dir) as $entry){
-                    if ($entry != "." && $entry != "..") {
-                      ?>
-      <tr><td>
-    <?php
-$x=$x+1;
-echo $x . ": ";
-if(is_dir($dir . $entry)){?><a href="<?php wd_url($wd_type, $wd_app, 'start.php', '&dir=' . $dir . $entry); ?>" style="color: #3333ff;"><?php echo $entry; ?></a><br><?php }
-else{
-?>
-    <a href="<?php wd_url($wd_type, $wd_app, 'MyPage.php', '&dir=' . $dir . '&file=' . $entry); ?>"><?php echo $entry; ?></a>
-<?php
-}
-}
-}
-?>
-        </td></tr>
-          </table>
-  </div>
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">Directory: </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <?php
+        if(isset($_GET['a'])){$a = test_input($_GET['a']); echo $a; }
+        $x = 0;
+        $ls = array();
+        foreach (scandir($_SESSION['root'] . $dir) as $entry){
+  
+          if ($entry != "." && $entry != "..") {
+            if(is_dir($dir . $entry))
+              $ls["folders"][] = $entry;
+            else
+              $ls["files"][] = $entry;
+          }
+          
+        }
+        foreach($ls["folders"] as $entry){
+          ?>
+          <tr><td>
+            <a href="<?php wd_url($wd_type, $wd_app, 'start.php', '&dir=' . $dir . $entry); ?>" style="color: #3333ff;"><i class="fa fa-folder fa-fw"></i> <?php echo $entry; ?></a><br>
+          </td></tr>
+          <?php 
+        }
+        foreach($ls["folders"] as $entry){
+          ?>
+          <tr><td>
+            <a href="<?php wd_url($wd_type, $wd_app, 'MyPage.php', '&dir=' . $dir . '&file=' . $entry); ?>"><i class="fa fa-file fa-fw"></i> <?php echo $entry; ?></a>
+          </td></tr>
+          <?php
+        }
+  ?>
+          
+        </table>
+      </div>
+    </div>
   </div>
