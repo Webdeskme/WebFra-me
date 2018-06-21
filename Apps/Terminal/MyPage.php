@@ -27,7 +27,7 @@ $dir = $dir . $file;
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-usd"></span> WD Functions</a></li>
         <li><a href="<?php wd_urlSub($wd_type, $wd_app, 'view.php', '&dir=' . $OldDir . '&file=' . $file); ?>" target="_blank"><span class="glyphicon glyphicon-file"></span> View</a></li>
-        <li><?php wd_confirm($wd_type, $wd_app, 'MyPageSubDelete.php', '&dir=' . $OldDir . '&file=' . $file, '1', '<i class="glyphicon glyphicon-trash"> Delete</i>'); ?></li>
+        <li><?php wd_confirm($wd_type, $wd_app, 'MyPageSubDelete.php', '&dir=' . $OldDir . '&file=' . $file, '1', '<i class="fa fa-trash fa-fw"> Delete</i>'); ?></li>
       </ul>
     </div>
   </div>
