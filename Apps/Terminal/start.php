@@ -81,12 +81,14 @@ if(isset($_GET['dir'])){$dir = $dir . '/';}
           }
           
         }
-        foreach($ls["folders"] as $entry){
-          ?>
-          <tr><td>
-            <a href="<?php wd_url($wd_type, $wd_app, 'start.php', '&dir=' . $dir . $entry); ?>" style="color: #3333ff;"><i class="fa fa-folder fa-fw"></i> <?php echo $entry; ?></a><br>
-          </td></tr>
-          <?php 
+        if(isset($ls["folders"])){
+          foreach($ls["folders"] as $entry){
+            ?>
+            <tr><td>
+              <a href="<?php wd_url($wd_type, $wd_app, 'start.php', '&dir=' . $dir . $entry); ?>" style="color: #3333ff;"><i class="fa fa-folder fa-fw"></i> <?php echo $entry; ?></a><br>
+            </td></tr>
+            <?php 
+          }
         }
         if(isset($ls["files"])){
           natcasesort($ls["files"]);

@@ -2,10 +2,10 @@
 if(isset($_GET['dir'])){$dir = test_input($_GET['dir']); if(isset($_GET['file'])){$file = test_input($_GET['file']);}}
 else{ $dir = ""; $file=""; }
 if($dir != "" && $dir != '/'){
-$ndir = '&dir=' . rtrim($dir, '/');
+  $ndir = '&dir=' . rtrim($dir, '/');
 }
 else{
-$ndir = "";
+  $ndir = "";
 }
 $OldDir = $dir;
 $dir = $dir . $file;
@@ -50,23 +50,23 @@ include("FunctionHelp.php");
 ?>
 <script>
 var myCodeMirror = CodeMirror.fromTextArea(con, {
-lineNumbers: true,
+  lineNumbers: true,
   mode:  "php",
   theme: "abcdef",
-matchBrackets: true,
-matchTags: {bothTags: true},
-lineWrapping: true,
-foldGutter: true,
-gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter", "CodeMirror-lint-markers"],
-lint: true,
-extraKeys: {"Ctrl-Space": "autocomplete",
-"F11": function(cm) {
-          cm.setOption("fullScreen", !cm.getOption("fullScreen"));
-        },
-        "Esc": function(cm) {
-          if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
-        },
-"Ctrl-J": "toMatchingTag"
+  matchBrackets: true,
+  matchTags: {bothTags: true},
+  lineWrapping: true,
+  foldGutter: true,
+  gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter", "CodeMirror-lint-markers"],
+  lint: true,
+  extraKeys: {"Ctrl-Space": "autocomplete",
+  "F11": function(cm) {
+            cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+          },
+          "Esc": function(cm) {
+            if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+          },
+  "Ctrl-J": "toMatchingTag"
 }
 });
 </script>
