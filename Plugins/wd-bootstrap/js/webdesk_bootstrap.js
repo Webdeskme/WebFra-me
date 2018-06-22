@@ -4468,11 +4468,11 @@
     };
     var Selector = {
       DIALOG: '.webdesk_modal-dialog',
-      DATA_TOGGLE: '[data-toggle="modal"]',
-      DATA_DISMISS: '[data-dismiss="modal"]',
-      FIXED_CONTENT: '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top',
-      STICKY_CONTENT: '.sticky-top',
-      NAVBAR_TOGGLER: '.navbar-toggler'
+      DATA_TOGGLE: '[data-toggle="webdesk_modal"]',
+      DATA_DISMISS: '[data-dismiss="webdesk_modal"]',
+      FIXED_CONTENT: '.webdesk_fixed-top, .webdesk_fixed-bottom, .webdesk_is-fixed, .webdesk_sticky-top',
+      STICKY_CONTENT: '.webdesk_sticky-top',
+      NAVBAR_TOGGLER: '.webdesk_navbar-toggler'
       /**
        * ------------------------------------------------------------------------
        * Class Definition

@@ -10,22 +10,22 @@ else{
 $OldDir = $dir;
 $dir = $dir . $file;
 ?>
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
+<nav class="webdesk_navbar webdesk_navbar-inverse">
+  <div class="webdesk_container-fluid">
+    <div class="webdesk_navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>">Terminal Portal</a>
+      <a class="webdesk_navbar-brand" href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>">Terminal Portal</a>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
+    <div class="webdesk_collapse webdesk_navbar-collapse" id="myNavbar">
+      <ul class="webdesk_nav webdesk_navbar-nav">
         <li><a href="<?php wd_url($wd_type, $wd_app, 'start.php', $ndir); ?>">Back</a></li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-usd"></span> WD Functions</a></li>
+      <ul class="webdesk_nav webdesk_navbar-nav webdesk_navbar-right">
+        <li><a href="#" data-toggle="webdesk_modal" data-target="#myModal"><i class="fa fa-code fa-fw"></i> WD Functions</a></li>
         <li><a href="<?php wd_urlSub($wd_type, $wd_app, 'view.php', '&dir=' . $OldDir . '&file=' . $file); ?>" target="_blank"><span class="glyphicon glyphicon-file"></span> View</a></li>
         <li><?php wd_confirm($wd_type, $wd_app, 'MyPageSubDelete.php', '&dir=' . $OldDir . '&file=' . $file, '1', '<i class="fa fa-trash fa-fw"> Delete</i>'); ?></li>
       </ul>
@@ -42,7 +42,7 @@ if(file_exists($dir)){
     echo htmlspecialchars(file_get_contents($dir));}
 ?></textarea>
     <br>
-    <input type="submit" class="btn btn-success" value="Save">
+    <input type="submit" class="webdesk_btn webdesk_btn-success" value="Save">
 </form>
 <br><br><br>
 <?php

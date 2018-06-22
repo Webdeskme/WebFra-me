@@ -352,21 +352,23 @@ if(file_exists("path.php")){
 
   function wd_confirm($wd_type, $app, $sec, $get, $id, $text){
   $link = "desktopSub.php?type=" . $wd_type . "&app=" . $app . "&sec=" . $sec . $get;
-  echo '<button type="button" class="webdesk_btn webdesk_btn-danger" data-toggle="modal" data-target="#' . $wd_type . '-' . $app . '-' . $id . '">' . $text . '</button>
+  echo '<button type="button" class="webdesk_btn webdesk_btn-danger" data-toggle="webdesk_modal" data-target="#' . $wd_type . '-' . $app . '-' . $id . '">' . $text . '</button>
 
     <!-- Modal -->
     <div class="webdesk_modal fade" id="' . $wd_type . '-' . $app . '-' . $id . '" role="dialog">
-      <div class="webdesk_modal-dialog webdesk_modal-sm">
+      <div class="webdesk_modal-dialog">
         <div class="webdesk_modal-content">
           <div class="webdesk_modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
             <h4 class="webdesk_modal-title">Warning: Are you sure?</h4>
+            <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
           </div>
           <div class="webdesk_modal-body" style="text-align: center;">
-            <a href="' . $link . '"><button class="webdesk_btn webdesk_btn-danger">' . $text . '</button></a> <button type="button" class="webdesk_btn webdesk_btn-default" data-dismiss="modal">Cancel</button>
+            <p class="">You may inadvertently cause the systematic destruction of the universe and this <b>CANNOT</b> be undone!</b>
+            <!--<button type="button" class="webdesk_btn webdesk_btn-default" data-dismiss="modal">Cancel</button> -->
           </div>
           <div class="webdesk_modal-footer">
-            <button type="button" class="webdesk_btn webdesk_btn-default" data-dismiss="modal">Close</button>
+            <a href="' . $link . '" class="webdesk_btn webdesk_btn-danger">' . $text . '</a>
+            <button type="button" class="webdesk_btn webdesk_btn-light" data-dismiss="webdesk_modal">Cancel</button>
           </div>
         </div>
       </div>
