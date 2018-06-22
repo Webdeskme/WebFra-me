@@ -5004,7 +5004,7 @@
      * Constants
      * ------------------------------------------------------------------------
      */
-    var NAME = 'tooltip';
+    var NAME = 'webdesk_tooltip';
     var VERSION = '4.1.1';
     var DATA_KEY = 'bs.tooltip';
     var EVENT_KEY = "." + DATA_KEY;
@@ -5034,7 +5034,7 @@
     };
     var Default = {
       animation: true,
-      template: '<div class="tooltip" role="tooltip">' + '<div class="arrow"></div>' + '<div class="tooltip-inner"></div></div>',
+      template: '<div class="webdesk_tooltip" role="tooltip">' + '<div class="webdesk_arrow"></div>' + '<div class="webdesk_tooltip-inner"></div></div>',
       trigger: 'hover focus',
       title: '',
       delay: 0,
@@ -5063,13 +5063,13 @@
       MOUSELEAVE: "mouseleave" + EVENT_KEY
     };
     var ClassName = {
-      FADE: 'fade',
-      SHOW: 'show'
+      FADE: 'webdesk_fade',
+      SHOW: 'webdesk_show'
     };
     var Selector = {
-      TOOLTIP: '.tooltip',
-      TOOLTIP_INNER: '.tooltip-inner',
-      ARROW: '.arrow'
+      TOOLTIP: '.webdesk_tooltip',
+      TOOLTIP_INNER: '.webdesk_tooltip-inner',
+      ARROW: '.webdesk_arrow'
     };
     var Trigger = {
       HOVER: 'hover',

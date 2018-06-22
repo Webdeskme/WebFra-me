@@ -10,15 +10,13 @@ else{
 $OldDir = $dir;
 $dir = $dir . $file;
 ?>
-<nav class="webdesk_navbar webdesk_navbar-inverse">
+<nav class="webdesk_navbar webdesk_navbar-expand-md webdesk_bg-light">
   <div class="webdesk_container-fluid">
     <div class="webdesk_navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <a class="webdesk_navbar-brand" href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>">Terminal Portal</a>
+      <button class="webdesk_navbar-toggler" type="button" data-toggle="webdesk_collapse" data-target="#terminalNavbar" aria-controls="terminalNavbar" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars fa-fw"></i>
+      </button>
     </div>
     <div class="webdesk_collapse webdesk_navbar-collapse" id="myNavbar">
       <ul class="webdesk_nav webdesk_navbar-nav">
