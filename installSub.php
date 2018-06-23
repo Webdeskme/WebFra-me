@@ -5,7 +5,7 @@ $wd_path = "stop";
 $wd_pathD = "no";
     if(file_exists("path.php")){
         //header('Location: index.php');
-      if(isset($wd_roots[$_SERVER['HTTP_HOST']]) && $wd_roots[$_SERVER['HTTP_HOST']] == "NA"){
+      if(isset($wd_roots[$_SERVER['HTTP_HOST']]) && !file_exists($wd_roots[$_SERVER['HTTP_HOST']])){
         $wd_path = "next";
       }
       else{

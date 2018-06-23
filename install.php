@@ -51,9 +51,15 @@ include("testInput.php");
             <label for="confirm">Confirm</label><br>
             <input type="password" name="confirm" id="confirm" placeholder="Confirm Password" required>
             <br><hr><br>
+<?php
+if(file_exists('path.php')){
+ ?>
             <label for="path">Offline File Path</label><br>
             <input type="text" name="path" id="path" placeholder="File Path" value="<?php echo __DIR__ . '/' . $string; ?>">
             <br><hr><br>
+            <?php
+}
+             ?>
 		<h3>Email is optional but highly advised.</h3>
 		<label for="SMTP">SMTP Server</label><br>
 		<input type="text" name="SMTP" id="SMTP" placeholder="SMTP Server">
