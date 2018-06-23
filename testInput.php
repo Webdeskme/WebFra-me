@@ -1,4 +1,5 @@
 <?php
+session_regenerate_id(true);
 $wd_protect = "yes";
 $_SESSION['wd_home'] = 'desktop.php';
 function test_input($data) {
