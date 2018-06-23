@@ -17,7 +17,7 @@
         <th>Save</th>
       </tr>
     </thead>
-    <tbody>
+    <tbody style="color: #000000;">
       <?php
       $x = 1;
       foreach($wd_roots as $key => $value){
@@ -36,7 +36,7 @@
       ?>
       <tr>
         <td><input type="text" name="n<?php echo $x; ?>" value=""></td>
-        <td><input type="text" name="p<?php echo $x; ?>" value="NA"></td>
+        <td><input type="text" name="p<?php echo $x; ?>" value=""></td>
         <td><input type="radio" name="default" value="p<?php echo $x; ?>"></td>
         <td><button type="submit" class="btn btn-success">Save</button></td>
       </tr>
