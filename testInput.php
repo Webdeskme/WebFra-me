@@ -124,12 +124,11 @@ if(file_exists("path.php")){
   $wd_admin = $wd_root . '/Admin/';
   $wd_appr = $wd_root . '/App/';
   $wd_www = $wd_root . '/www/';
-  $wd_Title = file_get_contents($wd_admin . 'title.txt');
-
+  if(file_exists($wd_admin . 'title.txt')){
+    $wd_Title = file_get_contents($wd_admin . 'title.txt');
+  }
   function get_number_of_user_alerts(){
-
   global $wd_root;
-
   $wd = 0;
   if ($handle = opendir($wd_root . '/User/' . $_SESSION["user"] . '/Sec/')) {
     while (false !== ($entry = readdir($handle))) {
