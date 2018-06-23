@@ -1,5 +1,6 @@
 <?php
 //$wd_protect = "yes";
+$wd_protect = "yes";
 $_SESSION['wd_home'] = 'desktop.php';
 function test_input($data) {
     if (!empty($data)) {
