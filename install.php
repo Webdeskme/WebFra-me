@@ -1,6 +1,6 @@
 <?php
 include("testInput.php");
-    if(file_exists("path.php") && $wd_roots[$_SERVER['HTTP_HOST']] != "NA"){
+    if(file_exists("path.php") && file_exists($wd_roots[$_SERVER['HTTP_HOST']])){
 		header('Location: index.php');
 	}
 	else{
