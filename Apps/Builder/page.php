@@ -5,11 +5,26 @@ if(isset($_GET['page'])){
 else{
   $page = "";
 }
-if(isset($_POST['con']) && isset($_POST['par']) && isset($_POST['pr']) && isset($_POST['title'])){
+if(isset($_POST['con']) && isset($_POST['par']) && isset($_POST['pr']) && isset($_POST['title']) && isset($_POST['sp'])){
+  if($_POST['sp'] == 'Save/Publish'){
+    require "Plugins/php-html-css-js-minifier.php";
+    function get_and_write($url, $cache_file) {
+  $string = file_get_contents($url);
+  $string = fn_minify_html($string);
+  $f = fopen($cache_file, 'w');
+  fwrite ($f, $string, strlen($string));
+  fclose($f);
+}
+$theme = test_input(file_get_contents($wd_root . "/Admin/dtheme.txt"));
+$cache_file = $wd_root . '/Cache/' . $page;
+$url = 'http://' . $_SERVER['HTTP_HOST'] . '/cache.php?page=' . $page . '&wd_no-cache=' . $theme;
+get_and_write($url, $cache_file);
+  }
   //require "Plugins/php-html-css-js-minifier.php";
   //$theme = test_input(file_get_contents($wd_root . "/Admin/dtheme.txt"));
   //$cache_file = $wd_root . '/Cache/' . $page;
   //$url = 'http://' . $_SERVER['HTTP_HOST'] . '/cache.php?page=' . $page . '&wd_no-cache=' . $theme;
+
   $con = htmlspecialchars_decode($wd_POST["con"], ENT_QUOTES);
   $par = test_input($_POST['par']);
   $pr = test_input($_POST['pr']);
@@ -112,7 +127,7 @@ if(isset($_GET['page']) && file_exists($wd_www . $page)){
     </select>
   </span>
     <br>
-    <input type="submit" class="btn btn-success" value="Save">
+    <input type="submit" class="btn btn-success" name="sp" value="Save"> <input type="submit" class="btn btn-warning" name="sp" value="Save/Publish">
   <br>
 </form>
 <br>
