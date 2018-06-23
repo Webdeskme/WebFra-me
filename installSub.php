@@ -36,7 +36,7 @@ $prand = str_shuffle($arand);
 //$vfrand = $vfrand . 'abcdefghijklmnopqrstuvwxyz';
 //$vfrand = str_shuffle($vfrand);
 if(isset($_POST['pre']) && $_POST['pre'] == 'yes'){
-  $path = $wd_roots[$_SERVER['HTTP_HOST']];
+  $path = $wd_root;
 }
 else{
   $path = test_input($_POST["path"]);
