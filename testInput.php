@@ -112,6 +112,7 @@ if(file_exists("path.php")){
     $wd_root = test_input($wd_roots['default']);
   }
   $pcolor = "#FFFFFF";
+  if($wd_root != "NA"){
   if(isset($_SESSION["user"])){
   $back = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/back.txt');
   $color = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/color.txt');
@@ -537,5 +538,6 @@ if(file_exists("path.php")){
   <?php
     }
   }
+}
 }
 ?>
