@@ -111,6 +111,7 @@ if(file_exists("path.php")){
   else{
     $wd_root = test_input($wd_roots['default']);
   }
+  echo '<h1>' . $wd_root .'</h1>';
   $pcolor = "#FFFFFF";
   if($wd_root == "NA"){
     $wd_root = test_input($wd_roots['default']);
