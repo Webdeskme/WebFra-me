@@ -107,7 +107,7 @@ if(!file_exists('Pub/')){
 				$esmtp = json_encode($esmtp);
 				file_put_contents($path . '/Admin/esmtp.json', $esmtp);
 			}
-  $con = "<?php $wd_roots = array(";
+  $con = "<?php $" . "wd_roots = array(";
   foreach($wd_roots as $key => $value){
     if($key != "default"){
      $con = $con . "'" . $key . "' => '" . $value . "', ";
