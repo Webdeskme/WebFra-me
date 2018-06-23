@@ -37,10 +37,10 @@ if(file_exists("path.php")){
   else{
     $wd_root = test_input($wd_roots['default']);
   }
+if(file_exists($wd_roots[$_SERVER['HTTP_HOST']]) || !isset($wd_roots[$_SERVER['HTTP_HOST']]) ){
   $wd_www = $wd_root . '/www/';
   $theme = test_input(file_get_contents($wd_root . "/Admin/dtheme.txt"));
   $wd_Title = file_get_contents($wd_root . '/Admin/title.txt');
-if($wd_roots[$_SERVER['HTTP_HOST']] != "NA" || !isset($wd_roots[$_SERVER['HTTP_HOST']]) ){
   if(isset($_GET['page'])){
     $page = test_input($_GET['page']);
     $page = str_replace('../', '', $page);
