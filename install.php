@@ -52,7 +52,7 @@ include("testInput.php");
             <input type="password" name="confirm" id="confirm" placeholder="Confirm Password" required>
             <br><hr><br>
 <?php
-if(file_exists('path.php')){
+if(!file_exists('path.php')){
  ?>
             <label for="path">Offline File Path</label><br>
             <input type="text" name="path" id="path" placeholder="File Path" value="<?php echo __DIR__ . '/' . $string; ?>">
