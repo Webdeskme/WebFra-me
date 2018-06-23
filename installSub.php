@@ -35,7 +35,12 @@ $prand = $arand . 'abcdefghijklmnopqrstuvwxyz';
 $prand = str_shuffle($arand);
 //$vfrand = $vfrand . 'abcdefghijklmnopqrstuvwxyz';
 //$vfrand = str_shuffle($vfrand);
-$path = test_input($_POST["path"]);
+if(isset($_POST['pre']) && $_POST['pre'] == 'yes'){
+  $path = $wd_roots[$_SERVER['HTTP_HOST']];
+}
+else{
+  $path = test_input($_POST["path"]);
+}
 $user = f_enc(strtolower(test_input($_POST['Username'])));
 $title = test_input($_POST['title']);
 $wd_roots[$_SERVER['HTTP_HOST']] = $path;

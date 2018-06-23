@@ -59,6 +59,11 @@ if(file_exists('path.php')){
             <br><hr><br>
             <?php
 }
+else{
+  ?>
+<input type="hidden" name="pre" value="yes">
+  <?php
+}
              ?>
 		<h3>Email is optional but highly advised.</h3>
 		<label for="SMTP">SMTP Server</label><br>
