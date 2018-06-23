@@ -57,14 +57,6 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
                         mkdir($path . '/Wiki/');
                         mkdir($path . '/Cache/');
 			mkdir($path . '/www/');
-      require "Plugins/php-html-css-js-minifier.php";
-      function get_and_write($url, $cache_file) {
-    $string = file_get_contents($url);
-    $string = fn_minify_html($string);
-    $f = fopen($cache_file, 'w');
-	  fwrite ($f, $string, strlen($string));
-	  fclose($f);
-  }
 			$wwwCopy = scandir('www/Pages/');
 			foreach($wwwCopy as $key => $value){
         if($value != '.' && $value != '..'){
@@ -128,6 +120,14 @@ if(!file_exists('Pub/')){
     $con = $con . "'default' => '" . $wd_roots['default'] . "' ]; ?>";
   }
                         file_put_contents('path.php', $con);
+                        require "Plugins/php-html-css-js-minifier.php";
+                        function get_and_write($url, $cache_file) {
+                      $string = file_get_contents($url);
+                      $string = fn_minify_html($string);
+                      $f = fopen($cache_file, 'w');
+                  	  fwrite ($f, $string, strlen($string));
+                  	  fclose($f);
+                    }
 foreach($wwwCopy as $key => $value){
                           if($value != '.' && $value != '..' && $value != 'blog.php' && $value != 'banner.php' && $value != 'header.php' && $value != 'footer.php' && $value != 'feed.json' && $value != 'nav.json' && $value != 'contactSub.php'){
                           $cache_file = $path . '/Cache/' . $value;
