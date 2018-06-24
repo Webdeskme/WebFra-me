@@ -54,6 +54,7 @@ if(isset($_POST['nameP'])){
 </form>
 </div>
 <br>
+<a href="<?php wd_urlSub($wd_type, $wd_app, 'footerSub.php', ''); ?>" class="btn btn-warning">Publish All</a>
 <div class="panel panel-primary">
       <div class="panel-heading"><b>Pages</b></div>
       <div class="panel-body">
