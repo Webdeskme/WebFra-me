@@ -9,7 +9,7 @@ if(isset($_POST['con'])){
   $con = htmlspecialchars_decode($wd_POST["con"], ENT_QUOTES);
   file_put_contents($wd_www . $page, $con);
 }
-if($_POST['sp'] == 'Save/Publish'){
+if(isset($_POST['sp']) && $_POST['sp'] == 'Save/Publish'){
   require "Plugins/php-html-css-js-minifier.php";
   function get_and_write($url, $cache_file) {
 $string = file_get_contents($url);

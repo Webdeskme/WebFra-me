@@ -30,20 +30,20 @@ if(isset($_POST['con']) && isset($_POST['par']) && isset($_POST['pr']) && isset(
   $obj->$page = $pagen;
   $jobj = json_encode($obj);
   file_put_contents($wd_www . "nav.json", $jobj);
-}
-if($_POST['sp'] == 'Save/Publish'){
-  require "Plugins/php-html-css-js-minifier.php";
-  function get_and_write($url, $cache_file) {
-$string = file_get_contents($url);
-$string = fn_minify_html($string);
-$f = fopen($cache_file, 'w');
-fwrite ($f, $string, strlen($string));
-fclose($f);
-}
-$theme = test_input(file_get_contents($wd_root . "/Admin/dtheme.txt"));
-$cache_file = $wd_root . '/Cache/' . $page;
-$url = 'http://' . $_SERVER['HTTP_HOST'] . '/cache.php?page=' . $page . '&wd_no-cache=' . $theme;
-get_and_write($url, $cache_file);
+  if($_POST['sp'] == 'Save/Publish'){
+    require "Plugins/php-html-css-js-minifier.php";
+    function get_and_write($url, $cache_file) {
+  $string = file_get_contents($url);
+  $string = fn_minify_html($string);
+  $f = fopen($cache_file, 'w');
+  fwrite ($f, $string, strlen($string));
+  fclose($f);
+  }
+  $theme = test_input(file_get_contents($wd_root . "/Admin/dtheme.txt"));
+  $cache_file = $wd_root . '/Cache/' . $page;
+  $url = 'http://' . $_SERVER['HTTP_HOST'] . '/cache.php?page=' . $page . '&wd_no-cache=' . $theme;
+  get_and_write($url, $cache_file);
+  }
 }
 ?>
 <nav class="navbar navbar-inverse">
