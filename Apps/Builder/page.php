@@ -87,7 +87,7 @@ if(isset($_POST['con']) && isset($_POST['par']) && isset($_POST['pr']) && isset(
     if(file_exists($wd_www . "nav.json")){
       $obj = file_get_contents($wd_www . "nav.json");
       $obj = json_decode($obj);
-      echo $obj->$page->title;
+      if(isset($obj->$page->title)){echo $obj->$page->title;}
     }
                                                                ?>" placeholder="Page title" required>
   </div>
@@ -99,8 +99,8 @@ if(isset($_GET['page']) && file_exists($wd_www . $page)){
   <span class="form-group">
     <label for="parrent">Parrent</label>
     <select id="parrent" name="par">
-      <option value="h"<?php if($obj->$page->par == "h"){ echo " selected";} ?>>Hide Page</option>
-      <option value="np"<?php if($obj->$page->par == "np"){ echo " selected";} ?>>No Parrent</option>
+      <option value="h"<?php if(isset($obj->$page->par) && $obj->$page->par == "h"){ echo " selected";} ?>>Hide Page</option>
+      <option value="np"<?php if(isset($obj->$page->par) && $obj->$page->par == "np"){ echo " selected";} ?>>No Parrent</option>
       <?php
       if(file_exists($wd_www . "nav.json")){
        foreach($obj as $opage){
@@ -119,7 +119,7 @@ if(isset($_GET['page']) && file_exists($wd_www . $page)){
       $i = 9;
       while($i >= 1){
       ?>
-      <option value="<?php echo $i; ?>"<?php if(file_exists($wd_www . "nav.json") && $obj->$page->pr == $i){ echo " selected";} ?>><?php echo $i; ?></option>
+      <option value="<?php echo $i; ?>"<?php if(file_exists($wd_www . "nav.json") && isset($obj->$page->pr) && $obj->$page->pr == $i){ echo " selected";} ?>><?php echo $i; ?></option>
       <?php
       $i = $i - 1;
       }

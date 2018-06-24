@@ -5,41 +5,41 @@ if(isset($_SESSION['wd_adminView'])){
     <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
     <strong>Warning:</strong> Viewing as user. <a href="desktop.php?adminView=stop">Click hear to stop.</a>
   </div>
-  <?php 
+  <?php
 }
-if(isset($_GET['wd_as'])){ 
+if(isset($_GET['wd_as'])){
   ?>
   <div class="webdesk_alert webdesk_alert-success webdesk_alert-dismissable">
     <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
     <strong>Success:</strong> <?php $wd = test_input($_GET['wd_as']); echo $wd; ?>
   </div>
-  <?php 
-} 
-if(isset($_GET['wd_ai'])){ 
+  <?php
+}
+if(isset($_GET['wd_ai'])){
   ?>
   <div class="webdesk_alert webdesk_alert-info webdesk_alert-dismissable">
     <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
     <strong>Info:</strong> <?php $wd = test_input($_GET['wd_ai']); echo $wd; ?>
   </div>
-  <?php 
-} 
-if(isset($_GET['wd_aw'])){ 
+  <?php
+}
+if(isset($_GET['wd_aw'])){
   ?>
   <div class="webdesk_alert webdesk_alert-warning webdesk_alert-dismissable">
     <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
     <strong>Warning:</strong> <?php $wd = test_input($_GET['wd_aw']); echo $wd; ?>
   </div>
-  <?php 
-} 
+  <?php
+}
 if(isset($_GET['wd_ad'])){
   ?>
   <div class="webdesk_alert webdesk_alert-danger webdesk_alert-dismissable">
     <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
     <strong>Danger:</strong> <?php $wd = test_input($_GET['wd_ad']); echo $wd; ?>
   </div>
-  <?php 
+  <?php
 }
-if(isset($_GET['link'])){ 
+if(isset($_GET['link'])){
   ?>
   <div class="webdesk_alert webdesk_alert-info webdesk_alert-dismissable">
     <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
@@ -49,16 +49,19 @@ if(isset($_GET['link'])){
 }
 if(isset($_GET["app"]) and isset($_GET["sec"])){
   $sec = test_input($_GET["sec"]);
-  if(file_exists($type . "/" . $app . "/banner.php")){
-    include($type . "/" . $app . "/banner.php");
-  }
   if(file_exists($type . "/" . $app . "/" . $sec)){
+    if(file_exists($type . "/" . $app . "/banner.php")){
+      include($type . "/" . $app . "/banner.php");
+    }
     include($type . "/" . $app . "/" . $sec);
+    if(file_exists($type . "/" . $app . "/footer.php")){
+      include($type . "/" . $app . "/footer.php");
+    }
   }
   else{
     include("404.php");
   }
-} 
+}
 else{
   ?>
   <div class="webdesk_p-2">
