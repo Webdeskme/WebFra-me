@@ -7,7 +7,7 @@ $f = fopen($cache_file, 'w');
 fwrite ($f, $string, strlen($string));
 fclose($f);
 }
-$wwwCopy = scandir($wd_root . '/www/');
+$wwwCopy = scandir($wd_root . "/www/");
 $theme = test_input(file_get_contents($wd_root . "/Admin/dtheme.txt"));
 foreach($wwwCopy as $key => $value){
   if($value != '.' && $value != '..' && $value != 'blog.php' && $value != 'banner.php' && $value != 'header.php' && $value != 'footer.php' && $value != 'feed.json' && $value != 'nav.json' && $value != 'contactSub.php'){
@@ -16,5 +16,5 @@ foreach($wwwCopy as $key => $value){
   get_and_write($url, $cache_file);
 }
 }
-wd_head($wd_type, $wd_app, 'start.php', '');
+//wd_head($wd_type, $wd_app, 'start.php', '');
 ?>
