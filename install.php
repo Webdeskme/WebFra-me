@@ -1,6 +1,6 @@
 <?php
 include("testInput.php");
-    if(file_exists("path.php") && $wd_roots[$_SERVER['HTTP_HOST']] != "NA"){
+    if(file_exists("path.php") && file_exists($wd_roots[$_SERVER['HTTP_HOST']])){
 		header('Location: index.php');
 	}
 	else{
@@ -51,9 +51,20 @@ include("testInput.php");
             <label for="confirm">Confirm</label><br>
             <input type="password" name="confirm" id="confirm" placeholder="Confirm Password" required>
             <br><hr><br>
+<?php
+if(!file_exists('path.php')){
+ ?>
             <label for="path">Offline File Path</label><br>
             <input type="text" name="path" id="path" placeholder="File Path" value="<?php echo __DIR__ . '/' . $string; ?>">
             <br><hr><br>
+            <?php
+}
+else{
+  ?>
+<input type="hidden" name="pre" value="yes">
+  <?php
+}
+             ?>
 		<h3>Email is optional but highly advised.</h3>
 		<label for="SMTP">SMTP Server</label><br>
 		<input type="text" name="SMTP" id="SMTP" placeholder="SMTP Server">

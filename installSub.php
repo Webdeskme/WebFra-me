@@ -5,7 +5,7 @@ $wd_path = "stop";
 $wd_pathD = "no";
     if(file_exists("path.php")){
         //header('Location: index.php');
-      if(isset($wd_roots[$_SERVER['HTTP_HOST']]) && $wd_roots[$_SERVER['HTTP_HOST']] == "NA"){
+      if(isset($wd_roots[$_SERVER['HTTP_HOST']]) && !file_exists($wd_roots[$_SERVER['HTTP_HOST']])){
         $wd_path = "next";
       }
       else{
@@ -35,7 +35,12 @@ $prand = $arand . 'abcdefghijklmnopqrstuvwxyz';
 $prand = str_shuffle($arand);
 //$vfrand = $vfrand . 'abcdefghijklmnopqrstuvwxyz';
 //$vfrand = str_shuffle($vfrand);
-$path = test_input($_POST["path"]);
+if(isset($_POST['pre']) && $_POST['pre'] == 'yes'){
+  $path = $wd_root;
+}
+else{
+  $path = test_input($_POST["path"]);
+}
 $user = f_enc(strtolower(test_input($_POST['Username'])));
 $title = test_input($_POST['title']);
 $wd_roots[$_SERVER['HTTP_HOST']] = $path;
@@ -57,14 +62,6 @@ $wd_roots[$_SERVER['HTTP_HOST']] = $path;
                         mkdir($path . '/Wiki/');
                         mkdir($path . '/Cache/');
 			mkdir($path . '/www/');
-      require "Plugins/php-html-css-js-minifier.php";
-      function get_and_write($url, $cache_file) {
-    $string = file_get_contents($url);
-    $string = fn_minify_html($string);
-    $f = fopen($cache_file, 'w');
-	  fwrite ($f, $string, strlen($string));
-	  fclose($f);
-  }
 			$wwwCopy = scandir('www/Pages/');
 			foreach($wwwCopy as $key => $value){
         if($value != '.' && $value != '..'){
@@ -115,19 +112,27 @@ if(!file_exists('Pub/')){
 				$esmtp = json_encode($esmtp);
 				file_put_contents($path . '/Admin/esmtp.json', $esmtp);
 			}
-  $con = "<?php return [";
+  $con = "<?php $" . "wd_roots = array(";
   foreach($wd_roots as $key => $value){
     if($key != "default"){
      $con = $con . "'" . $key . "' => '" . $value . "', ";
     }
   }
   if($wd_pathD == "yes"){
-    $con = $con . "'default' => '" . $path . "' ]; ?>";
+    $con = $con . "'default' => '" . $path . "'); ?>";
   }
   else{
-    $con = $con . "'default' => '" . $wd_roots['default'] . "' ]; ?>";
+    $con = $con . "'default' => '" . $wd_roots['default'] . "'); ?>";
   }
                         file_put_contents('path.php', $con);
+                        require "Plugins/php-html-css-js-minifier.php";
+                        function get_and_write($url, $cache_file) {
+                      $string = file_get_contents($url);
+                      $string = fn_minify_html($string);
+                      $f = fopen($cache_file, 'w');
+                  	  fwrite ($f, $string, strlen($string));
+                  	  fclose($f);
+                    }
 foreach($wwwCopy as $key => $value){
                           if($value != '.' && $value != '..' && $value != 'blog.php' && $value != 'banner.php' && $value != 'header.php' && $value != 'footer.php' && $value != 'feed.json' && $value != 'nav.json' && $value != 'contactSub.php'){
                           $cache_file = $path . '/Cache/' . $value;
