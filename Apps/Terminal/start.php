@@ -1,8 +1,11 @@
 <?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
+
 $_SESSION['root'] = getcwd() . '/';
-//$_SESSION['root'] = '../../html';
-if(isset($_GET['dir'])){$dir = test_input($_GET['dir']);}
-else{ $dir = ""; }
+
+if(isset($_GET['dir']))
+  $dir = test_input($_GET['dir']);
+else
+  $dir = ""; 
 ?>
 <nav class="webdesk_navbar webdesk_navbar-expand-md webdesk_bg-light">
   <div class="webdesk_container-fluid">
@@ -19,7 +22,7 @@ else{ $dir = ""; }
       <ul class="webdesk_navbar-nav webdesk_mr-auto">
         <li class="webdesk_nav-item">
           
-          <button type="button" data-toggle="webdesk_collapse" data-target="#Wadd" class="webdesk_btn webdesk_btn-secondary"><i class="fa fa-plus fa-fw"></i> New</a>
+          <button type="button" data-toggle="webdesk_collapse" data-target="#Wadd" class="webdesk_btn webdesk_btn-link"><i class="fa fa-plus fa-fw"></i> New</a>
           <?php wd_confirm($wd_type, $wd_app, 'startSubRemove.php', '&dir=' . $dir, '1', '<i class="fa fa-trash-alt fa-fw"></i> Delete'); ?>
           
         </li>
@@ -27,51 +30,79 @@ else{ $dir = ""; }
     </div>
   </div>
 </nav>
- <ul class="webdesk_breadcrumb webdesk_sticky-top">
-  <li><a href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>">wd://root</a></li>
-  <?php
-  if(isset($_GET['dir']) && $_GET['dir'] != "" && $_GET['dir'] != "/"){
-$bread = explode('/', $dir);
-$valuex="";
-foreach($bread as $value){
-$valuex = $valuex . $value . '/';
-$valuey = rtrim($valuex, '/');
-?>
-<li><a href="<?php wd_url($wd_type, $wd_app, 'start.php', '&dir=' . $valuey ); ?>"><?php echo $value; ?></a></li>
-<?php
-} }
-if(isset($_GET['dir'])){$dir = $dir . '/';}
-?>
- </ul>
+<nav aria-label="breadcrumb">
+  <ol class="webdesk_breadcrumb webdesk_sticky-top">
+    <li class="webdesk_breadcrumb-item"><a href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>">wd://root</a></li>
+    <?php
+    if(isset($_GET['dir']) && $_GET['dir'] != "" && $_GET['dir'] != "/"){
+      $bread = explode('/', $dir);
+      $valuex="";
+      foreach($bread as $key => $value){
+        $valuex .= $value . '/';
+        $valuey = rtrim($valuex, '/');
+        
+        ?>
+        <li class="webdesk_breadcrumb-item <?php echo ($key == count($bread)-1) ? "webdesk_active" : ""; ?>"><a href="<?php wd_url($wd_type, $wd_app, 'start.php', '&dir=' . $valuey ); ?>"><?php echo $value; ?></a></li>
+        <?php
+      } 
+    }
+    if(!empty($_GET['dir']))
+      $dir = $dir . '/';
+    
+    ?>
+  </ol>
+</nav>
 <div id="Wadd" class="webdesk_collapse">
   <div class="webdesk_card">
     <div class="webdesk_card-header">Add New File/Directory</div>
     <div class="webdesk_card-body">
       <form method="post" action="<?php echo wd_urlSub($wd_type, $wd_app, 'startSub.php', ''); ?>" class="form-group">
-        <label for="nameA">New File/Directory Name: </label>
-        <input type="hidden" name="dir" value="<?php echo $dir; ?>">
-        <input type="text" name="nameA" class="webdesk_form-control" for="nameA" placeholder="Enter the name of your new File." title="Enter the name of your new File.">
-        <br>
-        <select name="type" class="webdesk_form-control webdesk_custom-select">
-            <option value="File">File</option>
-            <option value="Directory">Directory</option>
-        </select>
-        <br>
-        <input type="submit" class="webdesk_btn webdesk_btn-success" value="Start">
+        
+        <input type="hidden" name="dir" value="<?php echo $dir; ?>" />
+        <div class="form-group">
+          <label for="nameA">New File/Directory Name: </label>
+          <div class="webdesk_input-group">
+            <div class="webdesk_input-group-prepend">
+              <select name="type" class="webdesk_form-control webdesk_custom-select">
+                <option value="File">File</option>
+                <option value="Directory">Directory</option>
+              </select>
+            </div>            
+            <input type="text" name="nameA" class="webdesk_form-control" id="nameA" placeholder="Enter the name of your new File." title="Enter the name of your new file or directory" />
+            <div class="webdesk_input-group-append">
+              <input type="submit" class="webdesk_btn webdesk_btn-success" value="Create" />
+            </div>
+          </div>
+        </div>
+        
+        
       </form>
     </div>
   </div>
 </div>
-<?php if(isset($_SESSION["wd_copy_file"])){ ?><div><a href="<?php wd_urlSub($wd_type, $wd_app, 'pasteSub.php', '&dir=' . $dir); ?>"><span class="glyphicon glyphicon-paste"></span> Paste</a></div><?php } ?>
-<br>
+<?php 
+if(isset($_SESSION["wd_copy_file"])){ 
+  ?>
+  <div>
+    <a href="<?php wd_urlSub($wd_type, $wd_app, 'pasteSub.php', '&dir=' . $dir); ?>"><span class="glyphicon glyphicon-paste"></span> Paste</a>
+  </div>
+  <?php 
+} 
+?>
+<br />
 <div class="webdesk_container">
   <div class="webdesk_card">
-    <div class="webdesk_card-header webdesk_bg-primary webdesk_text-white">Directory: </div>
+    <div class="webdesk_card-header webdesk_bg-primary webdesk_text-white">
+      Directory: 
+    </div>
     <div class="webdesk_card-body">
       <table class="webdesk_table webdesk_table-striped">
         <?php
-        if(isset($_GET['a'])){$a = test_input($_GET['a']); echo $a; }
-        $x = 0;
+        if(isset($_GET['a'])){
+          $a = test_input($_GET['a']); 
+          echo $a; 
+        }
+        $countfilesfolders = 0;
         $ls = array();
         foreach (scandir($_SESSION['root'] . $dir) as $entry){
   
@@ -80,6 +111,8 @@ if(isset($_GET['dir'])){$dir = $dir . '/';}
               $ls["folders"][] = $entry;
             else
               $ls["files"][] = $entry;
+              
+            $countfilesfolders ++;
           }
           
         }
@@ -103,9 +136,10 @@ if(isset($_GET['dir'])){$dir = $dir . '/';}
             <?php
           }
         }
-  ?>
-          
-        </table>
-      </div>
+        if($countfilesfolders == 0)
+          echo '<span class="webdesk_text-muted">Directory listing empty</span>';
+        ?>
+      </table>
     </div>
   </div>
+</div>

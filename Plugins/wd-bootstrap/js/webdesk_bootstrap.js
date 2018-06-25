@@ -4460,7 +4460,7 @@
       CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
     };
     var ClassName = {
-      SCROLLBAR_MEASURER: 'modal-scrollbar-measure',
+      SCROLLBAR_MEASURER: 'webdesk_modal-scrollbar-measure',
       BACKDROP: 'webdesk_modal-backdrop',
       OPEN: 'webdesk_modal-open',
       FADE: 'webdesk_fade',

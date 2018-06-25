@@ -367,7 +367,7 @@ if(file_exists("path.php")){
             <!--<button type="button" class="webdesk_btn webdesk_btn-default" data-dismiss="modal">Cancel</button> -->
           </div>
           <div class="webdesk_modal-footer">
-            <a href="' . $link . '" class="webdesk_btn webdesk_btn-danger">' . $text . '</a>
+            <a href="' . $link . '" class="webdesk_btn webdesk_btn-danger text-white">' . $text . '</a>
             <button type="button" class="webdesk_btn webdesk_btn-light" data-dismiss="webdesk_modal">Cancel</button>
           </div>
         </div>
