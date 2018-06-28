@@ -19,7 +19,7 @@
         <option value="tA">Admin</option>
     </select>
     <br><br>
-    <input type="text" name="pass" placeholder="New Password" class="form-control">
+    <input type="text" name="pass" placeholder="New Password" class="form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
     <br>
     <input type="submit" value="Add" class="btn btn-primary">
 </form>
