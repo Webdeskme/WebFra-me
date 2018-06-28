@@ -547,499 +547,499 @@
   // * --------------------------------------------------------------------------
   // */
   
-  // var webdesk_Carousel = function ($$$1) {
-  //   /**
-  //   * ------------------------------------------------------------------------
-  //   * Constants
-  //   * ------------------------------------------------------------------------
-  //   */
-  //   var NAME = 'webdesk_carousel';
-  //   var VERSION = '4.1.1';
-  //   var DATA_KEY = 'bs.carousel';
-  //   var EVENT_KEY = "." + DATA_KEY;
-  //   var DATA_API_KEY = '.data-api';
-  //   var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
-  //   var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
-  
-  //   var ARROW_RIGHT_KEYCODE = 39; // KeyboardEvent.which value for right arrow key
-  
-  //   var TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
-  
-  //   var Default = {
-  //     interval: 5000,
-  //     keyboard: true,
-  //     slide: false,
-  //     pause: 'hover',
-  //     wrap: true
-  //   };
-  //   var DefaultType = {
-  //     interval: '(number|boolean)',
-  //     keyboard: 'boolean',
-  //     slide: '(boolean|string)',
-  //     pause: '(string|boolean)',
-  //     wrap: 'boolean'
-  //   };
-  //   var Direction = {
-  //     NEXT: 'next',
-  //     PREV: 'prev',
-  //     LEFT: 'left',
-  //     RIGHT: 'right'
-  //   };
-  //   var Event = {
-  //     SLIDE: "slide" + EVENT_KEY,
-  //     SLID: "slid" + EVENT_KEY,
-  //     KEYDOWN: "keydown" + EVENT_KEY,
-  //     MOUSEENTER: "mouseenter" + EVENT_KEY,
-  //     MOUSELEAVE: "mouseleave" + EVENT_KEY,
-  //     TOUCHEND: "touchend" + EVENT_KEY,
-  //     LOAD_DATA_API: "load" + EVENT_KEY + DATA_API_KEY,
-  //     CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
-  //   };
-  //   var ClassName = {
-  //     CAROUSEL: 'webdesk_carousel',
-  //     ACTIVE: 'webdesk_active',
-  //     SLIDE: 'webdesk_slide',
-  //     RIGHT: 'webdesk_carousel-item-right',
-  //     LEFT: 'webdesk_carousel-item-left',
-  //     NEXT: 'webdesk_carousel-item-next',
-  //     PREV: 'webdesk_carousel-item-prev',
-  //     ITEM: 'webdesk_carousel-item'
-  //   };
-  //   var Selector = {
-  //     ACTIVE: '.webdesk_active',
-  //     ACTIVE_ITEM: '.active.carousel-item',
-  //     ITEM: '.carousel-item',
-  //     NEXT_PREV: '.carousel-item-next, .carousel-item-prev',
-  //     INDICATORS: '.carousel-indicators',
-  //     DATA_SLIDE: '[data-slide], [data-slide-to]',
-  //     DATA_RIDE: '[data-ride="carousel"]'
-  //     /**
-  //     * ------------------------------------------------------------------------
-  //     * Class Definition
-  //     * ------------------------------------------------------------------------
-  //     */
-  
-  //   };
-  
-  //   var Carousel =
-  //   /*#__PURE__*/
-  //   function () {
-  //     function Carousel(element, config) {
-  //       this._items = null;
-  //       this._interval = null;
-  //       this._activeElement = null;
-  //       this._isPaused = false;
-  //       this._isSliding = false;
-  //       this.touchTimeout = null;
-  //       this._config = this._getConfig(config);
-  //       this._element = $$$1(element)[0];
-  //       this._indicatorsElement = $$$1(this._element).find(Selector.INDICATORS)[0];
-  
-  //       this._addEventListeners();
-  //     } // Getters
-  
-  
-  //     var _proto = Carousel.prototype;
-  
-  //     // Public
-  //     _proto.next = function next() {
-  //       if (!this._isSliding) {
-  //         this._slide(Direction.NEXT);
-  //       }
-  //     };
-  
-  //     _proto.nextWhenVisible = function nextWhenVisible() {
-  //       // Don't call next when the page isn't visible
-  //       // or the carousel or its parent isn't visible
-  //       if (!document.hidden && $$$1(this._element).is(':visible') && $$$1(this._element).css('visibility') !== 'hidden') {
-  //         this.next();
-  //       }
-  //     };
-  
-  //     _proto.prev = function prev() {
-  //       if (!this._isSliding) {
-  //         this._slide(Direction.PREV);
-  //       }
-  //     };
-  
-  //     _proto.pause = function pause(event) {
-  //       if (!event) {
-  //         this._isPaused = true;
-  //       }
-  
-  //       if ($$$1(this._element).find(Selector.NEXT_PREV)[0]) {
-  //         webdesk_Util.triggerTransitionEnd(this._element);
-  //         this.cycle(true);
-  //       }
-  
-  //       clearInterval(this._interval);
-  //       this._interval = null;
-  //     };
-  
-  //     _proto.cycle = function cycle(event) {
-  //       if (!event) {
-  //         this._isPaused = false;
-  //       }
-  
-  //       if (this._interval) {
-  //         clearInterval(this._interval);
-  //         this._interval = null;
-  //       }
-  
-  //       if (this._config.interval && !this._isPaused) {
-  //         this._interval = setInterval((document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval);
-  //       }
-  //     };
-  
-  //     _proto.to = function to(index) {
-  //       var _this = this;
-  
-  //       this._activeElement = $$$1(this._element).find(Selector.ACTIVE_ITEM)[0];
-  
-  //       var activeIndex = this._getItemIndex(this._activeElement);
-  
-  //       if (index > this._items.length - 1 || index < 0) {
-  //         return;
-  //       }
-  
-  //       if (this._isSliding) {
-  //         $$$1(this._element).one(Event.SLID, function () {
-  //           return _this.to(index);
-  //         });
-  //         return;
-  //       }
-  
-  //       if (activeIndex === index) {
-  //         this.pause();
-  //         this.cycle();
-  //         return;
-  //       }
-  
-  //       var direction = index > activeIndex ? Direction.NEXT : Direction.PREV;
-  
-  //       this._slide(direction, this._items[index]);
-  //     };
-  
-  //     _proto.dispose = function dispose() {
-  //       $$$1(this._element).off(EVENT_KEY);
-  //       $$$1.removeData(this._element, DATA_KEY);
-  //       this._items = null;
-  //       this._config = null;
-  //       this._element = null;
-  //       this._interval = null;
-  //       this._isPaused = null;
-  //       this._isSliding = null;
-  //       this._activeElement = null;
-  //       this._indicatorsElement = null;
-  //     }; // Private
-  
-  
-  //     _proto._getConfig = function _getConfig(config) {
-  //       config = _objectSpread({}, Default, config);
-  //       webdesk_Util.typeCheckConfig(NAME, config, DefaultType);
-  //       return config;
-  //     };
-  
-  //     _proto._addEventListeners = function _addEventListeners() {
-  //       var _this2 = this;
-  
-  //       if (this._config.keyboard) {
-  //         $$$1(this._element).on(Event.KEYDOWN, function (event) {
-  //           return _this2._keydown(event);
-  //         });
-  //       }
-  
-  //       if (this._config.pause === 'hover') {
-  //         $$$1(this._element).on(Event.MOUSEENTER, function (event) {
-  //           return _this2.pause(event);
-  //         }).on(Event.MOUSELEAVE, function (event) {
-  //           return _this2.cycle(event);
-  //         });
-  
-  //         if ('ontouchstart' in document.documentElement) {
-  //           // If it's a touch-enabled device, mouseenter/leave are fired as
-  //           // part of the mouse compatibility events on first tap - the carousel
-  //           // would stop cycling until user tapped out of it;
-  //           // here, we listen for touchend, explicitly pause the carousel
-  //           // (as if it's the second time we tap on it, mouseenter compat event
-  //           // is NOT fired) and after a timeout (to allow for mouse compatibility
-  //           // events to fire) we explicitly restart cycling
-  //           $$$1(this._element).on(Event.TOUCHEND, function () {
-  //             _this2.pause();
-  
-  //             if (_this2.touchTimeout) {
-  //               clearTimeout(_this2.touchTimeout);
-  //             }
-  
-  //             _this2.touchTimeout = setTimeout(function (event) {
-  //               return _this2.cycle(event);
-  //             }, TOUCHEVENT_COMPAT_WAIT + _this2._config.interval);
-  //           });
-  //         }
-  //       }
-  //     };
-  
-  //     _proto._keydown = function _keydown(event) {
-  //       if (/input|textarea/i.test(event.target.tagName)) {
-  //         return;
-  //       }
-  
-  //       switch (event.which) {
-  //         case ARROW_LEFT_KEYCODE:
-  //           event.preventDefault();
-  //           this.prev();
-  //           break;
-  
-  //         case ARROW_RIGHT_KEYCODE:
-  //           event.preventDefault();
-  //           this.next();
-  //           break;
-  
-  //         default:
-  //       }
-  //     };
-  
-  //     _proto._getItemIndex = function _getItemIndex(element) {
-  //       this._items = $$$1.makeArray($$$1(element).parent().find(Selector.ITEM));
-  //       return this._items.indexOf(element);
-  //     };
-  
-  //     _proto._getItemByDirection = function _getItemByDirection(direction, activeElement) {
-  //       var isNextDirection = direction === Direction.NEXT;
-  //       var isPrevDirection = direction === Direction.PREV;
-  
-  //       var activeIndex = this._getItemIndex(activeElement);
-  
-  //       var lastItemIndex = this._items.length - 1;
-  //       var isGoingToWrap = isPrevDirection && activeIndex === 0 || isNextDirection && activeIndex === lastItemIndex;
-  
-  //       if (isGoingToWrap && !this._config.wrap) {
-  //         return activeElement;
-  //       }
-  
-  //       var delta = direction === Direction.PREV ? -1 : 1;
-  //       var itemIndex = (activeIndex + delta) % this._items.length;
-  //       return itemIndex === -1 ? this._items[this._items.length - 1] : this._items[itemIndex];
-  //     };
-  
-  //     _proto._triggerSlideEvent = function _triggerSlideEvent(relatedTarget, eventDirectionName) {
-  //       var targetIndex = this._getItemIndex(relatedTarget);
-  
-  //       var fromIndex = this._getItemIndex($$$1(this._element).find(Selector.ACTIVE_ITEM)[0]);
-  
-  //       var slideEvent = $$$1.Event(Event.SLIDE, {
-  //         relatedTarget: relatedTarget,
-  //         direction: eventDirectionName,
-  //         from: fromIndex,
-  //         to: targetIndex
-  //       });
-  //       $$$1(this._element).trigger(slideEvent);
-  //       return slideEvent;
-  //     };
-  
-  //     _proto._setActiveIndicatorElement = function _setActiveIndicatorElement(element) {
-  //       if (this._indicatorsElement) {
-  //         $$$1(this._indicatorsElement).find(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
-  
-  //         var nextIndicator = this._indicatorsElement.children[this._getItemIndex(element)];
-  
-  //         if (nextIndicator) {
-  //           $$$1(nextIndicator).addClass(ClassName.ACTIVE);
-  //         }
-  //       }
-  //     };
-  
-  //     _proto._slide = function _slide(direction, element) {
-  //       var _this3 = this;
-  
-  //       var activeElement = $$$1(this._element).find(Selector.ACTIVE_ITEM)[0];
-  
-  //       var activeElementIndex = this._getItemIndex(activeElement);
-  
-  //       var nextElement = element || activeElement && this._getItemByDirection(direction, activeElement);
-  
-  //       var nextElementIndex = this._getItemIndex(nextElement);
-  
-  //       var isCycling = Boolean(this._interval);
-  //       var directionalClassName;
-  //       var orderClassName;
-  //       var eventDirectionName;
-  
-  //       if (direction === Direction.NEXT) {
-  //         directionalClassName = ClassName.LEFT;
-  //         orderClassName = ClassName.NEXT;
-  //         eventDirectionName = Direction.LEFT;
-  //       } else {
-  //         directionalClassName = ClassName.RIGHT;
-  //         orderClassName = ClassName.PREV;
-  //         eventDirectionName = Direction.RIGHT;
-  //       }
-  
-  //       if (nextElement && $$$1(nextElement).hasClass(ClassName.ACTIVE)) {
-  //         this._isSliding = false;
-  //         return;
-  //       }
-  
-  //       var slideEvent = this._triggerSlideEvent(nextElement, eventDirectionName);
-  
-  //       if (slideEvent.isDefaultPrevented()) {
-  //         return;
-  //       }
-  
-  //       if (!activeElement || !nextElement) {
-  //         // Some weirdness is happening, so we bail
-  //         return;
-  //       }
-  
-  //       this._isSliding = true;
-  
-  //       if (isCycling) {
-  //         this.pause();
-  //       }
-  
-  //       this._setActiveIndicatorElement(nextElement);
-  
-  //       var slidEvent = $$$1.Event(Event.SLID, {
-  //         relatedTarget: nextElement,
-  //         direction: eventDirectionName,
-  //         from: activeElementIndex,
-  //         to: nextElementIndex
-  //       });
-  
-  //       if ($$$1(this._element).hasClass(ClassName.SLIDE)) {
-  //         $$$1(nextElement).addClass(orderClassName);
-  //         webdesk_Util.reflow(nextElement);
-  //         $$$1(activeElement).addClass(directionalClassName);
-  //         $$$1(nextElement).addClass(directionalClassName);
-  //         var transitionDuration = webdesk_Util.getTransitionDurationFromElement(activeElement);
-  //         $$$1(activeElement).one(webdesk_Util.TRANSITION_END, function () {
-  //           $$$1(nextElement).removeClass(directionalClassName + " " + orderClassName).addClass(ClassName.ACTIVE);
-  //           $$$1(activeElement).removeClass(ClassName.ACTIVE + " " + orderClassName + " " + directionalClassName);
-  //           _this3._isSliding = false;
-  //           setTimeout(function () {
-  //             return $$$1(_this3._element).trigger(slidEvent);
-  //           }, 0);
-  //         }).emulateTransitionEnd(transitionDuration);
-  //       } else {
-  //         $$$1(activeElement).removeClass(ClassName.ACTIVE);
-  //         $$$1(nextElement).addClass(ClassName.ACTIVE);
-  //         this._isSliding = false;
-  //         $$$1(this._element).trigger(slidEvent);
-  //       }
-  
-  //       if (isCycling) {
-  //         this.cycle();
-  //       }
-  //     }; // Static
-  
-  
-  //     Carousel._jQueryInterface = function _jQueryInterface(config) {
-  //       return this.each(function () {
-  //         var data = $$$1(this).data(DATA_KEY);
-  
-  //         var _config = _objectSpread({}, Default, $$$1(this).data());
-  
-  //         if (typeof config === 'object') {
-  //           _config = _objectSpread({}, _config, config);
-  //         }
-  
-  //         var action = typeof config === 'string' ? config : _config.slide;
-  
-  //         if (!data) {
-  //           data = new Carousel(this, _config);
-  //           $$$1(this).data(DATA_KEY, data);
-  //         }
-  
-  //         if (typeof config === 'number') {
-  //           data.to(config);
-  //         } else if (typeof action === 'string') {
-  //           if (typeof data[action] === 'undefined') {
-  //             throw new TypeError("No method named \"" + action + "\"");
-  //           }
-  
-  //           data[action]();
-  //         } else if (_config.interval) {
-  //           data.pause();
-  //           data.cycle();
-  //         }
-  //       });
-  //     };
-  
-  //     Carousel._dataApiClickHandler = function _dataApiClickHandler(event) {
-  //       var selector = webdesk_Util.getSelectorFromElement(this);
-  
-  //       if (!selector) {
-  //         return;
-  //       }
-  
-  //       var target = $$$1(selector)[0];
-  
-  //       if (!target || !$$$1(target).hasClass(ClassName.CAROUSEL)) {
-  //         return;
-  //       }
-  
-  //       var config = _objectSpread({}, $$$1(target).data(), $$$1(this).data());
-  
-  //       var slideIndex = this.getAttribute('data-slide-to');
-  
-  //       if (slideIndex) {
-  //         config.interval = false;
-  //       }
-  
-  //       Carousel._jQueryInterface.call($$$1(target), config);
-  
-  //       if (slideIndex) {
-  //         $$$1(target).data(DATA_KEY).to(slideIndex);
-  //       }
-  
-  //       event.preventDefault();
-  //     };
-  
-  //     _createClass(Carousel, null, [{
-  //       key: "VERSION",
-  //       get: function get() {
-  //         return VERSION;
-  //       }
-  //     }, {
-  //       key: "Default",
-  //       get: function get() {
-  //         return Default;
-  //       }
-  //     }]);
-  
-  //     return Carousel;
-  //   }();
-  //   /**
-  //   * ------------------------------------------------------------------------
-  //   * Data Api implementation
-  //   * ------------------------------------------------------------------------
-  //   */
-  
-  
-  //   $$$1(document).on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, Carousel._dataApiClickHandler);
-  //   $$$1(window).on(Event.LOAD_DATA_API, function () {
-  //     $$$1(Selector.DATA_RIDE).each(function () {
-  //       var $carousel = $$$1(this);
-  
-  //       Carousel._jQueryInterface.call($carousel, $carousel.data());
-  //     });
-  //   });
-  //   /**
-  //   * ------------------------------------------------------------------------
-  //   * jQuery
-  //   * ------------------------------------------------------------------------
-  //   */
-  
-  //   $$$1.fn[NAME] = Carousel._jQueryInterface;
-  //   $$$1.fn[NAME].Constructor = Carousel;
-  
-  //   $$$1.fn[NAME].noConflict = function () {
-  //     $$$1.fn[NAME] = JQUERY_NO_CONFLICT;
-  //     return Carousel._jQueryInterface;
-  //   };
-  
-  //   return Carousel;
-  // }($);
+  var webdesk_Carousel = function ($$$1) {
+    /**
+    * ------------------------------------------------------------------------
+    * Constants
+    * ------------------------------------------------------------------------
+    */
+    var NAME = 'webdesk_carousel';
+    var VERSION = '4.1.1';
+    var DATA_KEY = 'bs.carousel';
+    var EVENT_KEY = "." + DATA_KEY;
+    var DATA_API_KEY = '.data-api';
+    var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
+    var ARROW_LEFT_KEYCODE = 37; // KeyboardEvent.which value for left arrow key
+  
+    var ARROW_RIGHT_KEYCODE = 39; // KeyboardEvent.which value for right arrow key
+  
+    var TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
+  
+    var Default = {
+      interval: 5000,
+      keyboard: true,
+      slide: false,
+      pause: 'hover',
+      wrap: true
+    };
+    var DefaultType = {
+      interval: '(number|boolean)',
+      keyboard: 'boolean',
+      slide: '(boolean|string)',
+      pause: '(string|boolean)',
+      wrap: 'boolean'
+    };
+    var Direction = {
+      NEXT: 'next',
+      PREV: 'prev',
+      LEFT: 'left',
+      RIGHT: 'right'
+    };
+    var Event = {
+      SLIDE: "slide" + EVENT_KEY,
+      SLID: "slid" + EVENT_KEY,
+      KEYDOWN: "keydown" + EVENT_KEY,
+      MOUSEENTER: "mouseenter" + EVENT_KEY,
+      MOUSELEAVE: "mouseleave" + EVENT_KEY,
+      TOUCHEND: "touchend" + EVENT_KEY,
+      LOAD_DATA_API: "load" + EVENT_KEY + DATA_API_KEY,
+      CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
+    };
+    var ClassName = {
+      CAROUSEL: 'webdesk_carousel',
+      ACTIVE: 'webdesk_active',
+      SLIDE: 'webdesk_slide',
+      RIGHT: 'webdesk_carousel-item-right',
+      LEFT: 'webdesk_carousel-item-left',
+      NEXT: 'webdesk_carousel-item-next',
+      PREV: 'webdesk_carousel-item-prev',
+      ITEM: 'webdesk_carousel-item'
+    };
+    var Selector = {
+      ACTIVE: '.webdesk_active',
+      ACTIVE_ITEM: '.active.carousel-item',
+      ITEM: '.carousel-item',
+      NEXT_PREV: '.carousel-item-next, .carousel-item-prev',
+      INDICATORS: '.carousel-indicators',
+      DATA_SLIDE: '[data-slide], [data-slide-to]',
+      DATA_RIDE: '[data-ride="carousel"]'
+      /**
+      * ------------------------------------------------------------------------
+      * Class Definition
+      * ------------------------------------------------------------------------
+      */
+  
+    };
+  
+    var webdesk_Carousel =
+    /*#__PURE__*/
+    function () {
+      function webdesk_Carousel(element, config) {
+        this._items = null;
+        this._interval = null;
+        this._activeElement = null;
+        this._isPaused = false;
+        this._isSliding = false;
+        this.touchTimeout = null;
+        this._config = this._getConfig(config);
+        this._element = $$$1(element)[0];
+        this._indicatorsElement = $$$1(this._element).find(Selector.INDICATORS)[0];
+  
+        this._addEventListeners();
+      } // Getters
+  
+  
+      var _proto = webdesk_Carousel.prototype;
+  
+      // Public
+      _proto.next = function next() {
+        if (!this._isSliding) {
+          this._slide(Direction.NEXT);
+        }
+      };
+  
+      _proto.nextWhenVisible = function nextWhenVisible() {
+        // Don't call next when the page isn't visible
+        // or the webdesk_Carousel or its parent isn't visible
+        if (!document.hidden && $$$1(this._element).is(':visible') && $$$1(this._element).css('visibility') !== 'hidden') {
+          this.next();
+        }
+      };
+  
+      _proto.prev = function prev() {
+        if (!this._isSliding) {
+          this._slide(Direction.PREV);
+        }
+      };
+  
+      _proto.pause = function pause(event) {
+        if (!event) {
+          this._isPaused = true;
+        }
+  
+        if ($$$1(this._element).find(Selector.NEXT_PREV)[0]) {
+          webdesk_Util.triggerTransitionEnd(this._element);
+          this.cycle(true);
+        }
+  
+        clearInterval(this._interval);
+        this._interval = null;
+      };
+  
+      _proto.cycle = function cycle(event) {
+        if (!event) {
+          this._isPaused = false;
+        }
+  
+        if (this._interval) {
+          clearInterval(this._interval);
+          this._interval = null;
+        }
+  
+        if (this._config.interval && !this._isPaused) {
+          this._interval = setInterval((document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval);
+        }
+      };
+  
+      _proto.to = function to(index) {
+        var _this = this;
+  
+        this._activeElement = $$$1(this._element).find(Selector.ACTIVE_ITEM)[0];
+  
+        var activeIndex = this._getItemIndex(this._activeElement);
+  
+        if (index > this._items.length - 1 || index < 0) {
+          return;
+        }
+  
+        if (this._isSliding) {
+          $$$1(this._element).one(Event.SLID, function () {
+            return _this.to(index);
+          });
+          return;
+        }
+  
+        if (activeIndex === index) {
+          this.pause();
+          this.cycle();
+          return;
+        }
+  
+        var direction = index > activeIndex ? Direction.NEXT : Direction.PREV;
+  
+        this._slide(direction, this._items[index]);
+      };
+  
+      _proto.dispose = function dispose() {
+        $$$1(this._element).off(EVENT_KEY);
+        $$$1.removeData(this._element, DATA_KEY);
+        this._items = null;
+        this._config = null;
+        this._element = null;
+        this._interval = null;
+        this._isPaused = null;
+        this._isSliding = null;
+        this._activeElement = null;
+        this._indicatorsElement = null;
+      }; // Private
+  
+  
+      _proto._getConfig = function _getConfig(config) {
+        config = _objectSpread({}, Default, config);
+        webdesk_Util.typeCheckConfig(NAME, config, DefaultType);
+        return config;
+      };
+  
+      _proto._addEventListeners = function _addEventListeners() {
+        var _this2 = this;
+  
+        if (this._config.keyboard) {
+          $$$1(this._element).on(Event.KEYDOWN, function (event) {
+            return _this2._keydown(event);
+          });
+        }
+  
+        if (this._config.pause === 'hover') {
+          $$$1(this._element).on(Event.MOUSEENTER, function (event) {
+            return _this2.pause(event);
+          }).on(Event.MOUSELEAVE, function (event) {
+            return _this2.cycle(event);
+          });
+  
+          if ('ontouchstart' in document.documentElement) {
+            // If it's a touch-enabled device, mouseenter/leave are fired as
+            // part of the mouse compatibility events on first tap - the carousel
+            // would stop cycling until user tapped out of it;
+            // here, we listen for touchend, explicitly pause the carousel
+            // (as if it's the second time we tap on it, mouseenter compat event
+            // is NOT fired) and after a timeout (to allow for mouse compatibility
+            // events to fire) we explicitly restart cycling
+            $$$1(this._element).on(Event.TOUCHEND, function () {
+              _this2.pause();
+  
+              if (_this2.touchTimeout) {
+                clearTimeout(_this2.touchTimeout);
+              }
+  
+              _this2.touchTimeout = setTimeout(function (event) {
+                return _this2.cycle(event);
+              }, TOUCHEVENT_COMPAT_WAIT + _this2._config.interval);
+            });
+          }
+        }
+      };
+  
+      _proto._keydown = function _keydown(event) {
+        if (/input|textarea/i.test(event.target.tagName)) {
+          return;
+        }
+  
+        switch (event.which) {
+          case ARROW_LEFT_KEYCODE:
+            event.preventDefault();
+            this.prev();
+            break;
+  
+          case ARROW_RIGHT_KEYCODE:
+            event.preventDefault();
+            this.next();
+            break;
+  
+          default:
+        }
+      };
+  
+      _proto._getItemIndex = function _getItemIndex(element) {
+        this._items = $$$1.makeArray($$$1(element).parent().find(Selector.ITEM));
+        return this._items.indexOf(element);
+      };
+  
+      _proto._getItemByDirection = function _getItemByDirection(direction, activeElement) {
+        var isNextDirection = direction === Direction.NEXT;
+        var isPrevDirection = direction === Direction.PREV;
+  
+        var activeIndex = this._getItemIndex(activeElement);
+  
+        var lastItemIndex = this._items.length - 1;
+        var isGoingToWrap = isPrevDirection && activeIndex === 0 || isNextDirection && activeIndex === lastItemIndex;
+  
+        if (isGoingToWrap && !this._config.wrap) {
+          return activeElement;
+        }
+  
+        var delta = direction === Direction.PREV ? -1 : 1;
+        var itemIndex = (activeIndex + delta) % this._items.length;
+        return itemIndex === -1 ? this._items[this._items.length - 1] : this._items[itemIndex];
+      };
+  
+      _proto._triggerSlideEvent = function _triggerSlideEvent(relatedTarget, eventDirectionName) {
+        var targetIndex = this._getItemIndex(relatedTarget);
+  
+        var fromIndex = this._getItemIndex($$$1(this._element).find(Selector.ACTIVE_ITEM)[0]);
+  
+        var slideEvent = $$$1.Event(Event.SLIDE, {
+          relatedTarget: relatedTarget,
+          direction: eventDirectionName,
+          from: fromIndex,
+          to: targetIndex
+        });
+        $$$1(this._element).trigger(slideEvent);
+        return slideEvent;
+      };
+  
+      _proto._setActiveIndicatorElement = function _setActiveIndicatorElement(element) {
+        if (this._indicatorsElement) {
+          $$$1(this._indicatorsElement).find(Selector.ACTIVE).removeClass(ClassName.ACTIVE);
+  
+          var nextIndicator = this._indicatorsElement.children[this._getItemIndex(element)];
+  
+          if (nextIndicator) {
+            $$$1(nextIndicator).addClass(ClassName.ACTIVE);
+          }
+        }
+      };
+  
+      _proto._slide = function _slide(direction, element) {
+        var _this3 = this;
+  
+        var activeElement = $$$1(this._element).find(Selector.ACTIVE_ITEM)[0];
+  
+        var activeElementIndex = this._getItemIndex(activeElement);
+  
+        var nextElement = element || activeElement && this._getItemByDirection(direction, activeElement);
+  
+        var nextElementIndex = this._getItemIndex(nextElement);
+  
+        var isCycling = Boolean(this._interval);
+        var directionalClassName;
+        var orderClassName;
+        var eventDirectionName;
+  
+        if (direction === Direction.NEXT) {
+          directionalClassName = ClassName.LEFT;
+          orderClassName = ClassName.NEXT;
+          eventDirectionName = Direction.LEFT;
+        } else {
+          directionalClassName = ClassName.RIGHT;
+          orderClassName = ClassName.PREV;
+          eventDirectionName = Direction.RIGHT;
+        }
+  
+        if (nextElement && $$$1(nextElement).hasClass(ClassName.ACTIVE)) {
+          this._isSliding = false;
+          return;
+        }
+  
+        var slideEvent = this._triggerSlideEvent(nextElement, eventDirectionName);
+  
+        if (slideEvent.isDefaultPrevented()) {
+          return;
+        }
+  
+        if (!activeElement || !nextElement) {
+          // Some weirdness is happening, so we bail
+          return;
+        }
+  
+        this._isSliding = true;
+  
+        if (isCycling) {
+          this.pause();
+        }
+  
+        this._setActiveIndicatorElement(nextElement);
+  
+        var slidEvent = $$$1.Event(Event.SLID, {
+          relatedTarget: nextElement,
+          direction: eventDirectionName,
+          from: activeElementIndex,
+          to: nextElementIndex
+        });
+  
+        if ($$$1(this._element).hasClass(ClassName.SLIDE)) {
+          $$$1(nextElement).addClass(orderClassName);
+          webdesk_Util.reflow(nextElement);
+          $$$1(activeElement).addClass(directionalClassName);
+          $$$1(nextElement).addClass(directionalClassName);
+          var transitionDuration = webdesk_Util.getTransitionDurationFromElement(activeElement);
+          $$$1(activeElement).one(webdesk_Util.TRANSITION_END, function () {
+            $$$1(nextElement).removeClass(directionalClassName + " " + orderClassName).addClass(ClassName.ACTIVE);
+            $$$1(activeElement).removeClass(ClassName.ACTIVE + " " + orderClassName + " " + directionalClassName);
+            _this3._isSliding = false;
+            setTimeout(function () {
+              return $$$1(_this3._element).trigger(slidEvent);
+            }, 0);
+          }).emulateTransitionEnd(transitionDuration);
+        } else {
+          $$$1(activeElement).removeClass(ClassName.ACTIVE);
+          $$$1(nextElement).addClass(ClassName.ACTIVE);
+          this._isSliding = false;
+          $$$1(this._element).trigger(slidEvent);
+        }
+  
+        if (isCycling) {
+          this.cycle();
+        }
+      }; // Static
+  
+  
+      webdesk_Carousel._jQueryInterface = function _jQueryInterface(config) {
+        return this.each(function () {
+          var data = $$$1(this).data(DATA_KEY);
+  
+          var _config = _objectSpread({}, Default, $$$1(this).data());
+  
+          if (typeof config === 'object') {
+            _config = _objectSpread({}, _config, config);
+          }
+  
+          var action = typeof config === 'string' ? config : _config.slide;
+  
+          if (!data) {
+            data = new webdesk_Carousel(this, _config);
+            $$$1(this).data(DATA_KEY, data);
+          }
+  
+          if (typeof config === 'number') {
+            data.to(config);
+          } else if (typeof action === 'string') {
+            if (typeof data[action] === 'undefined') {
+              throw new TypeError("No method named \"" + action + "\"");
+            }
+  
+            data[action]();
+          } else if (_config.interval) {
+            data.pause();
+            data.cycle();
+          }
+        });
+      };
+  
+      webdesk_Carousel._dataApiClickHandler = function _dataApiClickHandler(event) {
+        var selector = webdesk_Util.getSelectorFromElement(this);
+  
+        if (!selector) {
+          return;
+        }
+  
+        var target = $$$1(selector)[0];
+  
+        if (!target || !$$$1(target).hasClass(ClassName.CAROUSEL)) {
+          return;
+        }
+  
+        var config = _objectSpread({}, $$$1(target).data(), $$$1(this).data());
+  
+        var slideIndex = this.getAttribute('data-slide-to');
+  
+        if (slideIndex) {
+          config.interval = false;
+        }
+  
+        webdesk_Carousel._jQueryInterface.call($$$1(target), config);
+  
+        if (slideIndex) {
+          $$$1(target).data(DATA_KEY).to(slideIndex);
+        }
+  
+        event.preventDefault();
+      };
+  
+      _createClass(webdesk_Carousel, null, [{
+        key: "VERSION",
+        get: function get() {
+          return VERSION;
+        }
+      }, {
+        key: "Default",
+        get: function get() {
+          return Default;
+        }
+      }]);
+  
+      return webdesk_Carousel;
+    }();
+    /**
+    * ------------------------------------------------------------------------
+    * Data Api implementation
+    * ------------------------------------------------------------------------
+    */
+  
+  
+    $$$1(document).on(Event.CLICK_DATA_API, Selector.DATA_SLIDE, webdesk_Carousel._dataApiClickHandler);
+    $$$1(window).on(Event.LOAD_DATA_API, function () {
+      $$$1(Selector.DATA_RIDE).each(function () {
+        var $carousel = $$$1(this);
+  
+        webdesk_Carousel._jQueryInterface.call($carousel, $carousel.data());
+      });
+    });
+    /**
+    * ------------------------------------------------------------------------
+    * jQuery
+    * ------------------------------------------------------------------------
+    */
+  
+    $$$1.fn[NAME] = webdesk_Carousel._jQueryInterface;
+    $$$1.fn[NAME].Constructor = webdesk_Carousel;
+  
+    $$$1.fn[NAME].noConflict = function () {
+      $$$1.fn[NAME] = JQUERY_NO_CONFLICT;
+      return webdesk_Carousel._jQueryInterface;
+    };
+  
+    return webdesk_Carousel;
+  }($);
 
     /**
    * --------------------------------------------------------------------------
@@ -1588,7 +1588,7 @@
       return document.documentElement;
     }
 
-    var noOffsetParent = isIE(10) ? document.body : null;
+    var noOffsetParent = webdesk_isIE(10) ? document.body : null;
 
     // NOTE: 1 DOM access here
     var offsetParent = element.offsetParent;
@@ -1664,11 +1664,11 @@
     // Both nodes are inside #document
 
     if (element1 !== commonAncestorContainer && element2 !== commonAncestorContainer || start.contains(end)) {
-      if (isOffsetContainer(commonAncestorContainer)) {
+      if (webdesk_isOffsetContainer(commonAncestorContainer)) {
         return commonAncestorContainer;
       }
 
-      return getOffsetParent(commonAncestorContainer);
+      return webdesk_getOffsetParent(commonAncestorContainer);
     }
 
     // one of the nodes is inside shadowDOM, find which one
@@ -1940,12 +1940,12 @@
     var excludeScroll = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
     var html = element.ownerDocument.documentElement;
-    var relativeOffset = getOffsetRectRelativeToArbitraryNode(element, html);
+    var relativeOffset = webdesk_getOffsetRectRelativeToArbitraryNode(element, html);
     var width = Math.max(html.clientWidth, window.innerWidth || 0);
     var height = Math.max(html.clientHeight, window.innerHeight || 0);
 
-    var scrollTop = !excludeScroll ? getScroll(html) : 0;
-    var scrollLeft = !excludeScroll ? getScroll(html, 'left') : 0;
+    var scrollTop = !excludeScroll ? webdesk_getScroll(html) : 0;
+    var scrollLeft = !excludeScroll ? webdesk_getScroll(html, 'left') : 0;
 
     var offset = {
       top: scrollTop - relativeOffset.top + relativeOffset.marginTop,
@@ -1954,7 +1954,7 @@
       height: height
     };
 
-    return getClientRect(offset);
+    return webdesk_getClientRect(offset);
   }
 
   /**
@@ -2013,16 +2013,16 @@
     // NOTE: 1 DOM access here
 
     var boundaries = { top: 0, left: 0 };
-    var offsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : findCommonOffsetParent(popper, reference);
+    var offsetParent = fixedPosition ? getFixedPositionOffsetParent(popper) : webdesk_findCommonOffsetParent(popper, reference);
 
     // Handle viewport case
     if (boundariesElement === 'viewport') {
-      boundaries = getViewportOffsetRectRelativeToArtbitraryNode(offsetParent, fixedPosition);
+      boundaries = webdesk_getViewportOffsetRectRelativeToArtbitraryNode(offsetParent, fixedPosition);
     } else {
       // Handle other cases based on DOM element used as boundaries
       var boundariesNode = void 0;
       if (boundariesElement === 'scrollParent') {
-        boundariesNode = getScrollParent(getParentNode(reference));
+        boundariesNode = webdesk_getScrollParent(webdesk_getParentNode(reference));
         if (boundariesNode.nodeName === 'BODY') {
           boundariesNode = popper.ownerDocument.documentElement;
         }
@@ -2032,11 +2032,11 @@
         boundariesNode = boundariesElement;
       }
 
-      var offsets = getOffsetRectRelativeToArbitraryNode(boundariesNode, offsetParent, fixedPosition);
+      var offsets = webdesk_getOffsetRectRelativeToArbitraryNode(boundariesNode, offsetParent, fixedPosition);
 
       // In case of HTML, we need a different computation
-      if (boundariesNode.nodeName === 'HTML' && !isFixed(offsetParent)) {
-        var _getWindowSizes = getWindowSizes(),
+      if (boundariesNode.nodeName === 'HTML' && !webdesk_isFixed(offsetParent)) {
+        var _getWindowSizes = webdesk_getWindowSizes(),
             height = _getWindowSizes.height,
             width = _getWindowSizes.width;
 
@@ -2189,7 +2189,7 @@
     placement = placement.split('-')[0];
 
     // Get popper node sizes
-    var popperRect = getOuterSizes(popper);
+    var popperRect = webdesk_getOuterSizes(popper);
 
     // Add position, width and height to our offsets object
     var popperOffsets = {
@@ -2276,12 +2276,12 @@
         console.warn('`modifier.function` is deprecated, use `modifier.fn`!');
       }
       var fn = modifier['function'] || modifier.fn; // eslint-disable-line dot-notation
-      if (modifier.enabled && isFunction(fn)) {
+      if (modifier.enabled && webdesk_isFunction(fn)) {
         // Add properties to offsets to make them a complete clientRect object
         // we do this before each modifier to make sure the previous one doesn't
         // mess with these values
-        data.offsets.popper = getClientRect(data.offsets.popper);
-        data.offsets.reference = getClientRect(data.offsets.reference);
+        data.offsets.popper = webdesk_getClientRect(data.offsets.popper);
+        data.offsets.reference = webdesk_getClientRect(data.offsets.reference);
 
         data = fn(data, modifier);
       }
@@ -2313,12 +2313,12 @@
     };
 
     // compute reference element offsets
-    data.offsets.reference = getReferenceOffsets(this.state, this.popper, this.reference, this.options.positionFixed);
+    data.offsets.reference = webdesk_getReferenceOffsets(this.state, this.popper, this.reference, this.options.positionFixed);
 
     // compute auto placement, store placement inside the data object,
     // modifiers will be able to edit `placement` if needed
     // and refer to originalPlacement to know the original value
-    data.placement = computeAutoPlacement(this.options.placement, data.offsets.reference, this.popper, this.reference, this.options.modifiers.flip.boundariesElement, this.options.modifiers.flip.padding);
+    data.placement = webdesk_computeAutoPlacement(this.options.placement, data.offsets.reference, this.popper, this.reference, this.options.modifiers.flip.boundariesElement, this.options.modifiers.flip.padding);
 
     // store the computed placement inside `originalPlacement`
     data.originalPlacement = data.placement;
@@ -2326,12 +2326,12 @@
     data.positionFixed = this.options.positionFixed;
 
     // compute the popper offsets
-    data.offsets.popper = getPopperOffsets(this.popper, data.offsets.reference, data.placement);
+    data.offsets.popper = webdesk_getPopperOffsets(this.popper, data.offsets.reference, data.placement);
 
     data.offsets.popper.position = this.options.positionFixed ? 'fixed' : 'absolute';
 
     // run the modifiers
-    data = runModifiers(this.modifiers, data);
+    data = webdesk_runModifiers(this.modifiers, data);
 
     // the first `update` will call `onCreate` callback
     // the other ones will call `onUpdate` callback
@@ -2387,7 +2387,7 @@
     this.state.isDestroyed = true;
 
     // touch DOM only if `applyStyle` modifier is enabled
-    if (isModifierEnabled(this.modifiers, 'applyStyle')) {
+    if (webdesk_isModifierEnabled(this.modifiers, 'applyStyle')) {
       this.popper.removeAttribute('x-placement');
       this.popper.style.position = '';
       this.popper.style.top = '';
@@ -2395,7 +2395,7 @@
       this.popper.style.right = '';
       this.popper.style.bottom = '';
       this.popper.style.willChange = '';
-      this.popper.style[getSupportedPropertyName('transform')] = '';
+      this.popper.style[webdesk_getSupportedPropertyName('transform')] = '';
     }
 
     this.disableEventListeners();
@@ -2438,11 +2438,11 @@
   function webdesk_setupEventListeners(reference, options, state, updateBound) {
     // Resize event listener on window
     state.updateBound = updateBound;
-    getWindow(reference).addEventListener('resize', state.updateBound, { passive: true });
+    webdesk_getWindow(reference).addEventListener('resize', state.updateBound, { passive: true });
 
     // Scroll event listener on scroll parents
-    var scrollElement = getScrollParent(reference);
-    attachToScrollParents(scrollElement, 'scroll', state.updateBound, state.scrollParents);
+    var scrollElement = webdesk_getScrollParent(reference);
+    webdesk_attachToScrollParents(scrollElement, 'scroll', state.updateBound, state.scrollParents);
     state.scrollElement = scrollElement;
     state.eventsEnabled = true;
 
@@ -2457,7 +2457,7 @@
    */
   function webdesk_enableEventListeners() {
     if (!this.state.eventsEnabled) {
-      this.state = setupEventListeners(this.reference, this.options, this.state, this.scheduleUpdate);
+      this.state = webdesk_setupEventListeners(this.reference, this.options, this.state, this.scheduleUpdate);
     }
   }
 
@@ -2469,7 +2469,7 @@
    */
   function webdesk_removeEventListeners(reference, state) {
     // Remove resize event listener on window
-    getWindow(reference).removeEventListener('resize', state.updateBound);
+    webdesk_getWindow(reference).removeEventListener('resize', state.updateBound);
 
     // Remove scroll event listener on scroll parents
     state.scrollParents.forEach(function (target) {
@@ -2494,7 +2494,7 @@
   function webdesk_disableEventListeners() {
     if (this.state.eventsEnabled) {
       cancelAnimationFrame(this.scheduleUpdate);
-      this.state = removeEventListeners(this.reference, this.state);
+      this.state = webdesk_removeEventListeners(this.reference, this.state);
     }
   }
 
@@ -2521,7 +2521,7 @@
     Object.keys(styles).forEach(function (prop) {
       var unit = '';
       // add unit if the value is numeric and is one of the following
-      if (['width', 'height', 'top', 'right', 'bottom', 'left'].indexOf(prop) !== -1 && isNumeric(styles[prop])) {
+      if (['width', 'height', 'top', 'right', 'bottom', 'left'].indexOf(prop) !== -1 && webdesk_isNumeric(styles[prop])) {
         unit = 'px';
       }
       element.style[prop] = styles[prop] + unit;
@@ -2561,11 +2561,11 @@
     // in this way we can make the 3rd party modifiers add custom styles to it
     // Be aware, modifiers could override the properties defined in the previous
     // lines of this modifier!
-    setStyles(data.instance.popper, data.styles);
+    webdesk_setStyles(data.instance.popper, data.styles);
 
     // any property present in `data.attributes` will be applied to the popper,
     // they will be set as HTML attributes of the element
-    setAttributes(data.instance.popper, data.attributes);
+    webdesk_setAttributes(data.instance.popper, data.attributes);
 
     // if arrowElement is defined and arrowStyles has some properties
     if (data.arrowElement && Object.keys(data.arrowStyles).length) {
@@ -2600,7 +2600,7 @@
 
     // Apply `position` to popper before anything else because
     // without the position applied we can't guarantee correct computations
-    setStyles(popper, { position: options.positionFixed ? 'fixed' : 'absolute' });
+    webdesk_setStyles(popper, { position: options.positionFixed ? 'fixed' : 'absolute' });
 
     return options;
   }
@@ -2627,8 +2627,8 @@
     }
     var gpuAcceleration = legacyGpuAccelerationOption !== undefined ? legacyGpuAccelerationOption : options.gpuAcceleration;
 
-    var offsetParent = getOffsetParent(data.instance.popper);
-    var offsetParentRect = getBoundingClientRect(offsetParent);
+    var offsetParent = webdesk_getOffsetParent(data.instance.popper);
+    var offsetParentRect = webdesk_getBoundingClientRect(offsetParent);
 
     // Styles
     var styles = {
@@ -2651,7 +2651,7 @@
     // if gpuAcceleration is set to `true` and transform is supported,
     //  we use `translate3d` to apply the position to the popper we
     // automatically use the supported prefixed version if needed
-    var prefixedProperty = getSupportedPropertyName('transform');
+    var prefixedProperty = webdesk_getSupportedPropertyName('transform');
 
     // now, let's make a step back and look at this code closely (wtf?)
     // If the content of the popper grows once it's been positioned, it
@@ -2740,7 +2740,7 @@
     var _data$offsets$arrow;
 
     // arrow depends on keepTogether in order to work
-    if (!isModifierRequired(data.instance.modifiers, 'arrow', 'keepTogether')) {
+    if (!webdesk_isModifierRequired(data.instance.modifiers, 'arrow', 'keepTogether')) {
       return data;
     }
 
@@ -2896,7 +2896,7 @@
    */
   function webdesk_flip(data, options) {
     // if `inner` modifier is enabled, we can't use the `flip` modifier
-    if (isModifierEnabled(data.instance.modifiers, 'inner')) {
+    if (webdesk_isModifierEnabled(data.instance.modifiers, 'inner')) {
       return data;
     }
 
@@ -2905,10 +2905,10 @@
       return data;
     }
 
-    var boundaries = getBoundaries(data.instance.popper, data.instance.reference, options.padding, options.boundariesElement, data.positionFixed);
+    var boundaries = webdesk_getBoundaries(data.instance.popper, data.instance.reference, options.padding, options.boundariesElement, data.positionFixed);
 
     var placement = data.placement.split('-')[0];
-    var placementOpposite = getOppositePlacement(placement);
+    var placementOpposite = webdesk_getOppositePlacement(placement);
     var variation = data.placement.split('-')[1] || '';
 
     var flipOrder = [];
@@ -2933,7 +2933,7 @@
       }
 
       placement = data.placement.split('-')[0];
-      placementOpposite = getOppositePlacement(placement);
+      placementOpposite = webdesk_getOppositePlacement(placement);
 
       var popperOffsets = data.offsets.popper;
       var refOffsets = data.offsets.reference;
@@ -3156,7 +3156,7 @@
     var basePlacement = placement.split('-')[0];
 
     var offsets = void 0;
-    if (isNumeric(+offset)) {
+    if (webdesk_isNumeric(+offset)) {
       offsets = [+offset, 0];
     } else {
       offsets = parseOffset(offset, popper, reference, basePlacement);
@@ -3200,7 +3200,7 @@
     // NOTE: DOM access here
     // resets the popper's position so that the document size can be calculated excluding
     // the size of the popper element itself
-    var transformProp = getSupportedPropertyName('transform');
+    var transformProp = webdesk_getSupportedPropertyName('transform');
     var popperStyles = data.instance.popper.style; // assignment to help minification
     var top = popperStyles.top,
         left = popperStyles.left,
@@ -3210,7 +3210,7 @@
     popperStyles.left = '';
     popperStyles[transformProp] = '';
 
-    var boundaries = getBoundaries(data.instance.popper, data.instance.reference, options.padding, boundariesElement, data.positionFixed);
+    var boundaries = webdesk_getBoundaries(data.instance.popper, data.instance.reference, options.padding, boundariesElement, data.positionFixed);
 
     // NOTE: DOM access here
     // restores the original style properties after the offsets have been computed
@@ -3292,7 +3292,7 @@
    * @returns {Object} The data object, properly modified
    */
   function webdesk_hide(data) {
-    if (!isModifierRequired(data.instance.modifiers, 'hide', 'preventOverflow')) {
+    if (!webdesk_isModifierRequired(data.instance.modifiers, 'hide', 'preventOverflow')) {
       return data;
     }
 
@@ -3861,22 +3861,22 @@
     createClass(webdesk_Popper, [{
       key: 'update',
       value: function update$$1() {
-        return update.call(this);
+        return webdesk_update.call(this);
       }
     }, {
       key: 'destroy',
       value: function destroy$$1() {
-        return destroy.call(this);
+        return webdesk_destroy.call(this);
       }
     }, {
       key: 'enableEventListeners',
       value: function enableEventListeners$$1() {
-        return enableEventListeners.call(this);
+        return webdesk_enableEventListeners.call(this);
       }
     }, {
       key: 'disableEventListeners',
       value: function disableEventListeners$$1() {
-        return disableEventListeners.call(this);
+        return webdesk_disableEventListeners.call(this);
       }
 
       /**
@@ -6442,11 +6442,11 @@
   exports.webdesk_Util = webdesk_Util;
   exports.webdesk_Alert = webdesk_Alert;
   exports.webdesk_Button = webdesk_Button;
-  //exports.webdesk_Carousel = webdesk_Carousel;
+  exports.webdesk_Carousel = webdesk_Carousel;
   exports.webdesk_Collapse = webdesk_Collapse;
   exports.webdesk_Dropdown = webdesk_Dropdown;
-  exports.Modal = Modal;
-  exports.Popover = Popover;
+  exports.webdesk_Modal = webdesk_Modal;
+  exports.webdesk_Popover = webdesk_Popover;
   exports.Scrollspy = ScrollSpy;
   exports.Tab = Tab;
   exports.Tooltip = Tooltip;

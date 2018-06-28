@@ -4022,7 +4022,7 @@ opleft .webdesk_dropdown-toggle-split::before {
     color: rgba(0, 0, 0, .3)
 }
 
-.webdesk_navbar-light .webdesk_navbar-nav .active>.webdesk_nav-link,
+.webdesk_navbar-light .webdesk_navbar-nav .webdesk_active>.webdesk_nav-link,
 .webdesk_navbar-light .webdesk_navbar-nav .webdesk_nav-link:active,
 .webdesk_navbar-light .webdesk_navbar-nav .webdesk_nav-linkow,
 .webdesk_navbar-light .webdesk_navbar-nav ow>.webdesk_nav-link {
@@ -4067,7 +4067,7 @@ opleft .webdesk_dropdown-toggle-split::before {
     color: rgba(255, 255, 255, .25)
 }
 
-.webdesk_navbar-dark .webdesk_navbar-nav .active>.webdesk_nav-link,
+.webdesk_navbar-dark .webdesk_navbar-nav .webdesk_active>.webdesk_nav-link,
 .webdesk_navbar-dark .webdesk_navbar-nav .webdesk_nav-link:active,
 .webdesk_navbar-dark .webdesk_navbar-nav .webdesk_nav-linkow,
 .webdesk_navbar-dark .webdesk_navbar-nav ow>.webdesk_nav-link {
@@ -5579,29 +5579,29 @@ dalow .webdesk_modal-dialog {
 
 .webdesk_carousel-fade .carousel-item-next.carousel-item-left,
 .webdesk_carousel-fade .carousel-item-prev.carousel-item-right,
-.webdesk_carousel-fade .carousel-item.active {
+.webdesk_carousel-fade .carousel-item.webdesk_active {
     opacity: 1
 }
 
-.webdesk_carousel-fade .active.carousel-item-left,
-.webdesk_carousel-fade .active.carousel-item-right {
+.webdesk_carousel-fade .webdesk_active.carousel-item-left,
+.webdesk_carousel-fade .webdesk_active.carousel-item-right {
     opacity: 0
 }
 
-.webdesk_carousel-fade .active.carousel-item-left,
-.webdesk_carousel-fade .active.carousel-item-prev,
+.webdesk_carousel-fade .webdesk_active.carousel-item-left,
+.webdesk_carousel-fade .webdesk_active.carousel-item-prev,
 .webdesk_carousel-fade .carousel-item-next,
 .webdesk_carousel-fade .carousel-item-prev,
-.webdesk_carousel-fade .carousel-item.active {
+.webdesk_carousel-fade .carousel-item.webdesk_active {
     transform: translateX(0)
 }
 
 @supports (transform-style:preserve-3d) {
-    .webdesk_carousel-fade .active.carousel-item-left,
-    .webdesk_carousel-fade .active.carousel-item-prev,
+    .webdesk_carousel-fade .webdesk_active.carousel-item-left,
+    .webdesk_carousel-fade .webdesk_active.carousel-item-prev,
     .webdesk_carousel-fade .carousel-item-next,
     .webdesk_carousel-fade .carousel-item-prev,
-    .webdesk_carousel-fade .carousel-item.active {
+    .webdesk_carousel-fade .carousel-item.webdesk_active {
         transform: translate3d(0, 0, 0)
     }
 }
@@ -5699,7 +5699,7 @@ dalow .webdesk_modal-dialog {
     bottom: -10px
 }
 
-.webdesk_carousel-indicators .active {
+.webdesk_carousel-indicators .webdesk_active {
     background-color: #fff
 }
 

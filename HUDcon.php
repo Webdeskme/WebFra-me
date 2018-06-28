@@ -64,14 +64,37 @@ if(isset($_GET["app"]) and isset($_GET["sec"])){
 }
 else{
   ?>
-  <div class="webdesk_p-2">
-    <h1>Welcome</h1>
-    <hr>
-    <p>To start an application just go to the app tab and click on the tab of your choice. You will see the application name on this tab. Click it to view.</p>
-    <p><b>Version: </b>2.0a</p>
-    <a href="#">License</a><br>
-    <a href="#">Terms of Use</a><br>
-    <a href="#">Pricay Policy</a>
+  <div class="webdesk_container webdesk_p-2">
+    <h1 class="webdesk_display-2 webdesk_py-4">Welcome to Webdesk</h1>
+    <h3>Version 2.0a</h3>
+    <p class="webdesk_lead webdesk_pt-3">
+      This version is still under development. Please mind the mess.
+    </p>
+    <p class="webdesk_lead">
+      To start an application just go to the Apps tab and click on the tab of your choice. You will see the application name on this tab. Click it to view.
+    </p>
+    <div class="webdesk_row webdesk_text-center webdesk_pt-5">
+      <div class="webdesk_col">
+        <a href="#">
+          <i class="fa fa-certificate fa-5x"></i><br /><br />
+          License
+        </a>
+      </div>
+      <div class="webdesk_col webdesk_text-center">
+        <a href="#">
+          <i class="fa fa-handshake fa-5x"></i><br /><br />
+          Terms of Use
+        </a>
+      </div>
+      <div class="webdesk_col webdesk_text-center">
+        <a href="#">
+          <i class="fa fa-lock fa-5x"></i><br /><br />
+          Privacy Policy
+        </a>
+      </div>
+    </div>
+
+    
   </div>
   <?php
 }
