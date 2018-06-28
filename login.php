@@ -16,6 +16,15 @@ else{
 }
 $data = f_dec($user) . ': ' . $_SERVER['REMOTE_ADDR'] . '[' . date("l jS \of F Y h:i:s A") . ']-login.php<br>';
 $d = date("F");
+$bp = "no";
+if(file_exists($wd_root . '/User/' . $user .'/Admin/fLogin.json')){
+  $json = json_decode(file_get_contents($wd_root . '/User/' . $user .'/Admin/fLogin.json'), true);
+  $day = date("d");
+  if($df[$day] >= 5){
+    $bp = "yes";
+  }
+}
+if($bp === "no"){
 if (password_verify($pass, $var) && file_exists($wd_root . '/User/' . $user . '/Admin/tier.txt')){
   session_regenerate_id();
     $_SESSION["Login"] = 'YES';
@@ -65,7 +74,27 @@ else{
     file_put_contents($wd_root . '/Admin/LoginLog.txt', "");
     file_put_contents($wd_root . '/Admin/LoginFLog.txt', $data);
 }
+    if(file_exists($wd_root . '/User/' . $user .'/')){
+      if(file_exists($wd_root . '/User/' . $user .'/Admin/fLogin.json')){
+        if(isset($json[$day])){
+          $df[$day] = $json[$day] + 1;
+        }
+        else{
+          $df[$day] = 1;
+        }
+      }
+      else{
+        $df[$day] = 1;
+      }
+      $df = json_encode($df);
+      file_put_contents($wd_root . '/User/' . $user .'/Admin/fLogin.json', $df);
+    }
     session_destroy();
-    header('Location: index.php');
+    header('Location: index.php?wd_ad=Login Failed');
+}
+}
+else{
+  session_destroy();
+  header('Location: index.php?wd_ad=Login Failed do to many atempts today.');
 }
 ?>
