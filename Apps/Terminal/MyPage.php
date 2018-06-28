@@ -57,7 +57,7 @@ $dir = $dir . $file;
           <br />
           <div class="webdesk_btn-group">
             <button type="submit" class="webdesk_btn webdesk_btn-success"><i class="fa fa-save fa-fw"></i> Save changes</button>
-            <button type="button" class="webdesk_btn webdesk_btn-secondary"><i class="fa fa-ban fa-fw"></i> Revert changes</button>
+            <a href="<?php wd_url($wd_type, $wd_app, 'MyPage.php', '&dir=' . $_GET["dir"] . '&file=' . $file); ?>" class="webdesk_btn webdesk_btn-secondary webdesk_text-white"><i class="fa fa-ban fa-fw"></i> Revert changes</a>
             <?php wd_confirm($wd_type, $wd_app, 'MyPageSubDelete.php', '&dir=' . $OldDir . '&file=' . $file, '1', '<i class="fa fa-trash fa-fw"></i> Delete file'); ?>
           </div>
         </form>
