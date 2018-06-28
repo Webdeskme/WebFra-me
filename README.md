@@ -11,15 +11,15 @@ Our mission is to create software that protects users privacy and data while all
 WebDesk-me/Webdesk-me is licensed under the GNU General Public License v3.0
 [Webdesk-me/LICENSE](https://github.com/WebDesk-me/Webdesk-me/blob/master/LICENSE)
 
-## Prerequisets:
+## Prerequisites:
 * WebDesk requires a web server running PHP. (If you need help try one of these: )
 * SQL is not required for the base program, but some applications might require it.
-* Make shure PHP is set up to read and write for the web root and for the directory ware you will be saving your data.
+* Make sure PHP is set up to read and write for the web root and for the directory where you will be saving your data.
 
 ## Installation:
 * Download this project into your web root. 
 * Point your browser to localhost or to the IP or URL for this project.
-* Then fallow the onscreen instalation instruction.
+* Then follow the onscreen installation instructions.
 
 ## Simple Installation on a Debian system without an existing web server.
 In your terminal type:
