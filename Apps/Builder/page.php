@@ -157,6 +157,9 @@ extraKeys: {"Ctrl-Space": "autocomplete",
 <br>
 <div>
   <?php
+  if(file_exists('www/Themes/' . $theme . '/page_edit.php')){
+    include 'www/Themes/' . $theme . '/page_edit.php';
+  }
   if(file_exists("index.php?page=" . $page)){
   ?>
 <iframe src="index.php?page=<?php echo $page; ?>" width="90%;" height="600px;"></iframe>
