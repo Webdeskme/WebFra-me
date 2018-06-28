@@ -1,11 +1,11 @@
 # Welcome to WebDesk.me
-### A web application environment for housing, exploring, and creating web aplications.
+### A web application environment for housing, exploring, and creating web applications.
 
 ## Our Vision:
-Our vision is to allow everyone to control, create, and use their data easily and safely
+Our vision is to allow everyone to control, create, and use their data easily and safely.
 
 ## Our Mission:
-Our mission is to create software that protects users privacy and data while allowing them to use and create applications that can be used anywhere from the device of their choosing.
+Our mission is to create software that protects users' privacy and data while allowing them to use and create applications that can be used anywhere from the device of their choosing.
 
 ## License:
 WebDesk-me/Webdesk-me is licensed under the GNU General Public License v3.0
@@ -30,10 +30,10 @@ In your terminal type:
 To learn more please visit WebDesk's [wiki](https://github.com/WebDesk-me/Webdesk-me/wiki).
 
 ## Contributing:
-Please read  [Webdesk-me/CONTRIBUTING.md]( https://github.com/WebDesk-me/Webdesk-me/blob/master/CONTRIBUTING.md )  to learn our guidlines for contributing.
+Please read [Webdesk-me/CONTRIBUTING.md]( https://github.com/WebDesk-me/Webdesk-me/blob/master/CONTRIBUTING.md ) to learn our guidelines for contributing.
 
 ## Community Covenant
-Please read  [Webdesk-me/community-covenant.md]( https://github.com/WebDesk-me/Webdesk-me/blob/master/code_of_conduct.md ).
+Please read [Webdesk-me/community-covenant.md]( https://github.com/WebDesk-me/Webdesk-me/blob/master/code_of_conduct.md ).
 
 ## Known Bugs:
-There are no known bugs at this time warenting attention here. For a list off all issues past and present please visit our [issues](https://github.com/WebDesk-me/Webdesk-me/issues) page.
+There are no known bugs at this time warranting attention here. For a list off all issues past and present, please visit our [issues](https://github.com/WebDesk-me/Webdesk-me/issues) page.
