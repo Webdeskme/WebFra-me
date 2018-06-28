@@ -350,9 +350,9 @@ if(file_exists("path.php")){
     $zip->close();
   }
 
-  function wd_confirm($wd_type, $app, $sec, $get, $id, $text){
+  function wd_confirm($wd_type, $app, $sec, $get, $id, $btn_text, $btn_style = "danger"){
   $link = "desktopSub.php?type=" . $wd_type . "&app=" . $app . "&sec=" . $sec . $get;
-  echo '<button type="button" class="webdesk_btn webdesk_btn-danger" data-toggle="webdesk_modal" data-target="#' . $wd_type . '-' . $app . '-' . $id . '">' . $text . '</button>
+  echo '<button type="button" class="webdesk_btn webdesk_btn-' . $btn_style . '" data-toggle="webdesk_modal" data-target="#' . $wd_type . '-' . $app . '-' . $id . '">' . $btn_text . '</button>
 
     <!-- Modal -->
     <div class="webdesk_modal fade" id="' . $wd_type . '-' . $app . '-' . $id . '" role="dialog">
@@ -367,7 +367,7 @@ if(file_exists("path.php")){
             <!--<button type="button" class="webdesk_btn webdesk_btn-default" data-dismiss="modal">Cancel</button> -->
           </div>
           <div class="webdesk_modal-footer">
-            <a href="' . $link . '" class="webdesk_btn webdesk_btn-danger text-white">' . $text . '</a>
+            <a href="' . $link . '" class="webdesk_btn webdesk_btn-danger">' . $btn_text . '</a>
             <button type="button" class="webdesk_btn webdesk_btn-light" data-dismiss="webdesk_modal">Cancel</button>
           </div>
         </div>
@@ -424,7 +424,8 @@ if(file_exists("path.php")){
   if(isset($_SESSION['wd_adminView'])){
     $wd_file = $_SESSION['wd_adminView'];
   }
-    function wd_nav($page, $color, $name, $login, $loc, $auto, $register){
+  function wd_nav($page, $color, $name, $login, $loc, $auto, $register){
+    $nav_id = "navbar-" . rand(0,10000000);
       if(file_exists("www/Pages/nav.json")){
         if($auto == 'simple'){
           $proot = "index.php?page=";
@@ -435,31 +436,22 @@ if(file_exists("path.php")){
         $obj = file_get_contents("www/Pages/nav.json");
         $obj = json_decode($obj);
       ?>
-  <nav class="navbar navbar-<?php if($color == "light"){
-        echo "default";
-      }
-       else{
-         echo "inverse";
-       }
-       if($loc == 'fixed'){ echo ' navbar-fixed-top';} ?>" style="margin: 0px;">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span style="color: #000000;">Menu</span>
+  <nav class="webdesk_navbar webdesk_m-0 webdesk_navbar-<?php echo ($color == "light") ? "default" : "inverse"; echo ($loc == 'fixed') ? ' webdesk_navbar-fixed-top': "" ?>">
+    <div class="webdesk_container-fluid">
+      <div class="webdesk_navbar-header">
+        <button type="button" class="webdesk_navbar-toggle" data-toggle="webdesk_collapse" data-target="#myNavbar">
+          <i class="fa fa-bars fa-fw"></i>
         </button>
         <?php
       if($name != ""){
       ?>
-        <a class="navbar-brand" style="color: #000000;" href="index.php?page=index.php"><?php echo $name; ?></a>
+        <a class="webdesk_navbar-brand webdesk_text-dark" href="//<?php echo $_SERVER["HTTP_HOST"] ?>/index.php?page=index.php"><?php echo $name; ?></a>
         <?php
       }
       ?>
       </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav">
+      <div class="webdesk_collapse webdesk_navbar-collapse" id="<?php echo $nav_id ?>">
+        <ul class="webdesk_nav webdesk_navbar-nav">
           <?php
         $i = 1;
           while($i <= 9){
@@ -473,24 +465,24 @@ if(file_exists("path.php")){
           }
       ?>
           <li<?php if(isset($obj->$page->par)){if($x == 2 && $page == $opage->page || $obj->$page->par == $opage->page){
-      echo ' class="dropdown active"';
+      echo ' class="webdesk_dropdown webdesk_active"';
       }else{
             if($x == 2){
-        echo  ' class="dropdown"';
+        echo  ' class="webdesk_dropdown"';
       }
-            if($page == $opage->page){echo ' class="active"';}}}
+            if($page == $opage->page){echo ' class="webdesk_active"';}}}
             else{
             if($x == 2){
-        echo  ' class="dropdown"';
+        echo  ' class="webdesk_dropdown"';
       }
-            if($page == $opage->page){echo ' class="active"';}} ?>><a<?php if($x == 2){ echo ' class="dropdown-toggle" data-toggle="dropdown"';} ?> href="<?php if($x == 2){
+            if($page == $opage->page){echo ' class="active"';}} ?>><a<?php if($x == 2){ echo ' class="webdesk_dropdown-toggle" data-toggle="webdesk_dropdown"';} ?> href="<?php if($x == 2){
         echo '#';
       }
-            else{ echo 'index.php?page=' . $opage->page;} ?>"><?php echo $opage->title; if($x == 2){ echo '<span class="caret"></span>';} ?></a>
+            else{ echo 'index.php?page=' . $opage->page;} ?>"><?php echo $opage->title; if($x == 2){ echo '<span class="webdesk_caret"></span>';} ?></a>
   <?php
             if($x == 2){
              ?>
-          <ul class="dropdown-menu">
+          <ul class="webdesk_dropdown-menu">
             <li><a href="<?php echo 'index.php?page=' . $opage->page; ?>"><?php echo $opage->title; ?></a></li>
             <?php
               $z = 1;
@@ -517,16 +509,16 @@ if(file_exists("path.php")){
           }
       ?>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="webdesk_nav webdesk_navbar-nav webdesk_navbar-right">
           <?php
       if($register != ""){
       ?>
-          <li<?php if($register == $page){ echo ' class="active"';} ?>><a href="<?php echo $proot . $register; ?>"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li class="<?php echo ($register == $page) ? 'webdesk_active' : ''; ?>"><a href="<?php echo $proot . $register; ?>"><i class="fa fa-user"></i> Sign Up</a></li>
           <?php
       }
       if($login == "yes"){
       ?>
-          <li><a href="index.php?page=login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li><a href="index.php?page=login.php"><i class="fa fa-sign-in-alt"></i> Login</a></li>
           <?php
     }
       ?>

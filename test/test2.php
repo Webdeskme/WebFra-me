@@ -1,1 +1,3 @@
-Your empty file.
+<?php
+echo "hello world";
+?>

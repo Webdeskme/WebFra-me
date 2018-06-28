@@ -618,36 +618,44 @@ $("#wd_mChat").click(function(){
   </script>
 <script>
 $(function() {
-  $("[data-target='modal'],.webdesk_modal").modal({
+  $("[data-target='webdesk_modal'],.webdesk_modal").modal({
     backdrop: false,
     show: false
   });
   $( "#tabs" ).tabs({
-
-  collapsible: true
-  //active: false
+    collapsible: true
+    //active: false
   });
   $( ".webdesk_tab" ).resizable();
 
-
-  <?php if(!isset($_SESSION["wd_fullscreen"]) || $_SESSION["wd_fullscreen"] != 'on'){  ?>
-  $( ".webdesk_tab" ).draggable();
-  <?php } ?>
+  <?php if(!isset($_SESSION["wd_fullscreen"]) || $_SESSION["wd_fullscreen"] != 'on'){  
+    ?>
+    $( ".webdesk_tab" ).draggable();
+    <?php 
+    
+  } 
+  ?>
   //$('.webdesk_dropdown-toggle').dropdown();
+  
+  $("form").submit(function(){
+    
+    $(":input[type='submit']",this).html('<i class="fas fa-spinner fa-pulse"></i> Loading').prop("disabled",true);
+    
+  });
 });
 </script>
 <!--<script src="Plugins/context.js"></script>-->
 <?php
 if(isset($_GET["app"])){
-        if(file_exists($type . "/" . $app . "/script.js")){
-          ?>
-            <script src="<?php echo $type . "/" . $app . "/script.js"; ?>"></script>
-                                                                                          <?php
-		}
-        if(isset($sec) && file_exists($type . "/" . $app . "/script_" . $sec)){
-            ?>
-            <script src="<?php echo $type . "/" . $app . "/script_" . $sec; ?>"></script>
-  <?php
-		}
-    }
+  if(file_exists($type . "/" . $app . "/script.js")){
+    ?>
+    <script src="<?php echo $type . "/" . $app . "/script.js"; ?>"></script>
+    <?php
+	}
+  if(isset($sec) && file_exists($type . "/" . $app . "/script_" . $sec)){
+    ?>
+    <script src="<?php echo $type . "/" . $app . "/script_" . $sec; ?>"></script>
+    <?php
+	}
+}
 ?>

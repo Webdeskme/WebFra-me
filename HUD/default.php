@@ -114,7 +114,7 @@
     $aplname = explode(".", $entry);
     $aplxml=json_decode(file_get_contents("Applets/" . $entry));
     ?>
-    <i class="<?php echo $aplxml->icon ; ?>" style="text-align: right;" data-toggle="modal" data-target="#<?php echo $aplname[0]; ?>" title="<?php echo $aplxml->tooltip; ?>"></i> &emsp;
+    <i class="<?php echo $aplxml->icon ; ?>" style="text-align: right;" data-toggle="webdesk_modal" data-target="#<?php echo $aplname[0]; ?>" title="<?php echo $aplxml->tooltip; ?>"></i> &emsp;
     <?php
     }}}
     if ($handle = opendir("MyApplets/")) {
@@ -123,11 +123,11 @@
     $aplname = explode(".", $entry);
     $aplxml=json_decode(file_get_contents("MyApplets/" . $entry));
     ?>
-    <i class="<?php echo $aplxml->icon ; ?>" style="text-align: right;" data-toggle="modal" data-target="#M<?php echo $aplname[0]; ?>" title="<?php echo $aplxml->tooltip; ?>"></i> &emsp;
+    <i class="<?php echo $aplxml->icon ; ?>" style="text-align: right;" data-toggle="webdesk_modal" data-target="#M<?php echo $aplname[0]; ?>" title="<?php echo $aplxml->tooltip; ?>"></i> &emsp;
     <?php
     }}}
     ?>'><span class="fa fa-ellipsis-h"></span></a>
-       &emsp; <a href="desktop.php" target="_blank" style="text-align: right;" data-toggle="tooltip" title="Add WorkSpace"><i class="fa fa-external-link-alt"></i></a> &emsp;
+       &emsp; <a href="desktop.php" target="_blank" style="text-align: right;" data-toggle="webdesk_tooltip" title="Add WorkSpace"><i class="fa fa-external-link-alt"></i></a> &emsp;
         <span style="text-align: right;" data-toggle="modal" data-target="#wd_cal"><b id="dt"></b></span>,
         <span style="text-align: right;" data-toggle="modal" data-target="#wd_clock"><b id="ct"></b></span>&emsp;
         <span style="text-align: right;" class="fa fa-info-circle" data-toggle="modal" data-target="#wd_info" title="info"></span></span>
@@ -199,22 +199,22 @@
         ?>;">
 
         <div style="background-color: #666699;">
-        <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" data-toggle="tooltip" title="Back" id="wd_back" class="webdesk_btn webdesk_btn-info webdesk_btn-sm"><span class="fa fa-arrow-left webdesk_text-white"></span></a>
-        <a href="<?php echo $_SERVER['REQUEST_URI']; ?>" data-toggle="tooltip" title="Refresh" id="wd_refresh" class="webdesk_btn webdesk_btn-info webdesk_btn-sm"><i class="fa fa-sync webdesk_text-white"></i></a>
+        <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" data-toggle="webdesk_tooltip" title="Back" id="wd_back" class="webdesk_btn webdesk_btn-info webdesk_btn-sm"><span class="fa fa-arrow-left webdesk_text-white"></span></a>
+        <a href="<?php echo $_SERVER['REQUEST_URI']; ?>" data-toggle="webdesk_tooltip" title="Refresh" id="wd_refresh" class="webdesk_btn webdesk_btn-info webdesk_btn-sm"><i class="fa fa-sync webdesk_text-white"></i></a>
         <?php
         if(isset($_SESSION["wd_fullscreen"]) && $_SESSION["wd_fullscreen"] == 'on'){
         	?>
-        	<a href="<?php if (empty($_GET)) { echo $_SERVER['REQUEST_URI'] . '?wd_fullS=off';} else{ echo $_SERVER['REQUEST_URI'] . '&wd_fullS=off';} ?>" class="webdesk_btn webdesk_btn-info webdesk_btn-sm" data-toggle="tooltip" title="Minimize"><i class="fa fa-window-minimize webdesk_text-white"></i></a>
+        	<a href="<?php if (empty($_GET)) { echo $_SERVER['REQUEST_URI'] . '?wd_fullS=off';} else{ echo $_SERVER['REQUEST_URI'] . '&wd_fullS=off';} ?>" class="webdesk_btn webdesk_btn-info webdesk_btn-sm" data-toggle="webdesk_tooltip" title="Minimize"><i class="fa fa-window-minimize webdesk_text-white"></i></a>
         	<?php
         }
         else{
             ?>
-            <a href="<?php echo preg_replace("/wd_fullS\=(on|off)/i", "", $_SERVER["REQUEST_URI"]) . ((empty($_GET)) ? "?" : "&") . "wd_fullS=on"; ?>" class="webdesk_btn webdesk_btn-info webdesk_btn-sm" data-toggle="tooltip" title="Maximize"><span class="fa fa-expand  webdesk_text-white"></span></a>
+            <a href="<?php echo preg_replace("/wd_fullS\=(on|off)/i", "", $_SERVER["REQUEST_URI"]) . ((empty($_GET)) ? "?" : "&") . "wd_fullS=on"; ?>" class="webdesk_btn webdesk_btn-info webdesk_btn-sm" data-toggle="webdesk_tooltip" title="Maximize"><span class="fa fa-expand  webdesk_text-white"></span></a>
             <?php
         }
         ?>
-        <a href="<?php $get = explode('?', $_SERVER['REQUEST_URI']); if(isset($get[1])){ echo 'desktop_full.php?' . $get[1];} else{ echo 'desktop_full.php'; } ?>" class="webdesk_btn webdesk_btn-info  webdesk_btn-sm" data-toggle="tooltip" title="Fullscreen"><span class="fa fa-arrows-alt webdesk_text-white"></span></a>
-        <a href="desktop.php" class="webdesk_btn webdesk_btn-info  webdesk_btn-sm" data-toggle="tooltip" title="Home"><span class="fa fa-home webdesk_text-white"></span></a>
+        <a href="<?php $get = explode('?', $_SERVER['REQUEST_URI']); if(isset($get[1])){ echo 'desktop_full.php?' . $get[1];} else{ echo 'desktop_full.php'; } ?>" class="webdesk_btn webdesk_btn-info  webdesk_btn-sm" data-toggle="webdesk_tooltip" title="Fullscreen"><span class="fa fa-arrows-alt webdesk_text-white"></span></a>
+        <a href="desktop.php" class="webdesk_btn webdesk_btn-info  webdesk_btn-sm" data-toggle="webdesk_tooltip" title="Home"><span class="fa fa-home webdesk_text-white"></span></a>
         <button class="webdesk_btn webdesk_btn-info webdesk_btn-sm" data-toggle="modal" data-target="#wd_app_help" title="Help Doc"><span class="fa fa-graduation-cap webdesk_text-white"></span></button>
         <?php
         if(isset($_GET["app"])){?> <span id="-wd_t1Title"><a href="<?php wd_url($type, $app, 'start.php', ''); ?>"><b><?php echo $app; ?></b></a></span> <?php }

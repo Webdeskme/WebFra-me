@@ -4356,6 +4356,10 @@ opleft .webdesk_dropdown-toggle-split::before {
     color: #6c757d;
     content: "/"
 }
+.webdesk_breadcrumb-item+.webdesk_breadcrumb-item.webdesk_text-white::before {
+    color: #FFF;
+    content: "/"
+}
 
 .webdesk_breadcrumb-item+.webdesk_breadcrumb-item:hover::before {
     text-decoration: none
