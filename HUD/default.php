@@ -128,9 +128,9 @@
     }}}
     ?>'><span class="fa fa-ellipsis-h"></span></a>
        &emsp; <a href="desktop.php" target="_blank" style="text-align: right;" data-toggle="webdesk_tooltip" title="Add WorkSpace"><i class="fa fa-external-link-alt"></i></a> &emsp;
-        <span style="text-align: right;" data-toggle="modal" data-target="#wd_cal"><b id="dt"></b></span>,
-        <span style="text-align: right;" data-toggle="modal" data-target="#wd_clock"><b id="ct"></b></span>&emsp;
-        <span style="text-align: right;" class="fa fa-info-circle" data-toggle="modal" data-target="#wd_info" title="info"></span></span>
+        <span style="text-align: right;" data-toggle="webdesk_modal" data-target="#wd_cal"><b id="dt"></b></span>,
+        <span style="text-align: right;" data-toggle="webdesk_modal" data-target="#wd_clock"><b id="ct"></b></span>&emsp;
+        <span style="text-align: right;" class="fa fa-info-circle" data-toggle="webdesk_modal" data-target="#wd_info" title="info"></span></span>
     </ul>
         <div style="height: 95%; padding: 0px; margin: 0px; background-color: <?php echo $color; ?>; background-image: url(<?php echo $back; ?>); background-repeat: no-repeat; background-position: center; background-size: cover; -moz-background-size: cover; -webkit-background-size: cover; -o-background-size: cover;">
     <div id="tabs-6" class="webdesk_tab" style="background-color: <?php
@@ -215,7 +215,7 @@
         ?>
         <a href="<?php $get = explode('?', $_SERVER['REQUEST_URI']); if(isset($get[1])){ echo 'desktop_full.php?' . $get[1];} else{ echo 'desktop_full.php'; } ?>" class="webdesk_btn webdesk_btn-info  webdesk_btn-sm" data-toggle="webdesk_tooltip" title="Fullscreen"><span class="fa fa-arrows-alt webdesk_text-white"></span></a>
         <a href="desktop.php" class="webdesk_btn webdesk_btn-info  webdesk_btn-sm" data-toggle="webdesk_tooltip" title="Home"><span class="fa fa-home webdesk_text-white"></span></a>
-        <button class="webdesk_btn webdesk_btn-info webdesk_btn-sm" data-toggle="modal" data-target="#wd_app_help" title="Help Doc"><span class="fa fa-graduation-cap webdesk_text-white"></span></button>
+        <button class="webdesk_btn webdesk_btn-info webdesk_btn-sm" data-toggle="webdesk_modal" data-target="#wd_app_help" title="Help Doc"><span class="fa fa-graduation-cap webdesk_text-white"></span></button>
         <?php
         if(isset($_GET["app"])){?> <span id="-wd_t1Title"><a href="<?php wd_url($type, $app, 'start.php', ''); ?>"><b><?php echo $app; ?></b></a></span> <?php }
         ?>

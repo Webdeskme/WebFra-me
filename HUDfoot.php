@@ -3,7 +3,7 @@
     <div class="webdesk_modal-dialog webdesk_modal-lg">
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" class="close" data-dismiss="webdesk_modal">&times;</button>
           <h4 class="webdesk_modal-title">Time</h4>
         </div>
         <div class="webdesk_modal-body">
@@ -98,7 +98,7 @@ function drawHand(ctx, pos, length, width) {
 
         </div>
         <div class="webdesk_modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="webdesk_btn webdesk_btn-primary" data-dismiss="webdesk_modal">Close</button>
         </div>
       </div>
     </div>
@@ -110,7 +110,7 @@ function drawHand(ctx, pos, length, width) {
     <div class="webdesk_modal-dialog webdesk_modal-lg">
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <button type="button" class="close" data-dismiss="webdesk_modal">&times;</button>
           <h4 class="webdesk_modal-title">Date: <?php echo date("F j, Y"); ?></h4>
         </div>
         <div class="webdesk_modal-body">
@@ -142,7 +142,7 @@ if(isset($_GET['title'])){
 
         </div>
         <div class="webdesk_modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="webdesk_btn webdesk_btn-primary" data-dismiss="webdesk_modal">Close</button>
         </div>
       </div>
     </div>
@@ -155,8 +155,9 @@ if(isset($_GET['title'])){
 
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
           <h4 class="webdesk_modal-title"><?php if(isset($wd_app)){ echo $wd_app; }; ?> Help</h4>
+          <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
         </div>
         <div class="webdesk_modal-body">
           <?php
@@ -180,7 +181,7 @@ else{
           ?>
         </div>
         <div class="webdesk_modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="webdesk_btn webdesk_btn-primary" data-dismiss="webdesk_modal">Close</button>
         </div>
       </div>
 
@@ -366,14 +367,15 @@ $aplxml=json_decode(file_get_contents("Applets/" . $entry));
     <div class="webdesk_modal-dialog webdesk_modal-lg">
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
           <h4 class="webdesk_modal-title"><?php echo $aplname[0]; ?></h4>
+          <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
         </div>
         <div class="webdesk_modal-body">
 <?php echo htmlspecialchars_decode($aplxml->code, ENT_QUOTES); ?>
 </div>
         <div class="webdesk_modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="webdesk_btn webdesk_btn-primary" data-dismiss="webdesk_modal">Close</button>
         </div>
       </div>
     </div>
@@ -390,14 +392,15 @@ $aplxml=json_decode(file_get_contents("MyApplets/" . $entry));
     <div class="webdesk_modal-dialog webdesk_modal-lg">
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          
           <h4 class="webdesk_modal-title"><?php echo $aplname[0]; ?></h4>
+          <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
         </div>
         <div class="webdesk_modal-body">
 <?php echo htmlspecialchars_decode($aplxml->code, ENT_QUOTES); ?>
 </div>
         <div class="webdesk_modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="webdesk_btn webdesk_btnbtn-primary" data-dismiss="webdesk_modal">Close</button>
         </div>
       </div>
     </div>
@@ -497,8 +500,9 @@ $(document).ready(function(){
     <!-- Modal content-->
     <div class="webdesk_modal-content">
       <div class="webdesk_modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
         <h4 class="webdesk_modal-title">Set as Default</h4>
+        <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
       </div>
       <div class="webdesk_modal-body">
         <form method="post" action="dext.php?type=<?php echo $wd_type; ?>&app=<?php echo $wd_app; ?>">
@@ -516,12 +520,12 @@ $(document).ready(function(){
           <?php
     } ?></i></b>
         <p>You can change you ext default app setting on your settings tab.</p>
-        <input type="submit" value="Save" class="btn btn-success">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+        <input type="submit" value="Save" class="webdesk_btn webdesk_btn-success">
+        <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="modal">Cancel</button>
         </form>
       </div>
       <div class="webdesk_modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
 
@@ -533,7 +537,7 @@ $(document).ready(function(){
   }
     ?>
 
-  <div id="wd_chatting" class="chat webdesk_card"><div class="webdesk_card-body"><div class="container"><h3><button id="wd_hChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-caret-down"></span></button> <button id="wd_fChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-expand"></span></button> <button id="wd_mChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-expand"></span></button> Chat</h3><div class="col-xs-4"><input type="text" id="wd_tChat" class="form-control" placeholder="Type you message here..."></div><button id="wd_bChat" class="webdesk_btn webdesk_btn-success">Send</button><br><div class="scroll"><div id="wd_chat"></div><div id="wd_sto_chat"></div></div></div></div></div>
+  <div id="wd_chatting" class="chat webdesk_card"><div class="webdesk_card-body"><div class="webdesk_container"><h3><button id="wd_hChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-caret-down fa-fw"></span></button> <button id="wd_fChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-expand"></span></button> <button id="wd_mChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-expand"></span></button> Chat</h3><div class="webdesk_col-xs-4"><input type="text" id="wd_tChat" class="webdesk_form-control" placeholder="Type you message here..."></div><button id="wd_bChat" class="webdesk_btn webdesk_btn-success">Send</button><br><div class="scroll"><div id="wd_chat"></div><div id="wd_sto_chat"></div></div></div></div></div>
 
 <script>
   var oldD = "";
