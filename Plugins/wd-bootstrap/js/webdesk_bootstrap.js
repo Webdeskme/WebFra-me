@@ -2740,7 +2740,7 @@
     var _data$offsets$arrow;
 
     // arrow depends on keepTogether in order to work
-    if (!webdesk_isModifierRequired(data.instance.modifiers, 'arrow', 'keepTogether')) {
+    if (!webdesk_isModifierRequired(data.instance.modifiers, 'webdesk_arrow', 'webdesk_keepTogether')) {
       return data;
     }
 
@@ -3292,7 +3292,7 @@
    * @returns {Object} The data object, properly modified
    */
   function webdesk_hide(data) {
-    if (!webdesk_isModifierRequired(data.instance.modifiers, 'hide', 'preventOverflow')) {
+    if (!webdesk_isModifierRequired(data.instance.modifiers, 'webdesk_hide', 'webdesk_preventOverflow')) {
       return data;
     }
 
@@ -3455,7 +3455,7 @@
      * @memberof modifiers
      * @inner
      */
-    preventOverflow: {
+    webdesk_preventOverflow: {
       /** @prop {number} order=300 - Index used to define the order of execution */
       order: 300,
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
@@ -3492,7 +3492,7 @@
      * @memberof modifiers
      * @inner
      */
-    keepTogether: {
+    webdesk_keepTogether: {
       /** @prop {number} order=400 - Index used to define the order of execution */
       order: 400,
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
@@ -3511,7 +3511,7 @@
      * @memberof modifiers
      * @inner
      */
-    arrow: {
+    webdesk_arrow: {
       /** @prop {number} order=500 - Index used to define the order of execution */
       order: 500,
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
@@ -3587,7 +3587,7 @@
      * @memberof modifiers
      * @inner
      */
-    hide: {
+    webdesk_hide: {
       /** @prop {number} order=800 - Index used to define the order of execution */
       order: 800,
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
@@ -4420,7 +4420,7 @@
    * --------------------------------------------------------------------------
    */
 
-  var Modal = function ($$$1) {
+  var webdesk_Modal = function ($$$1) {
     /**
      * ------------------------------------------------------------------------
      * Constants
@@ -4481,10 +4481,10 @@
 
     };
 
-    var Modal =
+    var webdesk_Modal =
     /*#__PURE__*/
     function () {
-      function Modal(element, config) {
+      function webdesk_Modal(element, config) {
         this._config = this._getConfig(config);
         this._element = element;
         this._dialog = $$$1(element).find(Selector.DIALOG)[0];
@@ -4496,7 +4496,7 @@
       } // Getters
 
 
-      var _proto = Modal.prototype;
+      var _proto = webdesk_Modal.prototype;
 
       // Public
       _proto.toggle = function toggle(relatedTarget) {
@@ -4899,14 +4899,14 @@
       }; // Static
 
 
-      Modal._jQueryInterface = function _jQueryInterface(config, relatedTarget) {
+      webdesk_Modal._jQueryInterface = function _jQueryInterface(config, relatedTarget) {
         return this.each(function () {
           var data = $$$1(this).data(DATA_KEY);
 
           var _config = _objectSpread({}, Default, $$$1(this).data(), typeof config === 'object' && config ? config : {});
 
           if (!data) {
-            data = new Modal(this, _config);
+            data = new webdesk_Modal(this, _config);
             $$$1(this).data(DATA_KEY, data);
           }
 
@@ -4922,7 +4922,7 @@
         });
       };
 
-      _createClass(Modal, null, [{
+      _createClass(webdesk_Modal, null, [{
         key: "VERSION",
         get: function get() {
           return VERSION;
@@ -4934,7 +4934,7 @@
         }
       }]);
 
-      return Modal;
+      return webdesk_Modal;
     }();
     /**
      * ------------------------------------------------------------------------
@@ -4972,7 +4972,7 @@
         });
       });
 
-      Modal._jQueryInterface.call($$$1(target), config, this);
+      webdesk_Modal._jQueryInterface.call($$$1(target), config, this);
     });
     /**
      * ------------------------------------------------------------------------
@@ -4980,15 +4980,15 @@
      * ------------------------------------------------------------------------
      */
 
-    $$$1.fn[NAME] = Modal._jQueryInterface;
-    $$$1.fn[NAME].Constructor = Modal;
+    $$$1.fn[NAME] = webdesk_Modal._jQueryInterface;
+    $$$1.fn[NAME].Constructor = webdesk_Modal;
 
     $$$1.fn[NAME].noConflict = function () {
       $$$1.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Modal._jQueryInterface;
+      return webdesk_Modal._jQueryInterface;
     };
 
-    return Modal;
+    return webdesk_Modal;
   }($);
 
   /**
@@ -5232,7 +5232,7 @@
               flip: {
                 behavior: this.config.fallbackPlacement
               },
-              arrow: {
+              webdesk_arrow: {
                 element: Selector.ARROW
               },
               preventOverflow: {
@@ -5665,7 +5665,7 @@
    * --------------------------------------------------------------------------
    */
 
-  var Popover = function ($$$1) {
+  var webdesk_Popover = function ($$$1) {
     /**
      * ------------------------------------------------------------------------
      * Constants
@@ -5683,7 +5683,7 @@
       placement: 'right',
       trigger: 'click',
       content: '',
-      template: '<div class="webdesk_popover" role="tooltip">' + '<div class="arrow"></div>' + '<h3 class="webdesk_popover-header"></h3>' + '<div class="webdesk_popover-body"></div></div>'
+      template: '<div class="webdesk_popover" role="tooltip">' + '<div class="webdesk_arrow"></div>' + '<h3 class="webdesk_popover-header"></h3>' + '<div class="webdesk_popover-body"></div></div>'
     });
 
     var DefaultType = _objectSpread({}, Tooltip.DefaultType, {
@@ -5717,16 +5717,16 @@
 
     };
 
-    var Popover =
+    var webdesk_Popover =
     /*#__PURE__*/
     function (_Tooltip) {
-      _inheritsLoose(Popover, _Tooltip);
+      _inheritsLoose(webdesk_Popover, _Tooltip);
 
-      function Popover() {
+      function webdesk_Popover() {
         return _Tooltip.apply(this, arguments) || this;
       }
 
-      var _proto = Popover.prototype;
+      var _proto = webdesk_Popover.prototype;
 
       // Overrides
       _proto.isWithContent = function isWithContent() {
@@ -5772,7 +5772,7 @@
       }; // Static
 
 
-      Popover._jQueryInterface = function _jQueryInterface(config) {
+      webdesk_Popover._jQueryInterface = function _jQueryInterface(config) {
         return this.each(function () {
           var data = $$$1(this).data(DATA_KEY);
 
@@ -5783,7 +5783,7 @@
           }
 
           if (!data) {
-            data = new Popover(this, _config);
+            data = new webdesk_Popover(this, _config);
             $$$1(this).data(DATA_KEY, data);
           }
 
@@ -5797,7 +5797,7 @@
         });
       };
 
-      _createClass(Popover, null, [{
+      _createClass(webdesk_Popover, null, [{
         key: "VERSION",
         // Getters
         get: function get() {
@@ -5835,7 +5835,7 @@
         }
       }]);
 
-      return Popover;
+      return webdesk_Popover;
     }(Tooltip);
     /**
      * ------------------------------------------------------------------------
@@ -5844,15 +5844,15 @@
      */
 
 
-    $$$1.fn[NAME] = Popover._jQueryInterface;
-    $$$1.fn[NAME].Constructor = Popover;
+    $$$1.fn[NAME] = webdesk_Popover._jQueryInterface;
+    $$$1.fn[NAME].Constructor = webdesk_Popover;
 
     $$$1.fn[NAME].noConflict = function () {
       $$$1.fn[NAME] = JQUERY_NO_CONFLICT;
-      return Popover._jQueryInterface;
+      return webdesk_Popover._jQueryInterface;
     };
 
-    return Popover;
+    return webdesk_Popover;
   }($);
 
   /**

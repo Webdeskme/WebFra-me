@@ -3,13 +3,13 @@
     <div class="webdesk_modal-dialog webdesk_modal-lg">
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
-          <button type="button" class="close" data-dismiss="webdesk_modal">&times;</button>
+          
           <h4 class="webdesk_modal-title">Time</h4>
+          <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
         </div>
         <div class="webdesk_modal-body">
 
-          <canvas id="canvas" width="400" height="400"
-style="background-color:#333">
+          <canvas id="canvas" width="400" height="400"style="background-color:#333">
 </canvas>
 
 <script>
@@ -110,8 +110,9 @@ function drawHand(ctx, pos, length, width) {
     <div class="webdesk_modal-dialog webdesk_modal-lg">
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
-          <button type="button" class="close" data-dismiss="webdesk_modal">&times;</button>
+          
           <h4 class="webdesk_modal-title">Date: <?php echo date("F j, Y"); ?></h4>
+          <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
         </div>
         <div class="webdesk_modal-body">
 			<script>
@@ -150,7 +151,7 @@ if(isset($_GET['title'])){
 <!-- End wd_cal -->
 <!-- wd_app_help-->
   <div class="webdesk_modal" id="wd_app_help" role="dialog">
-    <div class="webdesk_modal-dialog">
+    <div class="webdesk_modal-dialog webdesk_shadow-lg">
 
 
       <div class="webdesk_modal-content">
@@ -190,13 +191,14 @@ else{
 <!-- End wd_app_help -->
 <!-- wd_info -->
 <div id="wd_info" class="webdesk_modal" role="dialog">
-  <div class="webdesk_modal-dialog">
+  <div class="webdesk_modal-dialog webdesk_shadow-lg">
 
     <!-- Modal content-->
     <div class="webdesk_modal-content">
       <div class="webdesk_modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        
         <h4 class="webdesk_modal-title">WebDesk Information</h4>
+        <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
       </div>
       <div class="webdesk_modal-body">
 		  <p><b>Version: </b>2.0</p>
@@ -205,7 +207,7 @@ else{
         <a href="">Pricay Policy</a>
       </div>
       <div class="webdesk_modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="webdesk_btn webdesk_btn-primary" data-dismiss="webdesk_modal">Close</button>
       </div>
     </div>
 
@@ -357,56 +359,61 @@ else{
 </script>
   <!-- End Lock -->
 <?php
+//// CREATE APPLET MODALS
 if ($handle = opendir('Applets/')) {
-                while (false !== ($entry = readdir($handle))) {
-                    if ($entry != "." && $entry != "..") {
-$aplname = explode(".", $entry);
-$aplxml=json_decode(file_get_contents("Applets/" . $entry));
-?>
-  <div class="webdesk_modal" id="<?php echo $aplname[0]; ?>" role="dialog">
-    <div class="webdesk_modal-dialog webdesk_modal-lg">
-      <div class="webdesk_modal-content">
-        <div class="webdesk_modal-header">
+  while (false !== ($entry = readdir($handle))) {
+    if ($entry != "." && $entry != "..") {
+      $aplname = explode(".", $entry);
+      $aplxml=json_decode(file_get_contents("Applets/" . $entry));
+      ?>
+      <div class="webdesk_modal" id="<?php echo $aplname[0]; ?>" role="dialog">
+        <div class="webdesk_modal-dialog webdesk_modal-lg">
+          <div class="webdesk_modal-content">
+            <div class="webdesk_modal-header">
           
-          <h4 class="webdesk_modal-title"><?php echo $aplname[0]; ?></h4>
-          <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
-        </div>
-        <div class="webdesk_modal-body">
-<?php echo htmlspecialchars_decode($aplxml->code, ENT_QUOTES); ?>
-</div>
-        <div class="webdesk_modal-footer">
-          <button type="button" class="webdesk_btn webdesk_btn-primary" data-dismiss="webdesk_modal">Close</button>
+              <h4 class="webdesk_modal-title"><?php echo $aplname[0]; ?></h4>
+              <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
+            </div>
+            <div class="webdesk_modal-body">
+              <?php echo htmlspecialchars_decode($aplxml->code, ENT_QUOTES); ?>
+            </div>
+            <div class="webdesk_modal-footer">
+              <button type="button" class="webdesk_btn webdesk_btn-primary" data-dismiss="webdesk_modal">Close</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-<?php
-}}}
+      <?php
+    }
+  }
+}
 if ($handle = opendir('MyApplets/')) {
-                while (false !== ($entry = readdir($handle))) {
-                    if ($entry != "." && $entry != "..") {
-$aplname = explode(".", $entry);
-$aplxml=json_decode(file_get_contents("MyApplets/" . $entry));
-?>
-  <div class="webdesk_modal" id="M<?php echo $aplname[0]; ?>" role="dialog">
-    <div class="webdesk_modal-dialog webdesk_modal-lg">
-      <div class="webdesk_modal-content">
-        <div class="webdesk_modal-header">
+  while (false !== ($entry = readdir($handle))) {
+    if ($entry != "." && $entry != "..") {
+      $aplname = explode(".", $entry);
+      $aplxml=json_decode(file_get_contents("MyApplets/" . $entry));
+      ?>
+      <div class="webdesk_modal" id="M<?php echo $aplname[0]; ?>" role="dialog">
+        <div class="webdesk_modal-dialog webdesk_modal-lg">
+          <div class="webdesk_modal-content">
+            <div class="webdesk_modal-header">
           
-          <h4 class="webdesk_modal-title"><?php echo $aplname[0]; ?></h4>
-          <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
-        </div>
-        <div class="webdesk_modal-body">
-<?php echo htmlspecialchars_decode($aplxml->code, ENT_QUOTES); ?>
-</div>
-        <div class="webdesk_modal-footer">
-          <button type="button" class="webdesk_btn webdesk_btnbtn-primary" data-dismiss="webdesk_modal">Close</button>
+              <h4 class="webdesk_modal-title"><?php echo $aplname[0]; ?></h4>
+              <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
+            </div>
+            <div class="webdesk_modal-body">
+              <?php echo htmlspecialchars_decode($aplxml->code, ENT_QUOTES); ?>
+            </div>
+            <div class="webdesk_modal-footer">
+              <button type="button" class="webdesk_btn webdesk_btnbtn-primary" data-dismiss="webdesk_modal">Close</button>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-<?php
-}}}
+      <?php
+    }
+  }
+}
 ?>
 <script>
   $(function() {
@@ -457,7 +464,7 @@ for(var i=0;i<a.length;i++) {
     </script>
 <script>
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="webdesk_tooltip"]').tooltip();
     $(".wd_confirm").click(function(){
         if (!confirm("Please Confirm:")){ return false; }
     });

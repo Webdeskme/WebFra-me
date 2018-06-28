@@ -103,30 +103,50 @@
         <i class="fa fa-search"></i>
     </button>
     </form>'><span class="fa fa-search"></span></a>
-    <span style="float: right;"><?php if(file_exists($wd_admin . $_SESSION['tier'] . '.json')){$myObj = file_get_contents($wd_admin . $_SESSION['tier'] . '.json');
-    $myObj = json_decode($myObj); $wd_chat = $myObj->wd_chat;} else{ $wd_chat = "Yes";} if($wd_chat == 'Yes'){ ?><a href="#" id="chat" title="Chat"><span class="fa fa-comment"></span></a> &emsp; <?php } ?><a href="#" data-toggle="webdesk_popitover" title="Applets" data-placement="top" data-html="true" data-content='<a href="#" id=wd_lock><i class="fa fa-coffee" aria-hidden="true"></i></a><script>$("#wd_lock").click(function(){
+    <span style="float: right;"><?php if(file_exists($wd_admin . $_SESSION['tier'] . '.json')){
+        $myObj = file_get_contents($wd_admin . $_SESSION['tier'] . '.json');
+        $myObj = json_decode($myObj); $wd_chat = $myObj->wd_chat;
+    } 
+    else{ 
+        $wd_chat = "Yes";
+    } 
+    if($wd_chat == 'Yes'){ 
+        ?>
+        <a href="#" id="chat" title="Chat">
+            <span class="fa fa-comment"></span></a> &emsp; 
+        <?php 
+    } 
+    ?>
+    <a href="#" data-toggle="webdesk_popitover" title="Applets" data-placement="top" data-html="true" data-content='<a href="#" id=wd_lock><i class="fa fa-coffee" aria-hidden="true"></i></a><script>$("#wd_lock").click(function(){
         $("#clouds").show();
     });</script> &emsp;
     <?php
+    
     if ($handle = opendir("Applets/")) {
-                    while (false !== ($entry = readdir($handle))) {
-                        if ($entry != "." && $entry != "..") {
-    $aplname = explode(".", $entry);
-    $aplxml=json_decode(file_get_contents("Applets/" . $entry));
-    ?>
-    <i class="<?php echo $aplxml->icon ; ?>" style="text-align: right;" data-toggle="webdesk_modal" data-target="#<?php echo $aplname[0]; ?>" title="<?php echo $aplxml->tooltip; ?>"></i> &emsp;
-    <?php
-    }}}
+        while (false !== ($entry = readdir($handle))) {
+            if ($entry != "." && $entry != "..") {
+                $aplname = explode(".", $entry);
+                $aplxml=json_decode(file_get_contents("Applets/" . $entry));
+                ?>
+                <i class="<?php echo $aplxml->icon ; ?>" style="text-align: right;" data-toggle="webdesk_modal" data-target="#<?php echo $aplname[0]; ?>" title="<?php echo $aplxml->tooltip; ?>"></i> &emsp;
+                <?php
+            }
+        }
+    }
     if ($handle = opendir("MyApplets/")) {
         while (false !== ($entry = readdir($handle))) {
             if ($entry != "." && $entry != "..") {
-    $aplname = explode(".", $entry);
-    $aplxml=json_decode(file_get_contents("MyApplets/" . $entry));
-    ?>
-    <i class="<?php echo $aplxml->icon ; ?>" style="text-align: right;" data-toggle="webdesk_modal" data-target="#M<?php echo $aplname[0]; ?>" title="<?php echo $aplxml->tooltip; ?>"></i> &emsp;
-    <?php
-    }}}
-    ?>'><span class="fa fa-ellipsis-h"></span></a>
+                $aplname = explode(".", $entry);
+                $aplxml=json_decode(file_get_contents("MyApplets/" . $entry));
+                ?>
+                <i class="<?php echo $aplxml->icon ; ?>" style="text-align: right;" data-toggle="webdesk_modal" data-target="#M<?php echo $aplname[0]; ?>" title="<?php echo $aplxml->tooltip; ?>"></i> &emsp;
+                <?php
+            }
+        }
+    }
+    ?>' data-toggle="webdesk_tooltip" title="Applets">
+        <span class="fa fa-ellipsis-h"></span>
+    </a>
        &emsp; <a href="desktop.php" target="_blank" style="text-align: right;" data-toggle="webdesk_tooltip" title="Add WorkSpace"><i class="fa fa-external-link-alt"></i></a> &emsp;
         <span style="text-align: right;" data-toggle="webdesk_modal" data-target="#wd_cal"><b id="dt"></b></span>,
         <span style="text-align: right;" data-toggle="webdesk_modal" data-target="#wd_clock"><b id="ct"></b></span>&emsp;

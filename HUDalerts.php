@@ -30,10 +30,10 @@ tinymce.init({
   </div>-->
 <div class="well">
     <form method="post" action="notfySub.php" id="wd_alertForm">
-      <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input class="form-control" id="user" name="user" type="text" list="wd_users" placeholder="To: Username" required>
-        <datalist id="wd_users">
+      <div class="webdesk_input-group">
+        <span class="webdesk_input-group-addon"><i class="fa fa-user"></i></span>
+          <input class="webdesk_form-control" id="user" name="user" type="text" list="wd_users" placeholder="To: Username" required>
+          <datalist id="wd_users">
           <?php
           $wd_users = scandir($wd_root . '/User/');
           foreach($wd_users as $wd_key){
@@ -44,22 +44,20 @@ tinymce.init({
             }
             }
             ?>
-        </datalist>
+          </datalist>
         </div>
-        <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-      <input class="form-control" id="sub" name="sub" type="text" placeholder="Subject: " required>
-          </div>
-      <div class="input-group">
-        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+        <div class="webdesk_input-group">
+          <span class="webdesk_input-group-addon"><i class="fa fa-edit"></i></span>
+          <input class="webdesk_form-control" id="sub" name="sub" type="text" placeholder="Subject: " required>
+        </div>
+        <div class="webdesk_input-group">
+        <span class="webdesk_input-group-addon"><i class="fa fa-envelope"></i></span>
         <textarea type="text" id="wd_dashAlert" name="post" placeholder="Send alert." style="width: 80%;"></textarea>
         </div>
-      <div class="btn-group btn-group-justified">
-        <div class="btn-group">
+      
           <!--<input type="hidden" name="">-->
-        <button type="submit" class="btn btn-success"><b><i class="glyphicon glyphicon-envelope"></i> Post</b></button>
-        </div>
-      </div>
+        <button type="submit" class="webdesk_btn webdesk_btn-success"><b><i class="fa fa-envelope"></i> Post</b></button>
+      
     </form>
   </div>
 <hr>
