@@ -46,10 +46,10 @@ include("testInput.php");
             <input type="text" name="Username" id="Username" placeholder="Username" required>
             <br><hr><br>
             <label for="password">New Password</label><br>
-            <input type="password" name="password" id="password" placeholder="New Password" required>
+            <input type="password" name="password" id="password" placeholder="New Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
             <br><br>
             <label for="confirm">Confirm</label><br>
-            <input type="password" name="confirm" id="confirm" placeholder="Confirm Password" required>
+            <input type="password" name="confirm" id="confirm" placeholder="Confirm Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  required>
             <br><hr><br>
 <?php
 if(!file_exists('path.php')){
