@@ -20,7 +20,7 @@ $bp = "no";
 if(file_exists($wd_root . '/User/' . $user .'/Admin/fLogin.json')){
   $json = json_decode(file_get_contents($wd_root . '/User/' . $user .'/Admin/fLogin.json'), true);
   $day = date("d");
-  if($df[$day] >= 5){
+  if($json[$day] >= 5){
     $bp = "yes";
   }
 }
