@@ -44,7 +44,7 @@
       <!--<link rel="stylesheet" href="Plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
       <link rel="stylesheet" type="text/css" href="Theme/default.php">
 <link rel="stylesheet" type="text/css" href="www/Themes/wd_default/style.css">-->
-<link rel="stylesheet" type="text/css" href="www/Themes/wd_default/pluginCSS.php" async>
+<link rel="stylesheet" type="text/css" href="www/Themes/wd_default/pluginCSS.php">
 <?php
 if(file_exists($wd_www . "header.php")){
 	include $wd_www . "header.php";
