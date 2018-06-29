@@ -95,6 +95,6 @@ else{
 }
 else{
   session_destroy();
-  header('Location: index.php?wd_ad=Login Failed do to many atempts today.');
+  header('Location: index.php?wd_ad=Login failed do to too many attempts.');
 }
 ?>
