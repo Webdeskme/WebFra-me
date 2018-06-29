@@ -29,7 +29,7 @@ tinymce.init({
 <!--      </div>-->
 <!--    </form>-->
 <!--  </div>-->
-<a class="webdesk_btn webdesk_text-white webdesk_btn-secondary" data-toggle="webdesk_collapse" href="#composeMessage" role="button" aria-expanded="false" aria-controls="composeMessage"><i class="fa fa-edit fa-fw"></i> Compose</a>
+<button type="button" class="webdesk_btn webdesk_text-white webdesk_btn-secondary" data-toggle="webdesk_collapse" data-target="#composeMessage" role="button" aria-expanded="false" aria-controls="composeMessage"><i class="fa fa-edit fa-fw"></i> Compose</button>
 <div class="webdesk_collapse webdesk_mt-3" id="composeMessage">
   <div class="well">
     <form method="post" action="notfySub.php" id="wd_alertForm">
