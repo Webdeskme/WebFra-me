@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!-- Copyright 2014 WebDesk.me -->
+<!-- Copyright 2018 WebDesk.me -->
 <html lang="en">
 <head>
     <title><?php echo $wd_Title; ?></title>
@@ -108,7 +108,8 @@ function bacloop() {
            </div>
            <div class="form-group">
             <label for="pass" title="Please add your Password here."><h3>Password: </h3></label>
-            <input type="password" id="pass"  class="form-control" name="pass" required placeholder="Please add your Password here." pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  autofocus><br><br>
+            <!--<input type="password" id="pass"  class="form-control" name="pass" required placeholder="Please add your Password here." pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  autofocus><br><br>-->
+            <input type="password" id="pass"  class="form-control" name="pass" required placeholder="Please add your Password here." autofocus><br><br>
            </div>
            <div class="form-group">
 			<p>By clicking on either the Desktop or Mobile button, you are agreeing to Webdesk.me's <a href="/www/Pages/Terms.html" target="_blank">Terms of Use</a> and <a href="/www/Pages/Privacy.html" target="_blank">Privacy Policy</a>.</p>
