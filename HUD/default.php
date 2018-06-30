@@ -224,7 +224,7 @@
         <?php
         if(isset($_SESSION["wd_fullscreen"]) && $_SESSION["wd_fullscreen"] == 'on'){
         	?>
-        	<a href="<?php if (empty($_GET)) { echo $_SERVER['REQUEST_URI'] . '?wd_fullS=off';} else{ echo $_SERVER['REQUEST_URI'] . '&wd_fullS=off';} ?>" class="webdesk_btn webdesk_btn-info webdesk_btn-sm" data-toggle="webdesk_tooltip" title="Minimize"><i class="fa fa-window-minimize webdesk_text-white"></i></a>
+        	<a href="<?php if (empty($_GET)) { echo $_SERVER['REQUEST_URI'] . '?wd_fullS=off';} else{ echo $_SERVER['REQUEST_URI'] . '&wd_fullS=off';} ?>" class="webdesk_btn webdesk_btn-info webdesk_btn-sm" data-toggle="webdesk_tooltip" title="Minimize"><i class="fa fa-compress webdesk_text-white"></i></a>
         	<?php
         }
         else{
