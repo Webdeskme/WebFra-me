@@ -1,0 +1,11 @@
+{
+	"name":"Terminal",
+	"version": "2.0",
+	"author":{
+		"name":"Webdesk",
+		"email":"apps@webdesk.me"
+	},
+	"require":{
+		"webdesk/webdesk": "2.*"
+	}
+}
