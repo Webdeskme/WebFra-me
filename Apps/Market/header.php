@@ -1,2 +1,16 @@
-<link rel="stylesheet" href="Plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-<script src="Plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<style type="text/css">
+.hide{
+	display: none;
+}
+.webdesk_form-control{
+	
+}
+</style>
+<script>
+function checkImage(imageSrc, good, bad, context) {
+  var img = new Image();
+  img.onload = good(imageSrc, context); 
+  img.onerror = bad(context);
+  img.src = imageSrc;
+}
+</script>

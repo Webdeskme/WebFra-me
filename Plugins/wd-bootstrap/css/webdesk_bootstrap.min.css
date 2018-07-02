@@ -1616,19 +1616,19 @@ pre code {
 .webdesk_table-active,
 .webdesk_table-active>td,
 .webdesk_table-active>th,
-.webdesk_table-hover ble-active:hover,
-.webdesk_table-hover ble-active:hover>td,
-.webdesk_table-hover ble-active:hover>th {
+.webdesk_table-hover .webdesk_table-active:hover,
+.webdesk_table-hover .webdesk_table-active:hover>td,
+.webdesk_table-hover .webdesk_table-active:hover>th {
     background-color: rgba(0, 0, 0, .075)
 }
 
-.webdesk_table ead-dark th {
+.webdesk_table .webdesk_head-dark th {
     color: #fff;
     background-color: #212529;
     border-color: #32383e
 }
 
-.webdesk_table ead-light th {
+.webdesk_table .webdesk_head-light th {
     color: #495057;
     background-color: #e9ecef;
     border-color: #dee2e6
@@ -1645,8 +1645,8 @@ pre code {
     border-color: #32383e
 }
 
-.webdesk_table-darkble-bordered,
-.webdesk_table-responsive>ble-bordered {
+.webdesk_table-dark.webdesk_table-bordered,
+.webdesk_table-responsive>.webdesk_table-bordered {
     border: 0
 }
 
@@ -2568,7 +2568,7 @@ fieldset:disabled an {
     background-color: transparent
 }
 
-ow>.webdesk_btn-outline-secondary.webdesk_dropdown-toggle,
+.webdesk_row>.webdesk_btn-outline-secondary.webdesk_dropdown-toggle,
 .webdesk_btn-outline-secondary:not(:disabled):not(.disabled):active,
 .webdesk_btn-outline-secondary:not(:disabled):not(.disabled):active {
     color: #fff;
@@ -2576,7 +2576,7 @@ ow>.webdesk_btn-outline-secondary.webdesk_dropdown-toggle,
     border-color: #6c757d
 }
 
-ow>.webdesk_btn-outline-success.webdesk_dropdown-toggle:focus,
+.webdesk_row>.webdesk_btn-outline-success.webdesk_dropdown-toggle:focus,
 .webdesk_btn-outline-successcus,
 .webdesk_btn-outline-success:focus,
 .webdesk_btn-outline-success:not(:disabled):not(.disabled):active:focus,
@@ -2603,7 +2603,7 @@ ow>.webdesk_btn-outline-success.webdesk_dropdown-toggle:focus,
     background-color: transparent
 }
 
-ow>.webdesk_btn-outline-success.webdesk_dropdown-toggle,
+.webdesk_row>.webdesk_btn-outline-success.webdesk_dropdown-toggle,
 .webdesk_btn-outline-success:not(:disabled):not(.disabled):active,
 .webdesk_btn-outline-success:not(:disabled):not(.disabled):active {
     color: #fff;
@@ -2611,7 +2611,7 @@ ow>.webdesk_btn-outline-success.webdesk_dropdown-toggle,
     border-color: #28a745
 }
 
-ow>.webdesk_btn-outline-info.webdesk_dropdown-toggle:focus,
+.webdesk_row>.webdesk_btn-outline-info.webdesk_dropdown-toggle:focus,
 .webdesk_btn-outline-infocus,
 .webdesk_btn-outline-info:focus,
 .webdesk_btn-outline-info:not(:disabled):not(.disabled):active:focus,
@@ -2638,7 +2638,7 @@ ow>.webdesk_btn-outline-info.webdesk_dropdown-toggle:focus,
     background-color: transparent
 }
 
-ow>.webdesk_btn-outline-info.webdesk_dropdown-toggle,
+.webdesk_row>.webdesk_btn-outline-info.webdesk_dropdown-toggle,
 .webdesk_btn-outline-info:not(:disabled):not(.disabled):active,
 .webdesk_btn-outline-info:not(:disabled):not(.disabled):active {
     color: #fff;
@@ -2646,7 +2646,7 @@ ow>.webdesk_btn-outline-info.webdesk_dropdown-toggle,
     border-color: #17a2b8
 }
 
-ow>.webdesk_btn-outline-warning.webdesk_dropdown-toggle:focus,
+.webdesk_row>.webdesk_btn-outline-warning.webdesk_dropdown-toggle:focus,
 .webdesk_btn-outline-warningcus,
 .webdesk_btn-outline-warning:focus,
 .webdesk_btn-outline-warning:not(:disabled):not(.disabled):active:focus,
@@ -2673,7 +2673,7 @@ ow>.webdesk_btn-outline-warning.webdesk_dropdown-toggle:focus,
     background-color: transparent
 }
 
-ow>.webdesk_btn-outline-warning.webdesk_dropdown-toggle,
+.webdesk_row>.webdesk_btn-outline-warning.webdesk_dropdown-toggle,
 .webdesk_btn-outline-warning:not(:disabled):not(.disabled):active,
 .webdesk_btn-outline-warning:not(:disabled):not(.disabled):active {
     color: #212529;
@@ -2681,7 +2681,7 @@ ow>.webdesk_btn-outline-warning.webdesk_dropdown-toggle,
     border-color: #ffc107
 }
 
-ow>.webdesk_btn-outline-dangeropdown-toggle:focus,
+.webdesk_row>.webdesk_btn-outline-dangeropdown-toggle:focus,
 .webdesk_btn-outline-dangercus,
 .webdesk_btn-outline-danger:focus,
 .webdesk_btn-outline-danger:not(:disabled):not(.disabled):active:focus,
@@ -2708,7 +2708,7 @@ ow>.webdesk_btn-outline-dangeropdown-toggle:focus,
     background-color: transparent
 }
 
-ow>.webdesk_btn-outline-dangeropdown-toggle,
+.webdesk_row>.webdesk_btn-outline-dangeropdown-toggle,
 .webdesk_btn-outline-danger:not(:disabled):not(.disabled):active,
 .webdesk_btn-outline-danger:not(:disabled):not(.disabled):active {
     color: #fff;
@@ -2716,7 +2716,7 @@ ow>.webdesk_btn-outline-dangeropdown-toggle,
     border-color: #dc3545
 }
 
-ow>.webdesk_btn-outline-light.webdesk_dropdown-toggle:focus,
+.webdesk_row>.webdesk_btn-outline-light.webdesk_dropdown-toggle:focus,
 .webdesk_btn-outline-lightcus,
 .webdesk_btn-outline-light:focus,
 .webdesk_btn-outline-light:not(:disabled):not(.disabled):active:focus,
@@ -2743,7 +2743,7 @@ ow>.webdesk_btn-outline-light.webdesk_dropdown-toggle:focus,
     background-color: transparent
 }
 
-ow>.webdesk_btn-outline-light.webdesk_dropdown-toggle,
+.webdesk_row>.webdesk_btn-outline-light.webdesk_dropdown-toggle,
 .webdesk_btn-outline-light:not(:disabled):not(.disabled):active,
 .webdesk_btn-outline-light:not(:disabled):not(.disabled):active {
     color: #212529;
@@ -2751,7 +2751,7 @@ ow>.webdesk_btn-outline-light.webdesk_dropdown-toggle,
     border-color: #f8f9fa
 }
 
-ow>.webdesk_btn-outline-dark.webdesk_dropdown-toggle:focus,
+.webdesk_row>.webdesk_btn-outline-dark.webdesk_dropdown-toggle:focus,
 .webdesk_btn-outline-darkcus,
 .webdesk_btn-outline-dark:focus,
 .webdesk_btn-outline-dark:not(:disabled):not(.disabled):active:focus,
@@ -2778,7 +2778,7 @@ ow>.webdesk_btn-outline-dark.webdesk_dropdown-toggle:focus,
     background-color: transparent
 }
 
-ow>.webdesk_btn-outline-dark.webdesk_dropdown-toggle,
+.webdesk_row>.webdesk_btn-outline-dark.webdesk_dropdown-toggle,
 .webdesk_btn-outline-dark:not(:disabled):not(.disabled):active,
 .webdesk_btn-outline-dark:not(:disabled):not(.disabled):active {
     color: #fff;
@@ -4070,7 +4070,7 @@ opleft .webdesk_dropdown-toggle-split::before {
 .webdesk_navbar-dark .webdesk_navbar-nav .webdesk_active>.webdesk_nav-link,
 .webdesk_navbar-dark .webdesk_navbar-nav .webdesk_nav-link:active,
 .webdesk_navbar-dark .webdesk_navbar-nav .webdesk_nav-linkow,
-.webdesk_navbar-dark .webdesk_navbar-nav ow>.webdesk_nav-link {
+.webdesk_navbar-dark .webdesk_navbar-nav .webdesk_row>.webdesk_nav-link {
     color: #fff
 }
 
@@ -4854,7 +4854,7 @@ opleft .webdesk_dropdown-toggle-split::before {
     background-color: #fff
 }
 
-.webdesk_list-group-item:active {
+.webdesk_list-group-item.webdesk_active {
     z-index: 2;
     color: #fff;
     background-color: #007bff;
@@ -5535,73 +5535,73 @@ dalow .webdesk_modal-dialog {
     top: 0
 }
 
-.webdesk_carousel-item-next.carousel-item-left,
-.webdesk_carousel-item-prev.carousel-item-right {
+.webdesk_carousel-item-next.webdesk_carousel-item-left,
+.webdesk_carousel-item-prev.webdesk_carousel-item-right {
     transform: translateX(0)
 }
 
 @supports (transform-style:preserve-3d) {
-    .webdesk_carousel-item-next.carousel-item-left,
-    .webdesk_carousel-item-prev.carousel-item-right {
+    .webdesk_carousel-item-next.webdesk_carousel-item-left,
+    .webdesk_carousel-item-prev.webdesk_carousel-item-right {
         transform: translate3d(0, 0, 0)
     }
 }
 
-.webdesk_active.carousel-item-right,
+.webdesk_active.webdesk_carousel-item-right,
 .webdesk_carousel-item-next {
     transform: translateX(100%)
 }
 
 @supports (transform-style:preserve-3d) {
-    .webdesk_active.carousel-item-right,
+    .webdesk_active.webdesk_carousel-item-right,
     .webdesk_carousel-item-next {
         transform: translate3d(100%, 0, 0)
     }
 }
 
-.webdesk_active.carousel-item-left,
+.webdesk_active.webdesk_carousel-item-left,
 .webdesk_carousel-item-prev {
     transform: translateX(-100%)
 }
 
 @supports (transform-style:preserve-3d) {
-    .webdesk_active.carousel-item-left,
+    .webdesk_active.webdesk_carousel-item-left,
     .webdesk_carousel-item-prev {
         transform: translate3d(-100%, 0, 0)
     }
 }
 
-.webdesk_carousel-fade .carousel-item {
+.webdesk_carousel-fade .webdesk_carousel-item {
     opacity: 0;
     transition-duration: .6s;
     transition-property: opacity
 }
 
-.webdesk_carousel-fade .carousel-item-next.carousel-item-left,
-.webdesk_carousel-fade .carousel-item-prev.carousel-item-right,
-.webdesk_carousel-fade .carousel-item.webdesk_active {
+.webdesk_carousel-fade .webdesk_carousel-item-next.webdesk_carousel-item-left,
+.webdesk_carousel-fade .webdesk_carousel-item-prev.webdesk_carousel-item-right,
+.webdesk_carousel-fade .webdesk_carousel-item.webdesk_active {
     opacity: 1
 }
 
-.webdesk_carousel-fade .webdesk_active.carousel-item-left,
-.webdesk_carousel-fade .webdesk_active.carousel-item-right {
+.webdesk_carousel-fade .webdesk_active.webdesk_carousel-item-left,
+.webdesk_carousel-fade .webdesk_active.webdesk_carousel-item-right {
     opacity: 0
 }
 
-.webdesk_carousel-fade .webdesk_active.carousel-item-left,
-.webdesk_carousel-fade .webdesk_active.carousel-item-prev,
-.webdesk_carousel-fade .carousel-item-next,
-.webdesk_carousel-fade .carousel-item-prev,
-.webdesk_carousel-fade .carousel-item.webdesk_active {
+.webdesk_carousel-fade .webdesk_active.webdesk_carousel-item-left,
+.webdesk_carousel-fade .webdesk_active.webdesk_carousel-item-prev,
+.webdesk_carousel-fade .webdesk_carousel-item-next,
+.webdesk_carousel-fade .webdesk_carousel-item-prev,
+.webdesk_carousel-fade .webdesk_carousel-item.webdesk_active {
     transform: translateX(0)
 }
 
 @supports (transform-style:preserve-3d) {
-    .webdesk_carousel-fade .webdesk_active.carousel-item-left,
-    .webdesk_carousel-fade .webdesk_active.carousel-item-prev,
-    .webdesk_carousel-fade .carousel-item-next,
-    .webdesk_carousel-fade .carousel-item-prev,
-    .webdesk_carousel-fade .carousel-item.webdesk_active {
+    .webdesk_carousel-fade .webdesk_active.webdesk_carousel-item-left,
+    .webdesk_carousel-fade .webdesk_active.webdesk_carousel-item-prev,
+    .webdesk_carousel-fade .webdesk_carousel-item-next,
+    .webdesk_carousel-fade .webdesk_carousel-item-prev,
+    .webdesk_carousel-fade .webdesk_carousel-item.webdesk_active {
         transform: translate3d(0, 0, 0)
     }
 }

@@ -1,0 +1,1 @@
+<p>This program was designed to help you maintain a budget for a single project, or for something like a monthly budget.</p>
