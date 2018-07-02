@@ -648,7 +648,7 @@ $(function() {
   ?>
   //$('.webdesk_dropdown-toggle').dropdown();
   
-  $("form").submit(function(){
+  $("form").not(".noloadingicon").submit(function(){
     
     $(":input[type='submit']",this).html('<i class="fas fa-spinner fa-pulse"></i> Loading').prop("disabled",true);
     
