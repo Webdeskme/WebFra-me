@@ -670,3 +670,4 @@ if(isset($_GET["app"])){
 	}
 }
 ?>
+<script>if (window.module) module = window.module;</script>
