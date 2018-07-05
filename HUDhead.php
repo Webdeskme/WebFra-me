@@ -23,6 +23,7 @@
   <link href="Plugins/fullcalendar/fullcalendar.print.min.css" rel="stylesheet" media="print"/>
   <link rel="stylesheet" type="text/css" href="Theme/default.php">
   
+  <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
   <script src="Plugins/jquery.min.js"></script>
   <script src="Plugins/wd-bootstrap/js/webdesk_bootstrap.js"></script>
   <script src="Plugins/jquery-ui/jquery-ui.min.js"></script>
