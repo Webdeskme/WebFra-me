@@ -2562,6 +2562,7 @@
     // Be aware, modifiers could override the properties defined in the previous
     // lines of this modifier!
     webdesk_setStyles(data.instance.popper, data.styles);
+    
 
     // any property present in `data.attributes` will be applied to the popper,
     // they will be set as HTML attributes of the element
@@ -2585,7 +2586,7 @@
    * @param {HTMLElement} popper - The HTML element used as popper
    * @param {Object} options - webdesk_Popper.js options
    */
-  function applyStyleOnLoad(reference, popper, options, modifierOptions, state) {
+  function webdesk_applyStyleOnLoad(reference, popper, options, modifierOptions, state) {
     // compute reference element offsets
     
     var referenceOffsets = webdesk_getReferenceOffsets(state, popper, reference, options.positionFixed);
@@ -2858,10 +2859,10 @@
    * @method placements
    * @memberof webdesk_Popper
    */
-  var placements = ['auto-start', 'auto', 'auto-end', 'top-start', 'top', 'top-end', 'right-start', 'right', 'right-end', 'bottom-end', 'bottom', 'bottom-start', 'left-end', 'left', 'left-start'];
+  var webdesk_placements = ['auto-start', 'auto', 'auto-end', 'top-start', 'top', 'top-end', 'right-start', 'right', 'right-end', 'bottom-end', 'bottom', 'bottom-start', 'left-end', 'left', 'left-start'];
 
   // Get rid of `auto` `auto-start` and `auto-end`
-  var validPlacements = placements.slice(3);
+  var webdesk_validPlacements = webdesk_placements.slice(3);
 
   /**
    * Given an initial placement, returns all the subsequent placements
@@ -3369,7 +3370,7 @@
    * All the other properties are configurations that could be tweaked.
    * @namespace modifiers
    */
-  var modifiers = {
+  var webdesk_modifiers = {
     /**
      * Modifier used to shift the popper on the start or end of its reference
      * element.<br />
@@ -3611,7 +3612,7 @@
      * @memberof modifiers
      * @inner
      */
-    computeStyle: {
+    webdesk_computeStyle: {
       /** @prop {number} order=850 - Index used to define the order of execution */
       order: 850,
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
@@ -3653,7 +3654,7 @@
      * @memberof modifiers
      * @inner
      */
-    applyStyle: {
+    webdesk_applyStyle: {
       /** @prop {number} order=900 - Index used to define the order of execution */
       order: 900,
       /** @prop {Boolean} enabled=true - Whether the modifier is enabled or not */
@@ -3661,7 +3662,7 @@
       /** @prop {ModifierFn} */
       fn: webdesk_applyStyle,
       /** @prop {Function} */
-      onLoad: applyStyleOnLoad,
+      onLoad: webdesk_applyStyleOnLoad,
       /**
        * @deprecated since version 1.10.0, the property moved to `computeStyle` modifier
        * @prop {Boolean} gpuAcceleration=true
@@ -3707,7 +3708,7 @@
    * @static
    * @memberof webdesk_Popper
    */
-  var Defaults = {
+  var webdesk_Defaults = {
     /**
      * webdesk_Popper's placement
      * @prop {webdesk_Popper.placements} placement='bottom'
@@ -3756,7 +3757,7 @@
      * They provide most of the functionalities of webdesk_Popper.js
      * @prop {modifiers}
      */
-    modifiers: modifiers
+    modifiers: webdesk_modifiers
   };
 
   /**
@@ -3928,8 +3929,8 @@
    */
 
   webdesk_Popper.Utils = (typeof window !== 'undefined' ? window : global).webdesk_PopperUtils;
-  webdesk_Popper.placements = placements;
-  webdesk_Popper.Defaults = Defaults;
+  webdesk_Popper.placements = webdesk_placements;
+  webdesk_Popper.Defaults = webdesk_Defaults;
 
   /**
    * --------------------------------------------------------------------------
