@@ -1,21 +1,22 @@
 <?php
 header("Content-type: application/json");
-include_once("config.inc.php");
 include_once("../../testInput.php");
+include_once("config.inc.php");
+
 
 $output = array("result"=>"error");
-if(empty($_GET["f"]) && empty($_POST["f"]))
+if(empty($req["f"]))
 	$output["msg"] = "Missing parameter";
-else if(test_input($_GET["f"]) == "loadProjectFiles"){
+else if($req["f"] == "loadProjectFiles"){
 	
-	if(!isset($_GET["dir"]))
+	if(!isset($req["dir"]))
 		$output["msg"] = "Missing parameter";
 	else{
 		
-		$dt_app_files = $wd_dt->getProjectFiles("../../" . test_input($_GET["dir"]));
+		$dt_app_files = $wd_dt->getProjectFiles("../../" . $req["dir"]);
 		
 		$output["result"] = "success";
-		$output["data"]["directory"] = test_input($_GET["dir"]);
+		$output["data"]["directory"] = $req["dir"];
 		$output["data"]["resultset"] = array(
 			"count" => count($dt_app_files),
 			"files" => $dt_app_files
@@ -24,32 +25,32 @@ else if(test_input($_GET["f"]) == "loadProjectFiles"){
 	}
 	
 }//loadProjectFiles
-else if(test_input($_GET["f"]) == "loadFile"){
+else if($req["f"] == "loadFile"){
 	
-	if(!isset($_GET["file"]))
+	if(!isset($req["file"]))
 		$output["msg"] = "Missing parameter";
-	else if(!@file_exists("../../" . test_input($_GET["file"])))
+	else if(!@file_exists("../../" . $req["file"]))
 		$output["msg"] = "File does not exist";
 	else{
 		
 		$output["result"] = "success";
 		
-		$file = file_get_contents("../../" . test_input($_GET["file"]));
+		$file = file_get_contents("../../" . $req["file"]);
 		$output["data"]["file"] = array(
-			"path" => test_input($_GET["file"]),
+			"path" => $req["file"],
 			"contents" => htmlspecialchars($file)
 		);
 		
 	}
 	
 }//loadFile
-else if(test_input($_POST["f"]) == "saveFile"){
+else if($req["f"] == "saveFile"){
 	
-	if(!isset($_POST["file"]) || !isset($_POST["contents"]))
+	if(!isset($req["file"]) || !isset($req["contents"]))
 		$output["msg"] = "Missing parameter";
 	else{
 		
-		if(!file_put_contents("../../" . test_input($_POST["file"]), htmlspecialchars_decode($_POST["contents"]))){
+		if(!file_put_contents("../../" . $req["file"], htmlspecialchars_decode($_POST["contents"]))){
 			$output["msg"] = "Could not save file";
 		}
 		else{
@@ -59,13 +60,13 @@ else if(test_input($_POST["f"]) == "saveFile"){
 	}
 	
 }//saveFile
-else if(test_input($_POST["f"]) == "moveTabToSession"){
+else if($req["f"] == "moveTabToSession"){
 	
-	if(!isset($_POST["file"]) || !isset($_POST["contents"]))
+	if(!isset($req["file"]) || !isset($req["contents"]))
 		$output["msg"] = "Missing parameter";
 	else{
 		
-		if(!file_put_contents($wd_appFile."/DevTools/".test_input($_POST["file"]),htmlspecialchars_decode(test_input($_POST["contents"]))))
+		if(!file_put_contents($wd_appFile."/DevTools/".$req["file"],htmlspecialchars_decode($_POST["contents"])))
 			$output["msg"] = "Could not save tab";
 		else{
 			$output["result"] = "success";
@@ -74,10 +75,35 @@ else if(test_input($_POST["f"]) == "moveTabToSession"){
 	}
 	
 }//moveTabToSession
+else if($req["f"] == "newFile"){
+	
+	if(!isset($req["file"]))
+		$output["msg"] = "Missing parameter";
+	else{
+		
+		$path = explode("/",$req["file"]);
+		$last_index = count($path) - 1;
+		$contents = "// " . $path[$last_index];
+		$file_ext = explode(".",$req["file"]);
+		$last_index = count($file_ext) - 1;
+		if(isset($file_ext[$last_index]) && preg_match("/php/i", $file_ext[1])){
+			$contents .= "\n".'<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>';
+		}
+		
+		if(!file_put_contents("../../" . $req["file"], $contents)){
+			$output["msg"] = "Could not write file";
+		}
+		else{
+			$output["result"] = "success";
+			$output["data"]["file"] = $req["file"];
+		}
+			
+	}
+	
+}
 else
 	$output["msg"] = "Invalid function";
 	
-$output["dev"]["GET"] = $_GET;
-$output["dev"]["POST"] = $_POST;
+$output["dev"]["req"] = $req;
 echo json_encode($output);
 ?>

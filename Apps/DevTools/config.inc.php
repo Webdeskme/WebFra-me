@@ -81,7 +81,8 @@ class dev_tools{
 						$files[] = array(
 							"name" => $file,
 							"type" => filetype($dir . "/" . $file),
-							"icon" => $icon
+							"icon" => $icon,
+							"path" => str_replace("../","",$dir)
 						);
 						
 					}
@@ -99,4 +100,10 @@ class dev_tools{
 	}//getProjectFiles
 }
 $wd_dt = new dev_tools();
+
+$request = array_merge($_POST,$_GET);
+$req = array();
+foreach($request as $key => $value){
+	$req[$key] = (!is_array($value)) ? test_input($value) : $value;
+}
 ?>

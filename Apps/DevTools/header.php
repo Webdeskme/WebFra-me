@@ -58,10 +58,9 @@ html,body,.dt .CodeMirror{
 	border-color: #dee2e6 #dee2e6 #fff;
 	background-color: #dee2e6;
 }
-/*.webdesk_nav-item .webdesk_close{
-	background:transparent;
-	border: none;
-}*/
+.webdesk_nav-item .webdesk_close{
+	padding: 3px 4px 0 0;
+}
 .codemirror-wrapper{
 	/*display: none;*/
 	height: 100%;

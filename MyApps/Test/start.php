@@ -1,1 +1,4 @@
-<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
+// START.PHP
+<?php
+echo 'Hello';
+?>
