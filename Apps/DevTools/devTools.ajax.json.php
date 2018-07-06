@@ -82,12 +82,24 @@ else if($req["f"] == "newFile"){
 	else{
 		
 		$path = explode("/",$req["file"]);
-		$last_index = count($path) - 1;
-		$contents = "// " . $path[$last_index];
+		$last_path_index = count($path) - 1;
+		$contents = $path[$last_path_index];
 		$file_ext = explode(".",$req["file"]);
 		$last_index = count($file_ext) - 1;
-		if(isset($file_ext[$last_index]) && preg_match("/php/i", $file_ext[1])){
-			$contents .= "\n".'<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>';
+		if(isset($file_ext[$last_index]) && preg_match("/php/i", $file_ext[$last_index])){
+			$contents = "// " . $contents . "\n".'<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>';
+		}
+		else if(isset($file_ext[$last_index]) && preg_match("/htm/i", $file_ext[$last_index])){
+			$contents = "<!-- // " . $contents . " -->\n";
+		}
+		else if(isset($file_ext[$last_index]) && preg_match("/^css|js$/i", $file_ext[$last_index])){
+			$contents = "/*  " . $contents . " */\n";
+		}
+		else if($path[$last_path_index] == "app.json"){
+			$contents = '{'."\n".'"name":"' . $path[1] . '",'."\n".'"version": "1.0",'."\n".'"icon":"ic.png",'."\n".'"require":{'."\n".'}'."\n".'}';
+		}
+		else if(isset($file_ext[$last_index]) && preg_match("/json/i", $file_ext[$last_index])){
+			$contents = "{}";
 		}
 		
 		if(!file_put_contents("../../" . $req["file"], $contents)){
@@ -98,6 +110,24 @@ else if($req["f"] == "newFile"){
 			$output["data"]["file"] = $req["file"];
 		}
 			
+	}
+	
+}
+else if($req["f"] == "deleteFile"){
+	
+	if(!isset($req["file"]))
+		$output["msg"] = "Missing parameter";
+	else if(!file_exists("../../" . $req["file"]))
+		$output["msg"] = "File does not exist";
+	else{
+		
+		if(!unlink("../../" . $req["file"])){
+			$output["msg"] = "Could not delete file";
+		}
+		else{
+			$output["result"] = "success";
+		}
+		
 	}
 	
 }

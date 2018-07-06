@@ -18,7 +18,7 @@ include("pageHeader.php");
 $app_title = test_input($_GET["editApp"]);
 if(file_exists("MyApps/" . test_input($_GET["editApp"]) . "/app.json")){
 	$app_info = json_decode(file_get_contents("MyApps/" . test_input($_GET["editApp"]) . "/app.json"),true);
-	if(is_array($app_info)){
+	if(is_array($app_info) && isset($app_info["name"])){
 		$app_title = $app_info["name"];
 	}
 }
@@ -52,6 +52,7 @@ var devTools = {
 	load_project_files: function(openDir){
 		
 		$(".dt .project-files .loader").show();
+		$(".dt .project-files .file").addClass("to-delete");
 		
 		if(openDir == null)
 			openDir = "MyApps/<?php echo test_input($_GET["editApp"]); ?>";
@@ -68,18 +69,25 @@ var devTools = {
 					
 					var tfile = data.data.resultset.files[x];
 					
-					if( (tfile.type == "file") && ($(".project-files .file[data-file='" + tfile.path + '/' + tfile.name + "']").length == 0) )
-						$('<li class="file webdesk_px-2" data-file="' + tfile.path + '/' + tfile.name + '"><a href="#"><i class="fa fa-' + tfile.icon + ' fa-fw"></i> <span class="file-name">' + tfile.name + '</span></a></li>').appendTo(".dt .project-files");
+					if( (tfile.type == "file") && ($(".project-files .file[data-file='" + tfile.path + '/' + tfile.name + "']").length == 0) ){
+						$('<li class="file webdesk_px-2" data-file="' + tfile.path + '/' + tfile.name + '"><a href="#"><i class="open-icon fa fa-circle fa-fw" data-fa-transform="shrink-7"></i><i class="fa fa-' + tfile.icon + ' fa-fw"></i> <span class="file-name">' + tfile.name + '</span></a></li>').appendTo(".dt .project-files");
+						$(".project-files .file[data-file='" + tfile.path + '/' + tfile.name + "'] a").click(function(){
+				
+							devTools.openEditor(data.data.directory + "/" + $(".file-name", this).text());
+							
+						});
+					}
+					else{
+						$(".project-files .file[data-file='" + tfile.path + '/' + tfile.name + "']").removeClass("to-delete");
+					}
 					
 				}
 				
+				$(".dt .project-files .file.to-delete").remove();
+				
 			}
 			
-			$(".dt .project-files .file a").click(function(){
-				
-				devTools.openEditor(data.data.directory + "/" + $(".file-name", this).text());
-				
-			});
+			
 			
 		});
 		
@@ -95,18 +103,6 @@ var devTools = {
 			var saveContents = dt_codeMirror.doc.getValue();
 			
 			devTools.tabs[devTools.currTab].contents = saveContents;
-			
-			/// WE'RE HAVING PROBLEMS WITH THIS RIGHT NOW FOR SOME REASON
-			// $.post("<?php echo $wd_type ?>/<?php echo $wd_app ?>/devTools.ajax.json.php", {f:"moveTabToSession",file: devTools.tabs[devTools.currTab].path,contents: saveContents}, function(data,textStatus){
-				
-				
-			// 	if(data.result != "success")
-			// 		console.error(data.msg);
-			// 	else{
-			// 		console.info("Success!");
-			// 	}
-				
-			// });
 				
 		}
 		
@@ -138,6 +134,8 @@ var devTools = {
 				$('<li class="webdesk_nav-item" data-file="' + projectFile + '"><button class="webdesk_close" onclick="devTools.closeFile(this);">&times;</button><a href="#" class="webdesk_nav-link webdesk_active">' + projectFile.split("/")[projectFile.split("/").length-1] + ' <i class="fa fa-dot-circle fa-fw edited-icon fa-sm"></i></a></li>').click(function(){
 					devTools.openEditor($(this).attr("data-file"));
 				}).appendTo(".open-tabs");
+				
+				$(".file[data-file='" + projectFile + "']").addClass("open");
 				
 				$(".codemirror-wrapper").show();
 				devTools.tabs[nIndex] = data.data.file;
@@ -183,7 +181,10 @@ var devTools = {
 		$(tab).parent().remove();
 		for(var x in devTools.tabs){
 			if($(tab).parent().attr("data-file") == devTools.tabs[x].path){
+				
+				$(".file[data-file='" + devTools.tabs[x].path + "']").removeClass("open");
 				devTools.tabs.splice(x,1);
+				
 				if(devTools.currTab == x){
 					if(devTools.tabs[x+1] != null)
 						devTools.currTab = x + 1;
@@ -225,13 +226,42 @@ var devTools = {
 			else{
 				
 				$("#newFileModal").modal('hide');
-				devTools.load_project_files();
+				
 				devTools.openEditor("MyApps/<?php echo test_input($_GET["editApp"]) ?>/" + fileName);
+				devTools.load_project_files();
 				
 			}
 			
 		});
 	
+	},
+	deleteFileConfirm: function(filePath){
+		
+		console.log("Showing confirm delete for " + filePath);
+		$("#deleteConfirmModal .file").text(filePath);
+		$("#deleteConfirmModal :input[name='file']").val(filePath.split("/")[filePath.split("/").length-1]);
+		$("#deleteConfirmModal").modal('show');
+		
+	},
+	deleteFile: function(form){
+		
+		var file = $(":input[name='file']",form).val();
+		
+		$.get("<?php echo $wd_type ?>/<?php echo $wd_app ?>/devTools.ajax.json.php", {f:"deleteFile", file: "MyApps/<?php echo test_input($_GET["editApp"]) ?>/" + file}, function(data,textStatus){
+			
+			if(data.result != "success")
+				console.error(data.msg);
+			else{
+				
+				$("#deleteConfirmModal").modal('hide');
+				$(".open-tabs [data-file='MyApps/<?php echo test_input($_GET["editApp"]) ?>/" + file + "']").remove();
+				
+				devTools.load_project_files();
+				
+			}
+			
+		});
+		
 	}
 	
 };
@@ -274,6 +304,18 @@ $(document).ready(function(){
 		if(t.origin != "setValue")
 			devTools.setFileAsEdited(devTools.tabs[devTools.currTab].path);
 	})
+	
+	$.contextMenu({
+	  // define which elements trigger this menu
+	  selector: ".project-files .file",
+	  // define the elements of the menu
+	  items: {
+	  	open: {name: "Open", callback: function(key, opt){ devTools.openEditor($(this).attr("data-file")); }},
+      rename: {name: "Rename", callback: function(key, opt){ alert("Doesn't work yet"); }},
+      delete: {name: "Delete", callback: function(key, opt){ devTools.deleteFileConfirm($(this).attr("data-file")); }}
+	  }
+	  // there's more, have a look at the demos and docs...
+	});
 	
 });
 function decodeHtml(str)

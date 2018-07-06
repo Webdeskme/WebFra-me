@@ -50,7 +50,6 @@
       <div class="webdesk_btn-group">
         <button type="button" class="webdesk_btn webdesk_btn-outline-secondary webdesk_rounded-0" title="New file" data-toggle="webdesk_modal" data-target="#newFileModal">
           <span class="fa-layers fa-fw" style="">
-            
             <i class="fa fa-file"></i>
             <i class="fa fa-plus fa-inverse" data-fa-transform="shrink-7 down-2"></i>
           </span>
@@ -87,6 +86,32 @@
         <div class="webdesk_modal-footer">
           <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Close</button>
           <button type="submit" class="webdesk_btn webdesk_btn-primary">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="webdesk_modal webdesk_fade" id="deleteConfirmModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+  <div class="webdesk_modal-dialog" role="document">
+    <form name="deleteFile" class="no-loader" onsubmit="devTools.deleteFile(this);return false;">
+      <div class="webdesk_modal-content">
+        <div class="webdesk_modal-header">
+          <h5 class="webdesk_modal-title" id="newFileModalLabel"><i class="fa fa-exclamation-circle"></i> Confirm</h5>
+          <button type="button" class="webdesk_close" data-dismiss="webdesk_modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="webdesk_modal-body">
+        
+          <p>
+            Are you sure you want to delete <b class="file">{{fileName}}</b>?
+          </p>
+          <input type="hidden" name="file" value="" />
+        
+        </div>
+        <div class="webdesk_modal-footer">
+          <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Cancel</button>
+          <button type="submit" class="webdesk_btn webdesk_btn-primary">Delete</button>
         </div>
       </form>
     </div>

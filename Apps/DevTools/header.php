@@ -41,6 +41,10 @@
 <script src="Plugins/codemirror/addon/fold/indent-fold.js" type="text/javascript"></script>
 <script src="Plugins/codemirror/addon/fold/markdown-fold.js" type="text/javascript"></script>
 <script src="Plugins/codemirror/addon/fold/xml-fold.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="<?php echo $wd_type ?>/<?php echo $wd_app ?>/js/contextMenu/jquery.contextMenu.min.css">
+<script src="<?php echo $wd_type ?>/<?php echo $wd_app ?>/js/contextMenu/jquery.contextMenu.min.js" type="text/javascript"></script>
+
 <style>
 html,body,.dt .CodeMirror{
 	height: 100%;
@@ -70,5 +74,14 @@ html,body,.dt .CodeMirror{
 }
 .webdesk_nav-item.edited .edited-icon{
 	opacity: 1;
+}
+.file .open-icon{
+	opacity: 0;
+}
+.file.open .open-icon{
+	opacity: 1;
+}
+.app-card a:hover{
+	text-decoration: none;
 }
 </style>

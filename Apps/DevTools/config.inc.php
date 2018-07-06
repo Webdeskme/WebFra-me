@@ -27,8 +27,11 @@ class dev_tools{
 						$name = $dir;
 							
 						if(file_exists("MyApps/" . $dir . "/app.json")){
+							
 							$info = file_get_contents("MyApps/" . $dir . "/app.json");
+							
 							$info = json_decode($info,true);
+							
 							if(is_array($info)){
 								$name = $info["name"];
 							}

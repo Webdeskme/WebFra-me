@@ -23,6 +23,7 @@ $dt_my_apps = $wd_dt->getLocalProjects();
 	<div class="webdesk_row">
 		<?php
 		foreach($wd_dt->create_types as $dt_type){
+			
 			?>
 			<div class="webdesk_col-md-4 webdesk_mb-3">
 				<a href="#">
@@ -42,20 +43,44 @@ $dt_my_apps = $wd_dt->getLocalProjects();
 </div>
 <div class="webdesk_container">
 	<h1>My Projects</h1>
-	<div class="webdesk_row">
+	<div class="webdesk_row app-listing">
 	<?php
 	foreach($dt_my_apps as $dt_app){
 		
-		$dt_app_img = (file_exists($dt_app["type"]."/".$dt_app["handle"]."/ic.png")) ? $dt_app["type"]."/".$dt_app["handle"]."/ic.png" : "MyApps/DevTools/ic.png";
+		$dt_app_img = (file_exists($dt_app["type"]."/".$dt_app["handle"]."/ic.png")) ? $dt_app["type"]."/".$dt_app["handle"]."/ic.png" : $wd_type."/".$wd_app."/ic.png";
 		
 		?>
-		<div class="webdesk_col-md-4 webdesk_mb-3">
+		<div class="webdesk_col-md-4 webdesk_mb-3 app-card">
 			<a href="<?php echo wd_url($wd_type,$wd_app,"projectEditor.php","&editApp=" . $dt_app["handle"]); ?>">
 				<div class="webdesk_card">
-					<div class="webdesk_card-body">
+					<div class="webdesk_card-body webdesk_bg-light">
 						<img src="<?php echo $dt_app_img ?>" class="webdesk_img" alt="" width="48" />
 						<h4 class="webdesk_mt-3 webdesk_card-title"><?php echo $dt_app["name"] ?></h4>
 					</div>
+					<div class="webdesk_card-footer">
+						<?php
+						$count = array("file" => 0, "dir" => 0);
+						$dh = opendir($dt_app["type"]."/".$dt_app["handle"]);
+						while(($file = readdir($dh)) !== false){
+							if( ($file != "..") && ($file != ".") ){
+								$filetype = filetype($dt_app["type"]."/".$dt_app["handle"] . "/" . $file);
+								$count[$filetype] ++;
+							}
+						}
+						echo $count["file"] . " file" . (($count["file"] != 1) ? "s" : "");
+						if($count["dir"] > 0)
+							echo " and " . $count["dir"] . " director" . (($count["dir"] != 1) ? "ies" : "y");
+						?>
+					</div>
+					<?php
+					if(!file_exists($dt_app["type"]."/".$dt_app["handle"]."/app.json")){
+						?>
+						<div class="webdesk_card-footer webdesk_bg-warning">
+							<i class="fa fa-exclamation-triangle"></i> Missing app.json
+						</div>
+						<?php
+					}
+					?>
 				</div>
 			</a>
 		</div>
