@@ -131,6 +131,42 @@ else if($req["f"] == "deleteFile"){
 	}
 	
 }
+else if($req["f"] == "saveTabsToSession"){
+	
+	if(!isset($req["tabs"]) || !isset($req["savePath"]))
+		$output["msg"] = "Missing parameter";
+	else{
+		
+		if(!file_exists($req["savePath"]."DevTools"))
+			mkdir($req["savePath"]."DevTools",0775);
+			
+		if(!file_put_contents($req["savePath"]."DevTools/opentabs.json", htmlspecialchars_decode($_POST["tabs"]))){
+			$output["msg"] = "Could not save tab file to session";
+		}
+		else{
+			$output["result"] = "success";
+		}
+		
+	}
+	
+}//saveTabsToSession
+else if($req["f"] == "getTabsFromSession"){
+	
+	if(!isset($req["savePath"]))
+		$output["msg"] = "Missing parameter";
+	else{
+		
+		if(file_exists($req["savePath"]."DevTools/opentabs.json")){
+			$output["result"] = "success";
+			$output["data"]["opentabs"] = file_get_contents($req["savePath"]."DevTools/opentabs.json");
+			
+		}
+		else
+			$output["msg"] = "Session file does not exist";
+	
+	}
+	
+}//getTabsFromSession
 else
 	$output["msg"] = "Invalid function";
 	

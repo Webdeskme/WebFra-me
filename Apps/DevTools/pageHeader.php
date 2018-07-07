@@ -17,6 +17,11 @@
             <a href="#" class="webdesk_btn webdesk_btn-secondary webdesk_text-white" data-toggle="webdesk_tooltip" title="Publish to Marketplace">
               <i class="fa fa-shipping-fast fa-fw"></i> Publish App
             </a>
+            <span data-toggle="webdesk_tooltip" title="Delete app from WebDesk">
+            <a href="#" class="webdesk_btn webdesk_btn-danger webdesk_text-white" data-toggle="webdesk_modal" data-target="#deleteAppModal">
+              <i class="fa fa-trash fa-fw"></i>
+            </a>
+            </span>
             <?php
           }
           ?>
@@ -107,6 +112,32 @@
             Are you sure you want to delete <b class="file">{{fileName}}</b>?
           </p>
           <input type="hidden" name="file" value="" />
+        
+        </div>
+        <div class="webdesk_modal-footer">
+          <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Cancel</button>
+          <button type="submit" class="webdesk_btn webdesk_btn-primary">Delete</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="webdesk_modal webdesk_fade" id="deleteAppModal" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+  <div class="webdesk_modal-dialog" role="document">
+    <form name="deleteApp" class="no-loader" onsubmit="">
+      <div class="webdesk_modal-content">
+        <div class="webdesk_modal-header">
+          <h5 class="webdesk_modal-title" id="newFileModalLabel"><i class="fa fa-exclamation-circle"></i> Confirm</h5>
+          <button type="button" class="webdesk_close" data-dismiss="webdesk_modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="webdesk_modal-body">
+        
+          <p>
+            This action will remove the app from WebDesk and all associated files and folders. Do you wish to proceed? 
+          </p>
+          <input type="hidden" name="app" value="<?php echo $wd_app ?>" />
         
         </div>
         <div class="webdesk_modal-footer">

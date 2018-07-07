@@ -56,8 +56,7 @@ $dt_my_apps = $wd_dt->getLocalProjects();
 					<div class="webdesk_card-body webdesk_bg-light">
 						<img src="<?php echo $dt_app_img ?>" class="webdesk_img" alt="" width="48" />
 						<h4 class="webdesk_mt-3 webdesk_card-title"><?php echo $dt_app["name"] ?></h4>
-					</div>
-					<div class="webdesk_card-footer">
+						<small>
 						<?php
 						$count = array("file" => 0, "dir" => 0);
 						$dh = opendir($dt_app["type"]."/".$dt_app["handle"]);
@@ -71,6 +70,7 @@ $dt_my_apps = $wd_dt->getLocalProjects();
 						if($count["dir"] > 0)
 							echo " and " . $count["dir"] . " director" . (($count["dir"] != 1) ? "ies" : "y");
 						?>
+						</small>
 					</div>
 					<?php
 					if(!file_exists($dt_app["type"]."/".$dt_app["handle"]."/app.json")){

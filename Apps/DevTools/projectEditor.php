@@ -49,6 +49,7 @@ var devTools = {
 	
 	currTab: -1,
 	tabs: [],
+	ajaxEndpoint: "<?php echo wd_urlSub($wd_type, $wd_app, 'devTools.ajax.json.php', ''); ?>",
 	load_project_files: function(openDir){
 		
 		$(".dt .project-files .loader").show();
@@ -76,6 +77,8 @@ var devTools = {
 							devTools.openEditor(data.data.directory + "/" + $(".file-name", this).text());
 							
 						});
+						if($(".open-tabs [data-file='" + tfile.path + '/' + tfile.name + "']").length > 0)
+							$(".project-files .file[data-file='" + tfile.path + '/' + tfile.name + "']").addClass("open");
 					}
 					else{
 						$(".project-files .file[data-file='" + tfile.path + '/' + tfile.name + "']").removeClass("to-delete");
@@ -98,31 +101,34 @@ var devTools = {
 			moveCurrentViewToSession = true;
 		
 		if( (devTools.currTab > -1) && moveCurrentViewToSession){
-			/// CURRENT TAB NEEDS TO BE DUMPED TO USERFILE
+			/// CURRENT TAB NEEDS TO BE DUMPED TO SESSION
 			
-			var saveContents = dt_codeMirror.doc.getValue();
-			
-			devTools.tabs[devTools.currTab].contents = saveContents;
+			devTools.tabs[devTools.currTab].contents = dt_codeMirror.doc.getValue();
+			devTools.tabs[devTools.currTab].cursorPos = dt_codeMirror.doc.getCursor();
+			devTools.tabs[devTools.currTab].selectionText = dt_codeMirror.doc.getSelection();
 				
 		}
 		
-		/// CHECK FOR TAB OPEN ALREADY
+		/// CHECK IF THIS FILE IS OPEN IN OUR TABS SESSION ALREADY
 		var exists = false;
-		
 		for(var x in devTools.tabs){
-			if(projectFile == devTools.tabs[x].path){
+			if( (projectFile == devTools.tabs[x].path) && (devTools.tabs[x].contents != null) ){
 				
 				console.log("Opening " + projectFile + " from session in tab " + x);
 				
 				exists = true;
 				devTools.currTab = x;
-				dt_codeMirror.doc.setValue(devTools.tabs[x].contents);
 				
+				dt_codeMirror.doc.setValue(devTools.tabs[x].contents);
+				if(devTools.tabs[x].currPos != null)
+					dt_codeMirror.doc.setCursor(devTools.tabs[x].cursorPos);
+					
 				$(".webdesk_nav-link").removeClass("webdesk_active");
 				$(".open-tabs .webdesk_nav-item[data-file='" + devTools.tabs[x].path + "'] .webdesk_nav-link").addClass("webdesk_active");
 				
 			}
 		}
+		/// TAB DOESN'T EXIST, OPEN IT FROM THE SERVER
 		if(!exists){
 			
 			console.log("Opening " + projectFile + " from server");
@@ -131,20 +137,35 @@ var devTools = {
 				var nIndex = devTools.tabs.length;
 				
 				$(".webdesk_nav-link").removeClass("webdesk_active");
-				$('<li class="webdesk_nav-item" data-file="' + projectFile + '"><button class="webdesk_close" onclick="devTools.closeFile(this);">&times;</button><a href="#" class="webdesk_nav-link webdesk_active">' + projectFile.split("/")[projectFile.split("/").length-1] + ' <i class="fa fa-dot-circle fa-fw edited-icon fa-sm"></i></a></li>').click(function(){
-					devTools.openEditor($(this).attr("data-file"));
-				}).appendTo(".open-tabs");
+				if($(".open-tabs .webdesk_nav-item[data-file='" + projectFile + "']").length == 0){
+					$('<li class="webdesk_nav-item" data-file="' + projectFile + '"><button class="webdesk_close" onclick="devTools.closeFile(this);">&times;</button><a href="#" class="webdesk_nav-link webdesk_active">' + projectFile.split("/")[projectFile.split("/").length-1] + ' <i class="fa fa-dot-circle fa-fw edited-icon fa-sm"></i></a></li>').click(function(){
+						devTools.openEditor($(this).attr("data-file"));
+					}).appendTo(".open-tabs");
+					
+					data.data.file.contents = decodeHtml(data.data.file.contents);
+					console.log(data.data.file.contents);
+					devTools.tabs[nIndex] = data.data.file;
+					devTools.currTab = nIndex;
+					dt_codeMirror.doc.setValue(data.data.file.contents);
+				}
+				else{
+					$(".open-tabs .webdesk_nav-item[data-file='" + projectFile + "'] a").addClass("webdesk_active");
+				}
 				
 				$(".file[data-file='" + projectFile + "']").addClass("open");
 				
 				$(".codemirror-wrapper").show();
-				devTools.tabs[nIndex] = data.data.file;
-				devTools.currTab = nIndex;
-				dt_codeMirror.doc.setValue(decodeHtml(data.data.file.contents));
+				
+				if(moveCurrentViewToSession){
+					devTools.saveTabsToSession();
+				}
 					
 			});
 			
 		}
+		
+		console.log(devTools.tabs);
+		
 		
 	},
 	saveFile: function(){
@@ -202,6 +223,8 @@ var devTools = {
 			}
 		}
 		
+		devTools.saveTabsToSession();
+		
 	},
 	closeEditor: function(){
 		
@@ -229,6 +252,8 @@ var devTools = {
 				
 				devTools.openEditor("MyApps/<?php echo test_input($_GET["editApp"]) ?>/" + fileName);
 				devTools.load_project_files();
+				
+				devTools.saveTabsToSession();
 				
 			}
 			
@@ -258,8 +283,60 @@ var devTools = {
 				
 				devTools.load_project_files();
 				
+				devTools.saveTabsToSession();
+				
 			}
 			
+		});
+		
+	},
+	saveTabsToSession: function(){
+		
+		var savetabs = devTools.tabs;
+		for(var x in savetabs){
+			savetabs[x].contents = null;
+			if(devTools.currTab == x)
+				savetabs[x].isCurrTab = true;
+			else
+				savetabs[x].isCurrTab = false;
+		}
+		
+		$.post("<?php echo $wd_type ?>/<?php echo $wd_app ?>/devTools.ajax.json.php", {f:"saveTabsToSession", tabs: JSON.stringify(savetabs), savePath: "<?php echo $wd_appFile ?>"}, function(data,textStatus){
+			
+			console.log(data);
+	
+		});
+		
+	},
+	getTabsFromSession: function(){
+		
+		$.get("<?php echo $wd_type ?>/<?php echo $wd_app ?>/devTools.ajax.json.php", {f:"getTabsFromSession", savePath: "<?php echo $wd_appFile ?>"}, function(data,textStatus){
+			
+			if(data.result == "success"){
+				
+				if(data.data.opentabs != null){
+					
+					var currTab = 0;
+					
+					var loadtabs = JSON.parse(data.data.opentabs);
+					
+					for(var x in loadtabs){
+						
+						devTools.openEditor(loadtabs[x].path,false);
+						
+						if(loadtabs[x].isCurrTab){
+							currTab = x;
+						}
+						
+					}
+					
+					if(loadtabs.length > 0)
+						devTools.openEditor(tabs[currTab].path,false);
+						
+				}
+				
+			}
+	
 		});
 		
 	}
@@ -272,6 +349,7 @@ $( document ).ajaxError(function( event, request, settings ) {
 $(document).ready(function(){
 	
 	devTools.load_project_files();
+	devTools.getTabsFromSession();
 	$("#dt_editor-saveButton").click(function(){
 		devTools.saveFile();
 	});
@@ -301,8 +379,11 @@ $(document).ready(function(){
 	});
 	
 	dt_codeMirror.on('change',function(e,t){
-		if(t.origin != "setValue")
+		if(t.origin != "setValue"){
 			devTools.setFileAsEdited(devTools.tabs[devTools.currTab].path);
+			devTools.tabs[devTools.currTab].cursorPos = dt_codeMirror.doc.getCursor();
+			devTools.tabs[devTools.currTab].selectionText = dt_codeMirror.doc.getSelection();
+		}
 	})
 	
 	$.contextMenu({

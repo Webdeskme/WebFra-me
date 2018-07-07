@@ -56,8 +56,8 @@ if($_SESSION["tier"] === "tA"){
 		$alert = "";
 	}
 	else{
-		file_put_contents($wd_root . '/User/' . $user . '/Sec/update.txt', '<a href="update.php">Update to Version: <b>' . $verN . '</b></a>');
-		$alert = '?wd_ai=An update is available for your system.  Go to alerts to update.';
+		//file_put_contents($wd_root . '/User/' . $user . '/Sec/update.txt', '<a href="update.php">Update to Version: <b>' . $verN . '</b></a>');
+		//$alert = '?wd_ai=An update is available for your system.  Go to alerts to update.';
 	}
 }
 else{
