@@ -4,12 +4,12 @@ class dev_tools{
 	/// THE DIFFERENT PROJECT TYPES THAT CAN BE CREATED IN THIS DEV TOOLS APP
 	public $create_types = array(
 		
-		array("name"=>"app","icon"=>"th-large","blurb"=>"Extend the functionality of Webdesk"),
-		array("name"=>"applet","icon"=>"smile","blurb"=>"Create useful tools in the HUD"),
-		array("name"=>"theme","icon"=>"palette","blurb"=>"Change the look and feel of your Webdesk"),
-		array("name"=>"HUD","icon"=>"desktop","blurb"=>"Change where things are positioned"),
-		array("name"=>"MHUD","icon"=>"mobile-alt","blurb"=>"Change the HUD on mobile devices"),
-		array("name"=>"game","icon"=>"gamepad","blurb"=>"Take a break from all that hard work")
+		array("name"=>"app","icon"=>"th-large","blurb"=>"Extend the functionality of Webdesk","dir"=>"MyApps"),
+		array("name"=>"applet","icon"=>"smile","blurb"=>"Create useful tools in the HUD","dir"=>"MyApplets"),
+		array("name"=>"theme","icon"=>"palette","blurb"=>"Change the look and feel of your Webdesk","dir"=>"MyTheme"),
+		array("name"=>"HUD","icon"=>"desktop","blurb"=>"Change where things are positioned","dir"=>"HUD"),
+		array("name"=>"MHUD","icon"=>"mobile-alt","blurb"=>"Change the HUD on mobile devices","dir"=>"MHUD"),
+		array("name"=>"game","icon"=>"gamepad","blurb"=>"Take a break from all that hard work","dir"=>"Games")
 	);
 	/// LOADS LOCAL PROJECTS FROM MYAPPS
 	public function getLocalProjects(){

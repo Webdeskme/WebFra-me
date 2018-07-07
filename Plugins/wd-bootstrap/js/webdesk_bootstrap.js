@@ -395,15 +395,15 @@
     var DATA_API_KEY = '.data-api';
     var JQUERY_NO_CONFLICT = $$$1.fn[NAME];
     var ClassName = {
-      ACTIVE: 'active',
+      ACTIVE: 'webdesk_active',
       BUTTON: 'webdesk_btn',
-      FOCUS: 'focus'
+      FOCUS: 'webdesk_focus'
     };
     var Selector = {
-      DATA_TOGGLE_CARROT: '[data-toggle^="button"]',
-      DATA_TOGGLE: '[data-toggle="buttons"]',
+      DATA_TOGGLE_CARROT: '[data-toggle^="webdesk_button"]',
+      DATA_TOGGLE: '[data-toggle="webdesk_buttons"]',
       INPUT: 'input',
-      ACTIVE: '.active',
+      ACTIVE: '.webdesk_active',
       BUTTON: '.webdesk_btn'
     };
     var Event = {

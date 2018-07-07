@@ -97,6 +97,8 @@ var devTools = {
 	},//load_project_files
 	openEditor: function(projectFile, moveCurrentViewToSession){
 		
+		console.group("Opening " + projectFile + " into editor");
+		
 		if(moveCurrentViewToSession == null)
 			moveCurrentViewToSession = true;
 		
@@ -109,12 +111,14 @@ var devTools = {
 				
 		}
 		
+		var nIndex = devTools.tabs.length;
+		
 		/// CHECK IF THIS FILE IS OPEN IN OUR TABS SESSION ALREADY
 		var exists = false;
 		for(var x in devTools.tabs){
 			if( (projectFile == devTools.tabs[x].path) && (devTools.tabs[x].contents != null) ){
 				
-				console.log("Opening " + projectFile + " from session in tab " + x);
+				console.info("File will be pulled from tab " + x);;
 				
 				exists = true;
 				devTools.currTab = x;
@@ -127,45 +131,55 @@ var devTools = {
 				$(".open-tabs .webdesk_nav-item[data-file='" + devTools.tabs[x].path + "'] .webdesk_nav-link").addClass("webdesk_active");
 				
 			}
+			else if(projectFile == devTools.tabs[x].path){
+				console.info("File found in tab session, but contents will need to be pulled from server");
+				nIndex = x;
+			}
+			
 		}
 		/// TAB DOESN'T EXIST, OPEN IT FROM THE SERVER
 		if(!exists){
 			
-			console.log("Opening " + projectFile + " from server");
+			console.info("File will be pulled from server and loaded into tab " + nIndex);
+			
 			$.get("<?php echo $wd_type ?>/<?php echo $wd_app ?>/devTools.ajax.json.php", {f:"loadFile",file: projectFile}, function(data,textStatus){
 				
-				var nIndex = devTools.tabs.length;
-				
-				$(".webdesk_nav-link").removeClass("webdesk_active");
-				if($(".open-tabs .webdesk_nav-item[data-file='" + projectFile + "']").length == 0){
-					$('<li class="webdesk_nav-item" data-file="' + projectFile + '"><button class="webdesk_close" onclick="devTools.closeFile(this);">&times;</button><a href="#" class="webdesk_nav-link webdesk_active">' + projectFile.split("/")[projectFile.split("/").length-1] + ' <i class="fa fa-dot-circle fa-fw edited-icon fa-sm"></i></a></li>').click(function(){
-						devTools.openEditor($(this).attr("data-file"));
-					}).appendTo(".open-tabs");
-					
-					data.data.file.contents = decodeHtml(data.data.file.contents);
-					console.log(data.data.file.contents);
-					devTools.tabs[nIndex] = data.data.file;
-					devTools.currTab = nIndex;
-					dt_codeMirror.doc.setValue(data.data.file.contents);
-				}
+				if(data.result != "success")
+					console.error(data.msg);
 				else{
-					$(".open-tabs .webdesk_nav-item[data-file='" + projectFile + "'] a").addClass("webdesk_active");
-				}
-				
-				$(".file[data-file='" + projectFile + "']").addClass("open");
-				
-				$(".codemirror-wrapper").show();
-				
-				if(moveCurrentViewToSession){
-					devTools.saveTabsToSession();
+					
+					$(".webdesk_nav-link").removeClass("webdesk_active");
+					if($(".open-tabs .webdesk_nav-item[data-file='" + projectFile + "']").length == 0){
+						console.info("New tab is being created");
+						$('<li class="webdesk_nav-item" data-file="' + projectFile + '"><button class="webdesk_close" onclick="devTools.closeFile(this);">&times;</button><a href="#" class="webdesk_nav-link webdesk_active">' + projectFile.split("/")[projectFile.split("/").length-1] + ' <i class="fa fa-dot-circle fa-fw edited-icon fa-sm"></i></a></li>').click(function(){
+							devTools.openEditor($(this).attr("data-file"));
+						}).appendTo(".open-tabs");
+						
+						data.data.file.contents = decodeHtml(data.data.file.contents);
+						devTools.tabs[nIndex] = data.data.file;
+						devTools.currTab = nIndex;
+						dt_codeMirror.doc.setValue(data.data.file.contents);
+						
+					}
+					else{
+						$(".open-tabs .webdesk_nav-item[data-file='" + projectFile + "'] a").addClass("webdesk_active");
+					}
+					
+					$(".file[data-file='" + projectFile + "']").addClass("open");
+					
+					$(".codemirror-wrapper").show();
+					
+					if(moveCurrentViewToSession){
+						devTools.saveTabsToSession();
+					}
+					
 				}
 					
 			});
 			
 		}
 		
-		console.log(devTools.tabs);
-		
+		console.groupEnd();
 		
 	},
 	saveFile: function(){
@@ -188,7 +202,7 @@ var devTools = {
 			
 			$(".open-tabs .webdesk_nav-item[data-file='" + devTools.tabs[devTools.currTab].path + "'] .edited-icon").addClass("fa-dot-circle").removeClass("fa-circle-notch fa-spin");
 				
-			console.log(data);
+			//console.log(data);
 			
 			console.groupEnd();
 			
@@ -292,7 +306,10 @@ var devTools = {
 	},
 	saveTabsToSession: function(){
 		
-		var savetabs = devTools.tabs;
+		console.log("Saving tab session to server");
+		var temp = JSON.stringify(devTools.tabs);
+		var savetabs = JSON.parse(temp);
+		
 		for(var x in savetabs){
 			savetabs[x].contents = null;
 			if(devTools.currTab == x)
@@ -303,13 +320,15 @@ var devTools = {
 		
 		$.post("<?php echo $wd_type ?>/<?php echo $wd_app ?>/devTools.ajax.json.php", {f:"saveTabsToSession", tabs: JSON.stringify(savetabs), savePath: "<?php echo $wd_appFile ?>"}, function(data,textStatus){
 			
-			console.log(data);
+			if(data.result != "success")
+				console.error(data.msg);
 	
 		});
 		
 	},
 	getTabsFromSession: function(){
 		
+		console.log("Retrieving tab session from server");
 		$.get("<?php echo $wd_type ?>/<?php echo $wd_app ?>/devTools.ajax.json.php", {f:"getTabsFromSession", savePath: "<?php echo $wd_appFile ?>"}, function(data,textStatus){
 			
 			if(data.result == "success"){
@@ -322,7 +341,7 @@ var devTools = {
 					
 					for(var x in loadtabs){
 						
-						devTools.openEditor(loadtabs[x].path,false);
+						//devTools.openEditor(loadtabs[x].path,false);
 						
 						if(loadtabs[x].isCurrTab){
 							currTab = x;
@@ -330,8 +349,9 @@ var devTools = {
 						
 					}
 					
-					if(loadtabs.length > 0)
-						devTools.openEditor(tabs[currTab].path,false);
+					if( (loadtabs.length > 0) && (loadtabs[currTab].path != null) ){
+						//devTools.openEditor(loadtabs[currTab].path,true);
+					}
 						
 				}
 				

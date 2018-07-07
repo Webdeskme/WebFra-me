@@ -89,3 +89,19 @@ $dt_my_apps = $wd_dt->getLocalProjects();
 	?>
 	</div>
 </div>
+<script type="text/javascript">
+var devTools = {
+	
+	remove_characters: function(the_string){
+		
+		return the_string.replace(/[\-\.\\\"\'\s]/g,"");
+		
+	},
+	createProject: function(form){
+		
+		
+			
+	}
+	
+};
+</script>

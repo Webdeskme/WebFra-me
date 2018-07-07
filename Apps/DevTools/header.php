@@ -84,4 +84,9 @@ html,body,.dt .CodeMirror{
 .app-card a:hover{
 	text-decoration: none;
 }
+.webdesk_btn-group .webdesk_active{
+	background-color: #007bff;
+	border-color: #007bff;
+	color: #FFF;
+}
 </style>
