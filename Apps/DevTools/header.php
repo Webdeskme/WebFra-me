@@ -52,10 +52,10 @@ html,body,.dt .CodeMirror{
 .hide{
 	display: none;
 }
-.dt .project-files .file:hover{
+.dt .project-files .file:hover, .dt .project-files .dir:hover>a{
 	background-color: #f8f9fa;
 }
-.dt .project-files .file a{
+.dt .project-files .file a,.dt .project-files .dir a{
 	display: block;
 }
 .webdesk_nav-link.webdesk_active{
@@ -74,6 +74,9 @@ html,body,.dt .CodeMirror{
 }
 .webdesk_nav-item.edited .edited-icon{
 	opacity: 1;
+}
+.file a:hover, .dir a:hover{
+	text-decoration: none;
 }
 .file .open-icon{
 	opacity: 0;

@@ -60,8 +60,20 @@
             <i class="fa fa-plus fa-inverse" data-fa-transform="shrink-7 down-2"></i>
           </span>
         </button>
+        <button type="button" class="webdesk_btn webdesk_btn-outline-secondary webdesk_rounded-0" title="New folder" data-toggle="webdesk_modal" data-target="#newFolderModal">
+          <span class="fa-layers fa-fw" style="">
+            <i class="fa fa-folder"></i>
+            <i class="fa fa-plus fa-inverse" data-fa-transform="shrink-7 down-1"></i>
+          </span>
+        </button>
         <button id="dt_editor-saveButton" type="button" class="webdesk_btn webdesk_btn-outline-secondary webdesk_rounded-0" data-toggle="webdesk_tooltip" title="Save open file">
           <i class="fa fa-save fa-fw"></i>
+        </button>
+      </div>
+      
+      <div class="webdesk_btn-group">
+        <button id="dt_editor-pasteButton" type="button" class="webdesk_btn webdesk_btn-outline-secondary webdesk_rounded-0" data-toggle="webdesk_tooltip" title="Paste file in top folder" onclick="devTools.copyFile(devTools.fileClipBoard,'<?php echo test_input($_GET["editType"])."/".test_input($_GET["editApp"]) ?>');return false;">
+          <i class="fa fa-paste fa-fw"></i>
         </button>
       </div>
       
@@ -82,10 +94,38 @@
           </button>
         </div>
         <div class="webdesk_modal-body">
-        
+          <input type="hidden" name="type" value="file" />
+          <input type="hidden" name="path" value="" />
           <div class="webdesk_form-group">
             <label for="file_title">Name of file</label>
             <input type="text" name="file_name" class="webdesk_form-control" id="file_title" value="newFile.php" onfocus="$(this).select();" />
+          </div>
+        
+        </div>
+        <div class="webdesk_modal-footer">
+          <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Close</button>
+          <button type="submit" class="webdesk_btn webdesk_btn-primary">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="webdesk_modal webdesk_fade" id="newFolderModal" tabindex="-1" role="dialog" aria-labelledby="newFolderModalLabel" aria-hidden="true">
+  <div class="webdesk_modal-dialog" role="document">
+    <form name="newFolder" class="no-loader" onsubmit="devTools.newFile(this);return false;">
+      <div class="webdesk_modal-content">
+        <div class="webdesk_modal-header">
+          <h5 class="webdesk_modal-title" id="newFolderModalLabel"><i class="fa fa-folder"></i> New Folder</h5>
+          <button type="button" class="webdesk_close" data-dismiss="webdesk_modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="webdesk_modal-body">
+          <input type="hidden" name="type" value="folder" />
+          <input type="hidden" name="path" value="" />
+          <div class="webdesk_form-group">
+            <label for="folder_title">Name of folder</label>
+            <input type="text" name="file_name" class="webdesk_form-control" id="folder_title" value="" onfocus="$(this).select();" />
           </div>
         
         </div>

@@ -51,7 +51,7 @@ $dt_my_apps = $wd_dt->getLocalProjects();
 		
 		?>
 		<div class="webdesk_col-md-4 webdesk_mb-3 app-card">
-			<a href="<?php echo wd_url($wd_type,$wd_app,"projectEditor.php","&editApp=" . $dt_app["handle"]); ?>">
+			<a href="<?php echo wd_url($wd_type,$wd_app,"projectEditor.php","&editType=" . $dt_app["type"] . "&editApp=" . $dt_app["handle"]); ?>">
 				<div class="webdesk_card">
 					<div class="webdesk_card-body webdesk_bg-light">
 						<img src="<?php echo $dt_app_img ?>" class="webdesk_img" alt="" width="48" />

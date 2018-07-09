@@ -60,6 +60,7 @@ class dev_tools{
 		$files = array();
 		
 		if(is_dir($dir)){
+			//print_r($dir);
 			
 			if($dh = opendir($dir)){
 				
@@ -81,9 +82,11 @@ class dev_tools{
 						else
 							$icon = "folder";
 						
+						$file_type = filetype($dir . "/" . $file);
+						
 						$files[] = array(
+							"type" => $file_type,
 							"name" => $file,
-							"type" => filetype($dir . "/" . $file),
 							"icon" => $icon,
 							"path" => str_replace("../","",$dir)
 						);
@@ -101,6 +104,26 @@ class dev_tools{
 		return $files;
 		
 	}//getProjectFiles
+	function recurse_copy($src,$dst) { 
+		$return = true;
+    $dir = opendir($src); 
+    @mkdir($dst); 
+    while(false !== ( $file = readdir($dir)) ) { 
+      if (( $file != '.' ) && ( $file != '..' )) { 
+        if ( is_dir($src . '/' . $file) ) {
+          if(!recurse_copy($src . '/' . $file,$dst . '/' . $file))
+          	$return = false;
+        } 
+        else { 
+          if(!copy($src . '/' . $file,$dst . '/' . $file))
+          	$return = false;
+        } 
+      } 
+    } 
+    closedir($dir); 
+    
+    return $return;
+	} 
 }
 $wd_dt = new dev_tools();
 

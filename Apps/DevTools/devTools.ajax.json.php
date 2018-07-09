@@ -77,37 +77,51 @@ else if($req["f"] == "moveTabToSession"){
 }//moveTabToSession
 else if($req["f"] == "newFile"){
 	
-	if(!isset($req["file"]))
+	if(!isset($req["file"]) || !isset($req["path"]) || !isset($req["type"]))
 		$output["msg"] = "Missing parameter";
 	else{
 		
-		$path = explode("/",$req["file"]);
-		$last_path_index = count($path) - 1;
-		$contents = $path[$last_path_index];
-		$file_ext = explode(".",$req["file"]);
-		$last_index = count($file_ext) - 1;
-		if(isset($file_ext[$last_index]) && preg_match("/php/i", $file_ext[$last_index])){
-			$contents = "// " . $contents . "\n".'<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>';
-		}
-		else if(isset($file_ext[$last_index]) && preg_match("/htm/i", $file_ext[$last_index])){
-			$contents = "<!-- // " . $contents . " -->\n";
-		}
-		else if(isset($file_ext[$last_index]) && preg_match("/^css|js$/i", $file_ext[$last_index])){
-			$contents = "/*  " . $contents . " */\n";
-		}
-		else if($path[$last_path_index] == "app.json"){
-			$contents = '{'."\n".'"name":"' . $path[1] . '",'."\n".'"version": "1.0",'."\n".'"icon":"ic.png",'."\n".'"require":{'."\n".'}'."\n".'}';
-		}
-		else if(isset($file_ext[$last_index]) && preg_match("/json/i", $file_ext[$last_index])){
-			$contents = "{}";
-		}
+		if($req["type"] == "file"){
 		
-		if(!file_put_contents("../../" . $req["file"], $contents)){
-			$output["msg"] = "Could not write file";
+			$contents = $req["file"];
+			
+			$file_ext = explode(".",$req["file"]);
+			$last_index = count($file_ext) - 1;
+			if(isset($file_ext[$last_index]) && preg_match("/php/i", $file_ext[$last_index])){
+				$contents = "// " . $contents . "\n".'<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>';
+			}
+			else if(isset($file_ext[$last_index]) && preg_match("/htm/i", $file_ext[$last_index])){
+				$contents = "<!-- // " . $contents . " -->\n";
+			}
+			else if(isset($file_ext[$last_index]) && preg_match("/^css|js$/i", $file_ext[$last_index])){
+				$contents = "/*  " . $contents . " */\n";
+			}
+			else if($path[$last_path_index] == "app.json"){
+				$contents = '{'."\n".'"name":"' . $path[1] . '",'."\n".'"version": "1.0",'."\n".'"icon":"ic.png",'."\n".'"require":{'."\n".'}'."\n".'}';
+			}
+			else if(isset($file_ext[$last_index]) && preg_match("/json/i", $file_ext[$last_index])){
+				$contents = "{}";
+			}
+			
+			if(!file_put_contents("../../" . $req["path"] . "/" . $req["file"], $contents)){
+				$output["msg"] = "Could not write file";
+			}
+			else{
+				$output["result"] = "success";
+				$output["data"]["file"] = $req["path"] . "/" . $req["file"];
+			}
+		
 		}
-		else{
-			$output["result"] = "success";
-			$output["data"]["file"] = $req["file"];
+		else if($req["type"] == "folder"){
+			
+			if(!mkdir("../../" . $req["path"] . "/" . $req["file"],0775))
+				$output["msg"] = "Could not create folder";
+			else{
+				$output["result"] = "success";
+				$output["data"]["file"] = $req["path"] . "/" . $req["file"];
+				$output["data"]["type"] = $req["type"];
+			}
+			
 		}
 			
 	}
@@ -121,11 +135,15 @@ else if($req["f"] == "deleteFile"){
 		$output["msg"] = "File does not exist";
 	else{
 		
-		if(!unlink("../../" . $req["file"])){
+		if(!is_dir("../../" . $req["file"]) && !unlink("../../" . $req["file"])){
 			$output["msg"] = "Could not delete file";
+		}
+		if(is_dir("../../" . $req["file"]) && !rmdir("../../" . $req["file"])){
+			$output["msg"] = "Could not delete directory";
 		}
 		else{
 			$output["result"] = "success";
+			$output["data"]["file_deleted"] = $req["file"];
 		}
 		
 	}
@@ -167,6 +185,50 @@ else if($req["f"] == "getTabsFromSession"){
 	}
 	
 }//getTabsFromSession
+else if($req["f"] == "copyFile"){
+	
+	if(!isset($req["file"]) || !isset($req["path"]))
+		$output["msg"] = "Missing parameter";
+	else if(!file_exists("../../".$req["file"]))
+		$output["msg"] = "File does not exist";
+	else if(!is_dir("../../".$req["path"]))
+		$output["msg"] = "Save location is not a folder";
+	else{
+		
+		$file_path_structure = pathinfo("../../".$req["file"]);
+		
+		$continue = false;
+		$x = 1;
+		$copy_file = $req["path"] . "/" . $file_path_structure["basename"];
+		while(!$continue){
+			if(file_exists("../../".$copy_file)){
+				
+				if(is_dir("../../".$req["file"]))
+					$copy_file = $req["path"] . "/" . $file_path_structure["basename"]."_".$x;
+				else
+					$copy_file = $req["path"] . "/" . $file_path_structure["filename"]."_".$x.".".$file_path_structure["extension"];
+				
+				$x ++;
+			}
+			else
+				$continue = true;
+		}
+		if(!is_writable("../../".$req["path"]))
+			$output["msg"] = "Destination folder is not writable";
+		else if(is_dir("../../".$req["file"]) && !$wd_dt->recurse_copy("../../".$req["file"], "../../".$copy_file))
+			$output["msg"] = "Could not copy folder ".$copy_file;
+		else if(!is_dir("../../".$req["file"]) && !copy("../../".$req["file"], "../../".$copy_file)){
+			$output["msg"] = "Could not copy file ".$copy_file;
+		}
+		else{
+			$output["result"] = "success";
+			$output["data"]["path"] = $req["path"];
+			$output["data"]["file"] = $copy_file;
+		}
+		
+	}
+	
+}//copyFile
 else
 	$output["msg"] = "Invalid function";
 	
