@@ -99,6 +99,24 @@ var devTools = {
 	},
 	createProject: function(form){
 		
+		var projectName = $("#new_project_name").val();
+		
+		console.log("Creating new project titled " + projectName);
+		
+		var formVars = $(form).serialize();
+		console.log(formVars);
+		$.post("<?php echo $wd_type."/".$wd_app ?>/devTools.ajax.json.php", formVars + "&f=createProject", function(data, textStatus){
+			
+			if(data.result != "success")
+				console.error(data.msg);
+			else{
+				
+				window.location = "//<?php echo $_SERVER["HTTP_HOST"] ?>/desktop.php?type=<?php echo $wd_type ?>&app=<?php echo $wd_app ?>&sec=projectEditor.php&editType=" + data.data.project.type + "&editApp=" + data.data.project.path;
+				
+			}
+			
+		});
+		
 		
 			
 	}

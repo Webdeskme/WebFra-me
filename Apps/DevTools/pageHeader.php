@@ -191,7 +191,7 @@
 </div>
 <div class="webdesk_modal webdesk_fade" id="newProjectModal" tabindex="-1" role="dialog" aria-labelledby="newProjectModalLabel" aria-hidden="true">
   <div class="webdesk_modal-dialog webdesk_shadow-lg webdesk_modal-lg" role="document">
-    <form name="newProject" class="no-loader" onsubmit="createProject(this);return false;">
+    <form name="newProject" class="no-loader" onsubmit="devTools.createProject(this);return false;">
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
           <h5 class="webdesk_modal-title" id="newProjectModalLabel"><i class="fa fa-plus"></i> New Project</h5>
@@ -209,7 +209,7 @@
                 ?>
                 
                 <label class="webdesk_btn webdesk_btn-outline-secondary <?php echo ($key == 0) ? "webdesk_active" : ""; ?> webdesk_pt-3 webdesk_px-4" data-toggle="webdesk_tooltip" title="<?php echo $dt_type["blurb"] ?>" onclick="$('.app_base_path').text('<?php echo $dt_type["dir"] ?>');">
-                  <input type="radio" name="project_type" autocomplete="off" <?php echo ($key == 0) ? "checked" : ""; ?>>
+                  <input type="radio" name="project_type" value="<?php echo $dt_type["dir"] ?>" autocomplete="off" <?php echo ($key == 0) ? "checked" : ""; ?>>
                   <i class="fa fa-<?php echo $dt_type["icon"] ?> fa-fw fa-2x"></i>
                   <h5 class="webdesk_mt-1 webdesk_card-title"><?php echo $dt_type["name"] ?></h5>
                 </label>

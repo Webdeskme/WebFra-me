@@ -32,7 +32,7 @@ class dev_tools{
 							
 							$info = json_decode($info,true);
 							
-							if(is_array($info)){
+							if(is_array($info) && ($info["name"] != null)){
 								$name = $info["name"];
 							}
 						}

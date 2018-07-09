@@ -229,6 +229,37 @@ else if($req["f"] == "copyFile"){
 	}
 	
 }//copyFile
+else if($req["f"] == "createProject"){
+	
+	if(!isset($req["project_name"]) || !isset($req["project_type"]) || !isset($req["project_path"]))
+		$output["msg"] = "Missing parameters";
+	else{
+		
+		if(file_exists("../../".$req["project_type"]."/".$req["project_path"]))
+			$output["msg"] = "Project folder exists already";
+		else{
+			
+			if(!mkdir("../../".$req["project_type"]."/".$req["project_path"]))
+				$output["msg"] = "Could not create folder " . $req["project_type"]."/".$req["project_path"];
+			else{
+				
+				if(!file_put_contents("../../".$req["project_type"]."/".$req["project_path"]."/app.json",'{'."\n".'"name":"' . $req["project_name"] . '",'."\n".'"description": "' . $req["project_description"] . '",'."\n".'"version": "1.0",'."\n".'"icon":"ic.png",'."\n".'"require":{'."\n".'"webdesk/webdesk":"2.0"'."\n".'}'."\n".'}') || !file_put_contents("../../".$req["project_type"]."/".$req["project_path"]."/start.php",'// start.php' . "\n" . '// THIS IS THE DEFAULT PAGE FOR YOUR APP. REFER TO WD_FUNCTIONS FOR ENVIRONMENTAL VARIABLES.' . "\n" . '<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>') || !file_put_contents("../../".$req["project_type"]."/".$req["project_path"]."/header.php",'// header.php' . "\n" . '// THIS FILE WILL BE CALLED INTO THE <HEAD> SECTION OF EACH PAGE AND IS WHERE YOU SOHULD INCLUDE STYLE AND SCRIPT CODES.' . "\n" . '<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>'))
+					$output["msg"] = "Could not create app file";
+				else{
+					$output["result"] = "success";
+					$output["data"]["project"] = array(
+						"type" => $req["project_type"],
+						"path" => $req["project_path"]
+					);
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+}//createProject
 else
 	$output["msg"] = "Invalid function";
 	
