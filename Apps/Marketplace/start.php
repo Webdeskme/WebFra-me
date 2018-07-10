@@ -13,10 +13,12 @@
 if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 include("config.inc.php");
 include("pageHeader.php");
+
 $can_open_market = false;
-if(file_exists("wd_market.json")){
-  $market2 = json_decode(@file_get_contents("wd_market.json"),true);
+if(file_exists("wd_marketplace.json")){
+  $market2 = json_decode(@file_get_contents("wd_marketplace.json"),true);
   if(is_array($market2)){
+    
     
     $market2_categories = array();
     foreach($market2 as $market_app){
@@ -162,6 +164,9 @@ if($apps = opendir("Apps")){
 }
 ?>
 <script>
+$( document ).ajaxError(function( event, request, settings ) {
+  console.error(request.responseText);
+});
 $(document).ready(function(){
   
   var $_GET = {};
@@ -232,8 +237,8 @@ var marketplace = {
       
     $(".category-menu a").removeClass("webdesk_active");
     $("#cat-button-" + marketplace.category).addClass("webdesk_active").append('<div class="webdesk_float-right loading-spinner"><i class="fa fa-spinner fa-pulse"></i></div>');
-      
-    $.getJSON("wd_market.json", function(result){
+    
+    $.getJSON("wd_marketplace.json", function(result){
       
       if( (result != null) ){
         
@@ -338,9 +343,11 @@ var marketplace = {
       if(data.result != "success"){
         console.error(data.msg);
         $("#updateFileWarning").show();
+        
       }
       else{
         
+        console.info("Local marketplace file updated successfully");
         $("#updateFileWarning").hide();
         marketplace.load_market();
         
@@ -353,4 +360,5 @@ var marketplace = {
   }//updateMarketplaceFile
   
 };
+
 </script>
