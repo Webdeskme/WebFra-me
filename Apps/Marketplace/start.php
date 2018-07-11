@@ -15,8 +15,8 @@ include("config.inc.php");
 include("pageHeader.php");
 
 $can_open_market = false;
-if(file_exists("wd_marketplace.json")){
-  $market2 = json_decode(@file_get_contents("wd_marketplace.json"),true);
+if(file_exists($wd_type."/".$wd_app."/wd_marketplace.json")){
+  $market2 = json_decode(@file_get_contents($wd_type."/".$wd_app."/wd_marketplace.json"),true);
   if(is_array($market2)){
     
     
@@ -93,7 +93,7 @@ if(file_exists("wd_marketplace.json")){
                   <div class="app-price webdesk_float-right">
                     FREE
                   </div>
-                  <button type="button" class="app-install-button webdesk_btn webdesk_btn-bloc webdesk_btn-primary webdesk_text-white"><i class="fa fa-download fa-fw"></i> Install</button>
+                  <button type="button" class="app-install-button webdesk_btn webdesk_btn-bloc webdesk_btn-secondary webdesk_text-white"><i class="fa fa-download fa-fw"></i> Install</button>
                     <button type="button" class="app-moreinfo-button webdesk_btn webdesk_btn-bloc webdesk_btn-outline-secondary">More Info</button>
                 </div>
               </div>
@@ -134,7 +134,7 @@ if(file_exists("wd_marketplace.json")){
           </div>
           <div class="webdesk_modal-footer">
             <span class="install-process"></span>
-            <button type="button" class="webdesk_btn webdesk_btn-primary app-install-button" onclick="marketplace.install_app();"><i class="fa fa-download fa-fw"></i> Install</button>
+            <button type="button" class="webdesk_btn webdesk_btn-seconary app-install-button" onclick="marketplace.install_app();"><i class="fa fa-download fa-fw"></i> Install</button>
             <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Close</button>
           </div>
         </div>
@@ -145,8 +145,16 @@ if(file_exists("wd_marketplace.json")){
     $can_open_market = true;
   }
 }
-if(!$can_open_market)
-  echo "There was an error opening the market";
+if(!$can_open_market){
+  ?>
+  <div class="webdesk_container webdesk_py-5">
+    <p class="webdesk_lead">
+      <i class="fa fa-spinner fa-pulse"></i> Your marketplace file is being prepared for the first time. Please hang tight.
+    </p>
+    <button id="marketplace_continue" class="hide webdesk_btn webdesk_btn-outline-secondary">Continue</button>
+  </div>
+  <?php
+}
 
 if($apps = opendir("Apps")){
   $files = array();
@@ -238,7 +246,7 @@ var marketplace = {
     $(".category-menu a").removeClass("webdesk_active");
     $("#cat-button-" + marketplace.category).addClass("webdesk_active").append('<div class="webdesk_float-right loading-spinner"><i class="fa fa-spinner fa-pulse"></i></div>');
     
-    $.getJSON("wd_marketplace.json", function(result){
+    $.getJSON("<?php echo $wd_type."/".$wd_app ?>/wd_marketplace.json", function(result){
       
       if( (result != null) ){
         
@@ -248,7 +256,8 @@ var marketplace = {
         
         $.each(result, function(i, data){
           
-          var app_id = data.app.replace(" ", "_");
+          //var app_id = data.app.replace(" ", "_");
+          var app_id = data.app_id;
           
           if($("#app-" + app_id).length == 0)
             $(".marketApp-container .marketApp.template").clone().appendTo(".marketApp-container").removeClass("template hide").addClass("clone").attr("id","app-" + app_id).attr("data-appid",app_id);
@@ -274,16 +283,28 @@ var marketplace = {
               $(".app-description",this).text(data.description);
               
             if(installed_apps.indexOf(data.app) > -1){
-              $(".app-install-button",this).prop("disabled",true).removeClass("webdesk_btn-primary").addClass("webdesk_btn-secondary").html('<i class="fa fa-check fa-fw"></i> Installed');
+              
+              if(data.updated >= data.last_install_date){
+                $(".app-install-button",this).removeClass("webdesk_btn-secondary").addClass("webdesk_btn-success").html('<i class="fa fa-sync fa-fw"></i> Update').click({tapp:data.app},function(e){
+              
+                  marketplace.install_app(e.data.tapp);
+                  
+                });
+              }
+              else{
+                $(".app-install-button",this).prop("disabled",true).removeClass("webdesk_btn-secondary").addClass("webdesk_btn-secondary").html('<i class="fa fa-check fa-fw"></i> Installed');
+              }
+            }
+            else{
+              $(".app-install-button",this).click({tapp:data.app},function(e){
+              
+                marketplace.install_app(e.data.tapp);
+                
+              });
             }
             $(".app-moreinfo-button",this).click(function(){
               
               marketplace.load_viewmore_modal(data.app);
-              
-            });
-            $(".app-install-button",this).click({tapp:data.app},function(e){
-              
-              marketplace.install_app(e.data.tapp);
               
             });
             
@@ -321,7 +342,7 @@ var marketplace = {
     $("#viewAppMoreModal .app-install-button,#app-" + tapp + " .app-install-button").html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Hang on').prop("disabled",true);
     $("#viewAppMoreModal .install-process").text("Beginning installation");
     
-    $.get("desktopSub.php", {type:"Apps",app:"Market", sec:"installSub.php",napp:tapp,www:marketplace.wd_market[tapp].host},function(data){
+    $.get("marketplace.ajax.json.php", {f: installApp, type:"Apps",app:"Market", sec:"installSub.php",napp:tapp,www:marketplace.wd_market[tapp].host},function(data){
       
       $("#viewAppMoreModal .install-process").text("Complete"); 
       $("#viewAppMoreModal .app-install-button,#app-" + $("body").prop("tapp") + " .app-install-button").removeClass("webdesk_btn-primary").addClass("webdesk_btn-success").html('<i class="fa fa-check fa-fw"></i> Installed').prop("disabled",true);
@@ -350,6 +371,10 @@ var marketplace = {
         console.info("Local marketplace file updated successfully");
         $("#updateFileWarning").hide();
         marketplace.load_market();
+        $("#marketplace_continue").show();
+        if($("#marketplace_continue").length > 0)
+          setTimeout("window.history.go();",3000);
+          
         
       }
       

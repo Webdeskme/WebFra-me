@@ -9,7 +9,7 @@ if(empty($req["f"]))
 	$output["msg"] = "Missing parameter";
 else if($req["f"] == "updateMarketJson"){
 	
-	$test_timestamp = 0;
+	$test_timestamp = 1;
 	if(file_exists("wd_marketplace.json")){
 		$test_timestamp = filemtime("wd_marketplace.json");
 	}
@@ -30,8 +30,6 @@ else if($req["f"] == "updateMarketJson"){
 		$new_market = $wd_marketplace->get_content($wd_marketplace->get_download_location() . $test_timestamp);
 		
 		$new_market = json_decode($new_market,true);
-		
-		//print_r($new_market);
 		
 		if(!is_array($new_market))
 			$output["msg"] = "Could not open remote market file";
@@ -70,13 +68,6 @@ else if($req["f"] == "updateMarketJson"){
 		
 			
 	}
-	
-	// else if(!file_put_contents("../../wd_market.json", fopen("http://webdesk.me/www/Pages/wd_market.json", 'r'))){
-	// 	$output["msg"] = "Could not download file";
-	// }
-	// else{
-	// 	$output["result"] = "success";
-	// }
 	
 }//updateMarketJson
 else
