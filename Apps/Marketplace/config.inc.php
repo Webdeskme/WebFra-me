@@ -3,7 +3,7 @@ class marketplace{
 	
 	var $dev_mode = false;
 	var $marketplace_file = "wd_marketplace.json";
-	var $market_download_location = "http://webdesk.shirtntie.net/MyApps/MarketCentral/wd_marketplace.json.php?timestamp=";
+	var $market_download_location = "http://webdesk.shirtntie.net/Apps/MarketCentral/wd_marketplace.json.php?timestamp=";
 	
 	public function get_download_location(){
 		return $this->market_download_location;
