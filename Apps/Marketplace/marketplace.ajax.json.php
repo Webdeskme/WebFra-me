@@ -70,6 +70,37 @@ else if($req["f"] == "updateMarketJson"){
 	}
 	
 }//updateMarketJson
+else if($req["f"] == "installApp"){
+	
+	$app_id = $req["appId"];
+	$marketplace = $wd_marketplace->open_local_marketplace();
+	if(empty($req["appId"]))
+		$output["msg"] = "Missing parameter";
+	else if(isset($marketplace["error"]))
+		$output["msg"] = $marketplace["error"];
+	else if(!isset($marketplace[$app_id]))
+		$output["msg"] = "Could not find app config";
+	else{
+		
+		if(!file_exists("../../".htmlspecialchars_decode($marketplace[$app_id]["install_path"])."/")){
+			mkdir("../../".htmlspecialchars_decode($marketplace[$app_id]["install_path"])."/",0775);
+		}
+		
+		if(!file_put_contents("../../".$marketplace[$app_id]["install_path"] . '/Tmpfile.zip', fopen(htmlspecialchars_decode($marketplace[$app_id]["host"])."/Pub/" . $marketplace[$app_id]["app"] . "/master.zip", 'r'))){
+			$output["msg"] = "Could not download ppp installation";
+		}
+		else{
+			$zip = new ZipArchive;
+			$zip->open("../../".$marketplace[$app_id]["install_path"] . '/Tmpfile.zip');
+			$zip->extractTo("../../".$marketplace[$app_id]["install_path"] . '/');
+			$zip->close();
+			unlink("../../".$marketplace[$app_id]["install_path"] . '/Tmpfile.zip');
+			$output["result"] = "success";
+		}
+		
+	}
+	
+}//installApp
 else
 	$output["msg"] = "Invalid function";
 	

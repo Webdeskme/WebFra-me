@@ -285,7 +285,7 @@ var marketplace = {
             if(installed_apps.indexOf(data.app) > -1){
               
               if(data.updated >= data.last_install_date){
-                $(".app-install-button",this).removeClass("webdesk_btn-secondary").addClass("webdesk_btn-success").html('<i class="fa fa-sync fa-fw"></i> Update').click({app_id:data.app},function(e){
+                $(".app-install-button",this).removeClass("webdesk_btn-secondary").addClass("webdesk_btn-success").html('<i class="fa fa-sync fa-fw"></i> Update').click({app_id:data.app_id},function(e){
               
                   marketplace.install_app(e.data.app_id);
                   
@@ -296,7 +296,7 @@ var marketplace = {
               }
             }
             else{
-              $(".app-install-button",this).click({tapp:data.app},function(e){
+              $(".app-install-button",this).click({tapp:data.app_id},function(e){
               
                 marketplace.install_app(e.data.tapp);
                 
