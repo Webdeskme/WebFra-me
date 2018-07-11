@@ -285,9 +285,9 @@ var marketplace = {
             if(installed_apps.indexOf(data.app) > -1){
               
               if(data.updated >= data.last_install_date){
-                $(".app-install-button",this).removeClass("webdesk_btn-secondary").addClass("webdesk_btn-success").html('<i class="fa fa-sync fa-fw"></i> Update').click({tapp:data.app},function(e){
+                $(".app-install-button",this).removeClass("webdesk_btn-secondary").addClass("webdesk_btn-success").html('<i class="fa fa-sync fa-fw"></i> Update').click({app_id:data.app},function(e){
               
-                  marketplace.install_app(e.data.tapp);
+                  marketplace.install_app(e.data.app_id);
                   
                 });
               }
@@ -332,20 +332,25 @@ var marketplace = {
     });
     
   },//load_market
-  install_app: function (tapp){
+  install_app: function (app_id){
   
-    if(tapp == null)
-      tapp = $("#viewAppMoreModal").attr("data-appid");
+    if(app_id == null)
+      app_id = $("#viewAppMoreModal").attr("data-appid");
       
-    $("body").prop("tapp",tapp);
+    $("body").prop("app_id",app_id);
     
-    $("#viewAppMoreModal .app-install-button,#app-" + tapp + " .app-install-button").html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Hang on').prop("disabled",true);
+    $("#viewAppMoreModal .app-install-button,#app-" + app_id + " .app-install-button").html('<i class="fa fa-spinner fa-pulse fa-fw"></i> Hang on').prop("disabled",true);
     $("#viewAppMoreModal .install-process").text("Beginning installation");
     
-    $.get("marketplace.ajax.json.php", {f: installApp, type:"Apps",app:"Market", sec:"installSub.php",napp:tapp,www:marketplace.wd_market[tapp].host},function(data){
-      
-      $("#viewAppMoreModal .install-process").text("Complete"); 
-      $("#viewAppMoreModal .app-install-button,#app-" + $("body").prop("tapp") + " .app-install-button").removeClass("webdesk_btn-primary").addClass("webdesk_btn-success").html('<i class="fa fa-check fa-fw"></i> Installed').prop("disabled",true);
+    $.get("<?php echo $wd_type."/".$wd_app ?>/marketplace.ajax.json.php", {f: "installApp", appId: app_id},function(data){
+      console.log(data);
+      if(data.result != "success"){
+        console.error(data.msg);
+      }
+      else{
+        $("#viewAppMoreModal .install-process").text("Complete"); 
+        $("#viewAppMoreModal .app-install-button,#app-" + $("body").prop("app_id") + " .app-install-button").removeClass("webdesk_btn-primary").addClass("webdesk_btn-success").html('<i class="fa fa-check fa-fw"></i> Installed').prop("disabled",true);
+      }
     });
     
   },//install_app
