@@ -14,13 +14,17 @@
           <?php
           if(test_input($_GET["sec"]) == "projectEditor.php"){
             ?>
+            <a href="<?php echo wd_url(test_input($_GET["editType"]), test_input($_GET["editApp"]), 'start.php', ''); ?>" target="_blank" class="webdesk_btn webdesk_btn-secondary webdesk_text-white" title="Preview app in a new window" data-toggle="webdesk_tooltip">
+            <i class="fa fa-eye fa-fw"></i> Preview
+          </a>
             <a href="#" class="webdesk_btn webdesk_btn-secondary webdesk_text-white" data-toggle="webdesk_tooltip" title="Publish to Marketplace">
-              <i class="fa fa-shipping-fast fa-fw"></i> Publish App
+              <i class="fa fa-shipping-fast fa-fw"></i> Publish
             </a>
             <span data-toggle="webdesk_tooltip" title="Delete app from WebDesk">
-            <a href="#" class="webdesk_btn webdesk_btn-danger webdesk_text-white" data-toggle="webdesk_modal" data-target="#deleteAppModal">
-              <i class="fa fa-trash fa-fw"></i>
-            </a>
+            <!--<a href="#" class="webdesk_btn webdesk_btn-danger webdesk_text-white" data-toggle="webdesk_modal" data-target="#deleteAppModal">-->
+            <!--  <i class="fa fa-trash fa-fw"></i>-->
+            <!--</a>-->
+            <?php echo wd_confirm($wd_type, $wd_app, "start.php", "", "removeAppModal", "<i class='fa fa-trash fa-fw'></i> Delete"); ?>
             </span>
             <?php
           }

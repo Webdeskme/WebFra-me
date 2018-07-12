@@ -101,6 +101,26 @@ else if($req["f"] == "installApp"){
 	}
 	
 }//installApp
+else if($req["f"] == "checkWDVersion"){
+	
+	if(!file_get_contents("../../update.txt") || !file_get_contents("http://webdesk.me/update.txt"))
+		$output["msg"] = "Could not open update files";
+	else{
+		
+		$output["result"] = "success";
+		
+		$localVersion = file_get_contents("../../update.txt");
+		$remoteVersion = file_get_contents("http://webdesk.me/update.txt");
+		
+		if($remoteVersion > $localVersion){
+			$output["data"]["update_required"] = true;
+			$output["data"]["version"] = $remoteVersion;
+		}
+		else
+			$output["data"]["update_required"] = false;
+	}
+	
+}//checkWDVersion
 else
 	$output["msg"] = "Invalid function";
 	

@@ -1,0 +1,9 @@
+{
+  "name":"Market Central",
+  "description": "This home controller for publishing apps and receiving updates.",
+  "version": "1.0",
+  "icon":"ic.png",
+  "require":{
+  	
+  }
+}

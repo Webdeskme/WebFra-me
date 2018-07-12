@@ -1,5 +1,6 @@
 {
 	"name":"Developer Tools",
+	"description": "Create your own apps, themes and HUDS to extend the Webdesk experience",
 	"version": "2.0",
 	"author":{
 		"name":"Webdesk",

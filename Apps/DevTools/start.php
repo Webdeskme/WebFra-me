@@ -13,7 +13,7 @@
 */
 if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 include_once("config.inc.php");
-include("pageHeader.php"); 
+include("pageHeader.php");
 
 $dt_my_apps = $wd_dt->getLocalProjects();
 

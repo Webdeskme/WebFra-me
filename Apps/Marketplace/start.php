@@ -79,8 +79,8 @@ if(file_exists($wd_type."/".$wd_app."/wd_marketplace.json")){
                         Awesome App
                       </h5>
                       
-                      <p class="app-description">
-                        <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </small>
+                      <p class="">
+                        <small class="app-description webdesk_text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </small>
                       </p>
                       <p class="app-developer">
                         Developer: John Doe
@@ -123,7 +123,7 @@ if(file_exists($wd_type."/".$wd_app."/wd_marketplace.json")){
               <div class="webdesk_col">
                 <h1 class="app-title"></h1>
                 <p><a href="#" class="app-category"></a></p>
-                <p class="app-description"></p>
+                <p class="app-description webdesk_text-mute"></p>
                 
                 <p class=""><b>Author:</b> <span class="app-author"></span></p>
                 <p class=""><b>Version:</b> <span class="app-version"></span></p>
@@ -192,7 +192,7 @@ $(document).ready(function(){
   
   $("#searchForm").submit(function(){
     
-    marketplace.load_market(category,$(":input[name='search']",this).val());
+    marketplace.load_market(marketplace.category,$(":input[name='search']",this).val());
     
     return false;
     
@@ -206,7 +206,7 @@ var marketplace = {
   wd_market: {},
   category: "all",
   load_viewmore_modal: function (tapp){
-  
+    
     $('#viewAppMoreModal').attr("data-appid",tapp);
     $('#viewAppMoreModal .app-title').text(marketplace.wd_market[tapp].app);
     
@@ -221,7 +221,7 @@ var marketplace = {
     
     $('#viewAppMoreModal .app-img').attr("src",marketplace.wd_market[tapp].host + "/Pub/" + marketplace.wd_market[tapp].app + "/ic.png");
     
-    if(installed_apps.indexOf(tapp) > -1){
+    if(installed_apps.indexOf(marketplace.wd_market[tapp].app) > -1){
       $("#viewAppMoreModal .app-install-button").prop("disabled",true).removeClass("webdesk_btn-primary").addClass("webdesk_btn-secondary").html('<i class="fa fa-check fa-fw"></i> Installed');
     }
     else{
@@ -304,7 +304,7 @@ var marketplace = {
             }
             $(".app-moreinfo-button",this).click(function(){
               
-              marketplace.load_viewmore_modal(data.app);
+              marketplace.load_viewmore_modal(data.app_id);
               
             });
             
@@ -328,6 +328,8 @@ var marketplace = {
       }
       
       $(".category-menu a .loading-spinner").remove();
+      
+      marketplace.checkWDVersion();
       
     });
     
@@ -387,7 +389,43 @@ var marketplace = {
       
     });
     
-  }//updateMarketplaceFile
+  },//updateMarketplaceFile
+  checkWDVersion: function(){
+    
+    console.log("Checking Webdesk version");
+    $.get("<?php echo $wd_type."/".$wd_app ?>/marketplace.ajax.json.php",{f: "checkWDVersion"},function(data,textStatus){
+      
+      if(data.result != "success"){
+        console.error(data.msg);
+      }
+      else{
+        
+        if(data.data.update_required){
+          
+          if($("#app-webdesk").length == 0){
+            $(".marketApp-container .marketApp.template").clone().prependTo(".marketApp-container").removeClass("template hide").addClass("clone").attr("id","app-webdesk").attr("data-appid","webdesk");
+            $("#app-webdesk").each(function(j){
+              
+              $(".app-title",this).text("Webdesk");
+              $(".app-developer",this).text("info@webdesk.me");
+              $(".app-description",this).text("Upgrade to version " + data.data.version);
+              $(".app-img",this).attr("src","<?php echo $wd_type."/".$wd_app ?>/assets/Webdesk_Logo.png");
+              $(".app-install-button",this).removeClass("webdesk_btn-secondary").addClass("webdesk_btn-success").html('<i class="fa fa-sync fa-fw"></i> Update').click({app_id:data.app_id},function(e){
+                
+                //marketplace.install_app(e.data.app_id);
+                
+              });
+              
+            });
+          }
+          
+        }
+        
+      }
+      
+    });
+    
+  }//checkWDVersion
   
 };
 
