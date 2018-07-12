@@ -32,6 +32,24 @@
   <script src="Plugins/fullcalendar/fullcalendar.min.js"></script>
   <script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>
 
+  <style>
+    html,body{
+      font-size: 12pt;
+    }
+    .webdesk_defaultHUD_app-container .webdesk_defaultHUD_app-selector a:hover img{
+      box-shadow: 0 2px 2px rgba(0,0,0,0.25);
+    }
+    .webdesk_defaultHUD_app-container .webdesk_defaultHUD_app-selector a:hover{
+      text-decoration: none;
+    }
+    .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover{
+      background: #1161D9;
+    }
+    .no-hover:hover{
+      text-decoration: none;
+    }
+  </style>
+
 <?php
 include 'wd_ch.php';
 if(isset($_GET["app"])){

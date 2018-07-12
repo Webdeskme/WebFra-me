@@ -4,17 +4,31 @@
 <head>
     <?php include 'HUDhead.php';?>
 </head>
-<body onload="display_ct();" style="fontSize: 1.75em;">
+<body onload="display_ct();">
 
 <div id="tabs" class="con">
     <ul id="wd_tabs">
-    <li><a href="#tabs-1"><span class="fa fa-folder-open"></span> <?php if(isset($app)){echo $app;} else{echo "Welcome";} ?></a></li>
-    <li><a href="#tabs-2"><span class="fa fa-globe"></span> Web</a></li>
-    <li><a href="#tabs-3"><span class="fa fa-exclamation-triangle"></span> Alerts <span class="webdesk_badge webdesk_badge-secondary"><?php echo get_number_of_user_alerts(); ?></span></a></li>
-    <li><a href="#tabs-4"><span class="fa fa-user"></span> <?php echo f_dec($_SESSION["user"]); ?></a></li>
-    <li><a href="#tabs-5"><span class="fa fa-hourglass"></span> Tasks</a></li>
-    <li><a href="#tabs-6"><span class="fa fa-folder"></span> Apps</a></li>
-    &emsp; <a href="#" data-toggle="webdesk_popitover" title="Search Apps" data-placement="top" data-html="true" data-content='<form metod="get" action="desktop.php">
+        <!-- // DISPLAYS TABS AT THE BOTTOM OF THE DISPLAY -->
+        <li>
+            <a href="#tabs-1"><span class="fa fa-folder-open"></span> <?php if(isset($app)){echo $wd_app_name;} else{echo "Welcome";} ?></a>
+        </li>
+        <li>
+            <a href="#tabs-2"><span class="fa fa-globe"></span> Web</a>
+        </li>
+        <li>
+            <a href="#tabs-3"><span class="fa fa-exclamation-triangle"></span> Alerts <span class="webdesk_badge webdesk_badge-secondary"><?php echo get_number_of_user_alerts(); ?></span></a>
+        </li>
+        <li>
+            <a href="#tabs-4"><span class="fa fa-user"></span> <?php echo f_dec($_SESSION["user"]); ?></a>
+        </li>
+        <li>
+            <a href="#tabs-5"><span class="fa fa-hourglass"></span> Tasks</a>
+        </li>
+        <li>
+            <a href="#tabs-6"><span class="fa fa-folder"></span> Apps</a>
+        </li>
+        &emsp; 
+        <a href="#" data-toggle="webdesk_popitover" title="Search Apps" data-placement="top" data-html="true" data-content='<form metod="get" action="desktop.php">
     <input list="wd_app_sd" placeholder="Type App Name" id="wd_app_s" name="app">
     <datalist id="wd_app_sd">
       <?php
@@ -102,8 +116,10 @@
     <button type="submit" class="webdesk_btn webdesk_btn-primary">
         <i class="fa fa-search"></i>
     </button>
-    </form>'><span class="fa fa-search"></span></a>
-    <span style="float: right;"><?php if(file_exists($wd_admin . $_SESSION['tier'] . '.json')){
+    </form>'><span class="fa fa-search fa-fw"></span></a>
+    <span class="webdesk_float-right">
+    <?php 
+    if(file_exists($wd_admin . $_SESSION['tier'] . '.json')){
         $myObj = file_get_contents($wd_admin . $_SESSION['tier'] . '.json');
         $myObj = json_decode($myObj); $wd_chat = $myObj->wd_chat;
     } 
@@ -113,7 +129,8 @@
     if($wd_chat == 'Yes'){ 
         ?>
         <a href="#" id="chat" title="Chat">
-            <span class="fa fa-comment"></span></a> &emsp; 
+            <span class="fa fa-comment fa-fw"></span>
+        </a> &emsp; 
         <?php 
     } 
     ?>
@@ -145,15 +162,17 @@
         }
     }
     ?>' data-toggle="webdesk_tooltip" title="Applets">
-        <span class="fa fa-ellipsis-h"></span>
+        <span class="fa fa-ellipsis-h fa-fw"></span>
     </a>
-       &emsp; <a href="desktop.php" target="_blank" style="text-align: right;" data-toggle="webdesk_tooltip" title="Add WorkSpace"><i class="fa fa-external-link-alt"></i></a> &emsp;
-        <span style="text-align: right;" data-toggle="webdesk_modal" data-target="#wd_cal"><b id="dt"></b></span>,
+    &emsp; 
+    <a href="desktop.php" target="_blank" style="text-align: right;" data-toggle="webdesk_tooltip" title="Add WorkSpace"><i class="fa fa-external-link-alt fa-fw"></i>
+    </a> &emsp;
+    <span class="webdesk_text-right" data-toggle="webdesk_modal" data-target="#wd_cal"><b id="dt"></b></span>,
         <span style="text-align: right;" data-toggle="webdesk_modal" data-target="#wd_clock"><b id="ct"></b></span>&emsp;
         <span style="text-align: right;" class="fa fa-info-circle" data-toggle="webdesk_modal" data-target="#wd_info" title="info"></span></span>
     </ul>
-        <div style="height: 95%; padding: 0px; margin: 0px; background-color: <?php echo $color; ?>; background-image: url(<?php echo $back; ?>); background-repeat: no-repeat; background-position: center; background-size: cover; -moz-background-size: cover; -webkit-background-size: cover; -o-background-size: cover;">
-    <div id="tabs-6" class="webdesk_tab" style="background-color: <?php
+    <div style="height: 95%; padding: 0px; margin: 0px; background-color: <?php echo $color; ?>; background-image: url(<?php echo $back; ?>); background-repeat: no-repeat; background-position: center; background-size: cover; -moz-background-size: cover; -webkit-background-size: cover; -o-background-size: cover;">
+    <div id="tabs-6" class="webdesk_tab webdesk_p-0" style="background-color: <?php
     if(file_exists($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){
         $pcolor = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt');
         echo $pcolor;
@@ -208,6 +227,7 @@
     <?php include 'HUDtask.php';?>
     </div>
     <div id="tabs-1" class="webdesk_card webdesk_tab" style="overflow: hidden; padding: 0px; margin: 0px; ">
+        
         <div id="1tab" style="padding: 0px; margin: 0px; overflow: scroll; height: 100%; background-color: <?php
         if(file_exists($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){
             $pcolor = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt');
@@ -218,29 +238,41 @@
         }
         ?>;">
 
-        <div style="background-color: #666699;">
-        <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" data-toggle="webdesk_tooltip" title="Back" id="wd_back" class="webdesk_btn webdesk_btn-info webdesk_btn-sm"><span class="fa fa-arrow-left webdesk_text-white"></span></a>
-        <a href="<?php echo $_SERVER['REQUEST_URI']; ?>" data-toggle="webdesk_tooltip" title="Refresh" id="wd_refresh" class="webdesk_btn webdesk_btn-info webdesk_btn-sm"><i class="fa fa-sync webdesk_text-white"></i></a>
-        <?php
-        if(isset($_SESSION["wd_fullscreen"]) && $_SESSION["wd_fullscreen"] == 'on'){
-        	?>
-        	<a href="<?php if (empty($_GET)) { echo $_SERVER['REQUEST_URI'] . '?wd_fullS=off';} else{ echo $_SERVER['REQUEST_URI'] . '&wd_fullS=off';} ?>" class="webdesk_btn webdesk_btn-info webdesk_btn-sm" data-toggle="webdesk_tooltip" title="Minimize"><i class="fa fa-compress webdesk_text-white"></i></a>
-        	<?php
-        }
-        else{
-            ?>
-            <a href="<?php echo preg_replace("/wd_fullS\=(on|off)/i", "", $_SERVER["REQUEST_URI"]) . ((empty($_GET)) ? "?" : "&") . "wd_fullS=on"; ?>" class="webdesk_btn webdesk_btn-info webdesk_btn-sm" data-toggle="webdesk_tooltip" title="Maximize"><span class="fa fa-expand  webdesk_text-white"></span></a>
-            <?php
-        }
-        ?>
-        <a href="<?php $get = explode('?', $_SERVER['REQUEST_URI']); if(isset($get[1])){ echo 'desktop_full.php?' . $get[1];} else{ echo 'desktop_full.php'; } ?>" class="webdesk_btn webdesk_btn-info  webdesk_btn-sm" data-toggle="webdesk_tooltip" title="Fullscreen"><span class="fa fa-arrows-alt webdesk_text-white"></span></a>
-        <a href="desktop.php" class="webdesk_btn webdesk_btn-info  webdesk_btn-sm" data-toggle="webdesk_tooltip" title="Home"><span class="fa fa-home webdesk_text-white"></span></a>
-        <button class="webdesk_btn webdesk_btn-info webdesk_btn-sm" data-toggle="webdesk_modal" data-target="#wd_app_help" title="Help Doc"><span class="fa fa-graduation-cap webdesk_text-white"></span></button>
-        <?php
-        if(isset($_GET["app"])){?> <span id="-wd_t1Title"><a href="<?php wd_url($type, $app, 'start.php', ''); ?>"><b><?php echo $app; ?></b></a></span> <?php }
-        ?>
-        </div>
-        <?php include 'HUDcon.php';?>
+            <div style="background-color: #D98911;" class="webdesk_pl-3 webdesk_pt-2">
+                <div class="webdesk_btn-group">
+                    <a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" onclick="window.history.go(-1);return false;" data-toggle="webdesk_tooltip" title="Back" id="wd_back" class="webdesk_btn webdesk_btn-primary webdesk_btn-sm"><span class="fa fa-arrow-left webdesk_text-white"></span></a>
+                    <a href="<?php echo $_SERVER['REQUEST_URI']; ?>" data-toggle="webdesk_tooltip" title="Refresh" id="wd_refresh" class="webdesk_btn webdesk_btn-primary webdesk_btn-sm"><i class="fa fa-sync webdesk_text-white"></i></a>
+                    <?php
+                    if(isset($_SESSION["wd_fullscreen"]) && $_SESSION["wd_fullscreen"] == 'on'){
+                    	?>
+                    	<a href="<?php if (empty($_GET)) { echo $_SERVER['REQUEST_URI'] . '?wd_fullS=off';} else{ echo $_SERVER['REQUEST_URI'] . '&wd_fullS=off';} ?>" class="webdesk_btn webdesk_btn-primary webdesk_btn-sm" data-toggle="webdesk_tooltip" title="Minimize"><i class="fa fa-compress webdesk_text-white"></i></a>
+                    	<?php
+                    }
+                    else{
+                        ?>
+                        <a href="<?php echo preg_replace("/wd_fullS\=(on|off)/i", "", $_SERVER["REQUEST_URI"]) . ((empty($_GET)) ? "?" : "&") . "wd_fullS=on"; ?>" class="webdesk_btn webdesk_btn-primary webdesk_btn-sm" data-toggle="webdesk_tooltip" title="Maximize"><span class="fa fa-expand  webdesk_text-white"></span></a>
+                        <?php
+                    }
+                    ?>
+                    <a href="<?php $get = explode('?', $_SERVER['REQUEST_URI']); if(isset($get[1])){ echo 'desktop_full.php?' . $get[1];} else{ echo 'desktop_full.php'; } ?>" class="webdesk_btn webdesk_btn-primary  webdesk_btn-sm" data-toggle="webdesk_tooltip" title="Fullscreen"><span class="fa fa-arrows-alt webdesk_text-white"></span></a>
+                    <a href="desktop.php" class="webdesk_btn webdesk_btn-primary  webdesk_btn-sm" data-toggle="webdesk_tooltip" title="Home"><span class="fa fa-home webdesk_text-white"></span></a>
+                    <button class="webdesk_btn webdesk_btn-primary webdesk_btn-sm" data-toggle="webdesk_modal" data-target="#wd_app_help"><span title="Help Doc" data-toggle="webdesk_tooltip"><i class="fa fa-graduation-cap webdesk_text-white"></i></span></button>
+                    <?php
+                    if(isset($_GET["app"])){
+                        
+                        ?>
+                        <span id="-wd_t1Title">
+                            <a href="<?php wd_url($type, $app, 'start.php', ''); ?>" class="no-hover">
+                                <!--<h5 class="webdesk_pt-2 webdesk_ml-3"><?php echo $wd_app_name; ?></h5>-->
+                            </a>
+                        </span> 
+                        
+                        <?php 
+                    }
+                    ?>
+                </div>
+            </div>
+            <?php include 'HUDcon.php';?>
         </div>
     </div>
     </div>
@@ -248,9 +280,9 @@
 <?php include 'HUDfoot.php';?>
 <?php
 if(isset($_GET['wd_dev'])){
-?>
-<script src="Plugins/tota11y-master/build/tota11y.min.js"></script>
-<?php
+    ?>
+    <script src="Plugins/tota11y-master/build/tota11y.min.js"></script>
+    <?php
 }
  ?>
 </body>

@@ -28,8 +28,10 @@ file_put_contents($wd_adminFile . 'lastPage.txt', $_SERVER['QUERY_STRING']);
 $folder = file_get_contents($wd_adminFile . 'oid.txt');
 $temp = 'web/' . $folder . '/';
 if ($handle = opendir($temp)) {
-                while (false !== ($entry = readdir($handle))) {
-                    if ($entry != "." && $entry != "..") {
-                        unlink($temp . $entry);
-                    }}}
+    while (false !== ($entry = readdir($handle))) {
+        if ($entry != "." && $entry != "..") {
+            unlink($temp . $entry);
+        }
+    }
+}
 ?>

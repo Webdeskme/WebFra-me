@@ -1,53 +1,65 @@
-<h1>Apps</h1>
-    <hr><br>
-<?php 
-$wd = 0;
-$wd_tier = test_input($wd_tier);
-$wd_tierFile = $wd_admin . $wd_tier . '.json';
-if(file_exists($wd_tierFile)){$wd_tierobj=json_decode(file_get_contents($wd_tierFile)); $wd_obj = $wd_tierobj;} 
-else{
-$wd_tierobj = "";
-$wd_obj = "";
-}
-foreach (scandir('Apps/') as $entry){
-                    if ($entry != "." && $entry != "..") {
-                        if(!file_exists($wd_tierFile)){$wd_teatobj = 0;}
-                        elseif(isset($wd_obj->$entry) && $wd_obj->$entry == 'Yes'){$wd_teatobj = 1;}
-                        else{$wd_teatobj = 0;}
-                        if($wd_tier === 'tA' || $wd_teatobj === 1){
-						$wd = $wd + 1;
-?>
-<figure id="wd_<?php echo $wd; ?>" style="float: left; padding: 10px;">
-    <a href="<?php wd_url('Apps', $entry, 'start.php', ''); ?>"><img src="Apps/<?php echo $entry; ?>/ic.png" style="height: 50px; width: 50px;"></a>
-<figcaption style="text-align: center;"><a href="<?php wd_url('Apps', $entry, 'start.php', ''); ?>" title="<?php echo $entry; ?>" style="font-size: 0.5em; text-decoration: none;"><?php echo $entry; ?></a></figcaption>
-</figure>
-<?php
-                    }
-else{
-    if(isset($_GET['app']) && $_GET['app'] == $entry){
-        //header('Location: desktop.php?wd_aw=Do not try to hack the system.');
-        exit('Do not try to hack the system');
+<!-- 
+////////////////////////////////////////////
+//
+// APPS TAB
+//
+// AUTHOR: ADAM TELFORD
+// 
+// THIS FILE DISPLAYS THE CONTENTS OF THE
+// APPS TAB.
+//
+/////////////////////////////////////////////
+// -->
+<nav class="webdesk_mb-3 webdesk_navbar webdesk_navbar-expand-sm webdesk_navbar-light webdesk_bg-light">
+  <a class="webdesk_navbar-brand" href="#">Apps</a>
+  <button class="webdesk_navbar-toggler" type="button" data-toggle="webdesk_collapse" data-target="#defaultHUD_appsMoreDiv" aria-controls="defaultHUD_appsMoreDiv" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="webdesk_navbar-toggler-icon"></span>
+  </button>
+
+  <div class="webdesk_collapse navbar-collapse" id="defaultHUD_appsMoreDiv">
+    
+  </div>
+</nav>
+<div class="webdesk_container-fluid">
+    <?php
+    $wd_tierobj = [];
+    if(file_exists($wd_admin . test_input($wd_tier) . '.json')){
+        
+        $wd_tierobj = json_decode(file_get_contents($wd_admin . test_input($wd_tier) . '.json'));
+        
     }
-}
+    
+    for($x = 0; $x < 2; $x ++){
+        $app_type = ($x == 0) ? "Apps" : "MyApps";
+        ?>
+        <?php echo ($x == 1) ? "<h5 class='webdesk_mx-3 webdesk_mt-3'>My Apps</h5>" : "" ?>
+        <div class="webdesk_row webdesk_mx-3 webdesk_defaultHUD_app-container <?php echo ($x == 0) ? "webdesk_border-bottom" : "" ?>">
+            <?php
+            foreach (scandir($app_type . '/') as $entry){
+                if ($entry != "." && $entry != "..") {
+                    $app_name = $entry;
+                    $app_description = null;
+                    if(file_exists($app_type . "/" . $entry . "/app.json")){
+                        $app_info = json_decode(file_get_contents($app_type . "/" . $entry . "/app.json"),true);
+                        if(is_array($app_info) && !empty($app_info["name"]))
+                            $app_name = $app_info["name"];
+                        if(is_array($app_info) && !empty($app_info["description"]))
+                            $app_description = $app_info["description"];
                     }
+                    ?>
+                    <div class="webdesk_defaultHUD_app-selector webdesk_col-xl-1 webdesk_col-lg-2 webdesk_col-md-3 webdesk_p-4 webdesk_col-sm-4 webdesk_col-xs-6 webdesk_mb-1 webdesk_text-center">
+                        <a href="<?php wd_url($app_type, $entry, 'start.php', ''); ?>" class="" data-toggle="<?php echo (!is_null($app_description)) ? "webdesk_tooltip" : ""; ?>" title="<?php echo $app_description ?>" data-placement="webdesk_top" data-delay="1000">
+                            <img src="<?php echo (file_exists($app_type . "/" . $entry . "/ic.png")) ? $app_type . "/" . $entry : "Apps/DevTools"; ?>/ic.png" class="webdesk_img-fluid" />
+                            <div style="font-size: .8rem;" class="webdesk_mt-2"><?php echo $app_name; ?></div>
+                        </a>
+                    </div>
+                    <?php
                 }
-?>
-    <div style="width: 100%; clear: both;"><h1>My Apps</h1>
-    <hr></div>
-<?php 
-foreach (scandir('MyApps/') as $entry){
-                    if ($entry != "." && $entry != "..") {
-                      $tentry = 'myApp_' . $entry;
-                        if(!file_exists($wd_tierFile)){$wd_teatobj = 0;}
-                        elseif(isset($wd_obj->$tentry) && $wd_obj->$tentry == 'Yes'){$wd_teatobj = 1;}
-                        else{$wd_teatobj = 0;}
-                        if($wd_tier === 'tA' || $wd_teatobj === 1){
-?>
-<figure id="wd_m<?php echo $wd; ?>" style="float: left; padding: 10px;">
-    <a href="<?php wd_url('MyApps', $entry, 'start.php', ''); ?>"><img <?php if(file_exists("MyApps/" . $entry . "/ic.png")){ ?>src="MyApps/<?php echo $entry; ?>/ic.png" <?php } else{ ?> src="Apps/Dev/ic.png" <?php } ?> style="height: 50px; width: 50px;"></a>
-<figcaption style="text-align: center;"><a href="<?php wd_url('MyApps', $entry, 'start.php', ''); ?>" title="<?php echo $entry; ?>" style="font-size: 0.5em; text-decoration: none;"><?php echo $entry; ?></a></figcaption>
-</figure>
-<?php
-                    }}
-                }
-?>
+            }
+            ?>
+        </div>
+        <?php
+    }
+    ?>
+    
+</div>
