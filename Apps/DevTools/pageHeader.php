@@ -17,7 +17,7 @@
             <a href="<?php echo wd_url(test_input($_GET["editType"]), test_input($_GET["editApp"]), 'start.php', ''); ?>" target="_blank" class="webdesk_btn webdesk_btn-secondary webdesk_text-white" title="Preview app in a new window" data-toggle="webdesk_tooltip">
             <i class="fa fa-eye fa-fw"></i> Preview
           </a>
-            <a href="#" class="webdesk_btn webdesk_btn-secondary webdesk_text-white" data-toggle="webdesk_tooltip" title="Publish to Marketplace">
+            <a href="#publishAppModal" class="webdesk_btn webdesk_btn-secondary webdesk_text-white" data-toggle="webdesk_modal" title="Publish to Marketplace">
               <i class="fa fa-shipping-fast fa-fw"></i> Publish
             </a>
             <span data-toggle="webdesk_tooltip" title="Delete app from WebDesk">
@@ -248,6 +248,38 @@
         <div class="webdesk_modal-footer">
           <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Cancel</button>
           <button type="submit" class="webdesk_btn webdesk_btn-primary">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="webdesk_modal webdesk_fade" id="publishAppModal" tabindex="-1" role="dialog" aria-labelledby="publishAppModalLabel" aria-hidden="true">
+  <div class="webdesk_modal-dialog webdesk_shadow" role="document">
+    <form name="deleteApp" class="no-loader" onsubmit="">
+      <div class="webdesk_modal-content">
+        <div class="webdesk_modal-header">
+          <h5 class="webdesk_modal-title" id="publishAppModalLabel"><i class="fa fa-shipping-fast"></i> Publish to Marketplace</h5>
+          <button type="button" class="webdesk_close" data-dismiss="webdesk_modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="webdesk_modal-body webdesk_py-5">
+        
+          <?php
+          if(file_exists("Apps/MarketPublisher/publish_externalPopup.php")){
+            include_once("Apps/MarketPublisher/publish_externalPopup.php");
+          }
+          else{
+            ?>
+            Download the Marketplace Publisher app to publish your apps to the Marketplace!
+            <?php
+          }
+          ?>
+        
+        </div>
+        <div class="webdesk_modal-footer hide">
+          <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Cancel</button>
+          <button type="submit" class="webdesk_btn webdesk_btn-primary">Confirm</button>
         </div>
       </form>
     </div>

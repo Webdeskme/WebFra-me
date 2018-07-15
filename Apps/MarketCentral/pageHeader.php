@@ -14,14 +14,14 @@
           
         </li>
       </ul>
-      <form id="searchForm" class="form-inline webdesk_my-2 webdesk_my-lg-0 noloadingicon">
-        <div class="webdesk_input-group">
-          <input class="webdesk_form-control" type="text" name="search" placeholder="Search" aria-label="Search" onfocus="$(this).css('width','50vw');" />
-          <div class="webdesk_input-group-append">
-            <button class="webdesk_btn webdesk_btn-outline-secondary webdesk_my-2 webdesk_my-sm-0" type="submit" /><i class="fa fa-search fa-fw"></i></button>
-          </div>
-        </div>
-      </form>
+      <!--<form id="searchForm" class="form-inline webdesk_my-2 webdesk_my-lg-0 noloadingicon">-->
+      <!--  <div class="webdesk_input-group">-->
+      <!--    <input class="webdesk_form-control" type="text" name="search" placeholder="Search" aria-label="Search" onfocus="$(this).css('width','50vw');" />-->
+      <!--    <div class="webdesk_input-group-append">-->
+      <!--      <button class="webdesk_btn webdesk_btn-outline-secondary webdesk_my-2 webdesk_my-sm-0" type="submit" /><i class="fa fa-search fa-fw"></i></button>-->
+      <!--    </div>-->
+      <!--  </div>-->
+      <!--</form>-->
     </div>
   </div>
 </nav>

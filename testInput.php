@@ -176,7 +176,7 @@ if(file_exists("path.php")){
   else{
     $GLOBALS['wd_url'] = "";
   }
-  function wd_url($wd_type, $app, $sec, $get) {
+  function wd_url($wd_type, $app, $sec = 'start.php', $get = '') {
       echo $url = "desktop.php?type=" . $wd_type . "&app=" . $app . "&sec=" . $sec . $get . $GLOBALS['wd_url'];
      // return $url;
   }
