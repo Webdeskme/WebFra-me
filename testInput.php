@@ -124,6 +124,10 @@ if(file_exists("path.php")){
   }
   $wd_admin = $wd_root . '/Admin/';
   $wd_appr = $wd_root . '/App/';
+  $wd_appDir = $wd_appr;
+  if(!empty($_GET["type"]) && !empty($_GET["app"]))
+    $wd_appDir .= test_input($_GET["type"])."/".test_input($_GET["app"])."/";
+    
   $wd_www = $wd_root . '/www/';
   if(file_exists($wd_admin . 'title.txt')){
     $wd_Title = file_get_contents($wd_admin . 'title.txt');
