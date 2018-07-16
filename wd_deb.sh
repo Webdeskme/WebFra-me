@@ -4,10 +4,8 @@ sudo apt-get clean
 sudo apt-get --yes update
 sudo apt-get --yes dist-upgrade
 sudo apt-get clean
-sudo apt-get install --yes apache2 php7.0 php7.0-curl php7.0-gd php7.0-imap php7.0-json php7.0-mcrypt php7.0-mysql php7.0-opcache php7.0-xmlrpc libapache2-mod-php7.0 php-zip php-do$
-sudo a2enmod mod-security
-sudo wget https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_amd64.deb
-sudo dpkg -i mod-pagespeed-stable_current_amd64.deb
+sudo apt-get install --yes apache2 php7.0 php7.0-curl php7.0-gd php7.0-imap php7.0-json php7.0-mcrypt php7.0-mysql php7.0-opcache php7.0-xmlrpc libapache2-mod-php7.0 php-zip php-dom unzip php-memcached memcached libapache2-mod-security2 libapache2-modsecurity libapache2-mod-evasive
+sudo a2enmod mod-security deflate
 sudo apt-get --yes update
 sudo apt-get --yes dist-upgrade
 echo "cleaning up"
@@ -38,7 +36,5 @@ echo " "
 echo "This is state of your servers storage."
 df -h
 echo "This is your ip address. Please enter it in the url field of your web browser and click enter."
-echo " "
 hostname -I
-echo " "
 echo "To remove this file please type in your terminal: sudo rm -f wd_deb.sh"
