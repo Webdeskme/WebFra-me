@@ -6,8 +6,18 @@ class marketcentral{
 	
 }
 $wd_marketcentral = new marketcentral();
-//$db = mysqli_connect("localhost", "marketcentral","BqtcKn1gOJUwLorr","wd_marketcentral");
-$db = mysqli_connect("localhost", "marketcentral","","wd_marketcentral");
+
+// DON'T PUT THIS INFO HERE. PUT IT IN THE CONFIG DIRECTORY IN THE ROOT PATH
+$db_user = "";
+$db_pass = "";
+$db_host = "";
+$db_name = "";
+
+if(file_exists($wd_appDir . "config.inc.php")){
+	include_once($wd_appDir . "config.inc.php");
+}
+
+$db = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 if(!$db){
 	echo "Could not connect to marketcentral database";
 	exit;
