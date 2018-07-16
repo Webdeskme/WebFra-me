@@ -27,12 +27,15 @@ include("config.inc.php");
 	else{
 		?>
 		<div class="webdesk_card webdesk_mt-5">
-			<div class="webdesk_card-body">
+			<div class="webdesk_card-body webdesk_mt-5">
 				<div class="webdesk_text-center">
 					<img src="<?php echo $wd_type."/".$wd_app ?>/assets/Webdesk_Logo.png" class="webdesk_img" style="max-width: 150px" />
 				</div>
-				<p class="webdesk_lead webdesk_py-4">
+				<p class="webdesk_lead webdesk_pt-4">
 					Sign in to your Webdesk Publisher&apos;s Account to continue.
+				</p>
+				<p class="webdesk_lead webdesk_pb-4">
+					<a href="#">Create an account</a>
 				</p>
 				<form name="loginForm">
 					<input type="hidden" name="f" value="marketplacepublisher_login" />
@@ -54,14 +57,19 @@ include("config.inc.php");
 			$("form").submit(function(){
 				
 				var formVars = $(this).serialize();
+				if($(".alert-msg",this).length == 0){
+					$(":input[type='submit']",this).after('<span class="alert-msg webdesk_alert webdesk_alert-danger"></span>');
+				}
 				
 				$.post("<?php echo $wd_type."/".$wd_app ?>/marketcentral.ajax.json.php",formVars, function(data,textStatus){
 					
-					if(data.result != "success")
-						console.log(data.error);
+					if(data.result != "success"){
+						console.log(data.msg);
+						$(".alert-msg").text(data.msg);
+					}
 					else{
 						
-						opener.document.location = "<?php echo $req["return_uri"] ?>&token=" + data.data.token;
+						opener.document.location = "<?php echo urldecode($req["return_uri"]) ?>&token=" + data.data.token;
 						window.close();
 						
 					}

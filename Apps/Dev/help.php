@@ -1,2 +1,0 @@
-<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
-Welcome to the dev portal!

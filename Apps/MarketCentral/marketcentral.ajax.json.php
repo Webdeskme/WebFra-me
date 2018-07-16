@@ -17,14 +17,21 @@ else if($req["f"] == "marketplacepublisher_login"){
 		$user = $result->fetch_array(MYSQLI_ASSOC);
 		if($result->num_rows == 0)
 			$output["msg"] = "User not found";
-		else if(!password_verify(up_enc($req["publishers_password"] . $req["publishers_email"]),$user["upass"]))
+		else if(!password_verify(up_enc($req["publishers_password"] . $req["publishers_email"] . $user["usec"]),$user["upass"]))
 			$output["msg"] = "Incorrect password";
 		else{
 			
 			$token = hash("sha256",up_enc($req["publishers_password"] . $req["publishers_email"].microtime(true)));
 			
-			$output["result"] = "success";
-			$output["data"]["token"] = $token;
+			$sql = "INSERT INTO users_tokens (uid, token_key, date_created, status) VALUES ('".$user["id"]."', '$token', '$today', '1')";
+			if(!$db->query($sql)){
+				$output["msg"] = "An internal server error has occured. Please try again later.";
+				$output["error"] = $db->error;
+			}
+			else{
+				$output["result"] = "success";
+				$output["data"]["token"] = $token;
+			}
 			
 		}
 		
