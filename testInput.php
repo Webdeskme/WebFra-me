@@ -104,8 +104,12 @@ if(isset($_GET['adminView']) && isset($_SESSION['wd_adminView'])){
 }
 $wd_root = "NA1";
 $wd_roots = array();
-if(file_exists("path.php")){
-  include('path.php');
+if(file_exists("path.php") || file_exists("../../path.php")){
+  if(file_exists("path.php"))
+    include('path.php');
+  else
+    include("../../path.php");
+  
   if(isset($wd_roots[$_SERVER['HTTP_HOST']])){
     $wd_root = test_input($wd_roots[$_SERVER['HTTP_HOST']]);
   }

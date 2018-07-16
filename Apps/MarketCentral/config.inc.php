@@ -13,8 +13,9 @@ $db_pass = "";
 $db_host = "";
 $db_name = "";
 
-if(file_exists($wd_appDir . "config.inc.php")){
-	include_once($wd_appDir . "config.inc.php");
+if(file_exists($wd_appr . "Apps/MarketCentral/config.inc.php")){
+	
+	include_once($wd_appr . "Apps/MarketCentral/config.inc.php");
 }
 
 $db = mysqli_connect($db_host, $db_user, $db_pass, $db_name);

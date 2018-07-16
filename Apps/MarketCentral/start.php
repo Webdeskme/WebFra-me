@@ -15,6 +15,9 @@ include("pageHeader.php");
 	<p>
 		There are currently <b><?php echo $result->num_rows ?></b> registered apps
 	</p>
+	<p>
+		Marketplace Download Location: <a href="http://market.webdesk.me/Apps/MarketCentral/wd_marketplace.json.php" target="_blank">http://market.webdesk.me/Apps/MarketCentral/wd_marketplace.json.php</a>
+	</p>
 </div>
 <?php
 

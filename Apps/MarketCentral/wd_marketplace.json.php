@@ -1,6 +1,6 @@
 <?php
 header("Content-type: application/json");
-include_once("../../testInput.php");
+include("../../testInput.php");
 include_once("config.inc.php");
 
 if(empty($req["timestamp"]))
