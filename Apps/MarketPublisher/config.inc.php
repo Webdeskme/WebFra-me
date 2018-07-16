@@ -2,8 +2,8 @@
 class marketpublisher{
 	
 	var $dev_mode = false;
-	var $publisher_api_url = "http://webdesk.shirtntie.net/Apps/MarketCentral/wd_publisher.json.php";
-	var $publisher_oauth_url = "http://webdesk.shirtntie.net/web.php?type=Apps&app=MarketCentral&sec=oauthRequest.php&client=";
+	var $publisher_api_url = "http://market.webdesk.me/Apps/MarketCentral/wd_publisher.json.php";
+	var $publisher_oauth_url = "http://market.webdesk.me/web.php?type=Apps&app=MarketCentral&sec=oauthRequest.php&client=";
 	
 	public function __construct(){
 		$this->publisher_oauth_url .= $_SERVER["HTTP_HOST"]."&return_uri=".urlencode("http://".$_SERVER["HTTP_HOST"]."/desktopSub.php?type=Apps&app=MarketPublisher&sec=oauthReturn.php");

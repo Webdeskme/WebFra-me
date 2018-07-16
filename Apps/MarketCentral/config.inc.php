@@ -6,7 +6,8 @@ class marketcentral{
 	
 }
 $wd_marketcentral = new marketcentral();
-$db = mysqli_connect("localhost", "marketcentral","BqtcKn1gOJUwLorr","wd_marketcentral");
+//$db = mysqli_connect("localhost", "marketcentral","BqtcKn1gOJUwLorr","wd_marketcentral");
+$db = mysqli_connect("localhost", "marketcentral","","wd_marketcentral");
 if(!$db){
 	echo "Could not connect to marketcentral database";
 	exit;
