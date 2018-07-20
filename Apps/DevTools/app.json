@@ -1,7 +1,7 @@
 {
 	"name":"Developer Tools",
 	"description": "Create your own apps, themes and HUDS to extend the Webdesk experience",
-	"version": "2.0",
+	"version": "2.0.1",
 	"author":{
 		"name":"Webdesk",
 		"email":"apps@webdesk.me"

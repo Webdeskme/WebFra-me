@@ -190,13 +190,17 @@ var devTools = {
 					console.error(data.msg);
 				else{
 					
+					
+					
 					$(".webdesk_nav-link").removeClass("webdesk_active");
 					if($(".open-tabs .webdesk_nav-item[data-file='" + projectFile + "']").length == 0){
+						
 						console.info("New tab is being created");
+						
 						$('<li class="webdesk_nav-item" data-file="' + projectFile + '"><button class="webdesk_close" onclick="devTools.closeFile(this);">&times;</button><a href="#" class="webdesk_nav-link webdesk_active">' + projectFile.split("/")[projectFile.split("/").length-1] + ' <i class="fa fa-dot-circle fa-fw edited-icon fa-sm"></i></a></li>').click(function(){
 							devTools.openEditor($(this).attr("data-file"));
 						}).appendTo(".open-tabs");
-						
+						$(".codemirror-wrapper").show();	
 						data.data.file.contents = decodeHtml(data.data.file.contents);
 						devTools.tabs[nIndex] = data.data.file;
 						devTools.currTab = nIndex;
@@ -207,9 +211,9 @@ var devTools = {
 						$(".open-tabs .webdesk_nav-item[data-file='" + projectFile + "'] a").addClass("webdesk_active");
 					}
 					
-					$(".file[data-file='" + projectFile + "']").addClass("open");
 					
-					$(".codemirror-wrapper").show();
+					
+					$(".file[data-file='" + projectFile + "']").addClass("open");
 					
 					if(moveCurrentViewToSession){
 						devTools.saveTabsToSession();
@@ -284,7 +288,9 @@ var devTools = {
 	},
 	closeEditor: function(){
 		
-		dt_codeMirror.doc.setValue("");
+		if(dt_codeMirror != null)
+			dt_codeMirror.doc.setValue("");
+		
 		$(".codemirror-wrapper").hide();
 		
 	},
@@ -460,6 +466,8 @@ $(document).ready(function(){
 			"Ctrl-S": "devTools.saveFile"
 		}
 	});
+	
+	$(".codemirror-wrapper").hide();
 	
 	dt_codeMirror.on('change',function(e,t){
 		if(t.origin != "setValue"){
