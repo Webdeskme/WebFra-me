@@ -444,10 +444,10 @@ if(file_exists("path.php") || file_exists("../../path.php")){
         $obj = file_get_contents("www/Pages/nav.json");
         $obj = json_decode($obj);
       ?>
-  <nav class="webdesk_navbar webdesk_m-0 webdesk_navbar-<?php echo ($color == "light") ? "default" : "inverse"; echo ($loc == 'fixed') ? ' webdesk_navbar-fixed-top': "" ?>">
+  <nav class="webdesk_navbar webdesk_navbar-expand-md webdesk_m-0 webdesk_navbar-<?php echo ($color == "light") ? "light webdesk_bg-light" : "inverse webdesk_bg-dark"; echo ($loc == 'fixed') ? ' webdesk_navbar-fixed-top': "" ?>">
     <div class="webdesk_container-fluid">
       <div class="webdesk_navbar-header">
-        <button type="button" class="webdesk_navbar-toggle" data-toggle="webdesk_collapse" data-target="#myNavbar">
+        <button type="button" class="webdesk_navbar-toggler" data-toggle="webdesk_collapse" data-target="#<?php echo $nav_id ?>" aria-controls="<?php echo $nav_id ?>" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fa fa-bars fa-fw"></i>
         </button>
         <?php
@@ -459,7 +459,7 @@ if(file_exists("path.php") || file_exists("../../path.php")){
       ?>
       </div>
       <div class="webdesk_collapse webdesk_navbar-collapse" id="<?php echo $nav_id ?>">
-        <ul class="webdesk_nav webdesk_navbar-nav">
+        <ul class="webdesk_navbar-nav webdesk_mr-auto">
           <?php
         $i = 1;
           while($i <= 9){
@@ -521,12 +521,12 @@ if(file_exists("path.php") || file_exists("../../path.php")){
           <?php
       if($register != ""){
       ?>
-          <li class="<?php echo ($register == $page) ? 'webdesk_active' : ''; ?>"><a href="<?php echo $proot . $register; ?>"><i class="fa fa-user"></i> Sign Up</a></li>
+          <li class="<?php echo ($register == $page) ? 'webdesk_active' : ''; ?>"><a href="<?php echo $proot . $register; ?>" class="webdesk_text-dark"><i class="fa fa-user fa-fw"></i> Sign Up</a></li>
           <?php
       }
       if($login == "yes"){
       ?>
-          <li><a href="index.php?page=login.php"><i class="fa fa-sign-in-alt"></i> Login</a></li>
+          <li><a href="index.php?page=login.php" class="webdesk_text-dark"><i class="fa fa-sign-in-alt fa-fw"></i> Login</a></li>
           <?php
     }
       ?>

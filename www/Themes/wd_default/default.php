@@ -25,24 +25,24 @@
     the exlmation point once loged in, and in the menu of the login page.-->
 <html lang="en-US">
 <head>
-  <meta charset="utf-8">
-  <link rel="manifest" href="manifest.php">
-     <meta http-equiv="content-language" content="ll-cc">
-      <meta name="language" content="English">
-      <meta name="mobile-web-app-capable" content="yes">
-      <meta name="apple-mobile-web-app-capable" content="yes">
-      <meta name="author" content="<?php echo $wd_Title; ?>">
-      <meta name="description" content="Welcome to <?php echo $wd_Title; ?>.">
-      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-      <meta charset="UTF-8">
-      <meta name="theme-color" content="#000000"/>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="copyright" content="&copy; <?php echo date("Y") . ' ' . $wd_Title; ?>">
-      <meta http-equiv="Cache-control" content="public">
-      <link rel="apple-touch-icon" href="favicon.ico">
-      <link rel="apple-touch-startup-image" href="favicon.ico">
-      <!--<link rel="stylesheet" href="Plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-      <link rel="stylesheet" type="text/css" href="Theme/default.php">
+<meta charset="utf-8">
+<link rel="manifest" href="manifest.php">
+<meta http-equiv="content-language" content="ll-cc">
+<meta name="language" content="English">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="author" content="<?php echo $wd_Title; ?>">
+<meta name="description" content="Welcome to <?php echo $wd_Title; ?>.">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="theme-color" content="#000000"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="copyright" content="&copy; <?php echo date("Y") . ' ' . $wd_Title; ?>">
+<meta http-equiv="Cache-control" content="public">
+<link rel="apple-touch-icon" href="favicon.ico">
+<link rel="apple-touch-startup-image" href="favicon.ico">
+<link rel="stylesheet" href="Plugins/wd-bootstrap/css/webdesk_bootstrap.min.css">
+<!--<link rel="stylesheet" type="text/css" href="Theme/default.php">
 <link rel="stylesheet" type="text/css" href="www/Themes/wd_default/style.css">-->
 <link rel="stylesheet" type="text/css" href="www/Themes/wd_default/pluginCSS.php">
 <?php
