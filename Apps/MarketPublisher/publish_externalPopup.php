@@ -24,21 +24,24 @@ else if(isset($token_info) && is_array($token_info) && !empty($token_info["token
 		
 		
 		<form name="publishAppForm" class="webdesk_mt-3">
-			
+			<input type="hidden" name="f" value="publishApp" />
 			<div class="webdesk_form-group">
 				<label for="app_name">App Name</label>
 				<input type="text" name="app_name" class="webdesk_form-control" value="<?php echo (!empty($app_info["name"])) ? $app_info["name"] : $wd_app ?>" id="app_name" />
 				<small class="webdesk_text-muted">Required</small>
+				<div class="webdesk_invalid-feedback"></div>
 			</div>
 			<div class="webdesk_form-group">
 				<label for="app_description">Description</label>
 				<textarea rows="3" name="app_description" class="webdesk_form-control" id="app_description"><?php echo (!empty($app_info["description"])) ? $app_info["description"] : "" ?></textarea>
 				<small class="webdesk_text-muted">Required</small>
+				<div class="webdesk_invalid-feedback"></div>
 			</div>
 			<div class="webdesk_form-group">
 				<label for="app_ver">Version</label>
 				<input type="text" name="app_ver" class="webdesk_form-control" value="<?php echo (!empty($app_info["version"])) ? $app_info["version"] : $wd_app ?>" id="app_ver" />
 				<small class="webdesk_text-muted">Required</small>
+				<div class="webdesk_invalid-feedback"></div>
 			</div>
 			<div class="webdesk_form-group">
 				<label for="app_category">Category</label>
@@ -64,6 +67,7 @@ else if(isset($token_info) && is_array($token_info) && !empty($token_info["token
 					}
     		?>
 				</select>
+				<div class="webdesk_invalid-feedback"></div>
 			</div>
 			<div class="webdesk_form-group">
 				<label for="app_rate">Rating</label>
@@ -72,9 +76,10 @@ else if(isset($token_info) && is_array($token_info) && !empty($token_info["token
 					<option>Teen</option>
 					<option>Mature</option>
 				</select>
+				<div class="webdesk_invalid-feedback"></div>
 			</div>
 			
-			<button type="submit" class="webdesk_btn webdesk_btn-primary webdesk_btn-lg webdesk_btn-block">Publish App</button>
+			<button type="submit" class="webdesk_mt-4 webdesk_btn webdesk_btn-primary webdesk_btn-lg webdesk_btn-block">Publish App</button>
 			
 		</form>
 		
@@ -95,3 +100,36 @@ else{
 	<?php
 }
 ?>
+<script type="text/javascript">
+$("form").submit(function(){
+	
+	var formName = $(this).attr("name");
+	var formVars = $(":input",this).serialize();
+	
+	$.post("Apps/MarketPublisher/wd_marketpublisher.ajax.json.php",formVars,function(data,textStatus){
+		
+		if(data.result != "success"){
+			
+			if(data.highlightField != null){
+				
+				for(var x in data.highlightField){
+					
+					console.error("Highlight field " + data.highlightField[x],data.highlightMsg[x]);
+					
+					$(":input[name='" + data.highlightField[x] + "']").addClass("webdesk_is-invalid").parent(".webdesk_form-group").children(".webdesk_invalid-feedback").html(data.highlightMsg[x]).show();
+					$(":input[name='" + data.highlightField[x] + "']").keydown(function(){
+						$(":input[name='" + data.highlightField[x] + "']").removeClass("webdesk_is-invalid").parent(".webdesk_form-group").children(".webdesk_invalid-feedback").hide();
+					});
+					
+				}
+				
+			}
+			
+		}
+		
+	});
+	
+	return false;
+	
+})
+</script>

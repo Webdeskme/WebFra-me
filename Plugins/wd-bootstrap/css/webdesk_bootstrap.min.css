@@ -2027,9 +2027,9 @@ select.webdesk_form-control-lg:not([size]):not([multiple]) {
 .webdesk_was-validated .webdesk_custom-file-input:invalid~.webdesk_custom-file-label,
 .webdesk_was-validated .webdesk_custom-select:invalid,
 .webdesk_was-validated .webdesk_form-control:invalid,
-.webdesk_custom-file-input-invalid~.webdesk_custom-file-label,
-.webdesk_custom-select-invalid,
-.webdesk_form-control-invalid {
+.webdesk_custom-file-input:invalid~.webdesk_custom-file-label,
+.webdesk_custom-select:invalid,
+.webdesk_form-control:invalid,.webdesk_form-control.webdesk_is-invalid {
     border-color: #dc3545
 }
 
