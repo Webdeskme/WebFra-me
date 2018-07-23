@@ -263,7 +263,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="webdesk_modal-body webdesk_py-5">
+        <div class="webdesk_modal-body webdesk_py-3">
         
           <?php
           if(file_exists("Apps/MarketPublisher/publish_externalPopup.php")){
