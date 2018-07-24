@@ -7,10 +7,10 @@
       </button>
     </div>
     <div class="webdesk_collapse webdesk_justify-content-end webdesk_navbar-collapse" id="terminalNavbar">
-      
+
       <ul class="webdesk_navbar-nav webdesk_justify-content-end">
         <li class="webdesk_nav-item">
-          
+
           <?php
           if(test_input($_GET["sec"]) == "projectEditor.php"){
             ?>
@@ -24,15 +24,15 @@
             <!--<a href="#" class="webdesk_btn webdesk_btn-danger webdesk_text-white" data-toggle="webdesk_modal" data-target="#deleteAppModal">-->
             <!--  <i class="fa fa-trash fa-fw"></i>-->
             <!--</a>-->
-            <?php echo wd_confirm($wd_type, $wd_app, "start.php", "", "removeAppModal", "<i class='fa fa-trash fa-fw'></i> Delete"); ?>
+            <?php echo wd_confirm($wd_type, $wd_app, "projectSubDelete.php", "", "removeAppModal", "<i class='fa fa-trash fa-fw'></i> Delete"); ?>
             </span>
             <?php
           }
           ?>
-          
+
         </li>
       </ul>
-      
+
     </div>
   </div>
 </nav>
@@ -56,7 +56,7 @@
     }
     else if(test_input($_GET["sec"]) == "projectEditor.php"){
       ?>
-      
+
       <div class="webdesk_btn-group">
         <button type="button" class="webdesk_btn webdesk_btn-outline-secondary webdesk_rounded-0" title="New file" data-toggle="webdesk_modal" data-target="#newFileModal">
           <span class="fa-layers fa-fw" style="">
@@ -74,17 +74,17 @@
           <i class="fa fa-save fa-fw"></i>
         </button>
       </div>
-      
+
       <div class="webdesk_btn-group">
         <button id="dt_editor-pasteButton" type="button" class="webdesk_btn webdesk_btn-outline-secondary webdesk_rounded-0" data-toggle="webdesk_tooltip" title="Paste file in top folder" onclick="devTools.copyFile(devTools.fileClipBoard,'<?php echo test_input($_GET["editType"])."/".test_input($_GET["editApp"]) ?>');return false;">
           <i class="fa fa-paste fa-fw"></i>
         </button>
       </div>
-      
+
       <?php
     }//
     ?>
-    
+
   </div>
 </nav>
 <div class="webdesk_modal webdesk_fade" id="newFileModal" tabindex="-1" role="dialog" aria-labelledby="newFileModalLabel" aria-hidden="true">
@@ -104,7 +104,7 @@
             <label for="file_title">Name of file</label>
             <input type="text" name="file_name" class="webdesk_form-control" id="file_title" value="newFile.php" onfocus="$(this).select();" />
           </div>
-        
+
         </div>
         <div class="webdesk_modal-footer">
           <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Close</button>
@@ -131,7 +131,7 @@
             <label for="folder_title">Name of folder</label>
             <input type="text" name="file_name" class="webdesk_form-control" id="folder_title" value="" onfocus="$(this).select();" />
           </div>
-        
+
         </div>
         <div class="webdesk_modal-footer">
           <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Close</button>
@@ -152,12 +152,12 @@
           </button>
         </div>
         <div class="webdesk_modal-body">
-        
+
           <p>
             Are you sure you want to delete <b class="file">{{fileName}}</b>?
           </p>
           <input type="hidden" name="file" value="" />
-        
+
         </div>
         <div class="webdesk_modal-footer">
           <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Cancel</button>
@@ -178,12 +178,12 @@
           </button>
         </div>
         <div class="webdesk_modal-body">
-        
+
           <p>
-            This action will remove the app from WebDesk and all associated files and folders. Do you wish to proceed? 
+            This action will remove the app from WebDesk and all associated files and folders. Do you wish to proceed?
           </p>
           <input type="hidden" name="app" value="<?php echo $wd_app ?>" />
-        
+
         </div>
         <div class="webdesk_modal-footer">
           <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Cancel</button>
@@ -204,27 +204,27 @@
           </button>
         </div>
         <div class="webdesk_modal-body">
-          
+
           <div class="webdesk_row webdesk_no-gutters webdesk_mb-4">
             <div class="webdesk_col">
               <div class="webdesk_btn-group webdesk_btn-group-toggle" data-toggle="webdesk_buttons">
               <?php
               foreach($wd_dt->create_types as $key => $dt_type){
                 ?>
-                
+
                 <label class="webdesk_btn webdesk_btn-outline-secondary <?php echo ($key == 0) ? "webdesk_active" : ""; ?> webdesk_pt-3 webdesk_px-4" data-toggle="webdesk_tooltip" title="<?php echo $dt_type["blurb"] ?>" onclick="$('.app_base_path').text('<?php echo $dt_type["dir"] ?>');">
                   <input type="radio" name="project_type" value="<?php echo $dt_type["dir"] ?>" autocomplete="off" <?php echo ($key == 0) ? "checked" : ""; ?>>
                   <i class="fa fa-<?php echo $dt_type["icon"] ?> fa-fw fa-2x"></i>
                   <h5 class="webdesk_mt-1 webdesk_card-title"><?php echo $dt_type["name"] ?></h5>
                 </label>
-                
+
                 <?php
               }
               ?>
               </div>
             </div>
           </div>
-          
+
           <div class="webdesk_form-group">
             <label for="new_project_name">Project Name</label>
             <input type="text" name="project_name" id="new_project_name" class="webdesk_form-control" onblur="$('#new_project_path').val(devTools.remove_characters($(this).val()));" />
@@ -243,7 +243,7 @@
             </div>
             <small id="new_project_path_help" class="webdesk_text-muted webdesk_form-text">This is where your project files will be saved</small>
           </div>
-          
+
         </div>
         <div class="webdesk_modal-footer">
           <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Cancel</button>
@@ -264,7 +264,7 @@
           </button>
         </div>
         <div class="webdesk_modal-body webdesk_py-3">
-        
+
           <?php
           if(file_exists("Apps/MarketPublisher/publish_externalPopup.php")){
             include_once("Apps/MarketPublisher/publish_externalPopup.php");
@@ -275,7 +275,7 @@
             <?php
           }
           ?>
-        
+
         </div>
         <div class="webdesk_modal-footer hide">
           <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Cancel</button>
