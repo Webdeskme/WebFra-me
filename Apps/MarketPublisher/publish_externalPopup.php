@@ -1,9 +1,5 @@
 <?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } 
-include_once("config.inc.php");
-
-if(file_exists($wd_appFile."MarketPublisher/auth_token.json")){
-	$token_info = json_decode(file_get_contents($wd_appFile."MarketPublisher/auth_token.json"),true);
-}
+include_once("Apps/MarketPublisher/config.inc.php");
 
 if(!empty($wd_app) && ($wd_app == "MarketPublisher")){
 	?>
@@ -12,7 +8,14 @@ if(!empty($wd_app) && ($wd_app == "MarketPublisher")){
 	</p>
 	<?php
 }
-else if(isset($token_info) && is_array($token_info) && !empty($token_info["token"])){
+else if(empty($req["editType"]) || empty($req["editApp"])){
+	?>
+	<p>
+		A <code>editType</code> and <code>editApp</code> must be supplied to this page.
+	</p>
+	<?php
+}
+else if($wd_marketpublisher->get_user_token()){
 	
 	$app_info = array();
 	if(file_exists($req["editType"]."/".$req["editApp"]."/app.json")){
@@ -22,9 +25,12 @@ else if(isset($token_info) && is_array($token_info) && !empty($token_info["token
 	?>
 	<div class="webdesk_container">
 		
-		
 		<form name="publishAppForm" class="webdesk_mt-3">
 			<input type="hidden" name="f" value="publishApp" />
+			<input type="hidden" name="type" value="<?php echo $req["editType"] ?>" />
+			<input type="hidden" name="app" value="<?php echo $req["editApp"] ?>" />
+			<input type="hidden" name="appId" value="<?php echo (!empty($app_info["app_id"])) ? $app_info["app_id"] : "new" ?>" />
+			<input type="hidden" name="appHost" value="<?php echo $_SERVER["HTTP_HOST"] ?>" />
 			<div class="webdesk_form-group">
 				<label for="app_name">App Name</label>
 				<input type="text" name="app_name" class="webdesk_form-control" value="<?php echo (!empty($app_info["name"])) ? $app_info["name"] : $wd_app ?>" id="app_name" />
@@ -101,6 +107,9 @@ else{
 }
 ?>
 <script type="text/javascript">
+$( document ).ajaxError(function( event, request, settings ) {
+  console.error(request.responseText);
+});
 $("form").submit(function(){
 	
 	var formName = $(this).attr("name");
@@ -108,7 +117,11 @@ $("form").submit(function(){
 	
 	$.post("Apps/MarketPublisher/wd_marketpublisher.ajax.json.php",formVars,function(data,textStatus){
 		
+		console.log(data);
+		
 		if(data.result != "success"){
+			
+			console.error(data.msg,data.error);
 			
 			if(data.highlightField != null){
 				
@@ -126,10 +139,13 @@ $("form").submit(function(){
 			}
 			
 		}
+		else{
+			window.history.go();
+		}
 		
 	});
 	
 	return false;
 	
-})
+});
 </script>

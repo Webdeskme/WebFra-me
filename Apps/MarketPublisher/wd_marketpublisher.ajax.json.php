@@ -24,7 +24,31 @@ else if($req["f"] == "publishApp"){
 	}
 	if(empty($req["highlightField"])){
 		
+		$req["method"] = "publishApp";
+		$req["token"] = $wd_marketpublisher->get_user_token();
 		
+		foreach($req as $key => $value){
+			$post_fields[$key] = $value;
+		}
+		
+		$curl_output = $wd_marketpublisher->post_page($wd_marketpublisher->get_publisher_api_url(), $post_fields);
+		if($curl_output){
+			
+			$output["data"] = json_decode($curl_output, true);
+			
+			if(!empty($curl_output["error"]))
+				$output["msg"] = $curl_output["error"];
+			else{
+				
+				$output["result"] = "success";
+				
+				
+				
+			}
+			
+		}
+		else
+			$output["msg"] = "Could not communicate with Market Publisher API";
 		
 	}
 	
