@@ -24,7 +24,8 @@
             <!--<a href="#" class="webdesk_btn webdesk_btn-danger webdesk_text-white" data-toggle="webdesk_modal" data-target="#deleteAppModal">-->
             <!--  <i class="fa fa-trash fa-fw"></i>-->
             <!--</a>-->
-            <?php echo wd_confirm($wd_type, $wd_app, "projectSubDelete.php", "MyApp=" . $wd_app, "removeAppModal", "<i class='fa fa-trash fa-fw'></i> Delete"); ?>
+            <?php $get_app = test_input($_GET["editApp"]); ?>
+            <?php echo wd_confirm($wd_type, $wd_app, "projectSubDelete.php", "&MyApp=" . $get_app, "removeAppModal", "<i class='fa fa-trash fa-fw'></i> Delete"); ?>
             </span>
             <?php
           }
