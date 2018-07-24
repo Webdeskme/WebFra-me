@@ -2,11 +2,11 @@
     <form method="post" action="webSubAdd.php">
         <iframe src="http://duckduckgo.com/search.html?prefill=Search The Web&kn=1&kf=fw&kz=1&kp=1&kh=1&kg=p" style="overflow:hidden;margin:0;padding:0;width:408px;height:40px;" frameborder="0">Your browser boes not support iframes.</iframe><br>
         <label for="add">Add Website: </label>
-        <input type="text" name="add" id="add" placeholder="http://www.somthing.com" title="http://www.somthing.com" required>
+        <input type="text" name="add" id="add" placeholder="http://www.something.com" title="http://www.something.com" required>
         <input type="submit" value="add">
     </form><br><hr><br>
     <div>
-        <?php 
+        <?php
         if ($handle = opendir($wd_root . '/User/' . $_SESSION["user"] . '/Web/')) {
                 while (false !== ($entry = readdir($handle))) {
                     if ($entry != "." && $entry != "..") {

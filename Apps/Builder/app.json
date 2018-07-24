@@ -1,9 +1,9 @@
 {
 	"name":"Site Builder",
-	"description":"Change the look and feel of your Webdesk pages",
+	"description":"Change the look and feel of your WebDesk pages",
 	"version": "2.0",
 	"author":{
-		"name":"Webdesk",
+		"name":"WebDesk",
 		"email":"apps@webdesk.me"
 	},
 	"require":{

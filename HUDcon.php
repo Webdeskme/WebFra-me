@@ -65,7 +65,7 @@ if(isset($_GET["app"]) and isset($_GET["sec"])){
 else{
   ?>
   <div class="webdesk_container webdesk_p-2 webdesk_mb-5">
-    <h1 class="webdesk_display-2 webdesk_py-4">Welcome to Webdesk</h1>
+    <h1 class="webdesk_display-2 webdesk_py-4">Welcome to WebDesk</h1>
     <h3>Version 2.0a</h3>
     <p class="webdesk_lead webdesk_pt-3">
       This version is still under development. Please mind the mess.
@@ -94,7 +94,7 @@ else{
       </div>
     </div>
 
-    
+
   </div>
   <?php
 }

@@ -7,7 +7,7 @@ else{
     echo '#FFFFFF';
 }
 ?>; overflow: scroll; height: 90%;">
-    
+
     <div class="webdesk_float-right">
         <form method="post" action="Home.php?id=<?php $val = test_input(file_get_contents($wd_adminFile . 'val.txt')); echo $_SESSION["user"] . '&val=' . $val; ?>&type=<?php echo $_SESSION["HUD"]; ?>">
         <div class="webdesk_btn-group">
@@ -16,12 +16,12 @@ else{
         </div>
         </form>
     </div>
-    
+
     <h1 class="webdesk_mb-5"><span class="fa fa-cogs"></span> <?php echo f_dec($_SESSION["user"]); ?>'s Settings</h1>
     <details>
     <summary><b style="font-size: 1.5em;">URL for your WebDesk</b></summary><br><br>
     <form method="post" action="url.php">
-        <input type="text" name="url" placeholder="http://www.somthing.com" title="http://www.somthing.com" required><br><br>
+        <input type="text" name="url" placeholder="http://www.something.com" title="http://www.something.com" required><br><br>
         <input type="submit" value="Submit" class="webdesk_btn webdesk_btn-primary">
     </form>
     </details><br><br>
@@ -81,7 +81,7 @@ if ($handle = opendir('MyApps/')) {
 ?>
         </select>
         <input type="submit" value="Save">
-    </form> 
+    </form>
     </details><br><br>
     <details>
     <summary><b style="font-size: 1.5em;">Delete Account</b></summary><br><br>

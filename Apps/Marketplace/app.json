@@ -1,9 +1,9 @@
 {
 	"name":"Creator's Marketplace",
-	"description": "Download apps, themes and HUDS to extend your Webdesk experience",
+	"description": "Download apps, themes and HUDS to extend your WebDesk experience",
 	"version": "2.0",
 	"author":{
-		"name":"Webdesk",
+		"name":"WebDesk",
 		"email":"apps@webdesk.me"
 	},
 	"require":{
