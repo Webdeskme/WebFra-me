@@ -3,7 +3,7 @@
     <div class="webdesk_modal-dialog webdesk_modal-lg">
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
-          
+
           <h4 class="webdesk_modal-title">Time</h4>
           <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
         </div>
@@ -110,7 +110,7 @@ function drawHand(ctx, pos, length, width) {
     <div class="webdesk_modal-dialog webdesk_modal-lg">
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
-          
+
           <h4 class="webdesk_modal-title">Date: <?php echo date("F j, Y"); ?></h4>
           <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
         </div>
@@ -156,7 +156,7 @@ if(isset($_GET['title'])){
 
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
-          
+
           <h4 class="webdesk_modal-title"><?php if(isset($wd_app)){ echo $wd_app; }; ?> Help</h4>
           <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
         </div>
@@ -196,7 +196,7 @@ else{
     <!-- Modal content-->
     <div class="webdesk_modal-content">
       <div class="webdesk_modal-header">
-        
+
         <h4 class="webdesk_modal-title">WebDesk Information</h4>
         <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
       </div>
@@ -204,7 +204,7 @@ else{
 		  <p><b>Version: </b>2.0</p>
         <a href="">License</a><br>
         <a href="">Terms of Use</a><br>
-        <a href="">Pricay Policy</a>
+        <a href="">Privacy Policy</a>
       </div>
       <div class="webdesk_modal-footer">
         <button type="button" class="webdesk_btn webdesk_btn-primary" data-dismiss="webdesk_modal">Close</button>
@@ -370,7 +370,7 @@ if ($handle = opendir('Applets/')) {
         <div class="webdesk_modal-dialog webdesk_modal-lg">
           <div class="webdesk_modal-content">
             <div class="webdesk_modal-header">
-          
+
               <h4 class="webdesk_modal-title"><?php echo $aplname[0]; ?></h4>
               <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
             </div>
@@ -397,7 +397,7 @@ if ($handle = opendir('MyApplets/')) {
         <div class="webdesk_modal-dialog webdesk_modal-lg">
           <div class="webdesk_modal-content">
             <div class="webdesk_modal-header">
-          
+
               <h4 class="webdesk_modal-title"><?php echo $aplname[0]; ?></h4>
               <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
             </div>
@@ -507,7 +507,7 @@ $(document).ready(function(){
     <!-- Modal content-->
     <div class="webdesk_modal-content">
       <div class="webdesk_modal-header">
-        
+
         <h4 class="webdesk_modal-title">Set as Default</h4>
         <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
       </div>
@@ -544,7 +544,7 @@ $(document).ready(function(){
   }
     ?>
 
-  <div id="wd_chatting" class="chat webdesk_card"><div class="webdesk_card-body"><div class="webdesk_container"><h3><button id="wd_hChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-caret-down fa-fw"></span></button> <button id="wd_fChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-expand"></span></button> <button id="wd_mChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-expand"></span></button> Chat</h3><div class="webdesk_col-xs-4"><input type="text" id="wd_tChat" class="webdesk_form-control" placeholder="Type you message here..."></div><button id="wd_bChat" class="webdesk_btn webdesk_btn-success">Send</button><br><div class="scroll"><div id="wd_chat"></div><div id="wd_sto_chat"></div></div></div></div></div>
+  <div id="wd_chatting" class="chat webdesk_card" style="display:none;"><div class="webdesk_card-body"><div class="webdesk_container"><h3><button id="wd_hChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-caret-down fa-fw"></span></button> <button id="wd_fChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-expand"></span></button> <button id="wd_mChat" class="webdesk_btn webdesk_btn-info"><span class="fa fa-expand"></span></button> Chat</h3><div class="webdesk_col-xs-4"><input type="text" id="wd_tChat" class="webdesk_form-control" placeholder="Type you message here..."></div><button id="wd_bChat" class="webdesk_btn webdesk_btn-success">Send</button><br><div class="scroll"><div id="wd_chat"></div><div id="wd_sto_chat"></div></div></div></div></div>
 
 <script>
   var oldD = "";
@@ -569,7 +569,7 @@ if(typeof(EventSource) !== "undefined") {
 </script>
 <script>
 $(document).ready(function(){
-  $(".chat").hide();
+  // $(".chat").hide();
     $("#chat").click(function(){
         $(".chat").toggle();
     });
@@ -639,19 +639,19 @@ $(function() {
   });
   $( ".webdesk_tab" ).resizable();
 
-  <?php if(!isset($_SESSION["wd_fullscreen"]) || $_SESSION["wd_fullscreen"] != 'on'){  
+  <?php if(!isset($_SESSION["wd_fullscreen"]) || $_SESSION["wd_fullscreen"] != 'on'){
     ?>
     $( ".webdesk_tab" ).draggable();
-    <?php 
-    
-  } 
+    <?php
+
+  }
   ?>
   //$('.webdesk_dropdown-toggle').dropdown();
-  
+
   $("form").not(".noloadingicon,.no-loader").submit(function(){
-    
+
     $(":input[type='submit']",this).html('<i class="fas fa-spinner fa-pulse"></i> Loading').prop("disabled",true);
-    
+
   });
 });
 </script>
