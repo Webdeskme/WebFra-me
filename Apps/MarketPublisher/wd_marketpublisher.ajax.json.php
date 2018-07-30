@@ -36,13 +36,38 @@ else if($req["f"] == "publishApp"){
 			
 			$output["data"] = json_decode($curl_output, true);
 			
+			
 			if(!empty($curl_output["error"]))
 				$output["msg"] = $curl_output["error"];
 			else{
 				
 				$output["result"] = "success";
 				
+				if(file_exists("../../".$req["type"]."/".$req["app"]."/app.json")){
+					
+					$app_json = json_decode(file_get_contents("../../".$req["type"]."/".$req["app"]."/app.json"),true);
+					
+					$app_json["app_id"] = $curl_output["app"]["app_id"];
+					$app_json["name"] = $req["app_name"];
+					$app_json["description"] = $req["app_description"];
+					$app_json["version"] = $req["app_ver"];
+					$app_json["category"] = $req["app_category"];
+					$app_json["rating"] = $req["app_rate"];
+					
+					file_put_contents("../../".$req["type"]."/".$req["app"]."/app.json", json_encode($app_json));
+					
+				}
 				
+				$from_dir = "../../".$req["type"]."/" . $req["app"];
+				$to_dir = "../../Pub/" . $req["app"]."_".$curl_output["app"]["id"];
+				
+				if(!file_exists($to_dir)){
+					mkdir($to_dir);
+				}
+				if(file_exists($from_dir . "/ic.png")){
+					copy($from_dir . "/ic.png", $to_dir . '/ic.png');
+				}
+				wd_zip($from_dir, $to_dir . '/master.zip');
 				
 			}
 			
