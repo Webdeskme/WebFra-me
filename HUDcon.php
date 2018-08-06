@@ -1,3 +1,15 @@
+<!-- 
+////////////////////////////////////////////
+//
+// WELCOME TAB
+//
+// AUTHOR: ADAM TELFORD
+// 
+// THIS FILE DISPLAYS THE CONTENTS OF THE
+// WELCOME TAB.
+//
+/////////////////////////////////////////////
+// -->
 <?php
 if(isset($_SESSION['wd_adminView'])){
   ?>
@@ -63,10 +75,15 @@ if(isset($_GET["app"]) and isset($_GET["sec"])){
   }
 }
 else{
+  
+  if(file_exists("update.txt")){
+    $webframe_version = file_get_contents("update.txt");
+  }
+  
   ?>
   <div class="webdesk_container webdesk_p-2 webdesk_mb-5">
-    <h1 class="webdesk_display-2 webdesk_py-4">Welcome to WebDesk</h1>
-    <h3>Version 2.0a</h3>
+    <h1 class="webdesk_display-2 webdesk_py-4">Welcome to WebFrame</h1>
+    <h3>Version <?php echo (!empty($webframe_version)) ? $webframe_version : "" ?></h3>
     <p class="webdesk_lead webdesk_pt-3">
       This version is still under development. Please mind the mess.
     </p>
