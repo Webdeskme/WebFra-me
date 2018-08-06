@@ -111,7 +111,7 @@ function drawHand(ctx, pos, length, width) {
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
 
-          <h4 class="webdesk_modal-title">Date: <?php echo date("F j, Y"); ?></h4>
+          <h5 class="webdesk_modal-title">Calendar</h5>
           <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
         </div>
         <div class="webdesk_modal-body">

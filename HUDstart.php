@@ -1,4 +1,4 @@
-<!--<Webdesk.me Making web aplications easy.>
+<!--<Webfra.me // Empowering software that empowers you>
     Copyright (C) <?php echo date("Y"); ?>  Adam W. Telford
 
     This program is free software: you can redistribute it and/or modify
@@ -21,7 +21,8 @@
     
     A link to the terms of use, cookie and privacy policy, and licences
     can be found at the bottom right corner of the menu bar by clicking 
-    the exlmation point once loged in, and in the menu of the login page.-->
+    the exlmation point once loged in, and in the menu of the login page.
+-->
 <?php 
 //ini_set("error_reporting", E_ALL);
 file_put_contents($wd_adminFile . 'lastPage.txt', $_SERVER['QUERY_STRING']);

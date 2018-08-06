@@ -330,7 +330,7 @@ for(var i=0;i<a.length;i++) {
     </script>
 <script>
 $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="webdesk_tooltip"]').tooltip();
     $(".wd_confirm").click(function(){
         if (!confirm("Please Confirm:")){ return false; }
     });
