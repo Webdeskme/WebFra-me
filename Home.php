@@ -73,14 +73,14 @@ else{
     <meta name="language" content="English">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="keywords" content="WebDesk, Web app, webtop, web desktop">
-    <meta name="author" content="WebDesk">
-    <meta name="description" content="Welcome to WebDesk.">
+    <meta name="keywords" content="WebFrame, Web app, webtop, web desktop">
+    <meta name="author" content="WebFrame">
+    <meta name="description" content="Welcome to WebFrame.">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" width="device-width">
     <meta name=viewport content="width=device-width, initial-scale=1">
-    <meta name="copyright" content="&copy; 2014 WebDesk.me">
+    <meta name="copyright" content="&copy; 2014 WebFra.me">
     <!--<link rel="icon" type="image/png" href="image/CA.ico">
     <link rel="apple-touch-icon" href="/custom_icon.png">
     <link rel="apple-touch-startup-image" href="/custom_icon.png">-->
