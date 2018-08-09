@@ -1,4 +1,5 @@
 <?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
+
 if(isset($_POST['nameP'])){
   $nameP = test_input($_POST['nameP']);
   file_put_contents("www/Pages/" . $nameP, "This is an empty page.");
