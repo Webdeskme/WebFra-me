@@ -3961,21 +3961,21 @@
       KEYUP_DATA_API: "keyup" + EVENT_KEY + DATA_API_KEY
     };
     var ClassName = {
-      DISABLED: 'disabled',
-      SHOW: 'show',
-      DROPUP: 'dropup',
-      DROPRIGHT: 'dropright',
-      DROPLEFT: 'dropleft',
-      MENURIGHT: 'dropdown-menu-right',
-      MENULEFT: 'dropdown-menu-left',
-      POSITION_STATIC: 'position-static'
+      DISABLED: 'webdesk_disabled',
+      SHOW: 'webdesk_show',
+      DROPUP: 'webdesk_dropup',
+      DROPRIGHT: 'webdesk_dropright',
+      DROPLEFT: 'webdesk_dropleft',
+      MENURIGHT: 'webdesk_dropdown-menu-right',
+      MENULEFT: 'webdesk_dropdown-menu-left',
+      POSITION_STATIC: 'webdesk_position-static'
     };
     var Selector = {
-      DATA_TOGGLE: '[data-toggle="dropdown"]',
-      FORM_CHILD: '.dropdown form',
-      MENU: '.dropdown-menu',
-      NAVBAR_NAV: '.navbar-nav',
-      VISIBLE_ITEMS: '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)'
+      DATA_TOGGLE: '[data-toggle="webdesk_dropdown"]',
+      FORM_CHILD: '.webdesk_dropdown form',
+      MENU: '.webdesk_dropdown-menu',
+      NAVBAR_NAV: '.webdesk_navbar-nav',
+      VISIBLE_ITEMS: '.webdesk_dropdown-menu .webdesk_dropdown-item:not(.disabled):not(:disabled)'
     };
     var AttachmentMap = {
       TOP: 'top-start',
