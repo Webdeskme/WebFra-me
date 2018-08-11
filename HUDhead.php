@@ -30,7 +30,7 @@
   <script src="Plugins/tinymce/js/tinymce/tinymce.min.js"></script>
   <script src="Plugins/fullcalendar/lib/moment.min.js"></script>
   <script src="Plugins/fullcalendar/fullcalendar.min.js"></script>
-  <script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>
+  <script defer src="Plugins/fontawesome-free-5.2/js/all.min.js"></script>
 
   <style>
     html,body{

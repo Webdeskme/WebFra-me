@@ -1075,18 +1075,18 @@
       CLICK_DATA_API: "click" + EVENT_KEY + DATA_API_KEY
     };
     var ClassName = {
-      SHOW: 'show',
-      COLLAPSE: 'collapse',
-      COLLAPSING: 'collapsing',
-      COLLAPSED: 'collapsed'
+      SHOW: 'webdesk_show',
+      COLLAPSE: 'webdesk_collapse',
+      COLLAPSING: 'webdesk_collapsing',
+      COLLAPSED: 'webdesk_collapsed'
     };
     var Dimension = {
       WIDTH: 'width',
       HEIGHT: 'height'
     };
     var Selector = {
-      ACTIVES: '.show, .collapsing',
-      DATA_TOGGLE: '[data-toggle="collapse"]'
+      ACTIVES: '.webdesk_show, .webdesk_collapsing',
+      DATA_TOGGLE: '[data-toggle="webdesk_collapse"]'
       /**
        * ------------------------------------------------------------------------
        * Class Definition

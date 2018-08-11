@@ -186,7 +186,7 @@ if(file_exists("path.php") || file_exists("../../path.php")){
       echo $url = "desktop.php?type=" . $wf_type . "&app=" . $app . "&sec=" . $sec . $get . $GLOBALS['wf_url'];
      // return $url;
   }
-  function wf_www($wf_page, $get) {
+  function wf_www($wf_page, $get = "") {
       echo $url = "index.php?page=" . $wf_page . $get . $GLOBALS['wf_url'];
      // return $url;
   }
