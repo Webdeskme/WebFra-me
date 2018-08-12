@@ -3,7 +3,8 @@ class marketplace{
 	
 	var $dev_mode = false;
 	var $marketplace_file = "wd_marketplace.json";
-	var $market_download_location = "http://market.webdesk.me/Apps/MarketCentral/wd_marketplace.json.php?timestamp=";
+	var $wf_github_release_api = "https://api.github.com/repos/Webdeskme/Webfra-me/releases/latest";
+	var $market_download_location = "http://market.webfra.me/Apps/MarketCentral/wd_marketplace.json.php?timestamp=";
 	
 	public function get_download_location(){
 		return $this->market_download_location;

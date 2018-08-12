@@ -101,24 +101,58 @@ else if($req["f"] == "installApp"){
 	}
 	
 }//installApp
-else if($req["f"] == "checkWDVersion"){
+else if($req["f"] == "checkWFVersion"){
 	
-	if(!file_get_contents("../../update.txt") || !file_get_contents("http://webdesk.me/update.txt"))
-		$output["msg"] = "Could not open update files";
+	$opts = array(
+	  'http'=>array(
+	    'method'=>"GET",
+	    'header'=>"Accept-language: en\r\n" .
+	              "User-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36\r\n"
+	  )
+	);
+	
+	$context = stream_context_create($opts);
+	
+	if(!file_get_contents("../../update.txt") || !file_get_contents($wd_marketplace->wf_github_release_api, false, $context)){
+		$output["msg"] = "could not open update files";
+	}
 	else{
 		
-		$output["result"] = "success";
-		
 		$localVersion = file_get_contents("../../update.txt");
-		$remoteVersion = file_get_contents("http://webdesk.me/update.txt");
-		
-		if($remoteVersion > $localVersion){
-			$output["data"]["update_required"] = true;
-			$output["data"]["version"] = $remoteVersion;
+		$github_api = file_get_contents($wd_marketplace->wf_github_release_api, false, $context);
+		if(!isset(json_decode($github_api,true)["tag_name"]))
+			$output["msg"] = "Could not open update server";
+		else{
+			$remoteVersion = json_decode($github_api,true)["tag_name"];
+			if(version_compare("v".$localVersion,$remoteVersion) >= 0){
+				$output["result"] = "success";
+				$output["data"]["update_required"] = false;
+			}
+			else{
+				$output["result"] = "success";
+				$output["data"]["update_required"] = true;
+				$output["data"]["version"] = $remoteVersion;
+			}
 		}
-		else
-			$output["data"]["update_required"] = false;
+		
 	}
+	
+	// if(!file_get_contents("../../update.txt") || !file_get_contents("http://market.webfra.me/update.txt"))
+	// 	$output["msg"] = "Could not open update files";
+	// else{
+		
+	// 	$output["result"] = "success";
+		
+	// 	$localVersion = file_get_contents("../../update.txt");
+	// 	$remoteVersion = file_get_contents("http://market.webfra.me/update.txt");
+		
+	// 	if($remoteVersion > $localVersion){
+	// 		$output["data"]["update_required"] = true;
+	// 		$output["data"]["version"] = $remoteVersion;
+	// 	}
+	// 	else
+	// 		$output["data"]["update_required"] = false;
+	// }
 	
 }//checkWDVersion
 else

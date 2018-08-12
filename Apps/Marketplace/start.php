@@ -117,7 +117,7 @@ if(file_exists($wd_type."/".$wd_app."/wd_marketplace.json")){
           <div class="webdesk_modal-body">
             <div class="webdesk_row">
               <div class="webdesk_col-sm-3">
-                <img src="Apps/Market/ic.png" class="webdesk_img-fluid app-img" alt="" />
+                <img src="Apps/Marketplace/ic.png" class="webdesk_img-fluid app-img" alt="" />
                 <p class="app-price webdesk_text-center webdesk_mt-2 webdesk_lead">FREE</p>
               </div>
               <div class="webdesk_col">
@@ -308,15 +308,15 @@ var marketplace = {
               
             });
             
-            marketplace.checkImage(data.host + "/Pub/" + data.app + "/ic.png", function(src, obj){ 
+            // marketplace.checkImage(data.host + "/Pub/" + data.app + "/ic.png", function(src, obj){ 
               
-              $(".app-img",obj).attr("src",src);
+            //   $(".app-img",obj).attr("src",src);
               
-            }, function(obj){ 
+            // }, function(obj){ 
               
-              //$(".app-img",obj).attr("src","Apps/Market/ic.png");
+            //   //$(".app-img",obj).attr("src","Apps/Market/ic.png");
               
-            }, this);
+            // }, this);
             
           });
           
@@ -329,7 +329,7 @@ var marketplace = {
       
       $(".category-menu a .loading-spinner").remove();
       
-      marketplace.checkWDVersion();
+      marketplace.checkWFVersion();
       
     });
     
@@ -390,10 +390,10 @@ var marketplace = {
     });
     
   },//updateMarketplaceFile
-  checkWDVersion: function(){
+  checkWFVersion: function(){
     
     console.log("Checking Webdesk version");
-    $.get("<?php echo $wd_type."/".$wd_app ?>/marketplace.ajax.json.php",{f: "checkWDVersion"},function(data,textStatus){
+    $.get("<?php echo $wd_type."/".$wd_app ?>/marketplace.ajax.json.php",{f: "checkWFVersion"},function(data,textStatus){
       
       if(data.result != "success"){
         console.error(data.msg);
@@ -413,6 +413,7 @@ var marketplace = {
               $(".app-install-button",this).removeClass("webdesk_btn-secondary").addClass("webdesk_btn-success").html('<i class="fa fa-sync fa-fw"></i> Update').click({app_id:data.app_id},function(e){
                 
                 //marketplace.install_app(e.data.app_id);
+                document.location = "//" + document.location.host + "/updater.php";
                 
               });
               

@@ -1,1 +1,1 @@
-wd_ai=An%20update%20is%20available%20for%20your%20system.%20%20Go%20to%20alerts%20to%20update.&&&&&&&wd_fullS=on
+type=Apps&app=Marketplace&sec=start.php
