@@ -102,24 +102,15 @@ else if($req["f"] == "installApp"){
 	
 }//installApp
 else if($req["f"] == "checkWFVersion"){
+
 	
-	$opts = array(
-	  'http'=>array(
-	    'method'=>"GET",
-	    'header'=>"Accept-language: en\r\n" .
-	              "User-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/67.0.3396.99 Safari/537.36\r\n"
-	  )
-	);
-	
-	$context = stream_context_create($opts);
-	
-	if(!file_get_contents("../../update.txt") || !file_get_contents($wd_marketplace->wf_github_release_api, false, $context)){
+	if(!file_get_contents("../../update.txt") || !file_get_contents($wd_marketplace->wf_github_release_api, false, $wd_marketplace->getStreamContext())){
 		$output["msg"] = "could not open update files";
 	}
 	else{
 		
 		$localVersion = file_get_contents("../../update.txt");
-		$github_api = file_get_contents($wd_marketplace->wf_github_release_api, false, $context);
+		$github_api = file_get_contents($wd_marketplace->wf_github_release_api, false, $wd_marketplace->getStreamContext());
 		if(!isset(json_decode($github_api,true)["tag_name"]))
 			$output["msg"] = "Could not open update server";
 		else{

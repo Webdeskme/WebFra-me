@@ -406,10 +406,10 @@ var marketplace = {
             $(".marketApp-container .marketApp.template").clone().prependTo(".marketApp-container").removeClass("template hide").addClass("clone").attr("id","app-webdesk").attr("data-appid","webdesk");
             $("#app-webdesk").each(function(j){
               
-              $(".app-title",this).text("Webdesk");
-              $(".app-developer",this).text("info@webdesk.me");
-              $(".app-description",this).text("Upgrade to version " + data.data.version);
-              $(".app-img",this).attr("src","<?php echo $wd_type."/".$wd_app ?>/assets/Webdesk_Logo.png");
+              $(".app-title",this).text("Webframe");
+              $(".app-developer",this).text("info@webfra.me");
+              $(".app-description",this).html("A new version of Webframe is available&mdash;" + data.data.version);
+              $(".app-img",this).attr("src","<?php echo $wd_type."/".$wd_app ?>/assets/Webframe_Logo.png");
               $(".app-install-button",this).removeClass("webdesk_btn-secondary").addClass("webdesk_btn-success").html('<i class="fa fa-sync fa-fw"></i> Update').click({app_id:data.app_id},function(e){
                 
                 //marketplace.install_app(e.data.app_id);

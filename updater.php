@@ -75,6 +75,11 @@
 		      		install(data.next_step);
 		      		
 		      	}
+		      	if( (data.last_step != null) && data.last_step){
+		      		
+		      		$("button").removeClass("disabled").prop("disabled",false).html("Continue");
+		      		
+		      	}
 		      }
 		      
 		    });
