@@ -2,57 +2,50 @@
 session_start();
 header("Content-type: text/css; charset: UTF-8");
 ?>
-        html{
-            height: 100%;
-            padding: 0px;
-            margin: 0px;
-        }
-        body{
-            height: 100%;
-            padding: 0px;
-            margin: 0px;
-        }
-        div.webdesk_tab{
-            background-color: <?php 
-if(file_exists('../../../webdesk/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){ 
-    $pcolor = file_get_contents('../../../webdesk/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt');
-    echo $pcolor;
+html{
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
 }
-else{
-    echo '#FFFFFF';
+body{
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
 }
-?>;
-<?php if(!isset($_SESSION["wd_fullscreen"]) || $_SESSION["wd_fullscreen"] != 'on'){ 
-            echo 'height: 80%;
-            width: 94%;';
+div.webdesk_tab{
+    background-color: <?php $pcolor = (file_exists('../../../webdesk/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')) ? file_get_contents('../../../webdesk/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt') : '#FFFFFF'; echo $pcolor; ?>;
+<?php 
+if(!isset($_SESSION["wd_fullscreen"]) || $_SESSION["wd_fullscreen"] != 'on'){ 
+    echo 'height: 80%;
+    width: 94%;';
 }
 else{ 
-           echo 'height: 95%; 
-            width: 100%;';
- }
+    echo 'height: 95%; 
+    width: 100%;';
+}
 ?>
-            padding: 0px;
-            margin: 0px;
-            overflow-y: auto;
-            position: absolute;
-            left: 0px;
-            top: 0px;
-            -webkit-border-radius: 10px;
-            -moz-border-radius: 10px;
-            -o-border-radius: 10px;
-            -ms-border-radius: 10px;
-            -khtml-border-radius: 10px;
-            border-radius: 10px;
-        }
-         div.con{
-            height: 100%;
-            padding: 0px;
-            margin: 0px;
-            /*background-image: url('back.jpg');*/
-        }
-        figure{
-            padding: 10px;
-        }
+    padding: 0px;
+    margin: 0px;
+    overflow-y: auto;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px;
+}
+div.con{
+    height: 100%;
+    padding: 0px;
+    margin: 0px;
+    /*background-image: url('back.jpg');*/
+}
+figure{
+    padding: 10px;
+}
         
   
 #wd_tabs {

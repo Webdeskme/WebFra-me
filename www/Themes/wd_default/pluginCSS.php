@@ -1,6 +1,7 @@
 <?php
 header("Content-type: text/css; charset: UTF-8");
-$a = array("../../../Plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css", "../../../Theme/default.php", "style.css");
+//$a = array("../../../Plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css", "../../../Theme/default.php", "style.css");
+$a = array("../../../Plugins/wd-bootstrap/css/webdesk_bootstrap.min.css", "../../../Theme/default.php", "style.css");
 $seconds_to_cache = 86400 * 30;
 $ts = gmdate("D, d M Y H:i:s", time() + $seconds_to_cache) . " GMT";
 header("Expires: $ts");

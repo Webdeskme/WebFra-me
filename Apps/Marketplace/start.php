@@ -164,6 +164,7 @@ if($apps = opendir("Apps")){
       $files[] = '"'.$file.'"';
     
   }
+  
   ?>
   <script>
   var installed_apps = [<?php echo implode(",", $files); ?>];

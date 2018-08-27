@@ -31,7 +31,7 @@
   <div class="webdesk_container-fluid webdesk_justify-content-end">
     <ul class="webdesk_navbar-nav">
       <li class="webdesk_navbar-item">
-        <a href="<?php wd_urlSub($wd_type, $wd_app, 'footerSub.php', ''); ?>" class="webdesk_btn webdesk_btn-warning webdesk_shadow-sm webdesk_border"><i class="fa fa-shipping-fast fa-fw"></i> Publish Site</a>
+        <a href="<?php wd_urlSub($wd_type, $wd_app, 'publishSite.php', '&return=' . $req["sec"]); ?>" class="webdesk_btn webdesk_btn-warning webdesk_shadow-sm webdesk_border"><i class="fa fa-shipping-fast fa-fw"></i> Publish Site</a>
         
       </li>
       
