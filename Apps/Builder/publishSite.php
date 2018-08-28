@@ -18,5 +18,5 @@ foreach($wwwCopy as $key => $value){
   }
 }
 
-wd_head($wd_type, $wd_app, (!empty($req["return"])) ? $req["return"] : "start.php", '');
+wd_head($wd_type, $wd_app, (!empty($req["return"])) ? urldecode(htmlspecialchars_decode(htmlspecialchars_decode($req["return"]))) : "start.php", '');
 ?>
