@@ -13,11 +13,11 @@ sudo apt-get --yes autoremove
 sudo apt-get clean
 echo "installing WebDesk"
 cd /var/www/html/
-sudo wget "https://github.com/WebDesk-me/Webdesk-me/archive/master.zip"
+sudo wget "https://github.com/WebFra-me/WebFra-me/archive/master.zip"
 sudo unzip /var/www/html/master.zip -d /var/www/html/
-sudo cp -a /var/www/html/Webdesk-me-master/. /var/www/html/
+sudo cp -a /var/www/html/WebFra-me-master/. /var/www/html/
 sudo rm -f /var/www/html/master.zip
-sudo rm -rf /var/www/html/Webdesk-me-master/
+sudo rm -rf /var/www/html/WebFra-me-master/
 sudo rm -f /var/www/html/index.html
 sudo chgrp -R www-data /var/www/
 echo "Fixing Permissions"
