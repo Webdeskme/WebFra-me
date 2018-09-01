@@ -1,6 +1,5 @@
 <?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
-<link rel="stylesheet" href="Plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-<script src="Plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
 <script src= "Plugins/codemirror/lib/codemirror.js"></script>
 <link rel="stylesheet" href="Plugins/codemirror/lib/codemirror.css">
 <link rel="stylesheet" href="Plugins/codemirror/theme/abcdef.css">
@@ -41,9 +40,9 @@
 <script src="Plugins/codemirror/addon/fold/markdown-fold.js" type="text/javascript"></script>
 <script src="Plugins/codemirror/addon/fold/xml-fold.js" type="text/javascript"></script>
 <style type="text/css">
-      .CodeMirror {
-        border: 1px solid #eee;
-        height: 100%;
-        width: 100%;
-      }
+  .CodeMirror {
+    border: 1px solid #eee;
+    height: 100%;
+    width: 100%;
+  }
 </style>
