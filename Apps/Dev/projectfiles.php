@@ -12,16 +12,6 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
 }
 
 ?>
-<div id="newP" class="webdesk_collapse">
-  <form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'MyAppSub.php', ''); ?>">
-    <div class="form-group">
-      <label for="nameA">New Page Name: </label>
-      <input type="hidden" name="nameA" value="<?php echo $MyApp; ?>">
-      <input type="text" class="form-control" name="nameP" for="nameA" placeholder="Enter the name of your new Page." title="Enter the name of your new Page.">
-      <input type="submit" class="btn btn-success" value="Start">
-    </div>
-  </form>
-</div>
 <div id="newI" class="webdesk_collapse">
   <form action="<?php wd_urlSub($wd_type, $wd_app, 'upload.php', ''); ?>" method="post" enctype="multipart/form-data">
     Select png to upload as icon:
@@ -44,9 +34,9 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
       Files and folders
     </button>
     <div class="webdesk_dropdown-menu" aria-labelledby="fileSelectMenuButton">
-      <button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newPageModal"><i class="fa fa-code fa-fw"></i> New File</button>
-      <button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newPageModal"><i class="fa fa-folder fa-fw"></i> New Folder</button>
-      <button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newPageModal"><i class="fa fa-image fa-fw"></i> Add Icon</button>
+      <button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newFileModal"><i class="fa fa-code fa-fw"></i> New File</button>
+      <button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newFolderModal"><i class="fa fa-folder fa-fw"></i> New Folder</button>
+      <button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newIconModal"><i class="fa fa-image fa-fw"></i> Add Icon</button>
     </div>
   </div>
   
@@ -73,7 +63,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
         <tr>
           <td>
             <i class="fa fa-<?php echo $entry["icon"] ?> fa-fw"></i> &nbsp; 
-            <a href="<?php wd_url($wd_type, $wd_app, 'MyPage.php', '&MyApp=' . $req["editApp"] . '&MyPage=' . $entry["name"]); ?>"><?php echo $entry["name"] ?></a>
+            <a href="<?php wd_url($wd_type, $wd_app, 'editfile.php', '&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&file=' . $entry["name"]); ?>"><?php echo $entry["name"] ?></a>
           </td>
           <td>
             <small><?php echo date("F j", filemtime($entry["path"] . $entry["name"])) ?></small>
@@ -153,3 +143,6 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
 
   </div>
 </div>
+<?php
+include("appFooter.php");
+?>
