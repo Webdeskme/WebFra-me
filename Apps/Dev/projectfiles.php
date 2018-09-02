@@ -12,14 +12,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
 }
 
 ?>
-<div id="newI" class="webdesk_collapse">
-  <form action="<?php wd_urlSub($wd_type, $wd_app, 'upload.php', ''); ?>" method="post" enctype="multipart/form-data">
-    Select png to upload as icon:
-    <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="hidden" name="app" value="<?php echo $MyApp; ?>">
-    <input type="submit" class="btn btn-success" value="Upload" name="submit">
-  </form>
-</div>
+
 <?php if(isset($_SESSION["wd_copy_file"])){ ?><div><a href="<?php wd_urlSub($wd_type, $wd_app, 'pasteSub.php', '&MyApp=' . $MyApp); ?>"><span class="fa fa-paste"></span> Paste</a></div><?php } ?>
 
 <div class="webdesk_bg-light webdesk_border-top webdesk_p-2">
@@ -35,8 +28,14 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
     </button>
     <div class="webdesk_dropdown-menu" aria-labelledby="fileSelectMenuButton">
       <button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newFileModal"><i class="fa fa-code fa-fw"></i> New File</button>
-      <button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newFolderModal"><i class="fa fa-folder fa-fw"></i> New Folder</button>
-      <button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newIconModal"><i class="fa fa-image fa-fw"></i> Add Icon</button>
+      <!--<button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newFolderModal"><i class="fa fa-folder fa-fw"></i> New Folder</button>-->
+      <?php
+      if($req["editType"] == "MyApps"){
+        ?>
+        <button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newMediaUploadModal"><i class="fa fa-image fa-fw"></i> Upload icon</button>
+        <?php
+      }
+      ?>
     </div>
   </div>
   

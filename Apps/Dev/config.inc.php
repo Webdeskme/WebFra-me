@@ -7,8 +7,8 @@ class dev_tools{
 	public $create_types = array(
 		
 		array("name"=>"Apps","icon"=>"th-large","blurb"=>"Extend the functionality of Webdesk","dir"=>"MyApps"),
-		array("name"=>"Applets","icon"=>"smile","blurb"=>"Create useful tools in the HUD","dir"=>"MyApplets"),
-		array("name"=>"Theme","icon"=>"palette","blurb"=>"Change the look and feel of your Webdesk","dir"=>"MyTheme"),
+		array("name"=>"Applets","icon"=>"smile","blurb"=>"Create useful tools in the HUD","dir"=>"Applets"),
+		array("name"=>"Themes","icon"=>"palette","blurb"=>"Change the look and feel of your Webdesk","dir"=>"MyTheme"),
 		array("name"=>"HUD","icon"=>"desktop","blurb"=>"Change where things are positioned","dir"=>"HUD"),
 		array("name"=>"MHUD","icon"=>"mobile-alt","blurb"=>"Change the HUD on mobile devices","dir"=>"MHUD")
 		//array("name"=>"game","icon"=>"gamepad","blurb"=>"Take a break from all that hard work","dir"=>"Games")
@@ -31,23 +31,36 @@ class dev_tools{
 		
 	}
 	/// LOADS LOCAL PROJECTS FROM MYAPPS
-	public function getLocalProjects(){
+	public function getProjectTypeInfo($type){
+		
+		foreach($this->create_types as $key => $ttype){
+			
+			if($ttype["dir"] == $type)
+				return $ttype;
+			
+		}
+		
+		return false;
+		
+	}
+	public function getLocalProjects($type = "MyApps"){
 		
 		$my_apps = array();
 		
-		if(is_dir("MyApps")){
+		if(is_dir($type)){
 			
-			if($dh = opendir("MyApps")){
+			if($dh = opendir($type)){
 				
 				while(($dir = readdir($dh)) !== false){
 					
-					if(is_dir("MyApps/" . $dir) && ($dir != ".") && ($dir != "..") ){
+					//if(is_dir($type . "/" . $dir) && ($dir != ".") && ($dir != "..") ){
+					if(($dir != ".") && ($dir != "..") ){
 							
 						$name = $dir;
 							
-						if(file_exists("MyApps/" . $dir . "/app.json")){
+						if(file_exists($type . "/" . $dir . "/app.json")){
 							
-							$info = file_get_contents("MyApps/" . $dir . "/app.json");
+							$info = file_get_contents($type . "/" . $dir . "/app.json");
 							
 							$info = json_decode($info,true);
 							

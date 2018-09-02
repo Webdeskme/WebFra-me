@@ -44,10 +44,13 @@ include("appHeader.php");
 </form>
 </div>
 <div class="webdesk_container webdesk_my-5">
-	<h1>My Apps</h1>
+	<?php
+	$displayType = (!empty($req["displayType"])) ? $req["displayType"] : "MyApps";
+	?>
+	<h1><?php echo $wd_dt->getProjectTypeInfo($displayType)["name"]; ?></h1>
 	<div class="webdesk_row app-listing">
 	<?php
-	$dt_my_apps = $wd_dt->getLocalProjects();
+	$dt_my_apps = $wd_dt->getLocalProjects($displayType);
 	foreach($dt_my_apps as $dt_app){
 		
 		$dt_app_img = (file_exists($dt_app["type"]."/".$dt_app["handle"]."/ic.png")) ? $dt_app["type"]."/".$dt_app["handle"]."/ic.png" : $wd_type."/".$wd_app."/ic.png";
@@ -86,6 +89,13 @@ include("appHeader.php");
 					?>
 				</div>
 			</a>
+		</div>
+		<?php
+	}
+	if(count($dt_my_apps) == 0){
+		?>
+		<div class="webdesk_col webdesk_text-center webdesk_text-muted webdesk_py-5">
+			You don&apos;t have any projects under this category
 		</div>
 		<?php
 	}

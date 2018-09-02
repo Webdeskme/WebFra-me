@@ -2,7 +2,7 @@
 include_once("config.inc.php");
 include("header.php");
 ?>
-<form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'MyPageSub.php', ''); ?>" style="height: 100%;">
+<form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'SaveFileSub.php', ''); ?>" style="height: 100%;">
   <input type="hidden" name="type" value="<?php echo $req["editType"]; ?>">
   <input type="hidden" name="nameA" value="<?php echo $req["editApp"]; ?>">
   <input type="hidden" name="nameP" value="<?php echo $req["file"]; ?>">
@@ -22,13 +22,16 @@ include("header.php");
     <div class="webdesk_col-md-3 webdesk_bg-light">
       <div class="webdesk_bg-light webdesk_py-3 webdesk_px-4 webdesk_sticky-top">
         <button type="submit" class="webdesk_shadow-sm webdesk_mt-4 webdesk_btn webdesk_btn-primary webdesk_btn-block" name="sp"><i class="fa fa-save fa-fw"></i> Save</button> 
+        <button type="button" class="webdesk_shadow-sm webdesk_mt-4 webdesk_btn webdesk_btn-secondary webdesk_btn-block" data-toggle="webdesk_modal" data-target="#removeFileModal"><i class="fa fa-trash fa-fw"></i> Remove file</button> 
       </div>
     </div>
   </div>
     
 </form>
 
-
+<?php
+include("appFooter.php");
+?>
 <script>
 var myCodeMirror = CodeMirror.fromTextArea(con, {
 lineNumbers: true,
