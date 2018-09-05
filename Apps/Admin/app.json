@@ -1,9 +1,0 @@
-{
-	"name": "Admin",
-	"description": "Manage users and WebDesk properties.",
-	"version":"2.0",
-	"author":{
-		"name": "Webframe",
-		"email": "apps@webfra.me"
-	}
-}
