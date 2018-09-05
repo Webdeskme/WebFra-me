@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!-- Copyright 2018 WebDesk.me -->
+<!-- Copyright 2018 Webfra.me -->
 <html lang="en">
 <head>
     <title><?php echo $wd_Title; ?></title>
@@ -8,14 +8,15 @@
     <meta name="language" content="English">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="keywords" content="WebDesk, Web app, webtop, web desktop">
-    <meta name="author" content="WebDesk">
-    <meta name="description" content="Welcome to WebDesk.">
+    <meta name="keywords" content="Webframe, Web app, webtop, web desktop">
+    <meta name="author" content="Adam Telford">
+    <meta name="author" content="Andrew McCallister">
+    <meta name="description" content="Welcome to WebFrame.">
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta name="viewport" width="device-width">
     <meta name=viewport content="width=device-width, initial-scale=1">
-    <meta name="copyright" content="&copy; 2014 WebDesk.me">
+    <meta name="copyright" content="&copy; 2014 Webfra.me">
     <!--<link rel="icon" type="image/png" href="image/CA.ico">
     <link rel="apple-touch-icon" href="/custom_icon.png">
     <link rel="apple-touch-startup-image" href="/custom_icon.png">-->
@@ -112,7 +113,7 @@ function bacloop() {
             <input type="password" id="pass"  class="form-control" name="pass" required placeholder="Please add your Password here." autofocus><br><br>
            </div>
            <div class="form-group">
-			<p>By clicking on either the Desktop or Mobile button, you are agreeing to Webdesk.me's <a href="/www/Pages/Terms.html" target="_blank">Terms of Use</a> and <a href="/www/Pages/Privacy.html" target="_blank">Privacy Policy</a>.</p>
+			<p>By clicking on either the Desktop or Mobile button, you are agreeing to Webfra.me's <a href="/www/Pages/Terms.html" target="_blank">Terms of Use</a> and <a href="/www/Pages/Privacy.html" target="_blank">Privacy Policy</a>.</p>
             <input type="submit" name="type" value="Desktop" class="btn btn-primary" title="Sign In"> <b>or</b> <input type="submit" name="type" value="Mobile" class="btn btn-primary" title="Sign In">
            </div>
           </form>
