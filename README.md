@@ -1,4 +1,4 @@
-# Welcome to WebDesk.me
+# Welcome to Webfra.me
 ### A web application environment for housing, exploring, and creating web applications.
 
 ## Our Vision:
@@ -8,11 +8,11 @@ Our vision is to allow everyone to control, create, and use their data easily an
 Our mission is to create software that protects users' privacy and data while allowing them to use and create applications that can be used anywhere from the device of their choosing.
 
 ## License:
-WebDesk-me/Webdesk-me is licensed under the GNU General Public License v3.0
-[Webdesk-me/LICENSE](https://github.com/WebDesk-me/Webdesk-me/blob/master/LICENSE)
+Webfra-me/Webfra-me is licensed under the GNU General Public License v3.0
+[Webfra-me/LICENSE](https://github.com/Webfra-me/Webfra-me/blob/master/LICENSE)
 
 ## Prerequisites:
-* WebDesk requires a web server running PHP. (If you need help try one of these: )
+* Webframe requires a web server running PHP. (If you need help try one of these: )
 * SQL is not required for the base program, but some applications might require it.
 * Make sure PHP is set up to read and write for the web root and for the directory where you will be saving your data.
 
@@ -23,17 +23,17 @@ WebDesk-me/Webdesk-me is licensed under the GNU General Public License v3.0
 
 ## Simple Installation on a Debian system without an existing web server.
 In your terminal type:
-  * wget "http://webdesk.me/www/Media/wd_deb.sh"
+  * wget "http://webfra.me/wd_deb.sh"
   * sh wd_deb.sh
 
 ## Usage:
-To learn more please visit WebDesk's [wiki](https://github.com/WebDesk-me/Webdesk-me/wiki).
+To learn more please visit Webframe's [wiki](https://github.com/Webfra-me/Webfra-me/wiki).
 
 ## Contributing:
-Please read [Webdesk-me/CONTRIBUTING.md]( https://github.com/WebDesk-me/Webdesk-me/blob/master/CONTRIBUTING.md ) to learn our guidelines for contributing.
+Please read [Webfra-me/CONTRIBUTING.md]( https://github.com/Webfra-me/Webfra-me/blob/master/CONTRIBUTING.md ) to learn our guidelines for contributing.
 
 ## Community Covenant
-Please read [Webdesk-me/community-covenant.md]( https://github.com/WebDesk-me/Webdesk-me/blob/master/code_of_conduct.md ).
+Please read [Webfra-me/community-covenant.md]( https://github.com/Webfra-me/Webfra-me/blob/master/code_of_conduct.md ).
 
 ## Known Bugs:
-There are no known bugs at this time warranting attention here. For a list off all issues past and present, please visit our [issues](https://github.com/WebDesk-me/Webdesk-me/issues) page.
+There are no known bugs at this time warranting attention here. For a list off all issues past and present, please visit our [issues](https://github.com/Webfra-me/Webfra-me/issues) page.
