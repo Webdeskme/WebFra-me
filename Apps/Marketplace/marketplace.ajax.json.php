@@ -7,6 +7,36 @@ include_once("config.inc.php");
 $output = array("result"=>"error");
 if(empty($req["f"]))
 	$output["msg"] = "Missing parameter";
+else if($req["f"] == "openMarketJson"){
+	
+	if(!file_exists("wd_marketplace.json"))
+		$output["msg"] = "Could not find marketplace file";
+	else{
+		
+		$marketplace = file_get_contents("wd_marketplace.json");
+		if(!$marketplace)
+			$output["msg"] = "Could not open marketplace file";
+		else{
+			$marketplace = json_decode($marketplace,true);
+			if(!is_array($marketplace))
+				$output["msg"] = "Could not parse marketplace file";
+			else{
+				$output["result"] == "success";
+				foreach($marketplace as $key => $app){
+					
+					if(!@file_get_contents($app["host"]."/Pub/" . $app["app"] . "/ic.png",0,null,0,1))
+						$marketplace[$key]["icon"] = "//" . $_SERVER["HTTP_HOST"] ."/Apps/Marketplace/assets/default_ic.png";
+					else
+						$marketplace[$key]["icon"] = $app["host"]."/Pub/" . $app["app"] . "/ic.png";
+						
+				}//foreach
+				$output["data"]["marketplace"] = $marketplace;
+			}
+		}
+		
+	}
+	
+}
 else if($req["f"] == "updateMarketJson"){
 	
 	$test_timestamp = 1;

@@ -247,15 +247,15 @@ var marketplace = {
     $(".category-menu a").removeClass("webdesk_active");
     $("#cat-button-" + marketplace.category).addClass("webdesk_active").append('<div class="webdesk_float-right loading-spinner"><i class="fa fa-spinner fa-pulse"></i></div>');
     
-    $.getJSON("<?php echo $wd_type."/".$wd_app ?>/wd_marketplace.json", function(result){
+    $.getJSON("<?php echo $wd_type."/".$wd_app ?>/marketplace.ajax.json.php", 'f=openMarketJson', function(result){
       
       if( (result != null) ){
         
-        marketplace.wd_market = result;
+        marketplace.wd_market = result.data.marketplace;
         
         $(".noapps").addClass("hide");
         
-        $.each(result, function(i, data){
+        $.each(result.data.marketplace, function(i, data){
           
           //var app_id = data.app.replace(" ", "_");
           var app_id = data.app_id;
@@ -277,7 +277,7 @@ var marketplace = {
             $(".app-title",this).text(data.app);
             $(".app-developer",this).text(data.email);
             $(".app-description",this).text("");
-            //$(".app-img",this).attr("src",data.host + "/Pub/" + data.app + "/ic.png");
+            $(".app-img",this).attr("src",data.icon);
             //$(".app-moreinfo-button",this).attr("href",'desktop.php?type=Apps&app=Market&sec=single.php&unit=' + data.app + '&www=' + data.host);
             
             if(data.description != null)
