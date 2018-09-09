@@ -104,10 +104,13 @@ else{
 		        if(file_exists($fileinfo['basename']) && !unlink('./' . $fileinfo['basename']))
 		        	$output["error"] = "Could not remove base installation";
 		        else{
-		        	copy("zip://Tmpfile.zip#".$filename, "./".$fileinfo['basename']);
-		        	//chmod("./".$fileinfo['basename'],0775); 
-		        	//echo "Copy " . $filename . "\n";
-		        	$copied_files[] = $fileinfo['basename'];
+		        	if(!copy("zip://Tmpfile.zip#".$filename, "./".$fileinfo['basename']))
+		        		$output["error"] = "could not copy file  " . $filename . ".";
+		        	else{
+			        	//chmod("./".$fileinfo['basename'],0775); 
+			        	//echo "Copy " . $filename . "\n";
+			        	$copied_files[] = $fileinfo['basename'];
+		        	}
 		        }
 	        }
 	    	}
@@ -118,29 +121,14 @@ else{
 						if(!is_dir('./' . $entry) && !in_array($entry,$files_to_skip) && !in_array($entry,$copied_files)){
 							
 							//echo "Found extra file: " . $entry . "\n";
-							unlink('./' . $entry);
+							if(!unlink('./' . $entry))
+								$output["error"] = "could not remove " . $entry . ".";
 							
 						}
 				
 	    		}
 	    			
 	    	}
-	    	
-				
-    //     while (false !== ($entry = readdir($handle))) {
-    //       if ($entry != "." && $entry != "..") {
-				// 		if(!is_dir('./' . $entry)){
-				// 			if(!in_array($entry,$files_to_skip)){
-				// 				//if(!unlink('./' . $entry))
-				// 					//$output["error"] = "Could not remove base installation";
-				// 			}
-				// 		}
-				// 	}
-				// }
-				// if(!$zip->extractTo('.')){
-				// 	$output["error"] = "Could not extract updater package";
-				// }
-		  //   $zip->close();
 		    
 		    if(!isset($output["error"])){
 		    	$output["result"] = "success";
