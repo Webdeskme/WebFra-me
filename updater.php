@@ -43,8 +43,6 @@
   		</div>
   	</div>
 	
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -52,37 +50,45 @@
     
     
     <script type="text/javascript">
+    	var is_finished = false;
     	function install(curr_step){
     		
-    		$(".site-alert").hide();
-    		$("button").addClass("disabled").prop("disabled",true);
-    		if(curr_step == 1)
-    			$(".step1,.step2,.step3,.step4").removeClass("fa-circle-notch fa-spin fa-times fa-check text-success text-danger").addClass("fa-dot-circle");
-    		
-    		$("body").prop("currStep", curr_step);
-    		$(".step" + curr_step).removeClass("fa-dot-circle").addClass("fa-circle-notch fa-spin");
-    		$.get("//<?php echo $_SERVER["HTTP_HOST"] ?>/updaterSub.php", {step: curr_step},function(data){
-		      
-		      if(data.result != "success"){
-		      	$(".step" + $("body").prop("currStep")).removeClass("fa-circle-notch fa-spin").addClass("fa-times text-danger");
-		      	$(".site-alert").show();
-		      	$(".site-alert .alert-text").html(data.error);
-		      }
-		      else{
-		      	$(".step" + $("body").prop("currStep")).removeClass("fa-circle-notch fa-spin").addClass("fa-check text-success");
-		      	if(data.next_step != null){
-		      		
-		      		install(data.next_step);
-		      		
-		      	}
-		      	if( (data.last_step != null) && data.last_step){
-		      		
-		      		$("button").removeClass("disabled").prop("disabled",false).html("Continue");
-		      		
-		      	}
-		      }
-		      
-		    });
+    		if(is_finished)
+    			document.location = "//" + window.location.host + "/desktop.php";
+    		else{
+	    		$(".site-alert").hide();
+	    		$("button").addClass("disabled").prop("disabled",true).html('Please wait');
+	    		if(curr_step == 1)
+	    			$(".step1,.step2,.step3,.step4").removeClass("fa-circle-notch fa-spin fa-times fa-check text-success text-danger").addClass("fa-dot-circle");
+	    		
+	    		$("body").prop("currStep", curr_step);
+	    		$(".step" + curr_step).removeClass("fa-dot-circle").addClass("fa-circle-notch fa-spin");
+	    		$.get("//<?php echo $_SERVER["HTTP_HOST"] ?>/updaterSub.php", {step: curr_step},function(data){
+			      
+			      if(data.result != "success"){
+			      	$(".step" + $("body").prop("currStep")).removeClass("fa-circle-notch fa-spin").addClass("fa-times text-danger");
+			      	$(".site-alert").show();
+			      	$(".site-alert .alert-text").html(data.error);
+			      	$("button").removeClass("disabled").prop("disabled",false).html('<i class="fa fa-download fa-fw"></i> Retry update');
+			      }
+			      else{
+			      	$(".step" + $("body").prop("currStep")).removeClass("fa-circle-notch fa-spin").addClass("fa-check text-success");
+			      	if(data.next_step != null){
+			      		
+			      		install(data.next_step);
+			      		
+			      	}
+			      	if( (data.last_step != null) && data.last_step){
+			      		
+			      		is_finished = true;
+			      		window.title = "Update complete!";
+			      		$("button").removeClass("disabled").prop("disabled",false).html("Continue");
+			      		
+			      	}
+			      }
+			      
+			    });
+    		}
     		
     	}
     </script>
