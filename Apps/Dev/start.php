@@ -86,6 +86,13 @@ include("appHeader.php");
 						</div>
 						<?php
 					}
+					if(!file_exists($dt_app["type"]."/".$dt_app["handle"]."/start.php")){
+						?>
+						<div class="webdesk_card-footer webdesk_bg-warning">
+							<i class="fa fa-exclamation-triangle"></i> Missing start.php
+						</div>
+						<?php
+					}
 					?>
 				</div>
 			</a>
@@ -102,3 +109,6 @@ include("appHeader.php");
 	?>
 	</div>
 </div>
+<?php
+include("appFooter.php");
+?>
