@@ -14,7 +14,7 @@
   <?php
   if(isset($_SESSION['wd_adminView'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-warning webdesk_alert-dismissable">
+    <div class="webdesk_alert webdesk_alert-warning webdesk_alert-dismissable webdesk_display-fixed">
       <a href="#" class="webdesk_close" data-dismiss="webdesk_alert" aria-label="webdesk_close">&times;</a>
       <strong>Warning:</strong> Viewing as user. <a href="desktop.php?adminView=stop">Click hear to stop.</a>
     </div>
@@ -22,35 +22,35 @@
   }
   if(isset($_GET['wd_as'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-success webdesk_mt-5" role="alert">
+    <div class="webdesk_alert webdesk_alert-success webdesk_mt-5 webdesk_display-fixed" role="alert">
       <?php $wd = test_input($_GET['wd_as']); echo $wd; ?>
     </div>
     <?php
   }
   if(isset($_GET['wd_ai'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-info" role="alert">
+    <div class="webdesk_alert webdesk_alert-info webdesk_display-fixed" role="alert">
       <?php $wd = test_input($_GET['wd_ai']); echo $wd; ?>
     </div>
     <?php
   }
   if(isset($_GET['wd_aw'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-warning" role="alert">
+    <div class="webdesk_alert webdesk_alert-warning webdesk_display-fixed" role="alert">
       <?php $wd = test_input($_GET['wd_aw']); echo $wd; ?>
     </div>
     <?php
   }
   if(isset($_GET['wd_ad'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-danger" role="alert">
+    <div class="webdesk_alert webdesk_alert-danger webdesk_display-fixed" role="alert">
       <?php $wd = test_input($_GET['wd_ad']); echo $wd; ?>
     </div>
     <?php
   }
   if(isset($_GET['link'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-info webdesk_alert-dismissable">
+    <div class="webdesk_alert webdesk_alert-info webdesk_alert-dismissable webdesk_display-fixed">
       <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="webdesk_close">&times;</a>
       <strong>Link <?php echo $wd_link->name; ?>:</strong><span> To close the conection to the shared folder open and return to you own files please <a href="desktop.php" class="webdesk_alert-link">click here</a>.</span>
     </div>

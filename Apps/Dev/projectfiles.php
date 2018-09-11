@@ -16,11 +16,13 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
 <?php if(isset($_SESSION["wd_copy_file"])){ ?><div><a href="<?php wd_urlSub($wd_type, $wd_app, 'pasteSub.php', '&MyApp=' . $MyApp); ?>"><span class="fa fa-paste"></span> Paste</a></div><?php } ?>
 
 <div class="webdesk_bg-light webdesk_border-top webdesk_p-2">
+  <div class="webdesk_float-right">
+    <?php echo wd_confirm($wd_type, $wd_app, "removeProjectSub.php", "&editType=" . $req["editType"] . "&editApp=" . $req["editApp"], "removeAppModal", "<i class='fa fa-trash fa-fw'></i> Remove Project"); ?>
+  </div>
   <h4><?php echo $wd_dt->getProjName() ?></h4>
 </div>
 
 <div class="webdesk_container webdesk_my-5">
-  
   
   <div class="webdesk_dropdown">
     <button class="webdesk_btn webdesk_btn-link webdesk_dropdown-toggle" type="button" id="fileSelectMenuButton" data-toggle="webdesk_dropdown" aria-haspopup="true" aria-expanded="false">
