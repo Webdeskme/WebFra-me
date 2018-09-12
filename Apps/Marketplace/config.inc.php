@@ -68,6 +68,17 @@ class marketplace{
 		return $context;
 		
 	}
+	public function setUpdateDate($app_id){
+		
+		// $marketplace = $this->open_local_marketplace();
+		// $marketplace[$app_id]["updated"] = time();
+		
+		// if(!file_put_contents($this->marketplace_file, json_encode($marketplace)))
+		// 	return false;
+		// else
+		// 	return true;
+		
+	}
 
 }
 $wd_marketplace = new marketplace();

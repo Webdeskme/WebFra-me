@@ -24,10 +24,23 @@ else if($req["f"] == "openMarketJson"){
 				$output["result"] == "success";
 				foreach($marketplace as $key => $app){
 					
+					/// check for image file
 					if(!@file_get_contents($app["host"]."/Pub/" . $app["app"] . "/ic.png",0,null,0,1))
 						$marketplace[$key]["icon"] = "//" . $_SERVER["HTTP_HOST"] ."/Apps/Marketplace/assets/default_ic.png";
 					else
 						$marketplace[$key]["icon"] = $app["host"]."/Pub/" . $app["app"] . "/ic.png";
+						
+					/// check to see if it's installed locally already or not
+					$marketplace[$key]["is_installed"] = false;
+					$marketplace[$key]["needs_update"] = false;
+					if(is_dir("../../Apps/" . $app["app"])){
+						$marketplace[$key]["is_installed"] = true;
+						if(file_exists("../../Apps/" . $app["app"] . "/app.json")){
+							$app_json = json_decode(file_get_contents("../../Apps/" . $app["app"] . "/app.json"),true);
+							if(version_compare($app_json["version"],$marketplace[$key]["vr"]) < 0)
+								$marketplace[$key]["needs_update"] = true;
+						}
+					}
 						
 				}//foreach
 				$output["data"]["marketplace"] = $marketplace;
@@ -117,7 +130,7 @@ else if($req["f"] == "installApp"){
 		}
 		
 		if(!file_put_contents("../../".$marketplace[$app_id]["install_path"] . '/Tmpfile.zip', fopen(htmlspecialchars_decode($marketplace[$app_id]["host"])."/Pub/" . $marketplace[$app_id]["app"] . "/master.zip", 'r'))){
-			$output["msg"] = "Could not download ppp installation";
+			$output["msg"] = "Could not download app installation";
 		}
 		else{
 			$zip = new ZipArchive;
@@ -126,6 +139,8 @@ else if($req["f"] == "installApp"){
 			$zip->close();
 			unlink("../../".$marketplace[$app_id]["install_path"] . '/Tmpfile.zip');
 			$output["result"] = "success";
+			
+			$wd_marketplace->setUpdateDate($app_id);
 		}
 		
 	}

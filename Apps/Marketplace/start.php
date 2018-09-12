@@ -134,7 +134,7 @@ if(file_exists($wd_type."/".$wd_app."/wd_marketplace.json")){
           </div>
           <div class="webdesk_modal-footer">
             <span class="install-process"></span>
-            <button type="button" class="webdesk_btn webdesk_btn-seconary app-install-button" onclick="marketplace.install_app();"><i class="fa fa-download fa-fw"></i> Install</button>
+            <button type="button" class="webdesk_btn webdesk_btn-secondary app-install-button" onclick="marketplace.install_app();"><i class="fa fa-download fa-fw"></i> Install</button>
             <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Close</button>
           </div>
         </div>
@@ -155,22 +155,34 @@ if(!$can_open_market){
   </div>
   <?php
 }
-
+/*
 if($apps = opendir("Apps")){
   $files = array();
+  $files_versions = array();
   while (($file = readdir($apps)) !== false) {
     
-    if(!preg_match("/^.{1,2}$/",$file))
-      $files[] = '"'.$file.'"';
+    if(!preg_match("/^.{1,2}$/",$file)){
+    
+      $files[$file] = array();
+      if(file_exists("Apps/" . $file . "/app.json")){
+        
+        $app_json = file_get_contents("Apps/" . $file . "/app.json");
+        $app_json = json_decode($app_json,true);
+        $files[$file] = $app_json;
+        
+      }
+      
+    }
     
   }
   
   ?>
   <script>
-  var installed_apps = [<?php echo implode(",", $files); ?>];
+  var installed_apps = [<?php echo json_encode($files); ?>];
   </script>
   <?php
 }
+*/
 ?>
 <script>
 $( document ).ajaxError(function( event, request, settings ) {
@@ -222,8 +234,20 @@ var marketplace = {
     
     $('#viewAppMoreModal .app-img').attr("src",marketplace.wd_market[tapp].host + "/Pub/" + marketplace.wd_market[tapp].app + "/ic.png");
     
-    if(installed_apps.indexOf(marketplace.wd_market[tapp].app) > -1){
-      $("#viewAppMoreModal .app-install-button").prop("disabled",true).removeClass("webdesk_btn-primary").addClass("webdesk_btn-secondary").html('<i class="fa fa-check fa-fw"></i> Installed');
+    if(marketplace.wd_market[tapp].is_installed){
+      
+      if(marketplace.wd_market[tapp].needs_update){
+        $("#viewAppMoreModal .app-install-button").removeClass("webdesk_btn-secondary").addClass("webdesk_btn-success").html('<i class="fa fa-sync fa-fw"></i> Update').click({app_id:marketplace.wd_market[tapp].app_id},function(e){
+      
+          marketplace.install_app(e.data.app_id);
+          
+        });
+      }
+      else{
+      
+        $("#viewAppMoreModal .app-install-button").prop("disabled",true).removeClass("webdesk_btn-primary").addClass("webdesk_btn-secondary").html('<i class="fa fa-check fa-fw"></i> Installed');
+        
+      }
     }
     else{
       $("#viewAppMoreModal .app-install-button").prop("disabled",false).addClass("webdesk_btn-primary").removeClass("webdesk_btn-secondary").html('<i class="fa fa-download fa-fw"></i> Install');
@@ -252,12 +276,11 @@ var marketplace = {
       if( (result != null) ){
         
         marketplace.wd_market = result.data.marketplace;
-        
+        console.log(result.data.marketplace);
         $(".noapps").addClass("hide");
         
         $.each(result.data.marketplace, function(i, data){
           
-          //var app_id = data.app.replace(" ", "_");
           var app_id = data.app_id;
           
           if($("#app-" + app_id).length == 0)
@@ -278,14 +301,14 @@ var marketplace = {
             $(".app-developer",this).text(data.email);
             $(".app-description",this).text("");
             $(".app-img",this).attr("src",data.icon);
-            //$(".app-moreinfo-button",this).attr("href",'desktop.php?type=Apps&app=Market&sec=single.php&unit=' + data.app + '&www=' + data.host);
             
             if(data.description != null)
               $(".app-description",this).text(data.description);
+            
+            if(data.is_installed){
               
-            if(installed_apps.indexOf(data.app) > -1){
-              
-              if(data.updated >= data.last_install_date){
+              if(data.needs_update){
+                console.log(data.app + " needs update");
                 $(".app-install-button",this).removeClass("webdesk_btn-secondary").addClass("webdesk_btn-success").html('<i class="fa fa-sync fa-fw"></i> Update').click({app_id:data.app_id},function(e){
               
                   marketplace.install_app(e.data.app_id);
