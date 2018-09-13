@@ -13,7 +13,7 @@ else if($req["f"] == "openMarketJson"){
 		$output["msg"] = "Could not find marketplace file";
 	else{
 		
-		$marketplace = file_get_contents("wd_marketplace.json");
+		$marketplace = @file_get_contents("wd_marketplace.json");
 		if(!$marketplace)
 			$output["msg"] = "Could not open marketplace file";
 		else{
@@ -125,22 +125,43 @@ else if($req["f"] == "installApp"){
 		$output["msg"] = "Could not find app config";
 	else{
 		
-		if(!file_exists("../../".htmlspecialchars_decode($marketplace[$app_id]["install_path"])."/")){
-			mkdir("../../".htmlspecialchars_decode($marketplace[$app_id]["install_path"])."/",0775);
-		}
+		$app_dir = "../../".htmlspecialchars_decode($marketplace[$app_id]["install_path"])."/";
 		
-		if(!file_put_contents("../../".$marketplace[$app_id]["install_path"] . '/Tmpfile.zip', fopen(htmlspecialchars_decode($marketplace[$app_id]["host"])."/Pub/" . $marketplace[$app_id]["app"] . "/master.zip", 'r'))){
-			$output["msg"] = "Could not download app installation";
+		if(!file_exists($app_dir)){
+			mkdir($app_dir,0775);
+		}
+		else if(!is_writeable($app_dir)){
+			$output["msg"] = "App directory is not writeable";
 		}
 		else{
-			$zip = new ZipArchive;
-			$zip->open("../../".$marketplace[$app_id]["install_path"] . '/Tmpfile.zip');
-			$zip->extractTo("../../".$marketplace[$app_id]["install_path"] . '/');
-			$zip->close();
-			unlink("../../".$marketplace[$app_id]["install_path"] . '/Tmpfile.zip');
-			$output["result"] = "success";
+
+			$write_error = false;
+			if ($dh = opendir($app_dir)) {
+				while (($file = readdir($dh)) !== false) {
+					if(!is_writeable($app_dir.$file) && ($file != ".") && ($file != ".."))
+						$write_error = true;
+				}
+				closedir($dh);
+			}
+			$output["data"]["write_error"] = $write_error;
+			if($write_error){
+				$output["msg"] = "Cannot update app because not all app files are writeable. Change permissions to continue.";
+			}
+			else if(!file_put_contents("../../".$marketplace[$app_id]["install_path"] . '/Tmpfile.zip', fopen(htmlspecialchars_decode($marketplace[$app_id]["host"])."/Pub/" . $marketplace[$app_id]["app"] . "/master.zip", 'r'))){
+				$output["msg"] = "Could not download app installation";
+			}
+			else{
+				$zip = new ZipArchive;
+				$zip->open("../../".$marketplace[$app_id]["install_path"] . '/Tmpfile.zip');
+				$zip->extractTo("../../".$marketplace[$app_id]["install_path"] . '/');
+				$zip->close();
+				
+				unlink("../../".$marketplace[$app_id]["install_path"] . '/Tmpfile.zip');
+				
+				$output["result"] = "success";
+				
+			}
 			
-			$wd_marketplace->setUpdateDate($app_id);
 		}
 		
 	}
@@ -149,13 +170,13 @@ else if($req["f"] == "installApp"){
 else if($req["f"] == "checkWFVersion"){
 
 	
-	if(!file_get_contents("../../update.txt") || !file_get_contents($wd_marketplace->wf_github_release_api, false, $wd_marketplace->getStreamContext())){
-		$output["msg"] = "could not open update files";
+	if(!@file_get_contents("../../update.txt") || !@file_get_contents($wd_marketplace->wf_github_release_api, false, $wd_marketplace->getStreamContext())){
+		$output["msg"] = "Could not access update server";
 	}
 	else{
 		
-		$localVersion = file_get_contents("../../update.txt");
-		$github_api = file_get_contents($wd_marketplace->wf_github_release_api, false, $wd_marketplace->getStreamContext());
+		$localVersion = @file_get_contents("../../update.txt");
+		$github_api = @file_get_contents($wd_marketplace->wf_github_release_api, false, $wd_marketplace->getStreamContext());
 		if(!isset(json_decode($github_api,true)["tag_name"]))
 			$output["msg"] = "Could not open update server";
 		else{
@@ -173,14 +194,14 @@ else if($req["f"] == "checkWFVersion"){
 		
 	}
 	
-	// if(!file_get_contents("../../update.txt") || !file_get_contents("http://market.webfra.me/update.txt"))
+	// if(!@file_get_contents("../../update.txt") || !@file_get_contents("http://market.webfra.me/update.txt"))
 	// 	$output["msg"] = "Could not open update files";
 	// else{
 		
 	// 	$output["result"] = "success";
 		
-	// 	$localVersion = file_get_contents("../../update.txt");
-	// 	$remoteVersion = file_get_contents("http://market.webfra.me/update.txt");
+	// 	$localVersion = @file_get_contents("../../update.txt");
+	// 	$remoteVersion = @file_get_contents("http://market.webfra.me/update.txt");
 		
 	// 	if($remoteVersion > $localVersion){
 	// 		$output["data"]["update_required"] = true;

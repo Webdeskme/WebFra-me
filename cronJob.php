@@ -1,102 +1,28 @@
 <?php
-//TestInput
-function test_input($data) {
-    if (!empty($data)) {
-        $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-   return $data;
-    }
-}
-function f_enc($data) {
-    if (!empty($data)) {
-        $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-   $data = str_replace(" ", "", $data);
-   $data = preg_replace("/\s+/", "", $data);
-   $data = strtolower($data);
-   $data = strrev($data);
-   $data = str_rot13($data);
-   return $data;
-    }
-}
-function f_dec($data) {
-    if (!empty($data)) {
-        $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-   $data = str_replace(" ", "", $data);
-   $data = preg_replace("/\s+/", "", $data);
-   $data = strtolower($data);
-   $data = str_rot13($data);
-   $data = strrev($data);
-   return $data;
-    }
-}
-function t_enc($data) {
-    if (!empty($data)) {
-        $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-   $data = str_replace(" ", "", $data);
-   $data = preg_replace("/\s+/", "", $data);
-   $data = strrev($data);
-   $data = str_rot13($data);
-   $data = base64_encode($data);
-   return $data;
-    }
-}
-function t_dec($data) {
-    if (!empty($data)) {
-        $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-   $data = str_replace(" ", "", $data);
-   $data = preg_replace("/\s+/", "", $data);
-   $data = base64_decode($data);
-   $data = str_rot13($data);
-   $data = strrev($data);
-   return $data;
-    }
-}
-function up_enc($data) {
-    if (!empty($data)) {
-        $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-   $data = str_replace(" ", "", $data);
-   $data = preg_replace("/\s+/", "", $data);
-   $data = str_rot13($data);
-   $data = strrev($data);
-   //$data = password_hash($data, PASSWORD_DEFAULT);
-   $data = md5($data);
-   return $data;
-    }
-}
+$start_time = microtime(true);
+echo "---------------------------------------\n";
+echo "WEBFRAME CRON JOB SCRIPT\n";
+echo "---------------------------------------\n\n";
 
-//Functions
+$wd_path = dirname(__FILE__) . "/";
+$_CRON["wd_path"] = $wd_path;
+include_once($wd_path."testInput.php");
+require $wd_path . 'Plugins/PHPMailer-master/src/PHPMailer.php';
 
-$wd_path = __DIR__ . '/';
-$wd_root = file_get_contents($wd_path . 'path.php');
-$wd_admin = $wd_root . '/Admin/';
-$wd_appr = $wd_root . '/App/';
-require $wd_path . 'Plugins/PHPMailer-master/PHPMailerAutoload.php';
-
-//Work
-$dir = $wd_path . 'Apps/';
-$scan = scandir($dir);
-foreach($scan1 as $entry){
-  if(file_exists($dir . $entry . '/cron.php')){
-    include $dir . $entry . '/cron.php';
+for($x=0;$x<2;$x++){
+  $subdir = ($x==0) ? "Apps" : "MyApps"; 
+  $scan = scandir($wd_path . $subdir);
+  foreach($scan as $entry){
+    if(file_exists($wd_path . $subdir . "/" . $entry . '/cron.php')){
+      echo "------\n" . strtoupper($entry) . " SCRIPT\n\n";
+      include $wd_path . $subdir . "/" . $entry . '/cron.php';
+    }
   }
 }
-$dir = $wd_path . 'MyApps/';
-$scan = scandir($dir);
-foreach($scan as $entry){
-  if(file_exists($dir . $entry . '/cron.php')){
-    include $dir . $entry . '/cron.php';
-  }
-}
-exit();
+
+echo "\n\n";
+echo "---------------------------------------\n";
+$total_time = round(microtime(true) - $start_time,4);
+echo "CRON JOB COMPLETED IN " . $total_time . " SECOND" . (($total_time!=1) ? "S" : "") . "\n";
+echo "---------------------------------------\nEND OF SCRIPT\n\n";
 ?>
