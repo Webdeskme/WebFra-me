@@ -27,7 +27,7 @@ sudo find /var/www -type f -exec chmod ug+rw {} \;
 sudo apachectl -k restart
 echo "Crontab setup"
 crontab << EOS
-* * * * * php /var/www/html/cronjob.php
+* * * * * php /var/www/html/cronJob.php
 EOS
 echo " "
 echo " "
