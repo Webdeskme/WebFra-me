@@ -118,13 +118,13 @@ if(file_exists("path.php") || file_exists("../../path.php")){
   }
   $pcolor = "#FFFFFF";
   if(isset($_SESSION["user"])){
-  $back = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/back.txt');
-  $color = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/color.txt');
-  $wd_file = $wd_root . '/User/' . $_SESSION["user"] . '/Doc/';
-  $wd_appFile = $wd_root . '/User/' . $_SESSION["user"] . '/App/';
-  $wd_adminFile = $wd_root . '/User/' . $_SESSION["user"] . '/Admin/';
-  $wd_extFile = $wd_root . '/User/' . $_SESSION["user"] . '/Ext/';
-  $wd_tier = test_input(file_get_contents($wd_adminFile . 'tier.txt'));
+    $back = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/back.txt');
+    $color = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/color.txt');
+    $wd_file = $wd_root . '/User/' . $_SESSION["user"] . '/Doc/';
+    $wd_appFile = $wd_root . '/User/' . $_SESSION["user"] . '/App/';
+    $wd_adminFile = $wd_root . '/User/' . $_SESSION["user"] . '/Admin/';
+    $wd_extFile = $wd_root . '/User/' . $_SESSION["user"] . '/Ext/';
+    $wd_tier = test_input(file_get_contents($wd_adminFile . 'tier.txt'));
   }
   $wd_admin = $wd_root . '/Admin/';
   $wd_appr = $wd_root . '/App/';
@@ -137,17 +137,17 @@ if(file_exists("path.php") || file_exists("../../path.php")){
     $wd_Title = file_get_contents($wd_admin . 'title.txt');
   }
   function get_number_of_user_alerts(){
-  global $wd_root;
-  $wd = 0;
-  if ($handle = opendir($wd_root . '/User/' . $_SESSION["user"] . '/Sec/')) {
-    while (false !== ($entry = readdir($handle))) {
-      if ($entry != "." && $entry != "..") {
-      $wd = $wd + 1;
+    global $wd_root;
+    $wd = 0;
+    if ($handle = opendir($wd_root . '/User/' . $_SESSION["user"] . '/Sec/')) {
+      while (false !== ($entry = readdir($handle))) {
+        if ($entry != "." && $entry != "..") {
+        $wd = $wd + 1;
+        }
       }
     }
+    return $wd;
   }
-  return $wd;
-}
   if(isset($_GET['type'])){
   	$wd_type = test_input($_GET['type']);
   }

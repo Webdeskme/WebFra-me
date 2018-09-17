@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<!-- Copyright 2018 Webfra.me -->
+<!-- Copyright <?php echo date("Y"); ?> Webfra.me -->
 <html lang="en">
 <head>
     <title><?php echo $wd_Title; ?></title>
@@ -23,13 +23,15 @@
     <link rel="apple-touch-icon" href="favicon.ico">
     <link rel="apple-touch-startup-image" href="favicon.ico">
 
-	<link rel="stylesheet" href="Plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	<!--<link rel="stylesheet" href="Plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">-->
+	<link rel="stylesheet" href="Plugins/wd-bootstrap/css/webdesk_bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="www/Themes/wd_default/login.css" />
 
 	<!--<script src="Plugins/jquery-3.2.0.min.js" type="text/javascript"></script>-->
 	<script src="www/Themes/wd_default/jquery-1.3.2.min.js" type="text/javascript"></script>
 	<script src="www/Themes/wd_default/jquery.backgroundPosition.js" type="text/javascript"></script>
-	<script src="Plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<!--<script src="Plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>-->
+	<script src="Plugins/wd-bootstrap/js/webdesk_bootstrap.js"></script>
 	<script type="text/javascript">
 		/*$(function(){
 
@@ -91,35 +93,33 @@ function bacloop() {
 	<div id="midground"></div>
 	<div id="foreground"></div>
 
- <nav class="navbar navbar-inverse" id="nav">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.php" title="Homepage"><?php echo $wd_Title; ?></a>
-    </div>
+ <nav class="webdesk_navbar webdesk_bg-black webdesk_navbar-dark" id="nav">
+  <div class="webdesk_container-fluid">
+    <a class="webdesk_navbar-brand" href="index.php" title="Homepage"><?php echo $wd_Title; ?></a>
   </div>
 </nav>
 
 	<div id="page-wrap">
-
-		<div align="center">
-          <form method="POST" action="login.php">
-		   <div class="form-group">
-            <label for="user" title="Please add your Username here."><h3>Username: </h3></label>
-            <input type="text" id="user"  class="form-control" name="user" required placeholder="Please add your Username here." title="Please add your Username here.">
-           </div>
-           <div class="form-group">
-            <label for="pass" title="Please add your Password here."><h3>Password: </h3></label>
-            <!--<input type="password" id="pass"  class="form-control" name="pass" required placeholder="Please add your Password here." pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"  autofocus><br><br>-->
-            <input type="password" id="pass"  class="form-control" name="pass" required placeholder="Please add your Password here." autofocus><br><br>
-           </div>
-           <div class="form-group">
-			<p>By clicking on either the Desktop or Mobile button, you are agreeing to Webfra.me's <a href="/www/Pages/Terms.html" target="_blank">Terms of Use</a> and <a href="/www/Pages/Privacy.html" target="_blank">Privacy Policy</a>.</p>
-            <input type="submit" name="type" value="Desktop" class="btn btn-primary" title="Sign In"> <b>or</b> <input type="submit" name="type" value="Mobile" class="btn btn-primary" title="Sign In">
-           </div>
-          </form>
+        <div class="webdesk_container">
+    		<div align="center">
+              <form method="POST" action="login.php">
+    		   <div class="webdesk_form-group">
+                <label for="user" title="Please add your Username here."><h3>Username: </h3></label>
+                <input type="text" id="user"  class="webdesk_form-control" name="user" required placeholder="Please add your Username here." title="Please add your Username here.">
+               </div>
+               <div class="webdesk_form-group">
+                <label for="pass" title="Please add your Password here."><h3>Password: </h3></label>
+                <input type="password" id="pass"  class="webdesk_form-control" name="pass" required placeholder="Please add your Password here." autofocus><br><br>
+               </div>
+               <div class="webdesk_form-group">
+    			<p>By clicking on either the Desktop or Mobile button, you are agreeing to Webfra.me&apos;s <a href="/www/Pages/Terms.html" target="_blank">Terms of Use</a> and <a href="/www/Pages/Privacy.html" target="_blank">Privacy Policy</a>.</p>
+                <input type="submit" name="type" value="Desktop" class="webdesk_btn webdesk_btn-primary" title="Sign In"> <b>or</b> <input type="submit" name="type" value="Mobile" class="webdesk_btn webdesk_btn-primary" title="Sign In">
+               </div>
+              </form>
+            </div>
+    	  <div style="text-align: center;"><h1 id="dt"></h1></div>
+          <div style="text-align: center;"><h1 id="ct"></h1></div>
         </div>
-	  <div style="text-align: center;"><h1 id="dt"></h1></div>
-      <div style="text-align: center;"><h1 id="ct"></h1></div>
 	</div>
 <script>
 var a=document.getElementsByTagName("a");
