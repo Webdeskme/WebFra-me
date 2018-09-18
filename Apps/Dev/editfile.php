@@ -1,15 +1,24 @@
 <?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 include_once("config.inc.php");
-include("header.php");
+include("appHeader.php");
 ?>
 <form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'SaveFileSub.php', ''); ?>" style="height: 100%;">
   <input type="hidden" name="type" value="<?php echo $req["editType"]; ?>">
   <input type="hidden" name="nameA" value="<?php echo $req["editApp"]; ?>">
   <input type="hidden" name="nameP" value="<?php echo $req["file"]; ?>">
   
-  <div class="webdesk_bg-light webdesk_border-top webdesk_p-2">
-    <h4>Editing <b><?php echo (!empty($req["file"])) ? $req["file"] : "" ?></b></h4>
-  </div>
+  
+  
+  <!--<div class="webdesk_bg-light webdesk_border-top webdesk_p-2">-->
+  <!--  <h5>Editing <b><?php echo (!empty($req["file"])) ? $req["file"] : "" ?></b></h4>-->
+  <!--</div>-->
+  <nav aria-label="breadcrumb">
+    <ol class="webdesk_breadcrumb webdesk_rounded-0">
+      <li class="webdesk_breadcrumb-item"><a href="<?php echo wd_url($wd_type, $wd_app, 'start.php', ''); ?>"><?php echo $req['editType'] ?></a></li>
+      <li class="webdesk_breadcrumb-item"><a href="<?php echo wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req['editType'] . '&editApp=' . $req['editApp']); ?>"><?php echo $req['editApp'] ?></a></li>
+      <li class="webdesk_breadcrumb-item webdesk_active" aria-current="page"><?php echo (!empty($req["file"])) ? $req["file"] : "" ?></li>
+    </ol>
+  </nav>
   
   <div class="webdesk_row webdesk_no-gutters" style="height: 100%">
     <div class="webdesk_col-md-9" style="height: 100%">
