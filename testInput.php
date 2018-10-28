@@ -363,9 +363,9 @@ if(file_exists("path.php") || file_exists("../../path.php")){
   echo '<button type="button" class="webdesk_btn webdesk_btn-' . $btn_style . '" data-toggle="webdesk_modal" data-target="#' . $wd_type . '-' . $app . '-' . $id . '">' . $btn_text . '</button>
 
     <!-- Modal -->
-    <div class="webdesk_modal fade" id="' . $wd_type . '-' . $app . '-' . $id . '" role="dialog">
+    <div class="webdesk_modal webdesk_fade" id="' . $wd_type . '-' . $app . '-' . $id . '" role="dialog">
       <div class="webdesk_modal-dialog">
-        <div class="webdesk_modal-content">
+        <div class="webdesk_modal-content webdesk_shadow-lg">
           <div class="webdesk_modal-header">
             <h4 class="webdesk_modal-title">Warning: Are you sure?</h4>
             <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
@@ -375,8 +375,8 @@ if(file_exists("path.php") || file_exists("../../path.php")){
             <!--<button type="button" class="webdesk_btn webdesk_btn-default" data-dismiss="modal">Cancel</button> -->
           </div>
           <div class="webdesk_modal-footer">
-            <a href="' . $link . '" class="webdesk_btn webdesk_btn-danger">' . $btn_text . '</a>
-            <button type="button" class="webdesk_btn webdesk_btn-light" data-dismiss="webdesk_modal">Cancel</button>
+            <a href="' . $link . '" class="webdesk_btn webdesk_btn-danger webdesk_text-light">' . $btn_text . '</a>
+            <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Cancel</button>
           </div>
         </div>
       </div>
@@ -392,9 +392,21 @@ if(file_exists("path.php") || file_exists("../../path.php")){
   function wd_tier_protect($tier){
     if($tier !== $_SESSION["tier"] || "tA" !== $_SESSION["tier"]){
       session_destroy();
-      header('Location: index.php?test=bad tier');
+      header('Location: index.php?test=bad+tier');
       exit();
     }
+  }
+  function wd_siteDescription(){
+    
+    global $wd_admin;
+    
+    $site_name = @file_get_contents($wd_admin."description.txt");
+    
+    if(!$site_name)
+      return "";
+      
+    return $site_name;
+    
   }
   function wd_tier_div($tier1, $page1, $page2){
     if($tier === $_SESSION["tier"] || "tA" === $_SESSION["tier"]){
@@ -444,7 +456,7 @@ if(file_exists("path.php") || file_exists("../../path.php")){
         $obj = file_get_contents("www/Pages/nav.json");
         $obj = json_decode($obj);
       ?>
-  <nav class="webdesk_navbar webdesk_navbar-expand-md webdesk_m-0 webdesk_navbar-<?php echo ($color == "light") ? "light webdesk_bg-light" : "inverse webdesk_bg-dark"; echo ($loc == 'fixed') ? ' webdesk_navbar-fixed-top': "" ?>">
+  <nav class="webdesk_navbar webdesk_navbar-expand-sm webdesk_m-0 webdesk_navbar-<?php echo ($color == "light") ? "light webdesk_bg-light" : "inverse webdesk_bg-dark"; echo ($loc == 'fixed') ? ' webdesk_navbar-fixed-top': "" ?>">
     <div class="webdesk_container-fluid">
       <div class="webdesk_navbar-header">
         <button type="button" class="webdesk_navbar-toggler" data-toggle="webdesk_collapse" data-target="#<?php echo $nav_id ?>" aria-controls="<?php echo $nav_id ?>" aria-expanded="false" aria-label="Toggle navigation">

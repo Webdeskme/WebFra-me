@@ -13,6 +13,7 @@ if(!file_exists($wd_appr)){
 function form(){
   global $var;
   global $wd_appFile;
+  global $wd_appr;
   if(isset($_GET['fPath'])){
     $var['fPath'] = test_input($_GET['fPath']);
   }
@@ -44,8 +45,8 @@ function form(){
   foreach ($_POST as $key => $value) {
     $var[$key] = test_input($value);
   }
-  return $var;
   $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<form method="post" action="desktop.php?type=' . $GLOBALS['wd_type'] . '&app=' . $GLOBALS['wd_app'] . '&sec=' . $GLOBALS['sec'] . '">';
+  return $var;
 }
 function formEnd(){
   $GLOBALS['buffer'] = $GLOBALS['buffer'] . '</form>';
@@ -151,7 +152,7 @@ function delete($form, $path, $link){
   if($form == 'yes'){
     global $wd_appFile;
     unlink($wd_appFile . $path);
-    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<script>window.location = "desktop.php?type=' . $GLOBALS['wd_type'] . '&app=' . $GLOBALS['wd_app'] . '&sec=start.php'. $GLOBALS['wd_url'] .'";</script>';
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<script>window.location = "desktop.php?type=' . $GLOBALS['wd_type'] . '&app=' . $GLOBALS['wd_app'] . '&sec=' . $link . $GLOBALS['wd_url'] .'";</script>';
   }
 }
 function aDelete($form, $path, $link){
@@ -168,7 +169,7 @@ function open($title, $path){
   return $var;
 }
 function aOpen($title, $path){
-  global $wd_appFile;
+  global $wd_appr;
   global $var;
   $var[$title] = test_input(file_get_contents($wd_appr . $path));
   return $var;
@@ -198,5 +199,35 @@ function falist($link){
     $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<a href="desktop.php?type=' . $GLOBALS['wd_type'] . '&app=' . $GLOBALS['wd_app'] . '&sec=' . $link . '&fPath=' . $key . $GLOBALS['wd_url'] .'" class="list-group-item list-group-item-action">' . $key . '</a>';
   }
   $GLOBALS['buffer'] = $GLOBALS['buffer'] . '</div>';
+}
+function mf($form, $path, $link){
+  global $wd_appFile;
+  mkdir($wd_appFile . "/" . $path);
+}
+function rf($form, $path, $link){
+  global $wd_appFile;
+  $a = scandir($wd_appFile . "/" . $path);
+  foreach ($a as $key => $value) {
+    unlink($wd_appFile . "/" . $path . "/" . $key);
+  }
+  rmdir($wd_appFile . "/" . $path);
+}
+function amf($form, $path, $link){
+  global $wd_appr;
+  mkdir($wd_appr . "/" . $path);
+}
+function arf($form, $path, $link){
+  global $wd_appr;
+  $a = scandir($wd_appr . "/" . $path);
+  foreach ($a as $key => $value) {
+    unlink($wd_appr . "/" . $path . "/" . $key);
+  }
+  rmdir($wd_appr . "/" . $path);
+}
+function upload($form, $title, $path){
+  
+}
+function aUpload($form, $title, $path){
+  
 }
 ?>
