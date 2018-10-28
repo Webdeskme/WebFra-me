@@ -10,47 +10,77 @@
 //
 /////////////////////////////////////////////
 // -->
-<div class="webdesk_containe webdesk_text-center" style="position: absolute;z-index: 10000;width: 100%;">
+<div class="webdesk_text-center" style="">
   <?php
   if(isset($_SESSION['wd_adminView'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-warning webdesk_alert-dismissable webdesk_d-inline-block webdesk_my-5">
+    <div class="webdesk_alert webdesk_alert-warning webdesk_alert-dismissable">
       <a href="#" class="webdesk_close" data-dismiss="webdesk_alert" aria-label="webdesk_close">&times;</a>
       <strong>Warning:</strong> Viewing as user. <a href="desktop.php?adminView=stop">Click hear to stop.</a>
     </div>
     <?php
   }
+  foreach($_GET as $key => $wd_alert){
+    
+    if(preg_match("/^wd\_a([A-Za-z0-9]+)$/", test_input($key), $match)){
+      
+      switch($match[1]){
+        case "s":
+          $a_type = "success";
+          break;
+        case "i":
+          $a_type = "info";
+          break;
+        case "w":
+          $a_type = "warning";
+          break;
+        case "d":
+          $a_type = "danger";
+          break;
+      }
+      
+      
+      ?>
+      <div class="webdesk_alert webdesk_alert-<?php echo $a_type ?> webdesk_position-fixed webdesk_m-3" style="right: 0;z-index: 10000;" role="alert">
+        <?php echo test_input($wd_alert) ?>
+      </div>
+      <?php
+      
+    }
+  }
+  /*
   if(isset($_GET['wd_as'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-success webdesk_d-inline-block webdesk_my-5" role="alert">
+    <div class="webdesk_alert webdesk_alert-success webdesk_position-fixed" role="alert">
       <?php $wd = test_input($_GET['wd_as']); echo $wd; ?>
     </div>
     <?php
   }
   if(isset($_GET['wd_ai'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-info webdesk_d-inline-block webdesk_my-5" role="alert">
+    <div class="webdesk_alert webdesk_alert-info" role="alert">
       <?php $wd = test_input($_GET['wd_ai']); echo $wd; ?>
     </div>
     <?php
   }
   if(isset($_GET['wd_aw'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-warning webdesk_d-inline-block webdesk_my-5" role="alert">
+    <div class="webdesk_alert webdesk_alert-warning" role="alert">
       <?php $wd = test_input($_GET['wd_aw']); echo $wd; ?>
     </div>
     <?php
   }
   if(isset($_GET['wd_ad'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-danger webdesk_d-inline-block webdesk_my-5" style="" role="alert">
+    <div class="webdesk_alert webdesk_alert-danger" style="" role="alert">
       <?php $wd = test_input($_GET['wd_ad']); echo $wd; ?>
     </div>
     <?php
   }
+  */
   if(isset($_GET['link'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-info webdesk_alert-dismissable webdesk_d-inline-block webdesk_my-5">
+    <div class="webdesk_alert webdesk_alert-info">
       <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="webdesk_close">&times;</a>
       <strong>Link <?php echo $wd_link->name; ?>:</strong><span> To close the conection to the shared folder open and return to you own files please <a href="desktop.php" class="webdesk_alert-link">click here</a>.</span>
     </div>
