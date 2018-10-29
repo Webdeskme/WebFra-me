@@ -3,7 +3,7 @@ include_once("config.inc.php");
 include("appHeader.php");
 ?>
 
-<div class="webdesk_container webdesk_py-5">
+<div class="webdesk_container webdesk_py-md-5">
 	<div class="webdesk_row webdesk_my-5 webdesk_no-gutters">
 		<div class="webdesk_col-md-3 webdesk_col-xs-6 webdesk_text-center">
 			<a href="<?php echo wd_url($wd_type, $wd_app, 'site-settings.php',''); ?>" class="webdesk_btn webdesk_btn-light webdesk_btn-block webdesk_p-5 webdesk_rounded-0 d-block">

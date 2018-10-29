@@ -4,7 +4,7 @@ include_once("config.inc.php");
 include("appHeader.php");
 ?>
 <nav class="webdesk_navbar webdesk_border-top webdesk_navbar-expand-md webdesk_navbar-light webdesk_bg-light">
-  <a class="webdesk_navbar-brand" href="<?php echo wd_url($wd_type, $wd_app, 'start.php', ''); ?>"><i class="fa fa-arrow-circle-left"></i></a> Manage Users
+  <a class="webdesk_navbar-brand" href="<?php echo wd_url($wd_type, $wd_app, 'start.php', ''); ?>"><i class="fa fa-arrow-circle-left"></i> Manage Users</a>
   <button class="webdesk_navbar-toggler" type="button" data-toggle="webdesk_collapse" data-target="#wf_adminSubHeader" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="webdesk_navbar-toggler-icon"></span>
   </button>
@@ -167,17 +167,21 @@ include("appHeader.php");
 								        	<label for="new-tier-<?php echo $key ?>" class="webdesk_col-form-label webdesk_col-sm-3 webdesk_text-right">Tier</label>
 								        	<select class="webdesk_custom-select webdesk_col-sm-8" name="tier">
 								        		<?php
-								        		for($x=1;$x<=10;$x++){
-								        			if(file_exists($wd_admin . 't' . $x . '.json')){
-									        			?>
-									        			<option value="t<?php echo $x ?>"<?php echo ($user["tier"] == "t" . $x) ? " SELECTED" : ""; ?>>Tier <?php echo $x ?></option>
-									        			<?php
-								        			}
+								        		$tiers = $wf_admin->getSystemTiers();
+								        		foreach($tiers as $tier => $t_info){
+								        			
+								        			?>
+								        			<option value="t<?php echo $tier ?>"<?php echo ($user["tier"] == "t" . $tier) ? " SELECTED" : ""; ?>>Tier <?php echo $tier ?></option>
+								        			<?php
+								        			
 								        		}
 								        		?>
 								        		<option value="tA" <?php echo ($user["tier"] == "Admin") ? " SELECTED" : ""; ?>>Admin</option>
 								        	</select>
 								        </div>
+								        <div class="webdesk_text-center">
+							        		<small class="webdesk_form-text webdesk_text-muted">Go to the <a href="<?php wd_url($wd_type, $wd_app, 'permissions.php', ''); ?>">permissions page</a> to manage tiers</small>
+							        	</div>
 	
 								      </div>
 								      <div class="webdesk_modal-footer">
@@ -196,13 +200,12 @@ include("appHeader.php");
 							<?php echo $user["details"]["fn"] . " " . $user["details"]["ln"] ?>
 						</td>
 						<td>
-							
 							<?php echo ($user["tier"] == "tA") ? "Admin" : "Tier " . str_replace("t", "", $user["tier"]) ?>
 						</td>
 						<td class="webdesk_text-right">
 							<button type="button" class="webdesk_btn webdesk_btn-light" data-toggle="webdesk_modal" data-target="#viewUser<?php echo $user["code"] ?>Modal" data-toggle="webdesk_tooltip" data-placement="top" title="Edit user info"><i class="fa fa-pen"></i></button>
 							<button type="button" class="webdesk_btn webdesk_btn-light" data-toggle="webdesk_modal" data-target="#resetUserPassword<?php echo $user["code"] ?>Modal" title="Reset user password"><i class="fa fa-lock-open"></i></button>
-							<button type="button" class="webdesk_btn webdesk_btn-light" data-toggle="webdesk_modal" data-target="#changeUserTier<?php echo $user["code"] ?>Modal" title="Change user's tier level"><i class="fa fa-shield-alt"></i></button>
+							<button type="button" class="webdesk_btn webdesk_btn-light" data-toggle="webdesk_modal" data-target="#changeUserTier<?php echo $user["code"] ?>Modal" title="Change user's tier level" <?php echo ($_SESSION["user"] == $user["code"]) ? "disabled" : ""; ?>><i class="fa fa-shield-alt"></i></button>
 						</td>
 					</tr>
 					<?php

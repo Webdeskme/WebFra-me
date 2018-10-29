@@ -41,7 +41,7 @@ class admin{
 		
 		return $wd_roots[$_SERVER["HTTP_HOST"]];
 	}
-	public function getUsers(){
+	public function getUsers($tier = null){
 		
 		global $wd_root;
 		
@@ -51,12 +51,16 @@ class admin{
 		if ($handle = opendir($folder)) {
       while (false !== ($entry = readdir($handle))) {
         if ($entry != "." && $entry != "..") {
-        	$users[] = array(
+        	
+        	$tuser = array(
         		"code" => $entry,
         		"user" => f_dec($entry),
         		"tier" => test_input(file_get_contents($folder . $entry . '/Admin/tier.txt')),
         		"details" => (file_exists($folder . $entry . '/Admin/info.json')) ? json_decode(file_get_contents($folder . $entry . '/Admin/info.json'),true) : array("fn"=>null,"ln"=>null,"email"=>null,"contact"=>null,"notes"=>null)
         	);
+        	
+        	if(empty($tier) || ($tuser["tier"] == $tier))
+        		$users[] = $tuser;
 
         }
       }

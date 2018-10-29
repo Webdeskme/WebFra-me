@@ -4,19 +4,8 @@ include_once("config.inc.php");
 include("appHeader.php");
 ?>
 <nav class="webdesk_navbar webdesk_border-top webdesk_navbar-expand-md webdesk_navbar-light webdesk_bg-light">
-  <a class="webdesk_navbar-brand" href="<?php echo wd_url($wd_type, $wd_app, 'start.php', ''); ?>"><i class="fa fa-arrow-circle-left"></i></a> Permissions
-  <button class="webdesk_navbar-toggler" type="button" data-toggle="webdesk_collapse" data-target="#wf_adminSubHeader" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="webdesk_navbar-toggler-icon"></span>
-  </button>
-  
-  <div class="webdesk_collapse webdesk_navbar-collapse" id="wf_adminSubHeader">
-    <ul class="webdesk_navbar-nav webdesk_ml-auto">
-      <li class="webdesk_nav-item">
-        
-      </li>
-    </ul>
-    
-  </div>
+  <a class="webdesk_navbar-brand" href="<?php echo wd_url($wd_type, $wd_app, 'start.php', ''); ?>"><i class="fa fa-arrow-circle-left"></i> Permissions</a>
+
 </nav>
 <div class="webdesk_row">
 	<div class="webdesk_col-md-3 webdesk_p-5">
@@ -49,7 +38,7 @@ include("appHeader.php");
 		</ul>
 		<a class="webdesk_btn webdesk_btn-<?php echo (count($tiers) == 0) ? "primary" : "light"; ?>" href="<?php wd_urlSub($wd_type, $wd_app, 'permissionsSub.php', '&action=addTier&nextTier=' . (count($tiers) + 1)); ?>"><i class="fa fa-plus fa-fw"></i> Add Tier</a>
 	</div>
-	<div class="webdesk_col webdesk_my-5">
+	<div class="webdesk_col webdesk_my-5 webdesk_p-5">
 		<?php
 		//if(file_exists($wd_admin . 't' . $req["tier"] . '.json')){
 		if(!empty($req["tier"]) && isset($tiers[$req["tier"]])){
@@ -185,10 +174,12 @@ include("appHeader.php");
 					<?php
 					if(!file_exists($wd_admin . 't' . ($req["tier"] + 1) . '.json')){
 						?>
-						<a href="<?php wd_urlSub($wd_type, $wd_app, 'permissionsSub.php', '&action=removeTier&tier=' . $req["tier"]); ?>" class="webdesk_btn webdesk_btn-danger"><i class="fa fa-trash fa-fw"></i> Remove tier</a>
+						<a href="<?php wd_urlSub($wd_type, $wd_app, 'permissionsSub.php', '&action=removeTier&tier=' . $req["tier"]); ?>" class="webdesk_btn webdesk_btn-danger webdesk_text-white"><i class="fa fa-trash fa-fw"></i> Remove tier</a>
 						<?php
 					}
 					?>
+					&nbsp;  
+					There are <?php echo count($wf_admin->getUsers("t" . $req["tier"])); ?> users in this tier
 				</div>
 			</form>
 			<?php
