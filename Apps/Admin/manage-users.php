@@ -59,59 +59,64 @@ include("appHeader.php");
 		<tbody>
 			<?php
 			foreach($wf_admin->getUsers() as $key => $user){
+				
 				if( empty($req["s"]) || (!empty($req["s"]) && ( preg_match("/" . $req["s"] . "/i", $user["user"])) || preg_match("/" . $req["s"] . "/i", $user["details"]["fn"]) || preg_match("/" . $req["s"] . "/i", $user["details"]["ln"]) ) ){
 					?>
 					<tr>
 						<td>
 							<div class="webdesk_modal webdesk_fade" id="viewUser<?php echo $user["code"] ?>Modal" tabindex="-1" role="dialog" aria-labelledby="viewUser<?php echo $user["code"] ?>ModalLabel" aria-hidden="true">
-							  <div class="webdesk_modal-dialog webdesk_modal-lg webdesk_shadow-lg" role="document">
-							    <div class="webdesk_modal-content">
-							      <div class="webdesk_modal-header">
-							        <h5 class="webdesk_modal-title" id="viewUser<?php echo $user["code"] ?>ModalLabel">Editing User</h5>
-							        <button type="button" class="webdesk_close" data-dismiss="webdesk_modal" aria-label="Close">
-							          <span aria-hidden="true">&times;</span>
-							        </button>
-							      </div>
-							      <div class="webdesk_modal-body">
-							    
-							        <div class="webdesk_row webdesk_form-group">
-							        	<label for="username-<?php echo $key ?>" class="webdesk_col-form-label webdesk_col-sm-3 webdesk_text-right">Username</label>
-							        	<div class="webdesk_col-sm-9">
-							        		<input type="text" name="username" id="username-<?php echo $key ?>" class="webdesk_form-control" value="<?php echo $user["user"] ?>" />
-							        	</div>
-							        </div>
-							        <div class="webdesk_row webdesk_form-group">
-							        	<label for="fn-<?php echo $key ?>" class="webdesk_col-form-label webdesk_col-sm-3 webdesk_text-right">First Name</label>
-							        	<div class="webdesk_col-sm-9">
-							        		<input type="text" name="fn" id="fn-<?php echo $key ?>" class="webdesk_form-control" value="<?php echo $user["details"]["fn"] ?>" />
-							        	</div>
-							        </div>
-							        <div class="webdesk_row webdesk_form-group">
-							        	<label for="ln-<?php echo $key ?>" class="webdesk_col-form-label webdesk_col-sm-3 webdesk_text-right">Last Name</label>
-							        	<div class="webdesk_col-sm-9">
-							        		<input type="text" name="ln" id="ln-<?php echo $key ?>" class="webdesk_form-control" value="<?php echo $user["details"]["ln"] ?>" />
-							        	</div>
-							        </div>
-							        <div class="webdesk_row webdesk_form-group">
-							        	<label for="contact-<?php echo $key ?>" class="webdesk_col-form-label webdesk_col-sm-3 webdesk_text-right">Contact Info</label>
-							        	<div class="webdesk_col-sm-9">
-							        		<textarea name="contact" id="contact-<?php echo $key ?>" class="webdesk_form-control"><?php echo $user["details"]["contact"] ?></textarea>
-							        	</div>
-							        </div>
-							        <div class="webdesk_row webdesk_form-group">
-							        	<label for="notes-<?php echo $key ?>" class="webdesk_col-form-label webdesk_col-sm-3 webdesk_text-right">Notes</label>
-							        	<div class="webdesk_col-sm-9">
-							        		<textarea name="notes" id="notes-<?php echo $key ?>" class="webdesk_form-control"><?php echo $user["details"]["notes"] ?></textarea>
-							        	</div>
-							        </div>
-							      </div>
-							      <div class="webdesk_modal-footer">
-							        <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Close</button>
-							        <?php wd_confirm($wd_type, $wd_app, 'manage-usersSub.php', '&action=delete&user=' . $user["code"], 'delete-user-' . $user["code"], 'Delete User') ?>
-							        <button type="button" class="webdesk_btn webdesk_btn-primary">Save user</button>
-							      </div>
-							    </div>
-							  </div>
+								<form action="<?php wd_urlSub($wd_type, $wd_app, 'manage-usersSub.php', ''); ?>" method="POST">
+									<input type="hidden" name="action" value="saveUser" />
+									<input type="hidden" name="user" value="<?php echo $user["code"] ?>" />
+								  <div class="webdesk_modal-dialog webdesk_modal-lg webdesk_shadow-lg" role="document">
+								    <div class="webdesk_modal-content">
+								      <div class="webdesk_modal-header">
+								        <h5 class="webdesk_modal-title" id="viewUser<?php echo $user["code"] ?>ModalLabel">Editing User</h5>
+								        <button type="button" class="webdesk_close" data-dismiss="webdesk_modal" aria-label="Close">
+								          <span aria-hidden="true">&times;</span>
+								        </button>
+								      </div>
+								      <div class="webdesk_modal-body">
+								    
+								        <div class="webdesk_row webdesk_form-group">
+								        	<label for="username-<?php echo $key ?>" class="webdesk_col-form-label webdesk_col-sm-3 webdesk_text-right">Username</label>
+								        	<div class="webdesk_col-sm-9">
+								        		<input type="text" name="username" id="username-<?php echo $key ?>" class="webdesk_form-control" value="<?php echo $user["user"] ?>" />
+								        	</div>
+								        </div>
+								        <div class="webdesk_row webdesk_form-group">
+								        	<label for="fn-<?php echo $key ?>" class="webdesk_col-form-label webdesk_col-sm-3 webdesk_text-right">First Name</label>
+								        	<div class="webdesk_col-sm-9">
+								        		<input type="text" name="fn" id="fn-<?php echo $key ?>" class="webdesk_form-control" value="<?php echo $user["details"]["fn"] ?>" />
+								        	</div>
+								        </div>
+								        <div class="webdesk_row webdesk_form-group">
+								        	<label for="ln-<?php echo $key ?>" class="webdesk_col-form-label webdesk_col-sm-3 webdesk_text-right">Last Name</label>
+								        	<div class="webdesk_col-sm-9">
+								        		<input type="text" name="ln" id="ln-<?php echo $key ?>" class="webdesk_form-control" value="<?php echo $user["details"]["ln"] ?>" />
+								        	</div>
+								        </div>
+								        <div class="webdesk_row webdesk_form-group">
+								        	<label for="contact-<?php echo $key ?>" class="webdesk_col-form-label webdesk_col-sm-3 webdesk_text-right">Contact Info</label>
+								        	<div class="webdesk_col-sm-9">
+								        		<textarea name="contact" id="contact-<?php echo $key ?>" class="webdesk_form-control"><?php echo $user["details"]["contact"] ?></textarea>
+								        	</div>
+								        </div>
+								        <div class="webdesk_row webdesk_form-group">
+								        	<label for="notes-<?php echo $key ?>" class="webdesk_col-form-label webdesk_col-sm-3 webdesk_text-right">Notes</label>
+								        	<div class="webdesk_col-sm-9">
+								        		<textarea name="notes" id="notes-<?php echo $key ?>" class="webdesk_form-control"><?php echo $user["details"]["notes"] ?></textarea>
+								        	</div>
+								        </div>
+								      </div>
+								      <div class="webdesk_modal-footer">
+								        <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Close</button>
+								        <?php wd_confirm($wd_type, $wd_app, 'manage-usersSub.php', '&action=delete&user=' . $user["code"], 'delete-user-' . $user["code"], 'Delete User') ?>
+								        <button type="submit" class="webdesk_btn webdesk_btn-primary">Save user</button>
+								      </div>
+								    </div>
+								  </div>
+							  </form>
 							</div>
 							<div class="webdesk_modal webdesk_fade" id="resetUserPassword<?php echo $user["code"] ?>Modal" tabindex="-1" role="dialog" aria-labelledby="resetUserPassword<?php echo $user["code"] ?>ModalLabel" aria-hidden="true">
 								<form action="<?php wd_urlSub($wd_type, $wd_app, 'manage-usersSub.php', ''); ?>" method="POST">
@@ -163,12 +168,14 @@ include("appHeader.php");
 								        	<select class="webdesk_custom-select webdesk_col-sm-8" name="tier">
 								        		<?php
 								        		for($x=1;$x<=10;$x++){
-								        			?>
-								        			<option value="t<?php echo $x ?>"<?php echo ($user["tier"] == "t" . $x) ? " SELECTED" : ""; ?>>Tier <?php echo $x ?></option>
-								        			<?php
+								        			if(file_exists($wd_admin . 't' . $x . '.json')){
+									        			?>
+									        			<option value="t<?php echo $x ?>"<?php echo ($user["tier"] == "t" . $x) ? " SELECTED" : ""; ?>>Tier <?php echo $x ?></option>
+									        			<?php
+								        			}
 								        		}
 								        		?>
-								        		<option value="tA" <?php echo ($user["tier"] = "Admin") ? " SELECTED" : ""; ?>>Admin</option>
+								        		<option value="tA" <?php echo ($user["tier"] == "Admin") ? " SELECTED" : ""; ?>>Admin</option>
 								        	</select>
 								        </div>
 	
@@ -189,7 +196,8 @@ include("appHeader.php");
 							<?php echo $user["details"]["fn"] . " " . $user["details"]["ln"] ?>
 						</td>
 						<td>
-							<?php echo ($user["tier"] == "tA") ? "Admin" : "Tier " . $user["tier"] ?>
+							
+							<?php echo ($user["tier"] == "tA") ? "Admin" : "Tier " . str_replace("t", "", $user["tier"]) ?>
 						</td>
 						<td class="webdesk_text-right">
 							<button type="button" class="webdesk_btn webdesk_btn-light" data-toggle="webdesk_modal" data-target="#viewUser<?php echo $user["code"] ?>Modal" data-toggle="webdesk_tooltip" data-placement="top" title="Edit user info"><i class="fa fa-pen"></i></button>

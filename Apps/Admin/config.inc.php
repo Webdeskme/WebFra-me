@@ -67,6 +67,31 @@ class admin{
 		return false;
 		
 	}
+	public function getSystemTiers(){
+		
+		global $wd_admin;
+		
+		$tiers = array();
+		
+		$tier = 1;
+		do{
+			
+			if(file_exists($wd_admin . 't' . $tier . '.json')){
+				$tier_file = json_decode(file_get_contents($wd_admin . 't' . $tier . '.json'));
+				$tiers[$tier] = $tier_file;
+				
+				$continue = true;
+			}
+			else
+				$continue = false;
+			
+			$tier ++;
+		}
+		while($continue);
+		
+		return $tiers;
+		
+	}//getSystemTiers
 	
 }
 $wf_admin = new admin();

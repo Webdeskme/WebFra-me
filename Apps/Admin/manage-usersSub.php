@@ -73,6 +73,47 @@ else if($req["action"] == "resetUserPassword"){
 	wd_head($wd_type, $wd_app, 'manage-users.php', '&wd_as=' . urlencode('Password successfully changed!'));
   
 }//resetUserPassword
+else if($req["action"] == "changeUserTier"){
+  
+  $tier = test_input($_POST['tier']);
+  $user = test_input($_POST['user']);
+  echo $tier;
+  if(file_put_contents($wd_root . '/User/' . $user . '/Admin/tier.txt', $tier)){
+    $userd = f_dec($user);
+    //wd_head($wd_type, $wd_app, 'manage-users.php', '&wd_as=' . urlencode($userd . "'s tier has been successfully changed"));
+  }
+  else
+    echo "Could not write user's tier file. Do you have permission?";
+  
+}//changeUserTier
+else if($req["action"] == "saveUser"){
+  
+  $user = test_input($_POST["user"]);
+  $fn = test_input($_POST["fn"]);
+  $ln = test_input($_POST["ln"]);
+  $email = test_input($_POST["email"]);
+  $contact = test_input($_POST["contact"]);
+  $notes = test_input($_POST["notes"]);
+  if(file_exists($wd_root . '/User/' . $user . '/Admin/info.json')){
+    //$obj = file_get_contents($wd_root . 'User/' . $user . '/Admin/info.json');
+    $obj = file_get_contents($wd_root . '/User/' . $user . '/Admin/info.json');
+    $obj = json_decode($obj);
+  }
+  else{
+    $obj = new stdClass;
+  }
+  $obj->fn = $fn;
+  $obj->ln = $ln;
+  $obj->email = $email;
+  $obj->contact = $contact;
+  $obj->notes = $notes;
+  $nObj = json_encode($obj);
+  if(file_put_contents($wd_root . '/User/' . $user . '/Admin/info.json', $nObj))
+    wd_head($wd_type, $wd_app, 'manage-users.php', '&wd_as=' . urlencode('User profile successfully saved'));
+  else
+    echo "Could not save user profile. Do you have permission?";
+  
+}//saveUser
 else
 	echo "Invalid function";
 
