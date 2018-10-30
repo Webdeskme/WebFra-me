@@ -68,19 +68,20 @@ else if($req["action"] == "resetUserPassword"){
   $pass = up_enc(test_input($req["pass"]) . $req["user"] . $prand);
 	$pass = password_hash($pass, PASSWORD_DEFAULT);
 	
-	file_put_contents($wd_root . '/User/' . $req["user"] .'/Admin/pass.txt', $pass);
-	
-	wd_head($wd_type, $wd_app, 'manage-users.php', '&wd_as=' . urlencode('Password successfully changed!'));
+	if(file_put_contents($wd_root . '/User/' . $req["user"] .'/Admin/pass.txt', $pass))
+	  wd_head($wd_type, $wd_app, 'manage-users.php', '&wd_as=' . urlencode('Password successfully changed!'));
+	else
+	  echo "Could not set user's password. Do you have permission?";
   
 }//resetUserPassword
 else if($req["action"] == "changeUserTier"){
   
   $tier = test_input($_POST['tier']);
   $user = test_input($_POST['user']);
-  echo $tier;
+  
   if(file_put_contents($wd_root . '/User/' . $user . '/Admin/tier.txt', $tier)){
     $userd = f_dec($user);
-    //wd_head($wd_type, $wd_app, 'manage-users.php', '&wd_as=' . urlencode($userd . "'s tier has been successfully changed"));
+    wd_head($wd_type, $wd_app, 'manage-users.php', '&wd_as=' . urlencode($userd . "'s tier has been successfully changed"));
   }
   else
     echo "Could not write user's tier file. Do you have permission?";

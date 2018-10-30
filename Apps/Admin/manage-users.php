@@ -165,6 +165,7 @@ include("appHeader.php");
 								    
 								        <div class="webdesk_row webdesk_form-group">
 								        	<label for="new-tier-<?php echo $key ?>" class="webdesk_col-form-label webdesk_col-sm-3 webdesk_text-right">Tier</label>
+								        	
 								        	<select class="webdesk_custom-select webdesk_col-sm-8" name="tier">
 								        		<?php
 								        		$tiers = $wf_admin->getSystemTiers();
@@ -176,7 +177,7 @@ include("appHeader.php");
 								        			
 								        		}
 								        		?>
-								        		<option value="tA" <?php echo ($user["tier"] == "Admin") ? " SELECTED" : ""; ?>>Admin</option>
+								        		<option value="tA" <?php echo ($user["tier"] == "tA") ? " SELECTED" : ""; ?>>Admin</option>
 								        	</select>
 								        </div>
 								        <div class="webdesk_text-center">

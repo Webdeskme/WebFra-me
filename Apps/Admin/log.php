@@ -21,9 +21,13 @@ include("appHeader.php");
 
 <div class="webdesk_container">
 	<?php
-	if(file_exists($wd_admin . 'LoginLog.txt')){
+	$open_file = $wd_admin . 'LoginLog.txt';
+	if(!empty($req["log"]) && ($req["log"] == "failed-logins") )
+		$open_file = $wd_admin . 'LoginFLog.txt';
 		
-		$log = file_get_contents($wd_admin . 'LoginLog.txt');
+	if(file_exists($open_file)){
+		
+		$log = file_get_contents($open_file);
 		
 		$log_a = explode("<br>", $log);
 		$log_a = array_reverse($log_a);
@@ -46,10 +50,10 @@ include("appHeader.php");
 			
 			<ul class="webdesk_nav wedesk_nav-pills">
 			  <li class="webdesk_nav-item">
-			    <a class="webdesk_nav-link webdesk_active" href="#">Successful logins</a>
+			    <a class="webdesk_nav-link webdesk_active" href="<?php wd_url($wd_type, $wd_app, 'log.php', '&log=successful-logins'); ?>">Successful logins</a>
 			  </li>
 			  <li class="webdesk_nav-item">
-			    <a class="webdesk_nav-link" href="#">Failed</a>
+			    <a class="webdesk_nav-link" href="<?php wd_url($wd_type, $wd_app, 'log.php', '&log=failed-logins'); ?>">Failed</a>
 			  </li>
 			  
 			</ul>
@@ -68,9 +72,20 @@ include("appHeader.php");
 							<?php
 							ksort($entry_a);
 							foreach($entry_a as $timestamp => $entry){
+								
 								?>
-								<b><?php echo date("h:ia", $timestamp); ?></b> &mdash; <?php echo $entry ?><br />
+								<b><?php echo date("h:ia", $timestamp); ?></b> &mdash; <?php echo $entry ?>
 								<?php
+								
+								// if(preg_match("/([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})/", $entry, $match)){
+								// 	$ip_address = $match[1];
+								// 	$ip_info = $wf_admin->getIpInfo($ip_address);
+								// 	echo $ip_info["city"].", ".$ip_info["region_code"];
+								// }
+								?>
+								<br />
+								<?php
+								
 							}
 							?>
 						</td>
