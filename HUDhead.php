@@ -17,7 +17,8 @@
   <link rel="apple-touch-startup-image" href="favicon.ico">
   <link rel="manifest" href="manifest.php">
   <link rel="stylesheet" href="Plugins/wd-bootstrap/css/webdesk_bootstrap.min.css">
-  <link rel="stylesheet" href="Plugins/jquery-ui/jquery-ui.min.css">
+  <link rel="stylesheet" href="Plugins/jquery-ui-custom/jquery-ui.min.css">
+  <link rel="stylesheet" href="Plugins/fontawesome-free-5.2/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="Plugins/context.standalone.css">
   <link href="Plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet"/>
   <link href="Plugins/fullcalendar/fullcalendar.print.min.css" rel="stylesheet" media="print"/>
@@ -26,11 +27,11 @@
   <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
   <script src="Plugins/jquery.min.js"></script>
   <script src="Plugins/wd-bootstrap/js/webdesk_bootstrap.js"></script>
-  <script src="Plugins/jquery-ui/jquery-ui.min.js"></script>
+  <script src="Plugins/jquery-ui-custom/jquery-ui.min.js"></script>
   <script src="Plugins/tinymce/js/tinymce/tinymce.min.js"></script>
   <script src="Plugins/fullcalendar/lib/moment.min.js"></script>
   <script src="Plugins/fullcalendar/fullcalendar.min.js"></script>
-  <script defer src="Plugins/fontawesome-free-5.2/js/all.min.js"></script>
+  <!--<script defer src="Plugins/fontawesome-free-5.2/js/all.min.js"></script>-->
 
   <style>
     html,body{

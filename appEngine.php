@@ -49,185 +49,159 @@ function form(){
   return $var;
 }
 function formEnd(){
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '</form>';
+  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<input type="hidden" id="ae_sub" name="ae_sub" value="yes"></form>';
   echo '<div class="container">' . $GLOBALS['buffer'] . '</div>';
 }
-function title($text){
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<h1>' . $text . '</h1>';
+function ae_text($type, $color, $con){
+  if($type == 'text'){
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<p class="text-' . $color . '">' . $con . '</p>';
+  }
+  elseif ($type == 'title') {
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<h1 class="text-' . $color . '">' . $con . '</h1>';
+  }
+  elseif ($type == 'bold') {
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<b class="text-' . $color . '">' . $con . '</b><br>';
+  }
+  elseif ($type == 'underline') {
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<u class="text-' . $color . '">' . $con . '</u><br>';
+  }
+  elseif ($type == 'italic') {
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<i class="text-' . $color . '">' . $con . '</i><br>';
+  }
 }
-function par($text){
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<p>' . $text . '</p>';
+function ae_input($title, $type, $place, $icon, $con){
+  if($type == 'text'){
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<div class="form-group"><label for="' . $title . '"><b>' . $place . ':</b></label><br><div class="input-group mb-3"><div class="input-group-prepend"><span class="input-group-text"><i class="' . $icon . '"></i></span></div><input type="text" class="form-control" id="' . $title . '" name="' . $title . '" placeholder="' . $place . '" value="' . $con . '"></div></div>';
+  }
+  elseif ($type == 'textbox') {
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<div class="form-group"><label for="' . $title . '"><b>' . $place . ':</b></label><br><div class="input-group mb-3"><div class="input-group-prepend"><span class="input-group-text"><i class="' . $icon . '"></i></span></div><textarea class="form-control" id="' . $title . '" name="' . $title . '" placeholder="' . $place . '">' . $con . '</textarea></div></div>';
+  }
+  elseif ($type == 'number') {
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<div class="form-group"><label for="' . $title . '"><b>' . $place . ':</b></label><br><div class="input-group mb-3"><div class="input-group-prepend"><span class="input-group-text"><i class="' . $icon . '"></i></span></div><input type="number" class="form-control" id="' . $title . '" name="' . $title . '" placeholder="' . $place . '" value="' . $con . '"></div></div>';
+  }
+  elseif ($type == 'password') {
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<div class="form-group"><label for="' . $title . '"><b>' . $place . ':</b></label><br><div class="input-group mb-3"><div class="input-group-prepend"><span class="input-group-text"><i class="' . $icon . '"></i></span></div><input type="password" class="form-control" id="' . $title . '" name="' . $title . '" placeholder="' . $place . '" value="' . $con . '"></div></div>';
+  }
 }
-function bold($text){
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<b>' . $text . '</b><br>';
+function ae_button($title, $test, $type, $text, $icon, $color, $path, $rpath, $con, $link){
+  //echo '1. ' .$title . ' --- ' . $test . '<br><br>';
+  //if($title == $test){
+    //echo '2. passed test<br><br>';
+    if ($type == 'save') {
+      //echo '3. saved<br><br>';
+      if($rpath == 'UsersFolder'){
+        //echo '4. in user folder<br><br>';
+        global $wd_appFile;
+        file_put_contents($wd_appFile . $path, $con);
+      }
+      else{
+        global $wd_appr;
+        file_put_contents($wd_appr . $path, $con);
+      }
+    }
+    elseif ($type == 'append') {
+      if($rpath == 'UsersFolder'){
+        global $wd_appFile;
+        if(file_exists($wd_appFile . $path)){
+          $temp = file_get_contents($wd_appFile . $path);
+          $con = $con . $temp;
+        }
+        file_put_contents($wd_appFile . $path, $con);
+      }
+      else{
+        global $wd_appr;
+        if(file_exists($wd_appr . $path)){
+          $temp = file_get_contents($wd_appr . $path);
+          $con = $con . $temp;
+        }
+        file_put_contents($wd_appr . $path, $con);
+      }
+    }
+    elseif ($type == 'appendTop') {
+      if($rpath == 'UsersFolder'){
+        global $wd_appFile;
+        if(file_exists($wd_appFile . $path)){
+          $temp = file_get_contents($wd_appFile . $path);
+          $con = $temp . $con;
+        }
+        file_put_contents($wd_appFile . $path, $con);
+      }
+      else{
+        global $wd_appr;
+        if(file_exists($wd_appr . $path)){
+          $temp = file_get_contents($wd_appr . $path);
+          $con = $temp . $con;
+        }
+        file_put_contents($wd_appr . $path, $con);
+      }
+    }
+    elseif ($type == 'delete') {
+      if($rpath == 'UsersFolder'){
+        global $wd_appFile;
+        unlink($wd_appFile . $path);
+      }
+      else{
+        global $wd_appr;
+        unlink($wd_appr . $path);
+      }
+    }
+    //$GLOBALS['buffer'] = $GLOBALS['buffer'] . '<script>window.location = "desktop.php?type=' . $GLOBALS['wd_type'] . '&app=' . $GLOBALS['wd_app'] . '&sec=' . $link . $GLOBALS['wd_url'] .'";</script>';
+  //////}
+  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<button type="submit" onclick="$(' . "'" . '#ae_sub' . "'" . ').val(' . $title . ');" class="btn btn-' . $color . '"><i class="' . $icon . '"></i> ' . $text . '</button> ';
 }
-function under($text){
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<u>' . $text . '</u><br>';
+function ae_space($type){
+  if($type == 'space'){
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<br><br>';
+  }
+  elseif ($type == 'line') {
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<br><hr><br>';
+  }
 }
-function italic($text){
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<b>' . $text . '</b><br>';
+function ae_link($text, $type, $link, $icon, $color){
+  if($type == 'External'){
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<a href="' . $link . '" class="text-' . $color . '"><i class="' . $icon . '"></i> ' . $text . '</a><br>';
+  }
+  elseif ($type = 'Internal') {
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<a href="desktop.php?type=' . $GLOBALS['wd_type'] . '&app=' . $GLOBALS['wd_app'] . '&sec=' . $link . $GLOBALS['wd_url'] .'" class="text-' . $color . '"><i class="' . $icon . '"></i> ' . $text . '</a>';
+  }
 }
-function line(){
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<br><hr><br>';
-}
-function alink($text, $link){
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<a href="' . $link . '">' . $text . '</a><br>';
-}
-function text($title, $place, $text){
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<div class="form-group"><label for="' . $title . '"><b>' . $place . ':</b></label><br><input type="text" class="form-control" id="' . $title . '" name="' . $title . '" placeholder="' . $place . '" value="' . $text . '"></div>';
-}
-function password($title, $place, $pass){
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<div class="form-group"><label for="' . $title . '"><b>' . $place . ':</b></label><br><input type="password" class="form-control" id="' . $title . '" name="' . $title . '" placeholder="' . $place . '" value="' . $pass . '"></div>';
-}
-function number($title, $place, $num){
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<div class="form-group"><label for="' . $title . '"><b>' . $place . ':</b></label><br><input type="number" class="form-control" id="' . $title . '" name="' . $title . '" placeholder="' . $place . '" value="' . $num . '"></div>';
-}
-function textbox($title, $place, $text){
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<div class="form-group"><label for="' . $title . '"><b>' . $place . ':</b></label><br><textarea class="form-control" id="' . $title . '" name="' . $title . '" placeholder="' . $place . '">' . $text . '</textarea></div>';
-}
-function submit($title, $text){
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<input type="hidden" name="' . $title . '" value="yes"><input type="submit" class="btn btn-primary" value="' . $text . '"> ';
-}
-function dSubmit($title, $path, $text){
-  global $var;
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<input type="hidden" name="fPath" value="' . $var['fPath'] . '"><input type="hidden" name="' . $title . '" value="yes"><input type="submit" class="btn btn-danger" value="' . $text . '"> ';
-  return $var;
-}
-function rSubmit($text){
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<input type="reset" class="btn btn-warning" value="' . $text . '"> ';
-}
-function save($form, $path, $con){
-  if($form == 'yes'){
+function ae_list($type, $link){
+  if($type == 'ViewUserFolder'){
     global $wd_appFile;
-    file_put_contents($wd_appFile . $path, $con);
-  }
-}
-function aSave($form, $path, $con){
-  if($form == 'yes'){
-    global $wd_appr;
-    file_put_contents($wd_appr . $path, $con);
-  }
-}
-function append($form, $path, $con){
-  if($form == 'yes'){
-    global $wd_appFile;
-    if(file_exists($wd_appFile . $path)){
-      $temp = file_get_contents($wd_appFile . $path);
-      $con = $con . $temp;
+    $a = scandir($wd_appFile);
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<div class="list-group">';
+    foreach ($a as $key => $value) {
+      if($value != '.' && $value != '..'){
+    	   $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<a href="desktop.php?type=' . $GLOBALS['wd_type'] . '&app=' . $GLOBALS['wd_app'] . '&sec=' . $link . '&fPath=' . $value . $GLOBALS['wd_url'] .'" class="list-group-item list-group-item-action">' . $value . '</a>';
+        }
+      }
+      $GLOBALS['buffer'] = $GLOBALS['buffer'] . '</div>';
     }
-    file_put_contents($wd_appFile . $path, $con);
-  }
-}
-function aAppend($form, $path, $con){
-  if($form == 'yes'){
-    global $wd_appr;
-    if(file_exists($wd_appr . $path)){
-      $temp = file_get_contents($wd_appr . $path);
-      $con = $con . $temp;
+    elseif ($type == 'ViewAppFolder') {
+      global $wd_appr;
+      $a = scandir($wd_appr);
+      $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<div class="list-group">';
+      foreach ($a as $key => $value) {
+        $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<a href="desktop.php?type=' . $GLOBALS['wd_type'] . '&app=' . $GLOBALS['wd_app'] . '&sec=' . $link . '&fPath=' . $key . $GLOBALS['wd_url'] .'" class="list-group-item list-group-item-action">' . $key . '</a>';
+      }
+      $GLOBALS['buffer'] = $GLOBALS['buffer'] . '</div>';
     }
-    file_put_contents($wd_appr . $path, $con);
-  }
 }
-function appendTop($form, $path, $con){
-  if($form == 'yes'){
-    global $wd_appFile;
-    if(file_exists($wd_appFile . $path)){
-      $temp = file_get_contents($wd_appFile . $path);
-      $con = $temp . $con;
-    }
-    file_put_contents($wd_appFile . $path, $con);
-  }
+function ae_upload($type, $place, $name){
+
 }
-function aAppendTop($form, $path, $con){
-  if($form == 'yes'){
-    global $wd_appr;
-    if(file_exists($wd_appr . $path)){
-      $temp = file_get_contents($wd_appr . $path);
-      $con = $temp . $con;
-    }
-    file_put_contents($wd_appr . $path, $con);
-  }
+function ae_options($title, $type, $place, $icon, $con){
+
 }
-function delete($form, $path, $link){
-  if($form == 'yes'){
-    global $wd_appFile;
-    unlink($wd_appFile . $path);
-    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<script>window.location = "desktop.php?type=' . $GLOBALS['wd_type'] . '&app=' . $GLOBALS['wd_app'] . '&sec=' . $link . $GLOBALS['wd_url'] .'";</script>';
-  }
+function ae_image($type, $link){
+
 }
-function aDelete($form, $path, $link){
-  if($form == 'yes'){
-    global $wd_appr;
-    unlink($wd_appr . $path);
-    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<script>window.location = "desktop.php?type=' . $GLOBALS['wd_type'] . '&app=' . $GLOBALS['wd_app'] . '&sec=start.php'. $GLOBALS['wd_url'] .'";</script>';
-  }
-}
-function open($title, $path){
-  global $wd_appFile;
-  global $var;
-  $var[$title] = test_input(file_get_contents($wd_appFile . $path));
-  return $var;
-}
-function aOpen($title, $path){
-  global $wd_appr;
-  global $var;
-  $var[$title] = test_input(file_get_contents($wd_appr . $path));
-  return $var;
-}
-function flink($text, $path, $link){
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<a href="desktop.php?type=' . $GLOBALS['wd_type'] . '&app=' . $GLOBALS['wd_app'] . '&sec=' . $link . '&fPath=' . $path . $GLOBALS['wd_url'] .'">' . $text . '</a>';
-}
-function falink($text, $path, $link){
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<a href="desktop.php?type=' . $GLOBALS['wd_type'] . '&app=' . $GLOBALS['wd_app'] . '&sec=' . $link . '&faPath=' . $path . $GLOBALS['wd_url'] .'">' . $text . '</a>';
-}
-function flist($link){
-  global $wd_appFile;
-  $a = scandir($wd_appFile);
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<div class="list-group">';
-  foreach ($a as $key => $value) {
-    if($value != '.' && $value != '..'){
-    	$GLOBALS['buffer'] = $GLOBALS['buffer'] . '<a href="desktop.php?type=' . $GLOBALS['wd_type'] . '&app=' . $GLOBALS['wd_app'] . '&sec=' . $link . '&fPath=' . $value . $GLOBALS['wd_url'] .'" class="list-group-item list-group-item-action">' . $value . '</a>';
-    }
-  }
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '</div>';
-}
-function falist($link){
-  global $wd_appr;
-  $a = scandir($wd_appr);
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<div class="list-group">';
-  foreach ($a as $key => $value) {
-    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<a href="desktop.php?type=' . $GLOBALS['wd_type'] . '&app=' . $GLOBALS['wd_app'] . '&sec=' . $link . '&fPath=' . $key . $GLOBALS['wd_url'] .'" class="list-group-item list-group-item-action">' . $key . '</a>';
-  }
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '</div>';
-}
-function mf($form, $path, $link){
-  global $wd_appFile;
-  mkdir($wd_appFile . "/" . $path);
-}
-function rf($form, $path, $link){
-  global $wd_appFile;
-  $a = scandir($wd_appFile . "/" . $path);
-  foreach ($a as $key => $value) {
-    unlink($wd_appFile . "/" . $path . "/" . $key);
-  }
-  rmdir($wd_appFile . "/" . $path);
-}
-function amf($form, $path, $link){
-  global $wd_appr;
-  mkdir($wd_appr . "/" . $path);
-}
-function arf($form, $path, $link){
-  global $wd_appr;
-  $a = scandir($wd_appr . "/" . $path);
-  foreach ($a as $key => $value) {
-    unlink($wd_appr . "/" . $path . "/" . $key);
-  }
-  rmdir($wd_appr . "/" . $path);
-}
-function upload($form, $title, $path){
-  
-}
-function aUpload($form, $title, $path){
-  
+function ae_ifThen(){
+
 }
 ?>
+<!--<script type="text/javascript">
+  function ae_sub(title){
+    var s = document.getElementById("ae_sub"); s.value = title;
+  }
+</script>-->

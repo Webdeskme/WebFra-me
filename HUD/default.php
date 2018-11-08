@@ -5,7 +5,7 @@
     <?php include 'HUDhead.php';?>
 </head>
 <body onload="display_ct();">
-
+ 
 <div id="tabs" class="con">
     <ul id="wd_tabs">
         <!-- // DISPLAYS TABS AT THE BOTTOM OF THE DISPLAY -->
