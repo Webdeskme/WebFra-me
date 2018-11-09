@@ -1,4 +1,90 @@
 <?php
+////////////////////////////////////
+// 
+// WORDFRAME FUNCTION FILE
+// 
+////////////////////////////////////
+class wordframe{
+  
+  public function generateRandomNumber($max){
+    
+     return rand(0,$max);
+     
+  }
+  public function navBar($options, $navItems){
+    
+    global $wd_Title;
+    
+    $option = array();
+    if(is_array($options)){
+      
+      $option["color"] = (!empty($options["color"])) ? $options["color"] : "light";
+      $option["brand"] = (!empty($options["brand"])) ? $options["brand"] : $wd_Title;
+      $option["brandLink"] = (!empty($options["brandLink"])) ? $options["brandLink"] : "//" . $_SERVER["HTTP_HOST"] . "/index.php?page=index.php";
+      $option["showLogin"] = (!empty($options["showLogin"])) ? $options["showLogin"] : false;
+      $option["showRegister"] = (!empty($options["showRegister"])) ? $options["showRegister"] : false;
+      
+    }
+    $nav = array();
+    if(is_array($navItems)){
+      
+      foreach($navItems as $key => $nitem){
+        
+        if(!is_array($nitem)){
+          $temp = explode("|", $nitem);
+          $nav[$key]["title"] = $temp[0];
+          $nav[$key]["link"] = $temp[1];
+        }
+        
+      }
+      
+    }
+    
+    $nav_id = $this->generateRandomNumber(1000000000);
+    
+    ?>
+    <nav class="webdesk_navbar webdesk_navbar-expand-lg webdesk_navbar-light webdesk_bg-<?php echo $option["color"] ?>">
+      <a class="webdesk_navbar-brand" href="<?php echo $option["brandLink"] ?>"><?php echo $option["brand"] ?></a>
+      <button class="webdesk_navbar-toggler" type="button" data-toggle="webdesk_collapse" data-target="#navbar-<?php echo $nav_id ?>" aria-controls="navbar-<?php echo $nav_id ?>" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fa fa-bars fa-fw fa-lg"></i>
+      </button>
+    
+      <div class="webdesk_collapse webdesk_navbar-collapse" id="navbar-<?php echo $nav_id ?>">
+        <ul class="webdesk_navbar-nav webdesk_ml-auto">
+          <?php
+          foreach($nav as $key => $item){
+            ?>
+            <li class="webdesk_nav-item">
+              <a class="webdesk_nav-link" href="<?php echo $item["link"] ?>"><?php echo $item["title"] ?></a>
+            </li>
+            <?php
+          }
+          
+          if($option["showLogin"]){
+            ?>
+            <li class="webdesk_nav-item">
+              <a class="webdesk_nav-link" href="//<?php echo $_SERVER["HTTP_HOST"] ?>/index.php?page=login.php"><i class="fa fa-sign-in-alt fa-fw"></i> Login</a></a>
+            </li>
+            <?php
+          }
+          if($option["showRegister"]){
+            ?>
+            <li class="webdesk_nav-item">
+              <a class="webdesk_nav-link" href="<?php echo $proot . $register; ?>"><i class="fa fa-sign-in-alt fa-fw"><i class="fa fa-user fa-fw"></i> Sign Up</a></a>
+            </li>
+            
+            <?php
+          }
+          ?>
+        </ul>
+      </div>
+    </nav>
+    <?php
+  }
+  
+}//class definition
+$wordframe = new wordframe();
+
 //$wd_protect = "yes";
 $wd_protect = "yes";
 $_SESSION['wd_home'] = 'desktop.php';
@@ -444,6 +530,7 @@ if(file_exists("path.php") || file_exists("../../path.php")){
   if(isset($_SESSION['wd_adminView'])){
     $wd_file = $_SESSION['wd_adminView'];
   }
+  
   function wd_nav($page, $color, $name, $login, $loc, $auto, $register){
     $nav_id = "navbar-" . rand(0,10000000);
       if(file_exists("www/Pages/nav.json")){
