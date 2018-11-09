@@ -60,6 +60,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
       $contents = $wd_dt->getProjectFiles($req["editType"] . '/' . $req["editApp"] . '/');
       foreach($contents as $key => $entry){
         $file_size = $wd_dt->getFormattedFileSize($entry["path"] . $entry["name"]);
+        $file_time = filemtime($entry["path"] . $entry["name"]);
         ?>
         <tr>
           <td>
@@ -67,7 +68,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
             <a href="<?php wd_url($wd_type, $wd_app, 'editfile.php', '&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&file=' . $entry["name"]); ?>"><?php echo $entry["name"] ?></a>
           </td>
           <td>
-            <small><?php echo date("F j", filemtime($entry["path"] . $entry["name"])) ?></small>
+            <small><?php echo date((time() - $file_time < (60 * 60 * 24 * 365)) ? "M j" : "M j, Y", $file_time) ?></small>
           </td>
           <td>
             <small><?php echo $file_size ?></small>

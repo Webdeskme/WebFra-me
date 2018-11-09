@@ -22,7 +22,7 @@ include("appHeader.php");
   
   <div class="webdesk_row webdesk_no-gutters" style="height: 100%">
     <div class="webdesk_col-md-9" style="height: 100%">
-      <textarea name="con" id="con" for="con" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:70vh; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"  autofocus><?php
+      <textarea name="content" id="con" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:50vh; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"  autofocus><?php
         if(file_exists($req["editType"] . "/" . $req["editApp"] . "/" . $req["file"]))
           echo htmlspecialchars(file_get_contents($req["editType"] . "/" . $req["editApp"] . "/" . $req["file"]));
           ?>
