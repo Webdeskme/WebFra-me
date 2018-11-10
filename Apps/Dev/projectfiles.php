@@ -58,6 +58,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
     <tbody>
       <?php
       $contents = $wd_dt->getProjectFiles($req["editType"] . '/' . $req["editApp"] . '/');
+      
       foreach($contents as $key => $entry){
         $file_size = $wd_dt->getFormattedFileSize($entry["path"] . $entry["name"]);
         $file_time = filemtime($entry["path"] . $entry["name"]);

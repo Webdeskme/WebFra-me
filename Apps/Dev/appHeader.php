@@ -28,12 +28,14 @@
       </ul>
       <ul class="webdesk_navbar-nav webdesk_justify-content-end">
         <?php
+        /*// TO BE IMPLEMENTED SOMEDAY
         $dev_types = $wd_dt->getProjectTypes();
         foreach($dev_types as $key => $dev_type){
           ?>
           <li class="webdesk_nav-item"><a href="<?php wd_url($wd_type, $wd_app, 'start.php', '&displayType=' . $dev_type["dir"]); ?>" class="webdesk_nav-link <?php echo ($req["displayType"] == $dev_type["dir"]) ? "webdesk_active" : "" ?>"><?php echo $dev_type["name"] ?></a></li>
           <?php
         }
+        */
         ?>
       </ul>
         

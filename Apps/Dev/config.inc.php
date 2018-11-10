@@ -54,7 +54,7 @@ class dev_tools{
 				while(($dir = readdir($dh)) !== false){
 					
 					//if(is_dir($type . "/" . $dir) && ($dir != ".") && ($dir != "..") ){
-					if(($dir != ".") && ($dir != "..") ){
+					if(($dir != ".") && ($dir != "..") && ($dir != ".wf_history") ){
 							
 						$name = $dir;
 							
@@ -98,7 +98,7 @@ class dev_tools{
 				
 				while(($file = readdir($dh)) !== false){
 					
-					if( ($file != ".") && ($file != "..") ){
+					if( ($file != ".") && ($file != "..") && ($file != ".wf_history") ){
 						
 						if(filetype($dir . "/" . $file) == "file"){
 							$file_ext = explode(".",$file);

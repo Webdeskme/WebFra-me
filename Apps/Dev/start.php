@@ -51,9 +51,18 @@ include("appHeader.php");
 	<div class="webdesk_row app-listing">
 	<?php
 	$dt_my_apps = $wd_dt->getLocalProjects($displayType);
+	
 	foreach($dt_my_apps as $dt_app){
 		
-		$dt_app_img = (file_exists($dt_app["type"]."/".$dt_app["handle"]."/ic.png")) ? $dt_app["type"]."/".$dt_app["handle"]."/ic.png" : $wd_type."/".$wd_app."/ic.png";
+		
+		
+		if($displayType == "MyApps"){
+			$dt_app_img = (file_exists($dt_app["type"]."/".$dt_app["handle"]."/ic.png")) ? $dt_app["type"]."/".$dt_app["handle"]."/ic.png" : $wd_type."/".$wd_app."/ic.png";
+			$app_info = json_decode(file_get_contents($dt_app["type"]."/".$dt_app["handle"]."/app.json"),true);
+			if(!is_array($app_info)){
+				
+			}
+		}
 		
 		?>
 		<div class="webdesk_col-md-4 webdesk_mb-3 app-card">
@@ -64,13 +73,11 @@ include("appHeader.php");
 						<h4 class="webdesk_mt-3 webdesk_card-title"><?php echo $dt_app["name"] ?></h4>
 						<small>
 						<?php
+						
 						$count = array("file" => 0, "dir" => 0);
-						$dh = opendir($dt_app["type"]."/".$dt_app["handle"]);
-						while(($file = readdir($dh)) !== false){
-							if( ($file != "..") && ($file != ".") ){
-								$filetype = filetype($dt_app["type"]."/".$dt_app["handle"] . "/" . $file);
-								$count[$filetype] ++;
-							}
+						$files = $wd_dt->getProjectFiles($dt_app["type"]."/".$dt_app["handle"]);
+						foreach($files as $key => $file){
+							$count[$file["type"]] ++;
 						}
 						echo $count["file"] . " file" . (($count["file"] != 1) ? "s" : "");
 						if($count["dir"] > 0)
@@ -79,19 +86,51 @@ include("appHeader.php");
 						</small>
 					</div>
 					<?php
-					if(!file_exists($dt_app["type"]."/".$dt_app["handle"]."/app.json")){
-						?>
-						<div class="webdesk_card-footer webdesk_bg-warning">
-							<i class="fa fa-exclamation-triangle"></i> Missing app.json
-						</div>
-						<?php
-					}
-					if(!file_exists($dt_app["type"]."/".$dt_app["handle"]."/start.php")){
-						?>
-						<div class="webdesk_card-footer webdesk_bg-warning">
-							<i class="fa fa-exclamation-triangle"></i> Missing start.php
-						</div>
-						<?php
+					if($displayType == "MyApps"){
+						if(!file_exists($dt_app["type"]."/".$dt_app["handle"]."/app.json")){
+							?>
+							<div class="webdesk_card-footer webdesk_bg-warning">
+								<i class="fa fa-exclamation-triangle"></i> Missing app.json
+							</div>
+							<?php
+						}
+						else{
+							if(!is_array($app_info)){
+								?>
+								<div class="webdesk_card-footer webdesk_bg-warning">
+									<i class="fa fa-exclamation-triangle"></i> Malformatted app.json
+								</div>
+								<?php
+							}
+							else if(empty($app_info["version"])){
+								?>
+								<div class="webdesk_card-footer webdesk_bg-warning">
+									<i class="fa fa-exclamation-triangle"></i> Mission version in app.json
+								</div>
+								<?php
+							}
+						}
+						if(!file_exists($dt_app["type"]."/".$dt_app["handle"]."/start.php")){
+							?>
+							<div class="webdesk_card-footer webdesk_bg-warning">
+								<i class="fa fa-exclamation-triangle"></i> Missing start.php
+							</div>
+							<?php
+						}
+						if(!file_exists($dt_app["type"]."/".$dt_app["handle"]."/header.php")){
+							?>
+							<div class="webdesk_card-footer webdesk_bg-warning">
+								<i class="fa fa-exclamation-triangle"></i> Missing header.php
+							</div>
+							<?php
+						}
+						if(!file_exists($dt_app["type"]."/".$dt_app["handle"]."/ic.png")){
+							?>
+							<div class="webdesk_card-footer webdesk_bg-warning">
+								<i class="fa fa-exclamation-triangle"></i> Missing icon
+							</div>
+							<?php
+						}
 					}
 					?>
 				</div>
