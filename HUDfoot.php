@@ -557,6 +557,22 @@ if(typeof(EventSource) !== "undefined") {
         wd_sto_c = wd_sto_c + sessionStorage.wd_chat;
         }
         document.getElementById("wd_chat").innerHTML = event.data + "<br>" + document.getElementById("wd_chat").innerHTML;
+        if (!("Notification" in window)) {
+          
+        }
+        else if (Notification.permission === "granted") {
+          
+          var notification = new Notification(event.data);
+        }
+      
+        else if (Notification.permission !== "denied") {
+          Notification.requestPermission().then(function (permission) {
+            
+            if (permission === "granted") {
+              var notification = new Notification(event.data);
+            }
+          });
+        }
         oldD = event.data;
         if(typeof(Storage) !== "undefined") {
         sessionStorage.setItem("wd_chat", wd_sto_c);
@@ -599,7 +615,7 @@ $(document).ready(function(){
 });
   if(typeof(Storage) !== "undefined") {
     if(sessionStorage.wd_chat != "undefined") {
-  document.getElementById("wd_sto_chat").innerHTML = sessionStorage.wd_chat;
+      document.getElementById("wd_sto_chat").innerHTML = sessionStorage.wd_chat;
     }
   }
   $("#wd_t1Title").animate({fontSize: '3em', opacity: '0.4'}, "slow").animate({fontSize: '1em', opacity: '1'}, "slow").css("color", "white");
