@@ -1,6 +1,7 @@
 <?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 //Engine
-$buffer = '';
+$buffer = ''; // display content
+$buffer2 = ''; // processing forms
 $var = array();
 $wd_appFile = $wd_appFile . $wd_app . "/";
 $wd_appr = $wd_appr . $wd_app . "/";
@@ -145,9 +146,10 @@ function ae_button($title, $test, $type, $text, $icon, $color, $path, $rpath, $c
         unlink($wd_appr . $path);
       }
     }
+    //$GLOBALS['buffer'] = $GLOBALS['buffer'] . '<input type="hidden" id="ae_sub" name="ae_sub" value="' . $type . '">';
     //$GLOBALS['buffer'] = $GLOBALS['buffer'] . '<script>window.location = "desktop.php?type=' . $GLOBALS['wd_type'] . '&app=' . $GLOBALS['wd_app'] . '&sec=' . $link . $GLOBALS['wd_url'] .'";</script>';
-  //////}
-  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<button type="submit" onclick="$(' . "'" . '#ae_sub' . "'" . ').val(' . $title . ');" class="btn btn-' . $color . '"><i class="' . $icon . '"></i> ' . $text . '</button> ';
+  //}
+  $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<button type="submit" onclick="" class="btn btn-' . $color . '"><i class="' . $icon . '"></i> ' . $text . '</button> ';
 }
 function ae_space($type){
   if($type == 'space'){
@@ -157,7 +159,7 @@ function ae_space($type){
     $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<br><hr><br>';
   }
 }
-function ae_link($text, $type, $link, $icon, $color){
+function ae_link($type, $text, $link, $icon, $color){
   if($type == 'External'){
     $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<a href="' . $link . '" class="text-' . $color . '"><i class="' . $icon . '"></i> ' . $text . '</a><br>';
   }
@@ -193,10 +195,17 @@ function ae_upload($type, $place, $name){
 function ae_options($title, $type, $place, $icon, $con){
 
 }
-function ae_image($type, $link){
-
+function ae_image($type, $path, $alt, $width, $link){
+	if($type == 'UserFolder'){
+      global $wd_appFile;
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<a href="' . $link . '"><img src="' . $wd_appFile . $path . '" alt="' . $alt . '"></a>';
+  }
+  elseif ($type == 'AppFolder') {
+    global $wd_appr;
+    $GLOBALS['buffer'] = $GLOBALS['buffer'] . '<a href="' . $link . '"><img src="' . $wd_appr . $path . '" alt="' . $alt . '"></a>';
+  }
 }
-function ae_ifThen(){
+function ae_ifThen($var1, $var2, $op, $con){
 
 }
 ?>
