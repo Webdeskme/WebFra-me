@@ -78,6 +78,34 @@
     </div>
   </div>
 </div>
+<div class="webdesk_modal webdesk_fade" id="renameFileModal" tabindex="-1" role="dialog" aria-labelledby="renameFileModalLabel" aria-hidden="true">
+  <div class="webdesk_modal-dialog" role="document">
+    <div class="webdesk_modal-content webdesk_shadow">
+      <div class="webdesk_modal-header">
+        <h5 class="mwebdesk_odal-title" id="renameFileModalLabel">Rename file</h5>
+        <button type="button" class="webdesk_close" data-dismiss="webdesk_modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'editFileSub.php', ''); ?>">
+        <input type="hidden" name="f" value="renameFile" />
+      	<input type="hidden" name="editApp" value="<?php echo (!empty($req["editApp"])) ? $req["editApp"] : ""; ?>">
+      	<input type="hidden" name="editType" value="<?php echo (!empty($req["editType"])) ? $req["editType"] : ""; ?>">
+      	<input type="hidden" name="file" value="<?php echo (!empty($req["file"])) ? $req["file"] : ""; ?>">
+	      <div class="webdesk_modal-body">
+	        
+			    <label for="newName">New file name</label>
+			    <input type="text" name="newFileName" class="webdesk_form-control" value="<?php echo (!empty($req["file"])) ? $req["file"] : "" ?>" title="">
+				  
+	      </div>
+	      <div class="webdesk_modal-footer">
+	        <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Cancel</button>
+	        <button type="submit" class="webdesk_btn webdesk_btn-primary">Save file name</button>
+	      </div>
+	    </form>
+    </div>
+  </div>
+</div>
 <div class="webdesk_modal webdesk_fade" id="newMediaUploadModal" tabindex="-1" role="dialog" aria-labelledby="newMediaUploadModalLabel" aria-hidden="true">
   <div class="webdesk_modal-dialog" role="document">
     <div class="webdesk_modal-content webdesk_shadow">

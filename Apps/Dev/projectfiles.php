@@ -62,10 +62,11 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
       foreach($contents as $key => $entry){
         $file_size = $wd_dt->getFormattedFileSize($entry["path"] . $entry["name"]);
         $file_time = filemtime($entry["path"] . $entry["name"]);
+        
         ?>
         <tr>
           <td>
-            <i class="fa fa-<?php echo $entry["icon"] ?> fa-fw"></i> &nbsp; 
+            <i class="fa fa-<?php echo $entry["icon"] ?> fa-fw"></i> &nbsp;
             <a href="<?php wd_url($wd_type, $wd_app, 'editfile.php', '&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&file=' . $entry["name"]); ?>"><?php echo $entry["name"] ?></a>
           </td>
           <td>
@@ -83,7 +84,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
 </div>
 
 <!-- Modal -->
-<div id="myModal" class="webdesk_modal fade" role="dialog">
+<div id="publishModal" class="webdesk_modal fade" role="dialog">
   <div class="webdesk_modal-dialog">
 
     <!-- Modal content-->

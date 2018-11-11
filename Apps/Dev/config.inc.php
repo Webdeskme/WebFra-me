@@ -115,10 +115,12 @@ class dev_tools{
 							$icon = "folder";
 						
 						$file_type = filetype($dir . "/" . $file);
+						$content_type = mime_content_type($dir . "/" . $file);
 						
 						$files[] = array(
 							"type" => $file_type,
 							"name" => $file,
+							"content_type" => $content_type,
 							"icon" => $icon,
 							"path" => str_replace("../","",$dir)
 						);

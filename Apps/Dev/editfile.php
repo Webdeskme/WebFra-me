@@ -7,31 +7,64 @@ include("appHeader.php");
   <input type="hidden" name="nameA" value="<?php echo $req["editApp"]; ?>">
   <input type="hidden" name="nameP" value="<?php echo $req["file"]; ?>">
   
-  
-  
-  <!--<div class="webdesk_bg-light webdesk_border-top webdesk_p-2">-->
-  <!--  <h5>Editing <b><?php echo (!empty($req["file"])) ? $req["file"] : "" ?></b></h4>-->
-  <!--</div>-->
   <nav aria-label="breadcrumb">
-    <ol class="webdesk_breadcrumb webdesk_rounded-0">
+    <ol class="webdesk_breadcrumb webdesk_mb-0 webdesk_rounded-0">
       <li class="webdesk_breadcrumb-item"><a href="<?php echo wd_url($wd_type, $wd_app, 'start.php', ''); ?>"><?php echo $req['editType'] ?></a></li>
       <li class="webdesk_breadcrumb-item"><a href="<?php echo wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req['editType'] . '&editApp=' . $req['editApp']); ?>"><?php echo $req['editApp'] ?></a></li>
-      <li class="webdesk_breadcrumb-item webdesk_active" aria-current="page"><?php echo (!empty($req["file"])) ? $req["file"] : "" ?></li>
+      <li class="webdesk_breadcrumb-item webdesk_active" aria-current="page"><?php echo (!empty($req["file"])) ? $req["file"] : "" ?> &nbsp; <a href="#" data-toggle="webdesk_modal" data-target="#renameFileModal" class=""><i class="fa fa-edit fa-fw webdesk_text-dark"></i></a></li>
     </ol>
   </nav>
   
   <div class="webdesk_row webdesk_no-gutters" style="height: 100%">
-    <div class="webdesk_col-md-9" style="height: 100%">
-      <textarea name="content" id="con" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:50vh; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"  autofocus><?php
-        if(file_exists($req["editType"] . "/" . $req["editApp"] . "/" . $req["file"]))
-          echo htmlspecialchars(file_get_contents($req["editType"] . "/" . $req["editApp"] . "/" . $req["file"]));
+    <div class="webdesk_col-md-10" style="height: 100%">
+      
+      <?php
+      $content_type = mime_content_type($req["editType"] . "/" . $req["editApp"] . "/" . $req["file"]);
+      if(preg_match("/image/i", $content_type)){
+        ?>
+        <div class="webdesk_text-center webdesk_pt-4">
+          <img src="<?php echo $req["editType"] . "/" . $req["editApp"] . "/" . $req["file"] ?>" class="webdesk_img-fluid webdesk_border webdesk_border-dark webdesk_shadow-lg" /><br />
+          <?php
+          $imagesize = getimagesize($req["editType"] . "/" . $req["editApp"] . "/" . $req["file"]);
+          
           ?>
-      </textarea>
+        </div>
+        <div class="webdesk_mt-4 webdesk_text-center">
+          <small>
+            <?php echo $imagesize["mime"] ?><br />
+            <?php echo $imagesize[0] ?> x <?php echo $imagesize[1] ?><br />
+            <?php echo $imagesize["bits"] ?> Bit
+          </small>
+        </div>
+        
+        <?php
+      }else{
+        ?>
+        
+        <textarea name="content" id="con" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:100%; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"  autofocus><?php
+          if(file_exists($req["editType"] . "/" . $req["editApp"] . "/" . $req["file"]))
+            echo htmlspecialchars(file_get_contents($req["editType"] . "/" . $req["editApp"] . "/" . $req["file"]));
+            ?>
+        </textarea>
+        <?php
+      }
+      ?>
     </div>
-    <div class="webdesk_col-md-3 webdesk_bg-light">
-      <div class="webdesk_bg-light webdesk_py-3 webdesk_px-4 webdesk_sticky-top">
-        <button type="submit" class="webdesk_shadow-sm webdesk_mt-4 webdesk_btn webdesk_btn-primary webdesk_btn-block" name="sp"><i class="fa fa-save fa-fw"></i> Save</button> 
-        <button type="button" class="webdesk_shadow-sm webdesk_mt-4 webdesk_btn webdesk_btn-secondary webdesk_btn-block" data-toggle="webdesk_modal" data-target="#removeFileModal"><i class="fa fa-trash fa-fw"></i> Remove file</button> 
+    <div class="webdesk_col-md-2 webdesk_bg-light">
+      <div class="webdesk_bg-light webdesk_py-2 webdesk_px-3 webdesk_sticky-top">
+        <div class="webdesk_btn-groupp">
+          <?php
+          if(preg_match("/image/i", $content_type)){
+          
+          }
+          else{
+            ?>
+            <button id="saveEditorButton" type="submit" class="webdesk_shadow-sm webdesk_mt-4 webdesk_btn webdesk_btn-primary webdesk_btn-block" disabled name="sp"><i class="fa fa-save fa-fw"></i> Save</button> 
+            <?php
+          }
+          ?>
+          <button type="button" class="webdesk_shadow-sm webdesk_mt-4 webdesk_btn webdesk_btn-secondary webdesk_btn-block" data-toggle="webdesk_modal" data-target="#removeFileModal"><i class="fa fa-trash fa-fw"></i> Delete</button> 
+        </div>
       </div>
     </div>
   </div>
@@ -43,23 +76,29 @@ include("appFooter.php");
 ?>
 <script>
 var myCodeMirror = CodeMirror.fromTextArea(con, {
-lineNumbers: true,
-  mode:  "php",
-  theme: "abcdef",
-matchBrackets: true,
-matchTags: {bothTags: true},
-lineWrapping: true,
-foldGutter: true,
-gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter", "CodeMirror-lint-markers"],
-lint: true,
-extraKeys: {"Ctrl-Space": "autocomplete",
-"F11": function(cm) {
-          cm.setOption("fullScreen", !cm.getOption("fullScreen"));
-        },
-        "Esc": function(cm) {
-          if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
-        },
-"Ctrl-J": "toMatchingTag"
-}
+  lineNumbers: true,
+    mode:  "php",
+    theme: "abcdef",
+  matchBrackets: true,
+  matchTags: {bothTags: true},
+  lineWrapping: true,
+  foldGutter: true,
+  gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter", "CodeMirror-lint-markers"],
+  lint: true,
+  extraKeys: {"Ctrl-Space": "autocomplete",
+    "F11": function(cm) {
+      cm.setOption("fullScreen", !cm.getOption("fullScreen"));
+    },
+    "Esc": function(cm) {
+      if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
+    },
+    "Ctrl-J": "toMatchingTag"
+  }
 });
+myCodeMirror.on("change", function(cm, change) { 
+
+  $("#saveEditorButton").removeAttr("disabled");
+  
+});
+
 </script>
