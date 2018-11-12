@@ -9,6 +9,7 @@
 //
 // 
 //////////////////////////////////////////////
+header("X-Robots-Tag: noIndex, nofollow", true);
 header("Content-type: application/json");
 
 $output = array("status" => "UNINSTALLED");
