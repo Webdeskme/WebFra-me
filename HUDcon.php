@@ -112,8 +112,9 @@ else{
   
   ?>
   <div class="webdesk_container webdesk_p-2 webdesk_mb-5">
-    <h1 class="webdesk_display-2 webdesk_py-4">Welcome to WebFrame</h1>
-    <h3>Version <?php echo (!empty($webframe_version)) ? $webframe_version : "" ?></h3>
+    <h1 class="webdesk_display-2 webdesk_py-4 webdesk_d-none webdesk_d-md-block">Welcome to WebFrame</h1>
+    <h2 class="webdesk_d-md-none webdesk_py-4">Welcome to Webframe</h2>
+    <h5>Version <?php echo (!empty($webframe_version)) ? $webframe_version : "" ?></h5>
     <p class="webdesk_lead">
       To start an application just go to the Apps tab and click on the tab of your choice. You will see the application name on this tab. Click it to view.
     </p>

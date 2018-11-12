@@ -12,13 +12,13 @@
 // -->
 <nav class="webdesk_mb-3 webdesk_navbar webdesk_navbar-expand-sm webdesk_navbar-light webdesk_bg-light">
   <a class="webdesk_navbar-brand" href="#">Apps</a>
-  <button class="webdesk_navbar-toggler" type="button" data-toggle="webdesk_collapse" data-target="#defaultHUD_appsMoreDiv" aria-controls="defaultHUD_appsMoreDiv" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="webdesk_navbar-toggler-icon"></span>
-  </button>
+  <!--<button class="webdesk_navbar-toggler" type="button" data-toggle="webdesk_collapse" data-target="#defaultHUD_appsMoreDiv" aria-controls="defaultHUD_appsMoreDiv" aria-expanded="false" aria-label="Toggle navigation">-->
+  <!--  <span class="webdesk_navbar-toggler-icon"></span>-->
+  <!--</button>-->
 
-  <div class="webdesk_collapse navbar-collapse" id="defaultHUD_appsMoreDiv">
+  <!--<div class="webdesk_collapse navbar-collapse" id="defaultHUD_appsMoreDiv">-->
     
-  </div>
+  <!--</div>-->
 </nav>
 <div class="webdesk_container-fluid">
     <?php
@@ -47,7 +47,7 @@
                             $app_description = $app_info["description"];
                     }
                     ?>
-                    <div class="webdesk_defaultHUD_app-selector webdesk_col-xl-1 webdesk_col-lg-2 webdesk_col-md-3 webdesk_p-4 webdesk_col-sm-4 webdesk_col-xs-6 webdesk_mb-1 webdesk_text-center">
+                    <div class="webdesk_defaultHUD_app-selector webdesk_col-xl-1 webdesk_col-lg-2 webdesk_col-md-4 webdesk_p-4 webdesk_col-sm-3 webdesk_col-4 webdesk_mb-1 webdesk_text-center">
                         <a href="<?php wd_url($app_type, $entry, 'start.php', ''); ?>" class="" data-toggle="<?php echo (!is_null($app_description)) ? "webdesk_tooltip" : ""; ?>" title="<?php echo $app_description ?>" data-placement="webdesk_top" data-delay="1000">
                             <img src="<?php echo (file_exists($app_type . "/" . $entry . "/ic.png")) ? $app_type . "/" . $entry : "Apps/DevTools"; ?>/ic.png" class="webdesk_img-fluid" />
                             <div style="font-size: .8rem;" class="webdesk_mt-2"><?php echo $app_name; ?></div>
