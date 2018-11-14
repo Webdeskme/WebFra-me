@@ -324,21 +324,23 @@ if(file_exists("path.php") || file_exists("../../path.php")){
     $wd_webRoot = '';
   }
   function wd_deleteDir($dirPath) {
-      if (! is_dir($dirPath)) {
-          throw new InvalidArgumentException("$dirPath must be a directory");
-      }
-      if (substr($dirPath, strlen($dirPath) - 1, 1) != '/') {
-          $dirPath .= '/';
-      }
-      $files = glob($dirPath . '*', GLOB_MARK);
-      foreach ($files as $file) {
-          if (is_dir($file)) {
-              wd_deleteDir($file);
-          } else {
-              unlink($file);
-          }
-      }
-      rmdir($dirPath);
+    
+    if (! is_dir($dirPath)) {
+        throw new InvalidArgumentException("$dirPath must be a directory");
+    }
+    if (substr($dirPath, strlen($dirPath) - 1, 1) != '/') {
+        $dirPath .= '/';
+    }
+    $files = glob($dirPath . '*', GLOB_MARK);
+    foreach ($files as $file) {
+        if (is_dir($file)) {
+            wd_deleteDir($file);
+        } else {
+            unlink($file);
+        }
+    }
+    return rmdir($dirPath);
+    
   }
   if(isset($_SESSION)){
   if(isset($_GET['wd_fullS'])){
