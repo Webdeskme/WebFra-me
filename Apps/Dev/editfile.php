@@ -50,7 +50,7 @@ include("appHeader.php");
       }
       ?>
     </div>
-    <div class="webdesk_col-md-2 webdesk_bg-light">
+    <div class="webdesk_col-md-2 webdesk_bg-light webdesk_d-none webdesk_d-md-block">
       <div class="webdesk_bg-light webdesk_py-2 webdesk_px-3 webdesk_sticky-top">
         <div class="webdesk_btn-groupp">
           <?php

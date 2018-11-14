@@ -1,31 +1,5 @@
-<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; } ?>
-<!--<nav class="navbar navbar-inverse">-->
-<!--  <div class="container-fluid">-->
-<!--    <div class="navbar-header">-->
-<!--      <button type="button" class="navbar-toggle" data-toggle="webdesk_collapse" data-target="#myNavbar">-->
-<!--        <span class="icon-bar"></span>-->
-<!--        <span class="icon-bar"></span>-->
-<!--        <span class="icon-bar"></span>-->
-<!--      </button>-->
-<!--      <a class="navbar-brand" href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>">Developer Portal: Apps</a>-->
-<!--    </div>-->
-<!--    <div class="webdesk_collapse navbar-collapse" id="myNavbar">-->
-<!--      <ul class="nav navbar-nav">-->
-<!--        <li><a href="desktop.php">Back</a></li>-->
-<!--        <li class="active"><a href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>">Apps</a></li>-->
-<!--        <li><a href="<?php wd_url($wd_type, $wd_app, 'startApl.php', ''); ?>">Applets</a></li>-->
-<!--        <li><a href="<?php wd_url($wd_type, $wd_app, 'startTheme.php', ''); ?>">Themes</a></li>-->
-<!--        <li><a href="<?php wd_url($wd_type, $wd_app, 'startGame.php', ''); ?>">Game</a></li>-->
-<!--        <li><a href="<?php wd_url($wd_type, $wd_app, 'startHud.php', ''); ?>">HUD</a></li>-->
-<!--        <li><a href="<?php wd_url($wd_type, $wd_app, 'startMhud.php', ''); ?>">MHUD</a></li>-->
-<!--      </ul>-->
-<!--      <ul class="nav navbar-nav navbar-right">-->
-<!--		<li><a href="#" data-toggle="webdesk_collapse" data-target="#NewA">Create App</a></li>-->
-<!--	  </ul>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</nav>-->
-<?php
+<?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
+
 include_once("config.inc.php");
 include("appHeader.php");
 ?>
@@ -36,13 +10,6 @@ include("appHeader.php");
 
   </div>
 </nav>
-<div id="NewA" class="webdesk_collapse">
-<form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'startSub.php', ''); ?>">
-  <label for="nameA">New App Name: </label>
-  <input type="text" name="nameA" for="nameA" class="form-control" placeholder="Enter the name of your new App." title="Enter the name of your new App.">
-  <input type="submit" class="btn btn-success" value="Start">
-</form>
-</div>
 <div class="webdesk_container webdesk_my-5">
 	<?php
 	$displayType = (!empty($req["displayType"])) ? $req["displayType"] : "MyApps";
@@ -74,24 +41,24 @@ include("appHeader.php");
 		
 		if($display){
 			?>
-			<div class="webdesk_col-md-4 webdesk_mb-3 app-card">
+			<div class="webdesk_col-md-4 webdesk_mb-3 webdesk_col-6 app-card">
 				<a href="<?php echo (!empty($click_link)) ? $click_link : wd_url($wd_type,$wd_app,"projectfiles.php","&editType=" . $dt_app["type"] . "&editApp=" . $dt_app["handle"]) ?>">
-					<div class="webdesk_card">
+					<div class="webdesk_card webdesk_text-center webdesk_text-md-left">
 						<div class="webdesk_card-body webdesk_bg-light">
 							<img src="<?php echo $dt_app_img ?>" class="webdesk_img" alt="" width="48" />
-							<h4 class="webdesk_mt-3 webdesk_card-title"><?php echo $dt_app["name"] ?></h4>
-							<small>
-							<?php
-							
-							$count = array("file" => 0, "dir" => 0);
-							$files = $wd_dt->getProjectFiles($dt_app["type"]."/".$dt_app["handle"]);
-							foreach($files as $key => $file){
-								$count[$file["type"]] ++;
-							}
-							echo $count["file"] . " file" . (($count["file"] != 1) ? "s" : "");
-							if($count["dir"] > 0)
-								echo " and " . $count["dir"] . " director" . (($count["dir"] != 1) ? "ies" : "y");
-							?>
+							<h4 class="webdesk_mt-3 webdesk_card-title webdesk_d-none webdesk_d-md-block"><?php echo $dt_app["name"] ?></h4>
+							<b class="webdesk_d-md-none webdesk_mt-3 webdesk_card-title"><?php echo $dt_app["name"] ?></b>
+							<small class="webdesk_d-none webdesk_d-md-inline">
+								<?php
+								$count = array("file" => 0, "dir" => 0);
+								$files = $wd_dt->getProjectFiles($dt_app["type"]."/".$dt_app["handle"]);
+								foreach($files as $key => $file){
+									$count[$file["type"]] ++;
+								}
+								echo $count["file"] . " file" . (($count["file"] != 1) ? "s" : "");
+								if($count["dir"] > 0)
+									echo " and " . $count["dir"] . " director" . (($count["dir"] != 1) ? "ies" : "y");
+								?>
 							</small>
 						</div>
 						<?php

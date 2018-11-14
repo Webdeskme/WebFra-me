@@ -4,7 +4,7 @@ include_once("config.inc.php");
 $req["project_path"] = trim(str_replace(" ", "", $req["project_path"]));
 
 if(!isset($req["project_name"]) || !isset($req["project_type"]) || !isset($req["project_path"]))
-	echo "Missing parameters";
+	echo "Missing parameter";
 else{
 
 	if(file_exists($req["project_type"]."/".$req["project_path"]))

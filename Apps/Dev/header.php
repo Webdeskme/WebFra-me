@@ -45,4 +45,18 @@
     height: 100%;
     width: 100%;
   }
+  .directory-listing .options-link{
+    
+    visibility: hidden;
+    
+  }
+  .directory-listing tr:hover .options-link button::after{
+    border: none;
+    margin-left: 0;
+  }
+  .directory-listing tr:hover .options-link{
+    
+    visibility: visible;
+    
+  }
 </style>

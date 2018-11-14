@@ -34,13 +34,15 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'NewFolderSub.php', ''); ?>">
-      	<input type="hidden" name="nameA" value="<?php echo (!empty($req["editApp"])) ? $req["editApp"] : ""; ?>">
-      	<input type="hidden" name="type" value="<?php echo (!empty($req["editType"])) ? $req["editType"] : ""; ?>">
+      <form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'projectFilesSub.php', ''); ?>">
+        <input type="hidden" name="f" value="createFolder" />
+      	<input type="hidden" name="editApp" value="<?php echo (!empty($req["editApp"])) ? $req["editApp"] : ""; ?>" />
+      	<input type="hidden" name="editType" value="<?php echo (!empty($req["editType"])) ? $req["editType"] : ""; ?>" />
+      	<input type="hidden" name="dir" value="<?php echo (!empty($req["dir"])) ? $req["dir"] : ""; ?>" />
 	      <div class="webdesk_modal-body">
 	        
 			    <label for="nameP">New folder name: </label>
-			    <input type="text" name="nameP" for="nameP" class="webdesk_form-control" placeholder="" title="">
+			    <input type="text" name="folder_name" for="nameP" class="webdesk_form-control" placeholder="" title="">
 			    <!--<input type="submit" class="btn btn-success" value="Start">-->
 				  
 	      </div>
@@ -136,10 +138,10 @@
 </div>
 <div class="webdesk_modal webdesk_fade" id="newProjectModal" tabindex="-1" role="dialog" aria-labelledby="newProjectModalLabel" aria-hidden="true">
   <div class="webdesk_modal-dialog webdesk_shadow-lg webdesk_modal-lg" role="document">
-    <form name="newProject" action="<?php wd_urlSub($wd_type, $wd_app, 'createProjectSub.php', ''); ?>" method="POST">
+    <form name="newProjectForm" action="<?php wd_urlSub($wd_type, $wd_app, 'createProjectSub.php', ''); ?>" method="POST">
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
-          <h5 class="webdesk_modal-title" id="newProjectModalLabel"><i class="fa fa-plus"></i> New Project</h5>
+          <h5 class="webdesk_modal-title" id="newProjectModalLabel"><i class="fa fa-project-diagram"></i> New Project</h5>
           <button type="button" class="webdesk_close" data-dismiss="webdesk_modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -190,6 +192,40 @@
           <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Cancel</button>
           <button type="submit" class="webdesk_btn webdesk_btn-primary">Create</button>
         </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="webdesk_modal webdesk_fade" id="publishAppModal" tabindex="-1" role="dialog" aria-labelledby="publishAppModalLabel" aria-hidden="true">
+  <div class="webdesk_modal-dialog webdesk_shadow" role="document">
+    <form name="deleteApp" class="no-loader" onsubmit="">
+      <div class="webdesk_modal-content">
+        <div class="webdesk_modal-header">
+          <h5 class="webdesk_modal-title" id="publishAppModalLabel"><i class="fa fa-shipping-fast"></i> Publish to Marketplace</h5>
+          <button type="button" class="webdesk_close" data-dismiss="webdesk_modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="webdesk_modal-body webdesk_py-3">
+
+          <?php
+          /*
+          if(file_exists("Apps/MarketPublisher/publish_externalPopup.php")){
+            include_once("Apps/MarketPublisher/publish_externalPopup.php");
+          }
+          else{
+            ?>
+            Download the Marketplace Publisher app to publish your apps to the Marketplace!
+            <?php
+          }
+          */
+          ?>
+
+        </div>
+        <!--<div class="webdesk_modal-footer hide">-->
+        <!--  <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Cancel</button>-->
+        <!--  <button type="submit" class="webdesk_btn webdesk_btn-primary">Confirm</button>-->
+        <!--</div>-->
       </form>
     </div>
   </div>
