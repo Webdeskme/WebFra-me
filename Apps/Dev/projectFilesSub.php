@@ -2,7 +2,9 @@
 
 include_once("config.inc.php");
 
-if( empty($req["f"]) || empty($req["editType"]) || empty($req["editApp"]))
+if($_SESSION["Login"] != "YES")
+	echo "Not authorized. Please log in.";
+else if( empty($req["f"]) || empty($req["editType"]) || empty($req["editApp"]))
 	echo "Missing parameter";
 else if($req["f"] == "createFolder"){
 	

@@ -63,10 +63,11 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'deleteFileSub.php', ''); ?>">
-      	<input type="hidden" name="MyApp" value="<?php echo (!empty($req["editApp"])) ? $req["editApp"] : ""; ?>">
-      	<input type="hidden" name="type" value="<?php echo (!empty($req["editType"])) ? $req["editType"] : ""; ?>">
-      	<input type="hidden" name="MyPage" value="<?php echo (!empty($req["file"])) ? $req["file"] : ""; ?>">
+      <form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'editFileSub.php', ''); ?>">
+        <input type="hidden" name="f" value="removeFile" />
+      	<input type="hidden" name="editApp" value="<?php echo (!empty($req["editApp"])) ? $req["editApp"] : ""; ?>">
+      	<input type="hidden" name="editType" value="<?php echo (!empty($req["editType"])) ? $req["editType"] : ""; ?>">
+      	<input type="hidden" name="file" value="<?php echo (!empty($req["file"])) ? $req["file"] : ""; ?>">
 	      <div class="webdesk_modal-body">
 	        
 			    <p class="lead">Are you sure you wish to delete this file? This action <b>CANNOT</b> be undone.</p>

@@ -49,6 +49,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
       foreach($dir as $key => $value){
         
         $cwd[] = $value;
+        
         if(!empty($dir[$key+1])){
           ?>
           <a class="webdesk_btn webdesk_btn-link" href="<?php wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&dir=' . implode("/", $cwd)) ?>">
@@ -113,7 +114,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
             <?php
             if($entry["type"] == "dir"){
               ?>
-              <a href="<?php wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&dir=' . $entry["name"]); ?>"><?php echo $entry["name"] ?></a>
+              <a href="<?php wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&dir=' . ( (!empty($cwd)) ? implode("/", $cwd) . "/" : "") . $entry["name"]); ?>"><?php echo $entry["name"] ?></a>
               <?php
             }
             else{
@@ -140,12 +141,21 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
                   <a class="webdesk_dropdown-item" href="#"><i class="fa fa-copy fa-fw"></i> &nbsp; Copy</a>
                   <a class="webdesk_dropdown-item" href="#"><i class="fa fa-copy fa-fw"></i> &nbsp; Duplicate</a>
                   <div class="webdesk_dropdown-divider"></div>
-                  <a class="webdesk_dropdown-item" href="#"><i class="fa fa-trash fa-fw"></i> &nbsp; Remove</a>
+                  <a class="webdesk_dropdown-item" href="#"><i class="fa fa-edit fa-fw"></i> &nbsp; Rename</a>
+                  <div class="webdesk_dropdown-divider"></div>
+                  
+                  <a class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#removeFileModal" href="#" onclick="$('#removeFileModal form :input[name=file]').val('<?php echo $entry["name"] ?>');"><i class="fa fa-trash fa-fw"></i> &nbsp; Remove</a>
+                  
                 </div>
               </div>
             </div>
           </td>
         </tr>
+        <?php
+      }
+      if(count($contents) == 0){
+        ?>
+        <tr><td colspan="200" class="webdesk_my-5 webdesk_text-center"><small>There are no files in this directory</small></td></tr>
         <?php
       }
       ?>
