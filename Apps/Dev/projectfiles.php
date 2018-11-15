@@ -139,7 +139,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
                 </button>
                 <div class="webdesk_dropdown-menu webdesk_dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                   <a class="webdesk_dropdown-item" href="#"><i class="fa fa-copy fa-fw"></i> &nbsp; Copy</a>
-                  <a class="webdesk_dropdown-item" href="#"><i class="fa fa-copy fa-fw"></i> &nbsp; Duplicate</a>
+                  <a class="webdesk_dropdown-item" href="<?php wd_urlSub($wd_type, $wd_app, 'projectFilesSub.php', '&f=duplicateFile&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&file=' . $entry['name'] . '&dir=' . ((!empty($req["dir"])) ? $req["dir"] : "")) ?>"><i class="fa fa-copy fa-fw"></i> &nbsp; Duplicate</a>
                   <div class="webdesk_dropdown-divider"></div>
                   <a class="webdesk_dropdown-item" href="#"><i class="fa fa-edit fa-fw"></i> &nbsp; Rename</a>
                   <div class="webdesk_dropdown-divider"></div>

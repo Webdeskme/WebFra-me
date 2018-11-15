@@ -25,6 +25,26 @@ else if($req["f"] == "createFolder"){
 		
 	}
 	
-}
+}//createFolder
+else if($req["f"] == "duplicateFile"){
+	
+	if(!isset($req["dir"]))
+		$req["dir"] = "";
+	
+	if(empty($req["file"]))
+		echo "Missing paramter";
+	else{
+		
+		if(!copy($req["editType"]."/".$req["editApp"]."/".((!empty($req["dir"])) ? $req["dir"]."/" : "").$req["file"], $req["editType"]."/".$req["editApp"]."/".((!empty($req["dir"])) ? $req["dir"]."/" : "")."copy-of-" . $req["file"])){
+			echo "Could not copy file. Do you have permission?";
+		}
+		else
+			wd_head($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&dir=' . $req["dir"]);
+		
+	}
+	
+}//duplicateFile
+else
+	echo "Invalid function";
 
 ?>
