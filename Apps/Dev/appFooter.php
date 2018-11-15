@@ -94,6 +94,7 @@
         <input type="hidden" name="f" value="renameFile" />
       	<input type="hidden" name="editApp" value="<?php echo (!empty($req["editApp"])) ? $req["editApp"] : ""; ?>">
       	<input type="hidden" name="editType" value="<?php echo (!empty($req["editType"])) ? $req["editType"] : ""; ?>">
+      	<input type="hidden" name="dir" value="<?php echo (!empty($req["dir"])) ? $req["dir"] : "" ?>" />
       	<input type="hidden" name="file" value="<?php echo (!empty($req["file"])) ? $req["file"] : ""; ?>">
 	      <div class="webdesk_modal-body">
 	        

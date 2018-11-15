@@ -38,8 +38,11 @@ else if($req["f"] == "duplicateFile"){
 		if(!copy($req["editType"]."/".$req["editApp"]."/".((!empty($req["dir"])) ? $req["dir"]."/" : "").$req["file"], $req["editType"]."/".$req["editApp"]."/".((!empty($req["dir"])) ? $req["dir"]."/" : "")."copy-of-" . $req["file"])){
 			echo "Could not copy file. Do you have permission?";
 		}
-		else
+		else{
+			
+			$_SESSION["fileHighlight"][] = array("dir" => ((!empty($req["dir"])) ? $req["dir"]."/" : ""), "file" => "copy-of-" . $req["file"]);
 			wd_head($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&dir=' . $req["dir"]);
+		}
 		
 	}
 	

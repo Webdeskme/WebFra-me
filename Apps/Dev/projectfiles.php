@@ -107,8 +107,20 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
         $file_size = $wd_dt->getFormattedFileSize($entry["path"] . $entry["name"]);
         $file_time = filemtime($entry["path"] . $entry["name"]);
         
+        $row_class = "";
+        if(!empty($_SESSION["fileHighlight"])){
+          
+          foreach($_SESSION["fileHighlight"] as $hl_key => $hl){
+            if(($hl["file"] == $entry["name"])){
+              $row_class = "webdesk_bg-warning";
+              unset($_SESSION["fileHighlight"][$hl_key]);
+            }
+          }
+          
+        }
+        
         ?>
-        <tr>
+        <tr class="<?php echo $row_class ?>">
           <td>
             <i class="fa fa-<?php echo $entry["icon"] ?> fa-fw"></i> &nbsp;
             <?php
@@ -141,7 +153,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
                   <a class="webdesk_dropdown-item" href="#"><i class="fa fa-copy fa-fw"></i> &nbsp; Copy</a>
                   <a class="webdesk_dropdown-item" href="<?php wd_urlSub($wd_type, $wd_app, 'projectFilesSub.php', '&f=duplicateFile&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&file=' . $entry['name'] . '&dir=' . ((!empty($req["dir"])) ? $req["dir"] : "")) ?>"><i class="fa fa-copy fa-fw"></i> &nbsp; Duplicate</a>
                   <div class="webdesk_dropdown-divider"></div>
-                  <a class="webdesk_dropdown-item" href="#"><i class="fa fa-edit fa-fw"></i> &nbsp; Rename</a>
+                  <a class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#renameFileModal" href="#" onclick="$('#renameFileModal form :input[name=file]').val('<?php echo $entry["name"] ?>');$('#renameFileModal form :input[name=newFileName]').val('<?php echo $entry["name"] ?>');$('#renameFileModal form :input[name=dir]').val('<?php echo (!empty($req["dir"])) ? $req["dir"] : "" ?>');$('#renameFileModal form :input[name=newFileName]').select();"><i class="fa fa-edit fa-fw"></i> &nbsp; Rename</a>
                   <div class="webdesk_dropdown-divider"></div>
                   
                   <a class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#removeFileModal" href="#" onclick="$('#removeFileModal form :input[name=file]').val('<?php echo $entry["name"] ?>');"><i class="fa fa-trash fa-fw"></i> &nbsp; Remove</a>
