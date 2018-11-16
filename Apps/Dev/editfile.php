@@ -37,6 +37,7 @@ $open_file = $req["editType"] . "/" . $req["editApp"] . ((!empty($req["dir"])) ?
       
       <?php
       $content_type = mime_content_type($open_file);
+      
       if(preg_match("/image/i", $content_type)){
         ?>
         <div class="webdesk_text-center webdesk_pt-4">
@@ -93,8 +94,8 @@ include("appFooter.php");
 <script>
 var myCodeMirror = CodeMirror.fromTextArea(con, {
   lineNumbers: true,
-    mode:  "php",
-    theme: "abcdef",
+  mode:  "php",
+  theme: "abcdef",
   matchBrackets: true,
   matchTags: {bothTags: true},
   lineWrapping: true,

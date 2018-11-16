@@ -212,7 +212,7 @@
         <div class="webdesk_modal-body webdesk_py-3">
 
           <?php
-          /*
+          
           if(file_exists("Apps/MarketPublisher/publish_externalPopup.php")){
             include_once("Apps/MarketPublisher/publish_externalPopup.php");
           }
@@ -221,7 +221,7 @@
             Download the Marketplace Publisher app to publish your apps to the Marketplace!
             <?php
           }
-          */
+          
           ?>
 
         </div>

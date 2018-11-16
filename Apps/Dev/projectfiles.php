@@ -152,7 +152,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
             }
             else{
               ?>
-              <a href="<?php wd_url($wd_type, $wd_app, 'editfile.php', '&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&dir=' . $req["dir"] . '&file=' . $entry["name"]); ?>"><?php echo $entry["name"] ?></a>
+              <a href="<?php wd_url($wd_type, $wd_app, 'editfile.php', '&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&dir=' . $dir . '&file=' . $entry["name"]); ?>"><?php echo $entry["name"] ?></a>
               <?php
             }
             ?>
