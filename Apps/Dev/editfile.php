@@ -1,16 +1,33 @@
 <?php if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 include_once("config.inc.php");
 include("appHeader.php");
+
+$open_file = $req["editType"] . "/" . $req["editApp"] . ((!empty($req["dir"])) ? "/" . $req["dir"] : "") . "/" . $req["file"];
+
 ?>
-<form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'SaveFileSub.php', ''); ?>" style="height: 100%;">
-  <input type="hidden" name="type" value="<?php echo $req["editType"]; ?>">
-  <input type="hidden" name="nameA" value="<?php echo $req["editApp"]; ?>">
-  <input type="hidden" name="nameP" value="<?php echo $req["file"]; ?>">
+<form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'editFileSub.php', ''); ?>" style="height: 100%;">
+  <input type="hidden" name="f" value="saveFileContents" />
+  <input type="hidden" name="editType" value="<?php echo $req["editType"]; ?>">
+  <input type="hidden" name="editApp" value="<?php echo $req["editApp"]; ?>">
+  <input type="hidden" name="dir" value="<?php echo (!empty($req["dir"])) ? $req["dir"] : ""; ?>">
+  <input type="hidden" name="file" value="<?php echo $req["file"]; ?>">
   
   <nav aria-label="breadcrumb">
     <ol class="webdesk_breadcrumb webdesk_mb-0 webdesk_rounded-0">
       <li class="webdesk_breadcrumb-item"><a href="<?php echo wd_url($wd_type, $wd_app, 'start.php', ''); ?>"><?php echo $req['editType'] ?></a></li>
       <li class="webdesk_breadcrumb-item"><a href="<?php echo wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req['editType'] . '&editApp=' . $req['editApp']); ?>"><?php echo $req['editApp'] ?></a></li>
+      <?php
+      if(!empty($req["dir"])){
+        $cwd = array();
+        $dir = explode("/", $req["dir"]);
+        foreach($dir as $dirkey => $dirname){
+          $cwd[] = $dirname;
+          ?>
+          <li class="webdesk_breadcrumb-item"><a href="<?php echo wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req['editType'] . '&editApp=' . $req['editApp']) . '&dir=' . implode("/", $cwd); ?>"><?php echo $dirname ?></a></li>
+          <?php
+        }
+      }
+      ?>
       <li class="webdesk_breadcrumb-item webdesk_active" aria-current="page"><?php echo (!empty($req["file"])) ? $req["file"] : "" ?> &nbsp; <a href="#" data-toggle="webdesk_modal" data-target="#renameFileModal" class=""><i class="fa fa-edit fa-fw webdesk_text-dark"></i></a></li>
     </ol>
   </nav>
@@ -19,13 +36,13 @@ include("appHeader.php");
     <div class="webdesk_col-md-10" style="height: 100%">
       
       <?php
-      $content_type = mime_content_type($req["editType"] . "/" . $req["editApp"] . "/" . $req["file"]);
+      $content_type = mime_content_type($open_file);
       if(preg_match("/image/i", $content_type)){
         ?>
         <div class="webdesk_text-center webdesk_pt-4">
           <img src="<?php echo $req["editType"] . "/" . $req["editApp"] . "/" . $req["file"] ?>" class="webdesk_img-fluid webdesk_border webdesk_border-dark webdesk_shadow-lg" /><br />
           <?php
-          $imagesize = getimagesize($req["editType"] . "/" . $req["editApp"] . "/" . $req["file"]);
+          $imagesize = getimagesize($open_file);
           
           ?>
         </div>
@@ -42,10 +59,9 @@ include("appHeader.php");
         ?>
         
         <textarea name="content" id="con" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:100%; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"  autofocus><?php
-          if(file_exists($req["editType"] . "/" . $req["editApp"] . "/" . $req["file"]))
-            echo htmlspecialchars(file_get_contents($req["editType"] . "/" . $req["editApp"] . "/" . $req["file"]));
-            ?>
-        </textarea>
+          if(file_exists($open_file))
+            echo htmlspecialchars(file_get_contents($open_file));
+            ?></textarea>
         <?php
       }
       ?>

@@ -47,6 +47,48 @@ else if($req["f"] == "duplicateFile"){
 	}
 	
 }//duplicateFile
+else if($req["f"] == "copyFile"){
+	
+	if(!isset($req["dir"]))
+		$req["dir"] = "";
+	
+	if(empty($req["file"]))
+		echo "Missing paramter";
+	else{
+		
+		$_SESSION["fileCopy"][] = array("dir" => $req["editType"] . "/" . $req["editApp"] . ((!empty($req["dir"])) ? " / " . $req["dir"] : ""), "file" => $req["file"]);
+		wd_head($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&dir=' . $req["dir"]);
+		
+	}
+	
+}//copyFile
+else if($req["f"] == "pasteFile"){
+	
+	if(empty($_SESSION["fileCopy"]))
+		echo "Something went wrong. Please go back and try again.";
+	else{
+	
+		if(!isset($req["dir"]))
+			$req["dir"] = "";
+		
+		$problem = false;
+		foreach($_SESSION["fileCopy"] as $key => $file){
+			if(!copy($_SESSION["fileCopy"][$key]["dir"]. "/" . $_SESSION["fileCopy"][$key]["file"], $req["editType"]."/".$req["editApp"]."/".((!empty($req["dir"])) ? $req["dir"]."/" : "")."copy-of-" . $_SESSION["fileCopy"][$key]["file"])){
+				$problem = true;
+			}
+			else
+				unset($_SESSION["fileCopy"][$key]);
+		}
+		if($problem){
+			echo "Could not copy file. Do you have permission?";
+		}
+		else{
+			wd_head($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&dir=' . $req["dir"]);
+		}
+		
+	}
+	
+}//pasteFile
 else
 	echo "Invalid function";
 
