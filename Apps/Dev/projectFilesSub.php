@@ -89,6 +89,60 @@ else if($req["f"] == "pasteFile"){
 	}
 	
 }//pasteFile
+else if($req["f"] == "export"){
+	
+	$archive_file_name= $req["editApp"].'Export.zip';
+	
+	$zip = new ZipArchive();
+  
+  if ($zip->open($archive_file_name, ZIPARCHIVE::CREATE )!==TRUE) {
+    exit("cannot open <$archive_file_name>\n");
+  }
+  
+  $go_dir = array("");
+  while(count($go_dir) > 0){
+	  foreach($go_dir as $dirkey => $dir){
+	  	
+	  	$contents = $wd_dt->getProjectFiles($req["editType"] . '/' . $req["editApp"] . "/" . $dir);
+	  	
+		  foreach($contents as $key => $entry){
+		  	
+		  	$entry["name"] = $dir . (($dir != "") ? "/" : "") . $entry["name"];
+		  	
+		  	if (is_file($req["editType"]. '/' . $req["editApp"] . '/' . $entry["name"])) {
+		  		$zip->addFile($req["editType"]. '/' . $req["editApp"] . '/' . $entry["name"], $entry["name"]);
+		  	}
+		  	else if(is_dir($req["editType"]. '/' . $req["editApp"] . '/' . $entry["name"])){
+		  		
+		  		if(count(scandir($req["editType"]. '/' . $req["editApp"] . '/' . $entry["name"])) == 0)
+		  			$zip->addEmptyDir($entry["name"]);
+		  		else
+		  			$go_dir[] = $entry["name"];
+		  		
+		  	}
+		  	
+		  }
+		  
+		  
+		  
+		  unset($go_dir[$dirkey]);
+	  }
+  }
+  
+ 
+  $zip->close();
+  
+  header("Content-type: application/zip"); 
+	header("Content-Disposition: attachment; filename=$archive_file_name");
+	header("Content-length: " . filesize($archive_file_name));
+	header("Pragma: no-cache"); 
+	header("Expires: 0"); 
+	flush();
+	readfile($archive_file_name);
+	unset($archive_file_name);
+  exit;
+	
+}//export
 else
 	echo "Invalid function";
 

@@ -14,8 +14,14 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
 ?>
 <div class="webdesk_bg-light webdesk_border-top webdesk_p-2">
   <div class="webdesk_float-right">
+    <a href="<?php echo wd_url(test_input($_GET["editType"]), test_input($_GET["editApp"]), 'start.php', ''); ?>" target="_blank" class="webdesk_btn webdesk_btn-secondary webdesk_text-white" title="Preview app in a new window" data-toggle="webdesk_tooltip">
+      <i class="fa fa-eye fa-fw"></i> Preview
+    </a>
     <a href="#publishAppModal" class="webdesk_btn webdesk_btn-secondary webdesk_text-white" data-toggle="webdesk_modal" title="Publish to Marketplace">
       <i class="fa fa-shipping-fast fa-fw"></i> Publish
+    </a>
+    <a href="<?php echo wd_urlSub($wd_type, $wd_app, 'projectFilesSub.php', '&f=export&editType=' . $req["editType"] . '&editApp=' . $req["editApp"]); ?>" target="_blank" class="webdesk_btn webdesk_btn-secondary webdesk_text-white" title="Export app files to a zip" data-toggle="webdesk_tooltip">
+      <i class="fa fa-download fa-fw"></i> Export
     </a>
     <?php echo wd_confirm($wd_type, $wd_app, "removeProjectSub.php", "&editType=" . $req["editType"] . "&editApp=" . $req["editApp"], "removeAppModal", "<i class='fa fa-trash fa-fw'></i> Remove Project"); ?>
   </div>

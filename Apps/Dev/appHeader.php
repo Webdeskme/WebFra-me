@@ -8,24 +8,11 @@
     </div>
     <div class="webdesk_collapse webdesk_justify-content-end webdesk_navbar-collapse" id="terminalNavbar">
 
-      <ul class="webdesk_navbar-nav webdesk_justify-content-end">
-        <li class="webdesk_nav-item">
+      <!--<ul class="webdesk_navbar-nav webdesk_justify-content-end">-->
+      <!--  <li class="webdesk_nav-item"></li>-->
 
-          <?php
-          if(test_input($_GET["sec"]) == "projectEditor.php"){
-            ?>
-            <a href="<?php echo wd_url(test_input($_GET["editType"]), test_input($_GET["editApp"]), 'start.php', ''); ?>" target="_blank" class="webdesk_btn webdesk_btn-secondary webdesk_text-white" title="Preview app in a new window" data-toggle="webdesk_tooltip">
-              <i class="fa fa-eye fa-fw"></i> Preview
-            </a>
-            <a href="#publishAppModal" class="webdesk_btn webdesk_btn-secondary webdesk_text-white" data-toggle="webdesk_modal" title="Publish to Marketplace">
-              <i class="fa fa-shipping-fast fa-fw"></i> Publish
-            </a>
-            <?php
-          }
-          ?>
-
-        </li>
-      </ul>
+      <!--  </li>-->
+      <!--</ul>-->
       <ul class="webdesk_navbar-nav webdesk_justify-content-end">
         <?php
         /*// TO BE IMPLEMENTED SOMEDAY
