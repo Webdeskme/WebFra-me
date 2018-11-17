@@ -1,35 +1,44 @@
 <?php
 class dev_tools{
 	
-	public $proj_name = null;
+	private $proj_info = array();
+	private $proj_icon = 'Apps/Dev/ic.png';
 	
 	/// THE DIFFERENT PROJECT TYPES THAT CAN BE CREATED IN THIS DEV TOOLS APP
 	public $create_types = array(
 		
-		array("name"=>"Apps","icon"=>"th-large","blurb"=>"Extend the functionality of Webdesk","dir"=>"MyApps"),
-		array("name"=>"Applets","icon"=>"smile","blurb"=>"Create useful tools in the HUD","dir"=>"Applets"),
-		array("name"=>"Themes","icon"=>"palette","blurb"=>"Change the look and feel of your Webdesk","dir"=>"MyTheme"),
-		array("name"=>"HUD","icon"=>"desktop","blurb"=>"Change where things are positioned","dir"=>"HUD"),
-		array("name"=>"MHUD","icon"=>"mobile-alt","blurb"=>"Change the HUD on mobile devices","dir"=>"MHUD")
+		array("name"=>"Apps","icon"=>"th-large","blurb"=>"Extend the functionality of Webdesk","dir"=>"MyApps")
+		// array("name"=>"Applets","icon"=>"smile","blurb"=>"Create useful tools in the HUD","dir"=>"Applets"),
+		// array("name"=>"Themes","icon"=>"palette","blurb"=>"Change the look and feel of your Webdesk","dir"=>"MyTheme"),
+		// array("name"=>"HUD","icon"=>"desktop","blurb"=>"Change where things are positioned","dir"=>"HUD"),
+		// array("name"=>"MHUD","icon"=>"mobile-alt","blurb"=>"Change the HUD on mobile devices","dir"=>"MHUD")
 		//array("name"=>"game","icon"=>"gamepad","blurb"=>"Take a break from all that hard work","dir"=>"Games")
 	);
 	
-	
-	public function setProjName($projectName){
+	public function loadApp($app_type, $app_dir){
 		
-		$this->proj_name = $projectName;
+		if(file_exists($app_type."/".$app_dir."/app.json")){
+	    $app_json = json_decode(file_get_contents($app_type."/".$app_dir."/app.json"),true);
+	    $this->proj_info = $app_json;
+	  }
+	  else
+	    $wd_dt->proj_info = array("name" => $app_dir);
+	    
+	  if(file_exists($app_type.'/'.$app_dir.'/ic.png'))
+	  	$this->proj_icon = $app_type.'/'.$app_dir.'/ic.png';
 		
-	}
+	}//loadApp
 	public function getProjName(){
 		
-		return $this->proj_name;
+		return $this->proj_info["name"];
 		
-	}
+	}//getProjName
 	public function getProjectTypes(){
 		
 		return $this->create_types;
 		
-	}
+	}//getProjectTypes
+
 	/// LOADS LOCAL PROJECTS FROM MYAPPS
 	public function getProjectTypeInfo($type){
 		
@@ -42,7 +51,12 @@ class dev_tools{
 		
 		return false;
 		
-	}
+	}//getProjectTypeInfo
+	public function getProjIcon(){
+		
+		return "//" . $_SERVER["HTTP_HOST"] .'/' . $this->proj_icon;
+		
+	}//getProjImg
 	public function getLocalProjects($type = "MyApps"){
 		
 		$my_apps = array();
@@ -61,7 +75,6 @@ class dev_tools{
 						if(file_exists($type . "/" . $dir . "/app.json")){
 							
 							$info = file_get_contents($type . "/" . $dir . "/app.json");
-							
 							$info = json_decode($info,true);
 							
 							if(is_array($info) && ($info["name"] != null)){
@@ -72,7 +85,9 @@ class dev_tools{
 						$my_apps[] = array(
 							"name" => $name,
 							"handle" => $dir,
-							"type" => "MyApps"
+							"type" => $type,
+							"icon" => "//" . $_SERVER["HTTP_HOST"] . '/' . ((file_exists($type."/".$dir."/ic.png")) ? $type."/".$dir."/ic.png" : "Apps/Dev/ic.png"),
+							"require" => (!empty($info["require"])) ? $info["require"] : array()
 						);
 						
 					}
@@ -92,7 +107,6 @@ class dev_tools{
 		$files = array();
 		
 		if(is_dir($dir)){
-			//print_r($dir);
 			
 			if($dh = opendir($dir)){
 				
@@ -138,26 +152,7 @@ class dev_tools{
 		return $files;
 		
 	}//getProjectFiles
-	function recurse_copy($src,$dst) { 
-		$return = true;
-    $dir = opendir($src); 
-    @mkdir($dst); 
-    while(false !== ( $file = readdir($dir)) ) { 
-      if (( $file != '.' ) && ( $file != '..' )) { 
-        if ( is_dir($src . '/' . $file) ) {
-          if(!recurse_copy($src . '/' . $file,$dst . '/' . $file))
-          	$return = false;
-        } 
-        else { 
-          if(!copy($src . '/' . $file,$dst . '/' . $file))
-          	$return = false;
-        } 
-      } 
-    } 
-    closedir($dir); 
-    
-    return $return;
-	}
+	
 	public function getFormattedFileSize($file){
 		
 		$file_size = filesize($file)/1000;

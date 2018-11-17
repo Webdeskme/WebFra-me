@@ -4,11 +4,9 @@ include_once("config.inc.php");
 include("appHeader.php");
 ?>
 <nav class="webdesk_navbar webdesk_bg-light webdesk_border-top">
-  <div class="">
 
-		<button class="webdesk_btn webdesk_btn-light webdesk_shadow" data-toggle="webdesk_modal" data-target="#newProjectModal" type="button"><i class="fa fa-plus fa=fw"></i> New Project</button>
+	<button class="webdesk_btn webdesk_btn-light webdesk_shadow" data-toggle="webdesk_modal" data-target="#newProjectModal" type="button"><i class="fa fa-plus fa=fw"></i> New Project</button>
 
-  </div>
 </nav>
 <div class="webdesk_container webdesk_my-5">
 	<?php
@@ -22,30 +20,24 @@ include("appHeader.php");
 	foreach($dt_my_apps as $dt_app){
 		
 		$display = true;
-		if($displayType == "MyApps"){
-			$dt_app_img = (file_exists($dt_app["type"]."/".$dt_app["handle"]."/ic.png")) ? $dt_app["type"]."/".$dt_app["handle"]."/ic.png" : $wd_type."/".$wd_app."/ic.png";
-			$app_info = json_decode(file_get_contents($dt_app["type"]."/".$dt_app["handle"]."/app.json"),true);
-			
-			if(is_array($app_info)){
-					
-				if(!empty($app_info["require"]["AppEngine"])){
-					
-					$display = false;
-					
-				}
-				
-			}
-			
-			
-		}
 		
+		if(!empty($dt_app["require"])){
+			$counting_require = 0;
+			foreach($dt_app["require"] as $require_app => $require_version){
+				
+				if($require_app == "AppEngine"){
+					$display = false;
+				}
+					
+			}
+		}
 		if($display){
 			?>
 			<div class="webdesk_col-md-4 webdesk_mb-3 webdesk_col-6 app-card">
 				<a href="<?php echo (!empty($click_link)) ? $click_link : wd_url($wd_type,$wd_app,"projectfiles.php","&editType=" . $dt_app["type"] . "&editApp=" . $dt_app["handle"]) ?>">
 					<div class="webdesk_card webdesk_text-center webdesk_text-md-left">
 						<div class="webdesk_card-body webdesk_bg-light">
-							<img src="<?php echo $dt_app_img ?>" class="webdesk_img" alt="" width="48" />
+							<img src="<?php echo $dt_app["icon"] ?>" class="webdesk_img" alt="" width="48" />
 							<h4 class="webdesk_mt-3 webdesk_card-title webdesk_d-none webdesk_d-md-block"><?php echo $dt_app["name"] ?></h4>
 							<b class="webdesk_d-md-none webdesk_mt-3 webdesk_card-title"><?php echo $dt_app["name"] ?></b>
 							<small class="webdesk_d-none webdesk_d-md-inline">

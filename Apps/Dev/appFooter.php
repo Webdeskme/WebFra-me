@@ -14,7 +14,7 @@
 	        
 			    <label for="nameP">New file name: </label>
 			    <input type="text" name="nameP" for="nameP" class="webdesk_form-control" placeholder="new_page.php" title="">
-			    <!--<input type="submit" class="btn btn-success" value="Start">-->
+			    
 				  
 	      </div>
 	      <div class="webdesk_modal-footer">
@@ -141,7 +141,7 @@
 </div>
 <div class="webdesk_modal webdesk_fade" id="newProjectModal" tabindex="-1" role="dialog" aria-labelledby="newProjectModalLabel" aria-hidden="true">
   <div class="webdesk_modal-dialog webdesk_shadow-lg webdesk_modal-lg" role="document">
-    <form name="newProjectForm" action="<?php wd_urlSub($wd_type, $wd_app, 'createProjectSub.php', ''); ?>" method="POST">
+    <form name="newProjectForm" action="<?php wd_urlSub($wd_type, $wd_app, 'startSub.php', ''); ?>" method="POST">
       <div class="webdesk_modal-content">
         <div class="webdesk_modal-header">
           <h5 class="webdesk_modal-title" id="newProjectModalLabel"><i class="fa fa-project-diagram"></i> New Project</h5>
@@ -230,6 +230,33 @@
         <!--  <button type="submit" class="webdesk_btn webdesk_btn-primary">Confirm</button>-->
         <!--</div>-->
       </form>
+    </div>
+  </div>
+</div>
+<div class="webdesk_modal webdesk_fade" id="removeAppModal" tabindex="-1" role="dialog" aria-labelledby="removeAppModalLabel" aria-hidden="true">
+  <div class="webdesk_modal-dialog" role="document">
+    <div class="webdesk_modal-content webdesk_shadow">
+      <div class="webdesk_modal-header">
+        <h5 class="mwebdesk_odal-title" id="removeAppModal"><i class="fa fa-exclamation-triangle fa-fw"></i> Remove project</h5>
+        <button type="button" class="webdesk_close" data-dismiss="webdesk_modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="<?php wd_urlSub($wd_type, $wd_app, 'projectFilesSub.php', ''); ?>">
+        <input type="hidden" name="f" value="removeApp" />
+      	<input type="hidden" name="editApp" value="<?php echo (!empty($req["editApp"])) ? $req["editApp"] : ""; ?>">
+      	<input type="hidden" name="editType" value="<?php echo (!empty($req["editType"])) ? $req["editType"] : ""; ?>">
+	      <div class="webdesk_modal-body">
+	        
+			    <p class="webdesk_lead">Are you sure you wish to delete this project? All associated files will be removed from the server. </p>
+			    <p class="webdesk_lead">This action <b>CANNOT</b> be undone.</p>
+				  
+	      </div>
+	      <div class="webdesk_modal-footer">
+	        <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Cancel</button>
+	        <button type="submit" class="webdesk_btn webdesk_btn-danger">Confirm delete</button>
+	      </div>
+	    </form>
     </div>
   </div>
 </div>
