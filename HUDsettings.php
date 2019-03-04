@@ -12,7 +12,8 @@ else{
         <form method="post" action="Home.php?id=<?php $val = test_input(file_get_contents($wd_adminFile . 'val.txt')); echo $_SESSION["user"] . '&val=' . $val; ?>&type=<?php echo $_SESSION["HUD"]; ?>">
         <div class="webdesk_btn-group">
             <a href="logout.php" class="webdesk_btn webdesk_btn-danger webdesk_text-white"><i class="fa fa-power-off"></i> Logout</a>
-            <button type="submit" name="lastPage" class="webdesk_btn webdesk_btn-secondary"><i class="fa fa-sign-in"></i> AutoLogin</button>
+            <input type="hidden" name="lastPage" value="true" />
+            <button type="submit" name="lastPage" class="no-ajax webdesk_btn webdesk_btn-secondary"><i class="fa fa-sign-in"></i> AutoLogin</button>
         </div>
         </form>
     </div>

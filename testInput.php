@@ -211,6 +211,7 @@ if(file_exists("path.php") || file_exists("../../path.php")){
     $wd_adminFile = $wd_root . '/User/' . $_SESSION["user"] . '/Admin/';
     $wd_extFile = $wd_root . '/User/' . $_SESSION["user"] . '/Ext/';
     $wd_tier = test_input(file_get_contents($wd_adminFile . 'tier.txt'));
+    $_SESSION["uName"] = f_dec($_SESSION["user"]);
   }
   $wd_admin = $wd_root . '/Admin/';
   $wd_appr = $wd_root . '/App/';
@@ -639,4 +640,5 @@ if(file_exists("path.php") || file_exists("../../path.php")){
     }
   }
 }
+include 'webHull.php';
 ?>

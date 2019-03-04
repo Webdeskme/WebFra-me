@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 $wd_stype = 'MyApps';
-$wd_sapp = 'AppEngine';
+$wd_sapp = 'BiddingFront';
 include 'HUDstart.php';
 if(!isset($_GET['type']) || !isset($_GET['app']) || !isset($_GET['sec'])){
   wd_head($wd_stype, $wd_sapp, 'start.php', '');

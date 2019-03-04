@@ -162,23 +162,27 @@ if(isset($_GET['title'])){
         </div>
         <div class="webdesk_modal-body">
           <?php
-if(isset($sec) && isset($wd_app)){
-              if(file_exists($wd_type . '/' . $wd_app . '/help_' . $sec)){
-                  $wd_help = file_get_contents($wd_type . '/' . $wd_app . '/help_' . $sec);
-                  echo $wd_help;
-              }
-              elseif(file_exists($wd_type . '/' . $wd_app . '/help.php')){
-                  $wd_help = file_get_contents($wd_type . '/' . $wd_app . '/help.php');
-                  echo $wd_help;
-              }
-              else{
-                  echo 'We are sorry but there is no help documentation available for this app.';
-              }
-}
-else{
-    $wd_help = file_get_contents('help.php');
-    echo $wd_help;
-}
+          if(isset($sec) && isset($wd_app)){
+            if(file_exists($wd_type . '/' . $wd_app . '/help_' . $sec)){
+              $wd_help = $wd_type . '/' . $wd_app . '/help_' . $sec;
+              // $wd_help = file_get_contents($wd_type . '/' . $wd_app . '/help_' . $sec);
+              // echo $wd_help;
+            }
+            elseif(file_exists($wd_type . '/' . $wd_app . '/help.php')){
+              $wd_help = $wd_type . '/' . $wd_app . '/help.php';
+              // $wd_help = file_get_contents($wd_type . '/' . $wd_app . '/help.php');
+              // echo $wd_help;
+            }
+            else{
+              echo 'We are sorry but there is no help documentation available for this app.';
+            }
+          }
+          else{
+            $wd_help = 'help.php';
+            // $wd_help = file_get_contents('help.php');
+            // echo $wd_help;
+          }
+          include($wd_help);
           ?>
         </div>
         <div class="webdesk_modal-footer">
@@ -548,40 +552,40 @@ $(document).ready(function(){
 
 <script>
   var oldD = "";
-if(typeof(EventSource) !== "undefined") {
-    var source = new EventSource("chat.php");
-    source.onmessage = function(event) {
-      if(oldD != event.data){
-        if(typeof(Storage) !== "undefined") {
-        var wd_sto_c = document.getElementById("wd_chat").innerHTML;
-        wd_sto_c = wd_sto_c + sessionStorage.wd_chat;
-        }
-        document.getElementById("wd_chat").innerHTML = event.data + "<br>" + document.getElementById("wd_chat").innerHTML;
-        if (!("Notification" in window)) {
-          
-        }
-        else if (Notification.permission === "granted") {
-          
-          var notification = new Notification(event.data);
-        }
-      
-        else if (Notification.permission !== "denied") {
-          Notification.requestPermission().then(function (permission) {
-            
-            if (permission === "granted") {
-              var notification = new Notification(event.data);
-            }
-          });
-        }
-        oldD = event.data;
-        if(typeof(Storage) !== "undefined") {
-        sessionStorage.setItem("wd_chat", wd_sto_c);
-        }
-      }
-    };
-} else {
-    document.getElementById("wd_chat").innerHTML = "Sorry, your browser does not support server-sent events...";
-}
+//if(typeof(EventSource) !== "undefined") {
+//    var source = new EventSource("chat.php");
+//    source.onmessage = function(event) {
+//      if(oldD != event.data){
+//        if(typeof(Storage) !== "undefined") {
+//        var wd_sto_c = document.getElementById("wd_chat").innerHTML;
+//        wd_sto_c = wd_sto_c + sessionStorage.wd_chat;
+//        }
+//        document.getElementById("wd_chat").innerHTML = event.data + "<br>" + document.getElementById("wd_chat").innerHTML;
+//        if (!("Notification" in window)) {
+//          
+//        }
+//        else if (Notification.permission === "granted") {
+//          
+//          var notification = new Notification(event.data);
+//        }
+//      
+//        else if (Notification.permission !== "denied") {
+//          Notification.requestPermission().then(function (permission) {
+//            
+//            if (permission === "granted") {
+//              var notification = new Notification(event.data);
+//            }
+//          });
+//        }
+//        oldD = event.data;
+//        if(typeof(Storage) !== "undefined") {
+//        sessionStorage.setItem("wd_chat", wd_sto_c);
+//        }
+//      }
+//    };
+//} else {
+//    document.getElementById("wd_chat").innerHTML = "Sorry, your browser does not support server-sent events...";
+//}
 </script>
 <script>
 $(document).ready(function(){
