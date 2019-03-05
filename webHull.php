@@ -172,8 +172,9 @@ class WebHull{
       return $stat = "Error: Table does not exists.";
     }
   }
-  public function select_row($db, $table, $row){
+  public function select_row($db, $table, $row){ //THIS SHOULD ACTUALLY BE select_col
       if(file_exists($this->path . $db . "/" . $table . ".json")){
+        
         $data = json_decode(file_get_contents($this->path . $db . "/" . $table . ".json"), true);
         $x = 0;
         $y = "error";

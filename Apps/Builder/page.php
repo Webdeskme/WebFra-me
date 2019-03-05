@@ -56,6 +56,7 @@ $page_title = (isset($navigation->$page) && isset($navigation->$page->title)) ? 
   
 ?>
 <form method="post" action="<?php wd_url($wd_type, $wd_app, 'page.php', '&page=' . $page); ?>">
+  
   <div class="webdesk_row webdesk_no-gutters">
     <div class="webdesk_col-md-9">
       <textarea name="con" id="con" placeholder="Enter your content" title="Enter your content" style="width: 100%; height:100%; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"><?php

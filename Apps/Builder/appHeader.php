@@ -28,7 +28,15 @@
 </nav>
 
 <nav class="webdesk_navbar webdesk_bg-light webdesk_border-top">
-  <div class="webdesk_container-fluid webdesk_justify-content-end">
+  <div class="webdesk_container-fluid">
+    <ul class="webdesk_navbar-nav">
+      <li class="webdesk_navbar-item">
+        <div class="webdesk_btn-group" role="group" aria-label="Basic example">
+          <a href="<?php wd_url($wd_type, $wd_app, "page.php", "&page=".$req["page"]); ?>" class="webdesk_btn webdesk_btn-<?php echo ($req["sec"] == "page.php") ? "secondary webdesk_text-white" : "outline-secondary"; ?>">Code</a>
+          <a href="<?php wd_url($wd_type, $wd_app, "pageB.php", "&page=".$req["page"]); ?>" class="webdesk_btn webdesk_btn-<?php echo ($req["sec"] == "pageB.php") ? "secondary webdesk_text-white" : "outline-secondary"; ?>">Basic</a>
+        </div>
+      </li>
+    </ul>
     <ul class="webdesk_navbar-nav">
       <li class="webdesk_navbar-item">
         <a href="<?php wd_urlSub($wd_type, $wd_app, 'publishSite.php', '&return=' . urlencode($req["sec"].((!empty($req["page"])) ? "&page=".$req["page"] : ""))); ?>" class="webdesk_btn webdesk_btn-warning webdesk_shadow-sm webdesk_border"><i class="fa fa-shipping-fast fa-fw"></i> Publish Site</a>

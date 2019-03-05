@@ -1,9 +1,0 @@
-{
-  "name":"Marketplace Publisher",
-  "description": "Publish your apps to the WebDesk Marketplace.",
-  "version": "1.0",
-  "icon":"ic.png",
-  "require":{
-  	"webdesk/webdesk":"2.0"
-  }
-}

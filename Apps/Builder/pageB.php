@@ -58,8 +58,40 @@ $page_title = (isset($navigation->$page) && isset($navigation->$page->title)) ? 
 <form method="post" action="<?php wd_url($wd_type, $wd_app, 'page.php', '&page=' . $page); ?>">
   <div class="webdesk_row webdesk_no-gutters">
     <div class="webdesk_col-md-9">
-      <textarea name="con" id="con" placeholder="Enter your content" title="Enter your content" style="width: 100%; height:100%; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"><?php
+      <textarea name="con" id="con2" placeholder="Enter your content" title="Enter your content" style="width: 100%; height:100%; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"><?php
   echo (isset($_GET['page']) && file_exists($wd_www . $page)) ? htmlspecialchars(file_get_contents($wd_www . $page)) : ""; ?></textarea>
+  
+      <script>
+      tinymce.init({
+          selector: '#con2',
+          theme: 'modern',
+          plugins: [
+            'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+            'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+            'save table contextmenu directionality emoticons template paste textcolor toc autoresize hr insertdatetime pagebreak autosave save searchreplace'
+          ],
+          content_css: 'css/content.css',
+          toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons | fullscreen | toc | insertdatetime | pagebreak | restoredraft | save | template | searchreplace',
+          templates : [
+          {
+            title: "Blank",
+            url: "<?php echo $type; ?>/Writer/Temp0.html",
+            description: "Blank Doc"
+          },
+          {
+            title: "Two Columns",
+            url: "<?php echo $type; ?>/Writer/Temp1.html",
+            description: "Adds two columns."
+          },
+          {
+            title: "Four Columns",
+            url: "<?php echo $type; ?>/Writer/Temp2.html",
+            description: "Adds four columns."
+          }
+        ]
+        });
+      </script>
+  
     </div>
     <div class="webdesk_col-md-3 webdesk_bg-light">
       <div class="webdesk_bg-light webdesk_py-3 webdesk_px-4 webdesk_sticky-top">
