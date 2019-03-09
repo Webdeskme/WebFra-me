@@ -16,9 +16,9 @@
   <link rel="apple-touch-icon" href="favicon.ico">
   <link rel="apple-touch-startup-image" href="favicon.ico">
   <link rel="manifest" href="manifest.php">
-  <link rel="stylesheet" href="Plugins/wd-bootstrap/css/webdesk_bootstrap.min.css">
+  <link rel="stylesheet" href="Plugins/bootstrap-4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="Plugins/jquery-ui-custom/jquery-ui.min.css">
-  <link rel="stylesheet" href="Plugins/fontawesome-free-5.2/css/all.min.css">
+  <link rel="stylesheet" href="Plugins/fontawesome-free-5.7.2/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="Plugins/context.standalone.css">
   <link href="Plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet"/>
   <link href="Plugins/fullcalendar/fullcalendar.print.min.css" rel="stylesheet" media="print"/>
@@ -26,21 +26,20 @@
   
   <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
   <script src="Plugins/jquery.min.js"></script>
-  <script src="Plugins/wd-bootstrap/js/webdesk_bootstrap.js"></script>
+  <script src="Plugins/bootstrap-4.3.1/js/bootstrap.mi.js"></script>
   <script src="Plugins/jquery-ui-custom/jquery-ui.min.js"></script>
   <script src="Plugins/tinymce/js/tinymce/tinymce.min.js"></script>
   <script src="Plugins/fullcalendar/lib/moment.min.js"></script>
   <script src="Plugins/fullcalendar/fullcalendar.min.js"></script>
-  <!--<script defer src="Plugins/fontawesome-free-5.2/js/all.min.js"></script>-->
 
   <style>
     html,body{
       font-size: 12pt;
     }
-    .webdesk_defaultHUD_app-container .webdesk_defaultHUD_app-selector a:hover img{
+    .defaultHUD_app-container .defaultHUD_app-selector a:hover img{
       box-shadow: 0 2px 2px rgba(0,0,0,0.25);
     }
-    .webdesk_defaultHUD_app-container .webdesk_defaultHUD_app-selector a:hover{
+    .defaultHUD_app-container .defaultHUD_app-selector a:hover{
       text-decoration: none;
     }
     .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active, .ui-button.ui-state-active:hover{

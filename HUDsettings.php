@@ -8,22 +8,22 @@ else{
 }
 ?>; overflow: scroll; height: 90%;">
 
-    <div class="webdesk_float-right">
+    <div class="float-right">
         <form method="post" action="Home.php?id=<?php $val = test_input(file_get_contents($wd_adminFile . 'val.txt')); echo $_SESSION["user"] . '&val=' . $val; ?>&type=<?php echo $_SESSION["HUD"]; ?>">
-        <div class="webdesk_btn-group">
-            <a href="logout.php" class="webdesk_btn webdesk_btn-danger webdesk_text-white"><i class="fa fa-power-off"></i> Logout</a>
+        <div class="btn-group">
+            <a href="logout.php" class="btn btn-danger text-white"><i class="fa fa-power-off"></i> Logout</a>
             <input type="hidden" name="lastPage" value="true" />
-            <button type="submit" name="lastPage" class="no-ajax webdesk_btn webdesk_btn-secondary"><i class="fa fa-sign-in"></i> AutoLogin</button>
+            <button type="submit" name="lastPage" class="no-ajax btn btn-secondary"><i class="fa fa-sign-in"></i> AutoLogin</button>
         </div>
         </form>
     </div>
 
-    <h1 class="webdesk_mb-5"><span class="fa fa-cogs"></span> <?php echo f_dec($_SESSION["user"]); ?>'s Settings</h1>
+    <h1 class="mb-5"><span class="fa fa-cogs"></span> <?php echo f_dec($_SESSION["user"]); ?>'s Settings</h1>
     <details>
     <summary><b style="font-size: 1.5em;">URL for your WebDesk</b></summary><br><br>
     <form method="post" action="url.php">
         <input type="text" name="url" placeholder="http://www.something.com" title="http://www.something.com" required><br><br>
-        <input type="submit" value="Submit" class="webdesk_btn webdesk_btn-primary">
+        <input type="submit" value="Submit" class="btn btn-primary">
     </form>
     </details><br><br>
     <details>

@@ -1,16 +1,16 @@
 <?php if(is_file("wd_protect.php")){ include_once "wd_protect.php"; } ?>
 <!-- Modal -->
-<div class="webdesk_modal webdesk_fade" id="functionsHelpModal" role="dialog">
-  <div class="webdesk_modal-dialog webdesk_modal-lg">
+<div class="modal fade" id="functionsHelpModal" role="dialog">
+  <div class="modal-dialog modal-lg">
 
     <!-- Modal content-->
-    <div class="webdesk_modal-content">
-      <div class="webdesk_modal-header">
+    <div class="modal-content">
+      <div class="modal-header">
         
-        <h4 class="webdesk_modal-title"><i class="fa fa-code"></i> WD Functions</h4>
-        <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
+        <h4 class="modal-title"><i class="fa fa-code"></i> WD Functions</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <div class="webdesk_modal-body">
+      <div class="modal-body">
         <p>This is the list of all public WD Variables & Functions.</p>
         <h3>Variables</h3>
         <p>
@@ -40,8 +40,8 @@
           <b>id="wd_confirm":</b> adds a basic confirm box when element is clicked.<br>
         </p>
       </div>
-      <div class="webdesk_modal-footer webdesk_text-center">
-        <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Close</button>
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
 

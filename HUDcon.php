@@ -10,12 +10,12 @@
 //
 /////////////////////////////////////////////
 // -->
-<div class="webdesk_text-center" style="">
+<div class="text-center" style="">
   <?php
   if(isset($_SESSION['wd_adminView'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-warning webdesk_alert-dismissable">
-      <a href="#" class="webdesk_close" data-dismiss="webdesk_alert" aria-label="webdesk_close">&times;</a>
+    <div class="alert alert-warning alert-dismissable">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
       <strong>Warning:</strong> Viewing as user. <a href="desktop.php?adminView=stop">Click hear to stop.</a>
     </div>
     <?php
@@ -41,7 +41,7 @@
       
       
       ?>
-      <div class="webdesk_alert webdesk_alert-<?php echo $a_type ?> webdesk_position-fixed webdesk_m-3" style="right: 0;z-index: 10000;" role="alert">
+      <div class="alert alert-<?php echo $a_type ?> position-fixed m-3" style="right: 0;z-index: 10000;" role="alert">
         <?php echo test_input($wd_alert) ?>
       </div>
       <?php
@@ -51,28 +51,28 @@
   /*
   if(isset($_GET['wd_as'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-success webdesk_position-fixed" role="alert">
+    <div class="alert alert-success position-fixed" role="alert">
       <?php $wd = test_input($_GET['wd_as']); echo $wd; ?>
     </div>
     <?php
   }
   if(isset($_GET['wd_ai'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-info" role="alert">
+    <div class="alert alert-info" role="alert">
       <?php $wd = test_input($_GET['wd_ai']); echo $wd; ?>
     </div>
     <?php
   }
   if(isset($_GET['wd_aw'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-warning" role="alert">
+    <div class="alert alert-warning" role="alert">
       <?php $wd = test_input($_GET['wd_aw']); echo $wd; ?>
     </div>
     <?php
   }
   if(isset($_GET['wd_ad'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-danger" style="" role="alert">
+    <div class="alert alert-danger" style="" role="alert">
       <?php $wd = test_input($_GET['wd_ad']); echo $wd; ?>
     </div>
     <?php
@@ -80,9 +80,9 @@
   */
   if(isset($_GET['link'])){
     ?>
-    <div class="webdesk_alert webdesk_alert-info">
-      <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="webdesk_close">&times;</a>
-      <strong>Link <?php echo $wd_link->name; ?>:</strong><span> To close the conection to the shared folder open and return to you own files please <a href="desktop.php" class="webdesk_alert-link">click here</a>.</span>
+    <div class="alert alert-info">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong>Link <?php echo $wd_link->name; ?>:</strong><span> To close the conection to the shared folder open and return to you own files please <a href="desktop.php" class="alert-link">click here</a>.</span>
     </div>
     <?php
   }
@@ -111,27 +111,27 @@ else{
   }
   
   ?>
-  <div class="webdesk_container webdesk_p-2 webdesk_mb-5">
-    <h1 class="webdesk_display-2 webdesk_py-4 webdesk_d-none webdesk_d-md-block">Welcome to WebFrame</h1>
-    <h2 class="webdesk_d-md-none webdesk_py-4">Welcome to Webframe</h2>
+  <div class="container p-2 mb-5">
+    <h1 class="display-2 py-4 d-none d-md-block">Welcome to WebFrame</h1>
+    <h2 class="d-md-none py-4">Welcome to Webframe</h2>
     <h5>Version <?php echo (!empty($webframe_version)) ? $webframe_version : "" ?></h5>
-    <p class="webdesk_lead">
+    <p class="lead">
       To start an application just go to the Apps tab and click on the tab of your choice. You will see the application name on this tab. Click it to view.
     </p>
-    <div class="webdesk_row webdesk_text-center webdesk_pt-5">
-      <div class="webdesk_col">
+    <div class="row text-center pt-5">
+      <div class="col">
         <a href="#">
           <i class="fa fa-certificate fa-5x"></i><br /><br />
           License
         </a>
       </div>
-      <div class="webdesk_col webdesk_text-center">
+      <div class="col text-center">
         <a href="#">
           <i class="fa fa-handshake fa-5x"></i><br /><br />
           Terms of Use
         </a>
       </div>
-      <div class="webdesk_col webdesk_text-center">
+      <div class="col text-center">
         <a href="#">
           <i class="fa fa-lock fa-5x"></i><br /><br />
           Privacy Policy

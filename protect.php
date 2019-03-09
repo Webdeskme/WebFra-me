@@ -9,18 +9,23 @@ include("testInput.php");
 include("function.php");
 if(isset($_SESSION["tier"])){
   if($_SESSION["tier"] != "tA"){
+    $wd_test = "no";
+    if($wd_app == 'MyHUD' && test_input($_GET['sec']) == 'app_nav.php'){
+      $wd_test = 'yes';
+    }
+    if($wd_test != 'yes'){
     if(isset($wd_app)){
       
-      if($wd_type == "MyApps")
+      if($wd_type == "MyApps"){
         $wd_app = "myApp_" . $wd_app;
-      
+      }
       $wd_tierDoc = file_get_contents($wd_admin . $_SESSION["tier"] . '.json');
       $wd_tierDoc = json_decode($wd_tierDoc);
       if(isset($wd_tierDoc->$wd_app)){
         if($wd_tierDoc->$wd_app != 'Yes'){
-          //session_destroy();
+          session_destroy();
           header('Location: index.php?test=bad+tier1');
-          //exit();
+          exit();
         }
       }
       else{
@@ -29,6 +34,10 @@ if(isset($_SESSION["tier"])){
         //exit();
       }
     }
+    
+  }
+    
+    
   }
 }
 else{

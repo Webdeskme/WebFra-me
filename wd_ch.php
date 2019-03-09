@@ -67,7 +67,7 @@ function wd_cg($str, $y, $x){
   .wd_cr{
     color: #ff0000;
   }
-  .webdesk_modal{
+  .modal{
     box-shadow: 0 5px 5px rgba(0,0,0,0.25);
     -moz-box-shadow: 0 5px 5px rgba(0,0,0,0.25);
     -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.25);

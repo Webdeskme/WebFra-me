@@ -43,34 +43,34 @@ class wordframe{
     $nav_id = $this->generateRandomNumber(1000000000);
     
     ?>
-    <nav class="webdesk_navbar webdesk_navbar-expand-lg webdesk_navbar-light webdesk_bg-<?php echo $option["color"] ?>">
-      <a class="webdesk_navbar-brand" href="<?php echo $option["brandLink"] ?>"><?php echo $option["brand"] ?></a>
-      <button class="webdesk_navbar-toggler" type="button" data-toggle="webdesk_collapse" data-target="#navbar-<?php echo $nav_id ?>" aria-controls="navbar-<?php echo $nav_id ?>" aria-expanded="false" aria-label="Toggle navigation">
+    <nav class="navbar navbar-expand-lg navbar-light bg-<?php echo $option["color"] ?>">
+      <a class="navbar-brand" href="<?php echo $option["brandLink"] ?>"><?php echo $option["brand"] ?></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-<?php echo $nav_id ?>" aria-controls="navbar-<?php echo $nav_id ?>" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-bars fa-fw fa-lg"></i>
       </button>
     
-      <div class="webdesk_collapse webdesk_navbar-collapse" id="navbar-<?php echo $nav_id ?>">
-        <ul class="webdesk_navbar-nav webdesk_ml-auto">
+      <div class="collapse navbar-collapse" id="navbar-<?php echo $nav_id ?>">
+        <ul class="navbar-nav ml-auto">
           <?php
           foreach($nav as $key => $item){
             ?>
-            <li class="webdesk_nav-item">
-              <a class="webdesk_nav-link" href="<?php echo $item["link"] ?>"><?php echo $item["title"] ?></a>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo $item["link"] ?>"><?php echo $item["title"] ?></a>
             </li>
             <?php
           }
           
           if($option["showLogin"]){
             ?>
-            <li class="webdesk_nav-item">
-              <a class="webdesk_nav-link" href="//<?php echo $_SERVER["HTTP_HOST"] ?>/index.php?page=login.php"><i class="fa fa-sign-in-alt fa-fw"></i> Login</a></a>
+            <li class="nav-item">
+              <a class="nav-link" href="//<?php echo $_SERVER["HTTP_HOST"] ?>/index.php?page=login.php"><i class="fa fa-sign-in-alt fa-fw"></i> Login</a></a>
             </li>
             <?php
           }
           if($option["showRegister"]){
             ?>
-            <li class="webdesk_nav-item">
-              <a class="webdesk_nav-link" href="<?php echo $proot . $register; ?>"><i class="fa fa-sign-in-alt fa-fw"><i class="fa fa-user fa-fw"></i> Sign Up</a></a>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo $proot . $register; ?>"><i class="fa fa-sign-in-alt fa-fw"><i class="fa fa-user fa-fw"></i> Sign Up</a></a>
             </li>
             
             <?php
@@ -216,6 +216,24 @@ if(file_exists("path.php") || file_exists("../../path.php")){
   $wd_admin = $wd_root . '/Admin/';
   $wd_appr = $wd_root . '/App/';
   $wd_appDir = $wd_appr;
+  if($_SESSION["tier"] != "tA"){
+    $wd_tierApps_temp = file_get_contents($wd_admin . $_SESSION["tier"] . '.json');
+    $wd_tierApps_temp = json_decode($wd_tierApps_temp, TRUE);
+    foreach($wd_tierApps_temp as $key => $value){
+      if($key != 'HUD' && $key != 'MHUD' && $key != 'wd_chat' && $value == "Yes"){
+        if (strpos($key, 'myApp_') !== false) {
+          $key = str_replace("myApp_","", $key);
+          $wd_tierApps[$key] = "MyApps";
+        }
+        else{
+          $wd_tierApps[$key] = "Apps";
+        }
+      }
+    }
+  }
+  else{
+    $wd_tierDoc = array("all");
+  }
   if(!empty($_GET["type"]) && !empty($_GET["app"]))
     $wd_appDir .= test_input($_GET["type"])."/".test_input($_GET["app"])."/";
     
@@ -449,23 +467,23 @@ if(file_exists("path.php") || file_exists("../../path.php")){
 
   function wd_confirm($wd_type, $app, $sec, $get, $id, $btn_text, $btn_style = "danger"){
   $link = "desktopSub.php?type=" . $wd_type . "&app=" . $app . "&sec=" . $sec . $get;
-  echo '<button type="button" class="webdesk_btn webdesk_btn-' . $btn_style . '" data-toggle="webdesk_modal" data-target="#' . $wd_type . '-' . $app . '-' . $id . '">' . $btn_text . '</button>
+  echo '<button type="button" class="btn btn-' . $btn_style . '" data-toggle="modal" data-target="#' . $wd_type . '-' . $app . '-' . $id . '">' . $btn_text . '</button>
 
     <!-- Modal -->
-    <div class="webdesk_modal webdesk_fade" id="' . $wd_type . '-' . $app . '-' . $id . '" role="dialog">
-      <div class="webdesk_modal-dialog">
-        <div class="webdesk_modal-content webdesk_shadow-lg">
-          <div class="webdesk_modal-header">
-            <h4 class="webdesk_modal-title">Warning: Are you sure?</h4>
-            <button type="button" class="webdesk_close" data-dismiss="webdesk_modal">&times;</button>
+    <div class="modal fade" id="' . $wd_type . '-' . $app . '-' . $id . '" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content shadow-lg">
+          <div class="modal-header">
+            <h4 class="modal-title">Warning: Are you sure?</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
-          <div class="webdesk_modal-body" style="text-align: center;">
+          <div class="modal-body" style="text-align: center;">
             <p class="">You may inadvertently cause the systematic destruction of the universe and this <b>CANNOT</b> be undone!</b>
-            <!--<button type="button" class="webdesk_btn webdesk_btn-default" data-dismiss="modal">Cancel</button> -->
+            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button> -->
           </div>
-          <div class="webdesk_modal-footer">
-            <a href="' . $link . '" class="webdesk_btn webdesk_btn-danger webdesk_text-light">' . $btn_text . '</a>
-            <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Cancel</button>
+          <div class="modal-footer">
+            <a href="' . $link . '" class="btn btn-danger text-light">' . $btn_text . '</a>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
           </div>
         </div>
       </div>
@@ -546,22 +564,22 @@ if(file_exists("path.php") || file_exists("../../path.php")){
         $obj = file_get_contents("www/Pages/nav.json");
         $obj = json_decode($obj);
       ?>
-  <nav class="webdesk_navbar webdesk_navbar-expand-sm webdesk_m-0 webdesk_navbar-<?php echo ($color == "light") ? "light webdesk_bg-light" : "inverse webdesk_bg-dark"; echo ($loc == 'fixed') ? ' webdesk_navbar-fixed-top': "" ?>">
-    <div class="webdesk_container-fluid">
-      <div class="webdesk_navbar-header">
-        <button type="button" class="webdesk_navbar-toggler" data-toggle="webdesk_collapse" data-target="#<?php echo $nav_id ?>" aria-controls="<?php echo $nav_id ?>" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-sm m-0 navbar-<?php echo ($color == "light") ? "light bg-light" : "inverse bg-dark"; echo ($loc == 'fixed') ? ' navbar-fixed-top': "" ?>">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#<?php echo $nav_id ?>" aria-controls="<?php echo $nav_id ?>" aria-expanded="false" aria-label="Toggle navigation">
           <i class="fa fa-bars fa-fw"></i>
         </button>
         <?php
       if($name != ""){
       ?>
-        <a class="webdesk_navbar-brand webdesk_text-dark" href="//<?php echo $_SERVER["HTTP_HOST"] ?>/index.php?page=index.php"><?php echo $name; ?></a>
+        <a class="navbar-brand text-dark" href="//<?php echo $_SERVER["HTTP_HOST"] ?>/index.php?page=index.php"><?php echo $name; ?></a>
         <?php
       }
       ?>
       </div>
-      <div class="webdesk_collapse webdesk_navbar-collapse" id="<?php echo $nav_id ?>">
-        <ul class="webdesk_navbar-nav webdesk_mr-auto">
+      <div class="collapse navbar-collapse" id="<?php echo $nav_id ?>">
+        <ul class="navbar-nav mr-auto">
           <?php
         $i = 1;
           while($i <= 9){
@@ -575,24 +593,24 @@ if(file_exists("path.php") || file_exists("../../path.php")){
           }
       ?>
           <li<?php if(isset($obj->$page->par)){if($x == 2 && $page == $opage->page || $obj->$page->par == $opage->page){
-      echo ' class="webdesk_dropdown webdesk_active"';
+      echo ' class="dropdown active"';
       }else{
             if($x == 2){
-        echo  ' class="webdesk_dropdown"';
+        echo  ' class="dropdown"';
       }
-            if($page == $opage->page){echo ' class="webdesk_active"';}}}
+            if($page == $opage->page){echo ' class="active"';}}}
             else{
             if($x == 2){
-        echo  ' class="webdesk_dropdown"';
+        echo  ' class="dropdown"';
       }
-            if($page == $opage->page){echo ' class="active"';}} ?>><a<?php if($x == 2){ echo ' class="webdesk_dropdown-toggle" data-toggle="webdesk_dropdown"';} ?> href="<?php if($x == 2){
+            if($page == $opage->page){echo ' class="active"';}} ?>><a<?php if($x == 2){ echo ' class="dropdown-toggle" data-toggle="dropdown"';} ?> href="<?php if($x == 2){
         echo '#';
       }
-            else{ echo 'index.php?page=' . $opage->page;} ?>"><?php echo $opage->title; if($x == 2){ echo '<span class="webdesk_caret"></span>';} ?></a>
+            else{ echo 'index.php?page=' . $opage->page;} ?>"><?php echo $opage->title; if($x == 2){ echo '<span class="caret"></span>';} ?></a>
   <?php
             if($x == 2){
              ?>
-          <ul class="webdesk_dropdown-menu">
+          <ul class="dropdown-menu">
             <li><a href="<?php echo 'index.php?page=' . $opage->page; ?>"><?php echo $opage->title; ?></a></li>
             <?php
               $z = 1;
@@ -619,16 +637,16 @@ if(file_exists("path.php") || file_exists("../../path.php")){
           }
       ?>
         </ul>
-        <ul class="webdesk_nav webdesk_navbar-nav webdesk_navbar-right">
+        <ul class="nav navbar-nav navbar-right">
           <?php
       if($register != ""){
       ?>
-          <li class="<?php echo ($register == $page) ? 'webdesk_active' : ''; ?>"><a href="<?php echo $proot . $register; ?>" class="webdesk_text-dark"><i class="fa fa-user fa-fw"></i> Sign Up</a></li>
+          <li class="<?php echo ($register == $page) ? 'active' : ''; ?>"><a href="<?php echo $proot . $register; ?>" class="text-dark"><i class="fa fa-user fa-fw"></i> Sign Up</a></li>
           <?php
       }
       if($login == "yes"){
       ?>
-          <li><a href="index.php?page=login.php" class="webdesk_text-dark"><i class="fa fa-sign-in-alt fa-fw"></i> Login</a></li>
+          <li><a href="index.php?page=login.php" class="text-dark"><i class="fa fa-sign-in-alt fa-fw"></i> Login</a></li>
           <?php
     }
       ?>

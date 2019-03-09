@@ -1,3 +1,14 @@
+<!-- 
+////////////////////////////////////////////
+//
+// ALERTS
+//
+// AUTHOR: ADAM TELFORD
+// 
+// THIS FILE DISPLAYS ANY ALERTS.
+//
+/////////////////////////////////////////////
+// -->
 <style>
 .mce-tinymce, .mce-container-body, #code_ifr {
     min-width: 100% !important;
@@ -29,16 +40,16 @@ tinymce.init({
 <!--      </div>-->
 <!--    </form>-->
 <!--  </div>-->
-<button type="button" class="webdesk_btn webdesk_text-white webdesk_btn-secondary" data-toggle="webdesk_collapse" data-target="#composeMessage" role="button" aria-expanded="false" aria-controls="composeMessage"><i class="fa fa-edit fa-fw"></i> Compose</button>
-<div class="webdesk_collapse webdesk_mt-3" id="composeMessage">
+<button type="button" class="btn text-white btn-secondary" data-toggle="collapse" data-target="#composeMessage" role="button" aria-expanded="false" aria-controls="composeMessage"><i class="fa fa-edit fa-fw"></i> Compose</button>
+<div class="collapse mt-3" id="composeMessage">
   <div class="well">
     <form method="post" action="notfySub.php" id="wd_alertForm">
-      <div class="webdesk_form-group">
-        <div class="webdesk_input-group">
-          <div class="webdesk_input-group-prepend">
-            <span class="webdesk_input-group-text"><i class="fa fa-user"></i></span>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-user"></i></span>
           </div>
-          <input class="webdesk_form-control" id="user" name="user" type="text" list="wd_users" placeholder="To: Username" required>
+          <input class="form-control" id="user" name="user" type="text" list="wd_users" placeholder="To: Username" required>
           <datalist id="wd_users">
           <?php
           $wd_users = scandir($wd_root . '/User/');
@@ -53,21 +64,21 @@ tinymce.init({
           </datalist>
         </div>
       </div>  
-      <div class="webdesk_form-group">
-        <div class="webdesk_input-group">
-          <div class="webdesk_input-group-prepend">
-            <span class="webdesk_input-group-text"><i class="fa fa-edit"></i></span>
+      <div class="form-group">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-edit"></i></span>
           </div>
-          <input class="webdesk_form-control" id="sub" name="sub" type="text" placeholder="Subject: " required>
+          <input class="form-control" id="sub" name="sub" type="text" placeholder="Subject: " required>
         </div>
       </div>
-      <div class="webdesk_form-group">
+      <div class="form-group">
         
         
-        <textarea type="text" id="wd_dashAlert" name="post" placeholder="Send alert." style="width: 80%;" class="webdesk_form-control"></textarea>
+        <textarea type="text" id="wd_dashAlert" name="post" placeholder="Send alert." style="width: 80%;" class="form-control"></textarea>
         
       </div>
-      <button type="submit" class="webdesk_btn webdesk_btn-success webdesk_mr-3"><i class="fa fa-envelope fa-fw"></i> Send</button>
+      <button type="submit" class="btn btn-success mr-3"><i class="fa fa-envelope fa-fw"></i> Send</button>
       
     </form>
   </div>
@@ -90,7 +101,7 @@ tinymce.init({
       $("#wd_alertList").load("notfyList.php"); 
       $("form#wd_alertForm :input[type='submit']").html('<i class="fa fa-envelope fa-fw"></i> Send').prop("disabled",false);
       if($("form#wd_alertForm .message-sent").length == 0)
-        $("form#wd_alertForm :input[type='submit']").after('<span class="message-sent webdesk_text-success">Message sent!</span>')
+        $("form#wd_alertForm :input[type='submit']").after('<span class="message-sent text-success">Message sent!</span>')
         $("form#wd_alertForm").reset();
     });
   });

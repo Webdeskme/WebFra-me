@@ -69,21 +69,21 @@ if(isset($_GET["app"])){
     <meta name="copyright" content="&copy; <?php echo date("Y") . ' ' . $wd_Title; ?>">
     <link rel="apple-touch-icon" href="favicon.ico">
     <link rel="apple-touch-startup-image" href="favicon.ico">
-<link rel="stylesheet" href="Plugins/wd-bootstrap/css/webdesk_bootstrap.min.css">
+<link rel="stylesheet" href="Plugins/bootstrap-4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="Plugins/jquery-ui/jquery-ui.min.css">
 <link rel="stylesheet" type="text/css" href="Plugins/context.standalone.css">
 <link href="Plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet"/>
 <link href="Plugins/fullcalendar/fullcalendar.print.min.css" rel="stylesheet" media="print" />
 <link rel="stylesheet" type="text/css" href="Theme/default.php">
 <script src="Plugins/jquery.min.js"></script>
-<script src="Plugins/wd-bootstrap/js/webdesk_bootstrap.js"></script>
+<script src="Plugins/bootstrap-4.3.1/js/bootstrap.min.js"></script>
 <script src="Plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="Plugins/tinymce/js/tinymce/tinymce.min.js"></script>
 <script src="Plugins/fullcalendar/lib/moment.min.js"></script>
 <script src="Plugins/fullcalendar/fullcalendar.min.js"></script>
 <script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>
 <style>
-  body:has(.webdesk_sticky-top),body:has(.webdesk_fixed-top),body:has(.sticky-top),body:has(.fixed-top){
+  body:has(.sticky-top),body:has(.fixed-top),body:has(.sticky-top),body:has(.fixed-top){
     padding-top: 75px;
   }
 </style>
@@ -114,32 +114,32 @@ if(isset($_GET["app"])){
   <div>
     <?php
   if(isset($_GET['wd_as'])){ ?>
-<div class="webdesk_alert webdesk_alert-success webdesk_alert-dismissable webdesk_fade webdesk_in">
-    <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
+<div class="alert alert-success alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Success:</strong> <?php $wd = test_input($_GET['wd_as']); echo $wd; ?>
   </div>
 <?php } if(isset($_GET['wd_ai'])){ ?>
-<div class="webdesk_alert webdesk_alert-info webdesk_alert-dismissable webdesk_fade webdesk_in">
-    <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
+<div class="alert alert-info alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Info:</strong> <?php $wd = test_input($_GET['wd_ai']); echo $wd; ?>
   </div>
 <?php } if(isset($_GET['wd_aw'])){ ?>
- <div class="webdesk_alert webdesk_alert-warning webdesk_alert-dismissable webdesk_fade webdesk_in">
-    <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
+ <div class="alert alert-warning alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Warning:</strong> <?php $wd = test_input($_GET['wd_aw']); echo $wd; ?>
   </div>
 <?php } if(isset($_GET['wd_ad'])){ ?>
-<div class="webdesk_alert webdesk_alert-danger webdesk_alert-dismissable webdesk_fade webdesk_in">
-    <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
+<div class="alert alert-danger alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
     <strong>Danger:</strong> <?php $wd = test_input($_GET['wd_ad']); echo $wd; ?>
   </div>
     <?php 
     }
     if(isset($_GET['link'])){ 
       ?>
-<div class="webdesk_alert webdesk_alert-info webdesk_alert-dismissable webdesk_fade webdesk_in">
-    <a href="#" class="close" data-dismiss="webdesk_alert" aria-label="close">&times;</a>
-    <strong>Link <?php echo $wd_link->name; ?>:</strong><span> To close the conection to the shared folder open and return to you own files please <a href="desktop.php" class="webdesk_alert-link">click here</a>.</span>
+<div class="alert alert-info alert-dismissable fade in">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Link <?php echo $wd_link->name; ?>:</strong><span> To close the conection to the shared folder open and return to you own files please <a href="desktop.php" class="alert-link">click here</a>.</span>
   </div>
   <?php
 }
