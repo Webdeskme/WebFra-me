@@ -18,7 +18,7 @@
   <link rel="manifest" href="manifest.php">
   <link rel="stylesheet" href="Plugins/bootstrap-4.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="Plugins/jquery-ui-custom/jquery-ui.min.css">
-  <link rel="stylesheet" href="Plugins/fontawesome-free-5.7.2/css/all.min.css">
+  <link rel="stylesheet" href="Plugins/fontawesome-free-5.8.1/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="Plugins/context.standalone.css">
   <link href="Plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet"/>
   <link href="Plugins/fullcalendar/fullcalendar.print.min.css" rel="stylesheet" media="print"/>

@@ -12,13 +12,6 @@
 // -->
 <nav class="mb-3 navbar navbar-expand-sm navbar-light bg-light">
   <a class="navbar-brand" href="#">Apps</a>
-  <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#defaultHUD_appsMoreDiv" aria-controls="defaultHUD_appsMoreDiv" aria-expanded="false" aria-label="Toggle navigation">-->
-  <!--  <span class="navbar-toggler-icon"></span>-->
-  <!--</button>-->
-
-  <!--<div class="collapse navbar-collapse" id="defaultHUD_appsMoreDiv">-->
-    
-  <!--</div>-->
 </nav>
 <div class="container-fluid">
     <?php

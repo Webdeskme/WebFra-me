@@ -242,22 +242,23 @@
             <div style="background-color: #D98911;" class="pl-3 pt-2">
                 <div class="btn-group">
                     <a href="<?php echo (!empty($_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : ""; ?>" onclick="window.history.go(-1);return false;" data-toggle="tooltip" title="Back" id="wd_back" class="btn btn-primary btn-sm"><span class="fa fa-arrow-left text-white"></span></a>
-                    <a href="<?php echo $_SERVER['REQUEST_URI']; ?>" data-toggle="tooltip" title="Refresh" id="wd_refresh" class="btn btn-primary btn-sm"><i class="fa fa-sync text-white"></i></a>
+                    <!--<a href="<?php echo $_SERVER['REQUEST_URI']; ?>" data-toggle="tooltip" title="Refresh" id="wd_refresh" class="btn btn-primary btn-sm"><i class="fa fa-sync text-white"></i></a>-->
+                    <a href="desktop.php" class="btn btn-primary  btn-sm" data-toggle="tooltip" title="Home"><span class="fa fa-home text-white"></span></a>
                     <?php
                     if(isset($_SESSION["wd_fullscreen"]) && $_SESSION["wd_fullscreen"] == 'on'){
                     	?>
-                    	<a href="<?php if (empty($_GET)) { echo $_SERVER['REQUEST_URI'] . '?wd_fullS=off';} else{ echo $_SERVER['REQUEST_URI'] . '&wd_fullS=off';} ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Minimize"><i class="fa fa-compress text-white"></i></a>
+                    	<a href="<?php if (empty($_GET)) { echo $_SERVER['REQUEST_URI'] . '?wd_fullS=off';} else{ echo $_SERVER['REQUEST_URI'] . '&wd_fullS=off';} ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Minimize"><i class="fa fa-compress-arrows-alt text-white"></i></a>
                     	<?php
                     }
                     else{
                         ?>
-                        <a href="<?php echo preg_replace("/wd_fullS\=(on|off)/i", "", $_SERVER["REQUEST_URI"]) . ((empty($_GET)) ? "?" : "&") . "wd_fullS=on"; ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Maximize"><span class="fa fa-expand  text-white"></span></a>
+                        <a href="<?php echo preg_replace("/wd_fullS\=(on|off)/i", "", $_SERVER["REQUEST_URI"]) . ((empty($_GET)) ? "?" : "&") . "wd_fullS=on"; ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Maximize"><span class="fa fa-expand-arrows-alt  text-white"></span></a>
                         <?php
                     }
                     ?>
-                    <a href="<?php $get = explode('?', $_SERVER['REQUEST_URI']); if(isset($get[1])){ echo 'desktop_full.php?' . $get[1];} else{ echo 'desktop_full.php'; } ?>" class="btn btn-primary  btn-sm" data-toggle="tooltip" title="Fullscreen"><span class="fa fa-arrows-alt text-white"></span></a>
-                    <a href="desktop.php" class="btn btn-primary  btn-sm" data-toggle="tooltip" title="Home"><span class="fa fa-home text-white"></span></a>
-                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#wd_app_help"><span title="Help Doc" data-toggle="tooltip"><i class="fa fa-graduation-cap text-white"></i></span></button>
+                    <a href="<?php $get = explode('?', $_SERVER['REQUEST_URI']); if(isset($get[1])){ echo 'desktop_full.php?' . $get[1];} else{ echo 'desktop_full.php'; } ?>" class="btn btn-primary  btn-sm" data-toggle="tooltip" title="Fullscreen"><span class="fa fa-window-maximize text-white"></span></a>
+                    
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#wd_app_help"><span title="Help Doc" data-toggle="tooltip"><i class="fa fa-question-circle text-white"></i></span></button>
                     <?php
                     if(isset($_GET["app"])){
                         

@@ -12,7 +12,7 @@ body{
     padding: 0px;
     margin: 0px;
 }
-div.webdesk_tab{
+div.tab{
     background-color: <?php $pcolor = (file_exists('../../../webdesk/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')) ? file_get_contents('../../../webdesk/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt') : '#FFFFFF'; echo $pcolor; ?>;
 <?php 
 if(!isset($_SESSION["wd_fullscreen"]) || $_SESSION["wd_fullscreen"] != 'on'){ 
