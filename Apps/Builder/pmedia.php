@@ -4,29 +4,29 @@ include_once("config.inc.php");
 include("appHeader.php");
 ?>
 
-<div id="new" class="webdesk_collapse">
+<div id="new" class="collapse">
   <form action="<?php wd_urlSub($wd_type, $wd_app, 'upload.php', ''); ?>" method="post" enctype="multipart/form-data">
     Select file to upload:
     <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" class="webdesk_btn webdesk_btn-success" value="Upload" name="submit">
+    <input type="submit" class="btn btn-success" value="Upload" name="submit">
   </form>
 </div>
 <br>
-<div class="webdesk_container">
-  <div class="webdesk_dropdown">
-    <button class="webdesk_btn webdesk_btn-link webdesk_dropdown-toggle" type="button" id="fileSelectMenuButton" data-toggle="webdesk_dropdown" aria-haspopup="true" aria-expanded="false">
+<div class="container">
+  <div class="dropdown">
+    <button class="btn btn-link dropdown-toggle" type="button" id="fileSelectMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Media
     </button>
-    <div class="webdesk_dropdown-menu" aria-labelledby="fileSelectMenuButton">
+    <div class="dropdown-menu" aria-labelledby="fileSelectMenuButton">
       
-      <button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newMediaUploadModal"><span class="fa fa-upload fa-fw"></span> Upload</button>
+      <button class="dropdown-item" data-toggle="modal" data-target="#newMediaUploadModal"><span class="fa fa-upload fa-fw"></span> Upload</button>
       
     </div>
   </div>
 
   <!--<p>Copy and paste this url for the media directly into your html element.</p>-->
   
-  <table class="webdesk_table webdesk_table-hover" width="100%">
+  <table class="table table-hover" width="100%">
     <thead>
       <tr>
         <th>
@@ -59,7 +59,7 @@ include("appHeader.php");
         <td>
           <small><?php echo $file_size ?></small>
         </td>
-        <td class="webdesk_text-right">
+        <td class="text-right">
           <?php wd_confirm($wd_type, $wd_app, 'mediaDelete.php', '&media=' . $entry, $x, '<i class="fa fa-trash-alt fa-fw"></i>'); ?>
         </td>
       </tr>
@@ -69,7 +69,7 @@ include("appHeader.php");
     if(count($contents) == 0){
       ?>
       <tr>
-        <td colspan="100" class="webdesk_text-center webdesk_text-muted webdesk_py-4">
+        <td colspan="100" class="text-center text-muted py-4">
           No files
         </td>
       </tr>

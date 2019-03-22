@@ -22,27 +22,27 @@ else
   $count_page_views = 0;
 ?>
 
-<div class="webdesk_container webdesk_my-5">
+<div class="container my-5">
   <?php
     $month = file_get_contents($wd_root . '/Admin/month.txt');
   ?>
-  <div class="webdesk_float-right">
-    <a href="<?php wd_url($wd_type, $wd_app, "log.php", ''); ?>" class="webdesk_text-primary">View raw data</a>
+  <div class="float-right">
+    <a href="<?php wd_url($wd_type, $wd_app, "log.php", ''); ?>" class="text-primary">View raw data</a>
   </div>
   <h2><?php echo $month; ?>'s Website Stats</h2>
-  <div class="webdesk_row webdesk_my-5">
-    <div class="webdesk_col-md-3 webdesk_col-sm-4 webdesk_text-center">
-      <div class="webdesk_card webdesk_p-3">
-        <h1 class="webdesk_display-5"><?php echo $count_page_views ?></h1>
+  <div class="row my-5">
+    <div class="col-md-3 col-sm-4 text-center">
+      <div class="card p-3">
+        <h1 class="display-5"><?php echo $count_page_views ?></h1>
         <small>PAGE VIEWS</small>
       </div>
     </div>
-    <div class="webdesk_col-md-3 webdesk_col-sm-4 webdesk_text-center">
-      <div class="webdesk_card webdesk_p-3">
+    <div class="col-md-3 col-sm-4 text-center">
+      <div class="card p-3">
         
-        <h1 class="webdesk_display-5"><?php echo $amount_full ?><small style="font-size: .8rem;"><?php echo $si_prefix[$class] ?></small></h1>
-        <div class="webdesk_progress webdesk_rounded-0">
-          <div class="webdesk_progress-bar" role="progressbar" aria-valuenow="<?php echo $pct_full ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $pct_full ?>%;"></div>
+        <h1 class="display-5"><?php echo $amount_full ?><small style="font-size: .8rem;"><?php echo $si_prefix[$class] ?></small></h1>
+        <div class="progress rounded-0">
+          <div class="progress-bar" role="progressbar" aria-valuenow="<?php echo $pct_full ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $pct_full ?>%;"></div>
         </div>
         <small>HARD DISK</small>
       </div>
@@ -101,10 +101,10 @@ else
       }
     }
     ?>
-  <div class="webdesk_card webdesk_bg-light">
-    <div class="webdesk_card-header">OS</div>
-    <div class="webdesk_card-body">
-    	<table class="webdesk_table webdesk_-striped">
+  <div class="card bg-light">
+    <div class="card-header">OS</div>
+    <div class="card-body">
+    	<table class="table -striped">
       	<thead>
         		<tr>
           		<th>OS</th>
@@ -130,10 +130,10 @@ else
     </div>
   </div>
   <br><br>
-  <div class="webdesk_card webdesk_bg-light">
-    <div class="webdesk_card-header">Browser</div>
-    <div class="webdesk_card-body">
-    	<table class="webdesk_table webdesk_-striped">
+  <div class="card bg-light">
+    <div class="card-header">Browser</div>
+    <div class="card-body">
+    	<table class="table -striped">
       	<thead>
         		<tr>
           		<th>Browser</th>
@@ -159,10 +159,10 @@ else
     </div>
   </div>
   <br><br>
-  <div class="webdesk_card webdesk_bg-light">
-    <div class="webdesk_card-header">Mobile</div>
-    <div class="webdesk_card-body">
-    	<table class="webdesk_table webdesk_-striped">
+  <div class="card bg-light">
+    <div class="card-header">Mobile</div>
+    <div class="card-body">
+    	<table class="table -striped">
       	<thead>
         		<tr>
           		<th>Mobile</th>
@@ -188,10 +188,10 @@ else
     </div>
   </div>
   <br><br>
-  <div class="webdesk_card webdesk_bg-light">
-    <div class="webdesk_card-header">Cookies</div>
-    <div class="webdesk_card-body">
-    	<table class="webdesk_table webdesk_-striped">
+  <div class="card bg-light">
+    <div class="card-header">Cookies</div>
+    <div class="card-body">
+    	<table class="table -striped">
       	<thead>
         		<tr>
           		<th>Cookies</th>
@@ -217,10 +217,10 @@ else
     </div>
   </div>
   <br><br>
-  <div class="webdesk_card webdesk_bg-light">
-    <div class="webdesk_card-header">Screen</div>
-    <div class="webdesk_card-body">
-    	<table class="webdesk_table webdesk_-striped">
+  <div class="card bg-light">
+    <div class="card-header">Screen</div>
+    <div class="card-body">
+    	<table class="table -striped">
       	<thead>
         		<tr>
           		<th>Screen</th>
@@ -246,10 +246,10 @@ else
     </div>
   </div>
   <br><br>
-  <div class="webdesk_card webdesk_bg-light">
-    <div class="webdesk_card-header">Page</div>
-    <div class="webdesk_card-body">
-    	<table class="webdesk_table webdesk_-striped">
+  <div class="card bg-light">
+    <div class="card-header">Page</div>
+    <div class="card-body">
+    	<table class="table -striped">
       	<thead>
         		<tr>
           		<th>Page</th>
@@ -277,10 +277,10 @@ else
     </div>
   </div>
   <br><br>
-  <div class="webdesk_card webdesk_bg-light">
-    <div class="webdesk_card-header">IP</div>
-    <div class="webdesk_card-body">
-    	<table class="webdesk_table webdesk_-striped">
+  <div class="card bg-light">
+    <div class="card-header">IP</div>
+    <div class="card-body">
+    	<table class="table -striped">
       	<thead>
         		<tr>
           		<th>IP</th>

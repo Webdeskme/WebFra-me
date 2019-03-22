@@ -19,7 +19,7 @@ if(isset($_POST['nameP'])){
 }
 ?>
 
-<div id="NewP" class="webdesk_collapse">
+<div id="NewP" class="collapse">
   <form method="post" action="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>">
     <label for="nameP">New Page Name: </label>
     <input type="text" name="nameP" for="nameP" class="form-control" placeholder="Enter the name of your new page." title="Enter the name of your new page.">
@@ -29,21 +29,21 @@ if(isset($_POST['nameP'])){
 </div>
 <br>
 
-<div class="webdesk_container">
+<div class="container">
   
-  <div class="webdesk_dropdown">
-    <button class="webdesk_btn webdesk_btn-link webdesk_dropdown-toggle" type="button" id="fileSelectMenuButton" data-toggle="webdesk_dropdown" aria-haspopup="true" aria-expanded="false">
+  <div class="dropdown">
+    <button class="btn btn-link dropdown-toggle" type="button" id="fileSelectMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Pages
     </button>
-    <div class="webdesk_dropdown-menu" aria-labelledby="fileSelectMenuButton">
+    <div class="dropdown-menu" aria-labelledby="fileSelectMenuButton">
       
-      <button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newPageModal"><i class="fa fa-plus fa-fw"></i> New Page</button>
-      <button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newMediaUploadModal"><i class="fa fa-upload fa-fw"></i> Upload media</button>
+      <button class="dropdown-item" data-toggle="modal" data-target="#newPageModal"><i class="fa fa-plus fa-fw"></i> New Page</button>
+      <button class="dropdown-item" data-toggle="modal" data-target="#newMediaUploadModal"><i class="fa fa-upload fa-fw"></i> Upload media</button>
       
     </div>
   </div>
   
-  <table class="webdesk_table webdesk_table-hover" width="100%">
+  <table class="table table-hover" width="100%">
     <thead>
       <tr>
         <th>
@@ -82,7 +82,7 @@ if(isset($_POST['nameP'])){
     if(count($contents) == 0){
       ?>
       <tr>
-        <td colspan="100" class="webdesk_text-center webdesk_text-muted webdesk_py-4">
+        <td colspan="100" class="text-center text-muted py-4">
           No files
         </td>
       </tr>

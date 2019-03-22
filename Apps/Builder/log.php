@@ -3,7 +3,7 @@ include_once("config.inc.php");
 include("appHeader.php");
 ?>
 
-<div class="webdesk_container webdesk_my-5">
+<div class="container my-5">
   <h2>Monthly Log</h2>
   <?php
   if(file_exists($wd_admin . 'fstat.txt')){

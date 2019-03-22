@@ -9,22 +9,22 @@ if(isset($wd_POST['con'])){
 ?>
 <form method="post" action="<?php wd_url($wd_type, $wd_app, 'pcss.php', ''); ?>" style="width: 100%; height: 100%;">
   
-  <div class="webdesk_row webdesk_bg-light">
-    <div class="webdesk_col py-3 px-5">
+  <div class="row bg-light">
+    <div class="col py-3 px-5">
       <h3>Site CSS</h3>
     </div>
   </div>
-  <div class="webdesk_row webdesk_no-gutters" style="height: 100%;">
-    <div class="webdesk_col-md-9" style="height: 100%;">
+  <div class="row no-gutters" style="height: 100%;">
+    <div class="col-md-9" style="height: 100%;">
       
-      <textarea name="con" id="con" for="con" class="webdesk_form-control" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:100%; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"  autofocus><?php
+      <textarea name="con" id="con" for="con" class="form-control" placeholder="Enter your content." title="Enter your content." style="width: 100%; height:100%; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"  autofocus><?php
       if(file_exists($wd_www . "style.css")){
         echo htmlspecialchars(file_get_contents($wd_www . "style.css"));}
       ?></textarea>
     </div>
-    <div class="webdesk_col-md-3 webdesk_bg-light">
-      <div class="webdesk_bg-light webdesk_py-3 webdesk_px-4 webdesk_sticky-top">
-        <button type="submit" class="webdesk_btn webdesk_btn-primary webdesk_btn-block"><i class="fa fa-save fa-fw"></i> Update</button>
+    <div class="col-md-3 bg-light">
+      <div class="bg-light py-3 px-4 sticky-top">
+        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-save fa-fw"></i> Update</button>
       </div>
     </div>
   </div>

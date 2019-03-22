@@ -2,10 +2,10 @@
 include_once("config.inc.php");
 include("appHeader.php");
 ?>
-<div class="webdesk_container webdesk_my-5">
-  <div class="webdesk_card">
-    <div class="webdesk_card-header"><b>Choose an Installed Theme</b></div>
-    <div class="webdesk_card-body">
+<div class="container my-5">
+  <div class="card">
+    <div class="card-header"><b>Choose an Installed Theme</b></div>
+    <div class="card-body">
       <?php
       $dir = scandir("www/Themes/");
       foreach($dir as $theme){
@@ -14,10 +14,10 @@ include("appHeader.php");
           <span <?php if(file_exists("www/dtheme.txt")){
             $dtheme = test_input(file_get_contents("www/dtheme.txt"));
             if($theme == $dtheme){
-              echo 'style="background-color: #99ff99;" data-toggle="webdesk_popitover" data-content="This theme is currently set to active."';
+              echo 'style="background-color: #99ff99;" data-toggle="popitover" data-content="This theme is currently set to active."';
             }
           } ?>>
-          <a class="webdesk_btn webdesk_btn-primary webdesk_text-white" href="<?php wd_urlSub($wd_type, $wd_app, 'pthemeSub.php', '&theme=' . $theme); ?>" data-toggle="webdesk_tooltip" title="<?php if(file_exists("www/Themes/" . $theme . "/tell.txt")){
+          <a class="btn btn-primary text-white" href="<?php wd_urlSub($wd_type, $wd_app, 'pthemeSub.php', '&theme=' . $theme); ?>" data-toggle="tooltip" title="<?php if(file_exists("www/Themes/" . $theme . "/tell.txt")){
             echo test_input(file_get_contents("www/Themes/" . $theme . "/tell.txt"));
           }
          else{

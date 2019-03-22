@@ -56,8 +56,8 @@ $page_title = (isset($navigation->$page) && isset($navigation->$page->title)) ? 
   
 ?>
 <form method="post" action="<?php wd_url($wd_type, $wd_app, 'page.php', '&page=' . $page); ?>">
-  <div class="webdesk_row webdesk_no-gutters">
-    <div class="webdesk_col-md-9">
+  <div class="row no-gutters">
+    <div class="col-md-9">
       <textarea name="con" id="con2" placeholder="Enter your content" title="Enter your content" style="width: 100%; height:100%; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"><?php
   echo (isset($_GET['page']) && file_exists($wd_www . $page)) ? htmlspecialchars(file_get_contents($wd_www . $page)) : ""; ?></textarea>
   
@@ -93,15 +93,15 @@ $page_title = (isset($navigation->$page) && isset($navigation->$page->title)) ? 
       </script>
   
     </div>
-    <div class="webdesk_col-md-3 webdesk_bg-light">
-      <div class="webdesk_bg-light webdesk_py-3 webdesk_px-4 webdesk_sticky-top">
-        <div class="webdesk_form-group">
+    <div class="col-md-3 bg-light">
+      <div class="bg-light py-3 px-4 sticky-top">
+        <div class="form-group">
           <label for="pageTitle">Page Title</label>
-          <input id="pageTitle" name="title" class="webdesk_rounded-0 webdesk_form-control" value="<?php echo $page_title ?>" placeholder="Page title" required>
+          <input id="pageTitle" name="title" class="rounded-0 form-control" value="<?php echo $page_title ?>" placeholder="Page title" required>
         </div>
-        <div class="webdesk_form-group">
+        <div class="form-group">
           <label for="parent">Parent</label>
-          <select id="parent" name="par" class="webdesk_custom-select">
+          <select id="parent" name="par" class="custom-select">
             <option value="h" <?php echo (isset($navigation->$page) && isset($navigation->$page->par) && $navigation->$page->par == "h") ? "selected" : ""; ?>>Hide Page</option>
             <option value="np" <?php echo (isset($navigation->$page->par) && $navigation->$page->par == "np") ? "selected" : ""; ?>>No Parent</option>
             <?php
@@ -117,9 +117,9 @@ $page_title = (isset($navigation->$page) && isset($navigation->$page->title)) ? 
             ?>
           </select>
         </div>
-        <div class="webdesk_form-group">
+        <div class="form-group">
           <label for="priority">Priority</label>
-          <select id="priority" name="pr" class="webdesk_custom-select">
+          <select id="priority" name="pr" class="custom-select">
             <?php
             $i = 9;
             while($i >= 1){
@@ -131,11 +131,11 @@ $page_title = (isset($navigation->$page) && isset($navigation->$page->title)) ? 
               ?>
           </select>
         </div>
-        <button type="submit" class="webdesk_shadow-sm webdesk_mt-4 webdesk_btn webdesk_btn-primary webdesk_btn-block" name="sp"><i class="fa fa-save fa-fw"></i> Update</button> 
-        <a href="<?php wd_www($_GET["page"],"&wd_dev=on") ?>" target="_blank" type="submit" class="webdesk_shadow-sm webdesk_btn webdesk_btn-secondary webdesk_btn-block" name="sp"><i class="fa fa-eye fa-fw"></i> Preview</a> 
+        <button type="submit" class="shadow-sm mt-4 btn btn-primary btn-block" name="sp"><i class="fa fa-save fa-fw"></i> Update</button> 
+        <a href="<?php wd_www($_GET["page"],"&wd_dev=on") ?>" target="_blank" type="submit" class="shadow-sm btn btn-secondary btn-block" name="sp"><i class="fa fa-eye fa-fw"></i> Preview</a> 
         
         <br />
-        <?php wd_confirm($wd_type, $wd_app, 'pageSubDelete.php', '&page=' . $page, '1101', '<i class="fa fa-trash-alt fa-fw"></i> Remove Page','danger webdesk_btn-block'); ?>
+        <?php wd_confirm($wd_type, $wd_app, 'pageSubDelete.php', '&page=' . $page, '1101', '<i class="fa fa-trash-alt fa-fw"></i> Remove Page','danger btn-block'); ?>
         <!--<input type="submit" class="btn btn-warning" name="sp" value="Save/Publish">-->
       </div>
     </div>
@@ -145,12 +145,12 @@ $page_title = (isset($navigation->$page) && isset($navigation->$page->title)) ? 
 <?php
 /*
 <form method="post" action="<?php wd_url($wd_type, $wd_app, 'page.php', '&page=' . $page); ?>" style="width: 90%; height: 70%;">
-  <div class="webdesk_form-group">
-    <div class="webdesk_input-group">
-      <div class="webdesk_input-group-prepend">
-        <span class="webdesk_input-group-text"><label class="webdesk_m-0" for="pageTitle">Page Title</label></span>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><label class="m-0" for="pageTitle">Page Title</label></span>
       </div>
-      <input id="pageTitle" name="title" class="webdesk_form-control" value="<?php
+      <input id="pageTitle" name="title" class="form-control" value="<?php
       if(file_exists($wd_www . "nav.json")){
         $obj = file_get_contents($wd_www . "nav.json");
         $obj = json_decode($obj);
@@ -163,9 +163,9 @@ $page_title = (isset($navigation->$page) && isset($navigation->$page->title)) ? 
   <label for="pageContent">Page Content: </label>
   <textarea name="con" id="pageContent2" placeholder="Enter your content" title="Enter your content" style="width: 100%; height:100%; background-color: #000000; color: #ffffff; font-weight: bold; font-size: 1.25em;"><?php
 echo (isset($_GET['page']) && file_exists($wd_www . $page)) ? htmlspecialchars(file_get_contents($wd_www . $page)) : ""; ?></textarea>
-  <div class="webdesk_form-group">
+  <div class="form-group">
     <label for="parent">Parent</label>
-    <select id="parent" name="par" class="webdesk_custom-select">
+    <select id="parent" name="par" class="custom-select">
       <option value="h" <?php echo (isset($obj->$page->par) && $obj->$page->par == "h") ? "selected" : ""; ?>>Hide Page</option>
       <option value="np" <?php echo (isset($obj->$page->par) && $obj->$page->par == "np") ? "selected" : ""; ?>>No Parent</option>
       <?php

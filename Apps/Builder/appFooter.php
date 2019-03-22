@@ -1,49 +1,49 @@
-<div class="webdesk_modal webdesk_fade" id="newPageModal" tabindex="-1" role="dialog" aria-labelledby="newPageModalLabel" aria-hidden="true">
-  <div class="webdesk_modal-dialog" role="document">
-    <div class="webdesk_modal-content webdesk_shadow">
-      <div class="webdesk_modal-header">
-        <h5 class="mwebdesk_odal-title" id="newPageModalLabel">Create a new page</h5>
-        <button type="button" class="webdesk_close" data-dismiss="webdesk_modal" aria-label="Close">
+<div class="modal fade" id="newPageModal" tabindex="-1" role="dialog" aria-labelledby="newPageModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content shadow">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newPageModalLabel">Create a new page</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <form method="post" action="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>">
-	      <div class="webdesk_modal-body">
+	      <div class="modal-body">
 	        
 			    <label for="nameP">New page name: </label>
-			    <input type="text" name="nameP" for="nameP" class="webdesk_form-control" placeholder="new_page.php" title="">
+			    <input type="text" name="nameP" for="nameP" class="form-control" placeholder="new_page.php" title="">
 			    <!--<input type="submit" class="btn btn-success" value="Start">-->
 				  
 	      </div>
-	      <div class="webdesk_modal-footer">
-	        <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Cancel</button>
-	        <button type="submit" class="webdesk_btn webdesk_btn-primary">Create page</button>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+	        <button type="submit" class="btn btn-primary">Create page</button>
 	      </div>
 	    </form>
     </div>
   </div>
 </div>
-<div class="webdesk_modal webdesk_fade" id="newMediaUploadModal" tabindex="-1" role="dialog" aria-labelledby="newMediaUploadModalLabel" aria-hidden="true">
-  <div class="webdesk_modal-dialog" role="document">
-    <div class="webdesk_modal-content webdesk_shadow">
-      <div class="webdesk_modal-header">
-        <h5 class="mwebdesk_odal-title" id="newMediaUploadModalLabel">Upload media</h5>
-        <button type="button" class="webdesk_close" data-dismiss="webdesk_modal" aria-label="Close">
+<div class="modal fade" id="newMediaUploadModal" tabindex="-1" role="dialog" aria-labelledby="newMediaUploadModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content shadow">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newMediaUploadModalLabel">Upload media</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <form action="<?php wd_urlSub($wd_type, $wd_app, 'upload.php', ''); ?>" method="post" enctype="multipart/form-data">
-	      <div class="webdesk_modal-body">
-	        <div class="webdesk_custom-file">
+	      <div class="modal-body">
+	        <div class="custom-file">
 				    
-				    <input type="file" class="webdesk_custom-file-input" name="fileToUpload" id="fileToUpload" />
-				    <label class="webdesk_custom-file-label" for="fileToUpload">Select file</label>
+				    <input type="file" class="custom-file-input" name="fileToUpload" id="fileToUpload" />
+				    <label class="custom-file-label" for="fileToUpload">Select file</label>
 			    </div>
 				  
 	      </div>
-	      <div class="webdesk_modal-footer">
-	        <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Cancel</button>
-	        <button type="submit" class="webdesk_btn webdesk_btn-primary">Upload</button>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+	        <button type="submit" class="btn btn-primary">Upload</button>
 	      </div>
 	    </form>
     </div>
