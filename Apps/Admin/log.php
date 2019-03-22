@@ -3,15 +3,15 @@
 include_once("config.inc.php");
 include("appHeader.php");
 ?>
-<nav class="webdesk_navbar webdesk_border-top webdesk_navbar-expand-md webdesk_navbar-light webdesk_bg-light">
-  <a class="webdesk_navbar-brand" href="<?php echo wd_url($wd_type, $wd_app, 'start.php', ''); ?>"><i class="fa fa-arrow-circle-left"></i></a> System Logs
-  <button class="webdesk_navbar-toggler" type="button" data-toggle="webdesk_collapse" data-target="#wf_adminSubHeader" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="webdesk_navbar-toggler-icon"></span>
+<nav class="navbar border-top navbar-expand-md navbar-light bg-light">
+  <a class="navbar-brand" href="<?php echo wd_url($wd_type, $wd_app, 'start.php', ''); ?>"><i class="fa fa-arrow-circle-left"></i></a> System Logs
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#wf_adminSubHeader" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
   </button>
   
-  <div class="webdesk_collapse webdesk_navbar-collapse" id="wf_adminSubHeader">
-    <ul class="webdesk_navbar-nav webdesk_ml-auto">
-      <li class="webdesk_nav-item">
+  <div class="collapse navbar-collapse" id="wf_adminSubHeader">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
         
       </li>
     </ul>
@@ -19,7 +19,7 @@ include("appHeader.php");
   </div>
 </nav>
 
-<div class="webdesk_container">
+<div class="container">
 	<?php
 	$open_file = $wd_admin . 'LoginLog.txt';
 	if(!empty($req["log"]) && ($req["log"] == "failed-logins") )
@@ -46,19 +46,19 @@ include("appHeader.php");
 		}
 		
 		?>
-		<div class="webdesk_my-5">
+		<div class="my-5">
 			
-			<ul class="webdesk_nav wedesk_nav-pills">
-			  <li class="webdesk_nav-item">
-			    <a class="webdesk_nav-link webdesk_active" href="<?php wd_url($wd_type, $wd_app, 'log.php', '&log=successful-logins'); ?>">Successful logins</a>
+			<ul class="nav wedesk_nav-pills">
+			  <li class="nav-item">
+			    <a class="nav-link active" href="<?php wd_url($wd_type, $wd_app, 'log.php', '&log=successful-logins'); ?>">Successful logins</a>
 			  </li>
-			  <li class="webdesk_nav-item">
-			    <a class="webdesk_nav-link" href="<?php wd_url($wd_type, $wd_app, 'log.php', '&log=failed-logins'); ?>">Failed</a>
+			  <li class="nav-item">
+			    <a class="nav-link" href="<?php wd_url($wd_type, $wd_app, 'log.php', '&log=failed-logins'); ?>">Failed</a>
 			  </li>
 			  
 			</ul>
 			
-			<table class="webdesk_table">
+			<table class="table">
 				<?php
 				
 				foreach($the_log as $day => $entry_a){
