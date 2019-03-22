@@ -13,9 +13,9 @@ $open_file = $req["editType"] . "/" . $req["editApp"] . ((!empty($req["dir"])) ?
   <input type="hidden" name="file" value="<?php echo $req["file"]; ?>">
   
   <nav aria-label="breadcrumb">
-    <ol class="webdesk_breadcrumb webdesk_mb-0 webdesk_rounded-0">
-      <li class="webdesk_breadcrumb-item"><a href="<?php echo wd_url($wd_type, $wd_app, 'start.php', ''); ?>"><?php echo $req['editType'] ?></a></li>
-      <li class="webdesk_breadcrumb-item"><a href="<?php echo wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req['editType'] . '&editApp=' . $req['editApp']); ?>"><?php echo $req['editApp'] ?></a></li>
+    <ol class="breadcrumb mb-0 rounded-0">
+      <li class="breadcrumb-item"><a href="<?php echo wd_url($wd_type, $wd_app, 'start.php', ''); ?>"><?php echo $req['editType'] ?></a></li>
+      <li class="breadcrumb-item"><a href="<?php echo wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req['editType'] . '&editApp=' . $req['editApp']); ?>"><?php echo $req['editApp'] ?></a></li>
       <?php
       if(!empty($req["dir"])){
         $cwd = array();
@@ -23,31 +23,31 @@ $open_file = $req["editType"] . "/" . $req["editApp"] . ((!empty($req["dir"])) ?
         foreach($dir as $dirkey => $dirname){
           $cwd[] = $dirname;
           ?>
-          <li class="webdesk_breadcrumb-item"><a href="<?php echo wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req['editType'] . '&editApp=' . $req['editApp']) . '&dir=' . implode("/", $cwd); ?>"><?php echo $dirname ?></a></li>
+          <li class="breadcrumb-item"><a href="<?php echo wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req['editType'] . '&editApp=' . $req['editApp']) . '&dir=' . implode("/", $cwd); ?>"><?php echo $dirname ?></a></li>
           <?php
         }
       }
       ?>
-      <li class="webdesk_breadcrumb-item webdesk_active" aria-current="page"><?php echo (!empty($req["file"])) ? $req["file"] : "" ?> &nbsp; <a href="#" data-toggle="webdesk_modal" data-target="#renameFileModal" class=""><i class="fa fa-edit fa-fw webdesk_text-dark"></i></a></li>
+      <li class="breadcrumb-item active" aria-current="page"><?php echo (!empty($req["file"])) ? $req["file"] : "" ?> &nbsp; <a href="#" data-toggle="modal" data-target="#renameFileModal" class=""><i class="fa fa-edit fa-fw text-dark"></i></a></li>
     </ol>
   </nav>
   
-  <div class="webdesk_row webdesk_no-gutters" style="height: 100%">
-    <div class="webdesk_col-md-10" style="height: 100%">
+  <div class="row no-gutters" style="height: 100%">
+    <div class="col-md-10" style="height: 100%">
       
       <?php
       $content_type = mime_content_type($open_file);
       
       if(preg_match("/image/i", $content_type)){
         ?>
-        <div class="webdesk_text-center webdesk_pt-4">
-          <img src="<?php echo $req["editType"] . "/" . $req["editApp"] . "/" . $req["file"] ?>" class="webdesk_img-fluid webdesk_border webdesk_border-dark webdesk_shadow-lg" /><br />
+        <div class="text-center pt-4">
+          <img src="<?php echo $req["editType"] . "/" . $req["editApp"] . "/" . $req["file"] ?>" class="img-fluid border border-dark shadow-lg" /><br />
           <?php
           $imagesize = getimagesize($open_file);
           
           ?>
         </div>
-        <div class="webdesk_mt-4 webdesk_text-center">
+        <div class="mt-4 text-center">
           <small>
             <?php echo $imagesize["mime"] ?><br />
             <?php echo $imagesize[0] ?> x <?php echo $imagesize[1] ?><br />
@@ -67,20 +67,20 @@ $open_file = $req["editType"] . "/" . $req["editApp"] . ((!empty($req["dir"])) ?
       }
       ?>
     </div>
-    <div class="webdesk_col-md-2 webdesk_bg-light webdesk_d-none webdesk_d-md-block">
-      <div class="webdesk_bg-light webdesk_py-2 webdesk_px-3 webdesk_sticky-top">
-        <div class="webdesk_btn-groupp">
+    <div class="col-md-2 bg-light d-none d-md-block">
+      <div class="bg-light py-2 px-3 sticky-top">
+        <div class="btn-groupp">
           <?php
           if(preg_match("/image/i", $content_type)){
           
           }
           else{
             ?>
-            <button id="saveEditorButton" type="submit" class="webdesk_shadow-sm webdesk_mt-4 webdesk_btn webdesk_btn-primary webdesk_btn-block" disabled name="sp"><i class="fa fa-save fa-fw"></i> Save</button> 
+            <button id="saveEditorButton" type="submit" class="shadow-sm mt-4 btn btn-primary btn-block" disabled name="sp"><i class="fa fa-save fa-fw"></i> Save</button> 
             <?php
           }
           ?>
-          <button type="button" class="webdesk_shadow-sm webdesk_mt-4 webdesk_btn webdesk_btn-secondary webdesk_btn-block" data-toggle="webdesk_modal" data-target="#removeFileModal"><i class="fa fa-trash fa-fw"></i> Delete</button> 
+          <button type="button" class="shadow-sm mt-4 btn btn-secondary btn-block" data-toggle="modal" data-target="#removeFileModal"><i class="fa fa-trash fa-fw"></i> Delete</button> 
         </div>
       </div>
     </div>

@@ -7,25 +7,25 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
   $wd_dt->loadApp($req["editType"], $req["editApp"]);
 
   ?>
-  <div class="webdesk_bg-light webdesk_border-top webdesk_p-2">
-    <div class="webdesk_float-right">
+  <div class="bg-light border-top p-2">
+    <div class="float-right">
       
-      <div class="webdesk_btn-group">
-        <a href="<?php echo wd_url(test_input($_GET["editType"]), test_input($_GET["editApp"]), 'start.php', ''); ?>" target="_blank" class="webdesk_btn webdesk_btn-secondary webdesk_text-white" title="Preview app in a new window" data-toggle="webdesk_tooltip">
+      <div class="btn-group">
+        <a href="<?php echo wd_url(test_input($_GET["editType"]), test_input($_GET["editApp"]), 'start.php', ''); ?>" target="_blank" class="btn btn-secondary text-white" title="Preview app in a new window" data-toggle="tooltip">
           <i class="fa fa-eye fa-fw"></i> Preview
         </a>
-        <button type="button" class="webdesk_btn webdesk_btn-secondary webdesk_dropdown-toggle webdesk_dropdown-toggle-split" data-toggle="webdesk_dropdown" aria-haspopup="true" aria-expanded="false">
+        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
-        <div class="webdesk_dropdown-menu webdesk_dropdown-menu-right">
-          <a href="#publishAppModal" class="webdesk_dropdown-item" data-toggle="webdesk_modal" title="Publish to Marketplace">
+        <div class="dropdown-menu dropdown-menu-right">
+          <a href="#publishAppModal" class="dropdown-item" data-toggle="modal" title="Publish to Marketplace">
             <i class="fa fa-shipping-fast fa-fw"></i> Publish
           </a>
-          <a href="<?php echo wd_urlSub($wd_type, $wd_app, 'projectFilesSub.php', '&f=export&editType=' . $req["editType"] . '&editApp=' . $req["editApp"]); ?>" target="_blank" class="webdesk_dropdown-item" title="Export app files to a zip" data-toggle="webdesk_tooltip">
+          <a href="<?php echo wd_urlSub($wd_type, $wd_app, 'projectFilesSub.php', '&f=export&editType=' . $req["editType"] . '&editApp=' . $req["editApp"]); ?>" target="_blank" class="dropdown-item" title="Export app files to a zip" data-toggle="tooltip">
             <i class="fa fa-download fa-fw"></i> Export
           </a>
-          <div class="webdesk_dropdown-divider"></div>
-          <a href="#removeAppModal" class="webdesk_dropdown-item" data-toggle="webdesk_modal" title="Remove app from Webframe">
+          <div class="dropdown-divider"></div>
+          <a href="#removeAppModal" class="dropdown-item" data-toggle="modal" title="Remove app from Webframe">
             <i class="fa fa-trash fa-fw"></i> Remove project
           </a>
         </div>
@@ -36,7 +36,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
       /*
       if(file_exists($req["editType"] . '/' . $req["editApp"] . '/ic.png')){
         ?>
-        <img src="//<?php echo $_SERVER["HTTP_HOST"] ?>/<?php echo $req["editType"] ?>/<?php echo $req["editApp"] ?>/ic.png" class="webdesk_img" width="25" /> &nbsp; 
+        <img src="//<?php echo $_SERVER["HTTP_HOST"] ?>/<?php echo $req["editType"] ?>/<?php echo $req["editApp"] ?>/ic.png" class="img" width="25" /> &nbsp; 
         <?php
       }
       */
@@ -45,17 +45,17 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
     <!--</h4>-->
     
     <div class="dropdown">
-      <button class="webdesk_btn webdesk_btn-light webdesk_shadow" type="button" id="projectSelectMenuButton" data-toggle="webdesk_dropdown" aria-haspopup="true" aria-expanded="false">
-        <img src="<?php echo $wd_dt->getProjIcon(); ?>" class="webdesk_img" width="25" /> &nbsp; <?php echo $wd_dt->getProjName() ?>
+      <button class="btn btn-light shadow" type="button" id="projectSelectMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <img src="<?php echo $wd_dt->getProjIcon(); ?>" class="img" width="25" /> &nbsp; <?php echo $wd_dt->getProjName() ?>
       </button>
-      <div class="webdesk_dropdown-menu" aria-labelledby="projectSelectMenuButton">
-        <a class="webdesk_dropdown-item" href="<?php wd_url($wd_type, $wd_app, 'start.php', '') ?>">Project Dashboard</a>
-        <div class="webdesk_dropdown-divider"></div>
+      <div class="dropdown-menu" aria-labelledby="projectSelectMenuButton">
+        <a class="dropdown-item" href="<?php wd_url($wd_type, $wd_app, 'start.php', '') ?>">Project Dashboard</a>
+        <div class="dropdown-divider"></div>
         <?php
         $dt_my_apps = $wd_dt->getLocalProjects($req["editType"]);
         foreach($dt_my_apps as $key => $myproject){
           ?>
-          <a class="webdesk_dropdown-item" href="<?php wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req["editType"] . '&editApp=' . $myproject["handle"]) ?>"><?php echo $myproject["name"] ?></a>
+          <a class="dropdown-item" href="<?php wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req["editType"] . '&editApp=' . $myproject["handle"]) ?>"><?php echo $myproject["name"] ?></a>
           <?php
         }
         ?>
@@ -65,15 +65,15 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
     
   </div>
   
-  <div class="webdesk_container webdesk_my-5">
+  <div class="container my-5">
     
-    <div class="webdesk_dropdown">
+    <div class="dropdown">
       <?php
       $last = "Files and folders";
       if(!empty($req["dir"])){
         
         ?>
-        <a class="webdesk_btn webdesk_btn-link" href="<?php wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req["editType"] . '&editApp=' . $req["editApp"]); ?>">
+        <a class="btn btn-link" href="<?php wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req["editType"] . '&editApp=' . $req["editApp"]); ?>">
           Files &amp; Folders
         </a>
         
@@ -88,7 +88,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
           
           if(!empty($dir[$key+1])){
             ?>
-            <a class="webdesk_btn webdesk_btn-link" href="<?php wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&dir=' . implode("/", $cwd)) ?>">
+            <a class="btn btn-link" href="<?php wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&dir=' . implode("/", $cwd)) ?>">
               <?php echo $value ?>
             </a>
             &nbsp;
@@ -102,16 +102,16 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
         
       }
       ?>
-      <button class="webdesk_btn webdesk_btn-link webdesk_dropdown-toggle" type="button" id="fileSelectMenuButton" data-toggle="webdesk_dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="btn btn-link dropdown-toggle" type="button" id="fileSelectMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <?php echo $last ?>
       </button>
-      <div class="webdesk_dropdown-menu" aria-labelledby="fileSelectMenuButton">
-        <button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newFileModal"><i class="fa fa-code fa-fw"></i> New File</button>
-        <button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newFolderModal"><i class="fa fa-folder fa-fw"></i> New Folder</button>
+      <div class="dropdown-menu" aria-labelledby="fileSelectMenuButton">
+        <button class="dropdown-item" data-toggle="modal" data-target="#newFileModal"><i class="fa fa-code fa-fw"></i> New File</button>
+        <button class="dropdown-item" data-toggle="modal" data-target="#newFolderModal"><i class="fa fa-folder fa-fw"></i> New Folder</button>
         <?php
         if( ($req["editType"] == "MyApps") && empty($req["dir"]) ){
           ?>
-          <button class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#newMediaUploadModal"><i class="fa fa-image fa-fw"></i> Upload icon</button>
+          <button class="dropdown-item" data-toggle="modal" data-target="#newMediaUploadModal"><i class="fa fa-image fa-fw"></i> Upload icon</button>
           <?php
         }
         ?>
@@ -121,15 +121,15 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
     <?php
     if(!empty($_SESSION["fileCopy"])){
       ?>
-      <div class="webdesk_position-absolute webdesk_border webdesk_shadow-lg webdesk_py-2 webdesk_px-4 webdesk_bg-white" style="right: 0;">
-        <div class="webdesk_text-center">
+      <div class="position-absolute border shadow-lg py-2 px-4 bg-white" style="right: 0;">
+        <div class="text-center">
           <i class="fa fa-paste fa-fw fa-2x"></i>
           <br />
           <small>CLIPBOARD</small>
           <br />
           <?php echo count($_SESSION["fileCopy"]) ?> item<?php echo (count($_SESSION["fileCopy"]) != 1) ? "s" : ""; ?>
           <br />
-          <a href="<?php wd_urlSub($wd_type, $wd_app, 'projectFilesSub.php', '&f=pasteFile&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&file=' . $entry['name'] . '&dir=' . ((!empty($req["dir"])) ? $req["dir"] : "")) ?>" class="webdesk_mt-1 webdesk_btn webdesk_btn-primary webdesk_text-white">Paste here</a>
+          <a href="<?php wd_urlSub($wd_type, $wd_app, 'projectFilesSub.php', '&f=pasteFile&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&file=' . $entry['name'] . '&dir=' . ((!empty($req["dir"])) ? $req["dir"] : "")) ?>" class="mt-1 btn btn-primary text-white">Paste here</a>
         </div>
       </div>
       <?php
@@ -137,7 +137,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
     }
     ?>
     
-    <table class="webdesk_table webdesk_table-hover directory-listing" width="100%">
+    <table class="table table-hover directory-listing" width="100%">
       <thead>
         <tr>
           <th>
@@ -167,7 +167,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
             
             foreach($_SESSION["fileHighlight"] as $hl_key => $hl){
               if(($hl["file"] == $entry["name"])){
-                $row_class = "webdesk_bg-warning";
+                $row_class = "bg-warning";
                 unset($_SESSION["fileHighlight"][$hl_key]);
               }
             }
@@ -197,21 +197,21 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
             <td>
               <small><?php echo $file_size ?></small>
             </td>
-            <td class="webdesk_text-right">
+            <td class="text-right">
               <div class="options-link">
                 
-                <div class="webdesk_dropdown">
-                  <button class="webdesk_btn webdesk_btn-light webdesk_dropdown-toggle" type="button" id="" data-toggle="webdesk_dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="dropdown">
+                  <button class="btn btn-light dropdown-toggle" type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-ellipsis-v fa-fw"></i>
                   </button>
-                  <div class="webdesk_dropdown-menu webdesk_dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                    <a class="webdesk_dropdown-item" href="<?php wd_urlSub($wd_type, $wd_app, 'projectFilesSub.php', '&f=copyFile&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&file=' . $entry['name'] . '&dir=' . ((!empty($req["dir"])) ? $req["dir"] : "")) ?>"><i class="fa fa-copy fa-fw"></i> &nbsp; Copy</a>
-                    <a class="webdesk_dropdown-item" href="<?php wd_urlSub($wd_type, $wd_app, 'projectFilesSub.php', '&f=duplicateFile&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&file=' . $entry['name'] . '&dir=' . ((!empty($req["dir"])) ? $req["dir"] : "")) ?>"><i class="fa fa-copy fa-fw"></i> &nbsp; Duplicate</a>
-                    <div class="webdesk_dropdown-divider"></div>
-                    <a class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#renameFileModal" href="#" onclick="$('#renameFileModal form :input[name=file]').val('<?php echo $entry["name"] ?>');$('#renameFileModal form :input[name=newFileName]').val('<?php echo $entry["name"] ?>');$('#renameFileModal form :input[name=dir]').val('<?php echo (!empty($req["dir"])) ? $req["dir"] : "" ?>');$('#renameFileModal form :input[name=newFileName]').select();"><i class="fa fa-edit fa-fw"></i> &nbsp; Rename</a>
-                    <div class="webdesk_dropdown-divider"></div>
+                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="<?php wd_urlSub($wd_type, $wd_app, 'projectFilesSub.php', '&f=copyFile&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&file=' . $entry['name'] . '&dir=' . ((!empty($req["dir"])) ? $req["dir"] : "")) ?>"><i class="fa fa-copy fa-fw"></i> &nbsp; Copy</a>
+                    <a class="dropdown-item" href="<?php wd_urlSub($wd_type, $wd_app, 'projectFilesSub.php', '&f=duplicateFile&editType=' . $req["editType"] . '&editApp=' . $req["editApp"] . '&file=' . $entry['name'] . '&dir=' . ((!empty($req["dir"])) ? $req["dir"] : "")) ?>"><i class="fa fa-copy fa-fw"></i> &nbsp; Duplicate</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" data-toggle="modal" data-target="#renameFileModal" href="#" onclick="$('#renameFileModal form :input[name=file]').val('<?php echo $entry["name"] ?>');$('#renameFileModal form :input[name=newFileName]').val('<?php echo $entry["name"] ?>');$('#renameFileModal form :input[name=dir]').val('<?php echo (!empty($req["dir"])) ? $req["dir"] : "" ?>');$('#renameFileModal form :input[name=newFileName]').select();"><i class="fa fa-edit fa-fw"></i> &nbsp; Rename</a>
+                    <div class="dropdown-divider"></div>
                     
-                    <a class="webdesk_dropdown-item" data-toggle="webdesk_modal" data-target="#removeFileModal" href="#" onclick="$('#removeFileModal form :input[name=file]').val('<?php echo $entry["name"] ?>');"><i class="fa fa-trash fa-fw"></i> &nbsp; Remove</a>
+                    <a class="dropdown-item" data-toggle="modal" data-target="#removeFileModal" href="#" onclick="$('#removeFileModal form :input[name=file]').val('<?php echo $entry["name"] ?>');"><i class="fa fa-trash fa-fw"></i> &nbsp; Remove</a>
                     
                   </div>
                 </div>
@@ -222,7 +222,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
         }
         if(count($contents) == 0){
           ?>
-          <tr><td colspan="200" class="webdesk_my-5 webdesk_text-center"><small>There are no files in this directory</small></td></tr>
+          <tr><td colspan="200" class="my-5 text-center"><small>There are no files in this directory</small></td></tr>
           <?php
         }
         ?>
@@ -231,16 +231,16 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
   </div>
   
   <!-- Modal -->
-  <div id="publishModal" class="webdesk_modal fade" role="dialog">
-    <div class="webdesk_modal-dialog">
+  <div id="publishModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
   
       <!-- Modal content-->
-      <div class="webdesk_modal-content">
-        <div class="webdesk_modal-header">
-          <button type="button" class="close" data-dismiss="webdesk_modal">&times;</button>
-          <h4 class="webdesk_modal-title">Publish <?php echo $MyApp; ?></h4>
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Publish <?php echo $MyApp; ?></h4>
         </div>
-        <div class="webdesk_modal-body">
+        <div class="modal-body">
           <form method="POST" action="http://webdesk.me/indexSub.php?page=marketSub.php">
             <input type="hidden" name="host" value="<?php if(isset($_SERVER['HTTPS'])){ echo "https://" . $_SERVER['SERVER_NAME']; } else{ echo "http://" . $_SERVER['SERVER_NAME']; } ?>">
             <input type="hidden" name="MyApp" value="<?php echo $MyApp; ?>">
@@ -287,8 +287,8 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
             <input type="submit" class="btn btn-success" value="Publish">
           </form>
         </div>
-        <div class="webdesk_modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="webdesk_modal">Close</button>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
   
@@ -297,7 +297,7 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
   <?php
 }
 else
-  echo '<div class="webdesk_container webdesk_pt-5 webdesk_text-center"><h1 class="webdesk_display-1">400</h1><h4>Sorry, couldn&apos;t find that app!</h4></div>';
+  echo '<div class="container pt-5 text-center"><h1 class="display-1">400</h1><h4>Sorry, couldn&apos;t find that app!</h4></div>';
   
 include("appFooter.php");
 ?>
