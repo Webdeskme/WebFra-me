@@ -26,7 +26,7 @@
   
   <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
   <script src="Plugins/jquery.min.js"></script>
-  <script src="Plugins/bootstrap-4.3.1/js/bootstrap.mi.js"></script>
+  <script src="Plugins/bootstrap-4.3.1/js/bootstrap.bundle.min.js"></script>
   <script src="Plugins/jquery-ui-custom/jquery-ui.min.js"></script>
   <script src="Plugins/tinymce/js/tinymce/tinymce.min.js"></script>
   <script src="Plugins/fullcalendar/lib/moment.min.js"></script>

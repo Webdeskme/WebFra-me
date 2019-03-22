@@ -216,7 +216,8 @@ if(file_exists("path.php") || file_exists("../../path.php")){
   $wd_admin = $wd_root . '/Admin/';
   $wd_appr = $wd_root . '/App/';
   $wd_appDir = $wd_appr;
-  if($_SESSION["tier"] != "tA"){
+  
+  if(!empty($_SESSION["tier"]) && ($_SESSION["tier"] != "tA") ){
     $wd_tierApps_temp = file_get_contents($wd_admin . $_SESSION["tier"] . '.json');
     $wd_tierApps_temp = json_decode($wd_tierApps_temp, TRUE);
     foreach($wd_tierApps_temp as $key => $value){

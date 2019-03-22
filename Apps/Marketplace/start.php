@@ -29,58 +29,58 @@ if(file_exists($wd_type."/".$wd_app."/wd_marketplace.json")){
     sort($market2_categories);
     
     ?>
-    <div class="webdesk_containerr webdesk_mb-5 webdesk_mt-3 webdesk_p-3">
-      <div class="webdesk_row">
-        <div class="webdesk_col-md-3">
-          <div class="webdesk_sticky-top category-menu">
-            <div class="webdesk_list-group">
-              <div class="webdesk_list-group-item"><b>Categories</b></div>
-              <a href="#" id="cat-button-all" class="webdesk_list-group-item webdesk_list-group-item-action webdesk_active" onclick="marketplace.load_market();">All</a>
+    <div class="containerr mb-5 mt-3 p-3">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="sticky-top category-menu">
+            <div class="list-group">
+              <div class="list-group-item"><b>Categories</b></div>
+              <a href="#" id="cat-button-all" class="list-group-item list-group-item-action active" onclick="marketplace.load_market();">All</a>
               <?php
               foreach($market2_categories as $market_category){
                 ?>
-                <a href="#" id="cat-button-<?php echo  $market_category ?>" class="webdesk_list-group-item webdesk_list-group-item-action" onclick="marketplace.load_market('<?php echo $market_category ?>');"><?php echo $market_category ?></a>
+                <a href="#" id="cat-button-<?php echo  $market_category ?>" class="list-group-item list-group-item-action" onclick="marketplace.load_market('<?php echo $market_category ?>');"><?php echo $market_category ?></a>
                 <?php
               }
               ?>
               
             </div>
-            <div class="webdesk_list-group webdesk_mt-3">
-              <a href="#" id="cat-button-my_apps" class="webdesk_list-group-item webdesk_list-group-item-action" onclick="marketplace.load_market('my_apps');"><i class="fa fa-th-large fa-fw"></i> My Apps</a>
+            <div class="list-group mt-3">
+              <a href="#" id="cat-button-my_apps" class="list-group-item list-group-item-action" onclick="marketplace.load_market('my_apps');"><i class="fa fa-th-large fa-fw"></i> My Apps</a>
             </div>
           </div>
         </div>
-        <div class="webdesk_col">
-          <div id="load" class="webdesk_text-center webdesk_position-absolute">
+        <div class="col">
+          <div id="load" class="text-center position-absolute">
             <i class="fa fa-spinner fa-pulse fa-2x"></i>
             <span class="sr-only">Loading...</span>
           </div>
-          <div id="updateFileWarning" class="webdesk_alert webdesk_alert-info webdesk_alert-dismissable hide">
+          <div id="updateFileWarning" class="alert alert-info alert-dismissable hide">
             There was an error in updating your local version of the market. 
-            <a onclick="marketplace.updateMarketplaceFile();" class="webdesk_btn webdesk_btn-outline-secondary webdesk_btn-sm">Update manually</a>
+            <a onclick="marketplace.updateMarketplaceFile();" class="btn btn-outline-secondary btn-sm">Update manually</a>
           </div>
           
-          <div class="webdesk_row marketApp-container">
-            <div class="noapps hide webdesk_text-muted webdesk_p-3">
+          <div class="row marketApp-container">
+            <div class="noapps hide text-muted p-3">
               No apps within search parameters
             </div>
-            <div class="webdesk_col-md-4 webdesk_mb-3 marketApp template hide">
+            <div class="col-md-4 mb-3 marketApp template hide">
               
-              <div class="webdesk_card">
-                <div class="webdesk_card-body">
-                  <div class="webdesk_row">
-                    <div class="webdesk_col-sm-3">
+              <div class="card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
                     
-                      <img src="Apps/Terminal/ic.png" alt="" class="webdesk_img-fluid webdesk_mb-3 app-img" style="" />
+                      <img src="Apps/Terminal/ic.png" alt="" class="img-fluid mb-3 app-img" style="" />
                     
                     </div>
-                    <div class="webdesk_col">
-                      <h5 class="webdesk_card-title app-title">
+                    <div class="col">
+                      <h5 class="card-title app-title">
                         Awesome App
                       </h5>
                       
                       <p class="">
-                        <small class="app-description webdesk_text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </small>
+                        <small class="app-description text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </small>
                       </p>
                       <p class="app-developer">
                         Developer: John Doe
@@ -89,12 +89,12 @@ if(file_exists($wd_type."/".$wd_app."/wd_marketplace.json")){
                     </div>
                   </div>
                 </div>
-                <div class="webdesk_card-footer">
-                  <div class="app-price webdesk_float-right">
+                <div class="card-footer">
+                  <div class="app-price float-right">
                     FREE
                   </div>
-                  <button type="button" class="app-install-button webdesk_btn webdesk_btn-bloc webdesk_btn-secondary webdesk_text-white"><i class="fa fa-download fa-fw"></i> Install</button>
-                    <button type="button" class="app-moreinfo-button webdesk_btn webdesk_btn-bloc webdesk_btn-outline-secondary">More Info</button>
+                  <button type="button" class="app-install-button btn btn-bloc btn-secondary text-white"><i class="fa fa-download fa-fw"></i> Install</button>
+                    <button type="button" class="app-moreinfo-button btn btn-bloc btn-outline-secondary">More Info</button>
                 </div>
               </div>
               
@@ -105,25 +105,25 @@ if(file_exists($wd_type."/".$wd_app."/wd_marketplace.json")){
       </div>
     </div>
     
-    <div class="webdesk_modal webdesk_fade" id="viewAppMoreModal" tabindex="-1" role="dialog" aria-labelledby="viewAppMoreModalLabel" aria-hidden="true">
-      <div class="webdesk_modal-dialog  webdesk_shadow-lg webdesk_modal-lg" role="document">
-        <div class="webdesk_modal-content">
-          <div class="webdesk_modal-header">
-            <h5 class="webdesk_modal-title" id="viewAppMoreModalLabel">App Info</h5>
-            <button type="button" class="webdesk_close" data-dismiss="webdesk_modal" aria-label="Close">
+    <div class="modal fade" id="viewAppMoreModal" tabindex="-1" role="dialog" aria-labelledby="viewAppMoreModalLabel" aria-hidden="true">
+      <div class="modal-dialog  shadow-lg modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="viewAppMoreModalLabel">App Info</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="webdesk_modal-body">
-            <div class="webdesk_row">
-              <div class="webdesk_col-sm-3">
-                <img src="Apps/Marketplace/ic.png" class="webdesk_img-fluid app-img" alt="" />
-                <p class="app-price webdesk_text-center webdesk_mt-2 webdesk_lead">FREE</p>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-sm-3">
+                <img src="Apps/Marketplace/ic.png" class="img-fluid app-img" alt="" />
+                <p class="app-price text-center mt-2 lead">FREE</p>
               </div>
-              <div class="webdesk_col">
+              <div class="col">
                 <h1 class="app-title"></h1>
                 <p><a href="#" class="app-category"></a></p>
-                <p class="app-description webdesk_text-mute"></p>
+                <p class="app-description text-mute"></p>
                 
                 <p class=""><b>Author:</b> <span class="app-author"></span></p>
                 <p class=""><b>Version:</b> <span class="app-version"></span></p>
@@ -132,10 +132,10 @@ if(file_exists($wd_type."/".$wd_app."/wd_marketplace.json")){
               </div>
             </div>
           </div>
-          <div class="webdesk_modal-footer">
+          <div class="modal-footer">
             <span class="install-process"></span>
-            <button type="button" class="webdesk_btn webdesk_btn-secondary app-install-button" onclick="marketplace.install_app();"><i class="fa fa-download fa-fw"></i> Install</button>
-            <button type="button" class="webdesk_btn webdesk_btn-secondary" data-dismiss="webdesk_modal">Close</button>
+            <button type="button" class="btn btn-secondary app-install-button" onclick="marketplace.install_app();"><i class="fa fa-download fa-fw"></i> Install</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
@@ -147,11 +147,11 @@ if(file_exists($wd_type."/".$wd_app."/wd_marketplace.json")){
 }
 if(!$can_open_market){
   ?>
-  <div class="webdesk_container webdesk_py-5">
-    <p class="webdesk_lead">
+  <div class="container py-5">
+    <p class="lead">
       <i class="fa fa-spinner fa-pulse"></i> Your marketplace file is being prepared for the first time. Please hang tight.
     </p>
-    <button id="marketplace_continue" class="hide webdesk_btn webdesk_btn-outline-secondary">Continue</button>
+    <button id="marketplace_continue" class="hide btn btn-outline-secondary">Continue</button>
   </div>
   <?php
 }
@@ -237,7 +237,7 @@ var marketplace = {
     if(marketplace.wd_market[tapp].is_installed){
       
       if(marketplace.wd_market[tapp].needs_update){
-        $("#viewAppMoreModal .app-install-button").removeClass("webdesk_btn-secondary").addClass("webdesk_btn-success").html('<i class="fa fa-sync fa-fw"></i> Update').click({app_id:marketplace.wd_market[tapp].app_id},function(e){
+        $("#viewAppMoreModal .app-install-button").removeClass("btn-secondary").addClass("btn-success").html('<i class="fa fa-sync fa-fw"></i> Update').click({app_id:marketplace.wd_market[tapp].app_id},function(e){
       
           marketplace.install_app(e.data.app_id);
           
@@ -245,12 +245,12 @@ var marketplace = {
       }
       else{
       
-        $("#viewAppMoreModal .app-install-button").prop("disabled",true).removeClass("webdesk_btn-primary").addClass("webdesk_btn-secondary").html('<i class="fa fa-check fa-fw"></i> Installed');
+        $("#viewAppMoreModal .app-install-button").prop("disabled",true).removeClass("btn-primary").addClass("btn-secondary").html('<i class="fa fa-check fa-fw"></i> Installed');
         
       }
     }
     else{
-      $("#viewAppMoreModal .app-install-button").prop("disabled",false).addClass("webdesk_btn-primary").removeClass("webdesk_btn-secondary").html('<i class="fa fa-download fa-fw"></i> Install');
+      $("#viewAppMoreModal .app-install-button").prop("disabled",false).addClass("btn-primary").removeClass("btn-secondary").html('<i class="fa fa-download fa-fw"></i> Install');
     }
     
     $('#viewAppMoreModal').modal('show');
@@ -268,8 +268,8 @@ var marketplace = {
       $("#searchForm :input[name='search']").val("").css("width","1%");
     }
       
-    $(".category-menu a").removeClass("webdesk_active");
-    $("#cat-button-" + marketplace.category).addClass("webdesk_active").append('<div class="webdesk_float-right loading-spinner"><i class="fa fa-spinner fa-pulse"></i></div>');
+    $(".category-menu a").removeClass("active");
+    $("#cat-button-" + marketplace.category).addClass("active").append('<div class="float-right loading-spinner"><i class="fa fa-spinner fa-pulse"></i></div>');
     
     $.getJSON("<?php echo $wd_type."/".$wd_app ?>/marketplace.ajax.json.php", 'f=openMarketJson', function(result){
       
@@ -309,14 +309,14 @@ var marketplace = {
               
               if(data.needs_update){
                 console.log(data.app + " needs update");
-                $(".app-install-button",this).removeClass("webdesk_btn-secondary").addClass("webdesk_btn-success").html('<i class="fa fa-sync fa-fw"></i> Update').click({app_id:data.app_id},function(e){
+                $(".app-install-button",this).removeClass("btn-secondary").addClass("btn-success").html('<i class="fa fa-sync fa-fw"></i> Update').click({app_id:data.app_id},function(e){
               
                   marketplace.install_app(e.data.app_id);
                   
                 });
               }
               else{
-                $(".app-install-button",this).prop("disabled",true).removeClass("webdesk_btn-secondary").addClass("webdesk_btn-secondary").html('<i class="fa fa-check fa-fw"></i> Installed');
+                $(".app-install-button",this).prop("disabled",true).removeClass("btn-secondary").addClass("btn-secondary").html('<i class="fa fa-check fa-fw"></i> Installed');
               }
             }
             else{
@@ -375,7 +375,7 @@ var marketplace = {
       }
       else{
         $("#viewAppMoreModal .install-process").text("Complete"); 
-        $("#viewAppMoreModal .app-install-button,#app-" + $("body").prop("app_id") + " .app-install-button").removeClass("webdesk_btn-primary").addClass("webdesk_btn-success").html('<i class="fa fa-check fa-fw"></i> Installed').prop("disabled",true);
+        $("#viewAppMoreModal .app-install-button,#app-" + $("body").prop("app_id") + " .app-install-button").removeClass("btn-primary").addClass("btn-success").html('<i class="fa fa-check fa-fw"></i> Installed').prop("disabled",true);
       }
     });
     
@@ -434,7 +434,7 @@ var marketplace = {
               $(".app-developer",this).text("info@webfra.me");
               $(".app-description",this).html("A new version of Webframe is available&mdash;" + data.data.version);
               $(".app-img",this).attr("src","<?php echo $wd_type."/".$wd_app ?>/assets/Webframe_Logo.png");
-              $(".app-install-button",this).removeClass("webdesk_btn-secondary").addClass("webdesk_btn-success").html('<i class="fa fa-sync fa-fw"></i> Update').click({app_id:data.app_id},function(e){
+              $(".app-install-button",this).removeClass("btn-secondary").addClass("btn-success").html('<i class="fa fa-sync fa-fw"></i> Update').click({app_id:data.app_id},function(e){
                 
                 //marketplace.install_app(e.data.app_id);
                 document.location = "//" + document.location.host + "/updater.php";

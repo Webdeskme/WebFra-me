@@ -7,22 +7,22 @@ if(isset($_GET['dir']))
 else
   $dir = ""; 
 ?>
-<nav class="webdesk_navbar webdesk_navbar-expand-md webdesk_bg-light">
-  <div class="webdesk_container-fluid">
-    <div class="webdesk_navbar-header">
-      <a class="webdesk_navbar-brand webdesk_text-dark" href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>"><img src="//<?php echo $_SERVER["HTTP_HOST"] ?>/Apps/Terminal/ic.png" width="24" class="webdesk_img" /> Terminal Portal</a>
-      <button class="webdesk_navbar-toggler" type="button" data-toggle="webdesk_collapse" data-target="#terminalNavbar" aria-controls="terminalNavbar" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-md bg-light">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand text-dark" href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>"><img src="//<?php echo $_SERVER["HTTP_HOST"] ?>/Apps/Terminal/ic.png" width="24" class="img" /> Terminal Portal</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#terminalNavbar" aria-controls="terminalNavbar" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fa fa-bars fa-fw"></i>
       </button>
     </div>
-    <div class="webdesk_collapse webdesk_justify-content-end webdesk_navbar-collapse" id="terminalNavbar">
-      <!--<ul class="webdesk_navbar-nav">-->
-      <!--  <li class="webdesk_nav-item"><a href="desktop.php">Exit</a></li>-->
+    <div class="collapse justify-content-end navbar-collapse" id="terminalNavbar">
+      <!--<ul class="navbar-nav">-->
+      <!--  <li class="nav-item"><a href="desktop.php">Exit</a></li>-->
       <!--</ul>-->
-      <ul class="webdesk_navbar-nav webdesk_justify-content-end">
-        <li class="webdesk_nav-item">
+      <ul class="navbar-nav justify-content-end">
+        <li class="nav-item">
           
-          <!--<button type="button" data-toggle="webdesk_collapse" data-target="#Wadd" class="webdesk_btn webdesk_btn-link webdesk_text-white"><i class="fa fa-plus fa-fw"></i> New</button>-->
+          <!--<button type="button" data-toggle="collapse" data-target="#Wadd" class="btn btn-link text-white"><i class="fa fa-plus fa-fw"></i> New</button>-->
           <!--<?php //wd_confirm($wd_type, $wd_app, 'startSubRemove.php', '&dir=' . $dir, '1', '<i class="fa fa-trash-alt fa-fw"></i> Delete'); ?>-->
           
         </li>
@@ -31,25 +31,25 @@ else
   </div>
 </nav>
 
-<!--<div id="Wadd" class="webdesk_collapse">-->
-<!--  <div class="webdesk_card">-->
-<!--    <div class="webdesk_card-header">Add New File/Directory</div>-->
-<!--    <div class="webdesk_card-body">-->
+<!--<div id="Wadd" class="collapse">-->
+<!--  <div class="card">-->
+<!--    <div class="card-header">Add New File/Directory</div>-->
+<!--    <div class="card-body">-->
 <!--      <form method="post" action="<?php echo wd_urlSub($wd_type, $wd_app, 'startSub.php', ''); ?>" class="form-group">-->
         
 <!--        <input type="hidden" name="dir" value="<?php echo $dir; ?>" />-->
 <!--        <div class="form-group">-->
 <!--          <label for="nameA">New File/Directory Name: </label>-->
-<!--          <div class="webdesk_input-group">-->
-<!--            <div class="webdesk_input-group-prepend">-->
-<!--              <select name="type" class="webdesk_form-control webdesk_custom-select">-->
+<!--          <div class="input-group">-->
+<!--            <div class="input-group-prepend">-->
+<!--              <select name="type" class="form-control custom-select">-->
 <!--                <option value="File">File</option>-->
 <!--                <option value="Directory">Directory</option>-->
 <!--              </select>-->
 <!--            </div>            -->
-<!--            <input type="text" name="nameA" class="webdesk_form-control" id="nameA" placeholder="Enter the name of your new File." title="Enter the name of your new file or directory" />-->
-<!--            <div class="webdesk_input-group-append">-->
-<!--              <input type="submit" class="webdesk_btn webdesk_btn-success" value="Create" />-->
+<!--            <input type="text" name="nameA" class="form-control" id="nameA" placeholder="Enter the name of your new File." title="Enter the name of your new file or directory" />-->
+<!--            <div class="input-group-append">-->
+<!--              <input type="submit" class="btn btn-success" value="Create" />-->
 <!--            </div>-->
 <!--          </div>-->
 <!--        </div>-->
@@ -69,12 +69,12 @@ if(isset($_SESSION["wd_copy_file"])){
 } 
 ?>
 <br />
-<div class="webdesk_container">
-  <div class="webdesk_card">
-    <div class="webdesk_card-header webdesk_bg-primary">
+<div class="container">
+  <div class="card">
+    <div class="card-header bg-primary">
       
-      <div class="webdesk_float-right">
-        <button type="button" data-toggle="webdesk_collapse" data-target="#Wadd" class="webdesk_btn webdesk_btn-link webdesk_text-white"><i class="fa fa-plus fa-fw"></i> New</button> 
+      <div class="float-right">
+        <button type="button" data-toggle="collapse" data-target="#Wadd" class="btn btn-link text-white"><i class="fa fa-plus fa-fw"></i> New</button> 
         <?php
         if(!empty($dir))
           wd_confirm($wd_type, $wd_app, 'startSubRemove.php', '&dir=' . $dir, '1', '<i class="fa fa-trash-alt fa-fw"></i> Delete directory');
@@ -82,8 +82,8 @@ if(isset($_SESSION["wd_copy_file"])){
       </div>
       
       <nav aria-label="breadcrumb">
-        <ol class="webdesk_breadcrumb webdesk_bg-primary webdesk_m-0">
-          <li class="webdesk_breadcrumb-item webdesk_text-white">Directory: <a href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>" class="webdesk_text-white">wd_root</a></li>
+        <ol class="breadcrumb bg-primary m-0">
+          <li class="breadcrumb-item text-white">Directory: <a href="<?php wd_url($wd_type, $wd_app, 'start.php', ''); ?>" class="text-white">wd_root</a></li>
           <?php
           if(isset($_GET['dir']) && $_GET['dir'] != "" && $_GET['dir'] != "/"){
             $bread = explode('/', $dir);
@@ -93,7 +93,7 @@ if(isset($_SESSION["wd_copy_file"])){
               $valuey = rtrim($valuex, '/');
               
               ?>
-              <li class="webdesk_breadcrumb-item webdesk_text-white <?php echo ($key == count($bread)-1) ? "webdesk_active" : ""; ?>"><a href="<?php wd_url($wd_type, $wd_app, 'start.php', '&dir=' . $valuey ); ?>" class="webdesk_text-white"><?php echo $value; ?></a></li>
+              <li class="breadcrumb-item text-white <?php echo ($key == count($bread)-1) ? "active" : ""; ?>"><a href="<?php wd_url($wd_type, $wd_app, 'start.php', '&dir=' . $valuey ); ?>" class="text-white"><?php echo $value; ?></a></li>
               <?php
             } 
           }
@@ -105,26 +105,26 @@ if(isset($_SESSION["wd_copy_file"])){
       </nav>
       
     </div>
-    <div class="webdesk_card-body">
-      <div id="Wadd" class="webdesk_collapse">
-        <div class="webdesk_card">
-          <div class="webdesk_card-header">Add New File/Directory</div>
-          <div class="webdesk_card-body">
+    <div class="card-body">
+      <div id="Wadd" class="collapse">
+        <div class="card">
+          <div class="card-header">Add New File/Directory</div>
+          <div class="card-body">
             <form method="post" action="<?php echo wd_urlSub($wd_type, $wd_app, 'startSub.php', ''); ?>" class="form-group">
               
               <input type="hidden" name="dir" value="<?php echo $dir; ?>" />
               <div class="form-group">
                 <label for="nameA">New File/Directory Name: </label>
-                <div class="webdesk_input-group">
-                  <div class="webdesk_input-group-prepend">
-                    <select name="type" class="webdesk_form-control webdesk_custom-select">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <select name="type" class="form-control custom-select">
                       <option value="File">File</option>
                       <option value="Directory">Directory</option>
                     </select>
                   </div>            
-                  <input type="text" name="nameA" class="webdesk_form-control" id="nameA" placeholder="Enter the name of your new File." title="Enter the name of your new file or directory" />
-                  <div class="webdesk_input-group-append">
-                    <input type="submit" class="webdesk_btn webdesk_btn-success" value="Create" />
+                  <input type="text" name="nameA" class="form-control" id="nameA" placeholder="Enter the name of your new File." title="Enter the name of your new file or directory" />
+                  <div class="input-group-append">
+                    <input type="submit" class="btn btn-success" value="Create" />
                   </div>
                 </div>
               </div>
@@ -135,7 +135,7 @@ if(isset($_SESSION["wd_copy_file"])){
         </div>
       </div>
       
-      <table class="webdesk_table webdesk_table-striped">
+      <table class="table table-striped">
         <?php
         if(isset($_GET['a'])){
           $a = test_input($_GET['a']); 
@@ -178,7 +178,7 @@ if(isset($_SESSION["wd_copy_file"])){
           }
         }
         if($countfilesfolders == 0)
-          echo '<span class="webdesk_text-muted">Directory listing empty</span>';
+          echo '<span class="text-muted">Directory listing empty</span>';
         ?>
       </table>
     </div>

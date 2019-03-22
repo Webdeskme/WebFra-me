@@ -157,11 +157,12 @@ if(isset($_GET['title'])){
       <div class="modal-content">
         <div class="modal-header">
 
-          <h4 class="modal-title"><?php if(isset($wd_app)){ echo $wd_app; }; ?> Help</h4>
+          <h4 class="modal-title"><i class="fa fa-question-circle fa-fw"></i> <?php if(isset($wd_app)){ echo $wd_app; }; ?> Help</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
           <?php
+          $wd_help = "";
           if(isset($sec) && isset($wd_app)){
             if(file_exists($wd_type . '/' . $wd_app . '/help_' . $sec)){
               $wd_help = $wd_type . '/' . $wd_app . '/help_' . $sec;
@@ -174,7 +175,7 @@ if(isset($_GET['title'])){
               // echo $wd_help;
             }
             else{
-              echo 'We are sorry but there is no help documentation available for this app.';
+              echo '<div class="text-center py-5"><span class="text-muted">No help documentation available</span></div>';
             }
           }
           else{
@@ -182,7 +183,8 @@ if(isset($_GET['title'])){
             // $wd_help = file_get_contents('help.php');
             // echo $wd_help;
           }
-          include($wd_help);
+          if(!empty($wd_help))
+            include($wd_help);
           ?>
         </div>
         <div class="modal-footer">
