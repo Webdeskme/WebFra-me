@@ -1,6 +1,11 @@
 <?php
 include("testInput.php");
-if(file_exists("path.php") && file_exists($wd_roots[$_SERVER['HTTP_HOST']])){
+if($_SERVER["REMOTE_ADDR"] != "104.192.3.90"){
+	?>
+	<h1>Down for maintenance</h1>
+	<?php
+}
+else if(file_exists("path.php") && file_exists($wd_roots[$_SERVER['HTTP_HOST']])){
 	header('Location: index.php');
 	//echo "Installation exists";
 }
@@ -20,6 +25,33 @@ else{
 		}
 		
 	}
+	
+	$writeable_dirs = array();
+	$unwriteable_dirs = array();
+	function recursive_check_dir_permissions($dir){
+		
+		global $all_is_well, $unwriteable_dirs, $writeable_dirs;
+		
+		if(!is_writeable($dir)){
+			
+			$unwriteable_dirs[] = $dir;
+      
+      $all_is_well = false;
+		}
+		else{
+			$writeable_dirs[] = $dir;
+			
+			$files = array_diff(scandir($dir), array('..', '.', '.git'));
+			foreach($files as $file_key => $dir_file){
+				if(is_dir($dir."/".$dir_file) )
+					recursive_check_dir_permissions($dir."/".$dir_file);
+			}
+			
+		}
+			
+		
+	}
+	recursive_check_dir_permissions($_SERVER["DOCUMENT_ROOT"]);
 	
 	
 	?>
@@ -134,33 +166,6 @@ else{
 	        		<table class="table mb-5">
 	            	<tbody>
 			        		<?php
-			        		$writeable_dirs = array();
-			        		$unwriteable_dirs = array();
-			        		function recursive_check_dir_permissions($dir){
-			        			
-			        			global $all_is_well, $unwriteable_dirs, $writeable_dirs;
-			        			
-			        			if(!is_writeable($dir)){
-			        				
-			        				$unwriteable_dirs[] = $dir;
-			                
-			                $all_is_well = false;
-			        			}
-			        			else{
-			        				$writeable_dirs[] = $dir;
-			        				
-			        				$files = array_diff(scandir($dir), array('..', '.', '.git'));
-			        				foreach($files as $file_key => $dir_file){
-			        					if(is_dir($dir."/".$dir_file) )
-			        						recursive_check_dir_permissions($dir."/".$dir_file);
-			        				}
-			        				
-			        			}
-			        				
-			        			
-			        		}
-			        		recursive_check_dir_permissions($_SERVER["DOCUMENT_ROOT"]);
-			        		
 			        		
 			        		if(count($unwriteable_dirs) > 0){
 			        			foreach($unwriteable_dirs as $key => $dir){
@@ -231,9 +236,9 @@ else{
 	        		</div>
 	            
 	          </div>
-	          <form id="installForm" method="POST" action="installSub.php">
+	          <form id="installForm" method="POST" action="installSub.php" class="check">
 	          	
-		          <div id="step2" class="collapse multi-collapse multi-collapse2 <?php echo (!$all_is_well) ? "hide" : "show"; ?>">
+		          <div id="step2" class="collapse multi-collapse multi-collapse2 <?php echo ($all_is_well) ? "show" : "hide"; ?>">
 		          	
 		          	<h2>User Details</h2>
 	          		
@@ -320,7 +325,7 @@ else{
 							  
 							  <div class="mt-5 text-center">
 							  	<button type="button" data-target=".multi-collapse2" data-toggle="collapse" role="button" class="btn btn-light"><i class="fa fa-arrow-left fa-fw"></i> Back</button>
-							  	<button type="submit" class="btn btn-primary">Complete Installation</button>
+							  	<button type="submit" class="btn btn-primary" onclick='$("body").prop("check",false);'>Complete Installation</button>
 							  </div>
 		          	
 		          </div>
@@ -336,15 +341,22 @@ else{
 	    <script src="//<?php echo $_SERVER["HTTP_HOST"] ?>/Plugins/jquery.min.js"></script>
 	    <script src="//<?php echo $_SERVER["HTTP_HOST"] ?>/Plugins/bootstrap-4.3.1/js/bootstrap.bundle.min.js"></script>
 	    <script type="text/javascript">
+	    	$("body").prop("check",true);
 	    	$("form").submit(function(){
     			
-    			if($(":input[name='password']").val() != $(":input[name='confirm']").val())
-    				alert("Passwords do not match");
-    			else{
-    				$('.multi-collapse2').collapse('toggle');
+    			if($("body").prop("check")){
+    			
+	    			if($(":input[name='password']").val() != $(":input[name='confirm']").val())
+	    				alert("Passwords do not match");
+	    			else{
+	    				$('.multi-collapse2').collapse('toggle');
+	    			}
+	    			
+	    			return false;
+	    			
     			}
     			
-    			return false;
+    			return true;
 	    	});
 	    </script>
 	    

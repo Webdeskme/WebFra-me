@@ -8,60 +8,54 @@ if(!empty($req["editType"]) && !empty($req["editApp"])){
 
   ?>
   <div class="bg-light border-top p-2">
-    <div class="float-right">
-      
-      <div class="btn-group">
-        <a href="<?php echo wd_url(test_input($_GET["editType"]), test_input($_GET["editApp"]), 'start.php', ''); ?>" target="_blank" class="btn btn-secondary text-white" title="Preview app in a new window" data-toggle="tooltip">
-          <i class="fa fa-eye fa-fw"></i> Preview
-        </a>
-        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <span class="sr-only">Toggle Dropdown</span>
-        </button>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a href="#publishAppModal" class="dropdown-item" data-toggle="modal" title="Publish to Marketplace">
-            <i class="fa fa-shipping-fast fa-fw"></i> Publish
-          </a>
-          <a href="<?php echo wd_urlSub($wd_type, $wd_app, 'projectFilesSub.php', '&f=export&editType=' . $req["editType"] . '&editApp=' . $req["editApp"]); ?>" target="_blank" class="dropdown-item" title="Export app files to a zip" data-toggle="tooltip">
-            <i class="fa fa-download fa-fw"></i> Export
-          </a>
-          <div class="dropdown-divider"></div>
-          <a href="#removeAppModal" class="dropdown-item" data-toggle="modal" title="Remove app from Webframe">
-            <i class="fa fa-trash fa-fw"></i> Remove project
-          </a>
+    
+    <div class="row no-gutters">
+      <div class="col">
+        
+        <div class="dropdown">
+          <button class="btn btn-light shadow" type="button" id="projectSelectMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="<?php echo $wd_dt->getProjIcon(); ?>" class="img" width="25" /> &nbsp; <?php echo $wd_dt->getProjName() ?>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="projectSelectMenuButton">
+            <a class="dropdown-item" href="<?php wd_url($wd_type, $wd_app, 'start.php', '') ?>">Project Dashboard</a>
+            <div class="dropdown-divider"></div>
+            <?php
+            $dt_my_apps = $wd_dt->getLocalProjects($req["editType"]);
+            foreach($dt_my_apps as $key => $myproject){
+              ?>
+              <a class="dropdown-item" href="<?php wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req["editType"] . '&editApp=' . $myproject["handle"]) ?>"><?php echo $myproject["name"] ?></a>
+              <?php
+            }
+            ?>
+          </div>
         </div>
+        
+      </div>
+      <div class="col text-right">
+        
+        <div class="btn-group">
+          <a href="<?php echo wd_url(test_input($_GET["editType"]), test_input($_GET["editApp"]), 'start.php', ''); ?>" target="_blank" class="btn btn-secondary text-white" title="Preview app in a new window" data-toggle="tooltip">
+            <i class="fa fa-eye fa-fw"></i> Preview
+          </a>
+          <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="#publishAppModal" class="dropdown-item" data-toggle="modal" title="Publish to Marketplace">
+              <i class="fa fa-shipping-fast fa-fw"></i> Publish
+            </a>
+            <a href="<?php echo wd_urlSub($wd_type, $wd_app, 'projectFilesSub.php', '&f=export&editType=' . $req["editType"] . '&editApp=' . $req["editApp"]); ?>" target="_blank" class="dropdown-item" title="Export app files to a zip" data-toggle="tooltip">
+              <i class="fa fa-download fa-fw"></i> Export
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#removeAppModal" class="dropdown-item" data-toggle="modal" title="Remove app from Webframe">
+              <i class="fa fa-trash fa-fw"></i> Remove project
+            </a>
+          </div>
+        </div>
+        
       </div>
     </div>
-    <!--<h4>-->
-    <?php
-      /*
-      if(file_exists($req["editType"] . '/' . $req["editApp"] . '/ic.png')){
-        ?>
-        <img src="//<?php echo $_SERVER["HTTP_HOST"] ?>/<?php echo $req["editType"] ?>/<?php echo $req["editApp"] ?>/ic.png" class="img" width="25" /> &nbsp; 
-        <?php
-      }
-      */
-    ?>
-    <!--  <?php echo $wd_dt->getProjName() ?>-->
-    <!--</h4>-->
-    
-    <div class="dropdown">
-      <button class="btn btn-light shadow" type="button" id="projectSelectMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <img src="<?php echo $wd_dt->getProjIcon(); ?>" class="img" width="25" /> &nbsp; <?php echo $wd_dt->getProjName() ?>
-      </button>
-      <div class="dropdown-menu" aria-labelledby="projectSelectMenuButton">
-        <a class="dropdown-item" href="<?php wd_url($wd_type, $wd_app, 'start.php', '') ?>">Project Dashboard</a>
-        <div class="dropdown-divider"></div>
-        <?php
-        $dt_my_apps = $wd_dt->getLocalProjects($req["editType"]);
-        foreach($dt_my_apps as $key => $myproject){
-          ?>
-          <a class="dropdown-item" href="<?php wd_url($wd_type, $wd_app, 'projectfiles.php', '&editType=' . $req["editType"] . '&editApp=' . $myproject["handle"]) ?>"><?php echo $myproject["name"] ?></a>
-          <?php
-        }
-        ?>
-      </div>
-    </div>
-    
     
   </div>
   
