@@ -1,11 +1,6 @@
 <?php
 include("testInput.php");
-if($_SERVER["REMOTE_ADDR"] != "104.192.3.90"){
-	?>
-	<h1>Down for maintenance</h1>
-	<?php
-}
-else if(file_exists("path.php") && file_exists($wd_roots[$_SERVER['HTTP_HOST']])){
+if(file_exists("path.php") && file_exists($wd_roots[$_SERVER['HTTP_HOST']])){
 	header('Location: index.php');
 	//echo "Installation exists";
 }
