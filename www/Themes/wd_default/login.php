@@ -24,9 +24,8 @@
     <link rel="apple-touch-icon" href="favicon.ico">
     <link rel="apple-touch-startup-image" href="favicon.ico">
 
-	<!--<link rel="stylesheet" href="Plugins/bootstrap-3.3.7-dist/css/bootstrap.min.css">-->
-	<link rel="stylesheet" href="Plugins/wd-bootstrap/css/webdesk_bootstrap.min.css">
-	<link rel="stylesheet" href="Plugins/fontawesome-free-5.2/css/all.min.css">
+	<link rel="stylesheet" href="Plugins/bootstrap-4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="Plugins/fontawesome-free-5.8.1/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="www/Themes/wd_default/login.css" />
 
 </head>
@@ -35,37 +34,32 @@
 
   
 
-  <!--<nav class="webdesk_navbar webdesk_bg-black webdesk_navbar-dark" id="nav">-->
-  <!--  <div class="webdesk_container-fluid">-->
-  <!--    <a class="webdesk_navbar-brand" href="index.php" title="Homepage"><?php echo $wd_Title; ?></a>-->
-  <!--  </div>-->
-  <!--</nav>-->
   
-  <div class="webdesk_container webdesk_my-5">
-    <div class="webdesk_row">
-      <div class="webdesk_col-md-6 webdesk_offset-md-3">
-        <div class="webdesk_my-5 py-5 webdesk_text-center">
-          <a class="webdesk_navbar-brand webdesk_text-white" href="index.php" title="Homepage"><?php echo $wd_Title; ?></a>
+  <div class="container my-5">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="my-5 py-5 text-center">
+          <a class="navbar-brand text-white" href="index.php" title="Homepage"><?php echo $wd_Title; ?></a>
         </div>
-        <form method="POST" action="login.php" class="webdesk_py-5">
-          <div class="webdesk_form-group webdesk_row webdesk_pt-5">
-            <label for="username" class="webdesk_col-sm-3 webdesk_col-form-label">Username</label>
-            <div class="webdesk_col-sm-9">
-              <input type="text" name="user" id="username" class="webdesk_form-control webdesk_bg-secondary webdesk_border-0 webdesk_inset-shadow" />
+        <form method="POST" action="login.php" class="py-5">
+          <div class="form-group row pt-5">
+            <label for="username" class="col-sm-3 col-form-label">Username</label>
+            <div class="col-sm-9">
+              <input type="text" name="user" id="username" class="form-control bg-secondary border-0 inset-shadow" />
             </div>
           </div>
-          <div class="webdesk_form-group webdesk_row">
-            <label for="password" class="webdesk_col-sm-3 webdesk_col-form-label">Password</label>
-            <div class="webdesk_col-sm-9">
-              <input type="password" name="pass" id="password" class="webdesk_form-control webdesk_bg-secondary webdesk_border-0 webdesk_inset-shadow" />
+          <div class="form-group row">
+            <label for="password" class="col-sm-3 col-form-label">Password</label>
+            <div class="col-sm-9">
+              <input type="password" name="pass" id="password" class="form-control bg-secondary border-0 inset-shadow" />
             </div>
           </div>
-          <div class="webdesk_text-center webdesk_py-5">
-            <button type="submit" value="Desktop" name="type" class="webdesk_btn webdesk_btn-link webdesk_text-white"><i class="fa fa-fw fa-desktop"></i> Login Desktop</button> &nbsp; 
-            <button type="submit" value="Desktop" name="type" class="webdesk_btn webdesk_btn-link webdesk_text-white"><i class="fa fa-fw fa-mobile-alt"></i> Login Mobile</button> 
+          <div class="text-center py-5">
+            <button type="submit" value="Desktop" name="type" class="btn btn-link text-white"><i class="fa fa-fw fa-desktop"></i> Login Desktop</button> &nbsp; 
+            <button type="submit" value="Desktop" name="type" class="btn btn-link text-white"><i class="fa fa-fw fa-mobile-alt"></i> Login Mobile</button> 
           </div>
-          <div class="webdesk_form-group webdesk_text-center">
-            <span class="webdesk_form-text webdesk_text-muted">By clicking on either the Desktop or Mobile button, you are agreeing to Webfra.me&apos;s <a href="//<?php echo $_SERVER["HTTP_HOST"] ?>/index.php?page=Terms.php" target="_blank">Terms of Use</a> and <a href="/www/Pages/Privacy.html" target="_blank">Privacy Policy</a>.</span>
+          <div class="form-group text-center">
+            <span class="form-text text-muted">By clicking on either the Desktop or Mobile button, you are agreeing to Webfra.me&apos;s <a href="//<?php echo $_SERVER["HTTP_HOST"] ?>/index.php?page=Terms.php" target="_blank">Terms of Use</a> and <a href="/www/Pages/Privacy.html" target="_blank">Privacy Policy</a>.</span>
           </div>
         </form>
       </div>
@@ -73,20 +67,20 @@
   </div>
   
   <!--	<div id="page-wrap">-->
-  <!--        <div class="webdesk_container">-->
+  <!--        <div class="container">-->
   <!--    		<div align="center">-->
   <!--              <form method="POST" action="login.php">-->
-  <!--    		   <div class="webdesk_form-group">-->
+  <!--    		   <div class="form-group">-->
   <!--                <label for="user" title="Please add your Username here."><h3>Username: </h3></label>-->
-  <!--                <input type="text" id="user"  class="webdesk_form-control" name="user" required placeholder="Please add your Username here." title="Please add your Username here.">-->
+  <!--                <input type="text" id="user"  class="form-control" name="user" required placeholder="Please add your Username here." title="Please add your Username here.">-->
   <!--               </div>-->
-  <!--               <div class="webdesk_form-group">-->
+  <!--               <div class="form-group">-->
   <!--                <label for="pass" title="Please add your Password here."><h3>Password: </h3></label>-->
-  <!--                <input type="password" id="pass"  class="webdesk_form-control" name="pass" required placeholder="Please add your Password here." autofocus><br><br>-->
+  <!--                <input type="password" id="pass"  class="form-control" name="pass" required placeholder="Please add your Password here." autofocus><br><br>-->
   <!--               </div>-->
-  <!--               <div class="webdesk_form-group">-->
+  <!--               <div class="form-group">-->
   <!--    			-->
-  <!--                <input type="submit" name="type" value="Desktop" class="webdesk_btn webdesk_btn-primary" title="Sign In"> <b>or</b> <input type="submit" name="type" value="Mobile" class="webdesk_btn webdesk_btn-primary" title="Sign In">-->
+  <!--                <input type="submit" name="type" value="Desktop" class="btn btn-primary" title="Sign In"> <b>or</b> <input type="submit" name="type" value="Mobile" class="btn btn-primary" title="Sign In">-->
   <!--               </div>-->
   
   <!--            </div>-->
@@ -125,7 +119,7 @@
     <script src="www/Themes/wd_default/jquery-1.3.2.min.js" type="text/javascript"></script>
     <script src="www/Themes/wd_default/jquery.backgroundPosition.js" type="text/javascript"></script>
     <!--<script src="Plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>-->
-    <script src="Plugins/wd-bootstrap/js/webdesk_bootstrap.js"></script>
+    <script src="Plugins/wd-bootstrap/js/bootstrap.js"></script>
     
     <script type="text/javascript">
     // for(x=0;x<1000;x++){

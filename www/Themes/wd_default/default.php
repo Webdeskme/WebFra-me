@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--<Webdesk.me Making web aplications easy.>
-    Copyright (C) 2017  Adam W. Telford
+<!--<Webfra.me Making web aplications easy.>
+    Copyright (C) 2019  Adam W. Telford
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -41,9 +41,8 @@
 <meta http-equiv="Cache-control" content="public">
 <link rel="apple-touch-icon" href="favicon.ico">
 <link rel="apple-touch-startup-image" href="favicon.ico">
-<link rel="stylesheet" href="Plugins/wd-bootstrap/css/webdesk_bootstrap.min.css">
-<!--<link rel="stylesheet" type="text/css" href="Theme/default.php">
-<link rel="stylesheet" type="text/css" href="www/Themes/wd_default/style.css">-->
+<link rel="stylesheet" href="Plugins/bootstrap-4.3.1/css/bootstrap.min.css">
+
 <link rel="stylesheet" type="text/css" href="www/Themes/wd_default/pluginCSS.php">
 <?php
 if(file_exists($wd_www . "header.php")){
@@ -65,8 +64,8 @@ if(isset($_GET['page']) && file_exists($wd_www . "header_" . $page)){
   ?>
   <div class="container">
     <script src="Plugins/jquery.min.js"></script>
-    <script src="Plugins/wd-bootstrap/js/webdesk_bootstrap.js"></script>
-    <script defer src="Plugins/fontawesome-free/svg-with-js/js/fontawesome-all.min.js"></script>
+    <script src="Plugins/bootstrap-4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script defer src="Plugins/fontawesome-free-5.8.1/js/all.min.js"></script>
     <script type="text/javascript" src="www/Themes/wd_default/plugins.php?page=<?php echo $page;?>" defer></script>
 <?php
 if(isset($_GET['page']) && file_exists($wd_www . $page)){
@@ -93,17 +92,7 @@ for(var i=0;i<a.length;i++) {
     }
 }
 </script>
-<!--<script>
-$(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-});
-</script>
-  <script>
-$(document).ready(function(){
-    $('[data-toggle="popover"]').popover();
-});
-</script>-->
-	<!--<script type="text/javascript" src="fstat-js.php?page=<?php echo $page;?>" defer></script>-->
+
   <?php
 if(isset($_GET['wd_dev'])){
   ?>
@@ -111,12 +100,6 @@ if(isset($_GET['wd_dev'])){
   <?php
 }
    ?>
-<!--<script>
-if('serviceWorker' in navigator) {
-  navigator.serviceWorker
-           .register('/www/Themes/wd_default/sw.js')
-           .then(function() { console.log("Service Worker Registered"); });
-}
-</script>-->
+
 </body>
 </html>

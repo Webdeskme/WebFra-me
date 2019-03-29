@@ -1,10 +1,13 @@
+<?php
+$user = new user;
+?>
 <!DOCTYPE html>
 <?php include 'HUDstart.php';?>
 <html lang="en-US">
 <head>
     <?php include 'HUDhead.php';?>
 </head>
-<body onload="display_ct();">
+<body onload="display_ct();" style="position:relative;overflow-y: scroll;">
  
 <div id="tabs" class="con">
     <ul id="wd_tabs">
@@ -172,57 +175,27 @@
         <span style="text-align: right;" class="fa fa-info-circle" data-toggle="modal" data-target="#wd_info" title="info"></span></span>
     </ul>
     <div style="height: 95%; padding: 0px; margin: 0px; background-color: <?php echo $color; ?>; background-image: url(<?php echo $back; ?>); background-repeat: no-repeat; background-position: center; background-size: cover; -moz-background-size: cover; -webkit-background-size: cover; -o-background-size: cover;">
-    <div id="tabs-6" class="tab p-0" style="background-color: <?php
-    if(file_exists($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){
-        $pcolor = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt');
-        echo $pcolor;
-    }
-    else{
-        echo '#FFFFFF';
-    }
-    ?>;">
-        <!--<a href="" style="float: right;">Add App to Desktop</a>-->
+    
+    <div id="tabs-6" class="tab p-0" style="background-color: <?php echo $user->getProfileColor(); ?>;">
         <?php include 'HUDapp.php';?>
     </div>
-    <div id="tabs-2" class="tab" style="background-color: <?php
-    if(file_exists($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){
-        $pcolor = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt');
-        echo $pcolor;
-    }
-    else{
-        echo '#FFFFFF';
-    }
-    ?>;">
+    <div id="tabs-2" class="tab" style="background-color: <?php echo $user->getProfileColor(); ?>;">
         <?php include 'HUDweb.php';?>
     </div>
-    <div id="tabs-3" class="tab" style="background-color: <?php
-    if(file_exists($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){
-        $pcolor = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt');
-        echo $pcolor;
-    }
-    else{
-        echo '#FFFFFF';
-    }
-    ?>;">
+    <div id="tabs-3" class="tab" style="background-color: <?php echo $user->getProfileColor(); ?>;">
     <?php include 'HUDalerts.php';?>
     </div>
-    <div id="tabs-4" class="tab" style="background-color: <?php echo $color; ?>;">
+    <div id="tabs-4" class="tab p-0" style="background-color: <?php echo $user->getProfileColor(); ?>;">
         <?php include 'HUDsettings.php';?>
     </div>
     <div id="tabs-5" class="tab" style="background-color: <?php
     if( isset($_SERVER['HTTPS'] ) ) {
-    $actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+      $actual_link = "https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
     }
     else{
-    $actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+      $actual_link = "http://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
     }
-    if(file_exists($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){
-        $pcolor = file_get_contents($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt');
-        echo $pcolor;
-    }
-    else{
-        echo '#FFFFFF';
-    }
+    echo $user->getProfileColor();
     ?>;">
     <?php include 'HUDtask.php';?>
     </div>
@@ -239,42 +212,42 @@
         }
         ?>;">
 
-            <div style="background-color: #D98911;" class="pl-3 pt-2">
-                <div class="btn-group">
-                    <a href="<?php echo (!empty($_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : ""; ?>" onclick="window.history.go(-1);return false;" data-toggle="tooltip" title="Back" id="wd_back" class="btn btn-primary btn-sm"><span class="fa fa-arrow-left text-white"></span></a>
-                    <!--<a href="<?php echo $_SERVER['REQUEST_URI']; ?>" data-toggle="tooltip" title="Refresh" id="wd_refresh" class="btn btn-primary btn-sm"><i class="fa fa-sync text-white"></i></a>-->
-                    <a href="desktop.php" class="btn btn-primary  btn-sm" data-toggle="tooltip" title="Home"><span class="fa fa-home text-white"></span></a>
-                    <?php
-                    if(isset($_SESSION["wd_fullscreen"]) && $_SESSION["wd_fullscreen"] == 'on'){
-                    	?>
-                    	<a href="<?php if (empty($_GET)) { echo $_SERVER['REQUEST_URI'] . '?wd_fullS=off';} else{ echo $_SERVER['REQUEST_URI'] . '&wd_fullS=off';} ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Minimize"><i class="fa fa-compress-arrows-alt text-white"></i></a>
-                    	<?php
-                    }
-                    else{
-                        ?>
-                        <a href="<?php echo preg_replace("/wd_fullS\=(on|off)/i", "", $_SERVER["REQUEST_URI"]) . ((empty($_GET)) ? "?" : "&") . "wd_fullS=on"; ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Maximize"><span class="fa fa-expand-arrows-alt  text-white"></span></a>
-                        <?php
-                    }
-                    ?>
-                    <a href="<?php $get = explode('?', $_SERVER['REQUEST_URI']); if(isset($get[1])){ echo 'desktop_full.php?' . $get[1];} else{ echo 'desktop_full.php'; } ?>" class="btn btn-primary  btn-sm" data-toggle="tooltip" title="Fullscreen"><span class="fa fa-window-maximize text-white"></span></a>
-                    
-                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#wd_app_help"><span title="Help Doc" data-toggle="tooltip"><i class="fa fa-question-circle text-white"></i></span></button>
-                    <?php
-                    if(isset($_GET["app"])){
-                        
-                        ?>
-                        <span id="-wd_t1Title">
-                            <a href="<?php wd_url($type, $app, 'start.php', ''); ?>" class="no-hover">
-                                <!--<h5 class="pt-2 ml-3"><?php echo $wd_app_name; ?></h5>-->
-                            </a>
-                        </span> 
-                        
-                        <?php 
-                    }
-                    ?>
-                </div>
-            </div>
-            <?php include 'HUDcon.php';?>
+        <div style="background-color: #D98911;" class="pl-3 pt-2">
+          <div class="btn-group">
+            <a href="<?php echo (!empty($_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : ""; ?>" onclick="window.history.go(-1);return false;" data-toggle="tooltip" title="Back" id="wd_back" class="btn btn-primary btn-sm"><span class="fa fa-arrow-left text-white"></span></a>
+            <!--<a href="<?php echo $_SERVER['REQUEST_URI']; ?>" data-toggle="tooltip" title="Refresh" id="wd_refresh" class="btn btn-primary btn-sm"><i class="fa fa-sync text-white"></i></a>-->
+            <a href="desktop.php" class="btn btn-primary  btn-sm" data-toggle="tooltip" title="Home"><span class="fa fa-home text-white"></span></a>
+            <?php
+            if(isset($_SESSION["wd_fullscreen"]) && $_SESSION["wd_fullscreen"] == 'on'){
+            	?>
+            	<a href="<?php if (empty($_GET)) { echo $_SERVER['REQUEST_URI'] . '?wd_fullS=off';} else{ echo $_SERVER['REQUEST_URI'] . '&wd_fullS=off';} ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Minimize"><i class="fa fa-compress-arrows-alt text-white"></i></a>
+            	<?php
+            }
+            else{
+                ?>
+                <a href="<?php echo preg_replace("/wd_fullS\=(on|off)/i", "", $_SERVER["REQUEST_URI"]) . ((empty($_GET)) ? "?" : "&") . "wd_fullS=on"; ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" title="Maximize"><span class="fa fa-expand-arrows-alt  text-white"></span></a>
+                <?php
+            }
+            ?>
+            <a href="<?php $get = explode('?', $_SERVER['REQUEST_URI']); if(isset($get[1])){ echo 'desktop_full.php?' . $get[1];} else{ echo 'desktop_full.php'; } ?>" class="btn btn-primary  btn-sm" data-toggle="tooltip" title="Fullscreen"><span class="fa fa-window-maximize text-white"></span></a>
+            
+            <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#wd_app_help"><span title="Help Doc" data-toggle="tooltip"><i class="fa fa-question-circle text-white"></i></span></button>
+            <?php
+            if(isset($_GET["app"])){
+                
+                ?>
+                <span id="-wd_t1Title">
+                    <a href="<?php wd_url($type, $app, 'start.php', ''); ?>" class="no-hover">
+                        <!--<h5 class="pt-2 ml-3"><?php echo $wd_app_name; ?></h5>-->
+                    </a>
+                </span> 
+                
+                <?php 
+            }
+            ?>
+          </div>
+        </div>
+        <?php include 'HUDcon.php';?>
         </div>
     </div>
     </div>

@@ -48,36 +48,7 @@
       
     }
   }
-  /*
-  if(isset($_GET['wd_as'])){
-    ?>
-    <div class="alert alert-success position-fixed" role="alert">
-      <?php $wd = test_input($_GET['wd_as']); echo $wd; ?>
-    </div>
-    <?php
-  }
-  if(isset($_GET['wd_ai'])){
-    ?>
-    <div class="alert alert-info" role="alert">
-      <?php $wd = test_input($_GET['wd_ai']); echo $wd; ?>
-    </div>
-    <?php
-  }
-  if(isset($_GET['wd_aw'])){
-    ?>
-    <div class="alert alert-warning" role="alert">
-      <?php $wd = test_input($_GET['wd_aw']); echo $wd; ?>
-    </div>
-    <?php
-  }
-  if(isset($_GET['wd_ad'])){
-    ?>
-    <div class="alert alert-danger" style="" role="alert">
-      <?php $wd = test_input($_GET['wd_ad']); echo $wd; ?>
-    </div>
-    <?php
-  }
-  */
+
   if(isset($_GET['link'])){
     ?>
     <div class="alert alert-info">
@@ -112,15 +83,15 @@ else{
   
   ?>
   <div class="container p-2 mb-5">
-    <h1 class="display-2 py-4 d-none d-md-block">Welcome to WebFrame</h1>
+    <h1 class="display-2 py-4 d-none d-md-block">Welcome to Webframe</h1>
     <h2 class="d-md-none py-4">Welcome to Webframe</h2>
     <h5>Version <?php echo (!empty($webframe_version)) ? $webframe_version : "" ?></h5>
     <p class="lead">
-      To start an application just go to the Apps tab and click on the tab of your choice. You will see the application name on this tab. Click it to view.
+      To start an application just go to the Apps tab and click on the tab of your choice. You will see the application name on this tab. 
     </p>
     <div class="row text-center pt-5">
       <div class="col">
-        <a href="#">
+        <a href="License.html">
           <i class="fa fa-certificate fa-5x"></i><br /><br />
           License
         </a>

@@ -54,6 +54,11 @@
                     <?php
                 }
             }
+            if( (count(scandir($app_type . '/')) == 0) && ($x == 1) ){
+              ?>
+              <div class="text-muted my-4">You have no apps</div>
+              <?php
+            }
             ?>
         </div>
         <?php

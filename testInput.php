@@ -4,6 +4,7 @@
 // WORDFRAME FUNCTION FILE
 // 
 ////////////////////////////////////
+include_once("includes/user_functions.inc.php");
 class wordframe{
   
   public function generateRandomNumber($max){
