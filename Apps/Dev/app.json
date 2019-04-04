@@ -1,7 +1,7 @@
 {
 	"name":"Developer Tools",
 	"description": "Create your own apps, themes and HUDS to extend the WebDesk experience",
-	"version": "2.1.1",
+	"version": "2.1.2",
 	"author":{
 		"name":"Webframe",
 		"email":"apps@webfra.me"

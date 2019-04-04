@@ -25,10 +25,10 @@ else if($req["f"] == "openMarketJson"){
 				foreach($marketplace as $key => $app){
 					
 					/// check for image file
-					if(!@file_get_contents($app["host"]."/Pub/" . $app["app"] . "/ic.png",0,null,0,1))
+					if(!@file_get_contents($app["host"]."/Pub/" . str_replace("Apps/","",$app["install_path"]) . "/ic.png",0,null,0,1))
 						$marketplace[$key]["icon"] = "//" . $_SERVER["HTTP_HOST"] ."/Apps/Marketplace/assets/default_ic.png";
 					else
-						$marketplace[$key]["icon"] = $app["host"]."/Pub/" . $app["app"] . "/ic.png";
+						$marketplace[$key]["icon"] = $app["host"]."/Pub/" . str_replace("Apps/","",$app["install_path"]) . "/ic.png";
 						
 					/// check to see if it's installed locally already or not
 					$marketplace[$key]["is_installed"] = false;

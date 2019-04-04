@@ -1,7 +1,7 @@
 {
 	"name":"Webframe Admin",
 	"description":"Manage users, groups and permissions of your Webframe",
-	"version": "2.0",
+	"version": "2.0.1",
 	"author":{
 		"name":"WebDesk",
 		"email":"apps@webdesk.me"

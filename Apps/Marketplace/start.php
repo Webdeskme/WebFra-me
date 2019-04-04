@@ -12,7 +12,7 @@
 */
 if(is_file("../../wd_protect.php")){ include_once "../../wd_protect.php"; }
 include("config.inc.php");
-include("pageHeader.php");
+include("appHeader.php");
 
 $can_open_market = false;
 if(file_exists($wd_type."/".$wd_app."/wd_marketplace.json")){
@@ -29,9 +29,9 @@ if(file_exists($wd_type."/".$wd_app."/wd_marketplace.json")){
     sort($market2_categories);
     
     ?>
-    <div class="containerr mb-5 mt-3 p-3">
+    <div class="mb-5 mt-3 p-3">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="sticky-top category-menu">
             <div class="list-group">
               <div class="list-group-item"><b>Categories</b></div>
@@ -155,34 +155,6 @@ if(!$can_open_market){
   </div>
   <?php
 }
-/*
-if($apps = opendir("Apps")){
-  $files = array();
-  $files_versions = array();
-  while (($file = readdir($apps)) !== false) {
-    
-    if(!preg_match("/^.{1,2}$/",$file)){
-    
-      $files[$file] = array();
-      if(file_exists("Apps/" . $file . "/app.json")){
-        
-        $app_json = file_get_contents("Apps/" . $file . "/app.json");
-        $app_json = json_decode($app_json,true);
-        $files[$file] = $app_json;
-        
-      }
-      
-    }
-    
-  }
-  
-  ?>
-  <script>
-  var installed_apps = [<?php echo json_encode($files); ?>];
-  </script>
-  <?php
-}
-*/
 ?>
 <script>
 $( document ).ajaxError(function( event, request, settings ) {
