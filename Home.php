@@ -93,7 +93,7 @@ else{
         <link rel="apple-touch-startup-image" href="favicon.ico">
     </head>
     <body>
-    <h2>Save this page. <a href="desktop.php">Then go to desktop by clicking here.</a></h2>
+    <h2>Bookmark this page. <a href="desktop.php">Then go to desktop by clicking here.</a></h2>
     </body>
     </html>
     <?php

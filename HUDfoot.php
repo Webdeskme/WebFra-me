@@ -670,11 +670,11 @@ $(function() {
   ?>
   //$('.dropdown-toggle').dropdown();
 
-  $("form").not(".noloadingicon,.no-loader").submit(function(){
+  // $("form").not(".noloadingicon,.no-loader").submit(function(){
 
-    $(":input[type='submit']",this).html('<i class="fas fa-spinner fa-pulse"></i> Loading').prop("disabled",true);
+  //   $(":input[type='submit']",this).html('<i class="fas fa-spinner fa-pulse"></i> Loading').prop("disabled",true);
 
-  });
+  // });
 });
 </script>
 <!--<script src="Plugins/context.js"></script>-->

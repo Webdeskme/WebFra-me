@@ -7,7 +7,7 @@ $user = new user;
 <head>
     <?php include 'HUDhead.php';?>
 </head>
-<body onload="display_ct();" style="position:relative;overflow-y: scroll;">
+<body onload="display_ct();">
  
 <div id="tabs" class="con">
     <ul id="wd_tabs">
@@ -174,21 +174,21 @@ $user = new user;
         <span style="text-align: right;" data-toggle="modal" data-target="#wd_clock"><b id="ct"></b></span>&emsp;
         <span style="text-align: right;" class="fa fa-info-circle" data-toggle="modal" data-target="#wd_info" title="info"></span></span>
     </ul>
-    <div style="height: 95%; padding: 0px; margin: 0px; background-color: <?php echo $color; ?>; background-image: url(<?php echo $back; ?>); background-repeat: no-repeat; background-position: center; background-size: cover; -moz-background-size: cover; -webkit-background-size: cover; -o-background-size: cover;">
+    <div style="height: 95%; padding: 0px; margin: 0px; background-color: <?php echo $user->getProfileColor(); ?>; background-image: url(<?php echo $back; ?>); background-repeat: no-repeat; background-position: center; background-size: cover; -moz-background-size: cover; -webkit-background-size: cover; -o-background-size: cover;">
     
-    <div id="tabs-6" class="tab p-0" style="background-color: <?php echo $user->getProfileColor(); ?>;">
+    <div id="tabs-6" class="tab bgcolor p-0" style="background-color: <?php echo $user->getProfileColor(); ?>;">
         <?php include 'HUDapp.php';?>
     </div>
-    <div id="tabs-2" class="tab" style="background-color: <?php echo $user->getProfileColor(); ?>;">
+    <div id="tabs-2" class="tab bgcolor" style="background-color: <?php echo $user->getProfileColor(); ?>;">
         <?php include 'HUDweb.php';?>
     </div>
-    <div id="tabs-3" class="tab" style="background-color: <?php echo $user->getProfileColor(); ?>;">
+    <div id="tabs-3" class="tab bgcolor" style="background-color: <?php echo $user->getProfileColor(); ?>;">
     <?php include 'HUDalerts.php';?>
     </div>
-    <div id="tabs-4" class="tab p-0" style="background-color: <?php echo $user->getProfileColor(); ?>;">
+    <div id="tabs-4" class="tab bgcolor p-0" style="background-color: <?php echo $user->getProfileColor(); ?>;">
         <?php include 'HUDsettings.php';?>
     </div>
-    <div id="tabs-5" class="tab" style="background-color: <?php
+    <div id="tabs-5" class="tab bgcolor" style="background-color: <?php
     if( isset($_SERVER['HTTPS'] ) ) {
       $actual_link = "https://" . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
     }
@@ -200,7 +200,7 @@ $user = new user;
     <?php include 'HUDtask.php';?>
     </div>
     
-    <div id="tabs-1" class="<?php echo (isset($_SESSION["wd_fullscreen"]) && ($_SESSION["wd_fullscreen"] == 'on')) ? "rounded-0" : ""; ?> card tab" style="overflow: hidden; padding: 0px; margin: 0px; ">
+    <div id="tabs-1" class="<?php echo (isset($_SESSION["wd_fullscreen"]) && ($_SESSION["wd_fullscreen"] == 'on')) ? "rounded-0" : ""; ?> card tab bgcolor" style="overflow: hidden; padding: 0px; margin: 0px; ">
         
         <div id="1tab" style="padding: 0px; margin: 0px; overflow: scroll; height: 100%; background-color: <?php
         if(file_exists($wd_root . '/User/' . $_SESSION["user"] . '/Admin/Pcolor.txt')){
