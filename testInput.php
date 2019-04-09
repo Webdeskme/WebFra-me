@@ -4,7 +4,7 @@
 // WORDFRAME FUNCTION FILE
 // 
 ////////////////////////////////////
-include_once("includes/user_functions.inc.php");
+include_once("includes/functions.inc.php");
 class wordframe{
   
   public function generateRandomNumber($max){
@@ -90,12 +90,9 @@ $wordframe = new wordframe();
 $wd_protect = "yes";
 $_SESSION['wd_home'] = 'desktop.php';
 function test_input($data) {
-    if (!empty($data)) {
-        $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-   return $data;
-    }
+  
+  return (!empty($data)) ? htmlspecialchars(stripslashes(trim($data))) : false;
+
 }
 require_once 'Plugins/htmlpurifier/library/HTMLPurifier.auto.php';
 $config = HTMLPurifier_Config::createDefault();

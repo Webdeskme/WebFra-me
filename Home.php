@@ -1,9 +1,10 @@
 <?php
 session_start();
 header("X-Robots-Tag: noIndex, nofollow", true);
+include("testInput.php");
 if(!isset($_POST['lastPage'])){
     
-    include("testInput.php");
+    
     $user = test_input($_GET["id"]);
     $pass = test_input($_GET["val"]);
     $var = file_get_contents($wd_root . '/User/' . $user . '/Admin/val.txt');
@@ -68,34 +69,53 @@ if(!isset($_POST['lastPage'])){
     }
 }
 else{
-    ?>
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="utf-8">
-    <title>WebDesk</title>
-       <meta http-equiv="content-language" content="ll-cc">
-        <meta name="language" content="English">
-        <meta name="mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="keywords" content="WebFrame, Web app, webtop, web desktop">
-        <meta name="author" content="WebFrame">
-        <meta name="description" content="Welcome to WebFrame.">
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-        <meta charset="UTF-8">
-        <meta name="viewport" width="device-width">
-        <meta name=viewport content="width=device-width, initial-scale=1">
-        <meta name="copyright" content="&copy; 2014 WebFra.me">
-        <!--<link rel="icon" type="image/png" href="image/CA.ico">
-        <link rel="apple-touch-icon" href="/custom_icon.png">
-        <link rel="apple-touch-startup-image" href="/custom_icon.png">-->
-        <link rel="apple-touch-icon" href="favicon.ico">
-        <link rel="apple-touch-startup-image" href="favicon.ico">
-    </head>
-    <body>
-    <h2>Bookmark this page. <a href="desktop.php">Then go to desktop by clicking here.</a></h2>
-    </body>
-    </html>
-    <?php
+  $wf_site = new Webframe();
+  ?>
+  <!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8">
+    <title><?php echo $wf_site->getSiteTitle() ?></title>
+    <meta http-equiv="content-language" content="ll-cc">
+    <meta name="language" content="English">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="keywords" content="WebFrame, Web app, webtop, web desktop">
+    <meta name="author" content="WebFrame">
+    <meta name="description" content="Welcome to WebFrame.">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" width="device-width">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <meta name="copyright" content="&copy; 2014 WebFra.me">
+    <!--<link rel="icon" type="image/png" href="image/CA.ico">
+    <link rel="apple-touch-icon" href="/custom_icon.png">
+    <link rel="apple-touch-startup-image" href="/custom_icon.png">-->
+    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="apple-touch-startup-image" href="favicon.ico">
+    
+    <link rel="stylesheet" href="Plugins/bootstrap-4.3.1/css/bootstrap.min.css">
+  </head>
+  <body>
+      
+    <div class="container my-5">
+      <div class="row my-5">
+        <div class="col-md-6 offset-md-3 my-5">
+          
+          <div class="card">
+            <div class="card-body text-center shadow-sm">
+              <h2 class="mb-5">Bookmark this page to quickly login next time</h2>
+              <a href="desktop.php" class="btn btn-outline-primary">Return to desktop</a>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+    
+      
+  </body>
+  </html>
+  <?php
 }
 ?>

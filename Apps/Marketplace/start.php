@@ -50,7 +50,7 @@ if(file_exists($wd_type."/".$wd_app."/wd_marketplace.json")){
             </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col pl-5">
           <div id="load" class="text-center position-absolute">
             <i class="fa fa-spinner fa-pulse fa-2x"></i>
             <span class="sr-only">Loading...</span>
@@ -65,6 +65,7 @@ if(file_exists($wd_type."/".$wd_app."/wd_marketplace.json")){
               No apps within search parameters
             </div>
             <div class="col-md-4 mb-3 marketApp template hide">
+              
               
               <div class="card">
                 <div class="card-body">
@@ -200,7 +201,7 @@ var marketplace = {
       $('#viewAppMoreModal .app-description').text(marketplace.wd_market[tapp].description);
     
     $('#viewAppMoreModal .app-author').text(marketplace.wd_market[tapp].email);
-    $('#viewAppMoreModal .app-version').text(marketplace.wd_market[tapp].version);
+    $('#viewAppMoreModal .app-version').text(marketplace.wd_market[tapp].vr);
     $('#viewAppMoreModal .app-category').text(marketplace.wd_market[tapp].cat);
     $('#viewAppMoreModal .app-rating').text(marketplace.wd_market[tapp].rate);
     
