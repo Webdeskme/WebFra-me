@@ -22,7 +22,7 @@ class dev_tools{
 	    $this->proj_info = $app_json;
 	  }
 	  else
-	    $wd_dt->proj_info = array("name" => $app_dir);
+	    $this->proj_info = array("name" => $app_dir);
 	    
 	  if(file_exists($app_type.'/'.$app_dir.'/ic.png'))
 	  	$this->proj_icon = $app_type.'/'.$app_dir.'/ic.png';
