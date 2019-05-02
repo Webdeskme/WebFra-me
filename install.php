@@ -6,7 +6,7 @@ if(file_exists("path.php") && file_exists($wd_roots[$_SERVER['HTTP_HOST']])){
 }
 else{
 	
-	$extensions_needed = array('gd','imap','curl','json','mcrypt','Zend OPcache','xmlrpc','zip');
+	$extensions_needed = array('gd','imap','curl','json','Zend OPcache','xmlrpc','zip');
 	$extensions_installed = get_loaded_extensions();
 	//print_r($extensions_installed);
 	$extensions_notinstalled = array();
