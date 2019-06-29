@@ -1,0 +1,11 @@
+version: "3"
+services:
+    www01:
+        build: .
+        ports:
+            - "80:80"
+        volumes:
+            - ./:/var/www/html/
+        networks:
+            - default
+
