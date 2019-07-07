@@ -194,7 +194,7 @@ if(file_exists("path.php") || file_exists("../../path.php")){
   else
     include("../../path.php");
   
-  if(isset($wd_roots[$_SERVER['HTTP_HOST']])){
+  if(isset($_SERVER['HTTP_HOST']) && isset($wd_roots[$_SERVER['HTTP_HOST']])){
     $wd_root = test_input($wd_roots[$_SERVER['HTTP_HOST']]);
   }
   else{
