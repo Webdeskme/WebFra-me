@@ -17,12 +17,15 @@ if(isset($_SESSION["tier"])){
     if(isset($wd_app)){
       
       if($wd_type == "MyApps"){
-        $wd_app = "myApp_" . $wd_app;
+        $wd_app1 = "myApp_" . $wd_app;
+      }
+      else{
+        $wd_app1 = $wd_app;
       }
       $wd_tierDoc = file_get_contents($wd_admin . $_SESSION["tier"] . '.json');
       $wd_tierDoc = json_decode($wd_tierDoc);
-      if(isset($wd_tierDoc->$wd_app)){
-        if($wd_tierDoc->$wd_app != 'Yes'){
+      if(isset($wd_tierDoc->$wd_app1)){
+        if($wd_tierDoc->$wd_app1 != 'Yes'){
           session_destroy();
           header('Location: index.php?test=bad+tier1');
           exit();
