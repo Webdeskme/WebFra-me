@@ -15,10 +15,11 @@
 </nav>
 <div class="container-fluid">
     <?php
-    $wd_tierobj = [];
+    $wd_tierobj = array();
     if(file_exists($wd_admin . test_input($wd_tier) . '.json')){
         
-        $wd_tierobj = json_decode(file_get_contents($wd_admin . test_input($wd_tier) . '.json'));
+        $wd_tierobj = json_decode(file_get_contents($wd_admin . test_input($wd_tier) . '.json'),true);
+        
         
     }
     
@@ -28,8 +29,15 @@
         <?php echo ($x == 1) ? "<h5 class='mx-3 mt-3'>My Apps</h5>" : "" ?>
         <div class="row mx-3 defaultHUD_app-container <?php echo ($x == 0) ? "border-bottom" : "" ?>">
             <?php
+            $category_count = 0;
             foreach (scandir($app_type . '/') as $entry){
-                if ($entry != "." && $entry != "..") {
+                
+                $app_type_d = (($x == 0) ? "" : "myApp_") . $entry;
+                
+                if ( ($entry != ".") && ($entry != "..") && ( ($wd_tier == "tA") || ( isset($wd_tierobj[$app_type_d]) && ($wd_tierobj[$app_type_d] == "Yes")) )  ){
+                    
+                    
+                    
                     $app_name = $entry;
                     $app_description = null;
                     if(file_exists($app_type . "/" . $entry . "/app.json")){
@@ -52,9 +60,11 @@
                         </a>
                     </div>
                     <?php
+                    
+                    $category_count ++;
                 }
             }
-            if( (count(scandir($app_type . '/')) == 0) && ($x == 1) ){
+            if( ($category_count == 0) && ($x == 1) ){
               ?>
               <div class="text-muted my-4">You have no apps</div>
               <?php
