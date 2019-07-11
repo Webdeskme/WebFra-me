@@ -16,7 +16,7 @@
       <li class="webdesk_nav-item"><a class="webdesk_nav-link webdesk_text-white" href="feed.php" target="_blank" rel="noopener">RSS Feed <i class="fas fa-rss"></i></a></li>
     </ul>
     <ul class="webdesk_nav webdesk_navbar-nav webdesk_navbar-right">
-      <li><a class="webdesk_nav-link webdesk_text-white" href="http://webdesk.me" target="_blank" rel="noopener">Proudly powerd by WebFrame</a></li>
+      <li><a class="webdesk_nav-link webdesk_text-white" href="http://webfra.me" target="_blank" rel="noopener">Proudly powerd by WebFrame</a></li>
     </ul>
     </div>
   </div>
