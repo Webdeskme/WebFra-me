@@ -4,8 +4,7 @@ sudo apt-get clean
 sudo apt-get --yes update
 sudo apt-get --yes dist-upgrade
 sudo apt-get clean
-sudo apt-get install --yes apache2 php7.0 php7.0-curl php7.0-gd php7.0-imap php7.0-json php7.0-mcrypt php7.0-mysql php7.0-opcache php7.0-xmlrpc libapache2-mod-php7.0 php-zip php-dom unzip php-memcached memcached libapache2-mod-security2 libapache2-modsecurity libapache2-mod-evasive
-sudo a2enmod mod-security deflate
+sudo apt-get install --yes apache2 php php-curl php-gd php-imap php-json php-mcrypt php-opcache php-xmlrpc php-zip php-dom unzip php-memcached memcached
 sudo apt-get --yes update
 sudo apt-get --yes dist-upgrade
 echo "cleaning up"
