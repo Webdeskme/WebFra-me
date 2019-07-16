@@ -2,4 +2,7 @@
 .hide{
 	display: none;
 }
+.category-menu{
+	z-index: 990;
+}
 </style>
